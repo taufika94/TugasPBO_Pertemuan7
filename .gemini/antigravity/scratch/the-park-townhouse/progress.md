@@ -139,3 +139,13 @@
   - Set `align-items: flex-start` with top-aligned pin icon on `.map-card-selling-point` so icons align cleanly with the first line of wrapped text.
   - Removed `-webkit-line-clamp: 2` on `.map-card-desc` to ensure the full description and selling points are 100% visible and unclipped.
 - **Status**: Completed & Verified.
+
+
+---
+
+### [2026-11-21] Progress #12: Synchronize Room 01 Arch Hero Image with Opening Door Interior Preview
+- **Context & Objective**: Align the arch hero visual card in Room 01 (Pintu Depan) with the interior room visual revealed when the double doors open in the opening animation.
+- **Key Changes Implemented**:
+  - Replaced `assets/drive/house.jpeg` (exterior townhouse facade) on `#heroArchImg` in `index.html` with `assets/drive/dalam-6.png` (warm living interior).
+  - Updated descriptive alt tag to *"Interior Ruangan The Park Townhouse"*, ensuring seamless visual continuity from the door opening sequence into Room 01.
+- **Status**: Completed & Verified.
