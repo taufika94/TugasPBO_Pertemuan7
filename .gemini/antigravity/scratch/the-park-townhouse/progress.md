@@ -104,3 +104,16 @@
   - Integrated location detail card overlay (`#mapLocationCard`) matching design mockup Image 2 (category, time pill, title, description, and selling point).
   - Maintained zero mobile bottom bar and strict zero-scroll fit within 844px mobile viewport.
 - **Status**: Completed & Verified (verified with Node.js syntax & DOM tests).
+
+
+---
+
+### [2026-11-21] Progress #09: Expand Map Distance Chips to All 8 Locations & Compact Popup Card
+- **Context & Objective**: Accommodate all facility destinations displayed on the map into the bottom selection strip, and prevent the location popup card from dominating/obscuring the Leaflet map view.
+- **Key Changes Implemented**:
+  - Expanded `.distance-chips` in `index.html` from 3 hardcoded spots to all 8 map destinations: `Sudirman (1 mnt)`, `Gelora Merdeka (2 mnt)`, `Alun-Alun (3 mnt)`, `SMAN 1 (5 mnt)`, `RSUD Soekarno (6 mnt)`, `Stasiun (7 mnt)`, `RS Indriati (12 mnt)`, and `Pakuwon Mall (14 mnt)`.
+  - Configured `.distance-chips` as a smooth horizontal scrolling strip (`overflow-x: auto; scrollbar-width: none; flex-wrap: nowrap`) with 46px min-height touch targets per Rule 5.
+  - Re-engineered `.map-location-card` into a sleek, low-profile floating card (~95px height max): reduced padding (8px 10px), compact 22px icon, 13px bold title, 2-line truncated description, single-line selling point, and 22px close button.
+  - Added slight latitude offset (`-0.0025`) in `parkMap.flyTo` to guarantee target pins stay centered in the upper 70% of the map view without any overlap from the popup card.
+  - Added auto-scroll (`targetChip.scrollIntoView({ behavior: 'smooth', inline: 'center' })`) so active chips smoothly center into thumb reach when clicked or when corresponding pins on the map are tapped.
+- **Status**: Completed & Verified (verified with Node.js syntax & DOM checks).

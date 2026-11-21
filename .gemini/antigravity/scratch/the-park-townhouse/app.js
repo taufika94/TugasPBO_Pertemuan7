@@ -1287,16 +1287,20 @@ function openFacilityDetail(id, btnEl) {
   const item = allList.find((f) => f.id === id);
   if (!item) return;
 
-  // 1. Highlight clicked chip in bottom card
+  // 1. Highlight clicked chip & smooth scroll into view
   document.querySelectorAll('.dist-chip').forEach((b) => b.classList.remove('is-active'));
   const targetChip = btnEl || document.querySelector(`.dist-chip[data-facility="${id}"]`);
   if (targetChip) {
     targetChip.classList.add('is-active');
+    try {
+      targetChip.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    } catch (_) {}
   }
 
-  // 2. Fly smoothly to target spot
+  // 2. Fly smoothly to target spot (slight south offset keeps pin visible above compact bottom card)
   if (parkMap) {
-    parkMap.flyTo(item.latLng, 15.5, { animate: true, duration: 0.8 });
+    const latOffset = item.latLng[0] - 0.0025;
+    parkMap.flyTo([latOffset, item.latLng[1]], 15, { animate: true, duration: 0.8 });
   }
 
   // 3. Highlight pin on map
