@@ -268,29 +268,8 @@
             </div>
           </div>
 
-          <!-- Header Analisis Radius -->
-          <div class="map-analysis-header stagger-item" data-delay="120">
-            <div class="analysis-title-row">
-              <div class="analysis-tag-group">
-                <span class="analysis-tag-label">ANALISIS RADIUS AKTIF</span>
-                <span class="radius-active-badge" id="activeRadiusBadge">5 km</span>
-              </div>
-              <button class="btn-expand-map" onclick="openRadiusModal()" type="button"
-                title="Buka Mode Analisis Layar Penuh">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2">
-                  <polyline points="15 3 21 3 21 9" />
-                  <polyline points="9 21 3 21 3 15" />
-                  <line x1="21" y1="3" x2="14" y2="10" />
-                  <line x1="3" y1="21" x2="10" y2="14" />
-                </svg>
-                <span>Layar Penuh</span>
-              </button>
-            </div>
-            <h3 class="analysis-facilities-count" id="facilitiesCountHeading">4 dari 6 fasilitas</h3>
-          </div>
-
           <!-- Interactive Leaflet Map Visual Card -->
-          <div class="map-visual-card is-hero-tall stagger-item" data-delay="180" id="mapVisualCard">
+          <div class="map-visual-card is-hero-tall stagger-item" data-delay="160" id="mapVisualCard">
             <div id="parkLeafletMap" class="park-leaflet-map"></div>
 
             <!-- Scroll Hint Pill -->
@@ -350,61 +329,19 @@
             </div>
           </div>
 
-          <!-- Controls: Radius & Cluster Filters -->
-          <div class="map-filters-panel stagger-item" data-delay="240">
-            <div class="filter-group">
-              <span class="filter-group-label">RADIUS PENCARIAN</span>
-              <div class="radius-buttons-grid">
-                <button class="radius-btn" data-radius="500" onclick="setSearchRadius(500, this)" type="button">500
-                  m</button>
-                <button class="radius-btn" data-radius="1000" onclick="setSearchRadius(1000, this)" type="button">1
-                  km</button>
-                <button class="radius-btn" data-radius="3000" onclick="setSearchRadius(3000, this)" type="button">3
-                  km</button>
-                <button class="radius-btn is-active" data-radius="5000" onclick="setSearchRadius(5000, this)"
-                  type="button">5 km</button>
-                <button class="radius-btn" data-radius="10000" onclick="setSearchRadius(10000, this)" type="button">10
-                  km</button>
-                <button class="radius-btn" data-radius="25000" onclick="setSearchRadius(25000, this)" type="button">25
-                  km</button>
-              </div>
-            </div>
-
-            <div class="filter-group">
-              <span class="filter-group-label">FOKUS KLASTER</span>
-              <div class="cluster-buttons-grid">
-                <button class="cluster-btn is-active" data-cluster="all" onclick="focusCluster('all', this)"
-                  type="button">Semua (3)</button>
-                <button class="cluster-btn" data-cluster="nagoya" onclick="focusCluster('nagoya', this)"
-                  type="button">Nagoya</button>
-                <button class="cluster-btn" data-cluster="osaka" onclick="focusCluster('osaka', this)"
-                  type="button">Osaka</button>
-                <button class="cluster-btn" data-cluster="tokyo" onclick="focusCluster('tokyo', this)"
-                  type="button">Tokyo</button>
-              </div>
-            </div>
-
-            <div class="facility-comparison-section">
-              <div class="facility-header-row">
-                <span class="filter-group-label">PERBANDINGAN JARAK FASILITAS</span>
-                <span class="facility-header-hint">Hover &amp; scroll</span>
-              </div>
-              <div class="facility-items-list" id="facilityItemsList">
-                <!-- Dynamically populated via JS -->
-              </div>
-            </div>
-          </div>
-
-          <div class="room-card compact-card stagger-item" data-delay="300">
+          <div class="room-card compact-card stagger-item" data-delay="240">
             <h2 class="room-title">Dekat ke mana-mana, tetap teduh untuk pulang.</h2>
 
             <div class="distance-chips">
-              <button class="dist-chip" onclick="openFacilityDetail('sudirman')" type="button">Sudirman <strong>1
-                  mnt</strong></button>
-              <button class="dist-chip" onclick="openFacilityDetail('gelora')" type="button">Gelora Merdeka <strong>2
-                  mnt</strong></button>
-              <button class="dist-chip" onclick="openFacilityDetail('alun-alun')" type="button">Alun-Alun <strong>3
-                  mnt</strong></button>
+              <button class="dist-chip" data-facility="sudirman" onclick="openFacilityDetail('sudirman', this)" type="button">
+                Sudirman <strong>1 mnt</strong>
+              </button>
+              <button class="dist-chip" data-facility="gelora" onclick="openFacilityDetail('gelora', this)" type="button">
+                Gelora Merdeka <strong>2 mnt</strong>
+              </button>
+              <button class="dist-chip" data-facility="alun-alun" onclick="openFacilityDetail('alun-alun', this)" type="button">
+                Alun-Alun <strong>3 mnt</strong>
+              </button>
             </div>
 
             <p class="next-door-prompt">"Sekarang lihat rumah yang menunggu di ujung perjalanan itu."</p>
@@ -688,128 +625,6 @@
         </div>
       </div>
 
-    </div>
-  </div>
-
-  <!-- ================================================================
-       FULLSCREEN RADIUS ANALYSIS MODAL (Side-by-side as in Image 1 & 2)
-       ================================================================ -->
-  <div class="radius-analysis-modal" id="radiusAnalysisModal" aria-hidden="true">
-    <div class="radius-modal-overlay" onclick="closeRadiusModal()"></div>
-    <div class="radius-modal-window">
-      <button class="radius-modal-close" onclick="closeRadiusModal()" type="button"
-        aria-label="Tutup analisis penuh">✕</button>
-
-      <div class="radius-modal-sidebar">
-        <div class="modal-sidebar-header">
-          <div class="analysis-tag-group">
-            <span class="analysis-tag-label">ANALISIS RADIUS AKTIF</span>
-            <span class="radius-active-badge" id="modalActiveRadiusBadge">5 km</span>
-          </div>
-          <h3 class="analysis-facilities-count" id="modalFacilitiesCountHeading">4 dari 6 fasilitas</h3>
-        </div>
-
-        <div class="modal-sidebar-section">
-          <span class="filter-group-label">RADIUS PENCARIAN</span>
-          <div class="radius-buttons-grid">
-            <button class="radius-btn" data-radius="500" onclick="setSearchRadius(500, this)" type="button">500
-              m</button>
-            <button class="radius-btn" data-radius="1000" onclick="setSearchRadius(1000, this)" type="button">1
-              km</button>
-            <button class="radius-btn" data-radius="3000" onclick="setSearchRadius(3000, this)" type="button">3
-              km</button>
-            <button class="radius-btn is-active" data-radius="5000" onclick="setSearchRadius(5000, this)"
-              type="button">5 km</button>
-            <button class="radius-btn" data-radius="10000" onclick="setSearchRadius(10000, this)" type="button">10
-              km</button>
-            <button class="radius-btn" data-radius="25000" onclick="setSearchRadius(25000, this)" type="button">25
-              km</button>
-          </div>
-        </div>
-
-        <div class="modal-sidebar-section">
-          <span class="filter-group-label">FOKUS KLASTER</span>
-          <div class="cluster-buttons-grid">
-            <button class="cluster-btn is-active" data-cluster="all" onclick="focusCluster('all', this)"
-              type="button">Semua (3)</button>
-            <button class="cluster-btn" data-cluster="nagoya" onclick="focusCluster('nagoya', this)"
-              type="button">Nagoya</button>
-            <button class="cluster-btn" data-cluster="osaka" onclick="focusCluster('osaka', this)"
-              type="button">Osaka</button>
-            <button class="cluster-btn" data-cluster="tokyo" onclick="focusCluster('tokyo', this)"
-              type="button">Tokyo</button>
-          </div>
-        </div>
-
-        <div class="modal-sidebar-section flex-grow">
-          <div class="facility-header-row">
-            <span class="filter-group-label">PERBANDINGAN JARAK FASILITAS</span>
-            <span class="facility-header-hint">Hover &amp; scroll</span>
-          </div>
-          <div class="facility-items-list" id="modalFacilityItemsList">
-            <!-- Dynamically populated via JS -->
-          </div>
-        </div>
-      </div>
-
-      <div class="radius-modal-map-wrap">
-        <div id="modalLeafletMap" class="modal-leaflet-map"></div>
-
-        <div class="map-scroll-hint-pill">
-          <span class="hint-bullet">●</span>
-          <span>Klik peta untuk zoom dengan scroll</span>
-        </div>
-
-        <!-- Detail card inside modal map -->
-        <div class="map-location-card" id="modalLocationCard" aria-hidden="true">
-          <button class="map-card-close" onclick="closeModalLocationCard()" type="button"
-            aria-label="Tutup info lokasi">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          </button>
-
-          <div class="map-card-category-row">
-            <span class="map-card-category" id="modalCardCategory">PEMERINTAHAN</span>
-            <span class="map-card-time-badge" id="modalCardTimeBadge">
-              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2">
-                <path d="M7 17l9.2-9.2M17 17V7H7" />
-              </svg>
-              <span id="modalCardDistanceText">~3.2 km · 8 mnt berkendara</span>
-            </span>
-          </div>
-
-          <div class="map-card-main-row">
-            <div class="map-card-icon-badge" id="modalCardIconBadge">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">
-                <line x1="3" y1="22" x2="21" y2="22" />
-                <line x1="6" y1="18" x2="6" y2="11" />
-                <line x1="10" y1="18" x2="10" y2="11" />
-                <line x1="14" y1="18" x2="14" y2="11" />
-                <line x1="18" y1="18" x2="18" y2="11" />
-                <polygon points="12 2 20 7 4 7" />
-              </svg>
-            </div>
-            <h3 class="map-card-title" id="modalCardTitle">Alun-Alun Satya Negara</h3>
-          </div>
-
-          <p class="map-card-desc" id="modalCardDesc">
-            Pusat ruang terbuka publik, area olahraga pagi, kuliner malam, sekaligus kompleks Pemkab Sukoharjo.
-          </p>
-
-          <div class="map-card-selling-point">
-            <svg class="map-card-pin-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#2e7d32"
-              stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            <div class="map-card-selling-text" id="modalCardSellingPointText">
-              <strong>Nilai jual:</strong> Dekat pusat layanan sipil daerah &amp; ruang rekreasi keluarga akhir pekan.
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 

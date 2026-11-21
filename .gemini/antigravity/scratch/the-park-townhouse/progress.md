@@ -90,3 +90,17 @@
   - Removed `.mobile-bottom-bar` and all corresponding CSS/JS references per user instruction.
   - Recalibrated pin coordinates and responsive zoom levels (`500m`: 16, `1km`: 15, `3km`: 14, `5km`: 13.5, `10km`: 12, `25km`: 10.5) with `setView` and `invalidateSize` to prevent pin collisions.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-21] Progress #08: Focus Map Navigation to Bottom Distance Chips & Streamline Room 03 Layout
+- **Context & Objective**: Clean up Room 03 (Ruang Peta) by removing cluttered radius filter panels/modals that broke mobile viewport layout, and wiring interactive location navigation exclusively to the 3 bottom distance chips (`Sudirman 1 mnt`, `Gelora Merdeka 2 mnt`, `Alun-Alun 3 mnt`) per user request.
+- **Key Changes Implemented**:
+  - Removed `.map-analysis-header` and `.map-filters-panel` from `#room-3` in `index.html`, eliminating layout overflow and vertical scrolling.
+  - Removed `#radiusAnalysisModal` to prevent DOM clutter and accidental modal triggers.
+  - Bound the 3 bottom distance chips (`Sudirman 1 mnt`, `Gelora Merdeka 2 mnt`, `Alun-Alun 3 mnt`) directly to `openFacilityDetail(id, this)`.
+  - Added active chip state (`.dist-chip.is-active`) with emerald glowing borders and high-contrast text.
+  - Linked chip interaction to smooth Leaflet animation (`parkMap.flyTo(latLng, 15.5)`) and marker highlighting (`.facility-pin-divicon.is-active-pin`).
+  - Integrated location detail card overlay (`#mapLocationCard`) matching design mockup Image 2 (category, time pill, title, description, and selling point).
+  - Maintained zero mobile bottom bar and strict zero-scroll fit within 844px mobile viewport.
+- **Status**: Completed & Verified (verified with Node.js syntax & DOM tests).

@@ -1136,24 +1136,22 @@ function setupLeafletMap(containerId, isModal) {
 
   const facilityIcon = (item) => L.divIcon({
     className: '',
-    html: `<div class="facility-pin-divicon" title="${item.name}">${getCategoryIconSvg(item.iconType)}<span>${item.short}</span></div>`,
-    iconSize: [100, 26],
-    iconAnchor: [50, 13]
+    html: `<div class="facility-pin-divicon" data-id="${item.id}" title="${item.name}">${getCategoryIconSvg(item.iconType)}<span>${item.short}</span></div>`,
+    iconSize: [110, 28],
+    iconAnchor: [55, 14]
   });
 
   MAP_FACILITIES.forEach((f) => {
     const marker = L.marker(f.latLng, { icon: facilityIcon(f) }).addTo(map);
     marker.on('click', () => {
-      openLocationCard(f, isModal);
-      map.panTo(f.latLng, { animate: true, duration: 0.5 });
+      openFacilityDetail(f.id);
     });
   });
 
   MAP_EXTRA_SPOTS.forEach((s) => {
     const marker = L.marker(s.latLng, { icon: facilityIcon(s) }).addTo(map);
     marker.on('click', () => {
-      openLocationCard(s, isModal);
-      map.panTo(s.latLng, { animate: true, duration: 0.5 });
+      openFacilityDetail(s.id);
     });
   });
 
@@ -1267,6 +1265,13 @@ function closeLocationCard() {
     card.classList.remove('is-visible');
     card.setAttribute('aria-hidden', 'true');
   }
+  document.querySelectorAll('.dist-chip').forEach((b) => b.classList.remove('is-active'));
+  document.querySelectorAll('.facility-pin-divicon').forEach((pin) => {
+    pin.classList.remove('is-active-pin');
+  });
+  if (parkMap) {
+    parkMap.flyTo(SUKOHARJO_CENTER, 14, { animate: true, duration: 0.6 });
+  }
 }
 
 function closeModalLocationCard() {
@@ -1277,22 +1282,41 @@ function closeModalLocationCard() {
   }
 }
 
-function openFacilityDetail(id) {
+function openFacilityDetail(id, btnEl) {
   const allList = [...MAP_FACILITIES, ...MAP_EXTRA_SPOTS, ...MAP_CLUSTERS];
   const item = allList.find((f) => f.id === id);
   if (!item) return;
 
-  const isModalOpen = document.getElementById('radiusAnalysisModal') &&
-    document.getElementById('radiusAnalysisModal').classList.contains('is-open');
-  const targetMap = isModalOpen && modalMap ? modalMap : parkMap;
-
-  if (targetMap) {
-    targetMap.setView(item.latLng, 15, { animate: true });
+  // 1. Highlight clicked chip in bottom card
+  document.querySelectorAll('.dist-chip').forEach((b) => b.classList.remove('is-active'));
+  const targetChip = btnEl || document.querySelector(`.dist-chip[data-facility="${id}"]`);
+  if (targetChip) {
+    targetChip.classList.add('is-active');
   }
-  openLocationCard(item, isModalOpen);
+
+  // 2. Fly smoothly to target spot
+  if (parkMap) {
+    parkMap.flyTo(item.latLng, 15.5, { animate: true, duration: 0.8 });
+  }
+
+  // 3. Highlight pin on map
+  document.querySelectorAll('.facility-pin-divicon').forEach((pin) => {
+    pin.classList.remove('is-active-pin');
+  });
+  const activePinEl = document.querySelector(`.facility-pin-divicon[data-id="${id}"]`);
+  if (activePinEl) {
+    activePinEl.classList.add('is-active-pin');
+  }
+
+  // 4. Open location detail card
+  openLocationCard(item, false);
 }
 
 function renderFacilityItems() {
+  const list1 = document.getElementById('facilityItemsList');
+  const list2 = document.getElementById('modalFacilityItemsList');
+  if (!list1 && !list2) return;
+
   const maxRefDistance = Math.max(currentSearchRadius / 1000, 6.5);
   const html = MAP_FACILITIES.map((f) => {
     const percent = Math.min(Math.round((f.distance / maxRefDistance) * 100), 100);
@@ -1315,8 +1339,6 @@ function renderFacilityItems() {
     `;
   }).join('');
 
-  const list1 = document.getElementById('facilityItemsList');
-  const list2 = document.getElementById('modalFacilityItemsList');
   if (list1) list1.innerHTML = html;
   if (list2) list2.innerHTML = html;
 }
@@ -1356,11 +1378,9 @@ function handleRoom3Enter() {
   setTimeout(() => {
     if (!parkMap) {
       parkMap = setupLeafletMap('parkLeafletMap', false);
-      renderFacilityItems();
-      updateFacilitiesCount();
     } else {
       parkMap.invalidateSize();
-      parkMap.setView(SUKOHARJO_CENTER, 13.5, { animate: false });
+      parkMap.setView(SUKOHARJO_CENTER, 14, { animate: false });
     }
   }, 220);
 }
