@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -8,11 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+    rel="stylesheet" />
   <link rel="stylesheet" href="assets/leaflet/leaflet.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <div class="app-viewport">
     <div class="phone-shell" id="phoneShell" data-active-room="1">
@@ -34,11 +35,8 @@
           <div class="door-arch-frame">
             <div class="door-jamb">
               <div class="door-interior">
-                <div
-                  class="door-interior-preview"
-                  id="doorInteriorPreview"
-                  style="background-image: url('assets/drive/dalam-6.png');"
-                ></div>
+                <div class="door-interior-preview" id="doorInteriorPreview"
+                  style="background-image: url('assets/drive/dalam-6.png');"></div>
                 <div class="door-light-spill"></div>
                 <div class="door-seam-glow"></div>
 
@@ -69,9 +67,11 @@
            PARALLAX ARCHITECTURAL HOUSE BACKGROUND STAGE
            ================================================================ -->
       <div class="parallax-bg-stage" id="parallaxBgStage" aria-hidden="true">
-        <div class="bg-scene-layer is-active" data-scene="1" style="background-image: url('assets/drive/gate.png');"></div>
+        <div class="bg-scene-layer is-active" data-scene="1" style="background-image: url('assets/drive/gate.png');">
+        </div>
         <div class="bg-scene-layer" data-scene="2" style="background-image: url('assets/drive/dalam-9.png');"></div>
-        <div class="bg-scene-layer" data-scene="3" style="background-image: url('assets/drive/aerial-drone.jpeg');"></div>
+        <div class="bg-scene-layer" data-scene="3" style="background-image: url('assets/drive/aerial-drone.jpeg');">
+        </div>
         <div class="bg-scene-layer" data-scene="4" style="background-image: url('assets/drive/dalam-6.png');"></div>
         <div class="bg-scene-layer" data-scene="5" style="background-image: url('assets/drive/clubhousee.png');"></div>
         <div class="bg-scene-layer" data-scene="6" style="background-image: url('assets/drive/house.jpeg');"></div>
@@ -120,12 +120,8 @@
              ============================================================ -->
         <section class="room-section is-active" id="room-1" data-room="1" data-transition="arch">
           <div class="hero-arch-card stagger-item" data-delay="120">
-            <img
-              src="assets/drive/house.jpeg"
-              alt="Fasad The Park Townhouse Sukoharjo"
-              class="hero-arch-img"
-              id="heroArchImg"
-            />
+            <img src="assets/drive/house.jpeg" alt="Fasad The Park Townhouse Sukoharjo" class="hero-arch-img"
+              id="heroArchImg" />
             <div class="hero-arch-gradient"></div>
             <canvas class="hero-spark-overlay" id="heroSparkCanvas"></canvas>
             <div class="hero-pill-badge">Selangkah lebih dekat.</div>
@@ -194,7 +190,8 @@
 
             <div class="quiz-options" id="quizOptions">
               <div class="quiz-item">
-                <button class="quiz-option-btn" onclick="selectRhythm(this, 'nagoya', 'Nagoya Gold · LB 75 m²')" type="button">
+                <button class="quiz-option-btn" onclick="selectRhythm(this, 'nagoya', 'Nagoya Gold · LB 75 m²')"
+                  type="button">
                   <span class="opt-left">
                     <span class="opt-index">01</span>
                     <span>Pagi tenang selangkah ke taman &amp; clubhouse</span>
@@ -203,13 +200,15 @@
                 </button>
                 <div class="quiz-inline-desc">
                   <div class="quiz-inline-inner">
-                    Jodoh Anda ada di <strong>Nagoya B.02–B.04 (LB 75 m²)</strong> mulai <strong>Rp 650 jt</strong> — 3 kamar hangat, garasi dalam, dan akses kolam renang tanpa batas.
+                    Jodoh Anda ada di <strong>Nagoya B.02–B.04 (LB 75 m²)</strong> mulai <strong>Rp 650 jt</strong> — 3
+                    kamar hangat, garasi dalam, dan akses kolam renang tanpa batas.
                   </div>
                 </div>
               </div>
 
               <div class="quiz-item">
-                <button class="quiz-option-btn" onclick="selectRhythm(this, 'tokyo', 'Tokyo Gold · LB 80 m²')" type="button">
+                <button class="quiz-option-btn" onclick="selectRhythm(this, 'tokyo', 'Tokyo Gold · LB 80 m²')"
+                  type="button">
                   <span class="opt-left">
                     <span class="opt-index">02</span>
                     <span>Ritme keluarga hangat di jantung kota</span>
@@ -218,13 +217,15 @@
                 </button>
                 <div class="quiz-inline-desc">
                   <div class="quiz-inline-inner">
-                    Jodoh Anda ada di <strong>Tokyo B.03 (LB 80 m²)</strong> <strong>Rp 775 jt</strong> — ruang tumbuh 2 lantai bergaya Japandi di koridor Jl. Jendral Sudirman.
+                    Jodoh Anda ada di <strong>Tokyo B.03 (LB 80 m²)</strong> <strong>Rp 775 jt</strong> — ruang tumbuh 2
+                    lantai bergaya Japandi di koridor Jl. Jendral Sudirman.
                   </div>
                 </div>
               </div>
 
               <div class="quiz-item">
-                <button class="quiz-option-btn" onclick="selectRhythm(this, 'osaka', 'Osaka Diamond · LB 110 m²')" type="button">
+                <button class="quiz-option-btn" onclick="selectRhythm(this, 'osaka', 'Osaka Diamond · LB 110 m²')"
+                  type="button">
                   <span class="opt-left">
                     <span class="opt-index">03</span>
                     <span>Ruang lapang untuk berkarya &amp; pulang</span>
@@ -233,7 +234,8 @@
                 </button>
                 <div class="quiz-inline-desc">
                   <div class="quiz-inline-inner">
-                    Jodoh Anda ada di <strong>Osaka A.09 (LB 110 m²)</strong> <strong>Rp 1,15 M</strong> — 4 kamar tidur, 2 garasi dalam, kemewahan yang tenang untuk keluarga besar.
+                    Jodoh Anda ada di <strong>Osaka A.09 (LB 110 m²)</strong> <strong>Rp 1,15 M</strong> — 4 kamar
+                    tidur, 2 garasi dalam, kemewahan yang tenang untuk keluarga besar.
                   </div>
                 </div>
               </div>
@@ -273,8 +275,14 @@
                 <span class="analysis-tag-label">ANALISIS RADIUS AKTIF</span>
                 <span class="radius-active-badge" id="activeRadiusBadge">5 km</span>
               </div>
-              <button class="btn-expand-map" onclick="openRadiusModal()" type="button" title="Buka Mode Analisis Layar Penuh">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+              <button class="btn-expand-map" onclick="openRadiusModal()" type="button"
+                title="Buka Mode Analisis Layar Penuh">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polyline points="15 3 21 3 21 9" />
+                  <polyline points="9 21 3 21 3 15" />
+                  <line x1="21" y1="3" x2="14" y2="10" />
+                  <line x1="3" y1="21" x2="10" y2="14" />
+                </svg>
                 <span>Layar Penuh</span>
               </button>
             </div>
@@ -294,20 +302,32 @@
             <!-- Interactive Detail Card Modal (Image 2) -->
             <div class="map-location-card" id="mapLocationCard" aria-hidden="true">
               <button class="map-card-close" onclick="closeLocationCard()" type="button" aria-label="Tutup info lokasi">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
               </button>
-              
+
               <div class="map-card-category-row">
                 <span class="map-card-category" id="mapCardCategory">PEMERINTAHAN</span>
                 <span class="map-card-time-badge" id="mapCardTimeBadge">
-                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M7 17l9.2-9.2M17 17V7H7" />
+                  </svg>
                   <span id="mapCardDistanceText">~3.2 km · 8 mnt berkendara</span>
                 </span>
               </div>
 
               <div class="map-card-main-row">
                 <div class="map-card-icon-badge" id="mapCardIconBadge">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <line x1="3" y1="22" x2="21" y2="22" />
+                    <line x1="6" y1="18" x2="6" y2="11" />
+                    <line x1="10" y1="18" x2="10" y2="11" />
+                    <line x1="14" y1="18" x2="14" y2="11" />
+                    <line x1="18" y1="18" x2="18" y2="11" />
+                    <polygon points="12 2 20 7 4 7" />
+                  </svg>
                 </div>
                 <h3 class="map-card-title" id="mapCardTitle">Alun-Alun Satya Negara</h3>
               </div>
@@ -317,9 +337,14 @@
               </p>
 
               <div class="map-card-selling-point">
-                <svg class="map-card-pin-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#2e7d32" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <svg class="map-card-pin-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#2e7d32"
+                  stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
                 <div class="map-card-selling-text" id="mapCardSellingPointText">
-                  <strong>Nilai jual:</strong> Dekat pusat layanan sipil daerah &amp; ruang rekreasi keluarga akhir pekan.
+                  <strong>Nilai jual:</strong> Dekat pusat layanan sipil daerah &amp; ruang rekreasi keluarga akhir
+                  pekan.
                 </div>
               </div>
             </div>
@@ -330,22 +355,32 @@
             <div class="filter-group">
               <span class="filter-group-label">RADIUS PENCARIAN</span>
               <div class="radius-buttons-grid">
-                <button class="radius-btn" data-radius="500" onclick="setSearchRadius(500, this)" type="button">500 m</button>
-                <button class="radius-btn" data-radius="1000" onclick="setSearchRadius(1000, this)" type="button">1 km</button>
-                <button class="radius-btn" data-radius="3000" onclick="setSearchRadius(3000, this)" type="button">3 km</button>
-                <button class="radius-btn is-active" data-radius="5000" onclick="setSearchRadius(5000, this)" type="button">5 km</button>
-                <button class="radius-btn" data-radius="10000" onclick="setSearchRadius(10000, this)" type="button">10 km</button>
-                <button class="radius-btn" data-radius="25000" onclick="setSearchRadius(25000, this)" type="button">25 km</button>
+                <button class="radius-btn" data-radius="500" onclick="setSearchRadius(500, this)" type="button">500
+                  m</button>
+                <button class="radius-btn" data-radius="1000" onclick="setSearchRadius(1000, this)" type="button">1
+                  km</button>
+                <button class="radius-btn" data-radius="3000" onclick="setSearchRadius(3000, this)" type="button">3
+                  km</button>
+                <button class="radius-btn is-active" data-radius="5000" onclick="setSearchRadius(5000, this)"
+                  type="button">5 km</button>
+                <button class="radius-btn" data-radius="10000" onclick="setSearchRadius(10000, this)" type="button">10
+                  km</button>
+                <button class="radius-btn" data-radius="25000" onclick="setSearchRadius(25000, this)" type="button">25
+                  km</button>
               </div>
             </div>
 
             <div class="filter-group">
               <span class="filter-group-label">FOKUS KLASTER</span>
               <div class="cluster-buttons-grid">
-                <button class="cluster-btn is-active" data-cluster="all" onclick="focusCluster('all', this)" type="button">Semua (3)</button>
-                <button class="cluster-btn" data-cluster="nagoya" onclick="focusCluster('nagoya', this)" type="button">Nagoya</button>
-                <button class="cluster-btn" data-cluster="osaka" onclick="focusCluster('osaka', this)" type="button">Osaka</button>
-                <button class="cluster-btn" data-cluster="tokyo" onclick="focusCluster('tokyo', this)" type="button">Tokyo</button>
+                <button class="cluster-btn is-active" data-cluster="all" onclick="focusCluster('all', this)"
+                  type="button">Semua (3)</button>
+                <button class="cluster-btn" data-cluster="nagoya" onclick="focusCluster('nagoya', this)"
+                  type="button">Nagoya</button>
+                <button class="cluster-btn" data-cluster="osaka" onclick="focusCluster('osaka', this)"
+                  type="button">Osaka</button>
+                <button class="cluster-btn" data-cluster="tokyo" onclick="focusCluster('tokyo', this)"
+                  type="button">Tokyo</button>
               </div>
             </div>
 
@@ -364,9 +399,12 @@
             <h2 class="room-title">Dekat ke mana-mana, tetap teduh untuk pulang.</h2>
 
             <div class="distance-chips">
-              <button class="dist-chip" onclick="openFacilityDetail('sudirman')" type="button">Sudirman <strong>1 mnt</strong></button>
-              <button class="dist-chip" onclick="openFacilityDetail('gelora')" type="button">Gelora Merdeka <strong>2 mnt</strong></button>
-              <button class="dist-chip" onclick="openFacilityDetail('alun-alun')" type="button">Alun-Alun <strong>3 mnt</strong></button>
+              <button class="dist-chip" onclick="openFacilityDetail('sudirman')" type="button">Sudirman <strong>1
+                  mnt</strong></button>
+              <button class="dist-chip" onclick="openFacilityDetail('gelora')" type="button">Gelora Merdeka <strong>2
+                  mnt</strong></button>
+              <button class="dist-chip" onclick="openFacilityDetail('alun-alun')" type="button">Alun-Alun <strong>3
+                  mnt</strong></button>
             </div>
 
             <p class="next-door-prompt">"Sekarang lihat rumah yang menunggu di ujung perjalanan itu."</p>
@@ -413,12 +451,8 @@
           </div>
 
           <div class="room-visual-frame is-hero-tall stagger-item" data-delay="210">
-            <img
-              src="assets/drive/dalam-6.png"
-              alt="Visual ruang keluarga dan interior The Park Townhouse"
-              class="room-visual-img"
-              id="houseVisualImg"
-            />
+            <img src="assets/drive/dalam-6.png" alt="Visual ruang keluarga dan interior The Park Townhouse"
+              class="room-visual-img" id="houseVisualImg" />
             <div class="room-visual-overlay">
               <span class="room-visual-tag" id="houseVisualTag">Nagoya B.02–B.04 · Gold</span>
               <span class="room-visual-sub" id="houseVisualPrice">Rp 650 jt · 3 unit entry</span>
@@ -472,7 +506,8 @@
           </div>
 
           <div class="room-visual-frame is-hero-tall stagger-item" data-delay="180">
-            <img src="assets/drive/clubhouse.png" alt="Clubhouse dan kolam renang The Park Townhouse" class="room-visual-img" />
+            <img src="assets/drive/clubhouse.png" alt="Clubhouse dan kolam renang The Park Townhouse"
+              class="room-visual-img" />
             <div class="room-visual-overlay">
               <span class="room-visual-tag">Clubhouse di Nagoya</span>
               <span class="room-visual-sub">Tanpa Membership Terpisah</span>
@@ -516,7 +551,8 @@
           </div>
 
           <div class="room-visual-frame stagger-item" data-delay="140">
-            <img src="assets/drive/house.jpeg" alt="Suasana hunian The Park Townhouse" class="room-visual-img" id="calcUnitThumb" />
+            <img src="assets/drive/house.jpeg" alt="Suasana hunian The Park Townhouse" class="room-visual-img"
+              id="calcUnitThumb" />
             <div class="room-visual-overlay">
               <span class="room-visual-tag" id="calcUnitName">Nagoya B.02–B.04 · LB 75 m²</span>
               <span class="room-visual-sub">Daftar Nov 2026 · 30 Unit</span>
@@ -534,7 +570,8 @@
                 <span>Uang Muka (DP <span id="calcDpPct">10%</span>)</span>
                 <strong id="calcDpText">Rp 68 jt</strong>
               </div>
-              <input type="range" min="10" max="30" step="1" value="10" class="calc-slider" id="calcDpSlider" oninput="updateCalc()" />
+              <input type="range" min="10" max="30" step="1" value="10" class="calc-slider" id="calcDpSlider"
+                oninput="updateCalc()" />
             </div>
 
             <div class="calc-group">
@@ -542,7 +579,8 @@
                 <span>Tenor KPR</span>
                 <strong id="calcTenorVal">20 Tahun</strong>
               </div>
-              <input type="range" min="5" max="25" step="1" value="20" class="calc-slider" id="calcTenorSlider" oninput="updateCalc()" />
+              <input type="range" min="5" max="25" step="1" value="20" class="calc-slider" id="calcTenorSlider"
+                oninput="updateCalc()" />
             </div>
 
             <div class="calc-result-box">
@@ -596,21 +634,30 @@
             <div class="quiz-options">
               <button class="quiz-option-btn" onclick="openQuickModal('visit')" type="button">
                 <span class="opt-left">
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                    <path d="M16 2v4M8 2v4M3 10h18" />
+                  </svg>
                   <span>Jadwalkan Kunjungan Lokasi</span>
                 </span>
                 <span>→</span>
               </button>
               <button class="quiz-option-btn" onclick="openQuickModal('video')" type="button">
                 <span class="opt-left">
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3v-4z"/></svg>
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <rect x="2" y="6" width="14" height="12" rx="2" />
+                    <path d="M16 10l6-3v10l-6-3v-4z" />
+                  </svg>
                   <span>Video Call Tur Rumah Contoh</span>
                 </span>
                 <span>→</span>
               </button>
               <button class="quiz-option-btn" onclick="openQuickModal('booking')" type="button">
                 <span class="opt-left">
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M21 2l-9.6 9.6M15.5 7.5l3 3"/></svg>
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <circle cx="7.5" cy="15.5" r="4.5" />
+                    <path d="M21 2l-9.6 9.6M15.5 7.5l3 3" />
+                  </svg>
                   <span>Kunci Unit · Booking Fee Rp 5 Juta</span>
                 </span>
                 <span>→</span>
@@ -627,30 +674,6 @@
           </div>
         </section>
       </main>
-
-      <!-- Mobile Bottom Navigation Bar (Mandatory Thumb-Reach Navigation) -->
-      <nav class="mobile-bottom-bar" id="mobileBottomBar" aria-label="Navigasi Utama">
-        <button class="bottom-bar-item is-active" onclick="goToRoom(1)" data-room="1" type="button">
-          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          <span>Pintu</span>
-        </button>
-        <button class="bottom-bar-item" onclick="goToRoom(2)" data-room="2" type="button">
-          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
-          <span>Klaster</span>
-        </button>
-        <button class="bottom-bar-item" onclick="goToRoom(3)" data-room="3" type="button">
-          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-          <span>Peta</span>
-        </button>
-        <button class="bottom-bar-item" onclick="goToRoom(4)" data-room="4" type="button">
-          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/></svg>
-          <span>Rumah</span>
-        </button>
-        <button class="bottom-bar-item" onclick="goToRoom(6)" data-room="6" type="button">
-          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
-          <span>Hitung</span>
-        </button>
-      </nav>
 
       <!-- ================================================================
            MODAL SHEET
@@ -674,7 +697,8 @@
   <div class="radius-analysis-modal" id="radiusAnalysisModal" aria-hidden="true">
     <div class="radius-modal-overlay" onclick="closeRadiusModal()"></div>
     <div class="radius-modal-window">
-      <button class="radius-modal-close" onclick="closeRadiusModal()" type="button" aria-label="Tutup analisis penuh">✕</button>
+      <button class="radius-modal-close" onclick="closeRadiusModal()" type="button"
+        aria-label="Tutup analisis penuh">✕</button>
 
       <div class="radius-modal-sidebar">
         <div class="modal-sidebar-header">
@@ -688,22 +712,32 @@
         <div class="modal-sidebar-section">
           <span class="filter-group-label">RADIUS PENCARIAN</span>
           <div class="radius-buttons-grid">
-            <button class="radius-btn" data-radius="500" onclick="setSearchRadius(500, this)" type="button">500 m</button>
-            <button class="radius-btn" data-radius="1000" onclick="setSearchRadius(1000, this)" type="button">1 km</button>
-            <button class="radius-btn" data-radius="3000" onclick="setSearchRadius(3000, this)" type="button">3 km</button>
-            <button class="radius-btn is-active" data-radius="5000" onclick="setSearchRadius(5000, this)" type="button">5 km</button>
-            <button class="radius-btn" data-radius="10000" onclick="setSearchRadius(10000, this)" type="button">10 km</button>
-            <button class="radius-btn" data-radius="25000" onclick="setSearchRadius(25000, this)" type="button">25 km</button>
+            <button class="radius-btn" data-radius="500" onclick="setSearchRadius(500, this)" type="button">500
+              m</button>
+            <button class="radius-btn" data-radius="1000" onclick="setSearchRadius(1000, this)" type="button">1
+              km</button>
+            <button class="radius-btn" data-radius="3000" onclick="setSearchRadius(3000, this)" type="button">3
+              km</button>
+            <button class="radius-btn is-active" data-radius="5000" onclick="setSearchRadius(5000, this)"
+              type="button">5 km</button>
+            <button class="radius-btn" data-radius="10000" onclick="setSearchRadius(10000, this)" type="button">10
+              km</button>
+            <button class="radius-btn" data-radius="25000" onclick="setSearchRadius(25000, this)" type="button">25
+              km</button>
           </div>
         </div>
 
         <div class="modal-sidebar-section">
           <span class="filter-group-label">FOKUS KLASTER</span>
           <div class="cluster-buttons-grid">
-            <button class="cluster-btn is-active" data-cluster="all" onclick="focusCluster('all', this)" type="button">Semua (3)</button>
-            <button class="cluster-btn" data-cluster="nagoya" onclick="focusCluster('nagoya', this)" type="button">Nagoya</button>
-            <button class="cluster-btn" data-cluster="osaka" onclick="focusCluster('osaka', this)" type="button">Osaka</button>
-            <button class="cluster-btn" data-cluster="tokyo" onclick="focusCluster('tokyo', this)" type="button">Tokyo</button>
+            <button class="cluster-btn is-active" data-cluster="all" onclick="focusCluster('all', this)"
+              type="button">Semua (3)</button>
+            <button class="cluster-btn" data-cluster="nagoya" onclick="focusCluster('nagoya', this)"
+              type="button">Nagoya</button>
+            <button class="cluster-btn" data-cluster="osaka" onclick="focusCluster('osaka', this)"
+              type="button">Osaka</button>
+            <button class="cluster-btn" data-cluster="tokyo" onclick="focusCluster('tokyo', this)"
+              type="button">Tokyo</button>
           </div>
         </div>
 
@@ -728,21 +762,34 @@
 
         <!-- Detail card inside modal map -->
         <div class="map-location-card" id="modalLocationCard" aria-hidden="true">
-          <button class="map-card-close" onclick="closeModalLocationCard()" type="button" aria-label="Tutup info lokasi">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <button class="map-card-close" onclick="closeModalLocationCard()" type="button"
+            aria-label="Tutup info lokasi">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
           </button>
-          
+
           <div class="map-card-category-row">
             <span class="map-card-category" id="modalCardCategory">PEMERINTAHAN</span>
             <span class="map-card-time-badge" id="modalCardTimeBadge">
-              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M7 17l9.2-9.2M17 17V7H7" />
+              </svg>
               <span id="modalCardDistanceText">~3.2 km · 8 mnt berkendara</span>
             </span>
           </div>
 
           <div class="map-card-main-row">
             <div class="map-card-icon-badge" id="modalCardIconBadge">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">
+                <line x1="3" y1="22" x2="21" y2="22" />
+                <line x1="6" y1="18" x2="6" y2="11" />
+                <line x1="10" y1="18" x2="10" y2="11" />
+                <line x1="14" y1="18" x2="14" y2="11" />
+                <line x1="18" y1="18" x2="18" y2="11" />
+                <polygon points="12 2 20 7 4 7" />
+              </svg>
             </div>
             <h3 class="map-card-title" id="modalCardTitle">Alun-Alun Satya Negara</h3>
           </div>
@@ -752,7 +799,11 @@
           </p>
 
           <div class="map-card-selling-point">
-            <svg class="map-card-pin-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#2e7d32" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg class="map-card-pin-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#2e7d32"
+              stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
             <div class="map-card-selling-text" id="modalCardSellingPointText">
               <strong>Nilai jual:</strong> Dekat pusat layanan sipil daerah &amp; ruang rekreasi keluarga akhir pekan.
             </div>
@@ -765,4 +816,5 @@
   <script src="assets/leaflet/leaflet.js"></script>
   <script src="app.js"></script>
 </body>
+
 </html>

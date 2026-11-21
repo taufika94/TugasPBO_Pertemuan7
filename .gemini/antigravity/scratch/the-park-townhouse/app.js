@@ -568,7 +568,6 @@ function updateBackgroundScene(roomNum) {
 function goToRoomImmediate(roomNum) {
   currentRoom = roomNum;
   updateBackgroundScene(roomNum);
-  updateMobileBottomBar(roomNum);
   document.querySelectorAll('.room-section').forEach((sec) => {
     sec.classList.remove('is-active', 'is-exiting-up', 'is-exiting-down');
   });
@@ -621,10 +620,9 @@ function goToRoom(roomNum) {
       }
       if (roomCardsMap[roomNum]) unlockCard(roomCardsMap[roomNum]);
       currentRoom = roomNum;
-  updateMobileBottomBar(roomNum);
-  if (roomNum === 3) {
-    handleRoom3Enter();
-  }
+      if (roomNum === 3) {
+        handleRoom3Enter();
+      }
     }, 240);
 
     setTimeout(() => {
@@ -655,7 +653,6 @@ function goToRoom(roomNum) {
   }
 
   currentRoom = roomNum;
-  updateMobileBottomBar(roomNum);
   if (roomNum === 3) {
     handleRoom3Enter();
   }
@@ -1067,15 +1064,16 @@ function setupLeafletMap(containerId, isModal) {
 
   const map = L.map(containerId, {
     center: SUKOHARJO_CENTER,
-    zoom: 14,
+    zoom: 13.5,
     scrollWheelZoom: true,
     zoomControl: true,
     attributionControl: true
   });
 
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    subdomains: 'abcd',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(map);
 
   const outerCircle = L.circle(SUKOHARJO_CENTER, {
@@ -1194,12 +1192,12 @@ function setSearchRadius(radiusMeters, btnEl) {
   updateFacilitiesCount();
   renderFacilityItems();
 
-  const zoomMap = { 500: 16, 1000: 15, 3000: 14, 5000: 13, 10000: 12, 25000: 10 };
+  const zoomMap = { 500: 16, 1000: 15, 3000: 14, 5000: 13.5, 10000: 12, 25000: 10.5 };
   if (parkMap) {
-    parkMap.setZoom(zoomMap[radiusMeters] || 13, { animate: true });
+    parkMap.setView(SUKOHARJO_CENTER, zoomMap[radiusMeters] || 13.5, { animate: true });
   }
   if (modalMap) {
-    modalMap.setZoom(zoomMap[radiusMeters] || 13, { animate: true });
+    modalMap.setView(SUKOHARJO_CENTER, zoomMap[radiusMeters] || 13.5, { animate: true });
   }
 }
 
@@ -1334,10 +1332,11 @@ function openRadiusModal() {
       modalMap = setupLeafletMap('modalLeafletMap', true);
     } else {
       modalMap.invalidateSize();
+      modalMap.setView(SUKOHARJO_CENTER, 13.5, { animate: false });
     }
     renderFacilityItems();
     updateFacilitiesCount();
-  }, 200);
+  }, 180);
 }
 
 function closeRadiusModal() {
@@ -1361,15 +1360,9 @@ function handleRoom3Enter() {
       updateFacilitiesCount();
     } else {
       parkMap.invalidateSize();
+      parkMap.setView(SUKOHARJO_CENTER, 13.5, { animate: false });
     }
   }, 220);
-}
-
-function updateMobileBottomBar(roomNum) {
-  document.querySelectorAll('.mobile-bottom-bar .bottom-bar-item').forEach((btn) => {
-    const targetRoom = parseInt(btn.dataset.room, 10);
-    btn.classList.toggle('is-active', targetRoom === roomNum);
-  });
 }
 
 /* --------------------------------------------------------------------------
@@ -1382,7 +1375,6 @@ window.addEventListener('resize', () => {
 window.addEventListener('DOMContentLoaded', () => {
   updateCalc();
   updateBackgroundScene(1);
-  updateMobileBottomBar(1);
   renderFacilityItems();
   updateFacilitiesCount();
   runAfterDelayOpening();

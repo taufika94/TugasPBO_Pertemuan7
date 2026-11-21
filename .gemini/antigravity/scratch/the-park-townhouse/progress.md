@@ -56,7 +56,6 @@
   - Initialized `progress.md` with all four foundational milestones.
 - **Status**: Active & in effect across all sessions.
 
-
 ---
 
 ### [2026-11-21] Progress #05: Caveman (Medium Mode) Installation & Global Integration
@@ -73,11 +72,21 @@
 ### [2026-11-21] Progress #06: Leaflet Radius Analyzer & Interactive Location Popup in Room 03
 - **Context & Objective**: Replace static SVG map in Room 03 (Ruang Peta) with interactive Leaflet map matching design mockup (Image 1 & 2) with active radius analysis, cluster focus, facility comparison list, and location detail popup cards.
 - **Key Changes Implemented**:
-  - Downloaded and integrated Leaflet v1.9.4 locally to `assets/leaflet/` (`leaflet.css`, `leaflet.js`) with OpenStreetMap tiles.
+  - Downloaded and integrated Leaflet v1.9.4 locally to `assets/leaflet/` (`leaflet.css`, `leaflet.js`).
   - Implemented dynamic Radius Analysis Header ("ANALISIS RADIUS AKTIF", active badge, and facility count).
   - Implemented interactive 6-tier radius selector (`500 m`, `1 km`, `3 km`, `5 km`, `10 km`, `25 km`) with responsive Leaflet green radius circle overlays.
   - Implemented 4 cluster focus filters (`Semua (3)`, `Nagoya`, `Osaka`, `Tokyo`) and custom HTML DivIcons for clusters and facilities.
   - Built interactive Location Detail Card overlay matching Image 2 with category badge, travel estimate pill (`↗ ~3.2 km · 8 mnt berkendara`), icon, title, description, and selling point ("Nilai jual:").
   - Added full split-view modal (`#radiusAnalysisModal`) for side-by-side desktop exploration.
-  - Added Mobile Bottom Navigation Bar (`.mobile-bottom-bar`) adhering to Rule 5 (`/antislop-layoutmobile`) with thumb-reach destinations and bottom clearances.
+- **Status**: Completed & Verified.
+
+---
+
+### [2026-11-21] Progress #07: Fix Leaflet Tile Provider (CartoDB Voyager), Side-by-Side Modal, & Bottom Bar Removal
+- **Context & Objective**: Address tile error 403 ("Access blocked" OSM volunteer policy), fix vertical stacking in analysis modal, and remove mobile bottom bar per user request.
+- **Key Changes Implemented**:
+  - Replaced tile source with CartoDB Voyager raster tiles (`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`) with Cloudflare global CDN, completely eliminating 403 blocks and hazard caution overlays.
+  - Eliminated media query `column-reverse` on `.radius-modal-window`; enforced strict side-by-side (`flex-direction: row`) split view (left 350px sidebar, right flex map) mirroring design mockup.
+  - Removed `.mobile-bottom-bar` and all corresponding CSS/JS references per user instruction.
+  - Recalibrated pin coordinates and responsive zoom levels (`500m`: 16, `1km`: 15, `3km`: 14, `5km`: 13.5, `10km`: 12, `25km`: 10.5) with `setView` and `invalidateSize` to prevent pin collisions.
 - **Status**: Completed & Verified.
