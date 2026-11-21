@@ -1070,10 +1070,9 @@ function setupLeafletMap(containerId, isModal) {
     attributionControl: true
   });
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
     maxZoom: 19,
-    subdomains: 'abcd',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    attribution: '&copy; <a href="https://www.esri.com/">Esri</a>'
   }).addTo(map);
 
   const outerCircle = L.circle(SUKOHARJO_CENTER, {
@@ -1287,20 +1286,23 @@ function openFacilityDetail(id, btnEl) {
   const item = allList.find((f) => f.id === id);
   if (!item) return;
 
-  // 1. Highlight clicked chip & smooth scroll into view
+  // 1. Highlight clicked chip & smooth scroll strictly within chips container (prevents window horizontal shift)
   document.querySelectorAll('.dist-chip').forEach((b) => b.classList.remove('is-active'));
   const targetChip = btnEl || document.querySelector(`.dist-chip[data-facility="${id}"]`);
+  const chipsContainer = document.getElementById('distanceChipsContainer');
   if (targetChip) {
     targetChip.classList.add('is-active');
-    try {
-      targetChip.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    } catch (_) {}
+    if (chipsContainer) {
+      const scrollPos = targetChip.offsetLeft - (chipsContainer.clientWidth / 2) + (targetChip.clientWidth / 2);
+      chipsContainer.scrollTo({ left: Math.max(0, scrollPos), behavior: 'smooth' });
+    }
   }
 
   // 2. Fly smoothly to target spot (slight south offset keeps pin visible above compact bottom card)
   if (parkMap) {
-    const latOffset = item.latLng[0] - 0.0025;
-    parkMap.flyTo([latOffset, item.latLng[1]], 15, { animate: true, duration: 0.8 });
+    const latOffset = item.latLng[0] - 0.0022;
+    const targetZoom = item.distance > 5 ? 14.5 : 15.5;
+    parkMap.flyTo([latOffset, item.latLng[1]], targetZoom, { animate: true, duration: 0.8 });
   }
 
   // 3. Highlight pin on map

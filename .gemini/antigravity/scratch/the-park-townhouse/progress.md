@@ -117,3 +117,14 @@
   - Added slight latitude offset (`-0.0025`) in `parkMap.flyTo` to guarantee target pins stay centered in the upper 70% of the map view without any overlap from the popup card.
   - Added auto-scroll (`targetChip.scrollIntoView({ behavior: 'smooth', inline: 'center' })`) so active chips smoothly center into thumb reach when clicked or when corresponding pins on the map are tapped.
 - **Status**: Completed & Verified (verified with Node.js syntax & DOM checks).
+
+
+---
+
+### [2026-11-21] Progress #10: Switch to Esri World Street Map Tiles & Fix Horizontal Page Shift on Chip Click
+- **Context & Objective**: Resolve CARTO "API KEY REQUIRED" watermark displayed on tiles when viewing Pakuwon Mall/Solo Baru, and fix horizontal viewport shifting that clipped the left side of the mobile screen when clicking right-most chips.
+- **Key Changes Implemented**:
+  - Replaced CartoDB Voyager tiles with official, unwatermarked Esri World Street Map raster tiles (`https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}`), eliminating all "API KEY REQUIRED" diagonal warnings and 403 blocks.
+  - Replaced native `scrollIntoView()` on `.dist-chip` with localized container scrolling `chipsContainer.scrollTo({ left: scrollPos, behavior: 'smooth' })`, preventing browser viewport/document horizontal auto-scrolling.
+  - Dynamically calibrated zoom level based on facility distance (`targetZoom = item.distance > 5 ? 14.5 : 15.5`) so regional spots like Pakuwon Mall maintain optimal regional context with zero pin clipping.
+- **Status**: Completed & Verified (tested via Node.js).
