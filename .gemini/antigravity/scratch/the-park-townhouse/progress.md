@@ -128,3 +128,14 @@
   - Replaced native `scrollIntoView()` on `.dist-chip` with localized container scrolling `chipsContainer.scrollTo({ left: scrollPos, behavior: 'smooth' })`, preventing browser viewport/document horizontal auto-scrolling.
   - Dynamically calibrated zoom level based on facility distance (`targetZoom = item.distance > 5 ? 14.5 : 15.5`) so regional spots like Pakuwon Mall maintain optimal regional context with zero pin clipping.
 - **Status**: Completed & Verified (tested via Node.js).
+
+
+---
+
+### [2026-11-21] Progress #11: Fix Text Truncation in Location Popup Card
+- **Context & Objective**: Resolve text ellipsis truncation (`d...`) in the selling point and description of the location detail card overlay.
+- **Key Changes Implemented**:
+  - Removed `white-space: nowrap` and `text-overflow: ellipsis` on `.map-card-selling-text` and `.map-card-title`, enabling natural multi-line text wrapping.
+  - Set `align-items: flex-start` with top-aligned pin icon on `.map-card-selling-point` so icons align cleanly with the first line of wrapped text.
+  - Removed `-webkit-line-clamp: 2` on `.map-card-desc` to ensure the full description and selling points are 100% visible and unclipped.
+- **Status**: Completed & Verified.
