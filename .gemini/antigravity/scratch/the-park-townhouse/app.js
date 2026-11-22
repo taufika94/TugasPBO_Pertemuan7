@@ -663,6 +663,14 @@ function goToRoom(roomNum) {
   currentRoom = roomNum;
   if (roomNum === 3) {
     handleRoom3Enter();
+  } else if (roomNum === 5) {
+    updateFacilityView();
+    startFacilityCarousel();
+  } else if (roomNum === 6) {
+    updatePaymentCalc();
+    stopFacilityCarousel();
+  } else {
+    stopFacilityCarousel();
   }
 
   setTimeout(() => {
@@ -1235,8 +1243,131 @@ function saveSiteplanChoice() {
 }
 
 /* --------------------------------------------------------------------------
-   6. RUANG HITUNG — KPR CALCULATOR (Official Nov 2026 Prices & 8% KPR Rate)
+   5B. ROOM 05 · FACILITY CAROUSEL & 5-SECOND AUTO-SCROLL
    -------------------------------------------------------------------------- */
+const FACILITIES_DATA = {
+  clubhouse: {
+    title: 'The Park Clubhouse (177,25 m²)',
+    tag: 'Clubhouse di Nagoya',
+    sub: '177,25 m² · Tanpa Membership Terpisah',
+    images: ['assets/drive/clubhouse.png', 'assets/drive/clubhousee.png'],
+    desc: 'Clubhouse eksklusif 2 lantai seluas 177,25 m² yang dirancang untuk menghadirkan pengalaman hidup terbaik. Tempat sempurna untuk berenang, berolahraga, dan menciptakan momen berharga setiap hari tanpa biaya keanggotaan terpisah.',
+    highlights: ['✓ Resort Pool & Lounge', '✓ Main Hall 88 m²', '✓ Dining & Gathering']
+  },
+  gate: {
+    title: 'Avenue Grand Gate & RFID',
+    tag: 'One-Gate Security',
+    sub: '24/7 Security · CCTV Online',
+    images: ['assets/drive/gate.png', 'assets/townhouse-hero.jpg'],
+    desc: 'Avenue Grand Gate megah dengan pos sekuriti 24 jam terpadu, akses kartu RFID otomatis, dan CCTV kawasan menjamin privasi dan rasa aman seluruh keluarga.',
+    highlights: ['✓ Pos Sekuriti 24 Jam', '✓ Barrier Gate Otomatis', '✓ Akses RFID Penghuni']
+  },
+  gym: {
+    title: 'Gym & Co-working Lounge',
+    tag: 'Kebugaran Lantai 2',
+    sub: 'Modern Equipments · View Hijau',
+    images: ['assets/drive/dalam-9.png', 'assets/drive/dalam-12.png'],
+    desc: 'Fasilitas kebugaran privat dan ruang kerja bersama di lantai dua dengan jendela kaca panorama menghadap lanskap teduh cluster.',
+    highlights: ['✓ Gym Cardio & Strength', '✓ Co-working Area Wi-Fi', '✓ Pemandangan Hijau']
+  },
+  garden: {
+    title: 'Taman Tematik & Playground',
+    tag: 'Kids Sanctuary',
+    sub: 'Pohon Tabebuya · BBQ Terrace',
+    images: ['assets/room-bersama.jpg', 'assets/room-veranda.jpg'],
+    desc: 'Taman terbuka hijau ramah anak dengan pohon tabebuya berbunga, area bermain aman, dan dek BBQ keluarga di halaman sendiri.',
+    highlights: ['✓ Area Bermain Anak Aman', '✓ Pohon Tabebuya Berbunga', '✓ BBQ & Relaxing Deck']
+  }
+};
+
+let currentFacilityKey = 'clubhouse';
+let currentFacilityImgIndex = 0;
+let facilityCarouselInterval = null;
+
+function focusFacilitySection() {
+  const room5 = document.getElementById('room-5');
+  if (room5) {
+    room5.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function selectFacility(key, e) {
+  if (e) e.stopPropagation();
+  currentFacilityKey = key;
+  currentFacilityImgIndex = 0;
+  updateFacilityView();
+  restartFacilityCarousel();
+}
+
+function setFacilityImageIndex(idx) {
+  currentFacilityImgIndex = idx;
+  updateFacilityView();
+  restartFacilityCarousel();
+}
+
+function updateFacilityView() {
+  const data = FACILITIES_DATA[currentFacilityKey] || FACILITIES_DATA.clubhouse;
+  const imgEl = document.getElementById('facilityMainImg');
+  const tagEl = document.getElementById('facilityBadgeTag');
+  const subEl = document.getElementById('facilityBadgeSub');
+  const descEl = document.getElementById('facilityDesc');
+  const highEl = document.getElementById('facilityHighlights');
+  const dotsEl = document.getElementById('facilityDots');
+
+  if (imgEl) {
+    imgEl.style.opacity = '0.35';
+    setTimeout(() => {
+      imgEl.src = data.images[currentFacilityImgIndex] || data.images[0];
+      imgEl.style.opacity = '1';
+    }, 150);
+  }
+
+  if (tagEl) tagEl.textContent = data.tag;
+  if (subEl) subEl.textContent = data.sub;
+  if (descEl) descEl.textContent = data.desc;
+  if (highEl) {
+    highEl.innerHTML = data.highlights.map(h => `<span class="f-highlight-tag">${h}</span>`).join('');
+  }
+
+  // Update chips active state
+  document.querySelectorAll('.facility-chip').forEach(btn => {
+    btn.classList.toggle('is-active', btn.id === `chip${currentFacilityKey.charAt(0).toUpperCase() + currentFacilityKey.slice(1)}`);
+  });
+
+  // Update dots
+  if (dotsEl) {
+    dotsEl.innerHTML = data.images.map((_, i) =>
+      `<span class="f-dot ${i === currentFacilityImgIndex ? 'is-active' : ''}" onclick="setFacilityImageIndex(${i})"></span>`
+    ).join('');
+  }
+}
+
+function startFacilityCarousel() {
+  stopFacilityCarousel();
+  facilityCarouselInterval = setInterval(() => {
+    const data = FACILITIES_DATA[currentFacilityKey] || FACILITIES_DATA.clubhouse;
+    currentFacilityImgIndex = (currentFacilityImgIndex + 1) % data.images.length;
+    updateFacilityView();
+  }, 5000); // 5 detik delay auto-scroll
+}
+
+function stopFacilityCarousel() {
+  if (facilityCarouselInterval) {
+    clearInterval(facilityCarouselInterval);
+    facilityCarouselInterval = null;
+  }
+}
+
+function restartFacilityCarousel() {
+  startFacilityCarousel();
+}
+
+/* --------------------------------------------------------------------------
+   6. RUANG HITUNG — PAYMENT SIMULATOR (Cash Keras, Cash Bertahap, KPR Bank)
+   -------------------------------------------------------------------------- */
+let currentPaymentScheme = 'cash_keras';
+let selectedTempoTenor = 12;
+
 function formatRupiahMillion(million) {
   if (million >= 1000) {
     return `Rp ${(million / 1000).toFixed(2).replace('.', ',').replace(/,00$/, '')} Miliar`;
@@ -1244,44 +1375,104 @@ function formatRupiahMillion(million) {
   return `Rp ${million} Juta`;
 }
 
-function updateCalc() {
+function selectPaymentScheme(scheme, btnEl) {
+  currentPaymentScheme = scheme;
+  document.querySelectorAll('.payment-tab-btn').forEach(b => b.classList.remove('is-active'));
+  if (btnEl) btnEl.classList.add('is-active');
+
+  const panelCash = document.getElementById('panelCashKeras');
+  const panelTempo = document.getElementById('panelCashTempo');
+  const panelKpr = document.getElementById('panelKpr');
+
+  if (panelCash) panelCash.style.display = scheme === 'cash_keras' ? 'flex' : 'none';
+  if (panelTempo) panelTempo.style.display = scheme === 'cash_tempo' ? 'flex' : 'none';
+  if (panelKpr) panelKpr.style.display = scheme === 'kpr' ? 'flex' : 'none';
+
+  updatePaymentCalc();
+}
+
+function setTempoTenor(months, btnEl) {
+  selectedTempoTenor = months;
+  document.querySelectorAll('.tempo-btn').forEach(b => b.classList.remove('is-active'));
+  if (btnEl) btnEl.classList.add('is-active');
+  const lbl = document.getElementById('tempoTenorLabel');
+  if (lbl) lbl.textContent = `${months} Bulan`;
+  updatePaymentCalc();
+}
+
+function updatePaymentCalc() {
   const unit = HOUSE_UNITS[selectedUnitKey] || HOUSE_UNITS.nagoya;
   const cashMillion = unit.priceCashMillion;
   const kprBaseMillion = unit.priceKprMillion;
 
+  // CASH KERAS
+  const cashBooking = 5; // 5 Juta
+  const cashPelunasan = cashMillion - cashBooking;
+  const cashBookingEl = document.getElementById('cashBookingVal');
+  const cashPelunasanEl = document.getElementById('cashPelunasanVal');
+  const cashTotalEl = document.getElementById('cashTotalVal');
+  if (cashBookingEl) cashBookingEl.textContent = 'Rp 5.000.000';
+  if (cashPelunasanEl) cashPelunasanEl.textContent = `Rp ${cashPelunasan} Juta`;
+  if (cashTotalEl) cashTotalEl.textContent = `Rp ${cashMillion} Juta`;
+
+  // CASH BERTAHAP (CASH TEMPO)
+  const tempoDpMillion = Math.round(cashMillion * 0.40);
+  const tempoPokokMillion = cashMillion - tempoDpMillion;
+  const tempoMonthly = tempoPokokMillion / selectedTempoTenor;
+  const tempoDpEl = document.getElementById('tempoDpVal');
+  const tempoPokokEl = document.getElementById('tempoPokokVal');
+  const tempoMonthlyEl = document.getElementById('tempoMonthlyVal');
+  if (tempoDpEl) tempoDpEl.textContent = `Rp ${tempoDpMillion} Juta (Include Booking 5 jt)`;
+  if (tempoPokokEl) tempoPokokEl.textContent = `Rp ${tempoPokokMillion} Juta`;
+  if (tempoMonthlyEl) tempoMonthlyEl.textContent = `Rp ${tempoMonthly.toFixed(1).replace('.', ',')} jt / bln`;
+
+  // KPR BANK
   const dpSlider = document.getElementById('calcDpSlider');
   const tenorSlider = document.getElementById('calcTenorSlider');
-  const dpPct = parseInt(dpSlider.value, 10);
-  const tenorY = parseInt(tenorSlider.value, 10);
+  const dpPct = dpSlider ? parseInt(dpSlider.value, 10) : 30;
+  const tenorY = tenorSlider ? parseInt(tenorSlider.value, 10) : 20;
 
-  dpSlider.style.setProperty('--pct', `${((dpPct - 10) / (30 - 10)) * 100}%`);
-  tenorSlider.style.setProperty('--pct', `${((tenorY - 5) / (25 - 5)) * 100}%`);
+  if (dpSlider) dpSlider.style.setProperty('--pct', `${((dpPct - 10) / (40 - 10)) * 100}%`);
+  if (tenorSlider) tenorSlider.style.setProperty('--pct', `${((tenorY - 5) / (25 - 5)) * 100}%`);
 
   const dpAmount = Math.round((kprBaseMillion * dpPct) / 100);
   const loanM = kprBaseMillion - dpAmount;
-
   const monthlyRate = 0.08 / 12;
   const months = tenorY * 12;
   const factor = Math.pow(1 + monthlyRate, months);
   const monthlyM = (loanM * (monthlyRate * factor)) / (factor - 1);
 
-  const formattedPrice = formatRupiahMillion(cashMillion);
-  const formattedMonthly = `Rp ${monthlyM.toFixed(1).replace('.', ',')} jt / bln`;
+  const calcPriceText = document.getElementById('calcPriceText');
+  const calcDpPct = document.getElementById('calcDpPct');
+  const calcTenorVal = document.getElementById('calcTenorVal');
+  const calcDpText = document.getElementById('calcDpText');
+  const kprPlafonVal = document.getElementById('kprPlafonVal');
+  const calcMonthlyResult = document.getElementById('calcMonthlyResult');
 
-  document.getElementById('calcPriceText').textContent = formattedPrice;
-  document.getElementById('calcDpPct').textContent = `${dpPct}%`;
-  document.getElementById('calcTenorVal').textContent = `${tenorY} Tahun`;
-  document.getElementById('calcDpText').textContent = `Rp ${dpAmount} jt`;
-  document.getElementById('calcMonthlyResult').textContent = formattedMonthly;
+  if (calcPriceText) calcPriceText.textContent = `Rp ${cashMillion} Juta`;
+  if (calcDpPct) calcDpPct.textContent = `${dpPct}%`;
+  if (calcTenorVal) calcTenorVal.textContent = `${tenorY} Tahun`;
+  if (calcDpText) calcDpText.textContent = `Rp ${dpAmount} jt`;
+  if (kprPlafonVal) kprPlafonVal.textContent = `Rp ${loanM} Juta`;
+  if (calcMonthlyResult) calcMonthlyResult.textContent = `Rp ${monthlyM.toFixed(1).replace('.', ',')} jt / bln`;
 
+  // Room 07 summary
   const finalNameEl = document.getElementById('finalUnitName');
   const finalPriceEl = document.getElementById('finalUnitPrice');
   if (finalNameEl) finalNameEl.textContent = unit.name;
-  if (finalPriceEl) finalPriceEl.textContent = formattedPrice;
+  if (finalPriceEl) finalPriceEl.textContent = `Rp ${cashMillion} Juta`;
+}
+
+function updateKprCalc() {
+  updatePaymentCalc();
+}
+
+function updateCalc() {
+  updatePaymentCalc();
 }
 
 /* --------------------------------------------------------------------------
-   7. QUICK MODAL SHEET (Rumah Saya / WA / Booking)
+   7. QUICK MODAL SHEET (Rumah Saya / WA / Booking / Save)
    -------------------------------------------------------------------------- */
 function openQuickModal(type) {
   const backdrop = document.getElementById('modalBackdrop');
@@ -1319,18 +1510,33 @@ function openQuickModal(type) {
     `;
   } else if (type === 'save') {
     const unit = HOUSE_UNITS[selectedUnitKey] || HOUSE_UNITS.nagoya;
-    const priceText = document.getElementById('calcPriceText').textContent;
-    const monthlyText = document.getElementById('calcMonthlyResult').textContent;
-    const dpPct = document.getElementById('calcDpPct').textContent;
-    const tenorVal = document.getElementById('calcTenorVal').textContent;
+    const priceText = document.getElementById('calcPriceText') ? document.getElementById('calcPriceText').textContent : 'Rp 650 Juta';
+    let paymentDesc = 'Cash Keras';
+    let installmentDesc = 'Lunas 30 Hari';
 
+    if (currentPaymentScheme === 'cash_tempo') {
+      paymentDesc = `Cash Bertahap (DP 40% · ${selectedTempoTenor} Bulan)`;
+      const tempoEl = document.getElementById('tempoMonthlyVal');
+      installmentDesc = tempoEl ? tempoEl.textContent : 'Cicilan Fleksibel';
+    } else if (currentPaymentScheme === 'kpr') {
+      const dpPct = document.getElementById('calcDpPct') ? document.getElementById('calcDpPct').textContent : '30%';
+      const tenorVal = document.getElementById('calcTenorVal') ? document.getElementById('calcTenorVal').textContent : '20 Tahun';
+      paymentDesc = `Skema KPR (DP ${dpPct} · ${tenorVal})`;
+      const kprEl = document.getElementById('calcMonthlyResult');
+      installmentDesc = kprEl ? kprEl.textContent : 'Rp 3,8 jt / bln';
+    } else {
+      paymentDesc = 'Cash Keras (Pelunasan 1 Bulan)';
+      installmentDesc = 'Pelunasan 30 Hari Kalender';
+    }
+
+    const selectedLot = selectedLotId || 'B.04';
     const config = {
       unit: unit.name,
+      lot: selectedLot,
+      cluster: currentClusterKey,
       price: priceText,
-      dp: dpPct,
-      tenor: tenorVal,
-      monthly: monthlyText,
-      cards: collectedCards.length,
+      paymentScheme: paymentDesc,
+      installment: installmentDesc,
       savedAt: new Date().toISOString(),
     };
     try {
@@ -1345,10 +1551,10 @@ function openQuickModal(type) {
       <div class="info-list" style="margin-bottom:14px;">
         <div class="info-row"><span>Tipe Unit</span><strong>${unit.name}</strong></div>
         <div class="info-row"><span>Harga Cash Keras (Nov 2026)</span><strong>${priceText}</strong></div>
-        <div class="info-row"><span>Skema KPR</span><strong>DP ${dpPct} · ${tenorVal}</strong></div>
-        <div class="info-row"><span>Ilustrasi Cicilan</span><strong>${monthlyText}</strong></div>
+        <div class="info-row"><span>Skema Pembayaran</span><strong>${paymentDesc}</strong></div>
+        <div class="info-row"><span>Ilustrasi Cicilan</span><strong>${installmentDesc}</strong></div>
       </div>
-      <button class="btn-primary-forest" onclick="closeQuickModal()" type="button">
+      <button class="btn-primary-forest" onclick="finishTourAndExit()" type="button">
         <span>Selesai</span>
         <span>→</span>
       </button>
@@ -1376,6 +1582,374 @@ function openQuickModal(type) {
   }
 
   backdrop.classList.add('is-open');
+}
+
+/* --------------------------------------------------------------------------
+   8. DOOR CLOSING ANIMATION & TRANSITION TO LANDING PAGE
+   -------------------------------------------------------------------------- */
+function finishTourAndExit() {
+  closeQuickModal();
+
+  const closingOverlay = document.getElementById('doorClosingOverlay');
+  const landingPage = document.getElementById('landingPageView');
+  const mainTour = document.querySelector('.phone-screen > main');
+  const tourHeader = document.querySelector('.app-header');
+
+  if (!closingOverlay) {
+    if (landingPage) landingPage.style.display = 'flex';
+    return;
+  }
+
+  closingOverlay.style.display = 'flex';
+  void closingOverlay.offsetWidth;
+  closingOverlay.style.opacity = '1';
+  closingOverlay.classList.add('is-shutting');
+
+  // After 1.2s, camera pulls backward outside the house
+  setTimeout(() => {
+    closingOverlay.classList.add('is-pulling-back');
+  }, 1200);
+
+  // After 2.6s, smoothly reveal the Landing Page!
+  setTimeout(() => {
+    closingOverlay.style.opacity = '0';
+    setTimeout(() => {
+      closingOverlay.style.display = 'none';
+      closingOverlay.classList.remove('is-shutting', 'is-pulling-back');
+      if (mainTour) mainTour.style.display = 'none';
+      if (tourHeader) tourHeader.style.display = 'none';
+      if (landingPage) {
+        landingPage.style.display = 'flex';
+        initLandingPage();
+      }
+    }, 550);
+  }, 2600);
+}
+
+function reopenStoryTour() {
+  const landingPage = document.getElementById('landingPageView');
+  const mainTour = document.querySelector('.phone-screen > main');
+  const tourHeader = document.querySelector('.app-header');
+  const savedModal = document.getElementById('savedConfigModal');
+
+  if (savedModal) savedModal.style.display = 'none';
+  if (landingPage) landingPage.style.display = 'none';
+  if (mainTour) mainTour.style.display = 'flex';
+  if (tourHeader) tourHeader.style.display = 'flex';
+  goToRoom(4); // Return directly to customizable room
+}
+
+/* --------------------------------------------------------------------------
+   9. LANDING PAGE INVENTORY, FILTERS & INTERACTIVE FEATURES
+   -------------------------------------------------------------------------- */
+const CATALOG_INVENTORY = [
+  // NAGOYA (15 Units)
+  { id: 'A.01', cluster: 'nagoya', type: 'T60', beds: 3, baths: 2, lt: 60, lb: 60, priceMillion: 699, status: 'Terjual', pos: 'gate' },
+  { id: 'A.02', cluster: 'nagoya', type: 'T60', beds: 3, baths: 2, lt: 60, lb: 60, priceMillion: 699, status: 'Tersedia', pos: 'gate' },
+  { id: 'A.03', cluster: 'nagoya', type: 'T80', beds: 4, baths: 3, lt: 80, lb: 80, priceMillion: 782, status: 'Tersedia', pos: 'inner' },
+  { id: 'A.04', cluster: 'nagoya', type: 'T60', beds: 3, baths: 2, lt: 60, lb: 60, priceMillion: 699, status: 'Tersedia', pos: 'inner' },
+  { id: 'A.05', cluster: 'nagoya', type: 'T80', beds: 4, baths: 3, lt: 80, lb: 80, priceMillion: 782, status: 'Tersedia', pos: 'inner' },
+  { id: 'A.06', cluster: 'nagoya', type: 'T60', beds: 3, baths: 2, lt: 60, lb: 60, priceMillion: 699, status: 'Tersedia', pos: 'inner' },
+  { id: 'A.07', cluster: 'nagoya', type: 'T80', beds: 4, baths: 3, lt: 80, lb: 80, priceMillion: 787, status: 'Tersedia', pos: 'hook' },
+  { id: 'A.08', cluster: 'nagoya', type: 'T60', beds: 3, baths: 2, lt: 60, lb: 60, priceMillion: 708, status: 'Tersedia', pos: 'inner' },
+  { id: 'A.09', cluster: 'nagoya', type: 'T80', beds: 4, baths: 3, lt: 80, lb: 80, priceMillion: 796, status: 'Tersedia', pos: 'hook' },
+  { id: 'B.02', cluster: 'nagoya', type: 'T60', beds: 3, baths: 2, lt: 60, lb: 60, priceMillion: 498, status: 'Tersedia', pos: 'gate' },
+  { id: 'B.03', cluster: 'nagoya', type: 'T60', beds: 3, baths: 2, lt: 60, lb: 60, priceMillion: 498, status: 'Tersedia', pos: 'inner' },
+  { id: 'B.04', cluster: 'nagoya', type: 'T60', beds: 3, baths: 2, lt: 60, lb: 60, priceMillion: 498, status: 'Tersedia', pos: 'inner' },
+  { id: 'B.05', cluster: 'nagoya', type: 'T80', beds: 4, baths: 3, lt: 80, lb: 80, priceMillion: 862, status: 'Tersedia', pos: 'inner' },
+  { id: 'B.06', cluster: 'nagoya', type: 'T80', beds: 4, baths: 3, lt: 80, lb: 80, priceMillion: 857, status: 'Tersedia', pos: 'inner' },
+  { id: 'B.07', cluster: 'nagoya', type: 'T80', beds: 4, baths: 3, lt: 80, lb: 80, priceMillion: 857, status: 'Tersedia', pos: 'hook' },
+
+  // TOKYO (7 Units)
+  { id: 'B.1', cluster: 'tokyo', type: 'T60', beds: 3, baths: 2, lt: 60, lb: 60, priceMillion: 708, status: 'Tersedia', pos: 'gate' },
+  { id: 'B.2', cluster: 'tokyo', type: 'T80', beds: 4, baths: 3, lt: 80, lb: 80, priceMillion: 787, status: 'Tersedia', pos: 'inner' },
+  { id: 'B.3', cluster: 'tokyo', type: 'T60', beds: 3, baths: 2, lt: 60, lb: 60, priceMillion: 679, status: 'Tersedia', pos: 'inner' },
+  { id: 'B.4', cluster: 'tokyo', type: 'T80', beds: 4, baths: 3, lt: 80, lb: 80, priceMillion: 791, status: 'Tersedia', pos: 'inner' },
+  { id: 'B.5', cluster: 'tokyo', type: 'T60', beds: 3, baths: 2, lt: 60, lb: 60, priceMillion: 685, status: 'Tersedia', pos: 'inner' },
+  { id: 'B.6', cluster: 'tokyo', type: 'T60', beds: 3, baths: 2, lt: 60, lb: 60, priceMillion: 685, status: 'Tersedia', pos: 'inner' },
+  { id: 'B.7', cluster: 'tokyo', type: 'T80', beds: 4, baths: 3, lt: 80, lb: 80, priceMillion: 899, status: 'Tersedia', pos: 'hook' },
+
+  // OSAKA (9 Units)
+  { id: 'A.1', cluster: 'osaka', type: 'T80', beds: 4, baths: 3, lt: 80, lb: 80, priceMillion: 791, status: 'Tersedia', pos: 'gate' },
+  { id: 'A.2', cluster: 'osaka', type: 'T60', beds: 3, baths: 2, lt: 60, lb: 60, priceMillion: 685, status: 'Tersedia', pos: 'inner' },
+  { id: 'A.3', cluster: 'osaka', type: 'T60', beds: 3, baths: 2, lt: 60, lb: 60, priceMillion: 685, status: 'Tersedia', pos: 'inner' },
+  { id: 'A.4', cluster: 'osaka', type: 'T80', beds: 4, baths: 3, lt: 80, lb: 80, priceMillion: 769, status: 'Tersedia', pos: 'inner' },
+  { id: 'A.5', cluster: 'osaka', type: 'T60', beds: 3, baths: 2, lt: 60, lb: 60, priceMillion: 690, status: 'Tersedia', pos: 'inner' },
+  { id: 'A.6', cluster: 'osaka', type: 'T80', beds: 4, baths: 3, lt: 80, lb: 80, priceMillion: 834, status: 'Tersedia', pos: 'inner' },
+  { id: 'A.7', cluster: 'osaka', type: 'T80', beds: 4, baths: 3, lt: 80, lb: 80, priceMillion: 834, status: 'Tersedia', pos: 'inner' },
+  { id: 'A.8', cluster: 'osaka', type: 'T80', beds: 4, baths: 3, lt: 80, lb: 80, priceMillion: 901, status: 'Tersedia', pos: 'hook' },
+  { id: 'A.9', cluster: 'osaka', type: 'T80', beds: 4, baths: 3, lt: 80, lb: 80, priceMillion: 906, status: 'Tersedia', pos: 'hook' },
+];
+
+let catalogFilterState = {
+  type: 'all',
+  lot: 'all',
+  price: 'all',
+  pos: 'all'
+};
+
+function initLandingPage() {
+  renderLandingUnits();
+  switchLandingSiteplan('nagoya');
+}
+
+function filterCatalog(filterType, val, btnEl) {
+  catalogFilterState[filterType] = val;
+  const parent = btnEl.parentElement;
+  if (parent) {
+    parent.querySelectorAll('.f-chip').forEach(c => c.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  }
+  renderLandingUnits();
+}
+
+function resetCatalogFilters() {
+  catalogFilterState = { type: 'all', lot: 'all', price: 'all', pos: 'all' };
+  document.querySelectorAll('.filter-chips').forEach(group => {
+    group.querySelectorAll('.f-chip').forEach((c, idx) => {
+      c.classList.toggle('is-active', idx === 0);
+    });
+  });
+  renderLandingUnits();
+}
+
+function renderLandingUnits() {
+  const clusters = ['nagoya', 'tokyo', 'osaka'];
+
+  clusters.forEach(clusterKey => {
+    const gridEl = document.getElementById(`${clusterKey}UnitsGrid`);
+    if (!gridEl) return;
+
+    let units = CATALOG_INVENTORY.filter(u => u.cluster === clusterKey);
+
+    // Apply filters
+    if (catalogFilterState.type !== 'all') {
+      units = units.filter(u => u.type === catalogFilterState.type);
+    }
+    if (catalogFilterState.lot === 'under80') {
+      units = units.filter(u => u.lt < 80);
+    } else if (catalogFilterState.lot === '80to90') {
+      units = units.filter(u => u.lt >= 80 && u.lt <= 90);
+    } else if (catalogFilterState.lot === 'above90') {
+      units = units.filter(u => u.lt > 90);
+    }
+
+    if (catalogFilterState.price === 'under600') {
+      units = units.filter(u => u.priceMillion < 600);
+    } else if (catalogFilterState.price === '600to750') {
+      units = units.filter(u => u.priceMillion >= 600 && u.priceMillion <= 750);
+    } else if (catalogFilterState.price === 'above750') {
+      units = units.filter(u => u.priceMillion > 750);
+    }
+
+    if (catalogFilterState.pos !== 'all') {
+      units = units.filter(u => u.pos === catalogFilterState.pos);
+    }
+
+    if (units.length === 0) {
+      gridEl.innerHTML = `<div style="grid-column: span 2; text-align:center; padding: 12px; font-size: 11px; color: rgba(243,239,230,0.6);">Tidak ada unit yang cocok dengan kombinasi filter ini.</div>`;
+      return;
+    }
+
+    gridEl.innerHTML = units.map(u => `
+      <div class="unit-inventory-card">
+        <div class="unit-inv-head">
+          <span class="unit-inv-id">${u.id}</span>
+          <span class="unit-inv-status ${u.status === 'Tersedia' ? 'is-avail' : 'is-sold'}">${u.status}</span>
+        </div>
+        <div class="unit-inv-specs">${u.beds}KT · ${u.baths}KM · LT ${u.lt}m²</div>
+        <div class="unit-inv-price">Mulai Rp ${u.priceMillion} Jt</div>
+        ${u.status === 'Tersedia' ? `
+          <button class="unit-inv-select-btn" type="button" onclick="selectUnitFromLanding('${clusterKey}', '${u.id}', ${u.priceMillion})">
+            Pilih Kavling →
+          </button>
+        ` : ''}
+      </div>
+    `).join('');
+  });
+}
+
+function selectUnitFromLanding(clusterKey, unitId, priceM) {
+  selectedLotId = unitId;
+  currentClusterKey = clusterKey;
+  saveSiteplanChoice();
+  openSavedConfigModal();
+}
+
+function switchLandingTab(tabName, btnEl) {
+  document.querySelectorAll('.landing-tab-panel').forEach(p => p.style.display = 'none');
+  document.querySelectorAll('.bottom-nav-tab').forEach(b => b.classList.remove('is-active'));
+
+  const activePanel = document.getElementById(`panel${tabName}`);
+  if (activePanel) activePanel.style.display = 'flex';
+  if (btnEl) btnEl.classList.add('is-active');
+
+  const scrollContainer = document.getElementById('landingScrollContent');
+  if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+
+  if (tabName === 'SitePlan') {
+    switchLandingSiteplan('nagoya');
+  }
+}
+
+function switchLandingSiteplan(clusterKey, btnEl) {
+  const displayImg = document.getElementById('spDisplayImg');
+  const overlayEl = document.getElementById('spLotsOverlay');
+  const statTotal = document.getElementById('spStatTotal');
+  const statRth = document.getElementById('spStatRth');
+
+  document.querySelectorAll('.sp-cluster-btn').forEach(b => b.classList.remove('is-active'));
+  if (btnEl) {
+    btnEl.classList.add('is-active');
+  } else {
+    const defaultBtn = document.getElementById(`spTab${clusterKey.charAt(0).toUpperCase() + clusterKey.slice(1)}`);
+    if (defaultBtn) defaultBtn.classList.add('is-active');
+  }
+
+  const data = SITEPLAN_DATA[clusterKey] || SITEPLAN_DATA.nagoya;
+  if (displayImg) displayImg.src = data.img;
+  if (statTotal) statTotal.textContent = `${data.lots.length} Unit`;
+  if (statRth) statRth.textContent = clusterKey === 'nagoya' ? '119,60 m²' : clusterKey === 'tokyo' ? '184,20 m²' : '142,50 m²';
+
+  if (overlayEl) {
+    overlayEl.innerHTML = data.lots.map(lot => `
+      <button class="siteplan-lot-pin ${lot.id === (selectedLotId || data.lots[0].id) ? 'is-selected' : ''}"
+        style="left: ${lot.x}%; top: ${lot.y}%;"
+        onclick="pickLandingLot('${lot.id}', '${clusterKey}')" type="button">
+        <span>${lot.id}</span>
+      </button>
+    `).join('');
+  }
+
+  const activeLot = data.lots.find(l => l.id === selectedLotId) || data.lots[0];
+  if (activeLot) updateLandingLotCard(activeLot);
+}
+
+function pickLandingLot(lotId, clusterKey) {
+  selectedLotId = lotId;
+  const data = SITEPLAN_DATA[clusterKey] || SITEPLAN_DATA.nagoya;
+  const lot = data.lots.find(l => l.id === lotId) || data.lots[0];
+  if (lot) updateLandingLotCard(lot);
+
+  document.querySelectorAll('.siteplan-lot-pin').forEach(pin => {
+    pin.classList.toggle('is-selected', pin.textContent.trim() === lotId);
+  });
+}
+
+function updateLandingLotCard(lot) {
+  const title = document.getElementById('spLotTitle');
+  const status = document.getElementById('spLotStatus');
+  const area = document.getElementById('spLotArea');
+  const type = document.getElementById('spLotType');
+  const price = document.getElementById('spLotPrice');
+
+  if (title) title.textContent = `${currentClusterKey.charAt(0).toUpperCase() + currentClusterKey.slice(1)} ${lot.id}`;
+  if (status) status.textContent = lot.status;
+  if (area) area.textContent = lot.area;
+  if (type) type.textContent = lot.type;
+  if (price) price.textContent = lot.price;
+}
+
+function confirmLotFromLanding() {
+  saveSiteplanChoice();
+  openSavedConfigModal();
+}
+
+function openSavedConfigModal() {
+  const modal = document.getElementById('savedConfigModal');
+  if (!modal) return;
+
+  let config = null;
+  try {
+    const raw = localStorage.getItem('theParkSavedConfig');
+    if (raw) config = JSON.parse(raw);
+  } catch (_) {}
+
+  const unit = HOUSE_UNITS[selectedUnitKey] || HOUSE_UNITS.nagoya;
+  const lotId = selectedLotId || 'B.04';
+  const priceText = config ? config.price : (document.getElementById('calcPriceText') ? document.getElementById('calcPriceText').textContent : 'Rp 650 Juta');
+  const paymentText = config ? config.paymentScheme : (currentPaymentScheme === 'cash_tempo' ? `Cash Bertahap (${selectedTempoTenor} Bulan)` : currentPaymentScheme === 'kpr' ? 'Skema KPR Bank (DP 30%)' : 'Cash Keras (Pelunasan 1 Bulan)');
+  const installmentText = config ? config.installment : (currentPaymentScheme === 'cash_tempo' ? 'Cicilan 0% ke Developer' : currentPaymentScheme === 'kpr' ? 'Rp 3,8 jt / bln' : 'Pelunasan 30 Hari');
+
+  const clusterEl = document.getElementById('savedItemCluster');
+  const lotEl = document.getElementById('savedItemLot');
+  const priceEl = document.getElementById('savedItemPrice');
+  const paymentEl = document.getElementById('savedItemPayment');
+  const instEl = document.getElementById('savedItemInstallment');
+
+  if (clusterEl) clusterEl.textContent = `${unit.name} · ${unit.tag}`;
+  if (lotEl) lotEl.textContent = `Kavling ${lotId}`;
+  if (priceEl) priceEl.textContent = priceText;
+  if (paymentEl) paymentEl.textContent = paymentText;
+  if (instEl) instEl.textContent = installmentText;
+
+  // Custom room names
+  const r1 = document.getElementById('roomName1') ? document.getElementById('roomName1').value : 'Kamar Tidur Utama';
+  const r2 = document.getElementById('roomName2') ? document.getElementById('roomName2').value : 'Kamar Anak Montessori';
+  const r3 = document.getElementById('roomName3') ? document.getElementById('roomName3').value : 'Studio Kreatif & Library';
+  const rGarden = document.getElementById('roomNameGarden') ? document.getElementById('roomNameGarden').value : 'Taman Kering Zen & BBQ';
+
+  const roomsListEl = document.getElementById('savedRoomsList');
+  if (roomsListEl) {
+    roomsListEl.innerHTML = `
+      <li>Ruang 01 (Lt 1): <strong>${r1}</strong></li>
+      <li>Ruang 02 (Lt 2): <strong>${r2}</strong></li>
+      <li>Ruang 03 (Lt 2): <strong>${r3}</strong></li>
+      <li>Taman Terbuka: <strong>${rGarden}</strong></li>
+    `;
+  }
+
+  // Addons list
+  const addonsSelected = [];
+  if (document.getElementById('addonIsland') && document.getElementById('addonIsland').checked) addonsSelected.push('Kitchen Island (+15jt)');
+  if (document.getElementById('addonSmart') && document.getElementById('addonSmart').checked) addonsSelected.push('Smart Home Hub (+10jt)');
+  if (document.getElementById('addonBathtub') && document.getElementById('addonBathtub').checked) addonsSelected.push('Freestanding Bathtub (+12jt)');
+  if (document.getElementById('addonSolar') && document.getElementById('addonSolar').checked) addonsSelected.push('Solar Canopy (+8jt)');
+
+  const addonsBox = document.getElementById('savedAddonsList');
+  if (addonsBox) {
+    if (addonsSelected.length > 0) {
+      addonsBox.innerHTML = addonsSelected.map(a => `<span class="addon-tag-pill">${a}</span>`).join('');
+    } else {
+      addonsBox.innerHTML = '<span class="addon-tag-pill">Spesifikasi Standar Japandi (Tanpa Tambahan)</span>';
+    }
+  }
+
+  modal.style.display = 'flex';
+}
+
+function closeSavedConfigModal(e) {
+  if (e && e.target !== e.currentTarget) return;
+  const modal = document.getElementById('savedConfigModal');
+  if (modal) modal.style.display = 'none';
+}
+
+function sendSavedConfigToWA() {
+  const unit = HOUSE_UNITS[selectedUnitKey] || HOUSE_UNITS.nagoya;
+  const lot = selectedLotId || 'B.04';
+  const price = document.getElementById('calcPriceText') ? document.getElementById('calcPriceText').textContent : 'Rp 650 Juta';
+  const scheme = currentPaymentScheme === 'cash_tempo' ? `Cash Bertahap ${selectedTempoTenor} Bln` : currentPaymentScheme === 'kpr' ? 'KPR Bank' : 'Cash Keras';
+
+  const text = encodeURIComponent(
+    `Halo Tim The Park Townhouse Sukoharjo,\n\nSaya telah mengonfigurasi pilihan rumah idaman saya di website:\n- Klaster: ${unit.name}\n- Kavling: ${lot}\n- Estimasi Harga: ${price}\n- Skema Pembayaran: ${scheme}\n\nSaya ingin berkonsultasi lebih lanjut dan menjadwalkan kunjungan lokasi ke Marketing Gallery. Terima kasih.`
+  );
+  window.open(`https://wa.me/62882007392379?text=${text}`, '_blank');
+}
+
+function demoAppAction(actionType) {
+  const box = document.getElementById('appDemoFeedback');
+  if (!box) return;
+
+  const responses = {
+    lock: '🔓 Smart Lock Pintu Utama: Terbuka! (Sensor BLE/IoT mengenali ponsel Anda dalam radius 5 meter)',
+    qr: '🎫 QR Pass Tamu Dibuat: Kode berlaku 6 jam untuk mobil tamu langsung melintas gerbang Avenue Gate',
+    booking: '🏊 Reservasi Slot Berhasil: Sesi Kolam Renang & Gym Clubhouse hari Sabtu jam 08.00 terkonfirmasi',
+    ipl: '🧾 Status Iuran Kawasan (IPL): Lunas untuk bulan berjalan. Detail rincian taman & sekuriti terlampir',
+    maint: '🛠️ Laporan Diterima: Tim estate maintenance akan mengecek kelistrikan unit Anda dalam 2 jam kerja',
+    sos: '🚨 Tombol Darurat (SOS) Aktif: Notifikasi sirine dikirim ke pos sekuriti gerbang utama 24 jam!'
+  };
+
+  box.innerHTML = `<span style="color:#e5d3af; font-weight:600;">${responses[actionType] || 'Fitur terhubung ke server kawasan.'}</span>`;
 }
 
 function closeQuickModal() {

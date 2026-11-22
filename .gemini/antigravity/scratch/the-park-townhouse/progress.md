@@ -207,3 +207,25 @@
   - **Optimized Inter-Frame Geometry & Spacing**: Calibrated `.room-section.room-rumah-section` with `gap: 18px` and `padding: 4px 16px 56px`, providing clean visual separation between consecutive cards and ample clearance above the bottom navigation controls.
   - **Enhanced Save Button & Card Margins**: Added 8px top margin and 44px touch height to `#btnSaveCustom` and `#btnSaveSiteplan` with tactile press states.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #18: Toned Light Bloom, Room 05 Facility Carousel, 3 Payment Schemes, Drone Finale & Storytelling Landing Page
+- **Context & Objective**: Fulfill user requirements across visual softness, interactive facilities, multi-scheme payment simulation, full drone view in Room 07, door closing animation transition, and a complete storytelling landing page with bottom navigation and saved configuration bookmark.
+- **Key Changes Implemented**:
+  - **Toned Down Fade-In Brightness & Warm Ambient Bloom**: Softened `@keyframes centerFadeIn` brightness from `1.75` to `1.15` and calibrated `.center-light-bloom` with warm amber gradients (`rgba(245, 230, 200, 0.45)`) eliminating eye strain.
+  - **Room 05 Interactive Facility Frame & 5-Second Auto-Scroll**: Built multi-image facility slideshow (Clubhouse & Pool, Avenue Gate RFID, Gym & Lounge, Playground & Garden) with auto-scrolling every 5 seconds, active dots, photo counters, and smooth scroll to top upon tapping the facility trigger card.
+  - **Room 06 Three Payment Options (Cash Keras, Cash Bertahap, KPR)**: Implemented 3 interactive scheme tabs:
+    - *Cash Keras*: Booking fee Rp 5 Juta + pelunasan 1 bulan.
+    - *Cash Bertahap (Cash Tempo)*: 12 & 24 bulan, DP 40% (booking fee Rp 5 Juta include ke dalam DP 40%), cicilan 0% developer.
+    - *KPR Bank*: DP 30% (slider 10-40%), booking fee Rp 5 Juta, tenor 5-25 tahun slider, bunga 8% anuitas.
+  - **Room 07 Aerial Drone Finale**: Upgraded hero frame to `assets/drive/aerial-drone.jpeg` showcasing the entire The Park Townhouse Sukoharjo complex from above.
+  - **Door Closing Animation & Exit Sequence (`finishTourAndExit`)**: Added realistic wooden double doors swing-shut sequence (`rotateY(0deg)`), backward camera zoom out to grand gate exterior, poetic farewell, and seamless fade into the Landing Page.
+  - **Comprehensive Storytelling Landing Page (`#landingPageView`)**:
+    - **Header & Bookmark**: Top brand navbar with golden bookmark icon (`#landingBookmarkBtn`) displaying the user's saved dream configuration drawer, and 360 tour revisit pill.
+    - **Bottom Navigation Bar (Rule 5 Compliant)**: 4 destinations with 44x44px touch targets (`Beranda`, `Surat Cinta`, `Site Plan`, `Fasilitas`) with safe-area clearance.
+    - **Beranda**: 30-unit modern Japandi catalog, filter chips (Tipe, LT, Range Harga, Posisi), and detailed inventory cards for Nagoya (A.01-B.07), Tokyo (B.1-B.7), Osaka (A.1-A.9).
+    - **Surat Cinta**: Poetic, heartwarming open letter from the architectural team emphasizing sanctuary, family peace, and slow living over hard-selling.
+    - **Site Plan**: Interactive cluster maps, lot pins, and live statistics.
+    - **Fasilitas**: The Park Clubhouse (177,25 m²), Andara Imperial Super App interactive smartphone demo (Smart Lock, QR Tamu, Booking, IPL, SOS), and Andara Manajemen Hospitality.
+- **Status**: Completed & Verified.
