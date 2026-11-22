@@ -708,3 +708,25 @@
   - **Layout Re-ordering (index.html)**:
     - Moved `#section99Keunggulan`, `#themeNavScroller`, and `#themeShowcaseBox` to the top position inside `.surat-magazine-container` above the compact letter banner and cluster triptych grid.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #45: Redesign & Elevate Payment Calculator (`#suratPaymentCalculator`)
+- **Context & Objective**: Upgrade layout, color palette, and typography of `<div class="surat-calc-container" id="suratPaymentCalculator">` on the Surat Cinta tab to align with the Japandi Modern luxury brand system.
+- **Key Changes Implemented**:
+  - **Semantic Layout & Structure (index.html, styles.css)**:
+    - Restructured `.surat-calc-container` into a responsive 2-column grid on desktop (`min-width: 992px`) and stacked 1-column on mobile.
+    - Positioned Parameter Card (`.surat-calc-params-card`) and Additional Costs Card (`.surat-calc-fees-card`) in Column 1.
+    - Positioned Live Result Card (`.surat-calc-result-card`) and 4-Scheme Comparison Matrix (`.surat-calc-compare-card`) in Column 2.
+  - **Japandi Modern Luxury Color Palette (styles.css)**:
+    - Base cards: `#ffffff` & `#fbfaf7` with subtle warm borders `#e8e2d5` and smooth elevation shadows.
+    - Primary accent: Deep Forest Green (`#11332a` / `#194639`) for buttons, active pills, and result hero banner.
+    - Luxury accents: Warm Gold (`#dfb96d` / `#b39255`) for highlight callouts, active comparison borders, and badges.
+  - **Typography & Font Hierarchy (styles.css)**:
+    - Applied `var(--font-serif)` to card headings, primary calculation figure (`.calc-hero-amount`), breakdown totals, and comparison monthly instalments.
+    - Applied `var(--font-sans)` to inputs, form labels, pills, and descriptions with proper uppercase kickers and tracking.
+  - **Form & Interactive Controls (styles.css)**:
+    - Custom-styled `.calc-select` dropdown with bespoke chevron icon.
+    - Styled stage pills (`.calc-tab-pill`) and scheme buttons (`.calc-scheme-btn`) ensuring minimum 44px–56px touch targets.
+    - Styled KPR slider controls with `#11332a` accent and fixed visibility toggle (`.calc-kpr-controls.is-hidden { display: none !important; }`).
+- **Status**: Completed, Verified & Auto-Pushed.
