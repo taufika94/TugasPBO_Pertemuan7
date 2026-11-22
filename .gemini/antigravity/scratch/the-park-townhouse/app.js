@@ -1,3 +1,86 @@
+
+/* --------------------------------------------------------------------------
+   BOTTOM BAR VISIBILITY CONTROLLER (DISPLAY ONLY AFTER SAVING CONFIG)
+   -------------------------------------------------------------------------- */
+window.__hasSavedConfigSession = false;
+
+function checkHasSavedConfiguration() {
+  if (window.__hasSavedConfigSession) return true;
+  try {
+    const raw = localStorage.getItem('theParkSavedConfig');
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === 'object') return true;
+    }
+  } catch (_) {}
+  return false;
+}
+
+function updateBottomBarVisibility() {
+  const bottomBar = document.getElementById('landingBottomBar');
+  const landingView = document.getElementById('landingPageView');
+  const dotPulse = document.getElementById('bookmarkDotPulse');
+  const isSaved = checkHasSavedConfiguration();
+
+  if (isSaved) {
+    if (bottomBar) {
+      bottomBar.classList.add('is-visible');
+      bottomBar.style.display = 'grid';
+    }
+    if (landingView) {
+      landingView.classList.add('has-saved-config');
+    }
+    if (dotPulse) {
+      dotPulse.style.display = 'block';
+    }
+  } else {
+    if (bottomBar) {
+      bottomBar.classList.remove('is-visible');
+      bottomBar.style.display = 'none';
+    }
+    if (landingView) {
+      landingView.classList.remove('has-saved-config');
+    }
+    if (dotPulse) {
+      dotPulse.style.display = 'none';
+    }
+  }
+}
+
+function saveCurrentConfigToStorage() {
+  window.__hasSavedConfigSession = true;
+  const unit = (typeof HOUSE_UNITS !== 'undefined' && HOUSE_UNITS[selectedUnitKey]) ? HOUSE_UNITS[selectedUnitKey] : { name: 'Nagoya Gold (LB 75)' };
+  const lotId = selectedLotId || (typeof inspectedLotNumber !== 'undefined' ? inspectedLotNumber : 'B.04');
+  const priceText = document.getElementById('calcPriceText') ? document.getElementById('calcPriceText').textContent : 'Rp 650 Juta';
+  const paymentDesc = (typeof currentPaymentScheme !== 'undefined' && currentPaymentScheme === 'cash_tempo')
+    ? `Cash Bertahap (${typeof selectedTempoTenor !== 'undefined' ? selectedTempoTenor : 12} Bulan)`
+    : (typeof currentPaymentScheme !== 'undefined' && currentPaymentScheme === 'kpr')
+      ? 'Skema KPR Bank (DP 30%)'
+      : 'Cash Keras (Pelunasan 1 Bulan)';
+  const installmentDesc = (typeof currentPaymentScheme !== 'undefined' && currentPaymentScheme === 'cash_tempo')
+    ? 'Cicilan 0% ke Developer'
+    : (typeof currentPaymentScheme !== 'undefined' && currentPaymentScheme === 'kpr')
+      ? 'Rp 3,8 jt / bln'
+      : 'Pelunasan 30 Hari';
+
+  const config = {
+    unitKey: typeof selectedUnitKey !== 'undefined' ? selectedUnitKey : 'nagoya',
+    unitName: unit.name,
+    lotId: lotId,
+    cluster: typeof currentClusterKey !== 'undefined' ? currentClusterKey : 'nagoya',
+    price: priceText,
+    paymentScheme: paymentDesc,
+    installment: installmentDesc,
+    savedAt: new Date().toISOString()
+  };
+
+  try {
+    localStorage.setItem('theParkSavedConfig', JSON.stringify(config));
+  } catch (_) {}
+
+  updateBottomBarVisibility();
+}
+
 /* ==========================================================================
    THE PARK TOWNHOUSE — "Jalan Pulang"
    After-Delay Opening Choreography, Golden Spark Canvas &
@@ -1281,6 +1364,7 @@ function updateCustomizerTotal() {
 
 function saveRoomCustomization() {
   hasSavedRoomCustomization = true;
+  saveCurrentConfigToStorage();
   const banner = document.getElementById('customSuccessBanner');
   if (banner) {
     banner.innerHTML = '<span>✓ Desain ruangan tersimpan! Menggeser ke Site Plan untuk konfirmasi kavling...</span>';
@@ -1299,6 +1383,7 @@ function saveRoomCustomization() {
 
 function saveSiteplanChoice() {
   hasSelectedSiteplanLot = true;
+  saveCurrentConfigToStorage();
   const data = SITEPLAN_DATA[currentClusterKey] || SITEPLAN_DATA.nagoya;
   const lot = data.lots.find((l) => l.id === selectedLotId) || data.lots[0];
   const lotLabel = lot ? lot.name : (selectedLotId || 'Kavling');
@@ -1679,6 +1764,8 @@ function openQuickModal(type) {
       localStorage.setItem('theParkSavedConfig', JSON.stringify(config));
     } catch (_) {}
 
+    window.__hasSavedConfigSession = true;
+    updateBottomBarVisibility();
     title.textContent = 'Konfigurasi Tersimpan';
     body.innerHTML = `
       <p class="room-story" style="color: var(--text-muted); margin-bottom:12px;">
@@ -1825,6 +1912,7 @@ let catalogFilterState = {
 };
 
 function initLandingPage() {
+  updateBottomBarVisibility();
   setTimeout(initBerandaLeafletMap, 300);
   renderLandingUnits();
   switchLandingSiteplan('nagoya');
@@ -3811,6 +3899,7 @@ function orderInspectedLot() {
   const data = SITEPLAN_DATA[cluster] || SITEPLAN_DATA.nagoya;
   const lot = data.lots.find(l => l.id === inspectedLotNumber) || data.lots[0];
   const price = lot ? lot.price : 'Rp 650 Juta';
+  saveCurrentConfigToStorage();
   openOrderModal('Klaster ' + cluster.toUpperCase(), inspectedLotNumber, price);
 }
 

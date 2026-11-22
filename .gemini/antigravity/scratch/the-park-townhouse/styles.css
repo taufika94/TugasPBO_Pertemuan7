@@ -4116,13 +4116,18 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  padding: 12px 14px calc(68px + env(safe-area-inset-bottom, 16px));
+  padding: 12px 14px 24px;
   scrollbar-width: thin;
   scrollbar-color: rgba(22, 36, 28, 0.2) transparent;
   display: flex;
   flex-direction: column;
   gap: 16px;
   background: #fbfaf7;
+  transition: padding-bottom 0.3s ease;
+}
+
+.landing-page-view.has-saved-config .landing-content-scroll {
+  padding-bottom: calc(68px + env(safe-area-inset-bottom, 16px));
 }
 
 .landing-tab-panel {
@@ -6514,6 +6519,7 @@ body {
 }
 
 /* MANDATORY BOTTOM NAVIGATION BAR (Strict Rule 5) */
+/* MANDATORY BOTTOM NAVIGATION BAR (Strict Rule 5) — HIDDEN UNTIL CONFIGURATION SAVED */
 .landing-bottom-bar {
   position: absolute;
   bottom: 0;
@@ -6524,11 +6530,20 @@ body {
   backdrop-filter: blur(18px);
   border-top: 1px solid #e8e2d5;
   box-shadow: 0 -2px 12px rgba(22, 36, 28, 0.06);
-  display: grid;
+  display: none; /* Displayed ONLY after user saves configuration */
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
   z-index: 95;
   padding-bottom: env(safe-area-inset-bottom, 0px);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+.landing-bottom-bar.is-visible {
+  display: grid !important;
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .bottom-nav-tab {

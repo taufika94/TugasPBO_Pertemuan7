@@ -578,3 +578,20 @@
     - Replaced Osaka siteplan with authentic clean triangular wedge asset 'assets/drive/siteplan-osaka.jpg'.
     - Configured 7 lots (B.1–B.7) strictly aligned with the triangular wedge geometry from user Image 10.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #37: Conditional Mobile Bottom Navigation Bar (Display Only After Config Saved)
+- **Context & Objective**: Display the mobile bottom navigation bar (.landing-bottom-bar) ONLY after the user saves their house/room configuration.
+- **Key Changes Implemented**:
+  - **Styles (styles.css)**:
+    - Set .landing-bottom-bar default state to 'display: none;', opacity: 0, and translateY(100%).
+    - Added .landing-bottom-bar.is-visible with 'display: grid !important;', slide-up animation, and full opacity.
+    - Adjusted .landing-content-scroll padding to 24px when bottom bar is hidden, dynamically increasing to 'calc(68px + env(safe-area-inset-bottom, 16px))' via .has-saved-config when bottom bar is displayed.
+  - **Markup (index.html)**:
+    - Added inline 'style="display: none;"' to #landingBottomBar to prevent any layout shift before state initialization.
+  - **State Controller (app.js)**:
+    - Created checkHasSavedConfiguration() and updateBottomBarVisibility() checking localStorage ('theParkSavedConfig') and session state (window.__hasSavedConfigSession).
+    - Added saveCurrentConfigToStorage() syncing unit, lot, pricing, and payment specifications to localStorage.
+    - Wired triggers in saveRoomCustomization() (Ruang 4), saveSiteplanChoice() (Ruang 4), openQuickModal('save') (Ruang 7), orderInspectedLot() (Beranda), selectUnitFromLanding(), and initLandingPage().
+- **Status**: Completed, Verified & Auto-Pushed.
