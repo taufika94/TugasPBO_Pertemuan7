@@ -321,3 +321,19 @@
     16. *Pusat Informasi (FAQ Accordion)*: 5 collapsible Q&A items with category filters (Legalitas, Pembayaran, Fasilitas).
     17. *Final CTA & Bank Partner Badges*: "Kunci Kavling Anda Hari Ini - Booking Rp 5 Juta" with Bank Mandiri, BCA, BRI, BNI, BTN Syariah, BSI badges and Estate Footer.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #23: Interactive "Buka Pintu" Trigger Before Opening Sequence
+- **Context & Objective**: Implement an interactive "Buka Pintu" (Open Door) button at the start of the opening sequence. Instead of playing the opening door animation automatically on load, pause in a standby state (`waiting`) with closed double wooden doors and a prominent golden CTA button, animating only when the user taps it.
+- **Key Changes Implemented**:
+  - **Interactive Button Markup (`index.html`)**: Added `#btnOpenDoor` with custom architectural door vector icon, "Buka Pintu" text, and directional arrow.
+  - **Standby & Pulse Styling (`styles.css`)**:
+    - Created `.btn-open-door` with warm champagne gradient, subtle border, and `@keyframes pulseOpenDoor` breathing glow.
+    - Updated `[data-stage='waiting']` selectors for `.opening-brand`, `.door-portal-wrap`, and `.opening-caption` so the entrance foyer is visible while awaiting interaction.
+    - Added auto-hide transitions on `.btn-open-door.is-hidden` when opening commences.
+  - **Animation Orchestration (`app.js`)**:
+    - Built `prepareOpeningStandby()` to hold the opening overlay in waiting mode with gentle ambient dust.
+    - Built `startDoorOpeningSequence()` to trigger spark bursts, warm seam glow, and perspective door swinging upon button tap.
+    - Wired `#replayOpeningBtn` to re-enter standby state, allowing replay of the interactive door opening experience.
+- **Status**: Completed & Verified.

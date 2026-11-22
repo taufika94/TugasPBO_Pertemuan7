@@ -183,6 +183,7 @@ body {
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
 }
 
+.opening-overlay[data-stage='waiting'] .opening-brand,
 .opening-overlay[data-stage='intro'] .opening-brand,
 .opening-overlay[data-stage='spark'] .opening-brand,
 .opening-overlay[data-stage='door-open'] .opening-brand {
@@ -226,6 +227,7 @@ body {
     transform 1.25s var(--ease-luxury);
 }
 
+.opening-overlay[data-stage='waiting'] .door-portal-wrap,
 .opening-overlay[data-stage='intro'] .door-portal-wrap,
 .opening-overlay[data-stage='spark'] .door-portal-wrap,
 .opening-overlay[data-stage='door-open'] .door-portal-wrap {
@@ -394,6 +396,7 @@ body {
   transition: opacity 0.85s var(--ease-luxury), transform 0.85s var(--ease-luxury);
 }
 
+.opening-overlay[data-stage='waiting'] .opening-caption,
 .opening-overlay[data-stage='intro'] .opening-caption,
 .opening-overlay[data-stage='spark'] .opening-caption {
   opacity: 1;
@@ -403,6 +406,78 @@ body {
 .opening-overlay[data-stage='door-open'] .opening-caption {
   opacity: 0;
   transform: translateY(-6px);
+}
+
+/* ==========================================================================
+   TOMBOL BUKA PINTU (OPENING CALL-TO-ACTION BUTTON)
+   ========================================================================== */
+.btn-open-door {
+  position: relative;
+  z-index: 10;
+  margin-top: 18px;
+  min-height: 48px;
+  padding: 10px 28px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e5d3af 0%, #caa976 100%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #16241c;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(229, 211, 175, 0.42), 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, opacity 0.4s ease, box-shadow 0.3s ease, visibility 0.3s;
+  animation: pulseOpenDoor 2.4s ease-in-out infinite;
+}
+
+.btn-open-door:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 30px rgba(229, 211, 175, 0.6), 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.btn-open-door:active {
+  transform: scale(0.97);
+}
+
+.btn-door-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #16241c;
+}
+
+.btn-door-arrow {
+  font-size: 14px;
+  font-weight: 800;
+  transition: transform 0.25s ease;
+}
+
+.btn-open-door:hover .btn-door-arrow {
+  transform: translateX(3px);
+}
+
+.btn-open-door.is-hidden,
+.opening-overlay[data-stage='spark'] .btn-open-door,
+.opening-overlay[data-stage='door-open'] .btn-open-door,
+.opening-overlay.is-entering-room .btn-open-door {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(0.92) translateY(8px);
+}
+
+@keyframes pulseOpenDoor {
+  0%, 100% {
+    box-shadow: 0 4px 22px rgba(229, 211, 175, 0.38), 0 0 0 0 rgba(229, 211, 175, 0.45);
+  }
+  50% {
+    box-shadow: 0 6px 28px rgba(229, 211, 175, 0.55), 0 0 0 8px rgba(229, 211, 175, 0);
+  }
 }
 
 .opening-skip-btn {

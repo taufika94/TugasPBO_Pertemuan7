@@ -483,7 +483,7 @@ function finishOpening() {
   }, 900);
 }
 
-function runAfterDelayOpening() {
+function prepareOpeningStandby() {
   clearOpeningTimers();
   openingSparks.stop();
   openingSparks.resize();
@@ -495,48 +495,60 @@ function runAfterDelayOpening() {
 
   openingOverlay.classList.remove('is-entering-room');
   openingOverlay.setAttribute('aria-hidden', 'false');
-  openingOverlay.setAttribute('data-stage', 'idle');
-  openingCaption.textContent = 'Menyiapkan jalan pulang Anda…';
+  openingOverlay.setAttribute('data-stage', 'waiting');
+  openingCaption.textContent = 'Setiap langkah jauh, selalu mencari jalan pulang…';
+
+  const btnOpenDoor = document.getElementById('btnOpenDoor');
+  if (btnOpenDoor) {
+    btnOpenDoor.classList.remove('is-hidden');
+  }
 
   openingSparks.start();
+}
 
-  // Stage 1 (After Delay 120ms): Arch portal & brand fade in
-  openingTimers.push(
-    setTimeout(() => {
-      openingOverlay.setAttribute('data-stage', 'intro');
-    }, 120)
-  );
+function startDoorOpeningSequence() {
+  clearOpeningTimers();
+  const btnOpenDoor = document.getElementById('btnOpenDoor');
+  if (btnOpenDoor) {
+    btnOpenDoor.classList.add('is-hidden');
+  }
 
-  // Stage 2 (After Delay 1150ms): Golden spark burst & warm seam light
-  openingTimers.push(
-    setTimeout(() => {
-      openingOverlay.setAttribute('data-stage', 'spark');
-      openingCaption.textContent = 'Ada cahaya yang menunggu di balik pintu…';
-      openingSparks.burst(openingSparks.width / 2, openingSparks.height * 0.49, 48, 1.05);
-    }, 1150)
-  );
+  // Stage 1 (Warm Seam Light & Golden Spark Burst)
+  openingOverlay.setAttribute('data-stage', 'spark');
+  openingCaption.textContent = 'Ada cahaya yang menunggu di balik pintu…';
+  openingSparks.burst(openingSparks.width / 2, openingSparks.height * 0.49, 48, 1.15);
 
-  // Stage 3 (After Delay 2200ms): Double doors swing open + spark cascade
+  // Stage 2 (Double doors swing open + spark cascade after 1000ms)
   openingTimers.push(
     setTimeout(() => {
       openingOverlay.setAttribute('data-stage', 'door-open');
-      openingSparks.burst(openingSparks.width / 2, openingSparks.height * 0.49, 60, 1.35);
-    }, 2200)
+      openingCaption.textContent = 'Selamat datang di The Park Townhouse…';
+      openingSparks.burst(openingSparks.width / 2, openingSparks.height * 0.49, 64, 1.4);
+    }, 1000)
   );
 
-  // Stage 4 (After Delay 3350ms): Smoothly enter Room 01 (Pintu Depan)
+  // Stage 3 (Smoothly enter Room 01 after 2300ms)
   openingTimers.push(
     setTimeout(() => {
       finishOpening();
-    }, 3350)
+    }, 2300)
   );
+}
+
+function runAfterDelayOpening() {
+  prepareOpeningStandby();
 }
 
 document.getElementById('skipOpeningBtn').addEventListener('click', finishOpening);
 document.getElementById('replayOpeningBtn').addEventListener('click', () => {
   goToRoomImmediate(1);
-  runAfterDelayOpening();
+  prepareOpeningStandby();
 });
+
+const openDoorBtnEl = document.getElementById('btnOpenDoor');
+if (openDoorBtnEl) {
+  openDoorBtnEl.addEventListener('click', startDoorOpeningSequence);
+}
 
 /* --------------------------------------------------------------------------
    4. PARALLAX HOUSE BACKGROUND & LAYERED ROOM TRANSITIONS
