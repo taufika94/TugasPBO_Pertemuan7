@@ -911,3 +911,21 @@
     - Updated `selectBerandaLot` to sync marker active states, selector pills active states, and inspector cards across both views concurrently.
     - Synced `switchBerandaLotCluster` and `switchLandingSiteplan` so changing cluster on either page seamlessly updates both views.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #58: Engaging Micro-Animations & Ergonomic Enhancement for Mobile Bottom Navigation Bar
+- **Context & Objective**: Implement delightful, user-friendly micro-animations and physical spring dynamics on the mobile bottom navigation bar (`#landingBottomBar`) to keep homebuyers engaged while exploring project destinations.
+- **Key Changes Implemented**:
+  - **Dynamic Tab Pop & Spring Micro-Interactions (styles.css & app.js)**:
+    - Added `@keyframes tabPopBounce` with spring physics (`cubic-bezier(0.34, 1.56, 0.64, 1)`) triggered whenever a tab is tapped or activated.
+    - Added organic capsule backdrop highlight (`.bottom-nav-tab::before`) and animated jewel gradient indicator pill (`.bottom-nav-tab::after`) that scales and illuminates smoothly when a tab becomes active.
+    - Elevated active icon (`.b-icon`) with overshoot float (`translateY(-2px) scale(1.12)`), thickened SVG stroke, and subtle forest green drop shadow.
+    - Added snappy tactile haptic press feedback (`:active { transform: scale(0.92); }`).
+  - **5-Column Layout & Touch Target Ergonomics (styles.css)**:
+    - Configured `grid-template-columns: repeat(5, 1fr)` ensuring all 5 destinations (Beranda, Unit, Surat Cinta, Site Plan, Fasilitas) are symmetrically balanced and accessible.
+    - Guaranteed minimum 48px height and 44px width touch targets conforming strictly to Rule 5.
+    - Enhanced frosted glass surface (`backdrop-filter: blur(20px) saturate(180%)`) with smooth 0.4s slide-up entrance animation.
+  - **Icon Aesthetics (index.html)**:
+    - Replaced the confusing X-square icon on "Fasilitas" with a luxury 4-point star amenity jewel SVG icon.
+- **Status**: Completed, Verified & Auto-Pushed.

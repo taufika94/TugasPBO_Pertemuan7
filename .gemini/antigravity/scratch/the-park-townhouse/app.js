@@ -2224,13 +2224,18 @@ function selectUnitFromLanding(clusterKey, unitId, priceM) {
 function switchLandingTab(tabName, btnEl) {
   const norm = tabName.charAt(0).toUpperCase() + tabName.slice(1);
   document.querySelectorAll('.landing-tab-panel').forEach(p => p.style.display = 'none');
-  document.querySelectorAll('.bottom-nav-tab').forEach(b => b.classList.remove('is-active'));
+  document.querySelectorAll('.bottom-nav-tab').forEach(b => {
+    b.classList.remove('is-active', 'tab-pop');
+  });
 
   const activePanel = document.getElementById(`panel${norm}`);
   if (activePanel) activePanel.style.display = 'flex';
   
   const bottomBtn = btnEl || document.getElementById(`tabBtn${norm}`);
-  if (bottomBtn) bottomBtn.classList.add('is-active');
+  if (bottomBtn) {
+    bottomBtn.classList.add('is-active', 'tab-pop');
+    setTimeout(() => bottomBtn.classList.remove('tab-pop'), 350);
+  }
 
   const scrollContainer = document.getElementById('landingScrollContent');
   if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
