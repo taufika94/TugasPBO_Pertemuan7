@@ -1123,6 +1123,53 @@
         <div class="landing-content-scroll" id="landingScrollContent">
           <!-- TAB 1: BERANDA -->
           <section class="landing-tab-panel is-active" id="panelBeranda">
+            <!-- 0. TOP CINEMATIC VIDEO BANNER (Drive Videos Autoplay, Rotating & Looping) -->
+            <div class="beranda-top-video-banner" id="berandaTopVideoBanner">
+              <div class="top-video-viewport">
+                <video id="berandaHeroVideo" class="top-video-player" autoplay muted playsinline preload="auto">
+                  <source src="assets/videos/hero_video_1.mp4" type="video/mp4" />
+                </video>
+                <div class="top-video-overlay-gradient"></div>
+
+                <!-- Story / Segment Progress Bars -->
+                <div class="top-video-progress-row" id="topVideoProgressRow">
+                  <div class="top-progress-track"><div class="top-progress-fill" id="topProgressFill0"></div></div>
+                  <div class="top-progress-track"><div class="top-progress-fill" id="topProgressFill1"></div></div>
+                  <div class="top-progress-track"><div class="top-progress-fill" id="topProgressFill2"></div></div>
+                  <div class="top-progress-track"><div class="top-progress-fill" id="topProgressFill3"></div></div>
+                </div>
+
+                <!-- Scene Info & Controls Bar -->
+                <div class="top-video-info-bar">
+                  <div class="top-video-badge">
+                    <span class="video-live-dot"></span>
+                    <span id="topVideoSceneBadge">Sinema 01 · Japandi Luxury Living</span>
+                  </div>
+                  <p class="top-video-caption" id="topVideoCaption">Kawasan hunian eksklusif dua lantai diapit keteduhan alam dan kemudahan koridor Sukoharjo.</p>
+                </div>
+
+                <!-- Floating Playback Controls -->
+                <div class="top-video-floating-actions">
+                  <button type="button" class="btn-top-video-action" id="btnTopVideoPlayPause" onclick="toggleTopHeroVideoPlay()" title="Jeda / Putar Video">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" id="topVideoPlayIcon">
+                      <rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" />
+                    </svg>
+                  </button>
+                  <button type="button" class="btn-top-video-action" id="btnTopVideoMute" onclick="toggleTopHeroVideoMute()" title="Nyalakan / Senyapkan Suara">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" id="topVideoMuteIcon">
+                      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" />
+                      <line x1="23" y1="9" x2="17" y2="15" /><line x1="17" y1="9" x2="23" y2="15" />
+                    </svg>
+                  </button>
+                  <button type="button" class="btn-top-video-action" onclick="advanceTopHeroVideo(1)" title="Video Berikutnya">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
             <!-- 1. RUNNING ANNOUNCEMENT MARQUEE TICKER -->
             <div class="marquee-ticker-bar">
               <div class="marquee-track">
@@ -1141,22 +1188,22 @@
                 Barangkali rumah yang Anda cari bukan yang paling banyak menarik perhatian, melainkan ruang untuk meletakkan lelah, membesarkan tawa bersama orang terdekat, dan menyambut hari dengan ritme yang lebih tertata.
               </p>
 
-              <!-- 4 Stat Badges Grid -->
-              <div class="beranda-metrics-grid">
+              <!-- 4 Stat Badges Grid with Dynamic Counter Animation -->
+              <div class="beranda-metrics-grid" id="berandaMetricsGrid">
                 <div class="b-metric-cell">
-                  <strong>Rp 400 Jt</strong>
+                  <strong class="count-up-stat" data-target="400" data-prefix="Rp " data-suffix=" Jt">Rp 0 Jt</strong>
                   <span>Harga Perdana Mulai</span>
                 </div>
                 <div class="b-metric-cell">
-                  <strong>30 Unit</strong>
+                  <strong class="count-up-stat" data-target="30" data-prefix="" data-suffix=" Unit">0 Unit</strong>
                   <span>Keluarga Bertetangga</span>
                 </div>
                 <div class="b-metric-cell">
-                  <strong>177 m²</strong>
+                  <strong class="count-up-stat" data-target="177" data-prefix="" data-suffix=" m²">0 m²</strong>
                   <span>Clubhouse Bersama</span>
                 </div>
                 <div class="b-metric-cell">
-                  <strong>± 100 m</strong>
+                  <strong class="count-up-stat" data-target="100" data-prefix="± " data-suffix=" m">± 0 m</strong>
                   <span>Ke Gelora Merdeka</span>
                 </div>
               </div>

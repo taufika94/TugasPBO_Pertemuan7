@@ -643,3 +643,25 @@
   - **Pill Geometry (app.js, styles.css)**:
     - Reduced marker icon bounds from 110x28 to 95x26 and 90x26 with tighter padding and font sizing for crisp presentation.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #41: Top Autoplay Hero Video Carousel, Scroll-Triggered Navbar & Animated Stat Counters
+- **Context & Objective**: Fulfill user requirements for Beranda:
+  1. Top cinematic video carousel using authentic videos from Google Drive folder with autoplay, auto-advance, and continuous looping.
+  2. Top navbar appears only when the user scrolls down, remaining hidden/seamless when at the top.
+  3. Interactive counter animation on key metrics (Rp 400 Jt, 30 Unit, 177 m², ± 100 m) when scrolled into view.
+- **Key Changes Implemented**:
+  - **Cinematic Top Video Carousel (index.html, styles.css, app.js, assets/videos/)**:
+    - Downloaded and curated 4 distinct cinematic MP4 videos from the user's Google Drive folder to `assets/videos/hero_video_[1-4].mp4` (2.5MB–2.9MB).
+    - Built `#berandaTopVideoBanner` placed right at the very top of `#panelBeranda`.
+    - Integrated multi-segment progress bars (story indicator style) synchronized with video playback (`currentTime / duration`).
+    - Configured auto-advance on video `ended` event and infinite looping across all 4 scenes with crossfade transition.
+    - Added floating playback controls (Play/Pause, Mute/Unmute, and Next Scene).
+  - **Scroll-Triggered Navbar (styles.css, app.js)**:
+    - Positioned `.landing-navbar` with `position: absolute`, `transform: translateY(-100%)`, `opacity: 0`, and `pointer-events: none;`.
+    - Attached passive scroll listener in `initLandingNavbarScrollTrigger()`; when `scrollTop > 45px`, `.landing-navbar.is-scrolled` slides into view smoothly with glassmorphism backdrop blur.
+  - **Dynamic Animated Stat Counters (index.html, styles.css, app.js)**:
+    - Embedded `count-up-stat` elements with data targets: `400` (Rp 400 Jt), `30` (30 Unit), `177` (177 m²), and `100` (± 100 m).
+    - Created `initMetricsCounterAnimation()` using `IntersectionObserver` to trigger a 1.8s `easeOutCubic` rolling counter animation when the metrics grid enters viewport.
+- **Status**: Completed, Verified & Auto-Pushed.

@@ -12,7 +12,7 @@ function checkHasSavedConfiguration() {
       const parsed = JSON.parse(raw);
       if (parsed && typeof parsed === 'object') return true;
     }
-  } catch (_) {}
+  } catch (_) { }
   return false;
 }
 
@@ -76,7 +76,7 @@ function saveCurrentConfigToStorage() {
 
   try {
     localStorage.setItem('theParkSavedConfig', JSON.stringify(config));
-  } catch (_) {}
+  } catch (_) { }
 
   updateBottomBarVisibility();
 }
@@ -1700,8 +1700,8 @@ function openQuickModal(type) {
 
       <div class="info-list" style="max-height: 250px; overflow-y:auto; padding-right:4px;">
         ${unlockedList
-          .map(
-            (item) => `
+        .map(
+          (item) => `
           <div class="info-row" style="align-items:flex-start; padding:8px 0; border-bottom:1px solid rgba(229,211,175,0.12);">
             <div style="display:flex; flex-direction:column; gap:2px; flex:1; padding-right:8px;">
               <strong style="font-size:11.5px; color:#ffffff;">${item.head}</strong>
@@ -1709,8 +1709,8 @@ function openQuickModal(type) {
             </div>
             <strong style="font-size:11px; color:#81c784; background:rgba(129,199,132,0.12); padding:2px 6px; border-radius:4px; flex-shrink:0;">#${item.num}</strong>
           </div>`
-          )
-          .join('')}
+        )
+        .join('')}
       </div>
 
       <button class="btn-primary-forest" style="margin-top:14px; width:100%;" onclick="closeQuickModal(); finishTourAndExit(); setTimeout(() => switchLandingTab('SuratCinta', document.getElementById('tabBtnSuratCinta')), 250);" type="button">
@@ -1762,7 +1762,7 @@ function openQuickModal(type) {
     };
     try {
       localStorage.setItem('theParkSavedConfig', JSON.stringify(config));
-    } catch (_) {}
+    } catch (_) { }
 
     window.__hasSavedConfigSession = true;
     updateBottomBarVisibility();
@@ -1917,6 +1917,9 @@ function initLandingPage() {
   renderLandingUnits();
   switchLandingSiteplan('nagoya');
   setTimeout(recalculateSuratPayment, 400);
+  initTopHeroVideoPlayer();
+  initLandingNavbarScrollTrigger();
+  initMetricsCounterAnimation();
 }
 
 function filterCatalog(filterType, val, btnEl) {
@@ -2094,7 +2097,7 @@ function openSavedConfigModal() {
   try {
     const raw = localStorage.getItem('theParkSavedConfig');
     if (raw) config = JSON.parse(raw);
-  } catch (_) {}
+  } catch (_) { }
 
   const unit = HOUSE_UNITS[selectedUnitKey] || HOUSE_UNITS.nagoya;
   const lotId = selectedLotId || 'B.04';
@@ -2975,12 +2978,12 @@ function renderSuratTheme(idx) {
       if (i === idx) {
         c.classList.add('is-active');
         const scrollerBox = document.getElementById('themeNavScroller');
-      if (scrollerBox && c) {
-        scrollerBox.scrollTo({
-          left: c.offsetLeft - scrollerBox.clientWidth / 2 + c.clientWidth / 2,
-          behavior: 'smooth'
-        });
-      }
+        if (scrollerBox && c) {
+          scrollerBox.scrollTo({
+            left: c.offsetLeft - scrollerBox.clientWidth / 2 + c.clientWidth / 2,
+            behavior: 'smooth'
+          });
+        }
       } else {
         c.classList.remove('is-active');
       }
@@ -3146,6 +3149,213 @@ function initSuratCintaMagazine() {
   renderSuratTheme(currentSuratThemeIdx);
   renderSpecDetail(currentSpecType);
   renderPriceMatrix(currentPriceCluster);
+}
+
+/* --------------------------------------------------------------------------
+   09B. TOP HERO VIDEO CAROUSEL & SCROLL / COUNTER CONTROLLER
+   -------------------------------------------------------------------------- */
+const TOP_HERO_VIDEOS = [
+  {
+    src: 'assets/videos/hero_video_1.mp4',
+    badge: 'Sinema 01 · Japandi Luxury Living',
+    caption: 'Suasana resor privat dua lantai dengan keteduhan ruang terbuka hijau The Park Townhouse.'
+  },
+  {
+    src: 'assets/videos/hero_video_2.mp4',
+    badge: 'Sinema 02 · Keseharian & Gaya Hidup',
+    caption: 'Ruang untuk meletakkan lelah dan membesarkan tawa bersama keluarga terdekat.'
+  },
+  {
+    src: 'assets/videos/hero_video_3.mp4',
+    badge: 'Sinema 03 · Arsitektur & Lanskap',
+    caption: 'Sentuhan kayu alami, ventilasi silang yang sejuk, dan tata ruang lapang berkarakter.'
+  },
+  {
+    src: 'assets/videos/hero_video_4.mp4',
+    badge: 'Sinema 04 · Gerbang & Komunitas',
+    caption: 'Akses one-gate security 24 jam dengan clubhouse privat 177 m² selangkah dari hunian.'
+  }
+];
+
+let currentTopVideoIdx = 0;
+let isTopVideoPaused = false;
+
+function initTopHeroVideoPlayer() {
+  const videoEl = document.getElementById('berandaHeroVideo');
+  if (!videoEl) return;
+
+  videoEl.ontimeupdate = () => {
+    if (!videoEl.duration) return;
+    const pct = (videoEl.currentTime / videoEl.duration) * 100;
+    const currentFill = document.getElementById(`topProgressFill${currentTopVideoIdx}`);
+    if (currentFill) {
+      currentFill.style.width = `${pct}%`;
+    }
+  };
+
+  videoEl.onended = () => {
+    advanceTopHeroVideo(1);
+  };
+
+  resetTopProgressBars(currentTopVideoIdx);
+
+  videoEl.play().catch(() => {});
+}
+
+function resetTopProgressBars(activeIdx) {
+  for (let i = 0; i < 4; i++) {
+    const fill = document.getElementById(`topProgressFill${i}`);
+    if (!fill) continue;
+    if (i < activeIdx) {
+      fill.style.width = '100%';
+    } else if (i === activeIdx) {
+      fill.style.width = '0%';
+    } else {
+      fill.style.width = '0%';
+    }
+  }
+}
+
+function switchTopHeroVideo(idx) {
+  const videoEl = document.getElementById('berandaHeroVideo');
+  const badgeEl = document.getElementById('topVideoSceneBadge');
+  const captionEl = document.getElementById('topVideoCaption');
+  if (!videoEl) return;
+
+  currentTopVideoIdx = (idx + TOP_HERO_VIDEOS.length) % TOP_HERO_VIDEOS.length;
+  const item = TOP_HERO_VIDEOS[currentTopVideoIdx];
+
+  videoEl.style.opacity = '0.35';
+  setTimeout(() => {
+    videoEl.src = item.src;
+    videoEl.load();
+    if (!isTopVideoPaused) {
+      videoEl.play().catch(() => {});
+    }
+    videoEl.style.opacity = '1';
+  }, 180);
+
+  if (badgeEl) badgeEl.textContent = item.badge;
+  if (captionEl) captionEl.textContent = item.caption;
+
+  resetTopProgressBars(currentTopVideoIdx);
+}
+
+function advanceTopHeroVideo(step = 1) {
+  switchTopHeroVideo(currentTopVideoIdx + step);
+}
+
+function toggleTopHeroVideoPlay() {
+  const videoEl = document.getElementById('berandaHeroVideo');
+  const iconEl = document.getElementById('topVideoPlayIcon');
+  if (!videoEl) return;
+
+  if (videoEl.paused) {
+    videoEl.play();
+    isTopVideoPaused = false;
+    if (iconEl) {
+      iconEl.innerHTML = '<rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" />';
+    }
+  } else {
+    videoEl.pause();
+    isTopVideoPaused = true;
+    if (iconEl) {
+      iconEl.innerHTML = '<polygon points="5 3 19 12 5 21 5 3" />';
+    }
+  }
+}
+
+function toggleTopHeroVideoMute() {
+  const videoEl = document.getElementById('berandaHeroVideo');
+  const iconEl = document.getElementById('topVideoMuteIcon');
+  if (!videoEl) return;
+
+  videoEl.muted = !videoEl.muted;
+  if (iconEl) {
+    if (videoEl.muted) {
+      iconEl.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';
+    } else {
+      iconEl.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>';
+    }
+  }
+}
+
+function initLandingNavbarScrollTrigger() {
+  const scrollContainer = document.getElementById('landingScrollContent');
+  const navbar = document.querySelector('.landing-navbar');
+  if (!scrollContainer || !navbar) return;
+
+  const handleScroll = () => {
+    if (scrollContainer.scrollTop > 45) {
+      navbar.classList.add('is-scrolled');
+    } else {
+      navbar.classList.remove('is-scrolled');
+    }
+  };
+
+  scrollContainer.removeEventListener('scroll', handleScroll);
+  scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+}
+
+function initMetricsCounterAnimation() {
+  const container = document.getElementById('berandaMetricsGrid');
+  if (!container) return;
+
+  let hasAnimated = false;
+
+  const runAnimation = () => {
+    if (hasAnimated) return;
+    hasAnimated = true;
+
+    container.querySelectorAll('.b-metric-cell').forEach(cell => cell.classList.add('is-counting'));
+    const stats = container.querySelectorAll('.count-up-stat');
+    const duration = 1800;
+    const startTime = performance.now();
+
+    function frame(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+
+      stats.forEach(stat => {
+        const target = parseFloat(stat.dataset.target) || 0;
+        const prefix = stat.dataset.prefix || '';
+        const suffix = stat.dataset.suffix || '';
+        const current = Math.round(target * ease);
+        stat.textContent = `${prefix}${current}${suffix}`;
+      });
+
+      if (progress < 1) {
+        requestAnimationFrame(frame);
+      } else {
+        stats.forEach(stat => {
+          const target = stat.dataset.target;
+          const prefix = stat.dataset.prefix || '';
+          const suffix = stat.dataset.suffix || '';
+          stat.textContent = `${prefix}${target}${suffix}`;
+        });
+        container.querySelectorAll('.b-metric-cell').forEach(cell => cell.classList.remove('is-counting'));
+      }
+    }
+
+    requestAnimationFrame(frame);
+  };
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          runAnimation();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    observer.observe(container);
+  } else {
+    runAnimation();
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -3663,18 +3873,18 @@ function renderBerandaPoiList() {
     const card = document.createElement('div');
     card.className = 'poi-interactive-card';
     card.onclick = () => focusBerandaPOI(BERANDA_POIS.indexOf(poi));
-    const distText = activeBerandaCluster === 'nagoya' 
-      ? poi.distNagoya + ' (Nagoya)' 
+    const distText = activeBerandaCluster === 'nagoya'
+      ? poi.distNagoya + ' (Nagoya)'
       : poi.distOthers + ' (' + activeBerandaCluster.toUpperCase() + ')';
 
-    card.innerHTML = 
+    card.innerHTML =
       '<div class="poi-card-left">' +
-        '<div class="poi-card-name">' + poi.name + '</div>' +
-        '<div class="poi-card-meta">' +
-          '<span class="poi-dist-chip">' + distText + '</span>' +
-          '<span class="poi-circle-chip c' + poi.circle + '">Circle ' + poi.circle + '</span>' +
-          '<span class="poi-badge-cat">' + poi.cat + '</span>' +
-        '</div>' +
+      '<div class="poi-card-name">' + poi.name + '</div>' +
+      '<div class="poi-card-meta">' +
+      '<span class="poi-dist-chip">' + distText + '</span>' +
+      '<span class="poi-circle-chip c' + poi.circle + '">Circle ' + poi.circle + '</span>' +
+      '<span class="poi-badge-cat">' + poi.cat + '</span>' +
+      '</div>' +
       '</div>' +
       '<div style="font-size:11px;color:#c49a45;font-weight:700;">📍</div>';
     container.appendChild(card);
@@ -3983,8 +4193,8 @@ function updateKprFromSlider() {
   const monthlyRate = (interestPct / 100) / 12;
 
   // Annuity formula: M = P * [r(1+r)^n] / [(1+r)^n - 1]
-  const installment = (loanPrincipal * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / 
-                      (Math.pow(1 + monthlyRate, totalMonths) - 1);
+  const installment = (loanPrincipal * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) /
+    (Math.pow(1 + monthlyRate, totalMonths) - 1);
 
   // Update UI
   const displayPrice = document.getElementById('kprDisplayPrice');
@@ -4206,8 +4416,8 @@ function recalculateSuratPayment() {
     sisaBayarDesc = 'Akad kredit & pencairan bank mitra';
   }
 
-  const dpAmount = Math.round(currentSuratCalcScheme.startsWith('cash_') && currentSuratCalcScheme !== 'cash_keras' 
-    ? basePriceAtStage * 0.40 
+  const dpAmount = Math.round(currentSuratCalcScheme.startsWith('cash_') && currentSuratCalcScheme !== 'cash_keras'
+    ? basePriceAtStage * 0.40
     : hargaJual * dpPercent);
   const dpNetto = Math.max(0, dpAmount - bookingFee);
 

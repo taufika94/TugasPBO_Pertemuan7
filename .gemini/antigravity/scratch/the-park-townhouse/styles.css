@@ -4008,16 +4008,30 @@ body {
 }
 
 .landing-navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 16px;
-  background: #0c2318 !important; /* Exact opening background color */
+  background: rgba(12, 35, 24, 0.94) !important; /* Exact opening background color */
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(229, 211, 175, 0.15);
+  border-bottom: 1px solid rgba(229, 211, 175, 0.18);
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
-  z-index: 85;
+  z-index: 95;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.landing-navbar.is-scrolled {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .landing-brand {
@@ -6814,6 +6828,145 @@ body {
   margin: 0;
 }
 
+/* 0. Top Cinematic Video Banner (Drive Videos Autoplay & Looping) */
+.beranda-top-video-banner {
+  width: 100%;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #07120d;
+  box-shadow: 0 10px 30px rgba(10, 24, 18, 0.2);
+  margin-top: 2px;
+  border: 1px solid rgba(229, 211, 175, 0.16);
+}
+
+.top-video-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 280px;
+  overflow: hidden;
+  background: #06110b;
+}
+
+.top-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.top-video-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 18, 13, 0.45) 0%, rgba(7, 18, 13, 0.05) 45%, rgba(7, 18, 13, 0.85) 100%);
+  pointer-events: none;
+}
+
+.top-video-progress-row {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  gap: 5px;
+  z-index: 10;
+}
+
+.top-progress-track {
+  flex: 1;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+}
+
+.top-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: #dfb96d;
+  border-radius: 999px;
+  transition: width 0.1s linear;
+}
+
+.top-video-info-bar {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  right: 92px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  pointer-events: none;
+}
+
+.top-video-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(14, 38, 28, 0.82);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(223, 185, 109, 0.35);
+  border-radius: 999px;
+  padding: 3px 10px 3px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #dfb96d;
+  letter-spacing: 0.03em;
+  width: fit-content;
+}
+
+.video-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4caf50;
+  box-shadow: 0 0 8px #4caf50;
+  animation: pulseGreen 1.8s infinite;
+}
+
+.top-video-caption {
+  font-size: 11px;
+  line-height: 1.35;
+  color: #f3efe6;
+  margin: 0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.top-video-floating-actions {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-top-video-action {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(12, 35, 24, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(229, 211, 175, 0.25);
+  color: #f5f2eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.btn-top-video-action:hover {
+  transform: scale(1.08);
+  background: rgba(22, 58, 41, 0.95);
+  color: #dfb96d;
+}
+
 .beranda-metrics-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -6829,12 +6982,26 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-.b-metric-cell strong {
+.b-metric-cell strong,
+.b-metric-cell strong.count-up-stat {
   font-size: 13px;
   font-weight: 700;
   color: #16241c;
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.b-metric-cell.is-counting {
+  border-color: #2e7d32;
+  transform: translateY(-2px);
+}
+
+.b-metric-cell.is-counting strong.count-up-stat {
+  color: #2e7d32;
 }
 
 .b-metric-cell span {
