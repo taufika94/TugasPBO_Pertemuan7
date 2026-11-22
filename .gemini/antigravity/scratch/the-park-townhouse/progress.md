@@ -890,3 +890,24 @@
     - Converted outlier `.btn-open-surat-modal` (previously `#dfb96d` gold) and `.unit-inv-select-btn` (previously `#16241c`) to the unified forest green gradient.
     - Synchronized Secondary/Outline Action Buttons (`.btn-secondary-link`, `.btn-card-denah`, `.btn-cluster-explore`, `.btn-schedule-visit`, `.btn-outline-forest.calc-cta-btn`, `.btn-reset-filters`) to consistent clean neutral background (`#fbfaf7`), subtle border (`1px solid #dcd4c3`), and dark forest text (`#16241c`).
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #57: Full Synchronization & Visual Alignment of Site Plan Tab with Beranda Masterplan
+- **Context & Objective**: Re-engineer the dedicated Site Plan tab (`#panelSitePlan`) to exactly mirror the modern, interactive Masterplan component on Beranda (`#secMasterPlan`), ensuring 100% visual and behavioral synchronization.
+- **Key Changes Implemented**:
+  - **Structure & Markup Alignment (index.html)**:
+    - Replaced the outdated, broken `.siteplan-page-card` markup with `.sync-masterplan-card` (`#pageMasterPlan`) matching `#secMasterPlan` 1:1.
+    - Added cluster selector pills (`.cluster-pill-tabs`), cluster summary header with green SHM badge, and 4-item top specs box (Kavling, Prasarana, Sarana, RTH).
+    - Integrated `.siteplan-map-container` with absolute `.siteplan-compass-badge` ("UTARA"), interactive high-precision markers (`.siteplan-lot-marker`), and smooth lot hover/active states.
+    - Added the 4-column quick lot selector pills grid (`.kavling-pills-scroll`, `.kavling-pill-btn`).
+    - Integrated the clean frosted inspector card (`.kavling-detail-card.clean-frosted-card`) with structured specs breakdown and synchronized forest green booking CTA (`.btn-order-kavling-champagne`).
+    - Added 4-column bottom statistics grid (`.siteplan-stats-grid`).
+  - **Style Unification (styles.css)**:
+    - Deleted 177 lines of obsolete, conflicting CSS rules (`.siteplan-page-card`, `.sp-cluster-btn`, `.siteplan-display-wrap`, `.sp-selected-lot-box`, etc.).
+    - Refactored Masterplan CSS rules to target `.sync-masterplan-card`, enabling instant, unified styling across both Beranda and Site Plan tab with zero duplication.
+  - **Bi-directional Synchronization Logic (app.js)**:
+    - Updated `renderBerandaMasterplanSiteplan` to simultaneously render and populate data for both Beranda and Site Plan tab elements.
+    - Updated `selectBerandaLot` to sync marker active states, selector pills active states, and inspector cards across both views concurrently.
+    - Synced `switchBerandaLotCluster` and `switchLandingSiteplan` so changing cluster on either page seamlessly updates both views.
+- **Status**: Completed, Verified & Auto-Pushed.

@@ -1515,7 +1515,7 @@
             </div>
 
             <!-- 5. MASTER PLAN INTERAKTIF -->
-            <div class="landing-section-card" id="secMasterPlan">
+            <div class="landing-section-card sync-masterplan-card" id="secMasterPlan">
               <div class="section-card-head">
                 <span class="section-tag-gold">DENAH KAWASAN</span>
                 <h2 class="section-card-title">Temukan Ritme Klaster yang Sesuai</h2>
@@ -3334,80 +3334,113 @@
 
           <!-- TAB 3: SITE PLAN -->
           <section class="landing-tab-panel" id="panelSitePlan" style="display: none;">
-            <div class="siteplan-page-card">
-              <div class="siteplan-page-head">
-                <span class="siteplan-shm-pill">SHM Sudah Pecah Sempurna</span>
-                <h2 class="siteplan-page-title">Peta Masterplan Kawasan</h2>
-                <p class="siteplan-page-desc">
+            <div class="landing-section-card sync-masterplan-card" id="pageMasterPlan">
+              <div class="section-card-head">
+                <span class="section-tag-gold">DENAH KAWASAN</span>
+                <h2 class="section-card-title">Peta Masterplan Kawasan</h2>
+                <p class="section-card-sub">
                   Pilih klaster untuk melihat posisi kavling, arah hadap matahari, dan akses menuju fasilitas clubhouse.
                 </p>
               </div>
 
-              <!-- Cluster Switcher Buttons -->
-              <div class="siteplan-cluster-tabs">
-                <button class="sp-cluster-btn is-active" id="spTabNagoya"
-                  onclick="switchLandingSiteplan('nagoya', this)" type="button">Klaster Nagoya</button>
-                <button class="sp-cluster-btn" id="spTabTokyo" onclick="switchLandingSiteplan('tokyo', this)"
-                  type="button">Klaster Tokyo</button>
-                <button class="sp-cluster-btn" id="spTabOsaka" onclick="switchLandingSiteplan('osaka', this)"
-                  type="button">Klaster Osaka</button>
+              <!-- Cluster Selector Tabs -->
+              <div class="cluster-pill-tabs">
+                <button type="button" class="cluster-pill-btn is-active" id="btnPageClusterNagoya"
+                  onclick="switchLandingSiteplan('nagoya', this)">Nagoya</button>
+                <button type="button" class="cluster-pill-btn" id="btnPageClusterOsaka"
+                  onclick="switchLandingSiteplan('osaka', this)">Osaka</button>
+                <button type="button" class="cluster-pill-btn" id="btnPageClusterTokyo"
+                  onclick="switchLandingSiteplan('tokyo', this)">Tokyo</button>
               </div>
 
-              <!-- Masterplan Visual with Dynamic Pins -->
-              <div class="siteplan-display-wrap">
-                <img src="assets/drive/siteplan-nagoya.jpg" alt="Site Plan Kawasan The Park Townhouse"
-                  class="siteplan-display-img" id="spDisplayImg" />
-                <div class="siteplan-lots-overlay" id="spLotsOverlay">
-                  <!-- Rendered dynamically via JS -->
+              <!-- Cluster Summary Header & Top Specs -->
+              <div class="siteplan-header" style="margin-top: 10px;">
+                <div class="siteplan-title-row">
+                  <h3 class="siteplan-cluster-title" id="pageSpClusterTitle">Nagoya</h3>
+                  <span class="siteplan-shm-badge" id="pageSpShmBadge">SHM sudah pecah sempurna (Nagoya)</span>
+                </div>
+                <div class="siteplan-top-specs-box">
+                  <div class="sp-spec-item"><span>Kavling</span> <strong id="pageTopStatKavling">15 unit</strong></div>
+                  <div class="sp-spec-item"><span>Prasarana</span> <strong id="pageTopStatPrasarana">832,30 m²</strong></div>
+                  <div class="sp-spec-item"><span>Sarana &amp; Clubhouse</span> <strong id="pageTopStatSarana">254,25 m²</strong></div>
+                  <div class="sp-spec-item"><span>RTH</span> <strong id="pageTopStatRth">119,60 m²</strong></div>
                 </div>
               </div>
 
-              <!-- Selected Lot Box -->
-              <div class="sp-selected-lot-box" id="spSelectedLotBox">
-                <div class="sp-lot-header">
+              <!-- Visual Site Plan Map with Clickable Lots & Compass Badge -->
+              <div class="siteplan-map-container" id="pageSiteplanMapContainer" style="margin-top: 10px;">
+                <div class="siteplan-compass-badge">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+                    <path d="M12 2L16 11H8L12 2Z" fill="#b39255" />
+                    <path d="M12 22L8 13H16L12 22Z" fill="#718277" />
+                  </svg>
+                  <span>UTARA</span>
+                </div>
+                <img src="assets/drive/siteplan-nagoya.jpg" alt="Site Plan Kawasan" class="siteplan-img" id="pageSpImg" />
+                <div class="siteplan-lots-overlay" id="pageSpLotsOverlay">
+                  <!-- Dynamically rendered kavling interactive buttons -->
+                </div>
+              </div>
+
+              <!-- Kavling Quick Selector: Clean 4-Column Pill Grid -->
+              <div class="kavling-quick-selector" style="margin-top: 14px;">
+                <div class="kavling-pills-scroll" id="pageKavlingPillsRow">
+                  <!-- Dynamically rendered pills (A.01 · 84 m², etc.) -->
+                </div>
+              </div>
+
+              <!-- Selected Lot Inspector Card -->
+              <div class="kavling-detail-card clean-frosted-card" id="pageLotInspector" style="margin-top: 14px;">
+                <div class="kavling-detail-header">
                   <div>
-                    <span class="sp-lot-eyebrow">KAVLING TERPILIH DI PETA</span>
-                    <h4 class="sp-lot-name" id="spLotTitle">Nagoya B.04</h4>
+                    <span class="kavling-label">KAVLING TERPILIH</span>
+                    <h4 class="kavling-id-title" id="pageInspLotTag">Kavling A.01</h4>
                   </div>
-                  <span class="sp-lot-badge" id="spLotStatus">Tersedia · Rekomendasi</span>
+                  <span class="kavling-status-badge status-available" id="pageInspLotStatus">TERSEDIA</span>
                 </div>
-                <div class="sp-lot-specs-grid">
-                  <div class="sp-spec-item">
-                    <span>Luas Tanah</span>
-                    <strong id="spLotArea">90 m²</strong>
+
+                <div class="kavling-specs-clean">
+                  <div class="kavling-clean-row">
+                    <span class="label">Luas Bangunan</span>
+                    <strong class="val" id="pageInspLotLb">75 m²</strong>
                   </div>
-                  <div class="sp-spec-item">
-                    <span>Tipe Bangunan</span>
-                    <strong id="spLotType">Nagoya Gold (LB 75)</strong>
+                  <div class="kavling-clean-row">
+                    <span class="label">Luas Tanah</span>
+                    <strong class="val" id="pageInspLotLt">84 m²</strong>
                   </div>
-                  <div class="sp-spec-item">
-                    <span>Estimasi Harga</span>
-                    <strong id="spLotPrice">Rp 650 Juta</strong>
+                  <div class="kavling-clean-row">
+                    <span class="label">Tipe Bangunan</span>
+                    <strong class="val" id="pageInspLotType">Nagoya Gold (LB 75)</strong>
+                  </div>
+                  <div class="kavling-clean-row price-row">
+                    <span class="label">Harga Cash Keras</span>
+                    <strong class="val price-val" id="pageInspLotPrice">Rp 720 Juta</strong>
                   </div>
                 </div>
-                <button class="btn-primary-forest sp-select-lot-btn" type="button" onclick="confirmLotFromLanding()">
-                  <span>Pilih &amp; Simpan Kavling Ini ke Konfigurasi</span>
+
+                <button type="button" class="btn-order-kavling-champagne" onclick="orderInspectedLot()">
+                  <span>Pesan Kavling Ini Sekarang</span>
                   <span>→</span>
                 </button>
               </div>
 
-              <!-- Cluster Statistics Grid -->
-              <div class="sp-cluster-stats">
-                <div class="sp-stat-box">
-                  <span class="sp-stat-label">Total Kavling</span>
-                  <strong class="sp-stat-value" id="spStatTotal">15 Unit</strong>
+              <!-- Siteplan Bottom Stats Grid -->
+              <div class="siteplan-stats-grid" style="margin-top: 14px;">
+                <div class="siteplan-stat-cell">
+                  <span class="stat-name">Kavling</span>
+                  <strong class="stat-number" id="pageStatKavlingVal">15 unit</strong>
                 </div>
-                <div class="sp-stat-box">
-                  <span class="sp-stat-label">Lebar Jalan</span>
-                  <strong class="sp-stat-value">7 – 8 Meter</strong>
+                <div class="siteplan-stat-cell">
+                  <span class="stat-name">Prasarana</span>
+                  <strong class="stat-number" id="pageStatPrasaranaVal">832,30 m²</strong>
                 </div>
-                <div class="sp-stat-box">
-                  <span class="sp-stat-label">RTH &amp; Taman</span>
-                  <strong class="sp-stat-value" id="spStatRth">119,60 m²</strong>
+                <div class="siteplan-stat-cell">
+                  <span class="stat-name">Sarana &amp; Fasilitas</span>
+                  <strong class="stat-number" id="pageStatSaranaVal">254,25 m²</strong>
                 </div>
-                <div class="sp-stat-box">
-                  <span class="sp-stat-label">Keamanan</span>
-                  <strong class="sp-stat-value">One-Gate 24 Jam</strong>
+                <div class="siteplan-stat-cell">
+                  <span class="stat-name">RTH Kawasan</span>
+                  <strong class="stat-number" id="pageStatRthVal">119,60 m²</strong>
                 </div>
               </div>
             </div>

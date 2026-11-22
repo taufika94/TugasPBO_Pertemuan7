@@ -3187,9 +3187,10 @@ body {
   background: linear-gradient(135deg, #0d2720 0%, #173d32 100%);
   transform: translateY(-1px);
 }
-  background: #f0e2c4;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+
+background: #f0e2c4;
+transform: translateY(-1px);
+box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
 }
 
 .siteplan-actions {
@@ -5795,15 +5796,16 @@ body {
   white-space: nowrap;
   transition: all 0.2s ease;
 }
-  font-size: 11px;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  white-space: nowrap;
-  transition: all 0.2s ease;
+
+font-size: 11px;
+font-weight: 600;
+cursor: pointer;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+white-space: nowrap;
+transition: all 0.2s ease;
 }
 
 .btn-theme-page:hover:not(:disabled) {
@@ -6900,183 +6902,11 @@ body {
   color: #876427;
 }
 
-/* Site Plan Tab */
-.siteplan-page-card {
-  background: #ffffff;
-  border: 1px solid #e8e2d5;
-  border-radius: 18px;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  box-shadow: 0 4px 18px rgba(22, 36, 28, 0.05);
-}
-
-.siteplan-page-head {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.siteplan-shm-pill {
-  align-self: flex-start;
-  font-size: 9px;
-  color: #2e7d32;
-  background: rgba(46, 125, 50, 0.12);
-  padding: 2px 7px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.siteplan-page-title {
-  font-family: var(--font-serif);
-  font-size: 18px;
-  color: #16241c;
-  margin: 0;
-}
-
-.siteplan-page-desc {
-  font-size: 11px;
-  color: #4a554e;
-  margin: 0;
-  line-height: 1.45;
-}
-
-.siteplan-cluster-tabs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-}
-
-.sp-cluster-btn {
-  min-height: 34px;
-  height: 34px;
-  padding: 0 8px;
-  border-radius: 8px;
-  background: #f5f2eb;
-  border: 1px solid #e0d8c7;
-  color: #2c3830;
-  font-family: var(--font-sans);
-  font-size: 10.5px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.sp-cluster-btn.is-active {
-  background: #16241c;
-  border-color: #16241c;
-  color: #ffffff;
-}
-
-.siteplan-display-wrap {
-  position: relative;
+/* Site Plan Tab Container Constraint */
+#panelSitePlan {
+  max-width: 860px;
+  margin: 0 auto;
   width: 100%;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid #e8e2d5;
-  background: #121c15;
-}
-
-.siteplan-display-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.sp-selected-lot-box {
-  background: #fbfaf7;
-  border-radius: 12px;
-  padding: 12px;
-  border: 1px solid #e8e2d5;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.sp-lot-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.sp-lot-eyebrow {
-  font-size: 9px;
-  color: #5c6860;
-  letter-spacing: 0.06em;
-}
-
-.sp-lot-name {
-  font-family: var(--font-serif);
-  font-size: 16px;
-  color: #16241c;
-  margin: 0;
-}
-
-.sp-lot-badge {
-  font-size: 9px;
-  color: #2e7d32;
-  background: rgba(46, 125, 50, 0.12);
-  padding: 2px 7px;
-  border-radius: 6px;
-  font-weight: 600;
-}
-
-.sp-lot-specs-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-}
-
-.sp-spec-item {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.sp-spec-item span {
-  font-size: 9px;
-  color: #5c6860;
-}
-
-.sp-spec-item strong {
-  font-size: 11.5px;
-  color: #16241c;
-}
-
-.sp-select-lot-btn {
-  margin-top: 4px;
-}
-
-.sp-cluster-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
-}
-
-.sp-stat-box {
-  background: #ffffff;
-  border: 1px solid #e8e2d5;
-  border-radius: 10px;
-  padding: 8px 6px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.sp-stat-label {
-  font-size: 8.5px;
-  color: #5c6860;
-}
-
-.sp-stat-value {
-  font-size: 11.5px;
-  color: #16241c;
-  font-weight: 700;
 }
 
 /* Fasilitas Tab */
@@ -9272,7 +9102,7 @@ body {
   gap: 2px;
 }
 
-#secMasterPlan {
+.sync-masterplan-card {
   background: #ffffff;
   border: 1px solid #e8e2d5;
   border-radius: 12px;
@@ -9281,13 +9111,13 @@ body {
   box-sizing: border-box;
 }
 
-#secMasterPlan .cluster-pill-tabs {
+.sync-masterplan-card .cluster-pill-tabs {
   display: flex;
   gap: 6px;
   margin-top: 10px;
 }
 
-#secMasterPlan .cluster-pill-btn {
+.sync-masterplan-card .cluster-pill-btn {
   flex: 1;
   min-height: 34px;
   height: 34px;
@@ -9305,12 +9135,12 @@ body {
   justify-content: center;
 }
 
-#secMasterPlan .cluster-pill-btn:hover {
+.sync-masterplan-card .cluster-pill-btn:hover {
   background: #f3efe6;
   border-color: #11332a;
 }
 
-#secMasterPlan .cluster-pill-btn.is-active {
+.sync-masterplan-card .cluster-pill-btn.is-active {
   background: #11332a;
   border-color: #11332a;
   color: #ffffff;
@@ -9318,13 +9148,13 @@ body {
   box-shadow: 0 2px 8px rgba(17, 51, 42, 0.2);
 }
 
-#secMasterPlan .siteplan-header {
+.sync-masterplan-card .siteplan-header {
   margin-top: 10px;
   padding-bottom: 8px;
   border-bottom: 1px solid #f0eae1;
 }
 
-#secMasterPlan .siteplan-title-row {
+.sync-masterplan-card .siteplan-title-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9332,7 +9162,7 @@ body {
   flex-wrap: wrap;
 }
 
-#secMasterPlan .siteplan-cluster-title {
+.sync-masterplan-card .siteplan-cluster-title {
   font-family: var(--font-serif);
   font-size: 16.5px;
   font-weight: 700;
@@ -9340,7 +9170,7 @@ body {
   margin: 0;
 }
 
-#secMasterPlan .siteplan-shm-badge {
+.sync-masterplan-card .siteplan-shm-badge {
   font-size: 10.5px;
   font-weight: 700;
   padding: 4px 10px;
@@ -9351,14 +9181,14 @@ body {
   white-space: nowrap;
 }
 
-#secMasterPlan .siteplan-tag-sub {
+.sync-masterplan-card .siteplan-tag-sub {
   font-size: 11.5px;
   color: #55655b;
   font-weight: 500;
   margin-top: 4px;
 }
 
-#secMasterPlan .siteplan-area-sub {
+.sync-masterplan-card .siteplan-area-sub {
   font-size: 10.5px;
   color: #8a7b62;
   font-weight: 600;
@@ -9368,7 +9198,7 @@ body {
 }
 
 /* Visual Map Container */
-#secMasterPlan .siteplan-map-container {
+.sync-masterplan-card .siteplan-map-container {
   position: relative;
   width: 100%;
   border-radius: 16px;
@@ -9380,7 +9210,7 @@ body {
   box-sizing: border-box;
 }
 
-#secMasterPlan .siteplan-compass-badge {
+.sync-masterplan-card .siteplan-compass-badge {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -9400,20 +9230,20 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-#secMasterPlan .siteplan-img {
+.sync-masterplan-card .siteplan-img {
   width: 100%;
   height: auto;
   display: block;
   object-fit: contain;
 }
 
-#secMasterPlan .siteplan-lots-overlay {
+.sync-masterplan-card .siteplan-lots-overlay {
   position: absolute;
   inset: 0;
   pointer-events: auto;
 }
 
-#secMasterPlan .siteplan-lot-marker {
+.sync-masterplan-card .siteplan-lot-marker {
   position: absolute;
   transform: translate(-50%, -50%);
   background: rgba(22, 36, 28, 0.92);
@@ -9429,8 +9259,8 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
-#secMasterPlan .siteplan-lot-marker:hover,
-#secMasterPlan .siteplan-lot-marker.is-active {
+.sync-masterplan-card .siteplan-lot-marker:hover,
+.sync-masterplan-card .siteplan-lot-marker.is-active {
   background: #2e7d32;
   border-color: #a5d6a7;
   color: #ffffff;
@@ -9440,11 +9270,11 @@ body {
 }
 
 /* Quick Lot Selector Row */
-#secMasterPlan .kavling-quick-selector {
+.sync-masterplan-card .kavling-quick-selector {
   margin-top: 16px;
 }
 
-#secMasterPlan .kavling-selector-header {
+.sync-masterplan-card .kavling-selector-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9453,7 +9283,7 @@ body {
   gap: 4px;
 }
 
-#secMasterPlan .kavling-selector-label {
+.sync-masterplan-card .kavling-selector-label {
   font-size: 10px;
   font-weight: 700;
   color: #64746b;
@@ -9461,14 +9291,14 @@ body {
   text-transform: uppercase;
 }
 
-#secMasterPlan .kavling-selector-hint {
+.sync-masterplan-card .kavling-selector-hint {
   font-size: 10px;
   color: #8a7b62;
   font-style: italic;
 }
 
 /* Top Summary 4-Stats Box (Ruang 4/7 Style) */
-#secMasterPlan .siteplan-top-specs-box {
+.sync-masterplan-card .siteplan-top-specs-box {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px 16px;
@@ -9479,31 +9309,31 @@ body {
   margin-top: 10px;
 }
 
-#secMasterPlan .sp-spec-item {
+.sync-masterplan-card .sp-spec-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 11px;
 }
 
-#secMasterPlan .sp-spec-item span {
+.sync-masterplan-card .sp-spec-item span {
   color: #64746b;
   font-weight: 500;
 }
 
-#secMasterPlan .sp-spec-item strong {
+.sync-masterplan-card .sp-spec-item strong {
   color: #16241c;
   font-weight: 700;
 }
 
-#secMasterPlan .kavling-pills-scroll {
+.sync-masterplan-card .kavling-pills-scroll {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
   margin-top: 10px;
 }
 
-#secMasterPlan .kavling-pill-btn {
+.sync-masterplan-card .kavling-pill-btn {
   width: 100%;
   font-size: 10px;
   font-weight: 600;
@@ -9523,12 +9353,12 @@ body {
   text-align: center;
 }
 
-#secMasterPlan .kavling-pill-btn:hover {
+.sync-masterplan-card .kavling-pill-btn:hover {
   background: #f3efe6;
   border-color: #11332a;
 }
 
-#secMasterPlan .kavling-pill-btn.is-active {
+.sync-masterplan-card .kavling-pill-btn.is-active {
   background: #11332a;
   border-color: #11332a;
   color: #ffffff;
@@ -9537,7 +9367,7 @@ body {
 }
 
 /* Selected Lot Inspector Card (Harmonized Japandi Modern) */
-#secMasterPlan .clean-frosted-card {
+.sync-masterplan-card .clean-frosted-card {
   background: #ffffff;
   border: 1px solid #e8e2d5;
   border-radius: 12px;
@@ -9550,7 +9380,7 @@ body {
   box-sizing: border-box;
 }
 
-#secMasterPlan .kavling-detail-header {
+.sync-masterplan-card .kavling-detail-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9558,7 +9388,7 @@ body {
   border-bottom: 1px solid #f0eae1;
 }
 
-#secMasterPlan .kavling-label {
+.sync-masterplan-card .kavling-label {
   font-family: var(--font-sans);
   font-size: 9px;
   letter-spacing: 0.1em;
@@ -9572,7 +9402,7 @@ body {
   margin-bottom: 2px;
 }
 
-#secMasterPlan .kavling-id-title {
+.sync-masterplan-card .kavling-id-title {
   font-family: var(--font-serif);
   font-size: 15px;
   font-weight: 700;
@@ -9581,7 +9411,7 @@ body {
   line-height: 1.25;
 }
 
-#secMasterPlan .kavling-status-badge {
+.sync-masterplan-card .kavling-status-badge {
   font-family: var(--font-sans);
   font-size: 9.5px;
   font-weight: 700;
@@ -9591,26 +9421,26 @@ body {
   text-transform: uppercase;
 }
 
-#secMasterPlan .kavling-status-badge.status-available {
+.sync-masterplan-card .kavling-status-badge.status-available {
   background: #e8f5e9;
   color: #1b5e20;
   border: 1px solid #a5d6a7;
 }
 
-#secMasterPlan .kavling-status-badge.status-booked {
+.sync-masterplan-card .kavling-status-badge.status-booked {
   background: #fff8e1;
   color: #b78103;
   border: 1px solid #ffe082;
 }
 
-#secMasterPlan .kavling-status-badge.status-sold {
+.sync-masterplan-card .kavling-status-badge.status-sold {
   background: #ffebee;
   color: #c62828;
   border: 1px solid #ffcdd2;
 }
 
 /* Harmonized Specs Breakdown Box */
-#secMasterPlan .kavling-specs-clean {
+.sync-masterplan-card .kavling-specs-clean {
   background: #fbfaf7;
   border: 1px solid #e8e2d5;
   border-radius: 8px;
@@ -9621,7 +9451,7 @@ body {
   margin: 0;
 }
 
-#secMasterPlan .kavling-clean-row {
+.sync-masterplan-card .kavling-clean-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9630,33 +9460,33 @@ body {
   padding: 2px 0;
 }
 
-#secMasterPlan .kavling-clean-row .label {
+.sync-masterplan-card .kavling-clean-row .label {
   font-family: var(--font-sans);
   font-size: 11px;
   color: #5c6860;
   font-weight: 500;
 }
 
-#secMasterPlan .kavling-clean-row .val {
+.sync-masterplan-card .kavling-clean-row .val {
   font-family: var(--font-sans);
   font-size: 11.5px;
   font-weight: 700;
   color: #16241c;
 }
 
-#secMasterPlan .kavling-clean-row.price-row {
+.sync-masterplan-card .kavling-clean-row.price-row {
   border-top: 1px dashed #dfd7c8;
   padding-top: 6px;
   margin-top: 2px;
 }
 
-#secMasterPlan .kavling-clean-row.price-row .label {
+.sync-masterplan-card .kavling-clean-row.price-row .label {
   font-weight: 700;
   color: #11332a;
   font-size: 11.5px;
 }
 
-#secMasterPlan .kavling-clean-row.price-row .price-val {
+.sync-masterplan-card .kavling-clean-row.price-row .price-val {
   font-family: var(--font-serif);
   color: #11332a;
   font-size: 15px;
@@ -9664,7 +9494,7 @@ body {
 }
 
 /* Harmonized Action Button */
-#secMasterPlan .btn-order-kavling-champagne {
+.sync-masterplan-card .btn-order-kavling-champagne {
   background: linear-gradient(135deg, #11332a 0%, #1e4d40 100%);
   color: #ffffff;
   border: none;
@@ -9686,14 +9516,14 @@ body {
   box-sizing: border-box;
 }
 
-#secMasterPlan .btn-order-kavling-champagne:hover {
+.sync-masterplan-card .btn-order-kavling-champagne:hover {
   background: linear-gradient(135deg, #0d2720 0%, #173d32 100%);
   transform: translateY(-1px);
   box-shadow: 0 6px 18px rgba(17, 51, 42, 0.28);
 }
 
 /* Siteplan Cluster Statistics Grid */
-#secMasterPlan .siteplan-stats-grid {
+.sync-masterplan-card .siteplan-stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
@@ -9706,13 +9536,13 @@ body {
 }
 
 @media (max-width: 480px) {
-  #secMasterPlan .siteplan-stats-grid {
+  .sync-masterplan-card .siteplan-stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
 }
 
-#secMasterPlan .siteplan-stat-cell {
+.sync-masterplan-card .siteplan-stat-cell {
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -9720,7 +9550,7 @@ body {
   align-items: center;
 }
 
-#secMasterPlan .siteplan-stat-cell .stat-name {
+.sync-masterplan-card .siteplan-stat-cell .stat-name {
   font-size: 9.5px;
   color: #64746b;
   text-transform: uppercase;
@@ -9728,7 +9558,7 @@ body {
   letter-spacing: 0.04em;
 }
 
-#secMasterPlan .siteplan-stat-cell .stat-number {
+.sync-masterplan-card .siteplan-stat-cell .stat-number {
   font-size: 13px;
   color: #16241c;
   /* High contrast dark green */

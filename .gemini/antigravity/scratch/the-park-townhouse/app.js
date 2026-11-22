@@ -2249,66 +2249,24 @@ function switchLandingTab(tabName, btnEl) {
 }
 
 function switchLandingSiteplan(clusterKey, btnEl) {
-  const displayImg = document.getElementById('spDisplayImg');
-  const overlayEl = document.getElementById('spLotsOverlay');
-  const statTotal = document.getElementById('spStatTotal');
-  const statRth = document.getElementById('spStatRth');
-
-  document.querySelectorAll('.sp-cluster-btn').forEach(b => b.classList.remove('is-active'));
-  if (btnEl) {
-    btnEl.classList.add('is-active');
-  } else {
-    const defaultBtn = document.getElementById(`spTab${clusterKey.charAt(0).toUpperCase() + clusterKey.slice(1)}`);
-    if (defaultBtn) defaultBtn.classList.add('is-active');
-  }
-
-  const data = SITEPLAN_DATA[clusterKey] || SITEPLAN_DATA.nagoya;
-  if (displayImg) displayImg.src = data.img;
-  if (statTotal) statTotal.textContent = `${data.lots.length} Unit`;
-  if (statRth) statRth.textContent = clusterKey === 'nagoya' ? '119,60 m²' : clusterKey === 'tokyo' ? '184,20 m²' : '142,50 m²';
-
-  if (overlayEl) {
-    overlayEl.innerHTML = data.lots.map(lot => `
-      <button class="siteplan-lot-pin ${lot.id === (selectedLotId || data.lots[0].id) ? 'is-selected' : ''}"
-        style="left: ${lot.x}%; top: ${lot.y}%;"
-        onclick="pickLandingLot('${lot.id}', '${clusterKey}')" type="button">
-        <span>${lot.id}</span>
-      </button>
-    `).join('');
-  }
-
-  const activeLot = data.lots.find(l => l.id === selectedLotId) || data.lots[0];
-  if (activeLot) updateLandingLotCard(activeLot);
+  const cluster = clusterKey || currentBerandaLotCluster || 'nagoya';
+  switchBerandaLotCluster(cluster, btnEl);
 }
 
 function pickLandingLot(lotId, clusterKey) {
-  selectedLotId = lotId;
-  const data = SITEPLAN_DATA[clusterKey] || SITEPLAN_DATA.nagoya;
-  const lot = data.lots.find(l => l.id === lotId) || data.lots[0];
-  if (lot) updateLandingLotCard(lot);
-
-  document.querySelectorAll('.siteplan-lot-pin').forEach(pin => {
-    pin.classList.toggle('is-selected', pin.textContent.trim() === lotId);
-  });
+  selectBerandaLot(lotId, clusterKey);
 }
 
 function updateLandingLotCard(lot) {
-  const title = document.getElementById('spLotTitle');
-  const status = document.getElementById('spLotStatus');
-  const area = document.getElementById('spLotArea');
-  const type = document.getElementById('spLotType');
-  const price = document.getElementById('spLotPrice');
-
-  if (title) title.textContent = `${currentClusterKey.charAt(0).toUpperCase() + currentClusterKey.slice(1)} ${lot.id}`;
-  if (status) status.textContent = lot.status;
-  if (area) area.textContent = lot.area;
-  if (type) type.textContent = lot.type;
-  if (price) price.textContent = lot.price;
+  if (lot) selectBerandaLot(lot.id, currentBerandaLotCluster || 'nagoya');
 }
 
 function confirmLotFromLanding() {
-  saveSiteplanChoice();
-  openSavedConfigModal();
+  orderInspectedLot();
+}
+
+function orderPageInspectedLot() {
+  orderInspectedLot();
 }
 
 function openSavedConfigModal() {
@@ -4151,8 +4109,10 @@ const BERANDA_LOTS = {
 function renderBerandaMasterplanSiteplan(clusterKey) {
   const cluster = clusterKey || currentBerandaLotCluster || 'nagoya';
   currentBerandaLotCluster = cluster;
+  currentClusterKey = cluster;
   const data = SITEPLAN_DATA[cluster] || SITEPLAN_DATA.nagoya;
 
+  // Beranda elements
   const titleEl = document.getElementById('berandaSpClusterTitle');
   const shmEl = document.getElementById('berandaSpShmBadge');
   const tagEl = document.getElementById('berandaSpTagSub');
@@ -4171,44 +4131,75 @@ function renderBerandaMasterplanSiteplan(clusterKey) {
   const statSarana = document.getElementById('berandaStatSaranaVal');
   const statRth = document.getElementById('berandaStatRthVal');
 
+  // Page elements
+  const pageTitleEl = document.getElementById('pageSpClusterTitle');
+  const pageShmEl = document.getElementById('pageSpShmBadge');
+  const pageImgEl = document.getElementById('pageSpImg');
+  const pageOverlayEl = document.getElementById('pageSpLotsOverlay');
+  const pagePillsRow = document.getElementById('pageKavlingPillsRow');
+
+  const pageTopStatKavling = document.getElementById('pageTopStatKavling');
+  const pageTopStatPrasarana = document.getElementById('pageTopStatPrasarana');
+  const pageTopStatSarana = document.getElementById('pageTopStatSarana');
+  const pageTopStatRth = document.getElementById('pageTopStatRth');
+
+  const pageStatKavling = document.getElementById('pageStatKavlingVal');
+  const pageStatPrasarana = document.getElementById('pageStatPrasaranaVal');
+  const pageStatSarana = document.getElementById('pageStatSaranaVal');
+  const pageStatRth = document.getElementById('pageStatRthVal');
+
   if (titleEl) titleEl.textContent = data.title;
+  if (pageTitleEl) pageTitleEl.textContent = data.title;
   if (shmEl) shmEl.textContent = data.shmText;
+  if (pageShmEl) pageShmEl.textContent = data.shmText;
   if (tagEl) tagEl.textContent = data.tagSub;
   if (areaEl) areaEl.textContent = data.areaSub;
   if (imgEl) imgEl.src = data.img;
+  if (pageImgEl) pageImgEl.src = data.img;
 
   if (topStatKavling) topStatKavling.textContent = data.stats.kavling;
+  if (pageTopStatKavling) pageTopStatKavling.textContent = data.stats.kavling;
   if (topStatPrasarana) topStatPrasarana.textContent = data.stats.prasarana;
+  if (pageTopStatPrasarana) pageTopStatPrasarana.textContent = data.stats.prasarana;
   if (topStatSarana) topStatSarana.textContent = data.stats.sarana;
+  if (pageTopStatSarana) pageTopStatSarana.textContent = data.stats.sarana;
   if (topStatRth) topStatRth.textContent = data.stats.rth;
+  if (pageTopStatRth) pageTopStatRth.textContent = data.stats.rth;
 
   if (statKavling) statKavling.textContent = data.stats.kavling;
+  if (pageStatKavling) pageStatKavling.textContent = data.stats.kavling;
   if (statPrasarana) statPrasarana.textContent = data.stats.prasarana;
+  if (pageStatPrasarana) pageStatPrasarana.textContent = data.stats.prasarana;
   if (statSarana) statSarana.textContent = data.stats.sarana;
+  if (pageStatSarana) pageStatSarana.textContent = data.stats.sarana;
   if (statRth) statRth.textContent = data.stats.rth;
+  if (pageStatRth) pageStatRth.textContent = data.stats.rth;
 
-  if (overlayEl) {
-    overlayEl.innerHTML = data.lots.map(lot => `
-      <button class="siteplan-lot-marker ${lot.id === inspectedLotNumber ? 'is-active' : ''}"
-        style="left: ${lot.x}%; top: ${lot.y}%;"
-        onclick="selectBerandaLot('${lot.id}', '${cluster}')"
-        type="button"
-        title="${lot.name} (${lot.status})">
-        ${lot.id}
-      </button>
-    `).join('');
-  }
+  const markersHtml = data.lots.map(lot => `
+    <button class="siteplan-lot-marker ${lot.id === inspectedLotNumber ? 'is-active' : ''}"
+      style="left: ${lot.x}%; top: ${lot.y}%;"
+      onclick="selectBerandaLot('${lot.id}', '${cluster}')"
+      type="button"
+      title="${lot.name} (${lot.status})">
+      ${lot.id}
+    </button>
+  `).join('');
 
-  if (pillsRow) {
-    pillsRow.innerHTML = data.lots.map(lot => `
-      <button class="kavling-pill-btn ${lot.id === inspectedLotNumber ? 'is-active' : ''}"
-        id="beranda-pill-${lot.id}"
-        onclick="selectBerandaLot('${lot.id}', '${cluster}')"
-        type="button">
-        ${lot.id} · ${lot.area}
-      </button>
-    `).join('');
-  }
+  if (overlayEl) overlayEl.innerHTML = markersHtml;
+  if (pageOverlayEl) pageOverlayEl.innerHTML = markersHtml;
+
+  const pillsHtml = data.lots.map(lot => `
+    <button class="kavling-pill-btn ${lot.id === inspectedLotNumber ? 'is-active' : ''}"
+      id="pill-${lot.id}"
+      data-lot-id="${lot.id}"
+      onclick="selectBerandaLot('${lot.id}', '${cluster}')"
+      type="button">
+      ${lot.id} · ${lot.area}
+    </button>
+  `).join('');
+
+  if (pillsRow) pillsRow.innerHTML = pillsHtml;
+  if (pagePillsRow) pagePillsRow.innerHTML = pillsHtml;
 
   const activeLot = data.lots.find(l => l.id === inspectedLotNumber) || data.lots[0];
   if (activeLot) {
@@ -4218,55 +4209,80 @@ function renderBerandaMasterplanSiteplan(clusterKey) {
 
 function switchBerandaLotCluster(clusterKey, btnEl) {
   currentBerandaLotCluster = clusterKey;
-  if (btnEl && btnEl.parentElement) {
-    btnEl.parentElement.querySelectorAll('.cluster-pill-btn').forEach(b => b.classList.remove('is-active'));
-    btnEl.classList.add('is-active');
-  }
+  currentClusterKey = clusterKey;
+
+  const cCapital = clusterKey.charAt(0).toUpperCase() + clusterKey.slice(1);
+  const pageBtn = document.getElementById(`btnPageCluster${cCapital}`);
+  const berandaBtn = document.getElementById(`btnBerandaCluster${cCapital}`);
+
+  document.querySelectorAll('#secMasterPlan .cluster-pill-btn, #pageMasterPlan .cluster-pill-btn').forEach(b => b.classList.remove('is-active'));
+  if (pageBtn) pageBtn.classList.add('is-active');
+  if (berandaBtn) berandaBtn.classList.add('is-active');
+
   const data = SITEPLAN_DATA[clusterKey] || SITEPLAN_DATA.nagoya;
   if (data.lots.length > 0) {
     inspectedLotNumber = data.lots[0].id;
+    selectedLotId = data.lots[0].id;
   }
   renderBerandaMasterplanSiteplan(clusterKey);
 }
 
 function selectBerandaLot(lotId, clusterKey) {
   inspectedLotNumber = lotId;
+  selectedLotId = lotId;
   const cluster = clusterKey || currentBerandaLotCluster || 'nagoya';
   const data = SITEPLAN_DATA[cluster] || SITEPLAN_DATA.nagoya;
   const lot = data.lots.find(l => l.id === lotId) || data.lots[0];
   if (!lot) return;
 
-  document.querySelectorAll('#berandaSpLotsOverlay .siteplan-lot-marker').forEach(m => {
+  document.querySelectorAll('#berandaSpLotsOverlay .siteplan-lot-marker, #pageSpLotsOverlay .siteplan-lot-marker').forEach(m => {
     m.classList.toggle('is-active', m.textContent.trim() === lot.id);
   });
 
-  document.querySelectorAll('#berandaKavlingPillsRow .kavling-pill-btn').forEach(p => {
-    p.classList.toggle('is-active', p.id === `beranda-pill-${lot.id}`);
+  document.querySelectorAll('#berandaKavlingPillsRow .kavling-pill-btn, #pageKavlingPillsRow .kavling-pill-btn').forEach(p => {
+    p.classList.toggle('is-active', p.getAttribute('data-lot-id') === lot.id || p.id === `pill-${lot.id}` || p.id === `beranda-pill-${lot.id}`);
   });
 
-  const tagEl = document.getElementById('inspLotTag');
-  const statusEl = document.getElementById('inspLotStatus');
-  const lbEl = document.getElementById('inspLotLb');
-  const ltEl = document.getElementById('inspLotLt');
-  const typeEl = document.getElementById('inspLotType');
-  const priceEl = document.getElementById('inspLotPrice');
+  ['inspLotTag', 'pageInspLotTag'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = lot.name;
+  });
 
-  if (tagEl) tagEl.textContent = lot.name;
-  if (statusEl) {
-    statusEl.textContent = lot.status.toUpperCase();
-    const st = lot.status.toLowerCase();
-    if (st.includes('booking') || st.includes('booked')) {
-      statusEl.className = 'kavling-status-badge status-booked';
-    } else if (st.includes('terjual') || st.includes('sold')) {
-      statusEl.className = 'kavling-status-badge status-sold';
-    } else {
-      statusEl.className = 'kavling-status-badge status-available';
+  ['inspLotStatus', 'pageInspLotStatus'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.textContent = lot.status.toUpperCase();
+      const st = lot.status.toLowerCase();
+      if (st.includes('booking') || st.includes('booked')) {
+        el.className = 'kavling-status-badge status-booked';
+      } else if (st.includes('terjual') || st.includes('sold')) {
+        el.className = 'kavling-status-badge status-sold';
+      } else {
+        el.className = 'kavling-status-badge status-available';
+      }
     }
-  }
-  if (lbEl) lbEl.textContent = cluster === 'osaka' ? '110 m²' : (cluster === 'tokyo' ? '80 m²' : '75 m²');
-  if (ltEl) ltEl.textContent = lot.area;
-  if (typeEl) typeEl.textContent = lot.type;
-  if (priceEl) priceEl.textContent = lot.price;
+  });
+
+  const lbVal = cluster === 'osaka' ? '110 m²' : (cluster === 'tokyo' ? '80 m²' : '75 m²');
+  ['inspLotLb', 'pageInspLotLb'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = lbVal;
+  });
+
+  ['inspLotLt', 'pageInspLotLt'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = lot.area;
+  });
+
+  ['inspLotType', 'pageInspLotType'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = lot.type;
+  });
+
+  ['inspLotPrice', 'pageInspLotPrice'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = lot.price;
+  });
 }
 
 function orderInspectedLot() {
