@@ -552,3 +552,29 @@
   - **Floating Map Legend (index.html, styles.css)**:
     - Updated map overlay legend with dot badges for Pusat Kawasan, Circle 1 (1.0 km), Circle 2 (2.5 km), and Circle 3 (4.5 km).
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #36: Video Carousel below Navbar, Leaflet Radius Analysis & Authentic Osaka Wedge Siteplan
+- **Context & Objective**:
+  1. Position cinematic carousel directly beneath navbar with initial display 'assets/drive/dalam-6.png' and 5s auto-rotation.
+  2. Implement 'Analisis Radius Aktif' component & OpenStreetMap Leaflet map matching user specification (Image 1 & Image 6).
+  3. Enlarge navbar branding logo to 38px and make bookmark button frameless.
+  4. Replace Osaka siteplan with 7-lot triangular wedge geometry (B.1–B.7) per Image 10.
+- **Key Changes Implemented**:
+  - **Video Carousel (index.html, styles.css, app.js)**:
+    - Moved .landing-video-card to the top of #panelBeranda directly beneath navbar/marquee ticker.
+    - Set initial displayed frame to 'assets/drive/dalam-6.png' (Scene 01 · Interior Hangat Bersahaja).
+    - Enabled automatic scene progression interval of 5000ms after initial 500ms delay.
+  - **Navbar Refinement (styles.css)**:
+    - Enlarged .landing-logo from 28px to 38px for prominent visual brand identity.
+    - Made .landing-bookmark-btn completely frameless (transparent background, zero border/shadow) with active gold bookmark icon.
+  - **Analisis Radius Aktif & Leaflet Map (index.html, styles.css, app.js)**:
+    - Integrated 'Analisis Radius Aktif' header, dynamic active radius badge (default 3 km), and facilities headline (e.g. '4 dari 6 fasilitas').
+    - Added radius pills (500 m, 1 km, 3 km, 5 km, 10 km, 25 km) with flyTo camera zooms.
+    - Added cluster focus pills (Semua, Nagoya, Osaka, Tokyo).
+    - Replaced tiles with OpenStreetMap layer, top-right zoom control (+/-), center home badge with pulse animation, cluster pill badges (Osaka Gold, Nagoya Diamond, Tokyo Emerald), and facility pill badges (RSUD, SMAN 1, Alun-Alun, Stasiun).
+  - **Authentic Osaka Triangular Wedge Siteplan (app.js, assets/drive/)**:
+    - Replaced Osaka siteplan with authentic clean triangular wedge asset 'assets/drive/siteplan-osaka.jpg'.
+    - Configured 7 lots (B.1–B.7) strictly aligned with the triangular wedge geometry from user Image 10.
+- **Status**: Completed, Verified & Auto-Pushed.

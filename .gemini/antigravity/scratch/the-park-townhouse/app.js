@@ -912,6 +912,7 @@ const SITEPLAN_DATA = {
       { id: 'A.06', name: 'Nagoya A.06', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 39, y: 35 },
       { id: 'A.07', name: 'Nagoya A.07', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 44, y: 35 },
       { id: 'A.08', name: 'Nagoya A.08', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 48, y: 35 },
+      { id: 'A.09', name: 'Nagoya A.09', type: 'Nagoya Gold (LB 75)', area: '88 m²', price: 'Rp 735 Juta', status: 'Tersedia · Hook', x: 53, y: 35 },
       { id: 'B.02', name: 'Nagoya B.02', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia · Dekat Kolam', x: 67, y: 35 },
       { id: 'B.03', name: 'Nagoya B.03', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia', x: 71, y: 35 },
       { id: 'B.04', name: 'Nagoya B.04', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia · Entry', x: 75, y: 35 },
@@ -923,25 +924,23 @@ const SITEPLAN_DATA = {
   osaka: {
     title: 'Osaka',
     shmText: 'Dalam proses pecah sertifikat',
-    tagSub: 'Boulevard 6 m terlebar · Avenue Plaza',
+    tagSub: 'Boulevard 6 m terlebar · Avenue Plaza · 7 Unit Eksklusif',
     areaSub: 'Cluster Osaka · 1312 m²',
     img: 'assets/drive/siteplan-osaka.jpg',
     stats: {
-      kavling: '9 unit',
+      kavling: '7 unit',
       prasarana: '336 m²',
       sarana: '49 m²',
       rth: '75 m²'
     },
     lots: [
-      { id: 'A.1', name: 'Osaka A.1', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 1,05 Miliar', status: 'Tersedia', x: 44, y: 56 },
-      { id: 'A.2', name: 'Osaka A.2', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 1,05 Miliar', status: 'Tersedia', x: 44, y: 48 },
-      { id: 'A.3', name: 'Osaka A.3', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 1,05 Miliar', status: 'Tersedia', x: 44, y: 40 },
-      { id: 'A.4', name: 'Osaka A.4', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 1,05 Miliar', status: 'Tersedia', x: 44, y: 33 },
-      { id: 'A.5', name: 'Osaka A.5', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 1,05 Miliar', status: 'Tersedia · Hook', x: 44, y: 26 },
-      { id: 'A.6', name: 'Osaka A.6', type: 'Osaka Diamond (LB 110)', area: '110 m²', price: 'Rp 1,15 Miliar', status: 'Tersedia', x: 59, y: 27 },
-      { id: 'A.7', name: 'Osaka A.7', type: 'Osaka Diamond (LB 110)', area: '100 m²', price: 'Rp 1,12 Miliar', status: 'Tersedia', x: 59, y: 34 },
-      { id: 'A.8', name: 'Osaka A.8', type: 'Osaka Diamond (LB 110)', area: '110 m²', price: 'Rp 1,15 Miliar', status: 'Tersedia · Favorit', x: 59, y: 44 },
-      { id: 'A.9', name: 'Osaka A.9', type: 'Osaka Diamond (LB 110)', area: '115 m²', price: 'Rp 1,18 Miliar', status: 'Tersedia · Terbesar', x: 59, y: 53 }
+      { id: 'B.1', name: 'Osaka B.1', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 895 Juta', status: 'Tersedia', x: 44, y: 28 },
+      { id: 'B.2', name: 'Osaka B.2', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 895 Juta', status: 'Tersedia', x: 44, y: 48 },
+      { id: 'B.3', name: 'Osaka B.3', type: 'Osaka Diamond (LB 110)', area: '93 m²', price: 'Rp 910 Juta', status: 'Tersedia · Hook', x: 44, y: 70 },
+      { id: 'B.4', name: 'Osaka B.4', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 895 Juta', status: 'Tersedia', x: 58, y: 32 },
+      { id: 'B.5', name: 'Osaka B.5', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 895 Juta', status: 'Tersedia', x: 58, y: 48 },
+      { id: 'B.6', name: 'Osaka B.6', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 895 Juta', status: 'Tersedia', x: 58, y: 64 },
+      { id: 'B.7', name: 'Osaka B.7', type: 'Osaka Diamond (LB 110)', area: '125 m²', price: 'Rp 1,05 Miliar', status: 'Tersedia · Terluas 125 m²', x: 58, y: 80 }
     ]
   }
 };
@@ -3066,24 +3065,24 @@ function initSuratCintaMagazine() {
    -------------------------------------------------------------------------- */
 const LANDING_VIDEO_SCENES = [
   {
+    img: 'assets/drive/dalam-6.png',
+    tag: 'Scene 01 · Interior Hangat Bersahaja',
+    desc: 'Ruang keluarga open-plan lantai granit berpadu tangga kayu gantung dan pencahayaan alami.'
+  },
+  {
     img: 'assets/drive/aerial-drone.jpeg',
-    tag: 'Scene 01 · Peta Udara Drone',
+    tag: 'Scene 02 · Peta Udara Drone',
     desc: 'Pemandangan udara 30 unit hunian Japandi Modern diapit keteduhan alam Sukoharjo.'
   },
   {
     img: 'assets/drive/gate.png',
-    tag: 'Scene 02 · Avenue Grand Gate',
+    tag: 'Scene 03 · Avenue Grand Gate',
     desc: 'Akses gerbang masuk megah satu pintu (one-gate) dengan palang RFID dan pos sekuriti 24 jam.'
   },
   {
     img: 'assets/drive/house.jpeg',
-    tag: 'Scene 03 · Fasad Senja Japandi',
+    tag: 'Scene 04 · Fasad Senja Japandi',
     desc: 'Arsitektur modern perpaduan kayu ulin, dinding semen ekspos aci, dan taman Tabebuya bermekaran.'
-  },
-  {
-    img: 'assets/drive/dalam-6.png',
-    tag: 'Scene 04 · Interior Hangat Bersahaja',
-    desc: 'Ruang tamu open-plan lantai granit berpadu tangga kayu gantung dan pencahayaan skylight alami.'
   },
   {
     img: 'assets/drive/clubhouse.png',
@@ -3150,6 +3149,13 @@ function toggleLandingVideoPlay() {
     }, 5000);
   }
 }
+
+// Auto-start video carousel after 500ms delay per user requirement
+setTimeout(() => {
+  if (!landingVideoAutoInterval) {
+    toggleLandingVideoPlay();
+  }
+}, 500);
 
 /* --------------------------------------------------------------------------
    11. DENAH PREVIEW MODAL CONTROLLER
@@ -3335,6 +3341,9 @@ let currentBerandaPoiFilter = 'Semua';
 let currentBerandaCircleFilter = 'all';
 let activeBerandaCluster = 'nagoya';
 
+let berandaSearchRadiusLayer = null;
+let currentBerandaSearchRadius = 3000;
+
 function initBerandaLeafletMap() {
   const mapEl = document.getElementById('berandaLeafletMap');
   if (!mapEl || berandaLeafletMapInstance) return;
@@ -3344,60 +3353,170 @@ function initBerandaLeafletMap() {
     center: defaultCenter,
     zoom: 13.8,
     scrollWheelZoom: false,
-    zoomControl: true,
-    attributionControl: false
+    zoomControl: false,
+    attributionControl: true
   });
 
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-    maxZoom: 19
+  // Top-right zoom control
+  L.control.zoom({ position: 'topright' }).addTo(berandaLeafletMapInstance);
+
+  // OpenStreetMap tile layer per Image 6
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(berandaLeafletMapInstance);
 
-  // Circle 3 (Radius 4.5 km · Lingkar Regional)
-  berandaCircle3Layer = L.circle(defaultCenter, {
-    radius: 4500,
-    color: '#1d5138',
-    weight: 2,
-    dashArray: '8, 6',
-    fillColor: '#80cbc4',
-    fillOpacity: 0.08
-  }).addTo(berandaLeafletMapInstance)
-    .bindTooltip('<b>Circle 3 · Radius Regional (4.5 km)</b><br>Sentra Solo Baru, Stasiun & Tol', { permanent: false, direction: 'top' });
-
-  // Circle 2 (Radius 2.5 km · Lingkar Urban)
-  berandaCircle2Layer = L.circle(defaultCenter, {
-    radius: 2500,
+  // Dynamic green radius circle per Image 6
+  berandaSearchRadiusLayer = L.circle(defaultCenter, {
+    radius: currentBerandaSearchRadius,
     color: '#2e7d32',
-    weight: 2,
+    weight: 2.5,
     fillColor: '#a5d6a7',
-    fillOpacity: 0.12
-  }).addTo(berandaLeafletMapInstance)
-    .bindTooltip('<b>Circle 2 · Radius Urban (2.5 km)</b><br>Pusat Layanan Kota & RSUD', { permanent: false, direction: 'top' });
+    fillOpacity: 0.18
+  }).addTo(berandaLeafletMapInstance);
 
-  // Circle 1 (Radius 1.0 km · Lingkar Inti)
-  berandaCircle1Layer = L.circle(defaultCenter, {
-    radius: 1000,
-    color: '#b48a3c',
-    weight: 2,
-    dashArray: '5, 5',
-    fillColor: '#dfb96d',
-    fillOpacity: 0.16
-  }).addTo(berandaLeafletMapInstance)
-    .bindTooltip('<b>Circle 1 · Radius Inti (1.0 km)</b><br>Jalan Kaki & Aktivitas Harian', { permanent: false, direction: 'top' });
-
-  // Add The Park Townhouse main location pin
-  const mainIcon = L.divIcon({
-    className: 'custom-townhouse-pin',
-    html: '<div style="background:#16241c;color:#e5d3af;padding:4px 8px;border-radius:12px;border:1px solid #c49a45;font-weight:700;font-size:10px;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,0.35);">★ THE PARK TOWNHOUSE</div>',
-    iconSize: [120, 28],
-    iconAnchor: [60, 14]
+  // Center Home marker with green pulse ring
+  const centerHomeIcon = L.divIcon({
+    className: 'custom-center-home-pin',
+    html: `<div class="map-center-home-marker">
+             <div class="map-center-home-pulse"></div>
+             <div class="map-center-home-circle">
+               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#ffffff" stroke-width="2.2">
+                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                 <polyline points="9 22 9 12 15 12 15 22"/>
+               </svg>
+             </div>
+           </div>`,
+    iconSize: [40, 40],
+    iconAnchor: [20, 20]
   });
-  L.marker(defaultCenter, { icon: mainIcon }).addTo(berandaLeafletMapInstance)
-    .bindPopup('<b>The Park Townhouse Sukoharjo</b><br>Avenue Grand Gate · Koridor Jl. Sudirman');
+  L.marker(defaultCenter, { icon: centerHomeIcon }).addTo(berandaLeafletMapInstance)
+    .bindPopup('<b>The Park Townhouse Sukoharjo</b><br>Kawasan Japandi Modern · Jl. Jenderal Sudirman');
 
-  // Add POI markers and initialize real siteplan
+  // Cluster Pill Markers per Image 6
+  const clusterPins = [
+    { name: 'Osaka', type: 'Gold', coords: [-7.6760, 110.8430] },
+    { name: 'Nagoya', type: 'Diamond', coords: [-7.6835, 110.8480] },
+    { name: 'Tokyo', type: 'Emerald', coords: [-7.6830, 110.8350] }
+  ];
+  clusterPins.forEach(c => {
+    const icon = L.divIcon({
+      className: 'custom-cluster-marker',
+      html: `<div class="map-cluster-pill"><span class="pill-dot"></span><span class="pill-name">${c.name}</span><span class="pill-type">${c.type}</span></div>`,
+      iconSize: [95, 28],
+      iconAnchor: [47, 14]
+    });
+    L.marker(c.coords, { icon: icon }).addTo(berandaLeafletMapInstance)
+      .bindPopup(`<b>Klaster ${c.name}</b> · Tipe ${c.type}`);
+  });
+
+  // Facility Pill Markers per Image 6
+  const facilityPins = [
+    {
+      name: 'RSUD',
+      coords: [-7.6845, 110.8385],
+      iconSvg: '<svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M19 10.5h-5.5V5h-3v5.5H5v3h5.5V19h3v-5.5H19v-3z"/></svg>'
+    },
+    {
+      name: 'SMAN 1',
+      coords: [-7.6865, 110.8395],
+      iconSvg: '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>'
+    },
+    {
+      name: 'Alun-Alun',
+      coords: [-7.6890, 110.8380],
+      iconSvg: '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 10v11M19 10v11M9 10v11M15 10v11M12 2l10 8H2z"/></svg>'
+    },
+    {
+      name: 'Stasiun',
+      coords: [-7.6915, 110.8415],
+      iconSvg: '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="16" rx="2"/><line x1="4" y1="11" x2="20" y2="11"/><line x1="8" y1="15" x2="8.01" y2="15"/><line x1="16" y1="15" x2="16.01" y2="15"/></svg>'
+    }
+  ];
+  facilityPins.forEach(f => {
+    const icon = L.divIcon({
+      className: 'custom-facility-marker',
+      html: `<div class="map-facility-pill">${f.iconSvg}<span>${f.name}</span></div>`,
+      iconSize: [85, 26],
+      iconAnchor: [42, 13]
+    });
+    L.marker(f.coords, { icon: icon }).addTo(berandaLeafletMapInstance)
+      .bindPopup(`<b>${f.name} Sukoharjo</b>`);
+  });
+
   renderBerandaPoiList();
   renderBerandaMasterplanSiteplan('nagoya');
-  updateKprFromSlider();
+  updateBerandaRadiusAnalysis(3000);
+}
+
+function updateBerandaRadiusAnalysis(radiusMeters) {
+  const badgeEl = document.getElementById('berandaActiveRadiusBadge');
+  const headlineEl = document.getElementById('berandaFacilitiesCountHeadline');
+
+  let radiusLabel = `${radiusMeters} m`;
+  if (radiusMeters >= 1000) {
+    radiusLabel = `${radiusMeters / 1000} km`;
+  }
+  if (badgeEl) badgeEl.textContent = radiusLabel;
+
+  const keyFacilities = [
+    { name: 'Gelora Merdeka', dist: 100 },
+    { name: 'Masjid Al-Hidayah', dist: 700 },
+    { name: 'SMKN 1', dist: 750 },
+    { name: 'Alun-Alun Kota', dist: 1700 },
+    { name: 'RSUD IR Soekarno', dist: 2300 },
+    { name: 'Stasiun Kereta', dist: 3200 }
+  ];
+  const reachableCount = keyFacilities.filter(f => f.dist <= radiusMeters).length;
+  if (headlineEl) {
+    headlineEl.textContent = `${reachableCount} dari 6 fasilitas`;
+  }
+
+  if (berandaSearchRadiusLayer) {
+    berandaSearchRadiusLayer.setRadius(radiusMeters);
+  }
+}
+
+function setBerandaSearchRadius(radiusMeters, btnEl) {
+  currentBerandaSearchRadius = radiusMeters;
+  if (btnEl && btnEl.parentElement) {
+    btnEl.parentElement.querySelectorAll('.radius-filter-pill').forEach(p => p.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  }
+
+  updateBerandaRadiusAnalysis(radiusMeters);
+
+  const defaultCenter = [-7.6833, 110.8405];
+  if (berandaLeafletMapInstance) {
+    let zoomLevel = 13.8;
+    if (radiusMeters <= 500) zoomLevel = 16;
+    else if (radiusMeters <= 1000) zoomLevel = 15;
+    else if (radiusMeters <= 3000) zoomLevel = 13.8;
+    else if (radiusMeters <= 5000) zoomLevel = 13;
+    else if (radiusMeters <= 10000) zoomLevel = 11.8;
+    else zoomLevel = 10.5;
+
+    berandaLeafletMapInstance.flyTo(defaultCenter, zoomLevel, { animate: true, duration: 0.6 });
+  }
+}
+
+function focusBerandaCluster(clusterKey, btnEl) {
+  if (btnEl && btnEl.parentElement) {
+    btnEl.parentElement.querySelectorAll('.cluster-focus-pill').forEach(p => p.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  }
+
+  if (!berandaLeafletMapInstance) return;
+
+  if (clusterKey === 'nagoya') {
+    berandaLeafletMapInstance.flyTo([-7.6835, 110.8480], 15, { animate: true, duration: 0.7 });
+  } else if (clusterKey === 'osaka') {
+    berandaLeafletMapInstance.flyTo([-7.6760, 110.8430], 15, { animate: true, duration: 0.7 });
+  } else if (clusterKey === 'tokyo') {
+    berandaLeafletMapInstance.flyTo([-7.6830, 110.8350], 15, { animate: true, duration: 0.7 });
+  } else {
+    berandaLeafletMapInstance.flyTo([-7.6833, 110.8405], 13.8, { animate: true, duration: 0.7 });
+  }
 }
 
 function filterBerandaCircle(circleNum, btnEl) {
