@@ -659,6 +659,27 @@
 
 ---
 
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #37: Conditional Mobile Bottom Navigation Bar (Display Only After Config Saved)
 - **Context & Objective**: Display the mobile bottom navigation bar (.landing-bottom-bar) ONLY after the user saves their house/room configuration.
 - **Key Changes Implemented**:
@@ -750,6 +771,27 @@
   - **JavaScript Dynamic Templates Cleaned (app.js)**:
     - Cleaned `<span>→</span>` from modal CTAs (WhatsApp modal, tour finish modal, booking modal, 99 keunggulan explorer).
     - Removed `→` and `←` from theme switcher navigation buttons (`Tema Sebelumnya` and `Tema Berikutnya`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -848,6 +890,27 @@
 
 ---
 
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #39: Calibrate Siteplan Lot Marker Coordinates Across All 3 Clusters
 - **Context & Objective**: Align lot overlay markers (.siteplan-lot-marker) with their actual physical footprint in the siteplan illustrations for Nagoya, Osaka, and Tokyo, resolving horizontal pile-up and misaligned pills shown in user images.
 - **Key Changes Implemented**:
@@ -936,6 +999,27 @@
   - **JavaScript Dynamic Templates Cleaned (app.js)**:
     - Cleaned `<span>→</span>` from modal CTAs (WhatsApp modal, tour finish modal, booking modal, 99 keunggulan explorer).
     - Removed `→` and `←` from theme switcher navigation buttons (`Tema Sebelumnya` and `Tema Berikutnya`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -1032,6 +1116,27 @@
   - **JavaScript Dynamic Templates Cleaned (app.js)**:
     - Cleaned `<span>→</span>` from modal CTAs (WhatsApp modal, tour finish modal, booking modal, 99 keunggulan explorer).
     - Removed `→` and `←` from theme switcher navigation buttons (`Tema Sebelumnya` and `Tema Berikutnya`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -1136,6 +1241,27 @@
 
 ---
 
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #42: Remove Video Progress Bars & Pause Toggle Buttons
 - **Context & Objective**: Clean up video overlay clutter requested by user:
   1. Remove the segmented gold progress bars at the top of the video (`.top-video-progress-row`).
@@ -1228,6 +1354,27 @@
   - **JavaScript Dynamic Templates Cleaned (app.js)**:
     - Cleaned `<span>→</span>` from modal CTAs (WhatsApp modal, tour finish modal, booking modal, 99 keunggulan explorer).
     - Removed `→` and `←` from theme switcher navigation buttons (`Tema Sebelumnya` and `Tema Berikutnya`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -1326,6 +1473,27 @@
 
 ---
 
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #44: Reposition 99 Keunggulan to Top of Surat Cinta Tab
 - **Context & Objective**: Place the interactive 99 Keunggulan section (11 Tema Explorer & Showcase) at the very top of the Surat Cinta page (`#panelSuratCinta`) as requested by the user.
 - **Key Changes Implemented**:
@@ -1409,6 +1577,27 @@
   - **JavaScript Dynamic Templates Cleaned (app.js)**:
     - Cleaned `<span>→</span>` from modal CTAs (WhatsApp modal, tour finish modal, booking modal, 99 keunggulan explorer).
     - Removed `→` and `←` from theme switcher navigation buttons (`Tema Sebelumnya` and `Tema Berikutnya`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -1513,6 +1702,27 @@
 
 ---
 
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #46: Remove Video Floating Action Buttons (Mute & Next Scene)
 - **Context & Objective**: Remove the floating playback controls (circular mute toggle and next video scene arrow) from the top video banner as requested by the user.
 - **Key Changes Implemented**:
@@ -1600,6 +1810,27 @@
   - **JavaScript Dynamic Templates Cleaned (app.js)**:
     - Cleaned `<span>→</span>` from modal CTAs (WhatsApp modal, tour finish modal, booking modal, 99 keunggulan explorer).
     - Removed `→` and `←` from theme switcher navigation buttons (`Tema Sebelumnya` and `Tema Berikutnya`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -1695,6 +1926,27 @@
 
 ---
 
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #48: Remove Video Scene Badge & Pill Frame (`.top-video-badge`)
 - **Context & Objective**: Remove the floating "Sinema 01..04" pill badge and its frame overlay from the video banner as requested by the user.
 - **Key Changes Implemented**:
@@ -1782,6 +2034,27 @@
   - **JavaScript Dynamic Templates Cleaned (app.js)**:
     - Cleaned `<span>→</span>` from modal CTAs (WhatsApp modal, tour finish modal, booking modal, 99 keunggulan explorer).
     - Removed `→` and `←` from theme switcher navigation buttons (`Tema Sebelumnya` and `Tema Berikutnya`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -1874,6 +2147,27 @@
   - **JavaScript Dynamic Templates Cleaned (app.js)**:
     - Cleaned `<span>→</span>` from modal CTAs (WhatsApp modal, tour finish modal, booking modal, 99 keunggulan explorer).
     - Removed `→` and `←` from theme switcher navigation buttons (`Tema Sebelumnya` and `Tema Berikutnya`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -1973,6 +2267,27 @@
 
 ---
 
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #52: Remove Glowing Green Dot from Bookmark Button
 - **Context & Objective**: Remove the glowing green notification dot (#bookmarkDotPulse) from the bookmark button (#landingBookmarkBtn) in the top landing header as requested by the user.
 - **Key Changes Implemented**:
@@ -2060,6 +2375,27 @@
   - **JavaScript Dynamic Templates Cleaned (app.js)**:
     - Cleaned `<span>→</span>` from modal CTAs (WhatsApp modal, tour finish modal, booking modal, 99 keunggulan explorer).
     - Removed `→` and `←` from theme switcher navigation buttons (`Tema Sebelumnya` and `Tema Berikutnya`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -2152,6 +2488,27 @@
   - **JavaScript Dynamic Templates Cleaned (app.js)**:
     - Cleaned `<span>→</span>` from modal CTAs (WhatsApp modal, tour finish modal, booking modal, 99 keunggulan explorer).
     - Removed `→` and `←` from theme switcher navigation buttons (`Tema Sebelumnya` and `Tema Berikutnya`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -2261,6 +2618,27 @@
 
 ---
 
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #55: Global Harmonization of Typography, Color Palette, Layout & Button Sizing
 - **Context & Objective**: Eliminate disparate styling, oversized typography, mismatched color palettes, and bloated buttons across all views (Beranda, Unit, Surat Cinta, Master Plan, and Modals) into a unified, harmonious Japandi Modern design system.
 - **Key Changes Implemented**:
@@ -2360,6 +2738,27 @@
 
 ---
 
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #56: Copywriting Streamlining & Global Button Color Palette Synchronization
 - **Context & Objective**: Eliminate wordy and redundant filler text across all post-save views (Beranda, Unit, Surat Cinta, Site Plan, Fasilitas), replace with poetic, user-friendly buyer invitations, and synchronize all button color schemes into a unified palette.
 - **Key Changes Implemented**:
@@ -2449,6 +2848,27 @@
   - **JavaScript Dynamic Templates Cleaned (app.js)**:
     - Cleaned `<span>→</span>` from modal CTAs (WhatsApp modal, tour finish modal, booking modal, 99 keunggulan explorer).
     - Removed `→` and `←` from theme switcher navigation buttons (`Tema Sebelumnya` and `Tema Berikutnya`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -2552,6 +2972,27 @@
 
 ---
 
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-23] Progress #58: Engaging Micro-Animations & Ergonomic Enhancement for Mobile Bottom Navigation Bar
 - **Context & Objective**: Implement delightful, user-friendly micro-animations and physical spring dynamics on the mobile bottom navigation bar (`#landingBottomBar`) to keep homebuyers engaged while exploring project destinations.
 - **Key Changes Implemented**:
@@ -2644,6 +3085,27 @@
   - **JavaScript Dynamic Templates Cleaned (app.js)**:
     - Cleaned `<span>→</span>` from modal CTAs (WhatsApp modal, tour finish modal, booking modal, 99 keunggulan explorer).
     - Removed `→` and `←` from theme switcher navigation buttons (`Tema Sebelumnya` and `Tema Berikutnya`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -2746,6 +3208,27 @@
 
 ---
 
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-23] Progress #60: Rich Visual Asset Enrichment & Interactive Lighting Mood Engine
 - **Context & Objective**: Elevate all post-save configuration views (Beranda, Unit, Surat Cinta, Site Plan, Fasilitas) with rich photographic imagery, dynamic brightness & ambiance controls, while strictly preserving synchronized Japandi typography, layout, and palette.
 - **Key Changes Implemented**:
@@ -2837,4 +3320,25 @@
   - **JavaScript Dynamic Templates Cleaned (app.js)**:
     - Cleaned `<span>→</span>` from modal CTAs (WhatsApp modal, tour finish modal, booking modal, 99 keunggulan explorer).
     - Removed `→` and `←` from theme switcher navigation buttons (`Tema Sebelumnya` and `Tema Berikutnya`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #67: Dedicated Interactive Unit Product Detail Page Integration
+- **Context & Objective**: Enable clickable product cards in the Unit catalog that open a dedicated, harmonized Product Detail subpage (`#unitDetailView`) for every individual unit (all 30 units across Nagoya, Tokyo, and Osaka).
+- **Key Changes Implemented**:
+  - **Dedicated Unit Detail View Architecture (index.html)**:
+    - Built `#unitDetailView` inside `#panelUnit` with back navigation bar (`Katalog Unit`), dynamic cluster tag, lot ID title, and quick order action.
+    - Hero gallery featuring 220px/280px architectural photography, status badge (Tersedia/Terjual), Japandi type subtitle, price summary strip, and estimated monthly installment.
+    - 4 architecture metric cards (Kamar Tidur, Kamar Mandi, Luas Bangunan, Luas Tanah).
+    - Living character & specifications section with 4 bespoke Japandi comfort highlights (Cross Ventilation, Carport Teduh, One-Gate 24h, Legalitas SHM).
+    - Flexible payment schemes card (Cash Keras, Cash Bertahap 0%, KPR Express).
+    - Fixed bottom floating action bar with live price, direct WhatsApp inquiry, and "Pesan Kavling Ini" primary CTA button.
+  - **Interactive View Management & Dynamic Data Binding (app.js)**:
+    - Upgraded `.unit-inventory-card` with `onclick="openUnitDetail('${clusterKey}', '${u.id}')"` while preserving `event.stopPropagation()` on the direct order button.
+    - Implemented `openUnitDetail(clusterKey, unitId)` populating photos, titles, prices, specs, and status dynamically for all 30 units.
+    - Implemented `closeUnitDetail()` returning cleanly to `#unitCatalogHub`.
+    - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
+  - **Design System Harmonization (styles.css)**:
+    - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
 - **Status**: Completed, Verified & Auto-Pushed.

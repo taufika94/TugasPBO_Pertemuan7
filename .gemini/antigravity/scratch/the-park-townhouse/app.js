@@ -1708,7 +1708,7 @@ function openQuickModal(type) {
 
       <button class="btn-primary-forest" style="margin-top:14px; width:100%;" onclick="closeQuickModal(); finishTourAndExit(); setTimeout(() => switchLandingTab('SuratCinta', document.getElementById('tabBtnSuratCinta')), 250);" type="button">
         <span>Buka Majalah 99 Keunggulan Lengkap</span>
-        
+        <span>→</span>
       </button>
     `;
   } else if (type === 'wa') {
@@ -1719,7 +1719,7 @@ function openQuickModal(type) {
       </p>
       <button class="btn-primary-forest" onclick="closeQuickModal()" type="button">
         <span>Kirim Pesan WhatsApp Sekarang</span>
-        
+        <span>→</span>
       </button>
     `;
   } else if (type === 'save') {
@@ -1772,7 +1772,7 @@ function openQuickModal(type) {
       </div>
       <button class="btn-primary-forest" onclick="finishTourAndExit()" type="button">
         <span>Selesai</span>
-        
+        <span>→</span>
       </button>
     `;
   } else if (type === 'visit' || type === 'video' || type === 'booking') {
@@ -1792,7 +1792,7 @@ function openQuickModal(type) {
       </div>
       <button class="btn-primary-forest" onclick="closeQuickModal()" type="button">
         <span>Konfirmasi Langkah Ini</span>
-        
+        <span>→</span>
       </button>
     `;
   }
@@ -2209,7 +2209,7 @@ function renderLandingUnits() {
       const img = imgs[idx % imgs.length];
       const isAvail = u.status === 'Tersedia';
       return `
-        <div class="unit-inventory-card ${!isAvail ? 'is-sold-out' : ''}">
+        <div class="unit-inventory-card ${!isAvail ? 'is-sold-out' : ''}" onclick="openUnitDetail('${clusterKey}', '${u.id}')" style="cursor: pointer;">
           <div class="uic-media">
             <img src="${img}" alt="Kavling ${u.id}" loading="lazy" />
             <span class="uic-badge ${isAvail ? 'status-avail' : 'status-sold'}">${u.status}</span>
@@ -2231,11 +2231,11 @@ function renderLandingUnits() {
               <strong class="uic-price-val">${isAvail ? `Rp ${u.priceMillion} Juta` : 'Terjual'}</strong>
             </div>
             ${isAvail ? `
-              <button class="uic-action-btn" type="button" onclick="selectUnitFromLanding('${clusterKey}', '${u.id}', ${u.priceMillion})">
+              <button class="uic-action-btn" type="button" onclick="event.stopPropagation(); selectUnitFromLanding('${clusterKey}', '${u.id}', ${u.priceMillion})">
                 <span>Pesan Kavling Ini</span>
               </button>
             ` : `
-              <button class="uic-action-btn is-disabled" type="button" disabled>
+              <button class="uic-action-btn is-disabled" type="button" disabled onclick="event.stopPropagation();">
                 <span>Sudah Terjual</span>
               </button>
             `}
@@ -2244,6 +2244,107 @@ function renderLandingUnits() {
       `;
     }).join('');
   });
+}
+
+let currentDetailUnitObj = null;
+
+function openUnitDetail(clusterKey, unitId) {
+  const unit = CATALOG_INVENTORY.find(u => u.cluster === clusterKey && u.id === unitId) ||
+               CATALOG_INVENTORY.find(u => u.id === unitId) || CATALOG_INVENTORY[0];
+  currentDetailUnitObj = unit;
+
+  const hub = document.getElementById('unitCatalogHub');
+  const detail = document.getElementById('unitDetailView');
+  if (hub) hub.style.display = 'none';
+  if (detail) detail.style.display = 'block';
+
+  // Populate Details
+  const clusterNames = { nagoya: 'Klaster Nagoya', tokyo: 'Klaster Tokyo', osaka: 'Klaster Osaka' };
+  const cName = clusterNames[unit.cluster] || 'Klaster Nagoya';
+  const priceFormatted = `Rp ${unit.priceMillion} Juta`;
+  const cicilanEst = `Rp ${(unit.priceMillion * 0.0076).toFixed(1).replace('.', ',')} Jt/bln`;
+
+  const unitImages = {
+    nagoya: ['assets/drive/house.jpeg', 'assets/drive/housee.jpeg', 'assets/drive/dalam-9.png', 'assets/drive/dalam-6.png'],
+    tokyo: ['assets/drive/dalam-6.png', 'assets/drive/house.jpeg', 'assets/drive/dalam-9.png', 'assets/drive/housee.jpeg'],
+    osaka: ['assets/drive/housee.jpeg', 'assets/drive/house.jpeg', 'assets/drive/dalam-9.png', 'assets/drive/dalam-6.png']
+  };
+  const imgs = unitImages[unit.cluster] || unitImages.nagoya;
+  const hash = unit.id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const heroImg = imgs[hash % imgs.length];
+
+  // DOM bindings
+  const navCluster = document.getElementById('detailNavCluster');
+  const navId = document.getElementById('detailNavId');
+  const heroImgEl = document.getElementById('detailHeroImg');
+  const heroStatusEl = document.getElementById('detailHeroStatus');
+  const heroTypeEl = document.getElementById('detailHeroType');
+  const heroTitleEl = document.getElementById('detailHeroTitle');
+  const heroPriceEl = document.getElementById('detailHeroPrice');
+  const heroCicilanEl = document.getElementById('detailHeroCicilan');
+
+  const bedsVal = document.getElementById('detailBedsVal');
+  const bathsVal = document.getElementById('detailBathsVal');
+  const lbVal = document.getElementById('detailLbVal');
+  const ltVal = document.getElementById('detailLtVal');
+  const storyDesc = document.getElementById('detailStoryDesc');
+
+  const stickyCode = document.getElementById('detailStickyCode');
+  const stickyPrice = document.getElementById('detailStickyPrice');
+  const stickyOrderBtn = document.getElementById('detailStickyOrderBtn');
+
+  if (navCluster) navCluster.textContent = cName;
+  if (navId) navId.textContent = `Kavling ${unit.id}`;
+  if (heroImgEl) heroImgEl.src = heroImg;
+  if (heroStatusEl) {
+    heroStatusEl.textContent = unit.status;
+    heroStatusEl.className = 'unit-detail-status-pill ' + (unit.status === 'Tersedia' ? 'status-avail' : 'status-sold');
+  }
+  if (heroTypeEl) heroTypeEl.textContent = `${unit.type} · 2 Lantai · Japandi Modern`;
+  if (heroTitleEl) heroTitleEl.textContent = `${cName.replace('Klaster ', '')} ${unit.id}`;
+  if (heroPriceEl) heroPriceEl.textContent = priceFormatted;
+  if (heroCicilanEl) heroCicilanEl.textContent = cicilanEst;
+
+  if (bedsVal) bedsVal.textContent = `${unit.beds} KT`;
+  if (bathsVal) bathsVal.textContent = `${unit.baths} KM`;
+  if (lbVal) lbVal.textContent = `${unit.lb} m²`;
+  if (ltVal) ltVal.textContent = `${unit.lt} m²`;
+
+  if (storyDesc) {
+    storyDesc.textContent = `Kavling ${unit.id} di ${cName} menghadirkan hunian 2 lantai ${unit.type} (LT ${unit.lt}m² / LB ${unit.lb}m²) dengan posisi ${unit.pos === 'hook' ? 'Hook / Pojok yang lapang' : unit.pos === 'gate' ? 'Dekat Gerbang Utama' : 'Dalam kawasan yang tenang dan asri'}. Sirkulasi cahaya dan udara alami berpadu harmonis dalam kehangatan kayu Japandi.`;
+  }
+
+  if (stickyCode) stickyCode.textContent = `${cName.replace('Klaster ', '')} · Kavling ${unit.id}`;
+  if (stickyPrice) stickyPrice.textContent = priceFormatted;
+  if (stickyOrderBtn) {
+    if (unit.status === 'Tersedia') {
+      stickyOrderBtn.textContent = 'Pesan Kavling Ini';
+      stickyOrderBtn.disabled = false;
+      stickyOrderBtn.classList.remove('is-disabled');
+    } else {
+      stickyOrderBtn.textContent = 'Sudah Terjual';
+      stickyOrderBtn.disabled = true;
+      stickyOrderBtn.classList.add('is-disabled');
+    }
+  }
+
+  const scrollContainer = document.getElementById('landingScrollContent');
+  if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function closeUnitDetail() {
+  const hub = document.getElementById('unitCatalogHub');
+  const detail = document.getElementById('unitDetailView');
+  if (detail) detail.style.display = 'none';
+  if (hub) hub.style.display = 'block';
+}
+
+function orderCurrentDetailUnit() {
+  if (!currentDetailUnitObj) return;
+  const clusterNames = { nagoya: 'Klaster NAGOYA', tokyo: 'Klaster TOKYO', osaka: 'Klaster OSAKA' };
+  const cName = clusterNames[currentDetailUnitObj.cluster] || 'Klaster NAGOYA';
+  saveCurrentConfigToStorage();
+  openOrderModal(cName, currentDetailUnitObj.id, `Rp ${currentDetailUnitObj.priceMillion} Juta`);
 }
 
 function openSalesLoginModal() {
@@ -3288,13 +3389,13 @@ function renderSuratTheme(idx) {
       </div>
       <div class="theme-nav-actions">
         <button type="button" class="btn-theme-page btn-theme-prev" onclick="prevSuratTheme()" ${idx === 0 ? 'disabled' : ''} aria-label="Tema Sebelumnya">
-          <span><span class="nav-btn-lbl">Tema </span>Sebelumnya</span>
+          <span>← <span class="nav-btn-lbl">Tema </span>Sebelumnya</span>
         </button>
         <div class="theme-page-indicator">
           <strong>${idx + 1}</strong> <span class="indicator-sub">dari 11 Tema</span>
         </div>
         <button type="button" class="btn-theme-page btn-theme-next" onclick="nextSuratTheme()" ${idx === SURAT_THEMES.length - 1 ? 'disabled' : ''} aria-label="Tema Berikutnya">
-          <span><span class="nav-btn-lbl">Tema </span>Berikutnya</span>
+          <span><span class="nav-btn-lbl">Tema </span>Berikutnya →</span>
         </button>
       </div>
     </div>
