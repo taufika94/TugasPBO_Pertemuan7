@@ -581,6 +581,18 @@
 
 ---
 
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #37: Conditional Mobile Bottom Navigation Bar (Display Only After Config Saved)
 - **Context & Objective**: Display the mobile bottom navigation bar (.landing-bottom-bar) ONLY after the user saves their house/room configuration.
 - **Key Changes Implemented**:
@@ -594,6 +606,18 @@
     - Created checkHasSavedConfiguration() and updateBottomBarVisibility() checking localStorage ('theParkSavedConfig') and session state (window.__hasSavedConfigSession).
     - Added saveCurrentConfigToStorage() syncing unit, lot, pricing, and payment specifications to localStorage.
     - Wired triggers in saveRoomCustomization() (Ruang 4), saveSiteplanChoice() (Ruang 4), openQuickModal('save') (Ruang 7), orderInspectedLot() (Beranda), selectUnitFromLanding(), and initLandingPage().
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -614,6 +638,18 @@
 
 ---
 
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #39: Calibrate Siteplan Lot Marker Coordinates Across All 3 Clusters
 - **Context & Objective**: Align lot overlay markers (.siteplan-lot-marker) with their actual physical footprint in the siteplan illustrations for Nagoya, Osaka, and Tokyo, resolving horizontal pile-up and misaligned pills shown in user images.
 - **Key Changes Implemented**:
@@ -624,6 +660,18 @@
     - Calibrated triangular wedge coordinates: B.1 (44.5%, 26%), B.2 (44.5%, 46%), and B.3 (49.0%, 66%) on the left inward-sloping bank; B.4–B.7 (58.0%, 30%–78%) down the right bank.
   - **Tokyo (app.js)**:
     - Distributed the 7 lots (B.1–B.7) across the single horizontal road row (y: 38%) spanning from x: 13.5% on the left to x: 88.0% on the right, eliminating central cluster pile-up.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -642,6 +690,18 @@
     - Spaced facility pins along natural corridors (RSUD, SMAN 1, Alun-Alun, Stasiun, Gelora & Tenis, Jl. Sudirman).
   - **Pill Geometry (app.js, styles.css)**:
     - Reduced marker icon bounds from 110x28 to 95x26 and 90x26 with tighter padding and font sizing for crisp presentation.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -668,6 +728,18 @@
 
 ---
 
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #42: Remove Video Progress Bars & Pause Toggle Buttons
 - **Context & Objective**: Clean up video overlay clutter requested by user:
   1. Remove the segmented gold progress bars at the top of the video (`.top-video-progress-row`).
@@ -682,6 +754,18 @@
     - Deleted CSS rules for `.video-head-row` and `.btn-video-toggle-mini`.
   - **Script (app.js)**:
     - Removed progress bar synchronization logic (`ontimeupdate`, `resetTopProgressBars`) and unused button references.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -702,11 +786,35 @@
 
 ---
 
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #44: Reposition 99 Keunggulan to Top of Surat Cinta Tab
 - **Context & Objective**: Place the interactive 99 Keunggulan section (11 Tema Explorer & Showcase) at the very top of the Surat Cinta page (`#panelSuratCinta`) as requested by the user.
 - **Key Changes Implemented**:
   - **Layout Re-ordering (index.html)**:
     - Moved `#section99Keunggulan`, `#themeNavScroller`, and `#themeShowcaseBox` to the top position inside `.surat-magazine-container` above the compact letter banner and cluster triptych grid.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -733,6 +841,18 @@
 
 ---
 
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #46: Remove Video Floating Action Buttons (Mute & Next Scene)
 - **Context & Objective**: Remove the floating playback controls (circular mute toggle and next video scene arrow) from the top video banner as requested by the user.
 - **Key Changes Implemented**:
@@ -742,6 +862,18 @@
     - Deleted CSS rules for `.top-video-floating-actions` and `.btn-top-video-action`.
   - **Script (app.js)**:
     - Removed unused `toggleTopHeroVideoMute()` and `toggleTopHeroVideoPlay()` helper functions while preserving automated auto-advance on video end.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -759,6 +891,18 @@
 
 ---
 
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #48: Remove Video Scene Badge & Pill Frame (`.top-video-badge`)
 - **Context & Objective**: Remove the floating "Sinema 01..04" pill badge and its frame overlay from the video banner as requested by the user.
 - **Key Changes Implemented**:
@@ -768,6 +912,18 @@
     - Deleted CSS rules for `.top-video-badge` and `.video-live-dot`.
   - **Script (app.js)**:
     - Removed `#topVideoSceneBadge` reference and update logic in `switchTopHeroVideo()`.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -782,6 +938,18 @@
     - Deleted CSS rules for `.video-scene-tag`, `.video-scene-selector`, and `.video-scene-btn`.
   - **Script (app.js)**:
     - Cleaned up `switchLandingVideoScene()` to remove DOM updates for `videoSceneTag` and the button active state loop, while maintaining the smooth 5-second automatic atmosphere slideshow.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -803,6 +971,18 @@
 
 ---
 
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #52: Remove Glowing Green Dot from Bookmark Button
 - **Context & Objective**: Remove the glowing green notification dot (#bookmarkDotPulse) from the bookmark button (#landingBookmarkBtn) in the top landing header as requested by the user.
 - **Key Changes Implemented**:
@@ -812,6 +992,18 @@
     - Deleted CSS rule .bookmark-dot-pulse and its green glow box shadow.
   - **Script (app.js)**:
     - Removed DOM query and visibility toggling for ookmarkDotPulse inside updateBottomBarVisibility().
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -826,6 +1018,18 @@
     - Added responsive @media (max-width: 440px) rule hiding "Tema " label prefix to cleanly display "? Sebelumnya" and "Berikutnya ?".
   - **Markup & Accessibility (app.js)**:
     - Wrapped "Tema " with `<span class="nav-btn-lbl">` and styled indicator with semantic `<strong>`.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -857,6 +1061,18 @@
 
 ---
 
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #55: Global Harmonization of Typography, Color Palette, Layout & Button Sizing
 - **Context & Objective**: Eliminate disparate styling, oversized typography, mismatched color palettes, and bloated buttons across all views (Beranda, Unit, Surat Cinta, Master Plan, and Modals) into a unified, harmonious Japandi Modern design system.
 - **Key Changes Implemented**:
@@ -878,6 +1094,18 @@
 
 ---
 
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #56: Copywriting Streamlining & Global Button Color Palette Synchronization
 - **Context & Objective**: Eliminate wordy and redundant filler text across all post-save views (Beranda, Unit, Surat Cinta, Site Plan, Fasilitas), replace with poetic, user-friendly buyer invitations, and synchronize all button color schemes into a unified palette.
 - **Key Changes Implemented**:
@@ -889,6 +1117,18 @@
     - Synchronized all Primary CTA Buttons (`.btn-primary-forest`, `.btn-order-kavling-champagne`, `.uic-action-btn`, `.btn-card-order`, `.btn-open-surat-modal`, `.unit-inv-select-btn`, `.sp-select-lot-btn`, `.btn-surat-modal-proceed`) to consistent deep forest green gradient (`linear-gradient(135deg, #11332a 0%, #1e4d40 100%)`) with white text and clean elevation shadows.
     - Converted outlier `.btn-open-surat-modal` (previously `#dfb96d` gold) and `.unit-inv-select-btn` (previously `#16241c`) to the unified forest green gradient.
     - Synchronized Secondary/Outline Action Buttons (`.btn-secondary-link`, `.btn-card-denah`, `.btn-cluster-explore`, `.btn-schedule-visit`, `.btn-outline-forest.calc-cta-btn`, `.btn-reset-filters`) to consistent clean neutral background (`#fbfaf7`), subtle border (`1px solid #dcd4c3`), and dark forest text (`#16241c`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -914,6 +1154,18 @@
 
 ---
 
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-23] Progress #58: Engaging Micro-Animations & Ergonomic Enhancement for Mobile Bottom Navigation Bar
 - **Context & Objective**: Implement delightful, user-friendly micro-animations and physical spring dynamics on the mobile bottom navigation bar (`#landingBottomBar`) to keep homebuyers engaged while exploring project destinations.
 - **Key Changes Implemented**:
@@ -928,6 +1180,18 @@
     - Enhanced frosted glass surface (`backdrop-filter: blur(20px) saturate(180%)`) with smooth 0.4s slide-up entrance animation.
   - **Icon Aesthetics (index.html)**:
     - Replaced the confusing X-square icon on "Fasilitas" with a luxury 4-point star amenity jewel SVG icon.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -952,6 +1216,18 @@
 
 ---
 
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-23] Progress #60: Rich Visual Asset Enrichment & Interactive Lighting Mood Engine
 - **Context & Objective**: Elevate all post-save configuration views (Beranda, Unit, Surat Cinta, Site Plan, Fasilitas) with rich photographic imagery, dynamic brightness & ambiance controls, while strictly preserving synchronized Japandi typography, layout, and palette.
 - **Key Changes Implemented**:
@@ -965,4 +1241,16 @@
     - **Hospitality Services (Hospitality Detail)**: Upgraded all 6 service cards with dedicated image headers (`aerial-drone.jpeg`, `dalam-9.png`, `dalam-6.png`, `gate.png`, `housee.jpeg`, `dalam-12.png`).
   - **Strict Synchronization Enforced**:
     - Kept 860px centered max-width, 12px rounded cards, 38px forest green buttons, and Japandi neutral surfaces across all panels.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #61: Redundant Unit Page Quick-Links Strip Removal
+- **Context & Objective**: Remove duplicate navigation cards and horizontal quick-link bar (`.unit-page-quick-links` and `.unit-page-nav-bar`) from the Unit catalog page (`#panelUnit`), ensuring strict adherence to Rule 5 (single-source Mobile Bottom Navigation Bar) and a clean uncluttered presentation.
+- **Key Changes Implemented**:
+  - **Structure Simplification (index.html)**:
+    - Removed redundant `.unit-page-nav-bar` ("Avenue Grand Gate · Sukoharjo", Sales Login) and `.unit-page-quick-links` ("THEPARKTOWNHOUSE", Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
+    - `#panelUnit` now initiates directly with `.unit-hero-header-card` ("Katalog Hunian · Pilihan Unit per Cluster").
+  - **Stylesheet Optimization (styles.css)**:
+    - Purged 105 lines of obsolete CSS rules (`.unit-page-nav-bar`, `.unit-nav-loc`, `.unit-nav-dot`, `.unit-nav-right`, `.unit-lang-pill`, `.unit-sales-login-link`, `.unit-page-quick-links`, `.unit-brand-logo-btn`, `.unit-quick-links-list`, `.unit-quick-link`).
 - **Status**: Completed, Verified & Auto-Pushed.

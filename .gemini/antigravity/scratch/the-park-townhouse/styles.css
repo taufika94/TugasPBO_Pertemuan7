@@ -8106,6 +8106,7 @@ transition: all 0.2s ease;
 }
 
 @media (max-width: 600px) {
+
   .clubhouse-areas-grid,
   .spacious-metrics-grid,
   .floors-specs-grid,
@@ -8239,9 +8240,17 @@ transition: all 0.2s ease;
 
 /* Dynamic pop animation on click */
 @keyframes tabPopBounce {
-  0% { transform: scale(0.92); }
-  50% { transform: scale(1.06); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0.92);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .bottom-nav-tab.tab-pop {
@@ -11213,111 +11222,6 @@ transition: all 0.2s ease;
   flex-direction: column;
   gap: 12px;
   width: 100%;
-}
-
-/* Nav bar mini */
-.unit-page-nav-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6px 12px;
-  background: #fbfaf7;
-  border: 1px solid #e8e2d5;
-  border-radius: 8px;
-  font-size: 11px;
-  color: #645a4d;
-}
-
-.unit-nav-loc {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 600;
-}
-
-.unit-nav-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #2e7d32;
-}
-
-.unit-nav-right {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.unit-lang-pill {
-  font-size: 9.5px;
-  font-weight: 700;
-  background: #ece5d8;
-  padding: 2px 6px;
-  border-radius: 4px;
-  color: #4a4031;
-}
-
-.unit-sales-login-link {
-  background: none;
-  border: none;
-  font-size: 11px;
-  font-weight: 600;
-  color: #16241c;
-  cursor: pointer;
-  text-decoration: underline;
-  padding: 2px 4px;
-}
-
-/* Quick links strip */
-.unit-page-quick-links {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #ffffff;
-  border: 1px solid #e8e2d5;
-  border-radius: 8px;
-  padding: 6px 12px;
-  flex-wrap: wrap;
-  gap: 6px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
-}
-
-.unit-brand-logo-btn {
-  font-family: var(--font-serif), Georgia, serif;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  color: #16241c;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 2px 0;
-}
-
-.unit-quick-links-list {
-  display: flex;
-  gap: 4px;
-  flex-wrap: wrap;
-}
-
-.unit-quick-link {
-  background: none;
-  border: none;
-  font-size: 11px;
-  font-weight: 600;
-  color: #645a4d;
-  padding: 4px 8px;
-  min-height: 32px;
-  border-radius: 6px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-}
-
-.unit-quick-link.is-active {
-  color: #16241c;
-  font-weight: 700;
-  border-bottom: 2px solid #2e7d32;
 }
 
 /* Hero header card */
