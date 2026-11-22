@@ -611,3 +611,17 @@
     - Moved `.map-floating-legend` to bottom-left (`bottom: 10px; left: 10px;`) to prevent collision with top-right zoom controls (+/-) and facility markers.
     - Embedded the full 'Analisis Radius Aktif' card directly in `#secLokasiRadius`.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #39: Calibrate Siteplan Lot Marker Coordinates Across All 3 Clusters
+- **Context & Objective**: Align lot overlay markers (.siteplan-lot-marker) with their actual physical footprint in the siteplan illustrations for Nagoya, Osaka, and Tokyo, resolving horizontal pile-up and misaligned pills shown in user images.
+- **Key Changes Implemented**:
+  - **Nagoya (app.js)**:
+    - Shifted Row A (lots A.01–A.09) from horizontal pile (y: 35%) into a clean vertical left column (x: 44.5%, y: 12%–72%).
+    - Shifted Row B (lots B.02–B.07) into a vertical right column (x: 62.0%, y: 14%–66.5%) flanking the driveway.
+  - **Osaka (app.js)**:
+    - Calibrated triangular wedge coordinates: B.1 (44.5%, 26%), B.2 (44.5%, 46%), and B.3 (49.0%, 66%) on the left inward-sloping bank; B.4–B.7 (58.0%, 30%–78%) down the right bank.
+  - **Tokyo (app.js)**:
+    - Distributed the 7 lots (B.1–B.7) across the single horizontal road row (y: 38%) spanning from x: 13.5% on the left to x: 88.0% on the right, eliminating central cluster pile-up.
+- **Status**: Completed, Verified & Auto-Pushed.

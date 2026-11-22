@@ -965,13 +965,13 @@ const SITEPLAN_DATA = {
       rth: '60 m²'
     },
     lots: [
-      { id: 'B.1', name: 'Tokyo B.1', type: 'Tokyo Gold (LB 80)', area: '80 m²', price: 'Rp 775 Juta', status: 'Tersedia', x: 45, y: 26 },
-      { id: 'B.2', name: 'Tokyo B.2', type: 'Tokyo Gold (LB 80)', area: '80 m²', price: 'Rp 775 Juta', status: 'Tersedia', x: 45, y: 31 },
-      { id: 'B.3', name: 'Tokyo B.3', type: 'Tokyo Gold (LB 80)', area: '91 m²', price: 'Rp 810 Juta', status: 'Tersedia · Hook', x: 44, y: 37 },
-      { id: 'B.4', name: 'Tokyo B.4', type: 'Tokyo Gold (LB 80)', area: '90 m²', price: 'Rp 805 Juta', status: 'Tersedia', x: 57, y: 31 },
-      { id: 'B.5', name: 'Tokyo B.5', type: 'Tokyo Gold (LB 80)', area: '90 m²', price: 'Rp 805 Juta', status: 'Tersedia', x: 56, y: 37 },
-      { id: 'B.6', name: 'Tokyo B.6', type: 'Tokyo Gold (LB 80)', area: '90 m²', price: 'Rp 805 Juta', status: 'Tersedia · Favorit', x: 55, y: 43 },
-      { id: 'B.7', name: 'Tokyo B.7', type: 'Tokyo Gold (LB 80)', area: '125 m²', price: 'Rp 935 Juta', status: 'Tersedia · Terbesar 125 m²', x: 54, y: 50 }
+      { id: 'B.1', name: 'Tokyo B.1', type: 'Tokyo Gold (LB 80)', area: '80 m²', price: 'Rp 775 Juta', status: 'Tersedia', x: 13.5, y: 38 },
+      { id: 'B.2', name: 'Tokyo B.2', type: 'Tokyo Gold (LB 80)', area: '80 m²', price: 'Rp 775 Juta', status: 'Tersedia', x: 23.5, y: 38 },
+      { id: 'B.3', name: 'Tokyo B.3', type: 'Tokyo Gold (LB 80)', area: '91 m²', price: 'Rp 810 Juta', status: 'Tersedia · Hook', x: 33.5, y: 38 },
+      { id: 'B.4', name: 'Tokyo B.4', type: 'Tokyo Gold (LB 80)', area: '90 m²', price: 'Rp 805 Juta', status: 'Tersedia', x: 43.5, y: 38 },
+      { id: 'B.5', name: 'Tokyo B.5', type: 'Tokyo Gold (LB 80)', area: '90 m²', price: 'Rp 805 Juta', status: 'Tersedia', x: 72.0, y: 38 },
+      { id: 'B.6', name: 'Tokyo B.6', type: 'Tokyo Gold (LB 80)', area: '90 m²', price: 'Rp 805 Juta', status: 'Tersedia · Favorit', x: 80.0, y: 38 },
+      { id: 'B.7', name: 'Tokyo B.7', type: 'Tokyo Gold (LB 80)', area: '125 m²', price: 'Rp 935 Juta', status: 'Tersedia · Terbesar 125 m²', x: 88.0, y: 38 }
     ]
   },
   nagoya: {
@@ -987,21 +987,21 @@ const SITEPLAN_DATA = {
       rth: '119,60 m²'
     },
     lots: [
-      { id: 'A.01', name: 'Nagoya A.01', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 16, y: 35 },
-      { id: 'A.02', name: 'Nagoya A.02', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 20, y: 35 },
-      { id: 'A.03', name: 'Nagoya A.03', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 25, y: 35 },
-      { id: 'A.04', name: 'Nagoya A.04', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 30, y: 35 },
-      { id: 'A.05', name: 'Nagoya A.05', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 35, y: 35 },
-      { id: 'A.06', name: 'Nagoya A.06', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 39, y: 35 },
-      { id: 'A.07', name: 'Nagoya A.07', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 44, y: 35 },
-      { id: 'A.08', name: 'Nagoya A.08', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 48, y: 35 },
-      { id: 'A.09', name: 'Nagoya A.09', type: 'Nagoya Gold (LB 75)', area: '88 m²', price: 'Rp 735 Juta', status: 'Tersedia · Hook', x: 53, y: 35 },
-      { id: 'B.02', name: 'Nagoya B.02', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia · Dekat Kolam', x: 67, y: 35 },
-      { id: 'B.03', name: 'Nagoya B.03', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia', x: 71, y: 35 },
-      { id: 'B.04', name: 'Nagoya B.04', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia · Entry', x: 75, y: 35 },
-      { id: 'B.05', name: 'Nagoya B.05', type: 'Nagoya Gold (LB 75)', area: '90 m²', price: 'Rp 745 Juta', status: 'Tersedia · Favorit', x: 80, y: 35 },
-      { id: 'B.06', name: 'Nagoya B.06', type: 'Nagoya Gold (LB 75)', area: '85 m²', price: 'Rp 725 Juta', status: 'Tersedia', x: 85, y: 35 },
-      { id: 'B.07', name: 'Nagoya B.07', type: 'Nagoya Gold (LB 75)', area: '95 m²', price: 'Rp 765 Juta', status: 'Tersedia · Hook', x: 90, y: 35 }
+      { id: 'A.01', name: 'Nagoya A.01', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 44.5, y: 12 },
+      { id: 'A.02', name: 'Nagoya A.02', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 44.5, y: 19.5 },
+      { id: 'A.03', name: 'Nagoya A.03', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 44.5, y: 27 },
+      { id: 'A.04', name: 'Nagoya A.04', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 44.5, y: 34.5 },
+      { id: 'A.05', name: 'Nagoya A.05', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 44.5, y: 42 },
+      { id: 'A.06', name: 'Nagoya A.06', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 44.5, y: 49.5 },
+      { id: 'A.07', name: 'Nagoya A.07', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 44.5, y: 57 },
+      { id: 'A.08', name: 'Nagoya A.08', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 44.5, y: 64.5 },
+      { id: 'A.09', name: 'Nagoya A.09', type: 'Nagoya Gold (LB 75)', area: '88 m²', price: 'Rp 735 Juta', status: 'Tersedia · Hook', x: 44.5, y: 72 },
+      { id: 'B.02', name: 'Nagoya B.02', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia · Dekat Kolam', x: 62.0, y: 14 },
+      { id: 'B.03', name: 'Nagoya B.03', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia', x: 62.0, y: 24.5 },
+      { id: 'B.04', name: 'Nagoya B.04', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia · Entry', x: 62.0, y: 35 },
+      { id: 'B.05', name: 'Nagoya B.05', type: 'Nagoya Gold (LB 75)', area: '90 m²', price: 'Rp 745 Juta', status: 'Tersedia · Favorit', x: 62.0, y: 45.5 },
+      { id: 'B.06', name: 'Nagoya B.06', type: 'Nagoya Gold (LB 75)', area: '85 m²', price: 'Rp 725 Juta', status: 'Tersedia', x: 62.0, y: 56 },
+      { id: 'B.07', name: 'Nagoya B.07', type: 'Nagoya Gold (LB 75)', area: '95 m²', price: 'Rp 765 Juta', status: 'Tersedia · Hook', x: 62.0, y: 66.5 }
     ]
   },
   osaka: {
@@ -1017,13 +1017,13 @@ const SITEPLAN_DATA = {
       rth: '75 m²'
     },
     lots: [
-      { id: 'B.1', name: 'Osaka B.1', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 895 Juta', status: 'Tersedia', x: 44, y: 28 },
-      { id: 'B.2', name: 'Osaka B.2', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 895 Juta', status: 'Tersedia', x: 44, y: 48 },
-      { id: 'B.3', name: 'Osaka B.3', type: 'Osaka Diamond (LB 110)', area: '93 m²', price: 'Rp 910 Juta', status: 'Tersedia · Hook', x: 44, y: 70 },
-      { id: 'B.4', name: 'Osaka B.4', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 895 Juta', status: 'Tersedia', x: 58, y: 32 },
-      { id: 'B.5', name: 'Osaka B.5', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 895 Juta', status: 'Tersedia', x: 58, y: 48 },
-      { id: 'B.6', name: 'Osaka B.6', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 895 Juta', status: 'Tersedia', x: 58, y: 64 },
-      { id: 'B.7', name: 'Osaka B.7', type: 'Osaka Diamond (LB 110)', area: '125 m²', price: 'Rp 1,05 Miliar', status: 'Tersedia · Terluas 125 m²', x: 58, y: 80 }
+      { id: 'B.1', name: 'Osaka B.1', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 895 Juta', status: 'Tersedia', x: 44.5, y: 26 },
+      { id: 'B.2', name: 'Osaka B.2', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 895 Juta', status: 'Tersedia', x: 44.5, y: 46 },
+      { id: 'B.3', name: 'Osaka B.3', type: 'Osaka Diamond (LB 110)', area: '93 m²', price: 'Rp 910 Juta', status: 'Tersedia · Hook', x: 49.0, y: 66 },
+      { id: 'B.4', name: 'Osaka B.4', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 895 Juta', status: 'Tersedia', x: 58.0, y: 30 },
+      { id: 'B.5', name: 'Osaka B.5', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 895 Juta', status: 'Tersedia', x: 58.0, y: 46 },
+      { id: 'B.6', name: 'Osaka B.6', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 895 Juta', status: 'Tersedia', x: 58.0, y: 62 },
+      { id: 'B.7', name: 'Osaka B.7', type: 'Osaka Diamond (LB 110)', area: '125 m²', price: 'Rp 1,05 Miliar', status: 'Tersedia · Terluas 125 m²', x: 58.0, y: 78 }
     ]
   }
 };
