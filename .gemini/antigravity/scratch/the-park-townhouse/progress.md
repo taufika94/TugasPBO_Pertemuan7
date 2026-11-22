@@ -949,3 +949,20 @@
   - **Design System Harmonization (styles.css)**:
     - Applied unified typography, clean card borders (12px radius), compact responsive grid reflows for mobile, and forest green button styling matching the Japandi luxury palette.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #60: Rich Visual Asset Enrichment & Interactive Lighting Mood Engine
+- **Context & Objective**: Elevate all post-save configuration views (Beranda, Unit, Surat Cinta, Site Plan, Fasilitas) with rich photographic imagery, dynamic brightness & ambiance controls, while strictly preserving synchronized Japandi typography, layout, and palette.
+- **Key Changes Implemented**:
+  - **Lighting Mood Engine & Interactive Ambiance Switcher (styles.css & app.js & index.html)**:
+    - Implemented `.landing-lighting-switch` in the top sticky navigation bar supporting 3 realistic ambiance presets: `☀️ Siang Alami` (standard crisp daylight), `🌅 Senja Golden Hour` (warm golden tone with subtle sepia warmth), and `🌙 Malam Teduh` (atmospheric twilight with illuminated accents).
+    - Driven by CSS variables (`--img-brightness`, `--img-contrast`, `--img-saturate`, `--img-filter`) updating all architectural photographs across all tabs concurrently without jarring reloads.
+    - Added subtle image hover micro-interactions across all cards (brightening by +8% and gentle 1.03x scale with smooth cubic-bezier transitions).
+  - **Rich Photographic Asset Enrichment (index.html & styles.css)**:
+    - **4 Pilar Investasi (Beranda)**: Transformed plain text cards into photographic vignettes featuring `aerial-drone.jpeg` (Unit Terbatas), `clubhouse.png` (Keunggulan Kawasan), `gate.png` (Capital Gain 18%), and `house.jpeg` (Booking Perdana).
+    - **Clubhouse Highlight Areas (Fasilitas Detail)**: Replaced icon tiles with authentic photography preview cards (`gate.png`, `room-bersama.jpg`, `dalam-6.png`, `clubhousee.png`).
+    - **Hospitality Services (Hospitality Detail)**: Upgraded all 6 service cards with dedicated image headers (`aerial-drone.jpeg`, `dalam-9.png`, `dalam-6.png`, `gate.png`, `housee.jpeg`, `dalam-12.png`).
+  - **Strict Synchronization Enforced**:
+    - Kept 860px centered max-width, 12px rounded cards, 38px forest green buttons, and Japandi neutral surfaces across all panels.
+- **Status**: Completed, Verified & Auto-Pushed.

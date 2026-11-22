@@ -2374,6 +2374,15 @@ function demoAppAction(actionType) {
   if (box2) box2.innerHTML = html;
 }
 
+function setLightingMood(mood, btnEl) {
+  const container = document.getElementById('landingPageView');
+  if (container) {
+    container.setAttribute('data-lighting-mood', mood);
+  }
+  document.querySelectorAll('.lighting-pill-btn').forEach(btn => btn.classList.remove('is-active'));
+  if (btnEl) btnEl.classList.add('is-active');
+}
+
 function openFasilitasDetail(slug) {
   switchLandingTab('Fasilitas');
 

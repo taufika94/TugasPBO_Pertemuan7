@@ -7432,7 +7432,106 @@ transition: all 0.2s ease;
   border-radius: 6px;
 }
 
-/* Clubhouse Areas Grid */
+/* LIGHTING MOOD ENGINE (Brightness, Contrast, Warmth) */
+:root {
+  --img-brightness: 1;
+  --img-contrast: 1.02;
+  --img-saturate: 1.04;
+  --img-filter: none;
+}
+
+[data-lighting-mood="dusk"] {
+  --img-brightness: 0.96;
+  --img-contrast: 1.08;
+  --img-saturate: 1.22;
+  --img-filter: sepia(0.08);
+}
+
+[data-lighting-mood="night"] {
+  --img-brightness: 0.88;
+  --img-contrast: 1.14;
+  --img-saturate: 1.1;
+  --img-filter: hue-rotate(-5deg);
+}
+
+/* Global Visual Media Lighting Polish across all post-save panels */
+.top-video-player,
+.video-viewport-media,
+.b-unit-img-wrap img,
+.uic-img-wrap img,
+.cluster-card-img,
+.siteplan-map-img,
+.facility-showcase-img,
+.f-detail-hero-img,
+.ch-area-img,
+.hosp-service-img,
+.pillar-thumb-img,
+.theme-banner-img,
+.denah-display-img {
+  filter: brightness(var(--img-brightness, 1)) contrast(var(--img-contrast, 1.02)) saturate(var(--img-saturate, 1.04)) var(--img-filter, none);
+  transition: filter 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Interactive Image Brightness Micro-Interaction */
+.invest-pillar-item:hover .pillar-thumb-img,
+.ch-area-tile:hover .ch-area-img,
+.hosp-service-card:hover .hosp-service-img,
+.b-unit-preview-card:hover .b-unit-img-wrap img,
+.uic-card:hover .uic-img-wrap img,
+.facility-showcase-box:hover .facility-showcase-img,
+.theme-showcase-box:hover .theme-banner-img {
+  filter: brightness(calc(var(--img-brightness, 1) * 1.08)) contrast(calc(var(--img-contrast, 1.02) * 1.02)) saturate(calc(var(--img-saturate, 1.04) * 1.05));
+  transform: scale(1.03);
+}
+
+/* Lighting Switch Pill in Top Navbar */
+.landing-lighting-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(22, 36, 28, 0.08);
+  border: 1px solid rgba(229, 211, 175, 0.35);
+  border-radius: 20px;
+  padding: 2px;
+}
+
+.lighting-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  border: none;
+  background: transparent;
+  padding: 3px 8px;
+  border-radius: 14px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  color: #5c6860;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 26px;
+}
+
+.lighting-pill-btn span {
+  font-size: 11px;
+}
+
+.lighting-pill-btn small {
+  font-size: 9.5px;
+}
+
+.lighting-pill-btn:hover {
+  color: #11332a;
+}
+
+.lighting-pill-btn.is-active {
+  background: #ffffff;
+  color: #11332a;
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(22, 36, 28, 0.12);
+}
+
+/* Clubhouse Areas Grid with Rich Imagery */
 .clubhouse-areas-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -7444,31 +7543,58 @@ transition: all 0.2s ease;
   background: #fbfaf7;
   border: 1px solid #e8e2d5;
   border-radius: 10px;
-  padding: 12px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  transition: all 0.25s ease;
 }
 
-.ch-icon-circle {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: rgba(17, 51, 42, 0.08);
-  color: #11332a;
+.ch-area-tile:hover {
+  border-color: #2e7d32;
+  box-shadow: 0 4px 14px rgba(22, 36, 28, 0.06);
+  transform: translateY(-2px);
+}
+
+.ch-area-img-box {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  overflow: hidden;
+}
+
+.ch-area-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ch-area-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(17, 51, 42, 0.85);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-size: 8.5px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.ch-area-content {
+  padding: 8px 10px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 4px;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.ch-area-tile strong {
-  font-size: 11.5px;
+.ch-area-content strong {
+  font-size: 11px;
   color: #11332a;
 }
 
-.ch-area-tile small {
-  font-size: 9.5px;
+.ch-area-content small {
+  font-size: 9px;
   color: #5c6860;
   line-height: 1.35;
 }
@@ -7726,7 +7852,7 @@ transition: all 0.2s ease;
   text-decoration: underline;
 }
 
-/* Hospitality Services Grid */
+/* Hospitality Services Grid with Photographic Headers */
 .hosp-services-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -7737,25 +7863,59 @@ transition: all 0.2s ease;
   background: #fbfaf7;
   border: 1px solid #e8e2d5;
   border-radius: 10px;
-  padding: 12px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  transition: all 0.25s ease;
 }
 
-.hs-icon {
-  font-size: 16px;
-  margin-bottom: 2px;
+.hosp-service-card:hover {
+  border-color: #2e7d32;
+  box-shadow: 0 4px 14px rgba(22, 36, 28, 0.06);
+  transform: translateY(-2px);
 }
 
-.hosp-service-card h4 {
-  font-size: 11.5px;
+.hosp-service-img-box {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  overflow: hidden;
+}
+
+.hosp-service-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hosp-service-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(17, 51, 42, 0.85);
+  backdrop-filter: blur(4px);
+  color: #e5d3af;
+  font-size: 8.5px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.hosp-service-content {
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hosp-service-content h4 {
+  font-size: 11px;
   color: #11332a;
   margin: 0;
 }
 
-.hosp-service-card p {
-  font-size: 9.5px;
+.hosp-service-content p {
+  font-size: 9px;
   line-height: 1.35;
   color: #5c6860;
   margin: 0;
@@ -8522,28 +8682,67 @@ transition: all 0.2s ease;
   margin: 0;
 }
 
-/* Invest Pillars */
+/* Invest Pillars with Rich Visual Vignettes */
 .invest-pillars-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
+  gap: 10px;
 }
 
 .invest-pillar-item {
   background: #fbfaf7;
   border: 1px solid #ebe5d9;
-  border-radius: 8px;
-  padding: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+}
+
+.invest-pillar-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(22, 36, 28, 0.06);
+  border-color: #c5a874;
+}
+
+.pillar-img-box {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  overflow: hidden;
+}
+
+.pillar-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.invest-pillar-item:hover .pillar-thumb-img {
+  transform: scale(1.05);
+}
+
+.pillar-num-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(17, 51, 42, 0.85);
+  backdrop-filter: blur(4px);
+  color: #e5d3af;
+  font-family: var(--font-serif);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(229, 211, 175, 0.3);
+}
+
+.pillar-content {
+  padding: 10px 12px;
   display: flex;
   flex-direction: column;
   gap: 2px;
-}
-
-.pillar-num {
-  font-size: 16px;
-  font-weight: 700;
-  font-family: var(--font-serif);
-  color: #9d7837;
 }
 
 .pillar-title {

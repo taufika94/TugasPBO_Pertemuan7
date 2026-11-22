@@ -1172,6 +1172,17 @@
             </div>
           </div>
           <div class="landing-nav-actions">
+            <div class="landing-lighting-switch" id="landingLightingSwitch" title="Pencahayaan Suasana Visual">
+              <button type="button" class="lighting-pill-btn is-active" id="moodDayBtn" onclick="setLightingMood('day', this)" title="Suasana Siang Alami">
+                <span>☀️</span> <small>Siang</small>
+              </button>
+              <button type="button" class="lighting-pill-btn" id="moodDuskBtn" onclick="setLightingMood('dusk', this)" title="Suasana Senja Golden Hour">
+                <span>🌅</span> <small>Senja</small>
+              </button>
+              <button type="button" class="lighting-pill-btn" id="moodNightBtn" onclick="setLightingMood('night', this)" title="Suasana Malam Teduh">
+                <span>🌙</span> <small>Malam</small>
+              </button>
+            </div>
             <button class="landing-bookmark-btn" id="landingBookmarkBtn" onclick="openSavedConfigModal()" type="button"
               title="Konfigurasi Rumah Tersimpan">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
@@ -1274,24 +1285,44 @@
 
               <div class="invest-pillars-grid">
                 <div class="invest-pillar-item">
-                  <div class="pillar-num">30</div>
-                  <div class="pillar-title">Unit Terbatas</div>
-                  <div class="pillar-desc">Privasi dan ketenangan maksimal dalam enclave mandiri Japandi.</div>
+                  <div class="pillar-img-box">
+                    <img src="assets/drive/aerial-drone.jpeg" alt="30 Unit Terbatas" class="pillar-thumb-img" />
+                    <span class="pillar-num-badge">30 Unit</span>
+                  </div>
+                  <div class="pillar-content">
+                    <div class="pillar-title">Unit Terbatas</div>
+                    <div class="pillar-desc">Privasi dan ketenangan maksimal dalam enclave mandiri Japandi.</div>
+                  </div>
                 </div>
                 <div class="invest-pillar-item">
-                  <div class="pillar-num">99</div>
-                  <div class="pillar-title">Keunggulan Kawasan</div>
-                  <div class="pillar-desc">Fasilitas lengkap tanpa biaya keanggotaan terpisah.</div>
+                  <div class="pillar-img-box">
+                    <img src="assets/drive/clubhouse.png" alt="99 Keunggulan Kawasan" class="pillar-thumb-img" />
+                    <span class="pillar-num-badge">99 Nilai</span>
+                  </div>
+                  <div class="pillar-content">
+                    <div class="pillar-title">Keunggulan Kawasan</div>
+                    <div class="pillar-desc">Fasilitas lengkap tanpa biaya keanggotaan terpisah.</div>
+                  </div>
                 </div>
                 <div class="invest-pillar-item">
-                  <div class="pillar-num">18%</div>
-                  <div class="pillar-title">Capital Gain/Tahun</div>
-                  <div class="pillar-desc">Pertumbuhan nilai aset properti di koridor emas Jl. Sudirman.</div>
+                  <div class="pillar-img-box">
+                    <img src="assets/drive/gate.png" alt="Capital Gain 18%/Tahun" class="pillar-thumb-img" />
+                    <span class="pillar-num-badge">18%/Thn</span>
+                  </div>
+                  <div class="pillar-content">
+                    <div class="pillar-title">Capital Gain/Tahun</div>
+                    <div class="pillar-desc">Pertumbuhan nilai aset properti di koridor emas Jl. Sudirman.</div>
+                  </div>
                 </div>
                 <div class="invest-pillar-item">
-                  <div class="pillar-num">5 Jt</div>
-                  <div class="pillar-title">Booking Perdana</div>
-                  <div class="pillar-desc">Kunci kavling impian Anda sebelum penyesuaian harga tahap 2.</div>
+                  <div class="pillar-img-box">
+                    <img src="assets/drive/house.jpeg" alt="Booking Perdana Rp 5 Juta" class="pillar-thumb-img" />
+                    <span class="pillar-num-badge">Rp 5 Jt</span>
+                  </div>
+                  <div class="pillar-content">
+                    <div class="pillar-title">Booking Perdana</div>
+                    <div class="pillar-desc">Kunci kavling impian Anda sebelum penyesuaian harga tahap 2.</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -3698,43 +3729,47 @@
                 </div>
               </div>
 
-              <!-- 4 Highlight Areas -->
+              <!-- 4 Highlight Areas with Images -->
               <div class="clubhouse-areas-grid">
                 <div class="ch-area-tile">
-                  <div class="ch-icon-circle">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                      <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
-                    </svg>
+                  <div class="ch-area-img-box">
+                    <img src="assets/drive/gate.png" alt="Marketing Gallery" class="ch-area-img" />
+                    <span class="ch-area-badge">Lantai 1</span>
                   </div>
-                  <strong>Marketing Gallery</strong>
-                  <small>Pusat konsultasi &amp; legalitas resmi</small>
+                  <div class="ch-area-content">
+                    <strong>Marketing Gallery</strong>
+                    <small>Pusat konsultasi &amp; legalitas resmi</small>
+                  </div>
                 </div>
                 <div class="ch-area-tile">
-                  <div class="ch-icon-circle">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M6 5v14M18 5v14M3 8h6M15 8h6M3 16h6M15 16h6"/>
-                    </svg>
+                  <div class="ch-area-img-box">
+                    <img src="assets/room-bersama.jpg" alt="Gym &amp; Fitness" class="ch-area-img" />
+                    <span class="ch-area-badge">Lantai 2</span>
                   </div>
-                  <strong>Gym &amp; Fitness</strong>
-                  <small>Kebugaran kardio ber-AC lantai 2</small>
+                  <div class="ch-area-content">
+                    <strong>Gym &amp; Fitness</strong>
+                    <small>Kebugaran kardio ber-AC lantai 2</small>
+                  </div>
                 </div>
                 <div class="ch-area-tile">
-                  <div class="ch-icon-circle">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
+                  <div class="ch-area-img-box">
+                    <img src="assets/drive/dalam-6.png" alt="Meeting &amp; Lounge" class="ch-area-img" />
+                    <span class="ch-area-badge">Lantai 1</span>
                   </div>
-                  <strong>Meeting &amp; Lounge</strong>
-                  <small>Ruang pertemuan komunitas elegan</small>
+                  <div class="ch-area-content">
+                    <strong>Meeting &amp; Lounge</strong>
+                    <small>Ruang pertemuan komunitas elegan</small>
+                  </div>
                 </div>
                 <div class="ch-area-tile">
-                  <div class="ch-icon-circle">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M2 12h20M2 17h20M2 7c3 0 4 2 8 2s5-2 8-2 3 1 4 2"/>
-                    </svg>
+                  <div class="ch-area-img-box">
+                    <img src="assets/drive/clubhousee.png" alt="Resort Pool" class="ch-area-img" />
+                    <span class="ch-area-badge">Outdoor</span>
                   </div>
-                  <strong>Resort Pool</strong>
-                  <small>Kolam renang dewasa &amp; anak terawat</small>
+                  <div class="ch-area-content">
+                    <strong>Resort Pool</strong>
+                    <small>Kolam renang dewasa &amp; anak terawat</small>
+                  </div>
                 </div>
               </div>
             </div>
@@ -4026,34 +4061,64 @@
               </div>
               <div class="hosp-services-grid">
                 <div class="hosp-service-card">
-                  <span class="hs-icon">🏢</span>
-                  <h4>Investasi Masa Depan</h4>
-                  <p>Keuntungan ganda untuk masa depan yang lebih pasti.</p>
+                  <div class="hosp-service-img-box">
+                    <img src="assets/drive/aerial-drone.jpeg" alt="Investasi Masa Depan" class="hosp-service-img" />
+                    <span class="hosp-service-badge">Aset</span>
+                  </div>
+                  <div class="hosp-service-content">
+                    <h4>Investasi Masa Depan</h4>
+                    <p>Keuntungan ganda untuk masa depan yang lebih pasti.</p>
+                  </div>
                 </div>
                 <div class="hosp-service-card">
-                  <span class="hs-icon">🧹</span>
-                  <h4>Housekeeping &amp; Perawatan</h4>
-                  <p>Kebersihan berkala, perawatan taman, dan perbaikan minor menjaga unit selalu prima &amp; bernilai tinggi.</p>
+                  <div class="hosp-service-img-box">
+                    <img src="assets/drive/dalam-9.png" alt="Housekeeping &amp; Perawatan" class="hosp-service-img" />
+                    <span class="hosp-service-badge">Higienis</span>
+                  </div>
+                  <div class="hosp-service-content">
+                    <h4>Housekeeping &amp; Perawatan</h4>
+                    <p>Kebersihan berkala, perawatan taman, dan perbaikan minor menjaga unit selalu prima &amp; bernilai tinggi.</p>
+                  </div>
                 </div>
                 <div class="hosp-service-card">
-                  <span class="hs-icon">🛎️</span>
-                  <h4>Layanan Concierge</h4>
-                  <p>Check-in/out tamu, penyambutan, dan bantuan kebutuhan penghuni ala hospitality hotel bintang lima.</p>
+                  <div class="hosp-service-img-box">
+                    <img src="assets/drive/dalam-6.png" alt="Layanan Concierge" class="hosp-service-img" />
+                    <span class="hosp-service-badge">Bintang 5</span>
+                  </div>
+                  <div class="hosp-service-content">
+                    <h4>Layanan Concierge</h4>
+                    <p>Check-in/out tamu, penyambutan, dan bantuan kebutuhan penghuni ala hospitality hotel bintang lima.</p>
+                  </div>
                 </div>
                 <div class="hosp-service-card">
-                  <span class="hs-icon">🛡️</span>
-                  <h4>Estate Management</h4>
-                  <p>Keamanan one-gate 24 jam, pengelolaan IPL, dan koordinasi fasilitas kawasan secara profesional.</p>
+                  <div class="hosp-service-img-box">
+                    <img src="assets/drive/gate.png" alt="Estate Management" class="hosp-service-img" />
+                    <span class="hosp-service-badge">24 Jam</span>
+                  </div>
+                  <div class="hosp-service-content">
+                    <h4>Estate Management</h4>
+                    <p>Keamanan one-gate 24 jam, pengelolaan IPL, dan koordinasi fasilitas kawasan secara profesional.</p>
+                  </div>
                 </div>
                 <div class="hosp-service-card">
-                  <span class="hs-icon">📣</span>
-                  <h4>Pemasaran Sewa</h4>
-                  <p>Listing multi-platform, fotografi, dan promosi aktif untuk menjaga tingkat hunian tetap tinggi.</p>
+                  <div class="hosp-service-img-box">
+                    <img src="assets/drive/housee.jpeg" alt="Pemasaran Sewa" class="hosp-service-img" />
+                    <span class="hosp-service-badge">Multi-Platform</span>
+                  </div>
+                  <div class="hosp-service-content">
+                    <h4>Pemasaran Sewa</h4>
+                    <p>Listing multi-platform, fotografi, dan promosi aktif untuk menjaga tingkat hunian tetap tinggi.</p>
+                  </div>
                 </div>
                 <div class="hosp-service-card">
-                  <span class="hs-icon">📊</span>
-                  <h4>Pelaporan Transparan</h4>
-                  <p>Laporan pemasukan, okupansi, dan biaya bulanan real-time — terintegrasi Andara Imperial Super App.</p>
+                  <div class="hosp-service-img-box">
+                    <img src="assets/drive/dalam-12.png" alt="Pelaporan Transparan" class="hosp-service-img" />
+                    <span class="hosp-service-badge">Real-Time</span>
+                  </div>
+                  <div class="hosp-service-content">
+                    <h4>Pelaporan Transparan</h4>
+                    <p>Laporan pemasukan, okupansi, dan biaya bulanan real-time — terintegrasi Andara Imperial Super App.</p>
+                  </div>
                 </div>
               </div>
             </div>
