@@ -2605,12 +2605,19 @@
           <!-- TAB 1B: UNIT (KATALOG HUNIAN · PILIHAN UNIT PER CLUSTER) -->
           <section class="landing-tab-panel" id="panelUnit" style="display: none;">
             <div class="unit-catalog-page-container">
-              <!-- Hero Section Header -->
-              <div class="unit-hero-header-card">
-                <span class="unit-katalog-tag">Katalog Hunian</span>
-                <h1 class="unit-hero-title">Pilihan Unit per Cluster</h1>
-                <p class="unit-hero-sub">30 Unit Hunian Bergaya Japandi Modern</p>
-              </div>
+              <!-- Unit Header Navbar -->
+              <nav class="unit-header-navbar" aria-label="Navigasi Katalog Unit">
+                <div class="unit-nav-info">
+                  <span class="unit-nav-tag">Katalog Hunian</span>
+                  <h1 class="unit-nav-title">Pilihan Unit</h1>
+                  <span class="unit-nav-sub">30 Unit · Japandi Modern</span>
+                </div>
+                <div class="unit-nav-chips">
+                  <button type="button" class="unit-nav-chip is-active" onclick="document.getElementById('clusterSectionNagoya')?.scrollIntoView({behavior: 'smooth'})">Nagoya</button>
+                  <button type="button" class="unit-nav-chip" onclick="document.getElementById('clusterSectionTokyo')?.scrollIntoView({behavior: 'smooth'})">Tokyo</button>
+                  <button type="button" class="unit-nav-chip" onclick="document.getElementById('clusterSectionOsaka')?.scrollIntoView({behavior: 'smooth'})">Osaka</button>
+                </div>
+              </nav>
 
               <!-- 4 Metrics Highlight Grid -->
               <div class="unit-metrics-banner">
