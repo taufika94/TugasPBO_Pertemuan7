@@ -352,3 +352,15 @@
     - Maintained `.calc-breakdown-list .breakdown-row.is-total strong`: set `color: #e5d3af` (warm gold).
     - Preserved `.calc-breakdown-list .breakdown-row.is-highlight strong`: set `color: #81c784` (emerald green).
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #25: Soften Buka Pintu Button Styling & Remove Icons
+- **Context & Objective**: Address user feedback on the "Buka Pintu" button (`media_1795322198683_f10c9b96.png`) to eliminate excessive light/halo glow and remove icons/arrows, displaying solely the clean text "Buka Pintu".
+- **Key Changes Implemented**:
+  - **Removed All Icons (`index.html`)**: Deleted door icon SVG and directional arrow `→`, leaving clean `<button class="btn-open-door"><span>Buka Pintu</span></button>`.
+  - **Soft Natural Lighting (`styles.css`)**:
+    - Removed `@keyframes pulseOpenDoor` and wide colored box-shadow halo.
+    - Set soft, understated natural shadow (`0 3px 12px rgba(0, 0, 0, 0.22)`) with a warm matte Japandi sand palette (`#d8c6a2` default, `#dfceab` hover).
+    - Preserved 44px mobile touch target ergonomics and subtle active click feedback.
+- **Status**: Completed & Verified.
