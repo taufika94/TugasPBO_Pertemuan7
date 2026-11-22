@@ -2233,7 +2233,6 @@ function renderLandingUnits() {
             ${isAvail ? `
               <button class="uic-action-btn" type="button" onclick="selectUnitFromLanding('${clusterKey}', '${u.id}', ${u.priceMillion})">
                 <span>Pesan Kavling Ini</span>
-                <span>→</span>
               </button>
             ` : `
               <button class="uic-action-btn is-disabled" type="button" disabled>
