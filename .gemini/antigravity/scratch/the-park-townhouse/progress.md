@@ -730,6 +730,19 @@
 
 ---
 
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #37: Conditional Mobile Bottom Navigation Bar (Display Only After Config Saved)
 - **Context & Objective**: Display the mobile bottom navigation bar (.landing-bottom-bar) ONLY after the user saves their house/room configuration.
 - **Key Changes Implemented**:
@@ -892,6 +905,19 @@
   - **Elevated Photography Dimensions (styles.css)**:
     - Increased image container height (`.cluster-card-img-wrap`) from 85px to 120px (mobile) / 135px (desktop), giving priority to visual architectural rendering.
     - Refined badge styling and unified `.btn-cluster-explore` with forest green gradient.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -1061,6 +1087,19 @@
 
 ---
 
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #39: Calibrate Siteplan Lot Marker Coordinates Across All 3 Clusters
 - **Context & Objective**: Align lot overlay markers (.siteplan-lot-marker) with their actual physical footprint in the siteplan illustrations for Nagoya, Osaka, and Tokyo, resolving horizontal pile-up and misaligned pills shown in user images.
 - **Key Changes Implemented**:
@@ -1220,6 +1259,19 @@
   - **Elevated Photography Dimensions (styles.css)**:
     - Increased image container height (`.cluster-card-img-wrap`) from 85px to 120px (mobile) / 135px (desktop), giving priority to visual architectural rendering.
     - Refined badge styling and unified `.btn-cluster-explore` with forest green gradient.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -1387,6 +1439,19 @@
   - **Elevated Photography Dimensions (styles.css)**:
     - Increased image container height (`.cluster-card-img-wrap`) from 85px to 120px (mobile) / 135px (desktop), giving priority to visual architectural rendering.
     - Refined badge styling and unified `.btn-cluster-explore` with forest green gradient.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -1562,6 +1627,19 @@
 
 ---
 
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #42: Remove Video Progress Bars & Pause Toggle Buttons
 - **Context & Objective**: Clean up video overlay clutter requested by user:
   1. Remove the segmented gold progress bars at the top of the video (`.top-video-progress-row`).
@@ -1725,6 +1803,19 @@
   - **Elevated Photography Dimensions (styles.css)**:
     - Increased image container height (`.cluster-card-img-wrap`) from 85px to 120px (mobile) / 135px (desktop), giving priority to visual architectural rendering.
     - Refined badge styling and unified `.btn-cluster-explore` with forest green gradient.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -1894,6 +1985,19 @@
 
 ---
 
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #44: Reposition 99 Keunggulan to Top of Surat Cinta Tab
 - **Context & Objective**: Place the interactive 99 Keunggulan section (11 Tema Explorer & Showcase) at the very top of the Surat Cinta page (`#panelSuratCinta`) as requested by the user.
 - **Key Changes Implemented**:
@@ -2048,6 +2152,19 @@
   - **Elevated Photography Dimensions (styles.css)**:
     - Increased image container height (`.cluster-card-img-wrap`) from 85px to 120px (mobile) / 135px (desktop), giving priority to visual architectural rendering.
     - Refined badge styling and unified `.btn-cluster-explore` with forest green gradient.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -2223,6 +2340,19 @@
 
 ---
 
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #46: Remove Video Floating Action Buttons (Mute & Next Scene)
 - **Context & Objective**: Remove the floating playback controls (circular mute toggle and next video scene arrow) from the top video banner as requested by the user.
 - **Key Changes Implemented**:
@@ -2381,6 +2511,19 @@
   - **Elevated Photography Dimensions (styles.css)**:
     - Increased image container height (`.cluster-card-img-wrap`) from 85px to 120px (mobile) / 135px (desktop), giving priority to visual architectural rendering.
     - Refined badge styling and unified `.btn-cluster-explore` with forest green gradient.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -2547,6 +2690,19 @@
 
 ---
 
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #48: Remove Video Scene Badge & Pill Frame (`.top-video-badge`)
 - **Context & Objective**: Remove the floating "Sinema 01..04" pill badge and its frame overlay from the video banner as requested by the user.
 - **Key Changes Implemented**:
@@ -2705,6 +2861,19 @@
   - **Elevated Photography Dimensions (styles.css)**:
     - Increased image container height (`.cluster-card-img-wrap`) from 85px to 120px (mobile) / 135px (desktop), giving priority to visual architectural rendering.
     - Refined badge styling and unified `.btn-cluster-explore` with forest green gradient.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -2868,6 +3037,19 @@
   - **Elevated Photography Dimensions (styles.css)**:
     - Increased image container height (`.cluster-card-img-wrap`) from 85px to 120px (mobile) / 135px (desktop), giving priority to visual architectural rendering.
     - Refined badge styling and unified `.btn-cluster-explore` with forest green gradient.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -3038,6 +3220,19 @@
 
 ---
 
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #52: Remove Glowing Green Dot from Bookmark Button
 - **Context & Objective**: Remove the glowing green notification dot (#bookmarkDotPulse) from the bookmark button (#landingBookmarkBtn) in the top landing header as requested by the user.
 - **Key Changes Implemented**:
@@ -3196,6 +3391,19 @@
   - **Elevated Photography Dimensions (styles.css)**:
     - Increased image container height (`.cluster-card-img-wrap`) from 85px to 120px (mobile) / 135px (desktop), giving priority to visual architectural rendering.
     - Refined badge styling and unified `.btn-cluster-explore` with forest green gradient.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -3359,6 +3567,19 @@
   - **Elevated Photography Dimensions (styles.css)**:
     - Increased image container height (`.cluster-card-img-wrap`) from 85px to 120px (mobile) / 135px (desktop), giving priority to visual architectural rendering.
     - Refined badge styling and unified `.btn-cluster-explore` with forest green gradient.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -3539,6 +3760,19 @@
 
 ---
 
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #55: Global Harmonization of Typography, Color Palette, Layout & Button Sizing
 - **Context & Objective**: Eliminate disparate styling, oversized typography, mismatched color palettes, and bloated buttons across all views (Beranda, Unit, Surat Cinta, Master Plan, and Modals) into a unified, harmonious Japandi Modern design system.
 - **Key Changes Implemented**:
@@ -3709,6 +3943,19 @@
 
 ---
 
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #56: Copywriting Streamlining & Global Button Color Palette Synchronization
 - **Context & Objective**: Eliminate wordy and redundant filler text across all post-save views (Beranda, Unit, Surat Cinta, Site Plan, Fasilitas), replace with poetic, user-friendly buyer invitations, and synchronize all button color schemes into a unified palette.
 - **Key Changes Implemented**:
@@ -3869,6 +4116,19 @@
   - **Elevated Photography Dimensions (styles.css)**:
     - Increased image container height (`.cluster-card-img-wrap`) from 85px to 120px (mobile) / 135px (desktop), giving priority to visual architectural rendering.
     - Refined badge styling and unified `.btn-cluster-explore` with forest green gradient.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -4043,6 +4303,19 @@
 
 ---
 
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-23] Progress #58: Engaging Micro-Animations & Ergonomic Enhancement for Mobile Bottom Navigation Bar
 - **Context & Objective**: Implement delightful, user-friendly micro-animations and physical spring dynamics on the mobile bottom navigation bar (`#landingBottomBar`) to keep homebuyers engaged while exploring project destinations.
 - **Key Changes Implemented**:
@@ -4206,6 +4479,19 @@
   - **Elevated Photography Dimensions (styles.css)**:
     - Increased image container height (`.cluster-card-img-wrap`) from 85px to 120px (mobile) / 135px (desktop), giving priority to visual architectural rendering.
     - Refined badge styling and unified `.btn-cluster-explore` with forest green gradient.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -4379,6 +4665,19 @@
 
 ---
 
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-23] Progress #60: Rich Visual Asset Enrichment & Interactive Lighting Mood Engine
 - **Context & Objective**: Elevate all post-save configuration views (Beranda, Unit, Surat Cinta, Site Plan, Fasilitas) with rich photographic imagery, dynamic brightness & ambiance controls, while strictly preserving synchronized Japandi typography, layout, and palette.
 - **Key Changes Implemented**:
@@ -4541,4 +4840,17 @@
   - **Elevated Photography Dimensions (styles.css)**:
     - Increased image container height (`.cluster-card-img-wrap`) from 85px to 120px (mobile) / 135px (desktop), giving priority to visual architectural rendering.
     - Refined badge styling and unified `.btn-cluster-explore` with forest green gradient.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #72: Minimalist Header & Segmented Toggle for Gold vs Diamond Specs
+- **Context & Objective**: Declutter the architectural type comparison section in Surat Cinta tab, removing wordy subtitles and aligning the pill buttons into an elegant segmented toggle.
+- **Key Changes Implemented**:
+  - **Header Decluttering (index.html)**:
+    - Removed redundant `.section-tag` and long `.section-desc`.
+    - Simplified title to clean, centered "Tipe Gold & Diamond" (`text-align: center; margin: 0;`).
+  - **Segmented Control Toggle (styles.css)**:
+    - Refactored `.spec-toggle-bar` into a unified segmented control capsule with subtle border (`1px solid #e8e2d5`), neutral background (`#fbfaf7`), and 4px padding.
+    - Elevated active button (`.spec-tab-btn.is-active`) with forest green gradient (`#11332a` to `#1e4d40`), crisp white text, and subtle elevation shadow.
 - **Status**: Completed, Verified & Auto-Pushed.
