@@ -5259,3 +5259,16 @@
     - Removed rigid height clipping on content cards (`.landing-section-card`, `.uic-body`, `.sa-feature-card`, `.hosp-service-card`, `.cluster-triptych-card`, `.price-unit-card`).
     - Standardized button and pill groups (`.f-cta-btns-row`, `.f-badge-pills-row`, `.cluster-pill-tabs`, `.fasilitas-subpage-pills`, `.theme-chips-scroll`, `.unit-filter-pills`) into auto-wrapping flex layouts with consistent `gap: 8px`.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-23] Progress #79: Refactor Fasilitas Navigation Bar with Frameless Centered Title & Segmented Pills
+- **Context & Objective**: Re-architect the navigation bar on the Fasilitas tab and subpages (`#panelFasilitas`, `#fasilitasDetail_clubhouse`, `#fasilitasDetail_superapp`, `#fasilitasDetail_hospitality`), replacing the boxed back button with a clean, frameless centered title "Fasilitas" and pairing it with a cohesive segmented pill control (`Clubhouse`, `Super App`, `Hospitality`).
+- **Key Changes Implemented**:
+  - **Frameless Centered Header (index.html)**:
+    - Replaced boxed `btn-back-fasilitas` across all Fasilitas subpages and main hub with frameless, centered `.fasilitas-nav-title` ("Fasilitas").
+  - **Segmented Capsule Bar (styles.css)**:
+    - Replaced loose pills with rounded capsule bar (`.fasilitas-subpage-pills`) in warm oat tone (`#ede6da`), white active pill, and subtle inset shadow matching the user's reference screenshot.
+    - Added vertical column alignment with 10px spacing in `.fasilitas-subpage-header`.
+- **Status**: Completed, Verified & Auto-Pushed.
