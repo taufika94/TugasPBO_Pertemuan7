@@ -7277,6 +7277,686 @@ transition: all 0.2s ease;
   color: #8a968f;
 }
 
+/* FASILITAS HUB & DETAIL SUBPAGES */
+.fasilitas-main-hub {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.facility-hub-action-wrap {
+  width: 100%;
+}
+
+.fasilitas-subpage {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.fasilitas-subpage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 2px;
+  flex-wrap: wrap;
+}
+
+.btn-back-fasilitas {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fbfaf7;
+  border: 1px solid #dcd4c3;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: #11332a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 36px;
+}
+
+.btn-back-fasilitas:hover {
+  background: #f0eae1;
+  border-color: #11332a;
+  transform: translateX(-2px);
+}
+
+.fasilitas-subpage-pills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f0eae1;
+  padding: 3px;
+  border-radius: 20px;
+}
+
+.f-sub-pill {
+  border: none;
+  background: transparent;
+  padding: 5px 12px;
+  border-radius: 16px;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #5c6860;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 30px;
+}
+
+.f-sub-pill:hover {
+  color: #11332a;
+}
+
+.f-sub-pill.is-active {
+  background: #ffffff;
+  color: #11332a;
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(22, 36, 28, 0.08);
+}
+
+/* Detail Hero Card */
+.f-detail-hero-wrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+}
+
+.f-detail-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.f-detail-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(17, 51, 42, 0.15) 0%, rgba(17, 51, 42, 0.92) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+}
+
+.f-detail-stats-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #fbfaf7;
+  border-bottom: 1px solid #f0eae1;
+}
+
+.f-stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.f-stat-item .stat-num {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: #11332a;
+}
+
+.f-stat-item .stat-lbl {
+  font-size: 9.5px;
+  color: #5c6860;
+}
+
+.f-badge-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.f-badge-pill {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: #2e7d32;
+  background: rgba(46, 125, 50, 0.08);
+  border: 1px solid rgba(46, 125, 50, 0.2);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+/* Clubhouse Areas Grid */
+.clubhouse-areas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 14px;
+}
+
+.ch-area-tile {
+  background: #fbfaf7;
+  border: 1px solid #e8e2d5;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ch-icon-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(17, 51, 42, 0.08);
+  color: #11332a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.ch-area-tile strong {
+  font-size: 11.5px;
+  color: #11332a;
+}
+
+.ch-area-tile small {
+  font-size: 9.5px;
+  color: #5c6860;
+  line-height: 1.35;
+}
+
+/* Spacious Metrics Grid */
+.spacious-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.spacious-metric-card {
+  background: #fbfaf7;
+  border: 1px solid #e8e2d5;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: center;
+}
+
+.spacious-metric-card.highlight-card {
+  background: rgba(17, 51, 42, 0.04);
+  border-color: #2e7d32;
+}
+
+.spacious-metric-card .metric-val {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: #11332a;
+}
+
+.spacious-metric-card .metric-label {
+  font-size: 10px;
+  color: #5c6860;
+}
+
+/* Floor Specs Grid */
+.floors-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.floor-spec-card {
+  background: #fbfaf7;
+  border: 1px solid #e8e2d5;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.floor-tag {
+  align-self: flex-start;
+  font-size: 9px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #11332a;
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.floor-tag-sub {
+  align-self: flex-start;
+  font-size: 9px;
+  font-weight: 700;
+  color: #b39255;
+  background: rgba(179, 146, 85, 0.12);
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.floor-spec-card h4 {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  color: #11332a;
+  margin: 0;
+}
+
+.floor-spec-card p {
+  font-size: 10px;
+  line-height: 1.4;
+  color: #5c6860;
+  margin: 0;
+}
+
+/* Comfort Pillars Grid */
+.comfort-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.comfort-pillar-card {
+  background: #fbfaf7;
+  border: 1px solid #e8e2d5;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cp-icon {
+  font-size: 14px;
+  color: #b39255;
+}
+
+.comfort-pillar-card strong {
+  font-size: 11.5px;
+  color: #11332a;
+}
+
+.comfort-pillar-card p {
+  font-size: 10px;
+  line-height: 1.4;
+  color: #5c6860;
+  margin: 0;
+}
+
+/* Detail Footer CTA */
+.f-detail-footer-cta {
+  background: #f5f2eb;
+  border: 1px solid #e0d8c7;
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+}
+
+.f-detail-footer-cta h4 {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: #11332a;
+  margin: 0 0 10px;
+}
+
+.f-cta-btns-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Super App Triptych */
+.superapp-metrics-triptych {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.sa-metric-tile {
+  background: #fbfaf7;
+  border: 1px solid #e8e2d5;
+  border-radius: 10px;
+  padding: 10px 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sa-metric-tile .sa-val {
+  font-size: 12px;
+  font-weight: 700;
+  color: #11332a;
+}
+
+.sa-metric-tile .sa-lbl {
+  font-size: 9px;
+  color: #5c6860;
+}
+
+/* Super App 6-Grid */
+.sa-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.sa-feature-card {
+  background: #fbfaf7;
+  border: 1px solid #e8e2d5;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sa-feature-card:hover {
+  border-color: #2e7d32;
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(22, 36, 28, 0.05);
+}
+
+.sa-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sa-card-badge {
+  font-size: 8.5px;
+  font-weight: 700;
+  color: #2e7d32;
+  background: rgba(46, 125, 50, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.sa-card-badge.badge-sos {
+  color: #d32f2f;
+  background: rgba(211, 47, 47, 0.1);
+}
+
+.sa-card-icon {
+  font-size: 14px;
+}
+
+.sa-feature-card h4 {
+  font-size: 11.5px;
+  color: #11332a;
+  margin: 2px 0 0;
+}
+
+.sa-feature-card p {
+  font-size: 9.5px;
+  line-height: 1.35;
+  color: #5c6860;
+  margin: 0;
+  flex: 1;
+}
+
+.sa-card-action {
+  align-self: flex-start;
+  margin-top: 6px;
+  border: none;
+  background: transparent;
+  color: #2e7d32;
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Hospitality Services Grid */
+.hosp-services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.hosp-service-card {
+  background: #fbfaf7;
+  border: 1px solid #e8e2d5;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.hs-icon {
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.hosp-service-card h4 {
+  font-size: 11.5px;
+  color: #11332a;
+  margin: 0;
+}
+
+.hosp-service-card p {
+  font-size: 9.5px;
+  line-height: 1.35;
+  color: #5c6860;
+  margin: 0;
+}
+
+/* Hospitality Steps Grid */
+.hosp-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.hosp-step-card {
+  background: #fbfaf7;
+  border: 1px solid #e8e2d5;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.hs-step-num {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: #2e7d32;
+}
+
+.hosp-step-card h4 {
+  font-size: 11.5px;
+  color: #11332a;
+  margin: 0;
+}
+
+.hosp-step-card p {
+  font-size: 9.5px;
+  line-height: 1.35;
+  color: #5c6860;
+  margin: 0;
+}
+
+/* Hospitality Benefits Checklist */
+.hosp-benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hb-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #16241c;
+}
+
+.hb-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(46, 125, 50, 0.12);
+  color: #2e7d32;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Hospitality Simulation Tabs & Card */
+.hosp-sim-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.hosp-sim-pill {
+  flex: 1;
+  border: 1px solid #dcd4c3;
+  background: #fbfaf7;
+  border-radius: 8px;
+  padding: 8px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: #5c6860;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 36px;
+}
+
+.hosp-sim-pill.is-active {
+  background: #11332a;
+  color: #ffffff;
+  border-color: #11332a;
+}
+
+.hosp-calc-display-card {
+  background: #fbfaf7;
+  border: 1px solid #e8e2d5;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hosp-calc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: #5c6860;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #f0eae1;
+}
+
+.hosp-calc-row strong {
+  font-size: 12px;
+  color: #11332a;
+}
+
+.hosp-roi-triptych {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 8px 0;
+}
+
+.roi-item {
+  background: #ffffff;
+  border: 1px solid #e8e2d5;
+  border-radius: 8px;
+  padding: 8px 4px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.roi-item strong {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: #2e7d32;
+}
+
+.roi-item span {
+  font-size: 9px;
+  color: #5c6860;
+}
+
+.hosp-total-profit-box {
+  background: linear-gradient(135deg, rgba(17, 51, 42, 0.05) 0%, rgba(46, 125, 50, 0.08) 100%);
+  border: 1px solid rgba(46, 125, 50, 0.25);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.profit-lbl {
+  font-size: 10px;
+  font-weight: 600;
+  color: #11332a;
+}
+
+.profit-num {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  color: #11332a;
+}
+
+.profit-sub {
+  font-size: 9.5px;
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+.hosp-calc-disclaimer {
+  font-size: 9px;
+  line-height: 1.35;
+  color: #8a968f;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .clubhouse-areas-grid,
+  .spacious-metrics-grid,
+  .floors-specs-grid,
+  .comfort-pillars-grid,
+  .sa-features-grid,
+  .hosp-services-grid,
+  .hosp-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* MANDATORY BOTTOM NAVIGATION BAR (Strict Rule 5) */
 /* MANDATORY BOTTOM NAVIGATION BAR (Strict Rule 5) — HIDDEN UNTIL CONFIGURATION SAVED */
 .landing-bottom-bar {

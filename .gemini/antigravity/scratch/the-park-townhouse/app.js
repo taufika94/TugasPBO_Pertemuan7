@@ -2250,6 +2250,8 @@ function switchLandingTab(tabName, btnEl) {
     setTimeout(openSuratPrologueModal, 150);
   } else if (norm === 'Unit') {
     renderLandingUnits();
+  } else if (norm === 'Fasilitas') {
+    closeFasilitasDetail();
   }
 }
 
@@ -2356,9 +2358,6 @@ function sendSavedConfigToWA() {
 }
 
 function demoAppAction(actionType) {
-  const box = document.getElementById('appDemoFeedback');
-  if (!box) return;
-
   const responses = {
     lock: '[Smart Lock] Pintu Utama Terbuka — Sensor BLE/IoT mengenali ponsel Anda dalam radius 5 meter.',
     qr: '[QR Pass Tamu] Kode Akses Diterbitkan — Berlaku 6 jam untuk mobil tamu langsung melintas gerbang Avenue Gate.',
@@ -2368,7 +2367,88 @@ function demoAppAction(actionType) {
     sos: '[Tombol Darurat / SOS] Sinyal Aktif — Notifikasi darurat dan lokasi unit terkirim seketika ke pos jaga 24 jam!'
   };
 
-  box.innerHTML = `<span style="color:#e5d3af; font-weight:600;">${responses[actionType] || 'Fitur terhubung ke server kawasan.'}</span>`;
+  const html = `<span style="color:#e5d3af; font-weight:600;">${responses[actionType] || 'Fitur terhubung ke server kawasan.'}</span>`;
+  const box1 = document.getElementById('appDemoFeedback');
+  const box2 = document.getElementById('appDemoFeedbackSubpage');
+  if (box1) box1.innerHTML = html;
+  if (box2) box2.innerHTML = html;
+}
+
+function openFasilitasDetail(slug) {
+  switchLandingTab('Fasilitas');
+
+  const mainHub = document.getElementById('fasilitasMainHub');
+  const allSubpages = document.querySelectorAll('.fasilitas-subpage');
+
+  if (mainHub) mainHub.style.display = 'none';
+  allSubpages.forEach(sub => sub.style.display = 'none');
+
+  const target = document.getElementById(`fasilitasDetail_${slug}`);
+  if (target) {
+    target.style.display = 'flex';
+  }
+
+  document.querySelectorAll('.f-sub-pill').forEach(btn => {
+    btn.classList.toggle('is-active', !!(btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(slug)));
+  });
+
+  const scrollContainer = document.getElementById('landingScrollContent');
+  if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function closeFasilitasDetail() {
+  const mainHub = document.getElementById('fasilitasMainHub');
+  const allSubpages = document.querySelectorAll('.fasilitas-subpage');
+
+  allSubpages.forEach(sub => sub.style.display = 'none');
+  if (mainHub) mainHub.style.display = 'flex';
+
+  const scrollContainer = document.getElementById('landingScrollContent');
+  if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function switchHospSimType(type) {
+  const is80 = type === 't80';
+  const tab60 = document.getElementById('hospSimTab60');
+  const tab80 = document.getElementById('hospSimTab80');
+
+  if (tab60 && tab80) {
+    tab60.classList.toggle('is-active', !is80);
+    tab80.classList.toggle('is-active', is80);
+  }
+
+  const unitPrice = document.getElementById('hospSimUnitPrice');
+  const rentPerMonth = document.getElementById('hospSimRentMonth');
+  const roiTotal = document.getElementById('hospSimRoiTotal');
+  const roiYear = document.getElementById('hospSimRoiYear');
+  const rentYield = document.getElementById('hospSimRentYield');
+  const totalProfit = document.getElementById('hospSimTotalProfit');
+  const profitBreakdown = document.getElementById('hospSimProfitBreakdown');
+
+  if (is80) {
+    if (unitPrice) unitPrice.textContent = 'Rp 782.000.000';
+    if (rentPerMonth) rentPerMonth.textContent = 'Rp 4.500.000';
+    if (roiTotal) roiTotal.textContent = '115%';
+    if (roiYear) roiYear.textContent = '23.0%';
+    if (rentYield) rentYield.textContent = '6.9%';
+    if (totalProfit) totalProfit.textContent = 'Rp 899.300.000';
+    if (profitBreakdown) profitBreakdown.textContent = 'Sewa Rp 270.000.000 + Capital Gain +Rp 629.300.000';
+  } else {
+    if (unitPrice) unitPrice.textContent = 'Rp 498.278.753';
+    if (rentPerMonth) rentPerMonth.textContent = 'Rp 3.000.000';
+    if (roiTotal) roiTotal.textContent = '111%';
+    if (roiYear) roiYear.textContent = '22.2%';
+    if (rentYield) rentYield.textContent = '7.2%';
+    if (totalProfit) totalProfit.textContent = 'Rp 553.709.065';
+    if (profitBreakdown) profitBreakdown.textContent = 'Sewa Rp 180.000.000 + Capital Gain +Rp 373.709.065';
+  }
+}
+
+function scrollToHospCalc() {
+  const calcEl = document.getElementById('hospSimSection');
+  if (calcEl) {
+    calcEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 function closeQuickModal() {

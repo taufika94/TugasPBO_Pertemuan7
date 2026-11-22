@@ -3448,43 +3448,52 @@
 
           <!-- TAB 4: FASILITAS -->
           <section class="landing-tab-panel" id="panelFasilitas" style="display: none;">
-            <!-- SUB-SECTION 1: THE PARK CLUBHOUSE -->
-            <div class="facility-showcase-box">
-              <div class="facility-hero-img-wrap">
-                <img src="assets/drive/clubhouse.png" alt="Clubhouse The Park Townhouse"
-                  class="facility-showcase-img" />
-                <div class="facility-hero-overlay">
-                  <span class="facility-hero-badge">Exclusive Facilities</span>
-                  <h2 class="facility-hero-title">The Park Clubhouse (177,25 m²)</h2>
-                  <p class="facility-hero-desc">
-                    Clubhouse eksklusif 2 lantai yang menghadirkan kenyamanan berolahraga, bersantai, dan bercengkerama bersama keluarga tanpa biaya membership terpisah.
-                  </p>
+            <!-- MAIN FASILITAS HUB (Overview) -->
+            <div class="fasilitas-main-hub" id="fasilitasMainHub">
+              <!-- SUB-SECTION 1: THE PARK CLUBHOUSE -->
+              <div class="facility-showcase-box">
+                <div class="facility-hero-img-wrap">
+                  <img src="assets/drive/clubhouse.png" alt="Clubhouse The Park Townhouse"
+                    class="facility-showcase-img" />
+                  <div class="facility-hero-overlay">
+                    <span class="facility-hero-badge">Exclusive Facilities</span>
+                    <h2 class="facility-hero-title">The Park Clubhouse (177,25 m²)</h2>
+                    <p class="facility-hero-desc">
+                      Clubhouse eksklusif 2 lantai yang menghadirkan kenyamanan berolahraga, bersantai, dan bercengkerama bersama keluarga tanpa biaya membership terpisah.
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-              <div class="facility-spaces-grid">
-                <div class="space-card">
-                  <span class="space-size">88 m²</span>
-                  <strong class="space-name">Main Hall &amp; Lounge</strong>
-                  <p class="space-desc">Lobi elegan untuk menyambut tamu dan acara pertemuan warga.</p>
+                <div class="facility-spaces-grid">
+                  <div class="space-card">
+                    <span class="space-size">88 m²</span>
+                    <strong class="space-name">Main Hall &amp; Lounge</strong>
+                    <p class="space-desc">Lobi elegan untuk menyambut tamu dan acara pertemuan warga.</p>
+                  </div>
+                  <div class="space-card">
+                    <span class="space-size">68,25 m²</span>
+                    <strong class="space-name">Dining &amp; Gathering</strong>
+                    <p class="space-desc">Ruang terbuka semi-outdoor untuk acara kebersamaan dan perayaan.</p>
+                  </div>
+                  <div class="space-card">
+                    <span class="space-size">21 m²</span>
+                    <strong class="space-name">Gym &amp; Fitness Area</strong>
+                    <p class="space-desc">Peralatan kebugaran modern dengan pemandangan hijau menenangkan.</p>
+                  </div>
+                  <div class="space-card">
+                    <span class="space-size">Resort</span>
+                    <strong class="space-name">Swimming Pool</strong>
+                    <p class="space-desc">Kolam renang dewasa &amp; anak terawat dengan dek santai teduh.</p>
+                  </div>
                 </div>
-                <div class="space-card">
-                  <span class="space-size">68,25 m²</span>
-                  <strong class="space-name">Dining &amp; Gathering</strong>
-                  <p class="space-desc">Ruang terbuka semi-outdoor untuk acara kebersamaan dan perayaan.</p>
-                </div>
-                <div class="space-card">
-                  <span class="space-size">21 m²</span>
-                  <strong class="space-name">Gym &amp; Fitness Area</strong>
-                  <p class="space-desc">Peralatan kebugaran modern dengan pemandangan hijau menenangkan.</p>
-                </div>
-                <div class="space-card">
-                  <span class="space-size">Resort</span>
-                  <strong class="space-name">Swimming Pool</strong>
-                  <p class="space-desc">Kolam renang dewasa &amp; anak terawat dengan dek santai teduh.</p>
+
+                <div class="facility-hub-action-wrap" style="padding: 0 14px 14px;">
+                  <button class="btn-primary-forest" type="button" onclick="openFasilitasDetail('clubhouse')" style="width: 100%;">
+                    <span>Lihat Selengkapnya</span>
+                    <span>→</span>
+                  </button>
                 </div>
               </div>
-            </div>
 
             <!-- SUB-SECTION 2: ANDARA IMPERIAL SUPER APP INTERACTIVE DEMO -->
             <div class="superapp-showcase-box">
@@ -3583,6 +3592,13 @@
                 <div class="app-demo-feedback" id="appDemoFeedback">
                   <span>Ketuk salah satu fitur di atas untuk mencoba simulasi kendali pintar langsung.</span>
                 </div>
+
+                <div class="facility-hub-action-wrap" style="margin-top: 10px;">
+                  <button class="btn-primary-forest" type="button" onclick="openFasilitasDetail('superapp')" style="width: 100%;">
+                    <span>Lihat Selengkapnya</span>
+                    <span>→</span>
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -3631,13 +3647,554 @@
               </div>
 
               <div class="hospitality-cta-card">
-                <span>Ingin konsultasi pengelolaan pasif income unit Anda?</span>
-                <button class="btn-primary-forest" type="button" onclick="openQuickModal('wa')">
-                  <span>Tanya Tim Hospitality</span>
+                <span>Pelajari simulasi sewa &amp; keuntungan pasif income unit Anda</span>
+                <button class="btn-primary-forest" type="button" onclick="openFasilitasDetail('hospitality')" style="width: 100%;">
+                  <span>Lihat Selengkapnya</span>
                   <span>→</span>
                 </button>
               </div>
             </div>
+          </div>
+
+          <!-- DETAIL SUBPAGE 1: THE PARK CLUBHOUSE -->
+          <div class="fasilitas-subpage" id="fasilitasDetail_clubhouse" style="display: none;">
+            <!-- Navigation Header -->
+            <div class="fasilitas-subpage-header">
+              <button type="button" class="btn-back-fasilitas" onclick="closeFasilitasDetail()">
+                <span class="back-arrow">←</span>
+                <span>Kembali ke Fasilitas</span>
+              </button>
+              <div class="fasilitas-subpage-pills">
+                <button type="button" class="f-sub-pill is-active" onclick="openFasilitasDetail('clubhouse')">Clubhouse</button>
+                <button type="button" class="f-sub-pill" onclick="openFasilitasDetail('superapp')">Super App</button>
+                <button type="button" class="f-sub-pill" onclick="openFasilitasDetail('hospitality')">Hospitality</button>
+              </div>
+            </div>
+
+            <!-- Hero Card -->
+            <div class="landing-section-card">
+              <div class="f-detail-hero-wrap">
+                <img src="assets/drive/clubhouse.png" alt="The Park Clubhouse" class="f-detail-hero-img" />
+                <div class="f-detail-hero-overlay">
+                  <span class="section-tag-gold">EXCLUSIVE FACILITIES</span>
+                  <h2 class="section-card-title" style="color: #ffffff; margin: 4px 0 6px;">The Park Clubhouse</h2>
+                  <p style="color: #e3ede6; font-size: 11.5px; line-height: 1.5; margin: 0;">
+                    Clubhouse eksklusif seluas 177,25 m² yang dirancang untuk menghadirkan pengalaman hidup terbaik bagi Anda dan keluarga. Tempat sempurna untuk bersantai, berolahraga, dan menciptakan momen berharga setiap hari.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Stats Bar & Badges -->
+              <div class="f-detail-stats-bar">
+                <div class="f-stat-item">
+                  <strong class="stat-num">177,25 m²</strong>
+                  <span class="stat-lbl">Total Luas Clubhouse</span>
+                </div>
+                <div class="f-badge-pills-row">
+                  <span class="f-badge-pill">Nyaman</span>
+                  <span class="f-badge-pill">Eksklusif</span>
+                  <span class="f-badge-pill">Modern</span>
+                  <span class="f-badge-pill">Aman</span>
+                </div>
+              </div>
+
+              <!-- 4 Highlight Areas -->
+              <div class="clubhouse-areas-grid">
+                <div class="ch-area-tile">
+                  <div class="ch-icon-circle">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+                    </svg>
+                  </div>
+                  <strong>Marketing Gallery</strong>
+                  <small>Pusat konsultasi &amp; legalitas resmi</small>
+                </div>
+                <div class="ch-area-tile">
+                  <div class="ch-icon-circle">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M6 5v14M18 5v14M3 8h6M15 8h6M3 16h6M15 16h6"/>
+                    </svg>
+                  </div>
+                  <strong>Gym &amp; Fitness</strong>
+                  <small>Kebugaran kardio ber-AC lantai 2</small>
+                </div>
+                <div class="ch-area-tile">
+                  <div class="ch-icon-circle">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                  </div>
+                  <strong>Meeting &amp; Lounge</strong>
+                  <small>Ruang pertemuan komunitas elegan</small>
+                </div>
+                <div class="ch-area-tile">
+                  <div class="ch-icon-circle">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M2 12h20M2 17h20M2 7c3 0 4 2 8 2s5-2 8-2 3 1 4 2"/>
+                    </svg>
+                  </div>
+                  <strong>Resort Pool</strong>
+                  <small>Kolam renang dewasa &amp; anak terawat</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- SPACIOUS & PREMIUM -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">SPACIOUS &amp; PREMIUM</span>
+                <h3 class="section-card-title">Terbesar di Kelasnya</h3>
+                <p class="section-card-sub">Ruang lebih luas untuk kenyamanan tanpa kompromi.</p>
+              </div>
+              <div class="spacious-metrics-grid">
+                <div class="spacious-metric-card">
+                  <span class="metric-val">88 m²</span>
+                  <strong class="metric-label">Main Hall</strong>
+                </div>
+                <div class="spacious-metric-card">
+                  <span class="metric-val">68,25 m²</span>
+                  <strong class="metric-label">Dining &amp; Lounge</strong>
+                </div>
+                <div class="spacious-metric-card">
+                  <span class="metric-val">21 m²</span>
+                  <strong class="metric-label">Gym Area</strong>
+                </div>
+                <div class="spacious-metric-card highlight-card">
+                  <span class="metric-val">177,25 m²</span>
+                  <strong class="metric-label">Total Luas</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- FASILITAS UNGGULAN -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">FASILITAS UNGGULAN</span>
+                <h3 class="section-card-title">Ruang di Setiap Lantai</h3>
+              </div>
+              <div class="floors-specs-grid">
+                <div class="floor-spec-card">
+                  <div class="floor-tag">Lantai 1</div>
+                  <h4>Ruang Utama</h4>
+                  <p>Area lobby dan lounge elegan untuk menyambut tamu dengan kenyamanan maksimal.</p>
+                </div>
+                <div class="floor-spec-card">
+                  <div class="floor-tag">Lantai 2</div>
+                  <h4>Ruang Gym &amp; Lounge</h4>
+                  <p>Fasilitas kebugaran modern dengan pemandangan hijau yang menenangkan.</p>
+                </div>
+              </div>
+
+              <div class="section-card-head" style="margin-top: 14px;">
+                <h4 class="section-card-title" style="font-size: 13.5px;">Ruang di Halaman Sendiri</h4>
+              </div>
+              <div class="floors-specs-grid">
+                <div class="floor-spec-card">
+                  <div class="floor-tag-sub">Taman &amp; Rekreasi</div>
+                  <h4>Kids' Playground</h4>
+                  <p>Area bermain anak yang aman, menyenangkan, dan penuh warna.</p>
+                </div>
+                <div class="floor-spec-card">
+                  <div class="floor-tag-sub">Area Terbuka</div>
+                  <h4>BBQ &amp; Garden Terrace</h4>
+                  <p>Ruang terbuka untuk acara kebersamaan bersama keluarga dan teman.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- KENYAMANAN TANPA BATAS -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">HIDUP NYAMAN, SETIAP HARI</span>
+                <h3 class="section-card-title">Kenyamanan Tanpa Batas</h3>
+                <p class="section-card-sub">
+                  Clubhouse The Park Townhouse hadir untuk melengkapi gaya hidup modern Anda dengan fasilitas premium, suasana eksklusif, dan ruang yang dirancang untuk setiap momen berharga.
+                </p>
+              </div>
+              <div class="comfort-pillars-grid">
+                <div class="comfort-pillar-card">
+                  <span class="cp-icon">✦</span>
+                  <strong>Desain Modern &amp; Elegan</strong>
+                  <p>Material berkualitas tinggi dengan arsitektur modern yang timeless.</p>
+                </div>
+                <div class="comfort-pillar-card">
+                  <span class="cp-icon">🛡️</span>
+                  <strong>Privasi &amp; Keamanan Terjamin</strong>
+                  <p>Akses eksklusif untuk penghuni dengan sistem keamanan 24 jam.</p>
+                </div>
+              </div>
+
+              <!-- Final CTA -->
+              <div class="f-detail-footer-cta">
+                <h4>Rasakan pengalaman hidup yang lebih lengkap di The Park Townhouse</h4>
+                <div class="f-cta-btns-row">
+                  <button type="button" class="btn-primary-forest" onclick="switchLandingTab('Unit')">
+                    <span>Lihat Unit</span>
+                    <span>→</span>
+                  </button>
+                  <button type="button" class="btn-secondary-link" onclick="openQuickModal('wa')">
+                    <span>Tanya Marketing</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DETAIL SUBPAGE 2: ANDARA IMPERIAL SUPER APP -->
+          <div class="fasilitas-subpage" id="fasilitasDetail_superapp" style="display: none;">
+            <!-- Navigation Header -->
+            <div class="fasilitas-subpage-header">
+              <button type="button" class="btn-back-fasilitas" onclick="closeFasilitasDetail()">
+                <span class="back-arrow">←</span>
+                <span>Kembali ke Fasilitas</span>
+              </button>
+              <div class="fasilitas-subpage-pills">
+                <button type="button" class="f-sub-pill" onclick="openFasilitasDetail('clubhouse')">Clubhouse</button>
+                <button type="button" class="f-sub-pill is-active" onclick="openFasilitasDetail('superapp')">Super App</button>
+                <button type="button" class="f-sub-pill" onclick="openFasilitasDetail('hospitality')">Hospitality</button>
+              </div>
+            </div>
+
+            <!-- Hero Card -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">FASILITAS DALAM GENGGAMAN</span>
+                <h2 class="section-card-title">Andara Imperial Super App</h2>
+                <p class="section-card-sub">
+                  Bukan sekadar hunian fisik. Nikmati ekosistem kehidupan pintar dalam genggaman tangan Anda — 24 jam sehari, terintegrasi dengan seluruh fasilitas kawasan The Park Townhouse Sukoharjo.
+                </p>
+              </div>
+
+              <div class="superapp-metrics-triptych">
+                <div class="sa-metric-tile">
+                  <strong class="sa-val">Online 24/7</strong>
+                  <span class="sa-lbl">Akses kapan saja</span>
+                </div>
+                <div class="sa-metric-tile">
+                  <strong class="sa-val">Ver. Pro</strong>
+                  <span class="sa-lbl">Fitur lengkap</span>
+                </div>
+                <div class="sa-metric-tile">
+                  <strong class="sa-val">Smart Home IoT</strong>
+                  <span class="sa-lbl">Rumah lebih cerdas</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- FITUR UNGGULAN & DEMO INTERAKTIF -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">SATU APLIKASI, SEMUA KENDALI</span>
+                <h3 class="section-card-title">Fitur Unggulan Super App</h3>
+                <p class="section-card-sub">Demo interaktif — ketuk kartu fitur untuk mencobanya langsung di layar ponsel.</p>
+              </div>
+
+              <!-- 6 Interactive Feature Cards Grid -->
+              <div class="sa-features-grid">
+                <div class="sa-feature-card" onclick="demoAppAction('lock')">
+                  <div class="sa-card-top">
+                    <span class="sa-card-badge">TERKUNCI</span>
+                    <span class="sa-card-icon">🔐</span>
+                  </div>
+                  <h4>Smart Lock Pintu Utama</h4>
+                  <p>Kendalikan kunci pintu rumah dari mana saja via Bluetooth &amp; Wi-Fi IoT — tanpa repot membawa kunci fisik.</p>
+                  <button type="button" class="sa-card-action">Buka Pintu (Unlock) →</button>
+                </div>
+
+                <div class="sa-feature-card" onclick="demoAppAction('qr')">
+                  <div class="sa-card-top">
+                    <span class="sa-card-badge">AVENUE GATE QR</span>
+                    <span class="sa-card-icon">🎫</span>
+                  </div>
+                  <h4>Pass Akses QR Tamu</h4>
+                  <p>Buat kode QR sementara untuk tamu atau kurir agar bisa langsung melintas gerbang tanpa hambatan.</p>
+                  <button type="button" class="sa-card-action">Generate QR Tamu →</button>
+                </div>
+
+                <div class="sa-feature-card" onclick="demoAppAction('booking')">
+                  <div class="sa-card-top">
+                    <span class="sa-card-badge">CLUBHOUSE</span>
+                    <span class="sa-card-icon">🏊</span>
+                  </div>
+                  <h4>Booking Gym &amp; Kolam Renang</h4>
+                  <p>Reservasi slot olahraga, kolam renang, atau ruang komunitas di clubhouse tanpa perlu antre.</p>
+                  <button type="button" class="sa-card-action">Pesan Slot →</button>
+                </div>
+
+                <div class="sa-feature-card" onclick="demoAppAction('ipl')">
+                  <div class="sa-card-top">
+                    <span class="sa-card-badge">TRANSPARAN</span>
+                    <span class="sa-card-icon">🧾</span>
+                  </div>
+                  <h4>Iuran Pemeliharaan (IPL)</h4>
+                  <p>Tagihan keamanan, kebersihan, dan perawatan taman dikelola transparan dan dibayar online.</p>
+                  <button type="button" class="sa-card-action">Bayar via Virtual Account →</button>
+                </div>
+
+                <div class="sa-feature-card" onclick="demoAppAction('maint')">
+                  <div class="sa-card-top">
+                    <span class="sa-card-badge">LAYANAN</span>
+                    <span class="sa-card-icon">🛠️</span>
+                  </div>
+                  <h4>Lapor Kendala / Maintenance</h4>
+                  <p>Ajukan perbaikan atau kendala rumah langsung ke tim pengelola dan pantau progresnya.</p>
+                  <button type="button" class="sa-card-action">Buat Laporan →</button>
+                </div>
+
+                <div class="sa-feature-card is-sos-card" onclick="demoAppAction('sos')">
+                  <div class="sa-card-top">
+                    <span class="sa-card-badge badge-sos">DARURAT</span>
+                    <span class="sa-card-icon">🚨</span>
+                  </div>
+                  <h4>Emergency Panic Button</h4>
+                  <p>Satu ketukan memanggil satpam dan bantuan darurat kawasan kapan pun dibutuhkan.</p>
+                  <button type="button" class="sa-card-action">Kirim SOS →</button>
+                </div>
+              </div>
+
+              <div class="app-demo-feedback" id="appDemoFeedbackSubpage" style="margin-top: 12px;">
+                <span>Ketuk kartu fitur di atas untuk mencoba simulasi kendali pintar langsung.</span>
+              </div>
+            </div>
+
+            <!-- RASAKAN HIDUP PINTAR CTA -->
+            <div class="landing-section-card">
+              <div class="f-detail-footer-cta">
+                <span class="section-tag-gold">EKOSISTEM DIGITAL</span>
+                <h4>Rasakan Hidup Pintar di The Park Townhouse Sukoharjo</h4>
+                <p style="color: #5c6860; font-size: 11.5px; margin: 4px 0 14px;">Setiap unit otomatis terhubung ke Andara Imperial Super App setelah serah terima.</p>
+                <div class="f-cta-btns-row">
+                  <button type="button" class="btn-primary-forest" onclick="switchLandingTab('Unit')">
+                    <span>Amankan Unit Anda</span>
+                    <span>→</span>
+                  </button>
+                  <button type="button" class="btn-secondary-link" onclick="openQuickModal('wa')">
+                    <span>Tanya Marketing</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DETAIL SUBPAGE 3: ANDARA MANAJEMEN HOSPITALITY -->
+          <div class="fasilitas-subpage" id="fasilitasDetail_hospitality" style="display: none;">
+            <!-- Navigation Header -->
+            <div class="fasilitas-subpage-header">
+              <button type="button" class="btn-back-fasilitas" onclick="closeFasilitasDetail()">
+                <span class="back-arrow">←</span>
+                <span>Kembali ke Fasilitas</span>
+              </button>
+              <div class="fasilitas-subpage-pills">
+                <button type="button" class="f-sub-pill" onclick="openFasilitasDetail('clubhouse')">Clubhouse</button>
+                <button type="button" class="f-sub-pill" onclick="openFasilitasDetail('superapp')">Super App</button>
+                <button type="button" class="f-sub-pill is-active" onclick="openFasilitasDetail('hospitality')">Hospitality</button>
+              </div>
+            </div>
+
+            <!-- Hero Card -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">LAYANAN PENGELOLAAN PROPERTI</span>
+                <h2 class="section-card-title">Andara Manajemen Hospitality</h2>
+                <p class="section-card-sub">
+                  Beli, titipkan, sewakan — nikmati penghasilan pasif tanpa repot. Kami kelola unit The Park Townhouse Sukoharjo Anda secara penuh dengan standar hospitality bintang lima, dari mencari penyewa hingga perawatan &amp; pelaporan.
+                </p>
+              </div>
+
+              <div class="f-cta-btns-row" style="margin-bottom: 12px;">
+                <button type="button" class="btn-primary-forest" onclick="openQuickModal('wa')">
+                  <span>Titipkan Unit Saya</span>
+                  <span>→</span>
+                </button>
+                <button type="button" class="btn-secondary-link" onclick="scrollToHospCalc()">
+                  <span>Simulasi Keuntungan ↓</span>
+                </button>
+              </div>
+
+              <div class="f-badge-pills-row">
+                <span class="f-badge-pill">Full-Service</span>
+                <span class="f-badge-pill">6–8% p.a. Yield</span>
+                <span class="f-badge-pill">Laporan Transparan</span>
+              </div>
+            </div>
+
+            <!-- SATU MITRA, SEMUA BERES (6 LAYANAN) -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">SATU MITRA, SEMUA BERES</span>
+                <h3 class="section-card-title">Layanan Andara Manajemen Hospitality</h3>
+              </div>
+              <div class="hosp-services-grid">
+                <div class="hosp-service-card">
+                  <span class="hs-icon">🏢</span>
+                  <h4>Investasi Masa Depan</h4>
+                  <p>Keuntungan ganda untuk masa depan yang lebih pasti.</p>
+                </div>
+                <div class="hosp-service-card">
+                  <span class="hs-icon">🧹</span>
+                  <h4>Housekeeping &amp; Perawatan</h4>
+                  <p>Kebersihan berkala, perawatan taman, dan perbaikan minor menjaga unit selalu prima &amp; bernilai tinggi.</p>
+                </div>
+                <div class="hosp-service-card">
+                  <span class="hs-icon">🛎️</span>
+                  <h4>Layanan Concierge</h4>
+                  <p>Check-in/out tamu, penyambutan, dan bantuan kebutuhan penghuni ala hospitality hotel bintang lima.</p>
+                </div>
+                <div class="hosp-service-card">
+                  <span class="hs-icon">🛡️</span>
+                  <h4>Estate Management</h4>
+                  <p>Keamanan one-gate 24 jam, pengelolaan IPL, dan koordinasi fasilitas kawasan secara profesional.</p>
+                </div>
+                <div class="hosp-service-card">
+                  <span class="hs-icon">📣</span>
+                  <h4>Pemasaran Sewa</h4>
+                  <p>Listing multi-platform, fotografi, dan promosi aktif untuk menjaga tingkat hunian tetap tinggi.</p>
+                </div>
+                <div class="hosp-service-card">
+                  <span class="hs-icon">📊</span>
+                  <h4>Pelaporan Transparan</h4>
+                  <p>Laporan pemasukan, okupansi, dan biaya bulanan real-time — terintegrasi Andara Imperial Super App.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- PASSIVE INCOME DALAM 1 KALI KLIK (4 TAHAPAN) -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">PROSES PRAKTIS</span>
+                <h3 class="section-card-title">Passive Income dalam 1 kali Klik</h3>
+              </div>
+              <div class="hosp-steps-grid">
+                <div class="hosp-step-card">
+                  <div class="hs-step-num">01</div>
+                  <h4>Pembelian Unit</h4>
+                  <p>Pilih unit hunian favorit Anda di The Park Townhouse.</p>
+                </div>
+                <div class="hosp-step-card">
+                  <div class="hs-step-num">02</div>
+                  <h4>Aktivasi Layanan</h4>
+                  <p>Daftarkan unit ke program pengelolaan Andara Hospitality.</p>
+                </div>
+                <div class="hosp-step-card">
+                  <div class="hs-step-num">03</div>
+                  <h4>Pengelolaan Penuh</h4>
+                  <p>Tim profesional mengurus pemasaran, tamu, hingga pemeliharaan.</p>
+                </div>
+                <div class="hosp-step-card">
+                  <div class="hs-step-num">04</div>
+                  <h4>Terima Pasif Income</h4>
+                  <p>Pantau laporan berkala &amp; nikmati hasil sewa langsung ke rekening Anda.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- MENGAPA DITITIPKAN KE KAMI? -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">MENGAPA DITITIPKAN KE KAMI?</span>
+                <h3 class="section-card-title">Investasi Tenang, Hasil Berjalan</h3>
+              </div>
+              <div class="hosp-benefits-list">
+                <div class="hb-item">
+                  <span class="hb-check">✓</span>
+                  <span>100% hands-off — cocok untuk investor &amp; perantau</span>
+                </div>
+                <div class="hb-item">
+                  <span class="hb-check">✓</span>
+                  <span>Penyewa terverifikasi &amp; kontrak legal</span>
+                </div>
+                <div class="hb-item">
+                  <span class="hb-check">✓</span>
+                  <span>Unit terawat, nilai jual kembali terjaga</span>
+                </div>
+                <div class="hb-item">
+                  <span class="hb-check">✓</span>
+                  <span>Terintegrasi Andara Imperial Super App</span>
+                </div>
+                <div class="hb-item">
+                  <span class="hb-check">✓</span>
+                  <span>Tim hospitality profesional berpengalaman</span>
+                </div>
+              </div>
+              <button type="button" class="btn-primary-forest" onclick="openQuickModal('wa')" style="margin-top: 14px; width: 100%;">
+                <span>Konsultasi Pengelolaan</span>
+                <span>→</span>
+              </button>
+            </div>
+
+            <!-- SIMULASI KEUNTUNGAN INVESTASI (KALKULATOR) -->
+            <div class="landing-section-card" id="hospSimSection">
+              <div class="section-card-head">
+                <span class="section-tag-gold">SIMULASI KEUNTUNGAN INVESTASI</span>
+                <h3 class="section-card-title">Sewa + Kenaikan Nilai Properti</h3>
+              </div>
+
+              <div class="hosp-sim-tabs">
+                <button type="button" class="hosp-sim-pill is-active" id="hospSimTab60" onclick="switchHospSimType('t60')">Type 60</button>
+                <button type="button" class="hosp-sim-pill" id="hospSimTab80" onclick="switchHospSimType('t80')">Type 80</button>
+              </div>
+
+              <div class="hosp-calc-display-card">
+                <div class="hosp-calc-row">
+                  <span>Harga Unit</span>
+                  <strong id="hospSimUnitPrice">Rp 498.278.753</strong>
+                </div>
+                <div class="hosp-calc-row">
+                  <span>Estimasi Sewa / Bulan</span>
+                  <strong id="hospSimRentMonth">Rp 3.000.000</strong>
+                </div>
+                <div class="hosp-calc-row">
+                  <span>Lama Investasi</span>
+                  <strong>5 Tahun</strong>
+                </div>
+
+                <div class="hosp-roi-triptych">
+                  <div class="roi-item">
+                    <strong id="hospSimRoiTotal">111%</strong>
+                    <span>ROI Total</span>
+                  </div>
+                  <div class="roi-item">
+                    <strong id="hospSimRoiYear">22.2%</strong>
+                    <span>ROI / Thn</span>
+                  </div>
+                  <div class="roi-item">
+                    <strong id="hospSimRentYield">7.2%</strong>
+                    <span>Yield Sewa</span>
+                  </div>
+                </div>
+
+                <div class="hosp-total-profit-box">
+                  <span class="profit-lbl">Total Estimasi Keuntungan (5 Thn)</span>
+                  <strong class="profit-num" id="hospSimTotalProfit">Rp 553.709.065</strong>
+                  <span class="profit-sub" id="hospSimProfitBreakdown">Sewa Rp 180.000.000 + Capital Gain +Rp 373.709.065</span>
+                </div>
+
+                <small class="hosp-calc-disclaimer">
+                  *Estimasi non-mengikat berbasis potensi kawasan (yield 6–8% &amp; capital gain 12–18% p.a.). Hasil bergantung kondisi pasar.
+                </small>
+              </div>
+            </div>
+
+            <!-- MILIKI UNIT CTA -->
+            <div class="landing-section-card">
+              <div class="f-detail-footer-cta">
+                <span class="section-tag-gold">PENUTUP</span>
+                <h4>Miliki Unit, Biarkan Kami yang Mengurus</h4>
+                <p style="color: #5c6860; font-size: 11.5px; margin: 4px 0 14px;">
+                  Setiap unit The Park Townhouse Sukoharjo dapat dikelola penuh oleh Andara Manajemen Hospitality — terhubung otomatis dengan Andara Imperial Super App.
+                </p>
+                <div class="f-cta-btns-row">
+                  <button type="button" class="btn-primary-forest" onclick="switchLandingTab('Unit')">
+                    <span>Amankan Unit Anda</span>
+                    <span>→</span>
+                  </button>
+                  <button type="button" class="btn-secondary-link" onclick="openQuickModal('wa')">
+                    <span>Tanya Marketing</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
           </section>
         </div>
 

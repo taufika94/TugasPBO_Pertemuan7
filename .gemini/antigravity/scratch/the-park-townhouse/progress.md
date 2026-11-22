@@ -929,3 +929,23 @@
   - **Icon Aesthetics (index.html)**:
     - Replaced the confusing X-square icon on "Fasilitas" with a luxury 4-point star amenity jewel SVG icon.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #59: Facility Detail Subpages Integration (Clubhouse, Super App, Hospitality)
+- **Context & Objective**: Connect the Fasilitas overview page (`#panelFasilitas`) with 3 dedicated detail subpages (The Park Clubhouse, Andara Imperial Super App, and Andara Manajemen Hospitality) via "Lihat Selengkapnya →" action triggers.
+- **Key Changes Implemented**:
+  - **Overview Hub Action Triggers (index.html)**:
+    - Added prominent "Lihat Selengkapnya →" primary CTA buttons to each of the 3 facility overview cards (`.facility-showcase-box`, `.superapp-showcase-box`, `.hospitality-showcase-box`).
+    - Wrapped overview elements cleanly inside `#fasilitasMainHub`.
+  - **Dedicated Facility Subpages (index.html)**:
+    - **The Park Clubhouse (`#fasilitasDetail_clubhouse`)**: Built comprehensive detail view with 177,25 m² hero specs, 4 key highlight areas (Marketing Gallery, Gym & Fitness, Meeting & Lounge, Resort Pool), Spacious & Premium 4-metric breakdown, floor-by-floor specifications, outdoor amenities (Kids' Playground, BBQ & Garden Terrace), and comfort pillars.
+    - **Andara Imperial Super App (`#fasilitasDetail_superapp`)**: Built smart living ecosystem view with 3 metric tiles (Online 24/7, Ver. Pro, Smart Home IoT), 6 interactive feature cards with action buttons (Smart Lock, QR Tamu, Booking Gym, Iuran IPL, Lapor Kendala, Emergency SOS), and synced feedback banner.
+    - **Andara Manajemen Hospitality (`#fasilitasDetail_hospitality`)**: Built property management investment view featuring 6 core services, 4-step passive income journey, 5 investor benefits checklist, and interactive Type 60 / Type 80 ROI simulation calculator (yielding 6.9%–7.2% with full breakdown).
+  - **Smooth View Transitions & Navigation Logic (app.js)**:
+    - Implemented `openFasilitasDetail(slug)` and `closeFasilitasDetail()` handling view toggling, smooth scroll-to-top, and subpage pill active state management.
+    - Implemented `switchHospSimType(type)` for instant real-time ROI calculation switching between Type 60 and Type 80 without page reload.
+    - Updated `demoAppAction` to provide feedback across both overview and detail views.
+  - **Design System Harmonization (styles.css)**:
+    - Applied unified typography, clean card borders (12px radius), compact responsive grid reflows for mobile, and forest green button styling matching the Japandi luxury palette.
+- **Status**: Completed, Verified & Auto-Pushed.
