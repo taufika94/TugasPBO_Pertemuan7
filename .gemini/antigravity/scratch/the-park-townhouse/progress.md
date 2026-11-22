@@ -433,3 +433,16 @@
     - Implemented `recalculateSuratPayment()`, `setSuratCalcStage()`, `setSuratCalcScheme()`, `onSuratKprSliderChange()`, and `orderSuratCalculatedUnit()`.
     - Integrated automatic calculation initialization on tab activation and page load.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #29: Website Content Realignment to Surat Cinta Storytelling Tone
+- **Context & Objective**: Transform all content across the website (corresponding to `theparktownhouse.com`) from aggressive, pushy sales copy ("Diskon Maksimal", "Kunci Kavling Sekarang", "Promo Terbatas") into warm, reflective, narrative storytelling inspired by the *Surat Cinta* voice ("Sebuah alamat, begitu banyak arti", "Ruang untuk meletakkan lelah", "Menemukan ritme yang sesuai").
+- **Key Changes Implemented**:
+  - **Marquee Ticker (`index.html`)**: Replaced hard-selling promo text with a warm, story-driven manifesto: *"SEBUAH ALAMAT • BEGITU BANYAK ARTI • 30 KELUARGA TERPILIH DALAM KETENANGAN JAPANDI MODERN • KORIDOR EMAS SUKOHARJO • RUANG UNTUK PULANG DAN MELETAKKAN LELAH • SHM PECAH SEMPURNA • DUA LANTAI DENGAN GARASI DALAM • FASILITAS BERSAMA TANPA BIAYA TERPISAH •"*.
+  - **Hero & Philosophy**: Subtitle re-anchored to the core human need: *"Barangkali rumah yang Anda cari bukan yang paling banyak menarik perhatian, melainkan ruang untuk meletakkan lelah, membesarkan tawa bersama orang terdekat, dan menyambut hari dengan ritme yang lebih tertata."* Metric cells renamed to *"Keluarga Bertetangga"* and *"Clubhouse Bersama"*.
+  - **Master Plan & Kenyamanan**: Section headers rewritten to invite exploration (*"Temukan Ritme Klaster yang Sesuai"*, *"Ketenangan yang Mengalir di Setiap Sudut"*).
+  - **Jaminan & Perlindungan**: Renamed the 5th transparency tab from "Promo Presale" to "Jaminan Kenyamanan", outlining honest handover standards (SHM, kanopi carport, smart lock, water supply).
+  - **Catatan Perjalanan Menuju Pulang**: Replaced sales testimonials with authentic, heartfelt resident reflections on safety, fresh air, low-density peace, and split SHM title certainty.
+  - **Final CTA Banner**: Transformed from high-pressure urgency into a thoughtful invitation: *"Menemukan Rumah yang Terasa Tepat untuk Dijalani: Membeli rumah adalah keputusan sakral keluarga. Anda tidak harus merasa terdesak..."* with gentle button *"Mulai Percakapan dengan Mr. Andara"*.
+- **Status**: Completed & Verified.
