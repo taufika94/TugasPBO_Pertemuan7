@@ -2643,69 +2643,105 @@
                 <span>**Klaster Nagoya</span>
               </div>
 
-              <!-- Interactive Filters Card -->
-              <div class="unit-filter-card">
-                <div class="filter-controls-grid">
-                  <!-- Tipe Unit -->
-                  <div class="filter-control-group">
-                    <label class="filter-lbl">Tipe Unit</label>
-                    <div class="filter-chips" id="filterGroupType">
-                      <button type="button" class="f-chip is-active" onclick="filterCatalog('type', 'all', this)">Semua</button>
-                      <button type="button" class="f-chip" onclick="filterCatalog('type', 'T60', this)">T60 (3KT, LT 63m²)</button>
-                      <button type="button" class="f-chip" onclick="filterCatalog('type', 'T80', this)">T80 (4KT, LT 88m²)</button>
+              <!-- Interactive Filters Card (Collapsible Drawer with Horizontal Swipe) -->
+              <div class="unit-filter-card" id="unitFilterCard">
+                <!-- Filter Header / Toggle Trigger -->
+                <button type="button" class="unit-filter-toggle-btn" id="unitFilterToggleBtn" onclick="toggleUnitFilterCard()" aria-expanded="false" aria-controls="filterControlsWrapper">
+                  <div class="filter-toggle-left">
+                    <span class="filter-icon-badge">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+                      </svg>
+                    </span>
+                    <div class="filter-toggle-titles">
+                      <strong class="filter-main-title">Filter &amp; Urutkan Unit</strong>
+                      <span class="filter-active-summary" id="filterActiveSummary">Semua unit ditampilkan</span>
                     </div>
                   </div>
-
-                  <!-- Luas Tanah -->
-                  <div class="filter-control-group">
-                    <label class="filter-lbl">Luas Tanah</label>
-                    <div class="filter-chips" id="filterGroupLot">
-                      <button type="button" class="f-chip is-active" onclick="filterCatalog('lot', 'all', this)">Semua</button>
-                      <button type="button" class="f-chip" onclick="filterCatalog('lot', 'under80', this)">&lt; 80m²</button>
-                      <button type="button" class="f-chip" onclick="filterCatalog('lot', '80to90', this)">80-90m²</button>
-                      <button type="button" class="f-chip" onclick="filterCatalog('lot', '91to100', this)">91-100m²</button>
-                      <button type="button" class="f-chip" onclick="filterCatalog('lot', 'above100', this)">&gt; 100m²</button>
-                    </div>
+                  <div class="filter-toggle-right">
+                    <span class="filter-badge-count" id="filterActiveCount" style="display: none;">0</span>
+                    <span class="filter-chevron-icon" id="filterChevronIcon">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </span>
                   </div>
+                </button>
 
-                  <!-- Range Harga -->
-                  <div class="filter-control-group">
-                    <label class="filter-lbl">Range Harga</label>
-                    <div class="filter-chips" id="filterGroupPrice">
-                      <button type="button" class="f-chip is-active" onclick="filterCatalog('price', 'all', this)">Semua</button>
-                      <button type="button" class="f-chip" onclick="filterCatalog('price', 'under600', this)">&lt; 600jt</button>
-                      <button type="button" class="f-chip" onclick="filterCatalog('price', '600to750', this)">600-750jt</button>
-                      <button type="button" class="f-chip" onclick="filterCatalog('price', '750to900', this)">750-900jt</button>
-                      <button type="button" class="f-chip" onclick="filterCatalog('price', 'above900', this)">&gt; 900jt</button>
+                <!-- Collapsible Filter Controls Body -->
+                <div class="filter-controls-wrapper" id="filterControlsWrapper" style="display: none;">
+                  <div class="filter-controls-grid">
+                    <!-- Tipe Unit (Horizontal Swipe) -->
+                    <div class="filter-control-group">
+                      <div class="filter-lbl-row">
+                        <label class="filter-lbl">Tipe Unit</label>
+                        <span class="filter-swipe-hint">geser ↔</span>
+                      </div>
+                      <div class="filter-chips-scroller" id="filterGroupType">
+                        <button type="button" class="f-chip is-active" onclick="filterCatalog('type', 'all', this)">Semua</button>
+                        <button type="button" class="f-chip" onclick="filterCatalog('type', 'T60', this)">T60 (3KT · LT 63m²)</button>
+                        <button type="button" class="f-chip" onclick="filterCatalog('type', 'T80', this)">T80 (4KT · LT 88m²)</button>
+                      </div>
                     </div>
-                  </div>
 
-                  <!-- Posisi Kavling -->
-                  <div class="filter-control-group">
-                    <label class="filter-lbl">Posisi Kavling</label>
-                    <div class="filter-chips" id="filterGroupPos">
-                      <button type="button" class="f-chip is-active" onclick="filterCatalog('pos', 'all', this)">Semua</button>
-                      <button type="button" class="f-chip" onclick="filterCatalog('pos', 'hook', this)">Hook / Pojok</button>
-                      <button type="button" class="f-chip" onclick="filterCatalog('pos', 'gate', this)">Dekat Gerbang</button>
-                      <button type="button" class="f-chip" onclick="filterCatalog('pos', 'inner', this)">Posisi Dalam</button>
+                    <!-- Luas Tanah (Horizontal Swipe) -->
+                    <div class="filter-control-group">
+                      <div class="filter-lbl-row">
+                        <label class="filter-lbl">Luas Tanah</label>
+                        <span class="filter-swipe-hint">geser ↔</span>
+                      </div>
+                      <div class="filter-chips-scroller" id="filterGroupLot">
+                        <button type="button" class="f-chip is-active" onclick="filterCatalog('lot', 'all', this)">Semua</button>
+                        <button type="button" class="f-chip" onclick="filterCatalog('lot', 'under80', this)">&lt; 80m²</button>
+                        <button type="button" class="f-chip" onclick="filterCatalog('lot', '80to90', this)">80–90m²</button>
+                        <button type="button" class="f-chip" onclick="filterCatalog('lot', '91to100', this)">91–100m²</button>
+                        <button type="button" class="f-chip" onclick="filterCatalog('lot', 'above100', this)">&gt; 100m²</button>
+                      </div>
                     </div>
-                  </div>
 
-                  <!-- Urutkan & Reset -->
-                  <div class="filter-sort-row">
-                    <div class="filter-control-group flex-1">
-                      <label class="filter-lbl">Urutkan</label>
-                      <select class="filter-select-input" id="catalogSortSelect" onchange="sortCatalog(this.value)">
-                        <option value="rec">Rekomendasi</option>
-                        <option value="price-asc">Harga Terendah</option>
-                        <option value="price-desc">Harga Tertinggi</option>
-                        <option value="lot-desc">Luas Tanah Terbesar</option>
-                      </select>
+                    <!-- Range Harga (Horizontal Swipe) -->
+                    <div class="filter-control-group">
+                      <div class="filter-lbl-row">
+                        <label class="filter-lbl">Range Harga</label>
+                        <span class="filter-swipe-hint">geser ↔</span>
+                      </div>
+                      <div class="filter-chips-scroller" id="filterGroupPrice">
+                        <button type="button" class="f-chip is-active" onclick="filterCatalog('price', 'all', this)">Semua</button>
+                        <button type="button" class="f-chip" onclick="filterCatalog('price', 'under600', this)">&lt; 600jt</button>
+                        <button type="button" class="f-chip" onclick="filterCatalog('price', '600to750', this)">600–750jt</button>
+                        <button type="button" class="f-chip" onclick="filterCatalog('price', '750to900', this)">750–900jt</button>
+                        <button type="button" class="f-chip" onclick="filterCatalog('price', 'above900', this)">&gt; 900jt</button>
+                      </div>
                     </div>
-                    <button type="button" class="btn-reset-filters" onclick="resetCatalogFilters()">
-                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><polyline points="3 3 3 8 8 8"/></svg>
-                      <span>Reset</span>
-                    </button>
+
+                    <!-- Posisi Kavling (Horizontal Swipe) -->
+                    <div class="filter-control-group">
+                      <div class="filter-lbl-row">
+                        <label class="filter-lbl">Posisi Kavling</label>
+                        <span class="filter-swipe-hint">geser ↔</span>
+                      </div>
+                      <div class="filter-chips-scroller" id="filterGroupPos">
+                        <button type="button" class="f-chip is-active" onclick="filterCatalog('pos', 'all', this)">Semua</button>
+                        <button type="button" class="f-chip" onclick="filterCatalog('pos', 'hook', this)">Hook / Pojok</button>
+                        <button type="button" class="f-chip" onclick="filterCatalog('pos', 'gate', this)">Dekat Gerbang</button>
+                        <button type="button" class="f-chip" onclick="filterCatalog('pos', 'inner', this)">Posisi Dalam</button>
+                      </div>
+                    </div>
+
+                    <!-- Urutkan & Reset -->
+                    <div class="filter-sort-row">
+                      <div class="filter-control-group flex-1">
+                        <label class="filter-lbl">Urutkan</label>
+                        <select class="filter-select-input" id="catalogSortSelect" onchange="sortCatalog(this.value)">
+                          <option value="rec">Rekomendasi</option>
+                          <option value="price-asc">Harga Terendah</option>
+                          <option value="price-desc">Harga Tertinggi</option>
+                          <option value="lot-desc">Luas Tanah Terbesar</option>
+                        </select>
+                      </div>
+                      <button type="button" class="btn-reset-filters" onclick="resetCatalogFilters()">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><polyline points="3 3 3 8 8 8"/></svg>
+                        <span>Reset</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -1992,7 +1992,7 @@ function initLandingPage() {
 
 function switchBerandaShowcaseCluster(clusterKey, btnEl) {
   const data = SHOWCASE_CLUSTER_DATA[clusterKey] || SHOWCASE_CLUSTER_DATA.nagoya;
-  
+
   if (btnEl) {
     document.querySelectorAll('#berandaShowcaseClusterTabs .cluster-pill-btn').forEach(b => b.classList.remove('is-active'));
     btnEl.classList.add('is-active');
@@ -2070,6 +2070,58 @@ function sortCatalog(sortVal) {
   renderLandingUnits();
 }
 
+function toggleUnitFilterCard() {
+  const wrapper = document.getElementById('filterControlsWrapper');
+  const toggleBtn = document.getElementById('unitFilterToggleBtn');
+  if (!wrapper || !toggleBtn) return;
+
+  const isOpen = wrapper.style.display !== 'none';
+  if (isOpen) {
+    wrapper.style.display = 'none';
+    toggleBtn.classList.remove('is-open');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  } else {
+    wrapper.style.display = 'block';
+    toggleBtn.classList.add('is-open');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+  }
+}
+
+function updateUnitFilterSummary() {
+  const summaryEl = document.getElementById('filterActiveSummary');
+  const countBadge = document.getElementById('filterActiveCount');
+  if (!summaryEl || !countBadge) return;
+
+  let activeCount = 0;
+  const activeLabels = [];
+
+  if (catalogFilterState.type !== 'all') {
+    activeCount++;
+    activeLabels.push(catalogFilterState.type);
+  }
+  if (catalogFilterState.lot !== 'all') {
+    activeCount++;
+    activeLabels.push('LT: ' + catalogFilterState.lot);
+  }
+  if (catalogFilterState.price !== 'all') {
+    activeCount++;
+    activeLabels.push('Harga disaring');
+  }
+  if (catalogFilterState.pos !== 'all') {
+    activeCount++;
+    activeLabels.push(catalogFilterState.pos);
+  }
+
+  if (activeCount === 0) {
+    summaryEl.textContent = 'Semua unit ditampilkan';
+    countBadge.style.display = 'none';
+  } else {
+    summaryEl.textContent = activeLabels.join(' · ');
+    countBadge.textContent = activeCount;
+    countBadge.style.display = 'inline-block';
+  }
+}
+
 function filterCatalog(filterType, val, btnEl) {
   catalogFilterState[filterType] = val;
   const parent = btnEl.parentElement;
@@ -2077,6 +2129,7 @@ function filterCatalog(filterType, val, btnEl) {
     parent.querySelectorAll('.f-chip').forEach(c => c.classList.remove('is-active'));
     btnEl.classList.add('is-active');
   }
+  updateUnitFilterSummary();
   renderLandingUnits();
 }
 
@@ -2086,11 +2139,12 @@ function resetCatalogFilters() {
   const sortSelect = document.getElementById('catalogSortSelect');
   if (sortSelect) sortSelect.value = 'rec';
 
-  document.querySelectorAll('.filter-chips').forEach(group => {
+  document.querySelectorAll('.filter-chips-scroller, .filter-chips').forEach(group => {
     group.querySelectorAll('.f-chip').forEach((c, idx) => {
       c.classList.toggle('is-active', idx === 0);
     });
   });
+  updateUnitFilterSummary();
   renderLandingUnits();
 }
 
@@ -2230,7 +2284,7 @@ function switchLandingTab(tabName, btnEl) {
 
   const activePanel = document.getElementById(`panel${norm}`);
   if (activePanel) activePanel.style.display = 'flex';
-  
+
   const bottomBtn = btnEl || document.getElementById(`tabBtn${norm}`);
   if (bottomBtn) {
     bottomBtn.classList.add('is-active', 'tab-pop');

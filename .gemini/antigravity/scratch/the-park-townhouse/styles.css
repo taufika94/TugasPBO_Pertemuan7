@@ -11350,13 +11350,108 @@ transition: all 0.2s ease;
   margin-top: -4px;
 }
 
-/* Interactive Filter Card */
+/* Interactive Filter Card (Collapsible Drawer & Horizontal Chips Scroller) */
 .unit-filter-card {
   background: #ffffff;
   border: 1px solid #e8e2d5;
   border-radius: 12px;
-  padding: 12px 14px;
+  padding: 6px 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s ease;
+}
+
+.unit-filter-toggle-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 6px 2px;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.unit-filter-toggle-btn:hover {
+  background: rgba(17, 51, 42, 0.03);
+}
+
+.filter-toggle-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-icon-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #ede8df;
+  color: #11332a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.unit-filter-toggle-btn.is-open .filter-icon-badge {
+  background: #11332a;
+  color: #fbfaf7;
+}
+
+.filter-toggle-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.filter-main-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #16241c;
+  line-height: 1.2;
+}
+
+.filter-active-summary {
+  font-size: 10.5px;
+  color: #645a4d;
+  line-height: 1.2;
+}
+
+.filter-toggle-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-badge-count {
+  background: #d4af37;
+  color: #11332a;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 1px 7px;
+  border-radius: 10px;
+  line-height: 1.4;
+}
+
+.filter-chevron-icon {
+  color: #645a4d;
+  transition: transform 0.25s ease;
+  display: flex;
+  align-items: center;
+}
+
+.unit-filter-toggle-btn.is-open .filter-chevron-icon {
+  transform: rotate(180deg);
+}
+
+.filter-controls-wrapper {
+  padding-top: 10px;
+  margin-top: 6px;
+  border-top: 1px dashed #e8e2d5;
 }
 
 .filter-controls-grid {
@@ -11371,6 +11466,12 @@ transition: all 0.2s ease;
   gap: 4px;
 }
 
+.filter-lbl-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .filter-lbl {
   font-size: 10.5px;
   font-weight: 700;
@@ -11378,16 +11479,35 @@ transition: all 0.2s ease;
   letter-spacing: 0.02em;
 }
 
-.filter-chips {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
+.filter-swipe-hint {
+  font-size: 9.5px;
+  color: #857b6f;
+  font-style: italic;
 }
 
-.filter-chips .f-chip {
+/* Horizontal Swipe Chips Container */
+.filter-chips-scroller {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+}
+
+.filter-chips-scroller::-webkit-scrollbar {
+  height: 4px;
+}
+
+.filter-chips-scroller::-webkit-scrollbar-thumb {
+  background: #dcd5c7;
+  border-radius: 4px;
+}
+
+.filter-chips-scroller .f-chip {
   min-height: 32px;
   height: 32px;
-  padding: 0 10px;
+  padding: 0 11px;
   border-radius: 6px;
   border: 1px solid #dcd5c7;
   background: #fbfaf7;
@@ -11398,10 +11518,12 @@ transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all 0.2s ease;
 }
 
-.filter-chips .f-chip.is-active {
+.filter-chips-scroller .f-chip.is-active {
   background: #11332a;
   color: #ffffff;
   border-color: #11332a;
@@ -11411,6 +11533,7 @@ transition: all 0.2s ease;
   display: flex;
   align-items: flex-end;
   gap: 8px;
+  margin-top: 4px;
 }
 
 .filter-select-input {
