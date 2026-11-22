@@ -5190,3 +5190,14 @@
   - **Modern Card Grid Styling (styles.css)**:
     - Elevated `.price-unit-card` with 12px radius, smooth hover lift (-2px), 95px banner image with 1.04x zoom hover, and 2-column pricing tiles (Cash Keras, Cash Tempo 12/24 Bulan, KPR Bank).
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-23] Progress #74: Clean Centered Header for Peta Masterplan Kawasan
+- **Context & Objective**: Clean up the section header above the masterplan map in Site Plan tab (`#pageMasterPlan`), removing the tag (`DENAH KAWASAN`) and subtitle description, keeping only the centered title "Peta Masterplan Kawasan".
+- **Key Changes Implemented**:
+  - **Header Simplification (index.html)**:
+    - Removed `.section-tag-gold` ("DENAH KAWASAN") and `.section-card-sub` ("Pilih klaster untuk melihat posisi kavling...").
+    - Centered `.section-card-title` ("Peta Masterplan Kawasan") with clean text alignment and balanced margins.
+- **Status**: Completed, Verified & Auto-Pushed.
