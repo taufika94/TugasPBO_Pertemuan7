@@ -5696,34 +5696,84 @@ body {
 
 .theme-nav-actions {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding-top: 10px;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 14px;
   border-top: 1px solid #f0eae1;
+  margin-top: 14px;
 }
 
 .btn-theme-page {
-  min-height: 36px;
-  padding: 4px 12px;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 10px;
   border-radius: 8px;
-  background: #f5f2eb;
-  border: 1px solid #e0d8c7;
+  background: #f7f4ed;
+  border: 1px solid #dfd8cb;
   color: #16241c;
-  font-size: 10.5px;
+  font-family: var(--font-sans);
+  font-size: 11px;
   font-weight: 600;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
   transition: all 0.2s ease;
+}
+
+.btn-theme-page:hover:not(:disabled) {
+  background: #ece5d6;
+  border-color: #cfc5b4;
 }
 
 .btn-theme-page:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+  background: #faf8f5;
+  border-color: #eae5dc;
 }
 
 .theme-page-indicator {
-  font-size: 10.5px;
+  flex: 0 0 auto;
+  font-size: 11px;
   color: #5c6860;
   font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  padding: 6px 12px;
+  background: #fbfaf7;
+  border-radius: 6px;
+  border: 1px solid #eee7db;
+  line-height: 1.2;
+}
+
+.theme-page-indicator strong {
+  color: #16241c;
+  font-weight: 700;
+}
+
+@media (max-width: 440px) {
+  .theme-nav-actions {
+    gap: 6px;
+  }
+
+  .btn-theme-page {
+    padding: 8px 6px;
+    font-size: 10.5px;
+  }
+
+  .btn-theme-page .nav-btn-lbl {
+    display: none;
+  }
+
+  .theme-page-indicator {
+    padding: 6px 8px;
+    font-size: 10.5px;
+  }
 }
 
 /* 6. Gold vs Diamond Specs */

@@ -3182,12 +3182,14 @@ function renderSuratTheme(idx) {
         ${pointsHtml}
       </div>
       <div class="theme-nav-actions">
-        <button type="button" class="btn-theme-page" onclick="prevSuratTheme()" ${idx === 0 ? 'disabled' : ''}>
-          <span>← Tema Sebelumnya</span>
+        <button type="button" class="btn-theme-page btn-theme-prev" onclick="prevSuratTheme()" ${idx === 0 ? 'disabled' : ''} aria-label="Tema Sebelumnya">
+          <span>← <span class="nav-btn-lbl">Tema </span>Sebelumnya</span>
         </button>
-        <span class="theme-page-indicator">${idx + 1} dari 11 Tema</span>
-        <button type="button" class="btn-theme-page" onclick="nextSuratTheme()" ${idx === SURAT_THEMES.length - 1 ? 'disabled' : ''}>
-          <span>Tema Berikutnya →</span>
+        <div class="theme-page-indicator">
+          <strong>${idx + 1}</strong> <span class="indicator-sub">dari 11 Tema</span>
+        </div>
+        <button type="button" class="btn-theme-page btn-theme-next" onclick="nextSuratTheme()" ${idx === SURAT_THEMES.length - 1 ? 'disabled' : ''} aria-label="Tema Berikutnya">
+          <span><span class="nav-btn-lbl">Tema </span>Berikutnya →</span>
         </button>
       </div>
     </div>

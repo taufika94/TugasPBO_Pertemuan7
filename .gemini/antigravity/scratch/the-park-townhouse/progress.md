@@ -813,3 +813,17 @@
   - **Script (app.js)**:
     - Removed DOM query and visibility toggling for ookmarkDotPulse inside updateBottomBarVisibility().
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #53: Fix Theme Navigation Bar Layout & Button Overlap
+- **Context & Objective**: Resolve text wrapping and overlapping between .btn-theme-page buttons and the .theme-page-indicator ("11 dari 11 Tema") in the 11 Keunggulan Theme Explorer navigation.
+- **Key Changes Implemented**:
+  - **Layout & Spacing (styles.css)**:
+    - Added explicit gap: 8px to .theme-nav-actions with clean border separation and margin.
+    - Set .btn-theme-page with lex: 1 1 0; min-width: 0; white-space: nowrap; and min-height: 44px (satisfies mobile touch targets).
+    - Styled .theme-page-indicator as a dedicated pill container (lex: 0 0 auto; white-space: nowrap;) with soft background and border, preventing collisions.
+    - Added responsive @media (max-width: 440px) rule hiding "Tema " label prefix to cleanly display "? Sebelumnya" and "Berikutnya ?".
+  - **Markup & Accessibility (app.js)**:
+    - Wrapped "Tema " with <span class="nav-btn-lbl"> and styled indicator with semantic <strong>.
+- **Status**: Completed, Verified & Auto-Pushed.
