@@ -1829,6 +1829,7 @@ function initLandingPage() {
   setTimeout(initBerandaLeafletMap, 300);
   renderLandingUnits();
   switchLandingSiteplan('nagoya');
+  setTimeout(recalculateSuratPayment, 400);
 }
 
 function filterCatalog(filterType, val, btnEl) {
@@ -3041,6 +3042,7 @@ function selectCatalogUnit(unitName, priceText) {
 }
 
 function initSuratCintaMagazine() {
+  setTimeout(recalculateSuratPayment, 150);
   renderSuratTheme(currentSuratThemeIdx);
   renderSpecDetail(currentSpecType);
   renderPriceMatrix(currentPriceCluster);
@@ -3695,4 +3697,290 @@ function filterFaqCategory(category, btnEl) {
       item.style.display = 'none';
     }
   });
+}
+
+/* --------------------------------------------------------------------------
+   SURAT CINTA KALKULATOR PEMBAYARAN & KPR (/antislop-layoutmobile)
+   -------------------------------------------------------------------------- */
+const SURAT_CALC_UNITS = [
+  { id: 'B.02', area: '63 m²', cluster: 'nagoya', label: 'B.02 — 63 m² (nagoya)', basePrice: 498278753 },
+  { id: 'B.03', area: '63 m²', cluster: 'nagoya', label: 'B.03 — 63 m² (nagoya)', basePrice: 498278753 },
+  { id: 'B.04', area: '63 m²', cluster: 'nagoya', label: 'B.04 — 63 m² (nagoya)', basePrice: 498278753 },
+  { id: 'A.02', area: '88 m²', cluster: 'nagoya', label: 'A.02 — 88 m² (nagoya)', basePrice: 695827000 },
+  { id: 'A.03', area: '88 m²', cluster: 'nagoya', label: 'A.03 — 88 m² (nagoya)', basePrice: 695827000 },
+  { id: 'A.04', area: '88 m²', cluster: 'nagoya', label: 'A.04 — 88 m² (nagoya)', basePrice: 695827000 },
+  { id: 'A.05', area: '88 m²', cluster: 'nagoya', label: 'A.05 — 88 m² (nagoya)', basePrice: 695827000 },
+  { id: 'A.06', area: '88 m²', cluster: 'nagoya', label: 'A.06 — 88 m² (nagoya)', basePrice: 695827000 },
+  { id: 'A.07', area: '88 m²', cluster: 'nagoya', label: 'A.07 — 88 m² (nagoya)', basePrice: 695827000 },
+  { id: 'A.08', area: '88 m²', cluster: 'nagoya', label: 'A.08 — 88 m² (nagoya)', basePrice: 695827000 },
+  { id: 'A.09', area: '88 m²', cluster: 'nagoya', label: 'A.09 — 88 m² (nagoya)', basePrice: 695827000 },
+  { id: 'B.05', area: '99 m²', cluster: 'nagoya', label: 'B.05 — 99 m² (nagoya)', basePrice: 782990000 },
+  { id: 'B.06', area: '99 m²', cluster: 'nagoya', label: 'B.06 — 99 m² (nagoya)', basePrice: 782990000 },
+  { id: 'B.07', area: '99 m²', cluster: 'nagoya', label: 'B.07 — 99 m² (nagoya)', basePrice: 782990000 },
+  { id: 'A.2', area: '90 m²', cluster: 'osaka', label: 'A.2 — 90 m² (osaka)', basePrice: 895000000 },
+  { id: 'A.3', area: '90 m²', cluster: 'osaka', label: 'A.3 — 90 m² (osaka)', basePrice: 895000000 },
+  { id: 'A.1', area: '90 m²', cluster: 'osaka', label: 'A.1 — 90 m² (osaka)', basePrice: 895000000 },
+  { id: 'A.4', area: '90 m²', cluster: 'osaka', label: 'A.4 — 90 m² (osaka)', basePrice: 895000000 },
+  { id: 'A.5', area: '90 m²', cluster: 'osaka', label: 'A.5 — 90 m² (osaka)', basePrice: 895000000 },
+  { id: 'A.6', area: '100 m²', cluster: 'osaka', label: 'A.6 — 100 m² (osaka)', basePrice: 995000000 },
+  { id: 'A.7', area: '100 m²', cluster: 'osaka', label: 'A.7 — 100 m² (osaka)', basePrice: 995000000 },
+  { id: 'A.8', area: '110 m²', cluster: 'osaka', label: 'A.8 — 110 m² (osaka)', basePrice: 1120000000 },
+  { id: 'A.9', area: '110 m²', cluster: 'osaka', label: 'A.9 — 110 m² (osaka)', basePrice: 1120000000 },
+  { id: 'B.3', area: '93 m²', cluster: 'tokyo1', label: 'B.3 — 93 m² (tokyo1)', basePrice: 810000000 },
+  { id: 'B.5', area: '90 m²', cluster: 'tokyo1', label: 'B.5 — 90 m² (tokyo1)', basePrice: 775000000 },
+  { id: 'B.6', area: '90 m²', cluster: 'tokyo1', label: 'B.6 — 90 m² (tokyo1)', basePrice: 775000000 },
+  { id: 'B.1', area: '90 m²', cluster: 'tokyo1', label: 'B.1 — 90 m² (tokyo1)', basePrice: 775000000 },
+  { id: 'B.2', area: '90 m²', cluster: 'tokyo1', label: 'B.2 — 90 m² (tokyo1)', basePrice: 775000000 },
+  { id: 'B.4', area: '90 m²', cluster: 'tokyo1', label: 'B.4 — 90 m² (tokyo1)', basePrice: 775000000 },
+  { id: 'B.7', area: '125 m²', cluster: 'tokyo1', label: 'B.7 — 125 m² (tokyo1)', basePrice: 935000000 }
+];
+
+let currentSuratCalcUnit = 'B.02';
+let currentSuratCalcStage = 'pra'; // 'pra', 'soft', 'grand'
+let currentSuratCalcScheme = 'cash_keras'; // 'cash_keras', 'cash_12', 'cash_24', 'kpr'
+let currentSuratKprTenor = 15; // years
+let currentSuratKprRate = 8.245; // %
+
+function formatRupiahCur(val) {
+  return 'Rp ' + Math.round(val).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+function setSuratCalcStage(stage, btnEl) {
+  currentSuratCalcStage = stage;
+  if (btnEl && btnEl.parentElement) {
+    btnEl.parentElement.querySelectorAll('.calc-tab-pill').forEach(b => b.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  }
+  recalculateSuratPayment();
+}
+
+function setSuratCalcScheme(scheme, btnEl) {
+  currentSuratCalcScheme = scheme;
+  if (btnEl && btnEl.parentElement) {
+    btnEl.parentElement.querySelectorAll('.calc-scheme-btn').forEach(b => b.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  }
+  const sliderBox = document.getElementById('suratCalcKprSliders');
+  if (sliderBox) {
+    sliderBox.classList.toggle('is-hidden', scheme !== 'kpr');
+  }
+  recalculateSuratPayment();
+}
+
+function onSuratKprSliderChange() {
+  const tenorSlider = document.getElementById('suratKprTenorSlider');
+  const rateSlider = document.getElementById('suratKprRateSlider');
+  const tenorVal = document.getElementById('suratKprTenorVal');
+  const rateVal = document.getElementById('suratKprRateVal');
+
+  if (tenorSlider) currentSuratKprTenor = parseInt(tenorSlider.value, 10);
+  if (rateSlider) currentSuratKprRate = parseFloat(rateSlider.value);
+
+  if (tenorVal) tenorVal.textContent = currentSuratKprTenor + ' Tahun (' + (currentSuratKprTenor * 12) + ' Bln)';
+  if (rateVal) rateVal.textContent = currentSuratKprRate.toFixed(2) + '% p.a';
+
+  recalculateSuratPayment();
+}
+
+function recalculateSuratPayment() {
+  const selectEl = document.getElementById('suratCalcUnitSelect');
+  if (selectEl) {
+    currentSuratCalcUnit = selectEl.value;
+  }
+  const unitObj = SURAT_CALC_UNITS.find(u => u.id === currentSuratCalcUnit) || SURAT_CALC_UNITS[0];
+
+  const stageMultipliers = { pra: 1.0, soft: 1.05, grand: 1.10 };
+  const stageLabels = { pra: 'Pra-Launch', soft: 'Soft-Launch', grand: 'Grand-Launch' };
+
+  const stageMult = stageMultipliers[currentSuratCalcStage] || 1.0;
+  const stageLabel = stageLabels[currentSuratCalcStage];
+
+  // Base cash keras price at current stage
+  const basePriceAtStage = Math.round(unitObj.basePrice * stageMult);
+
+  // 1. Calculate for chosen scheme
+  let hargaJual = basePriceAtStage;
+  let dpPercent = 0.40;
+  let dpLabel = 'DP 40% (H+7)';
+  let sisaLabel = 'Sisa Dibiayai';
+  let sisaBayarDesc = 'Sisa 60% lunas penuh H+30';
+  let statusHeadline = 'Pembayaran Tunai (maks 1 bln)';
+  let headlineAmount = 0;
+  let sisaAmount = 0;
+
+  const bookingFee = 5000000;
+
+  if (currentSuratCalcScheme === 'cash_keras') {
+    hargaJual = basePriceAtStage;
+    dpPercent = 0.40;
+    const dpVal = Math.round(hargaJual * dpPercent);
+    sisaAmount = hargaJual - dpVal;
+    headlineAmount = sisaAmount;
+    statusHeadline = 'Pembayaran Tunai (maks 1 bln)';
+    sisaBayarDesc = 'Sisa 60% lunas penuh H+30';
+  } else if (currentSuratCalcScheme === 'cash_12') {
+    hargaJual = Math.round(basePriceAtStage * 1.05);
+    dpPercent = 0.40;
+    const dpVal = Math.round(basePriceAtStage * 0.40); // DP based on base
+    sisaAmount = hargaJual - dpVal;
+    const monthly = Math.round(sisaAmount / 12);
+    headlineAmount = monthly;
+    statusHeadline = 'Cicilan per Bulan (12 Bulan)';
+    sisaBayarDesc = 'Cicilan in-house 12x flat (Bunga 0%)';
+  } else if (currentSuratCalcScheme === 'cash_24') {
+    hargaJual = Math.round(basePriceAtStage * 1.15);
+    dpPercent = 0.40;
+    const dpVal = Math.round(basePriceAtStage * 0.40);
+    sisaAmount = hargaJual - dpVal;
+    const monthly = Math.round(sisaAmount / 24);
+    headlineAmount = monthly;
+    statusHeadline = 'Cicilan per Bulan (24 Bulan)';
+    sisaBayarDesc = 'Cicilan in-house 24x flat (Bunga 0%)';
+  } else if (currentSuratCalcScheme === 'kpr') {
+    hargaJual = Math.round(basePriceAtStage * 1.05);
+    dpPercent = 0.30;
+    dpLabel = 'DP 30% (H+14)';
+    const dpVal = Math.round(hargaJual * 0.30);
+    sisaAmount = hargaJual - dpVal; // Plafon KPR
+
+    const r = (currentSuratKprRate / 100) / 12;
+    const n = currentSuratKprTenor * 12;
+    const pmt = Math.round(sisaAmount * (r / (1 - Math.pow(1 + r, -n))));
+    headlineAmount = pmt;
+    statusHeadline = 'Ilustrasi Cicilan KPR / Bln';
+    sisaLabel = 'Plafon KPR Bank';
+    sisaBayarDesc = 'Akad kredit & pencairan bank mitra';
+  }
+
+  const dpAmount = Math.round(currentSuratCalcScheme.startsWith('cash_') && currentSuratCalcScheme !== 'cash_keras' 
+    ? basePriceAtStage * 0.40 
+    : hargaJual * dpPercent);
+  const dpNetto = Math.max(0, dpAmount - bookingFee);
+
+  // Estimasi Biaya Tambahan
+  const ppn = Math.round(hargaJual * 0.11);
+  const npoptkp = 60000000;
+  const bphtb = Math.round(Math.max(0, hargaJual - npoptkp) * 0.05);
+  const notaris = 15000000;
+  const totalTambahan = ppn + bphtb + notaris;
+  const grandTotal = hargaJual + totalTambahan;
+
+  // DOM Updates
+  const elStatus = document.getElementById('suratResStatusLabel');
+  const elAmount = document.getElementById('suratResAmount');
+  const elMeta = document.getElementById('suratResMeta');
+
+  const elHarga = document.getElementById('suratResHargaJual');
+  const elBooking = document.getElementById('suratResBookingFee');
+  const elDpLabel = document.getElementById('suratResDpLabel');
+  const elDpAmount = document.getElementById('suratResDpAmount');
+  const elDpNetto = document.getElementById('suratResDpNetto');
+  const elSisaLabel = document.getElementById('suratResSisaLabel');
+  const elSisaAmount = document.getElementById('suratResSisaAmount');
+  const elTotalUnit = document.getElementById('suratResTotalUnit');
+
+  const elMilestoneDp = document.getElementById('suratResMilestoneDp');
+  const elMilestoneSisa = document.getElementById('suratResMilestoneSisa');
+
+  const elPpn = document.getElementById('suratResPpn');
+  const elBphtb = document.getElementById('suratResBphtb');
+  const elTotalTambahan = document.getElementById('suratResTotalTambahan');
+  const elGrandTotal = document.getElementById('suratResGrandTotal');
+  const elCompareTitle = document.getElementById('suratCompareTitle');
+  const elCompareCards = document.getElementById('suratCompareCards');
+
+  if (elStatus) elStatus.textContent = statusHeadline;
+  if (elAmount) elAmount.textContent = formatRupiahCur(headlineAmount);
+  if (elMeta) elMeta.textContent = unitObj.id + ' · ' + (currentSuratCalcScheme === 'cash_keras' ? 'Cash Keras' : (currentSuratCalcScheme === 'cash_12' ? 'Cash Bertahap 12 Bln' : (currentSuratCalcScheme === 'cash_24' ? 'Cash Bertahap 24 Bln' : 'KPR Bank'))) + ' · ' + stageLabel;
+
+  if (elHarga) elHarga.textContent = formatRupiahCur(hargaJual);
+  if (elBooking) elBooking.textContent = formatRupiahCur(bookingFee);
+  if (elDpLabel) elDpLabel.textContent = dpLabel;
+  if (elDpAmount) elDpAmount.textContent = formatRupiahCur(dpAmount);
+  if (elDpNetto) elDpNetto.textContent = formatRupiahCur(dpNetto);
+  if (elSisaLabel) elSisaLabel.textContent = sisaLabel;
+  if (elSisaAmount) elSisaAmount.textContent = formatRupiahCur(sisaAmount);
+  if (elTotalUnit) elTotalUnit.textContent = formatRupiahCur(hargaJual);
+
+  if (elMilestoneDp) elMilestoneDp.textContent = (dpPercent * 100) + '% · ' + (currentSuratCalcScheme === 'kpr' ? 'H+14' : 'H+7');
+  if (elMilestoneSisa) elMilestoneSisa.textContent = sisaBayarDesc;
+
+  if (elPpn) elPpn.textContent = formatRupiahCur(ppn);
+  if (elBphtb) elBphtb.textContent = formatRupiahCur(bphtb);
+  if (elTotalTambahan) elTotalTambahan.textContent = formatRupiahCur(totalTambahan);
+  if (elGrandTotal) elGrandTotal.textContent = formatRupiahCur(grandTotal);
+
+  if (elCompareTitle) {
+    elCompareTitle.textContent = '4 Skema Pembayaran — ' + unitObj.id + ' (' + stageLabel + ')';
+  }
+
+  // Render Comparison Cards
+  if (elCompareCards) {
+    const ckP = basePriceAtStage;
+    const ct12P = Math.round(basePriceAtStage * 1.05);
+    const ct12Dp = Math.round(basePriceAtStage * 0.40);
+    const ct12Cicilan = Math.round((ct12P - ct12Dp) / 12);
+
+    const ct24P = Math.round(basePriceAtStage * 1.15);
+    const ct24Dp = Math.round(basePriceAtStage * 0.40);
+    const ct24Cicilan = Math.round((ct24P - ct24Dp) / 24);
+
+    const kprP = Math.round(basePriceAtStage * 1.05);
+    const kprDpVal = Math.round(kprP * 0.30);
+    const kprPlafon = kprP - kprDpVal;
+    const rKpr = (8.245 / 100) / 12;
+    const nKpr = 180;
+    const kprCicilan = Math.round(kprPlafon * (rKpr / (1 - Math.pow(1 + rKpr, -nKpr))));
+
+    elCompareCards.innerHTML = `
+      <div class="compare-row-card ${currentSuratCalcScheme === 'cash_keras' ? 'is-active' : ''}">
+        <div class="compare-head-row">
+          <span class="compare-scheme-name">Cash Keras</span>
+          <span class="compare-dp-badge">DP 40%</span>
+        </div>
+        <div class="compare-body-row">
+          <span class="compare-price">Harga: ${formatRupiahCur(ckP)}</span>
+          <strong class="compare-cicilan">Tunai (maks 1 bln)</strong>
+        </div>
+      </div>
+
+      <div class="compare-row-card ${currentSuratCalcScheme === 'cash_12' ? 'is-active' : ''}">
+        <div class="compare-head-row">
+          <span class="compare-scheme-name">Cash Bertahap 12 Bulan</span>
+          <span class="compare-dp-badge">DP 40%</span>
+        </div>
+        <div class="compare-body-row">
+          <span class="compare-price">Harga: ${formatRupiahCur(ct12P)}</span>
+          <strong class="compare-cicilan">${formatRupiahCur(ct12Cicilan)} × 12</strong>
+        </div>
+      </div>
+
+      <div class="compare-row-card ${currentSuratCalcScheme === 'cash_24' ? 'is-active' : ''}">
+        <div class="compare-head-row">
+          <span class="compare-scheme-name">Cash Bertahap 24 Bulan</span>
+          <span class="compare-dp-badge">DP 40%</span>
+        </div>
+        <div class="compare-body-row">
+          <span class="compare-price">Harga: ${formatRupiahCur(ct24P)}</span>
+          <strong class="compare-cicilan">${formatRupiahCur(ct24Cicilan)} × 24</strong>
+        </div>
+      </div>
+
+      <div class="compare-row-card ${currentSuratCalcScheme === 'kpr' ? 'is-active' : ''}">
+        <div class="compare-head-row">
+          <span class="compare-scheme-name">KPR Bank Mitra</span>
+          <span class="compare-dp-badge">DP 30%</span>
+        </div>
+        <div class="compare-body-row">
+          <span class="compare-price">Harga: ${formatRupiahCur(kprP)}</span>
+          <strong class="compare-cicilan">${formatRupiahCur(kprCicilan)} × 180</strong>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function orderSuratCalculatedUnit() {
+  const unitObj = SURAT_CALC_UNITS.find(u => u.id === currentSuratCalcUnit) || SURAT_CALC_UNITS[0];
+  openOrderModal('Klaster ' + unitObj.cluster.toUpperCase(), unitObj.id, '498.278.753');
 }

@@ -2429,6 +2429,236 @@
                 </div>
               </div>
 
+            
+              <!-- 9. KALKULATOR PEMBAYARAN & KPR (DELUXE INTERACTIVE CALCULATOR) -->
+              <div class="surat-section-header" id="sectionKalkulatorPembayaran">
+                <span class="section-tag">SIMULASI &amp; SKEMA</span>
+                <h3 class="section-title">Kalkulator Pembayaran</h3>
+                <p class="section-desc">Pilih unit + tahap + skema — kalkulator otomatis menghitung harga jual, uang muka, cicilan (PMT), milestone, dan estimasi biaya tambahan.</p>
+              </div>
+
+              <div class="surat-calc-container" id="suratPaymentCalculator">
+                <!-- Parameter Card -->
+                <div class="surat-calc-card">
+                  <div class="calc-card-head">
+                    <span class="calc-card-tag">PARAMETER</span>
+                    <h4 class="calc-card-title">Pilih Parameter Pembayaran</h4>
+                  </div>
+
+                  <!-- 1. Parameter Unit -->
+                  <div class="calc-form-group">
+                    <label class="calc-form-label" for="suratCalcUnitSelect">Unit</label>
+                    <div class="calc-select-wrap">
+                      <select class="calc-select" id="suratCalcUnitSelect" onchange="recalculateSuratPayment()">
+                        <option value="B.02">B.02 — 63 m² (nagoya)</option>
+                        <option value="B.03">B.03 — 63 m² (nagoya)</option>
+                        <option value="B.04">B.04 — 63 m² (nagoya)</option>
+                        <option value="A.02">A.02 — 88 m² (nagoya)</option>
+                        <option value="A.03">A.03 — 88 m² (nagoya)</option>
+                        <option value="A.04">A.04 — 88 m² (nagoya)</option>
+                        <option value="A.05">A.05 — 88 m² (nagoya)</option>
+                        <option value="A.06">A.06 — 88 m² (nagoya)</option>
+                        <option value="A.07">A.07 — 88 m² (nagoya)</option>
+                        <option value="A.08">A.08 — 88 m² (nagoya)</option>
+                        <option value="A.09">A.09 — 88 m² (nagoya)</option>
+                        <option value="B.05">B.05 — 99 m² (nagoya)</option>
+                        <option value="B.06">B.06 — 99 m² (nagoya)</option>
+                        <option value="B.07">B.07 — 99 m² (nagoya)</option>
+                        <option value="A.2">A.2 — 90 m² (osaka)</option>
+                        <option value="A.3">A.3 — 90 m² (osaka)</option>
+                        <option value="A.1">A.1 — 90 m² (osaka)</option>
+                        <option value="A.4">A.4 — 90 m² (osaka)</option>
+                        <option value="A.5">A.5 — 90 m² (osaka)</option>
+                        <option value="A.6">A.6 — 100 m² (osaka)</option>
+                        <option value="A.7">A.7 — 100 m² (osaka)</option>
+                        <option value="A.8">A.8 — 110 m² (osaka)</option>
+                        <option value="A.9">A.9 — 110 m² (osaka)</option>
+                        <option value="B.3">B.3 — 93 m² (tokyo1)</option>
+                        <option value="B.5">B.5 — 90 m² (tokyo1)</option>
+                        <option value="B.6">B.6 — 90 m² (tokyo1)</option>
+                        <option value="B.1">B.1 — 90 m² (tokyo1)</option>
+                        <option value="B.2">B.2 — 90 m² (tokyo1)</option>
+                        <option value="B.4">B.4 — 90 m² (tokyo1)</option>
+                        <option value="B.7">B.7 — 125 m² (tokyo1)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- 2. Parameter Tahap Launching -->
+                  <div class="calc-form-group">
+                    <label class="calc-form-label">Tahap Launching</label>
+                    <div class="calc-pill-tabs" id="suratCalcStageTabs">
+                      <button type="button" class="calc-tab-pill is-active" data-stage="pra" onclick="setSuratCalcStage('pra', this)">Pra-Launch</button>
+                      <button type="button" class="calc-tab-pill" data-stage="soft" onclick="setSuratCalcStage('soft', this)">Soft-Launch</button>
+                      <button type="button" class="calc-tab-pill" data-stage="grand" onclick="setSuratCalcStage('grand', this)">Grand-Launch</button>
+                    </div>
+                  </div>
+
+                  <!-- 3. Parameter Skema Pembayaran -->
+                  <div class="calc-form-group">
+                    <label class="calc-form-label">Skema Pembayaran</label>
+                    <div class="calc-scheme-grid" id="suratCalcSchemeTabs">
+                      <button type="button" class="calc-scheme-btn is-active" data-scheme="cash_keras" onclick="setSuratCalcScheme('cash_keras', this)">
+                        <strong>Cash Keras</strong>
+                        <span>Pelunasan 1 Bulan</span>
+                      </button>
+                      <button type="button" class="calc-scheme-btn" data-scheme="cash_12" onclick="setSuratCalcScheme('cash_12', this)">
+                        <strong>Cash Bertahap 12 Bulan</strong>
+                        <span>12 Bulan · Bunga 0%</span>
+                      </button>
+                      <button type="button" class="calc-scheme-btn" data-scheme="cash_24" onclick="setSuratCalcScheme('cash_24', this)">
+                        <strong>Cash Bertahap 24 Bulan</strong>
+                        <span>24 Bulan · Bunga 0%</span>
+                      </button>
+                      <button type="button" class="calc-scheme-btn" data-scheme="kpr" onclick="setSuratCalcScheme('kpr', this)">
+                        <strong>KPR Bank Mitra</strong>
+                        <span>DP 30% · Tenor Fleksibel</span>
+                      </button>
+                    </div>
+                    <span class="calc-scheme-caption">Skema in-house tanpa bunga (0% flat). Slider tenor &amp; bunga muncul saat memilih KPR.</span>
+                  </div>
+
+                  <!-- Conditional KPR Sliders -->
+                  <div class="calc-kpr-controls is-hidden" id="suratCalcKprSliders">
+                    <div class="calc-slider-box">
+                      <div class="slider-label-row">
+                        <span>Tenor KPR Bank</span>
+                        <strong id="suratKprTenorVal">15 Tahun (180 Bln)</strong>
+                      </div>
+                      <input type="range" min="5" max="25" step="5" value="15" class="calc-range-slider" id="suratKprTenorSlider" oninput="onSuratKprSliderChange()" />
+                      <div class="slider-marks">
+                        <span>5 Thn</span>
+                        <span>10 Thn</span>
+                        <span>15 Thn</span>
+                        <span>20 Thn</span>
+                        <span>25 Thn</span>
+                      </div>
+                    </div>
+
+                    <div class="calc-slider-box">
+                      <div class="slider-label-row">
+                        <span>Indikasi Bunga KPR</span>
+                        <strong id="suratKprRateVal">8.25% p.a</strong>
+                      </div>
+                      <input type="range" min="5.0" max="11.0" step="0.25" value="8.25" class="calc-range-slider" id="suratKprRateSlider" oninput="onSuratKprSliderChange()" />
+                      <div class="slider-marks">
+                        <span>5.0%</span>
+                        <span>7.5%</span>
+                        <span>8.25%</span>
+                        <span>10.0%</span>
+                        <span>11.0%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Calculation Result Card -->
+                <div class="surat-calc-card surat-calc-result-card">
+                  <!-- Highlight Banner -->
+                  <div class="calc-result-hero">
+                    <span class="calc-hero-status" id="suratResStatusLabel">Pembayaran Tunai (maks 1 bln)</span>
+                    <strong class="calc-hero-amount" id="suratResAmount">Rp 298.967.252</strong>
+                    <span class="calc-hero-meta" id="suratResMeta">B.02 · Cash Keras · Pra-Launch</span>
+                  </div>
+
+                  <!-- Main Pricing Breakdown -->
+                  <div class="calc-breakdown-box">
+                    <div class="calc-breakdown-row">
+                      <span>Harga Jual</span>
+                      <strong id="suratResHargaJual">Rp 498.278.753</strong>
+                    </div>
+                    <div class="calc-breakdown-row">
+                      <span>Booking Fee (mengurangi DP)</span>
+                      <strong id="suratResBookingFee">Rp 5.000.000</strong>
+                    </div>
+                    <div class="calc-breakdown-row">
+                      <span id="suratResDpLabel">DP 40% (H+7)</span>
+                      <strong id="suratResDpAmount">Rp 199.311.501</strong>
+                    </div>
+                    <div class="calc-breakdown-row is-sub-indent">
+                      <span>DP Netto Disetor</span>
+                      <strong id="suratResDpNetto">Rp 194.311.501</strong>
+                    </div>
+                    <div class="calc-breakdown-row">
+                      <span id="suratResSisaLabel">Sisa Dibiayai</span>
+                      <strong id="suratResSisaAmount">Rp 298.967.252</strong>
+                    </div>
+                    <div class="calc-breakdown-row is-total">
+                      <span>Total Pembayaran Unit</span>
+                      <strong id="suratResTotalUnit">Rp 498.278.753</strong>
+                    </div>
+                  </div>
+
+                  <!-- Milestones -->
+                  <div class="calc-milestone-grid">
+                    <div class="milestone-cell">
+                      <span class="m-label">DP</span>
+                      <strong class="m-val" id="suratResMilestoneDp">40% · H+7</strong>
+                    </div>
+                    <div class="milestone-cell">
+                      <span class="m-label">Sisa Bayar</span>
+                      <strong class="m-val" id="suratResMilestoneSisa">Sisa 60% lunas penuh H+30</strong>
+                    </div>
+                    <div class="milestone-cell">
+                      <span class="m-label">Serah Terima</span>
+                      <strong class="m-val">Setelah lunas &amp; bangunan selesai (BAST)</strong>
+                    </div>
+                  </div>
+
+                  <!-- Actions -->
+                  <div class="calc-cta-row">
+                    <button type="button" class="btn-primary-forest calc-cta-btn" onclick="orderSuratCalculatedUnit()">
+                      <span>Pesan Unit Ini</span>
+                      <span>→</span>
+                    </button>
+                    <button type="button" class="btn-outline-forest calc-cta-btn" onclick="switchLandingTab('SitePlan')">
+                      <span>Pilih Kavling</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Di Luar Harga Jual (Estimasi Biaya Tambahan) -->
+                <div class="surat-calc-card">
+                  <div class="calc-card-head">
+                    <span class="calc-card-tag">DI LUAR HARGA JUAL</span>
+                    <h4 class="calc-card-title">Estimasi Biaya Tambahan</h4>
+                  </div>
+                  <div class="calc-breakdown-box">
+                    <div class="calc-breakdown-row">
+                      <span>PPN (11%)</span>
+                      <strong id="suratResPpn">Rp 54.810.663</strong>
+                    </div>
+                    <div class="calc-breakdown-row">
+                      <span>BPHTB (5%)</span>
+                      <strong id="suratResBphtb">Rp 21.913.938</strong>
+                    </div>
+                    <div class="calc-breakdown-row">
+                      <span>Notaris PPAT &amp; Balik Nama</span>
+                      <strong>Rp 15.000.000</strong>
+                    </div>
+                    <div class="calc-breakdown-row is-highlight">
+                      <span>Total Tambahan</span>
+                      <strong id="suratResTotalTambahan">Rp 91.724.601</strong>
+                    </div>
+                  </div>
+                  <div class="calc-grand-total-callout">
+                    <span>Estimasi total (unit + biaya tambahan):</span>
+                    <strong id="suratResGrandTotal">Rp 590.003.354</strong>
+                  </div>
+                </div>
+
+                <!-- Perbandingan 4 Skema Pembayaran -->
+                <div class="surat-calc-card">
+                  <div class="calc-card-head">
+                    <span class="calc-card-tag">PERBANDINGAN</span>
+                    <h4 class="calc-card-title" id="suratCompareTitle">4 Skema Pembayaran — B.02 (Pra-Launch)</h4>
+                  </div>
+                  <div class="calc-compare-cards" id="suratCompareCards">
+                    <!-- Injected dynamically via JS -->
+                  </div>
+                </div>
+              </div>
+
             </div>
           </section>
 

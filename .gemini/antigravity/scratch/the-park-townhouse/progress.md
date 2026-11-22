@@ -406,3 +406,30 @@
     - Added concentric radar circles (1 km, 2.5 km) to `initBerandaLeafletMap`.
     - Implemented `renderBerandaMasterplanSiteplan`, `switchBerandaLotCluster`, and `selectBerandaLot` linked to `SITEPLAN_DATA`.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #28: Surat Cinta Mobile Reflow & Deluxe Interactive Payment Calculator
+- **Context & Objective**: Fulfill user request on the Surat Cinta magazine page:
+  1. Reflow layout according to `/antislop-layoutmobile`: fluid typography (`clamp()`), stack 3-column cluster triptych grid on mobile, ensure min 44x44px touch targets on all interactive selectors, and apply bottom safe area clearance (`calc(var(--bottom-bar-height) + env(safe-area-inset-bottom))`) so no content is obscured behind the Mobile Bottom Bar.
+  2. Implement the deluxe interactive **Kalkulator Pembayaran** at the bottom of Surat Cinta:
+     - 30 unit selector across Nagoya, Osaka, and Tokyo (`B.02 — 63 m² (nagoya)`, etc.).
+     - Launch stage selector (`Pra-Launch`, `Soft-Launch`, `Grand-Launch`).
+     - Payment scheme selector (`Cash Keras`, `Cash Bertahap 12 Bulan`, `Cash Bertahap 24 Bulan`, `KPR Bank Mitra`).
+     - Conditional KPR sliders (Tenor 5–25 years, Interest rate 5–11% p.a).
+     - Live calculations: Harga Jual, Booking Fee (Rp 5 Juta mengurangi DP), DP 40%/30%, DP Netto Disetor, Sisa Dibiayai, Total Pembayaran Unit.
+     - Milestone timeline (DP H+7/H+14, Sisa Bayar H+30/cicilan/akad, BAST serah terima).
+     - Dual CTA buttons: `[Pesan Unit Ini]` and `[Pilih Kavling]`.
+     - Additional costs breakdown (Di Luar Harga Jual): PPN 11%, BPHTB 5% (with Sukoharjo NPOPTKP Rp 60 Jt deduction), Notaris & Balik Nama Rp 15 Jt, Total Tambahan, and Estimasi Total Keseluruhan.
+     - 4-Scheme dynamic comparison cards for the selected unit and stage.
+- **Key Changes Implemented**:
+  - **`index.html`**:
+    - Added `#sectionKalkulatorPembayaran` and `.surat-calc-container` with complete semantic parameter controls, calculation results, additional costs breakdown, and comparison cards.
+  - **`styles.css`**:
+    - Added mobile-first reflow rules for Surat Cinta (`.surat-magazine-container`, `.cluster-triptych-card`, `.surat-hero-card`).
+    - Styled `.surat-calc-container` with clean Japandi luxury aesthetics, high-contrast typography, 44px minimum tap targets, fluid grid stacking, and bottom bar clearance.
+  - **`app.js`**:
+    - Defined `SURAT_CALC_UNITS` (30 units with base pricing).
+    - Implemented `recalculateSuratPayment()`, `setSuratCalcStage()`, `setSuratCalcScheme()`, `onSuratKprSliderChange()`, and `orderSuratCalculatedUnit()`.
+    - Integrated automatic calculation initialization on tab activation and page load.
+- **Status**: Completed & Verified.
