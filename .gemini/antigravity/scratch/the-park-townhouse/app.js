@@ -3532,38 +3532,49 @@ function renderPriceMatrix(cluster) {
   const container = document.getElementById('priceMatrixContainer');
   if (!container) return;
 
+  const clusterImages = {
+    nagoya: ['assets/drive/house.jpeg', 'assets/drive/housee.jpeg', 'assets/drive/dalam-9.png', 'assets/drive/dalam-6.png'],
+    tokyo: ['assets/drive/dalam-6.png', 'assets/drive/house.jpeg', 'assets/drive/dalam-9.png', 'assets/drive/housee.jpeg'],
+    osaka: ['assets/drive/housee.jpeg', 'assets/drive/house.jpeg', 'assets/drive/dalam-9.png', 'assets/drive/dalam-6.png']
+  };
+  const imgs = clusterImages[cluster] || clusterImages.nagoya;
+
   const list = PRICE_CATALOG[cluster] || PRICE_CATALOG.nagoya;
-  container.innerHTML = list.map(item => `
-    <div class="price-unit-card">
-      <div class="price-unit-head">
-        <div>
-          <span class="price-unit-id">${item.id}</span>
-          <div class="price-unit-dims">${item.spec}</div>
+  container.innerHTML = list.map((item, idx) => {
+    const img = imgs[idx % imgs.length];
+    return `
+      <div class="price-unit-card">
+        <div class="price-card-banner">
+          <img src="${img}" alt="${item.id}" class="price-card-thumb" loading="lazy" />
+          <div class="price-card-banner-overlay">
+            <span class="price-unit-id">${item.id}</span>
+            <span class="price-unit-spec-tag">${item.spec.split('·')[0].trim()} · ${item.spec.split('·')[1]?.trim() || ''}</span>
+          </div>
+          <button class="unit-inv-select-btn" type="button" onclick="selectCatalogUnit('${item.id}', '${item.ck}')">
+            Pilih Unit
+          </button>
         </div>
-        <button class="unit-inv-select-btn" type="button" onclick="selectCatalogUnit('${item.id}', '${item.ck}')">
-          Pilih Unit
-        </button>
+        <div class="price-unit-grid">
+          <div class="price-plan-cell">
+            <span class="price-plan-lbl">Cash Keras (1 Bln)</span>
+            <span class="price-plan-val">${item.ck}</span>
+          </div>
+          <div class="price-plan-cell">
+            <span class="price-plan-lbl">Cash Tempo 12 Bln</span>
+            <span class="price-plan-val">${item.ct12}</span>
+          </div>
+          <div class="price-plan-cell">
+            <span class="price-plan-lbl">Cash Tempo 24 Bln</span>
+            <span class="price-plan-val">${item.ct24}</span>
+          </div>
+          <div class="price-plan-cell">
+            <span class="price-plan-lbl">KPR Bank (DP 30%)</span>
+            <span class="price-plan-val">${item.kpr}</span>
+          </div>
+        </div>
       </div>
-      <div class="price-unit-grid">
-        <div class="price-plan-cell">
-          <span class="price-plan-lbl">Cash Keras (1 Bln)</span>
-          <span class="price-plan-val">${item.ck}</span>
-        </div>
-        <div class="price-plan-cell">
-          <span class="price-plan-lbl">Cash Tempo 12 Bln</span>
-          <span class="price-plan-val">${item.ct12}</span>
-        </div>
-        <div class="price-plan-cell">
-          <span class="price-plan-lbl">Cash Tempo 24 Bln</span>
-          <span class="price-plan-val">${item.ct24}</span>
-        </div>
-        <div class="price-plan-cell">
-          <span class="price-plan-lbl">KPR Bank (DP 30%)</span>
-          <span class="price-plan-val">${item.kpr}</span>
-        </div>
-      </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 }
 
 function selectCatalogUnit(unitName, priceText) {
