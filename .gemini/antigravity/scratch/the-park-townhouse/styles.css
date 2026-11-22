@@ -6864,33 +6864,6 @@ body {
   pointer-events: none;
 }
 
-.top-video-progress-row {
-  position: absolute;
-  top: 10px;
-  left: 12px;
-  right: 12px;
-  display: flex;
-  gap: 5px;
-  z-index: 10;
-}
-
-.top-progress-track {
-  flex: 1;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.28);
-  border-radius: 999px;
-  overflow: hidden;
-  backdrop-filter: blur(4px);
-}
-
-.top-progress-fill {
-  width: 0%;
-  height: 100%;
-  background: #dfb96d;
-  border-radius: 999px;
-  transition: width 0.1s linear;
-}
-
 .top-video-info-bar {
   position: absolute;
   left: 12px;
@@ -7007,27 +6980,6 @@ body {
 .b-metric-cell span {
   font-size: 8.5px;
   color: #6d7b73;
-}
-
-.video-head-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.btn-video-toggle-mini {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 8px;
-  border-radius: 6px;
-  border: 1px solid #dcd4c3;
-  background: #fbfaf7;
-  color: #16241c;
-  font-size: 10px;
-  font-weight: 600;
-  cursor: pointer;
 }
 
 /* 3. Section Cards */

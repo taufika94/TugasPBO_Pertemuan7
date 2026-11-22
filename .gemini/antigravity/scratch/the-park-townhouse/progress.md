@@ -665,3 +665,21 @@
     - Embedded `count-up-stat` elements with data targets: `400` (Rp 400 Jt), `30` (30 Unit), `177` (177 m²), and `100` (± 100 m).
     - Created `initMetricsCounterAnimation()` using `IntersectionObserver` to trigger a 1.8s `easeOutCubic` rolling counter animation when the metrics grid enters viewport.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #42: Remove Video Progress Bars & Pause Toggle Buttons
+- **Context & Objective**: Clean up video overlay clutter requested by user:
+  1. Remove the segmented gold progress bars at the top of the video (`.top-video-progress-row`).
+  2. Remove the pause button toggle (`.btn-video-toggle-mini` / `#btnVideoPlayToggle` and `#btnTopVideoPlayPause`).
+- **Key Changes Implemented**:
+  - **Markup (index.html)**:
+    - Removed `#topVideoProgressRow` from `#berandaTopVideoBanner`.
+    - Removed `#btnTopVideoPlayPause` from `.top-video-floating-actions`.
+    - Removed `.video-head-row` and `#btnVideoPlayToggle` from `#landingVideoCard`.
+  - **Styles (styles.css)**:
+    - Deleted CSS rules for `.top-video-progress-row`, `.top-progress-track`, `.top-progress-fill`.
+    - Deleted CSS rules for `.video-head-row` and `.btn-video-toggle-mini`.
+  - **Script (app.js)**:
+    - Removed progress bar synchronization logic (`ontimeupdate`, `resetTopProgressBars`) and unused button references.
+- **Status**: Completed, Verified & Auto-Pushed.

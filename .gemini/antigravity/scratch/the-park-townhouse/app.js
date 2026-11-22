@@ -3184,36 +3184,11 @@ function initTopHeroVideoPlayer() {
   const videoEl = document.getElementById('berandaHeroVideo');
   if (!videoEl) return;
 
-  videoEl.ontimeupdate = () => {
-    if (!videoEl.duration) return;
-    const pct = (videoEl.currentTime / videoEl.duration) * 100;
-    const currentFill = document.getElementById(`topProgressFill${currentTopVideoIdx}`);
-    if (currentFill) {
-      currentFill.style.width = `${pct}%`;
-    }
-  };
-
   videoEl.onended = () => {
     advanceTopHeroVideo(1);
   };
 
-  resetTopProgressBars(currentTopVideoIdx);
-
   videoEl.play().catch(() => {});
-}
-
-function resetTopProgressBars(activeIdx) {
-  for (let i = 0; i < 4; i++) {
-    const fill = document.getElementById(`topProgressFill${i}`);
-    if (!fill) continue;
-    if (i < activeIdx) {
-      fill.style.width = '100%';
-    } else if (i === activeIdx) {
-      fill.style.width = '0%';
-    } else {
-      fill.style.width = '0%';
-    }
-  }
 }
 
 function switchTopHeroVideo(idx) {
@@ -3237,8 +3212,6 @@ function switchTopHeroVideo(idx) {
 
   if (badgeEl) badgeEl.textContent = item.badge;
   if (captionEl) captionEl.textContent = item.caption;
-
-  resetTopProgressBars(currentTopVideoIdx);
 }
 
 function advanceTopHeroVideo(step = 1) {
