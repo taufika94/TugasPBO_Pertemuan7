@@ -376,3 +376,33 @@
     - Removed custom `-0.01em` letter spacing to preserve natural serif rendering.
     - Added `.room-title` class to `<h1 class="room-title hero-headline">` in Room 01.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #27: Visual Overlay Stacking, Dark Navbar, Surat Cinta Scroll Fix, and Real Interactive Siteplan
+- **Context & Objective**: Address comprehensive user design & interaction feedback:
+  1. Room 05: Remove "2 Foto" badges and auto-rotate hint caption; clean up visual overlay layout (`Clubhouse di Nagoya` + `177,25 m² · Tanpa Membership Terpisah`).
+  2. Room 06 & Room 05 Visual Overlay Collision (`media_1795323251633_111b183d.jpg`): Fix horizontal tag/sub collision by switching `.room-visual-overlay` to vertical column stack.
+  3. Beranda Hero: Remove Japanese text `「和モダン • 贅沢な暮らし」`.
+  4. Beranda Video Showcase: Remove `SINEMA KAWASAN · 4K ATMOSPHERE` badge and `Jeda Sinema (5 dtk)` status text; fix video toggle error.
+  5. Surat Cinta Theme 11 Error (`media_1795323445372_98d132be.jpg`): Replace viewport-displacing `scrollIntoView` with contained `scroller.scrollTo`, preventing mobile horizontal jumps when clicking theme chips.
+  6. Landing Navbar: Remove `Tur 360` button and style navbar with opening background (`#16241c`) with matching gold/cream typography and bookmark button.
+  7. Beranda Lokasi & Radius: Upgrade Leaflet map with concentric radar circles (1 km, 2.5 km) and updated 99 Keunggulan copy.
+  8. Beranda Master Plan: Replace generic 3x3 box grid with the real interactive site plan from Room 04 (`siteplan-map-container`, dynamic clickable lot markers, lot quick pills, full inspector card, and cluster metrics).
+- **Key Changes Implemented**:
+  - **`index.html`**:
+    - Cleaned Room 05 chips and removed all `<span class="f-count">2 Foto</span>` and `.facility-hint-tag`.
+    - Removed `btn-tour-pill` from `.landing-navbar`.
+    - Removed `.eyebrow-jp` and video showcase badges.
+    - Updated copy from 88 to 99 Keunggulan (`99 Alasan Lokasi Ini Sempurna`).
+    - Replaced `#secMasterPlan` layout with Room 04 site plan architecture.
+  - **`styles.css`**:
+    - Restructured `.room-visual-overlay` to `display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 6px;` with subtle text shadow.
+    - Styled `.landing-navbar` in dark forest green `#16241c` with gold accents and border `rgba(229, 211, 175, 0.2)`.
+    - Added global viewport containment (`overflow-x: hidden` / `max-width: 100%`) against mobile horizontal shifting.
+  - **`app.js`**:
+    - Replaced `c.scrollIntoView` in `renderSuratTheme` and `switchLandingVideoScene` with container-isolated `scroller.scrollTo`.
+    - Sanitized `toggleLandingVideoPlay` to run cleanly without referencing deleted DOM nodes.
+    - Added concentric radar circles (1 km, 2.5 km) to `initBerandaLeafletMap`.
+    - Implemented `renderBerandaMasterplanSiteplan`, `switchBerandaLotCluster`, and `selectBerandaLot` linked to `SITEPLAN_DATA`.
+- **Status**: Completed & Verified.

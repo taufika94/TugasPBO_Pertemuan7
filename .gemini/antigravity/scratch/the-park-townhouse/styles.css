@@ -1270,27 +1270,34 @@ body {
   position: absolute;
   inset: 0;
   z-index: 3;
-  background: linear-gradient(180deg, rgba(22, 36, 28, 0.02) 45%, rgba(22, 36, 28, 0.56) 100%);
+  background: linear-gradient(180deg, rgba(22, 36, 28, 0.02) 40%, rgba(22, 36, 28, 0.72) 100%);
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 6px;
   padding: 12px 14px;
+  pointer-events: none;
 }
 
 .room-visual-tag {
-  background: rgba(245, 243, 238, 0.93);
+  background: rgba(245, 243, 238, 0.95);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: var(--text-dark);
   font-size: 11px;
   font-weight: 600;
-  padding: 5px 11px;
+  padding: 5px 12px;
   border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  max-width: 90%;
 }
 
 .room-visual-sub {
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.95);
   font-size: 10.5px;
   font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 /* ==========================================================================
@@ -3955,10 +3962,11 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 10px 16px;
-  background: rgba(255, 255, 255, 0.96);
+  background: #16241c;
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid #e8e2d5;
-  box-shadow: 0 2px 10px rgba(22, 36, 28, 0.04);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(229, 211, 175, 0.2);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
   z-index: 85;
 }
 
@@ -3983,14 +3991,14 @@ body {
   font-family: var(--font-serif);
   font-size: 13px;
   font-weight: 700;
-  color: #16241c;
+  color: #f3efe6;
   letter-spacing: 0.04em;
 }
 
 .brand-loc {
   font-size: 9.5px;
-  color: #2e7d32;
-  font-weight: 600;
+  color: #e5d3af;
+  font-weight: 500;
 }
 
 .landing-nav-actions {
@@ -4023,9 +4031,9 @@ body {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: #f5f2eb;
-  border: 1px solid #e0d8c7;
-  color: #b39255;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(229, 211, 175, 0.3);
+  color: #e5d3af;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4035,10 +4043,9 @@ body {
 }
 
 .landing-bookmark-btn:hover {
-  background: #16241c;
-  color: #e5d3af;
-  border-color: #16241c;
-  transform: scale(1.04);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: #e5d3af;
+  transform: translateY(-1px);
 }
 
 .bookmark-dot-pulse {
@@ -7770,4 +7777,16 @@ body {
   padding: 3px 6px;
   border-radius: 4px;
   color: #e2ede6;
+}
+
+#landingPageWrapper,
+.landing-content-scroll,
+.landing-tab-panel,
+.landing-section-card {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+#landingPageWrapper {
+  overflow-x: hidden;
 }

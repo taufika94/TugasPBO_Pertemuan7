@@ -2873,7 +2873,13 @@ function renderSuratTheme(idx) {
     chips.forEach((c, i) => {
       if (i === idx) {
         c.classList.add('is-active');
-        c.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        const scrollerBox = document.getElementById('themeNavScroller');
+      if (scrollerBox && c) {
+        scrollerBox.scrollTo({
+          left: c.offsetLeft - scrollerBox.clientWidth / 2 + c.clientWidth / 2,
+          behavior: 'smooth'
+        });
+      }
       } else {
         c.classList.remove('is-active');
       }
@@ -3097,7 +3103,13 @@ function switchLandingVideoScene(sceneIdx, btnEl) {
   document.querySelectorAll('.video-scene-btn').forEach((btn, i) => {
     if (i === sceneIdx) {
       btn.classList.add('is-active');
-      btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      const vScroller = document.querySelector('.video-scene-selector');
+      if (vScroller && btn) {
+        vScroller.scrollTo({
+          left: btn.offsetLeft - vScroller.clientWidth / 2 + btn.clientWidth / 2,
+          behavior: 'smooth'
+        });
+      }
     } else {
       btn.classList.remove('is-active');
     }
@@ -3105,18 +3117,15 @@ function switchLandingVideoScene(sceneIdx, btnEl) {
 }
 
 function toggleLandingVideoPlay() {
-  const statusEl = document.getElementById('videoPlayStatus');
   const iconEl = document.getElementById('videoPlayIcon');
 
   if (landingVideoAutoInterval) {
     clearInterval(landingVideoAutoInterval);
     landingVideoAutoInterval = null;
-    if (statusEl) statusEl.textContent = 'Putar Sinema Otomatis';
     if (iconEl) {
       iconEl.innerHTML = '<polygon points="5 3 19 12 5 21 5 3" />';
     }
   } else {
-    if (statusEl) statusEl.textContent = 'Jeda Sinema (5 dtk)';
     if (iconEl) {
       iconEl.innerHTML = '<rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" />';
     }
@@ -3258,7 +3267,7 @@ function initBerandaLeafletMap() {
   const defaultCenter = [-7.673895, 110.843978];
   berandaLeafletMapInstance = L.map('berandaLeafletMap', {
     center: defaultCenter,
-    zoom: 14.5,
+    zoom: 14,
     scrollWheelZoom: false,
     zoomControl: true,
     attributionControl: false
@@ -3266,6 +3275,24 @@ function initBerandaLeafletMap() {
 
   L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
     maxZoom: 19
+  }).addTo(berandaLeafletMapInstance);
+
+  // Concentric radar circles (1 km, 2.5 km) matching Room 03
+  L.circle(defaultCenter, {
+    radius: 2500,
+    color: '#2e7d32',
+    weight: 2,
+    fillColor: '#a5d6a7',
+    fillOpacity: 0.12
+  }).addTo(berandaLeafletMapInstance);
+
+  L.circle(defaultCenter, {
+    radius: 1000,
+    color: '#c49a45',
+    weight: 1.5,
+    dashArray: '5, 5',
+    fillColor: '#e5d3af',
+    fillOpacity: 0.18
   }).addTo(berandaLeafletMapInstance);
 
   // Add The Park Townhouse main location pin
@@ -3276,11 +3303,11 @@ function initBerandaLeafletMap() {
     iconAnchor: [60, 14]
   });
   L.marker(defaultCenter, { icon: mainIcon }).addTo(berandaLeafletMapInstance)
-    .bindPopup('<b>The Park Townhouse Sukoharjo</b><br>Avenue Grand Gate');
+    .bindPopup('<b>The Park Townhouse Sukoharjo</b><br>Avenue Grand Gate · Koridor Jl. Sudirman');
 
-  // Add POI markers
+  // Add POI markers and initialize real siteplan
   renderBerandaPoiList();
-  renderBerandaMasterplanGrid('nagoya');
+  renderBerandaMasterplanSiteplan('nagoya');
   updateKprFromSlider();
 }
 
@@ -3412,29 +3439,62 @@ const BERANDA_LOTS = {
   ]
 };
 
-function renderBerandaMasterplanGrid(clusterKey) {
-  const grid = document.getElementById('berandaMasterplanGrid');
-  if (!grid) return;
+function renderBerandaMasterplanSiteplan(clusterKey) {
+  const cluster = clusterKey || currentBerandaLotCluster || 'nagoya';
+  currentBerandaLotCluster = cluster;
+  const data = SITEPLAN_DATA[cluster] || SITEPLAN_DATA.nagoya;
 
-  const lots = BERANDA_LOTS[clusterKey] || [];
-  grid.innerHTML = '';
+  const titleEl = document.getElementById('berandaSpClusterTitle');
+  const shmEl = document.getElementById('berandaSpShmBadge');
+  const tagEl = document.getElementById('berandaSpTagSub');
+  const areaEl = document.getElementById('berandaSpAreaSub');
+  const imgEl = document.getElementById('berandaSpImg');
+  const overlayEl = document.getElementById('berandaSpLotsOverlay');
+  const pillsRow = document.getElementById('berandaKavlingPillsRow');
 
-  lots.forEach(lot => {
-    const card = document.createElement('div');
-    card.className = 'mp-lot-card ' + (lot.num === inspectedLotNumber ? 'is-active' : '');
-    card.onclick = () => selectBerandaLot(lot.num, clusterKey);
-    card.innerHTML = 
-      '<div class="mp-lot-num">' + lot.num + '</div>' +
-      '<div style="font-size:9px;color:#55635b;">' + lot.type.split('(')[0] + '</div>' +
-      '<div class="mp-lot-status">' + lot.status.toUpperCase() + '</div>';
-    grid.appendChild(card);
-  });
+  const statKavling = document.getElementById('berandaStatKavlingVal');
+  const statPrasarana = document.getElementById('berandaStatPrasaranaVal');
+  const statSarana = document.getElementById('berandaStatSaranaVal');
+  const statRth = document.getElementById('berandaStatRthVal');
 
-  // Update status count numbers
-  const cntAll = document.getElementById('cntLotAll');
-  const cntAvail = document.getElementById('cntLotAvail');
-  if (cntAll) cntAll.textContent = lots.length;
-  if (cntAvail) cntAvail.textContent = lots.filter(l => l.status === 'tersedia').length;
+  if (titleEl) titleEl.textContent = data.title;
+  if (shmEl) shmEl.textContent = data.shmText;
+  if (tagEl) tagEl.textContent = data.tagSub;
+  if (areaEl) areaEl.textContent = data.areaSub;
+  if (imgEl) imgEl.src = data.img;
+
+  if (statKavling) statKavling.textContent = data.stats.kavling;
+  if (statPrasarana) statPrasarana.textContent = data.stats.prasarana;
+  if (statSarana) statSarana.textContent = data.stats.sarana;
+  if (statRth) statRth.textContent = data.stats.rth;
+
+  if (overlayEl) {
+    overlayEl.innerHTML = data.lots.map(lot => `
+      <button class="siteplan-lot-marker ${lot.id === inspectedLotNumber ? 'is-active' : ''}"
+        style="left: ${lot.x}%; top: ${lot.y}%;"
+        onclick="selectBerandaLot('${lot.id}', '${cluster}')"
+        type="button"
+        title="${lot.name} (${lot.status})">
+        ${lot.id}
+      </button>
+    `).join('');
+  }
+
+  if (pillsRow) {
+    pillsRow.innerHTML = data.lots.map(lot => `
+      <button class="kavling-pill-btn ${lot.id === inspectedLotNumber ? 'is-active' : ''}"
+        id="beranda-pill-${lot.id}"
+        onclick="selectBerandaLot('${lot.id}', '${cluster}')"
+        type="button">
+        ${lot.id} · ${lot.area}
+      </button>
+    `).join('');
+  }
+
+  const activeLot = data.lots.find(l => l.id === inspectedLotNumber) || data.lots[0];
+  if (activeLot) {
+    selectBerandaLot(activeLot.id, cluster);
+  }
 }
 
 function switchBerandaLotCluster(clusterKey, btnEl) {
@@ -3443,44 +3503,48 @@ function switchBerandaLotCluster(clusterKey, btnEl) {
     btnEl.parentElement.querySelectorAll('.cluster-pill-btn').forEach(b => b.classList.remove('is-active'));
     btnEl.classList.add('is-active');
   }
-  const lots = BERANDA_LOTS[clusterKey];
-  if (lots && lots[0]) {
-    inspectedLotNumber = lots[0].num;
-    updateInspectorCard(lots[0], clusterKey);
+  const data = SITEPLAN_DATA[clusterKey] || SITEPLAN_DATA.nagoya;
+  if (data.lots.length > 0) {
+    inspectedLotNumber = data.lots[0].id;
   }
-  renderBerandaMasterplanGrid(clusterKey);
+  renderBerandaMasterplanSiteplan(clusterKey);
 }
 
-function filterBerandaLots(status, btnEl) {
-  currentBerandaLotFilter = status;
-  if (btnEl && btnEl.parentElement) {
-    btnEl.parentElement.querySelectorAll('.status-legend-chip').forEach(b => b.classList.remove('is-active'));
-    btnEl.classList.add('is-active');
-  }
-}
+function selectBerandaLot(lotId, clusterKey) {
+  inspectedLotNumber = lotId;
+  const cluster = clusterKey || currentBerandaLotCluster || 'nagoya';
+  const data = SITEPLAN_DATA[cluster] || SITEPLAN_DATA.nagoya;
+  const lot = data.lots.find(l => l.id === lotId) || data.lots[0];
+  if (!lot) return;
 
-function selectBerandaLot(lotNum, clusterKey) {
-  inspectedLotNumber = lotNum;
-  const cluster = clusterKey || currentBerandaLotCluster;
-  const lot = (BERANDA_LOTS[cluster] || []).find(l => l.num === lotNum);
-  if (lot) {
-    updateInspectorCard(lot, cluster);
-  }
-  renderBerandaMasterplanGrid(cluster);
-}
+  document.querySelectorAll('#berandaSpLotsOverlay .siteplan-lot-marker').forEach(m => {
+    m.classList.toggle('is-active', m.textContent.trim() === lot.id);
+  });
 
-function updateInspectorCard(lot, cluster) {
+  document.querySelectorAll('#berandaKavlingPillsRow .kavling-pill-btn').forEach(p => {
+    p.classList.toggle('is-active', p.id === `beranda-pill-${lot.id}`);
+  });
+
   const tagEl = document.getElementById('inspLotTag');
-  const priceEl = document.getElementById('inspLotPrice');
   const statusEl = document.getElementById('inspLotStatus');
+  const lbEl = document.getElementById('inspLotLb');
+  const ltEl = document.getElementById('inspLotLt');
+  const typeEl = document.getElementById('inspLotType');
+  const priceEl = document.getElementById('inspLotPrice');
 
-  if (tagEl) tagEl.textContent = 'Kavling ' + cluster.toUpperCase() + ' ' + lot.num;
+  if (tagEl) tagEl.textContent = lot.name;
+  if (statusEl) {
+    statusEl.textContent = lot.status.toUpperCase();
+    statusEl.style.color = lot.status.includes('Booked') ? '#ffb74d' : '#81c784';
+  }
+  if (lbEl) lbEl.textContent = cluster === 'osaka' ? '110 m²' : (cluster === 'tokyo' ? '80 m²' : '75 m²');
+  if (ltEl) ltEl.textContent = lot.area;
+  if (typeEl) typeEl.textContent = lot.type;
   if (priceEl) priceEl.textContent = lot.price;
-  if (statusEl) statusEl.textContent = lot.status.toUpperCase();
 }
 
 function orderInspectedLot() {
-  openOrderModal('Klaster ' + currentBerandaLotCluster.toUpperCase(), inspectedLotNumber, '650.000.000');
+  openOrderModal('Klaster ' + (currentBerandaLotCluster || 'nagoya').toUpperCase(), inspectedLotNumber, '650.000.000');
 }
 
 /* Investment Simulator Switcher */
