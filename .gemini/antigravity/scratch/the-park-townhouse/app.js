@@ -1789,6 +1789,8 @@ function switchLandingTab(tabName, btnEl) {
 
   if (tabName === 'SitePlan') {
     switchLandingSiteplan('nagoya');
+  } else if (tabName === 'SuratCinta') {
+    initSuratCintaMagazine();
   }
 }
 
@@ -2467,6 +2469,437 @@ function handleRoom3Enter() {
 }
 
 /* --------------------------------------------------------------------------
+   SURAT CINTA (99 KEUNGGULAN · DELUXE STORYTELLING MAGAZINE)
+   -------------------------------------------------------------------------- */
+const SURAT_THEMES = [
+  {
+    range: '01–09',
+    title: 'Dekat dengan Kehidupan',
+    quote: 'Dari gerbang rumah, akses menuju pusat kota, ruang terbuka hijau, dan layanan penting hanya berjarak beberapa menit berkendara santai.',
+    img: 'assets/drive/alun-alun.jpg',
+    points: [
+      { num: '01', head: 'Jantung Kabupaten Sukoharjo', desc: 'Akses langsung ke pusat pemerintahan dan niaga tanpa kehilangan kedamaian hunian privat.' },
+      { num: '02', head: 'Menit dari Alun-Alun Satya Negara', desc: 'Ruang hijau terbuka, jogging track teduh, dan denyut aktivitas warga tepat di dekat rumah.' },
+      { num: '03', head: 'Koridor Jenderal Sudirman', desc: 'Akses jalan utama yang menghubungkan kawasan Sukoharjo dan Solo Baru secara langsung tanpa hambatan.' },
+      { num: '04', head: 'Kawasan Gelora Merdeka', desc: 'Sarana olahraga terbuka untuk akhir pekan yang aktif dan menyehatkan bersama keluarga tercinta.' },
+      { num: '05', head: 'Layanan Kesehatan RSUD Sukoharjo', desc: 'Ketenangan pikiran keluarga dengan jarak rumah sakit rujukan pemerintah terdekat.' },
+      { num: '06', head: 'RS Indriati Solo Baru', desc: 'Pilihan layanan medis lanjutan dan fasilitas spesialis bedah bertaraf modern.' },
+      { num: '07', head: 'Ragam Pilihan Sekolah Unggulan', desc: 'Dari tingkat dasar hingga menengah dalam radius aman dan nyaman bagi anak.' },
+      { num: '08', head: 'Sentra Kuliner Legendaris Sukoharjo', desc: 'Soto Sewu, Bebek Goreng H. Slamet, hingga Mbah Karto Tembel di sekitar kawasan.' },
+      { num: '09', head: 'Nilai Kawasan Terus Tumbuh', desc: 'Sukoharjo sebagai penyangga utama Solo Raya dengan akselerasi pertumbuhan ekonomi tinggi.' }
+    ]
+  },
+  {
+    range: '10–18',
+    title: 'Pilihan yang Terasa Pribadi',
+    quote: 'Setiap keluarga memiliki ritme harian yang khas. Karena itu Nagoya, Osaka, dan Tokyo dihadirkan dengan karakter dan atmosfer lingkungan berbeda.',
+    img: 'assets/drive/siteplan-nagoya.jpg',
+    points: [
+      { num: '10', head: 'Tiga Karakter Klaster Berbeda', desc: 'Nagoya, Osaka, dan Tokyo dirancang dengan keunikan atmosfer dan skala lingkungan tersendiri.' },
+      { num: '11', head: 'Nagoya: Dekat Clubhouse', desc: 'Cocok untuk keluarga dinamis yang menyukai akses instan ke kolam renang dan ruang komunal.' },
+      { num: '12', head: 'Osaka: Karakter Koridor Aktif', desc: 'Konektivitas prima untuk Anda yang menyukai efisiensi waktu dan ritme mobilitas tinggi.' },
+      { num: '13', head: 'Tokyo: Enclave Privat 7 Unit', desc: 'Skala lingkungan mikro yang intim, tenang, dan minim lalu-lalang kendaraan.' },
+      { num: '14', head: 'Skala Kawasan yang Manusiawi', desc: 'Total 30 unit menjaga kehangatan hubungan bertetangga tanpa pernah terasa sesak.' },
+      { num: '15', head: 'Proporsi Kavling Lapang', desc: 'Lebar muka ideal dengan kedalaman tanah proporsional untuk sirkulasi udara dan cahaya alami.' },
+      { num: '16', head: 'Opsi Hook dan Standar', desc: 'Pilihan posisi sudut dengan dua muka pencahayaan alami optimal serta halaman samping.' },
+      { num: '17', head: 'Orientasi Bangunan Terhitung', desc: 'Tata letak dihitung cermat untuk meminimalkan radiasi terik matahari siang hari.' },
+      { num: '18', head: 'Ketersediaan Unit Terbatas', desc: 'Jumlah unit terukur menjamin privasi, ketenangan, dan eksklusivitas komunitas penghuni.' }
+    ]
+  },
+  {
+    range: '19–27',
+    title: 'Ruang untuk Hidup Sepenuhnya',
+    quote: 'Rumah yang baik memberikan ruang bernapas bagi setiap anggota keluarga untuk berkumpul hangat sekaligus beristirahat tenang.',
+    img: 'assets/drive/dalam-6.png',
+    points: [
+      { num: '19', head: 'Desain Dua Lantai Efisien', desc: 'Pemisahan jelas antara area komunal keluarga di lantai bawah dan area istirahat privat di lantai atas.' },
+      { num: '20', head: 'Tipe Gold (LB 60–75 m²)', desc: '3 kamar tidur, 2 kamar mandi, garasi dalam tertutup, tata ruang efisien untuk keluarga muda.' },
+      { num: '21', head: 'Tipe Diamond (LB 80–110 m²)', desc: '4 kamar tidur, 3 kamar mandi, garasi ganda + carport ekstra lapang untuk keluarga berkembang.' },
+      { num: '22', head: 'Konsep Open-Plan Fleksibel', desc: 'Ruang tamu, ruang makan, dan dapur menyatu tanpa sekat kaku yang membatasi interaksi.' },
+      { num: '23', head: 'Kamar Mandi di Setiap Lantai', desc: 'Kepraktisan bagi seluruh penghuni dan tamu tanpa repot harus naik-turun tangga di malam hari.' },
+      { num: '24', head: 'Area Dapur Ergonomis', desc: 'Bukaan ventilasi langsung ke taman belakang, menjaga sirkulasi udara tetap segar bebas lembap.' },
+      { num: '25', head: 'Taman Belakang Privat', desc: 'Ruang terbuka hijau di dalam rumah untuk relaksasi sore hari dan area jemur terlindung.' },
+      { num: '26', head: 'Void Tangga & Skylight', desc: 'Bukaan vertikal menyalurkan cahaya alami ke pusat hunian hingga hemat pencahayaan siang.' },
+      { num: '27', head: 'Sudut Kerja / Belajar WFH', desc: 'Ruang khusus untuk produktivitas kerja jarak jauh dan konsentrasi belajar anak tanpa gangguan.' }
+    ]
+  },
+  {
+    range: '28–36',
+    title: 'Nyaman Sejak Tiba di Rumah',
+    quote: 'Dari pintu gerbang hingga ke dalam garasi tertutup, setiap detail jalan, taman, dan teras dirancang meluruhkan lelah.',
+    img: 'assets/drive/house.jpeg',
+    points: [
+      { num: '28', head: 'Garasi Dalam Terintegrasi', desc: 'Kendaraan terlindung dari cuaca tropis dengan akses langsung ke dalam ruang hunian utama.' },
+      { num: '29', head: 'Carport Berkanopi Modern', desc: 'Kapasitas parkir 1–2 mobil tambahan tanpa mengganggu kelancaran jalan kawasan.' },
+      { num: '30', head: 'Fasad Japandi Bersahaja', desc: 'Kombinasi kayu terawat, plester aci bertekstur, dan batu alam andesit berkarakter abadi.' },
+      { num: '31', head: 'Lebar Jalan ROW 7–8 Meter', desc: 'Akses dua mobil berpapasan leluasa dengan radius putar kendaraan yang lapang.' },
+      { num: '32', head: 'Paving Block Mutu K-300', desc: 'Permukaan jalan berpori rapi dengan daya serap air tinggi untuk mencegah genangan air hujan.' },
+      { num: '33', head: 'Pohon Peneduh Tabebuya', desc: 'Bunga bermekaran lembut menghiasi pedestrian dan memberi keteduhan alami di setiap sudut jalan.' },
+      { num: '34', head: 'Drainase Bawah Tanah Tertutup', desc: 'Saluran air tertutup rapi, higienis, bebas bau tak sedap dan tidak menjadi sarang nyamuk.' },
+      { num: '35', head: 'Penerangan Jalan LED Otomatis', desc: 'Sensor cahaya otomatis memastikan jalan klaster terang merata dan aman saat malam tiba.' },
+      { num: '36', head: 'Pedestrian Ramah Anak & Lansia', desc: 'Jalur pejalan kaki tanpa undakan curam, aman untuk kereta bayi maupun orang tua tercinta.' }
+    ]
+  },
+  {
+    range: '37–45',
+    title: 'Waktu Bersama Punya Tempat',
+    quote: 'Kebersamaan antar penghuni bertumbuh alami di ruang-ruang komunal yang dirawat dengan standar perhotelan eksklusif.',
+    img: 'assets/drive/clubhouse.png',
+    points: [
+      { num: '37', head: 'The Park Clubhouse Eksklusif', desc: 'Fasilitas 177,25 m² sebagai pusat gaya hidup, olahraga, dan interaksi warga berstandar tinggi.' },
+      { num: '38', head: 'Kolam Renang Infinity & Anak', desc: 'Area renang bersih dengan dek santai bernuansa resor tropis yang menyegarkan tubuh dan pikiran.' },
+      { num: '39', head: 'Fitness Center & Gym Ber-AC', desc: 'Peralatan kardio dan beban lengkap berpendingin ruangan dengan pemandangan terbuka ke kolam.' },
+      { num: '40', head: 'Café & Resto Komunal', desc: 'Tempat ngopi pagi atau menikmati santapan ringan santai bersama keluarga tanpa keluar kawasan.' },
+      { num: '41', head: 'Co-Working & Meeting Room', desc: 'Koneksi internet berkecepatan tinggi untuk pertemuan bisnis atau fokus bekerja produktif.' },
+      { num: '42', head: 'Multi-Function Gathering Hall', desc: 'Ruang serbaguna untuk acara arisan, perayaan keluarga, atau silaturahmi tetangga.' },
+      { num: '43', head: 'Sunken Lounge & Gazebo', desc: 'Tempat duduk santai semi-outdoor dikelilingi gemericik air dan vegetasi hijau teduh.' },
+      { num: '44', head: 'Pantry Dapur Komunal', desc: 'Fasilitas penyiapan hidangan pendukung untuk kelancaran kegiatan komunitas warga.' },
+      { num: '45', head: 'Bebas Biaya Membership', desc: 'Seluruh fasilitas clubhouse dapat dinikmati cuma-cuma oleh seluruh penghuni terdaftar.' }
+    ]
+  },
+  {
+    range: '46–54',
+    title: 'Bermain, Tertawa, Mengingat',
+    quote: 'Masa kecil adalah kenangan yang tak terulang. Kami menyediakan ruang aman untuk anak-anak berlari, bermain, dan berteman seumur hidup.',
+    img: 'assets/drive/dalam-12.png',
+    points: [
+      { num: '46', head: 'Mini Golf 9-Hole Tematik', desc: 'Sarana rekreasi golf mini tematik pertama di townhouse Sukoharjo untuk semua generasi.' },
+      { num: '47', head: 'Game Station 4K Modern', desc: 'Ruang konsol game PlayStation 5 dan Nintendo Switch dengan tempat duduk empuk ergonomis.' },
+      { num: '48', head: 'Playground Anak Bersertifikasi', desc: 'Ayunan, perosotan, dan sensory play di atas hamparan rumput sintetis lembut anti cedera.' },
+      { num: '49', head: 'Tenis Meja Semi-Outdoor', desc: 'Meja pingpong berkualitas untuk pertandingan santai di sore hari bersama tetangga.' },
+      { num: '50', head: 'Mini Amphitheater Terbuka', desc: 'Ruang pertunjukan mini, membaca cerita, dan pentas bakat anak di alam terbuka.' },
+      { num: '51', head: 'Barbeque & Grill Corner', desc: 'Area pemanggang siap pakai untuk menghangatkan malam akhir pekan bersama keluarga dan sahabat.' },
+      { num: '52', head: 'Jalur Sepeda & Sepatu Roda', desc: 'Permukaan jalan halus tanpa polisi tidur kasar, memberi rasa aman saat anak bermain.' },
+      { num: '53', head: 'Pojok Baca & Mini Library', desc: 'Koleksi buku cerita dan majalah pilihan di samping area tunggu clubhouse.' },
+      { num: '54', head: 'Komunitas Bersahabat', desc: 'Lingkungan guyub dan positif tempat anak-anak saling mengenal dan saling menjaga.' }
+    ]
+  },
+  {
+    range: '55–63',
+    title: 'Tenang dalam Keseharian',
+    quote: 'Rasa aman sejati adalah saat Anda dapat beristirahat lelap di malam hari dan bepergian tanpa rasa cemas yang membebani.',
+    img: 'assets/drive/gate.png',
+    points: [
+      { num: '55', head: 'One-Gate Security System', desc: 'Akses masuk dan keluar tunggal terkontrol ketat oleh regu keamanan terlatih 24 jam.' },
+      { num: '56', head: 'Smartgate RFID Otomatis', desc: 'Palang gerbang mendeteksi kartu penghuni tanpa perlu menurunkan kaca jendela mobil.' },
+      { num: '57', head: 'Petugas Sekuriti 24/7', desc: 'Patroli berkala memastikan setiap sudut jalan lingkungan selalu aman dan kondusif.' },
+      { num: '58', head: 'Kamera CCTV 4K Ultra HD', desc: 'Pengawasan visual beresolusi tinggi dengan kemampuan night-vision di seluruh titik vital.' },
+      { num: '59', head: 'Manajemen Tamu Berbasis QR', desc: 'Verifikasi identitas tamu terpadu via aplikasi penghuni sebelum kendaraan memasuki gerbang.' },
+      { num: '60', head: 'Tembok Perimeter Kokoh', desc: 'Pagar keliling membatasi kawasan townhouse dari akses eksternal tanpa izin resmi.' },
+      { num: '61', head: 'Tombol Darurat (Panic Button)', desc: 'Integrasi alarm darurat langsung ke pos jaga sekuriti untuk respon cepat tanggap.' },
+      { num: '62', head: 'Proteksi Kebakaran Standar', desc: 'Penempatan tabung APAR dan titik hidran terkalibrasi di koridor klaster.' },
+      { num: '63', head: 'Pencahayaan Bebas Titik Buta', desc: 'Tata cahaya malam dirancang merata sehingga tidak ada sudut gelap yang rawan kejahatan.' }
+    ]
+  },
+  {
+    range: '64–72',
+    title: 'Kemudahan yang Menyertai',
+    quote: 'Teknologi cerdas hadir bukan untuk membingungkan, melainkan merampingkan urusan sehari-hari agar Anda fokus pada kebahagiaan keluarga.',
+    img: 'assets/drive/dalam-9.png',
+    points: [
+      { num: '64', head: 'Smart Door Lock Multi-Akses', desc: 'Buka pintu utama dengan sidik jari, PIN kode, kartu pintar RFID, atau kunci manual darurat.' },
+      { num: '65', head: 'Aplikasi Super Andara Living', desc: 'Pusat layanan hunian di ponsel: bayar iuran, reservasi fasilitas, dan perizinan tamu.' },
+      { num: '66', head: 'Pembayaran IPL Digital', desc: 'Laporan dan rincian iuran pemeliharaan transparan dengan berbagai kanal transfer modern.' },
+      { num: '67', head: 'Layanan Concierge & Estate', desc: 'Bantuan pengurusan pemeliharaan umum, kebersihan jalan klaster, dan perawatan taman berkala.' },
+      { num: '68', head: 'Instalasi EV-Charger Ready', desc: 'Jalur kelistrikan disiapkan untuk pemasangan stasiun pengisian mobil listrik di carport.' },
+      { num: '69', head: 'Kabel Fiber Optic Bawah Tanah', desc: 'Jaringan internet pita lebar stabil tanpa tiang dan kabel menggantung di langit kawasan.' },
+      { num: '70', head: 'Pengelolaan Sampah Terjadwal', desc: 'Pengambilan sampah harian tertib dengan tempat sampah terpisah basah dan kering.' },
+      { num: '71', head: 'Drop-off Loker Paket Kurir', desc: 'Penyimpanan kiriman barang belanja daring yang aman saat penghuni sedang bepergian.' },
+      { num: '72', head: 'Layanan Teknisi Handyman Siaga', desc: 'Bantuan teknis cepat untuk perbaikan kelistrikan dan saluran pipa minor rumah tangga.' }
+    ]
+  },
+  {
+    range: '73–81',
+    title: 'Di Balik Keindahan Rumah',
+    quote: 'Kekuatan rumah berada pada fondasi dan material tak kasat mata. Kami membangun dengan ketelitian rekayasa untuk masa pakai puluhan tahun.',
+    img: 'assets/drive/denah-tipe60.jpg',
+    points: [
+      { num: '73', head: 'Fondasi Footplat Beton K-225', desc: 'Struktur cakar ayam bertulang SNI yang kokoh menopang dua lantai dengan aman dan stabil.' },
+      { num: '74', head: 'Dinding Bata Merah Berkualitas', desc: 'Plester aci halus, peredaman suara optimal, dan kemampuan menolak panas alami yang sejuk.' },
+      { num: '75', head: 'Rangka Atap Baja Zincalume', desc: 'Kekuatan rekayasa presisi anti rayap, tahan lendutan, dan bebas bahaya korosi karat.' },
+      { num: '76', head: 'Genteng Keramik Berglasur', desc: 'Meredam panas matahari tropis dan mempertahankan keindahan warna jangka panjang tanpa pudar.' },
+      { num: '77', head: 'Lantai Homogeneous Tile 60x60', desc: 'Granit poles berpori rapat yang mewah, elegan, sejuk dipijak kaki, dan mudah dibersihkan.' },
+      { num: '78', head: 'Kusen Aluminium Powder Coating', desc: 'Profil hitam matte elegan, anti rayap, anti susut, dan rapat menahan rembesan air hujan.' },
+      { num: '79', head: 'Plafon Gypsum Elevasi 3,4 Meter', desc: 'Ketinggian plafon lega menciptakan sirkulasi udara bebas dan kesan ruang luas bernapas.' },
+      { num: '80', head: 'Sanitair Standar TOTO / Setara', desc: 'Kloset duduk modern, shower mixer air panas-dingin, dan wastafel keramik berkualitas.' },
+      { num: '81', head: 'Cat Eksterior Weatherproof', desc: 'Formula pelindung dinding teruji anti lumut, anti jamur, dan tahan cuaca tropis basah.' }
+    ]
+  },
+  {
+    range: '82–90',
+    title: 'Nyaman pada Hal-Hal Mendasar',
+    quote: 'Kenyamanan sejati tercipta dari hal-hal yang sering luput: hembusan angin sejuk, kejernihan air, dan stabilitas kelistrikan.',
+    img: 'assets/drive/housee.jpeg',
+    points: [
+      { num: '82', head: 'Kaca Bening 5mm Tempered', desc: 'Meredam deru suara luar dan mengalirkan kejernihan sinar matahari alami ke dalam rumah.' },
+      { num: '83', head: 'Cross Ventilation Alami', desc: 'Ventilasi silang memandu angin mengalir lancar, menghemat pemakaian pendingin ruangan.' },
+      { num: '84', head: 'Sumur Bor Dalam & Filter Ganda', desc: 'Pasokan air tanah jernih, higienis, tidak berbau, dan melimpah di setiap musim.' },
+      { num: '85', head: 'Toren Stainless & Pompa Otomatis', desc: 'Tekanan air shower dan kran stabil merata di lantai bawah maupun lantai atas.' },
+      { num: '86', head: 'Daya Listrik 2.200 VA Standar', desc: 'Kapasitas daya memadai untuk AC di seluruh kamar tidur dan peralatan elektronik modern.' },
+      { num: '87', head: 'Pipa AC Ditanam Tersembunyi', desc: 'Jalur instalasi rapi di dalam dinding tanpa perlu membobok semen saat pemasangan pendingin.' },
+      { num: '88', head: 'Grounding Kelistrikan Aman', desc: 'Perlindungan protektif dari risiko sengatan listrik dan lonjakan tegangan petir.' },
+      { num: '89', head: 'Resapan Air Hujan & Biopori', desc: 'Konservasi air tanah mandiri untuk menjaga keseimbangan ekologis lingkungan hidup.' },
+      { num: '90', head: 'Septic Tank Biofilter Ramah Alam', desc: 'Pengolahan limbah biologis modern tanpa kuras, higienis, dan tidak mencemari sumur.' }
+    ]
+  },
+  {
+    range: '91–99',
+    title: 'Memilih dengan Keyakinan',
+    quote: 'Membeli rumah adalah keputusan sakral keluarga. Kami memastikan setiap sertifikat, perizinan, dan garansi berada di posisi teraman.',
+    img: 'assets/drive/aerial-drone.jpeg',
+    points: [
+      { num: '91', head: 'Harga Perdana Mulai Rp 650 Juta', desc: 'Penawaran pra-launching paling kompetitif untuk townhouse 2 lantai berfasilitas terlengkap.' },
+      { num: '92', head: 'Empat Skema Pembayaran Fleksibel', desc: 'Pilihan Cash Keras diskon khusus, Cash Tempo 12/24 Bulan bunga 0%, serta KPR Bank.' },
+      { num: '93', head: 'Booking Fee Ringan Rp 5 Juta', desc: 'Tanda jadi yang langsung memotong nilai uang muka (DP) atau harga jual unit.' },
+      { num: '94', head: 'SHM Sudah Pecah per Kavling', desc: 'Kepastian hukum tertinggi, sertifikat per kavling siap balik nama tanpa proses berbelit.' },
+      { num: '95', head: 'PBG & Izin Bangunan Lengkap', desc: 'Persetujuan Bangunan Gedung telah diterbitkan resmi oleh Pemerintah Kabupaten Sukoharjo.' },
+      { num: '96', head: 'Kemitraan Bank Terkemuka', desc: 'Didukung bank BUMN dan swasta utama dengan proses pendampingan KPR in-house.' },
+      { num: '97', head: 'Garansi Bangunan (DLP) 100 Hari', desc: 'Layanan perbaikan gratis jika dijumpai cacat konstruksi setelah serah terima kunci.' },
+      { num: '98', head: 'Pengembang PT Andara Rejo Makmur', desc: 'Komitmen pembangunan tepat waktu dengan standar kontrol kualitas berjenjang.' },
+      { num: '99', head: 'Warisan Nilai Tinggi yang Abadi', desc: 'Bukan hanya tempat berteduh hari ini, melainkan aset masa depan bernilai luhur bagi generasi.' }
+    ]
+  }
+];
+
+let currentSuratThemeIdx = 0;
+let currentSpecType = 'gold';
+let currentPriceCluster = 'nagoya';
+
+const PRICE_CATALOG = {
+  nagoya: [
+    { id: 'Nagoya B.02–B.04', spec: 'LB 75 m² · LT 63 m² · 3 KT / 2 KM', ck: 'Rp 650 Juta', ct12: 'Rp 57,5 jt / bln', ct24: 'Rp 30,5 jt / bln', kpr: 'Rp 4,2 jt / bln' },
+    { id: 'Nagoya A.02–A.08', spec: 'LB 75 m² · LT 60 m² · 3 KT / 2 KM', ck: 'Rp 699 Juta', ct12: 'Rp 61,8 jt / bln', ct24: 'Rp 32,8 jt / bln', kpr: 'Rp 4,5 jt / bln' },
+    { id: 'Nagoya A.03–A.09', spec: 'LB 80 m² · LT 80 m² · 4 KT / 3 KM', ck: 'Rp 782–796 Jt', ct12: 'Rp 69,2 jt / bln', ct24: 'Rp 36,8 jt / bln', kpr: 'Rp 5,1 jt / bln' },
+    { id: 'Nagoya B.05–B.07', spec: 'LB 80 m² · LT 88 m² · 4 KT / 3 KM', ck: 'Rp 857–862 Jt', ct12: 'Rp 75,8 jt / bln', ct24: 'Rp 40,2 jt / bln', kpr: 'Rp 5,6 jt / bln' }
+  ],
+  tokyo: [
+    { id: 'Tokyo B.1–B.3', spec: 'LB 80 m² · LT 80 m² · 3 KT / 2 KM', ck: 'Rp 679 Juta', ct12: 'Rp 60,1 jt / bln', ct24: 'Rp 31,9 jt / bln', kpr: 'Rp 4,4 jt / bln' },
+    { id: 'Tokyo B.4–B.7', spec: 'LB 80 m² · LT 80 m² · 3 KT / 2 KM', ck: 'Rp 720 Juta', ct12: 'Rp 63,8 jt / bln', ct24: 'Rp 33,9 jt / bln', kpr: 'Rp 4,7 jt / bln' }
+  ],
+  osaka: [
+    { id: 'Osaka A.1–A.4', spec: 'LB 110 m² · LT 90 m² · 4 KT / 3 KM', ck: 'Rp 895 Juta', ct12: 'Rp 79,2 jt / bln', ct24: 'Rp 42,1 jt / bln', kpr: 'Rp 5,8 jt / bln' },
+    { id: 'Osaka A.5–A.9', spec: 'LB 110 m² · LT 125 m² · 4 KT / 3 KM', ck: 'Rp 1.120 Juta', ct12: 'Rp 99,1 jt / bln', ct24: 'Rp 52,6 jt / bln', kpr: 'Rp 7,3 jt / bln' }
+  ]
+};
+
+function renderSuratTheme(idx) {
+  if (idx < 0) idx = 0;
+  if (idx >= SURAT_THEMES.length) idx = SURAT_THEMES.length - 1;
+  currentSuratThemeIdx = idx;
+
+  const data = SURAT_THEMES[idx];
+  const box = document.getElementById('themeShowcaseBox');
+  if (!box) return;
+
+  const pointsHtml = data.points.map(p => `
+    <div class="theme-point-card">
+      <span class="point-num">${p.num}</span>
+      <div class="point-content">
+        <strong class="point-head">${p.head}</strong>
+        <p class="point-text">${p.desc}</p>
+      </div>
+    </div>
+  `).join('');
+
+  box.innerHTML = `
+    <div class="theme-banner-wrap">
+      <img src="${data.img}" alt="${data.title}" class="theme-banner-img" />
+      <div class="theme-banner-overlay">
+        <span class="theme-banner-badge">TEMA ${idx + 1} / 11 · KEUNGGULAN ${data.range}</span>
+        <h4 class="theme-banner-title">${data.title}</h4>
+      </div>
+    </div>
+    <div class="theme-content-wrap">
+      <blockquote class="theme-quote-badge">"${data.quote}"</blockquote>
+      <div class="theme-points-grid">
+        ${pointsHtml}
+      </div>
+      <div class="theme-nav-actions">
+        <button type="button" class="btn-theme-page" onclick="prevSuratTheme()" ${idx === 0 ? 'disabled' : ''}>
+          <span>← Tema Sebelumnya</span>
+        </button>
+        <span class="theme-page-indicator">${idx + 1} dari 11 Tema</span>
+        <button type="button" class="btn-theme-page" onclick="nextSuratTheme()" ${idx === SURAT_THEMES.length - 1 ? 'disabled' : ''}>
+          <span>Tema Berikutnya →</span>
+        </button>
+      </div>
+    </div>
+  `;
+
+  const scroller = document.getElementById('themeNavScroller');
+  if (scroller) {
+    const chips = scroller.querySelectorAll('.theme-chip');
+    chips.forEach((c, i) => {
+      if (i === idx) {
+        c.classList.add('is-active');
+        c.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      } else {
+        c.classList.remove('is-active');
+      }
+    });
+  }
+}
+
+function switchSuratTheme(idx) {
+  renderSuratTheme(idx);
+}
+
+function prevSuratTheme() {
+  if (currentSuratThemeIdx > 0) {
+    renderSuratTheme(currentSuratThemeIdx - 1);
+  }
+}
+
+function nextSuratTheme() {
+  if (currentSuratThemeIdx < SURAT_THEMES.length - 1) {
+    renderSuratTheme(currentSuratThemeIdx + 1);
+  }
+}
+
+function switchSpecType(type) {
+  currentSpecType = type;
+  document.querySelectorAll('.spec-tab-btn').forEach(b => b.classList.remove('is-active'));
+  const btn = type === 'gold' ? document.getElementById('btnSpecGold') : document.getElementById('btnSpecDiamond');
+  if (btn) btn.classList.add('is-active');
+  renderSpecDetail(type);
+}
+
+function renderSpecDetail(type) {
+  const container = document.getElementById('specDetailDisplay');
+  if (!container) return;
+
+  if (type === 'gold') {
+    container.innerHTML = `
+      <div class="spec-top-row">
+        <span class="spec-title-tag">KONSEP RUANG EFISIEN &amp; TERANG</span>
+        <h4 class="spec-main-title">Tipe Gold · LB 60–75 m² / LT 63–80 m²</h4>
+        <p class="spec-desc-lead">
+          Pilihan ideal untuk keluarga muda dan profesional modern. Menghadirkan keseimbangan antara privasi lantai atas dan kelegaan ruang bersama berkonsep terbuka (open-plan) di lantai bawah.
+        </p>
+      </div>
+      <div class="spec-image-box">
+        <img src="assets/drive/denah-tipe60.jpg" alt="Denah Arsitektur Tipe Gold" />
+      </div>
+      <div class="spec-stat-grid">
+        <div class="spec-stat-item">
+          <span class="spec-stat-val">3 KT</span>
+          <span class="spec-stat-lbl">Kamar Tidur</span>
+        </div>
+        <div class="spec-stat-item">
+          <span class="spec-stat-val">2 KM</span>
+          <span class="spec-stat-lbl">Kamar Mandi</span>
+        </div>
+        <div class="spec-stat-item">
+          <span class="spec-stat-val">1+1</span>
+          <span class="spec-stat-lbl">Garasi &amp; Carport</span>
+        </div>
+      </div>
+      <div class="spec-features-list">
+        <div class="spec-feat-row"><span class="spec-feat-dot"></span><span>1 Master Bedroom luas dengan jendela pencahayaan alami di lantai 2</span></div>
+        <div class="spec-feat-row"><span class="spec-feat-dot"></span><span>2 Kamar tidur pendukung (kamar anak &amp; ruang kerja fleksibel)</span></div>
+        <div class="spec-feat-row"><span class="spec-feat-dot"></span><span>Garasi dalam terlindung cuaca + Carport dengan resapan paving rapi</span></div>
+        <div class="spec-feat-row"><span class="spec-feat-dot"></span><span>Taman belakang terbuka untuk ventilasi silang bebas pengap</span></div>
+        <div class="spec-feat-row"><span class="spec-feat-dot"></span><span>Tersedia pada Klaster Nagoya (Unit B.02–B.04, A.02–A.08)</span></div>
+      </div>
+    `;
+  } else {
+    container.innerHTML = `
+      <div class="spec-top-row">
+        <span class="spec-title-tag">PREMIUM SPACE &amp; MULTI-VEHICLE</span>
+        <h4 class="spec-main-title">Tipe Diamond · LB 80–110 m² / LT 88–125 m²</h4>
+        <p class="spec-desc-lead">
+          Hunian lapang berorientasi kenyamanan keluarga multi-generasi. Dilengkapi kapasitas parkir hingga 3 mobil, void tangga ganda bernuansa megah, dan 4 kamar tidur penuh.
+        </p>
+      </div>
+      <div class="spec-image-box">
+        <img src="assets/drive/denah-tipe110.jpg" alt="Denah Arsitektur Tipe Diamond" />
+      </div>
+      <div class="spec-stat-grid">
+        <div class="spec-stat-item">
+          <span class="spec-stat-val">4 KT</span>
+          <span class="spec-stat-lbl">Kamar Tidur</span>
+        </div>
+        <div class="spec-stat-item">
+          <span class="spec-stat-val">3 KM</span>
+          <span class="spec-stat-lbl">Kamar Mandi</span>
+        </div>
+        <div class="spec-stat-item">
+          <span class="spec-stat-val">2+1</span>
+          <span class="spec-stat-lbl">2 Garasi + 1 Carport</span>
+        </div>
+      </div>
+      <div class="spec-features-list">
+        <div class="spec-feat-row"><span class="spec-feat-dot"></span><span>Garasi tertutup 2 mobil + 1 carport (muat 3 mobil keluarga)</span></div>
+        <div class="spec-feat-row"><span class="spec-feat-dot"></span><span>4 Kamar tidur lega (1 Kamar tidur lantai 1 ramah lansia/orang tua)</span></div>
+        <div class="spec-feat-row"><span class="spec-feat-dot"></span><span>3 Kamar mandi dengan perlengkapan sanitair premium TOTO</span></div>
+        <div class="spec-feat-row"><span class="spec-feat-dot"></span><span>Pantry kering dan dapur basah terpisah dengan sirkulasi taman</span></div>
+        <div class="spec-feat-row"><span class="spec-feat-dot"></span><span>Tersedia pada Klaster Osaka (A.1–A.9) dan Klaster Nagoya (B.05–B.07)</span></div>
+      </div>
+    `;
+  }
+}
+
+function switchPriceCluster(cluster) {
+  currentPriceCluster = cluster;
+  document.querySelectorAll('.price-tab-pill').forEach(p => p.classList.remove('is-active'));
+  const btn = document.getElementById(`btnPrice${cluster.charAt(0).toUpperCase() + cluster.slice(1)}`);
+  if (btn) btn.classList.add('is-active');
+  renderPriceMatrix(cluster);
+}
+
+function renderPriceMatrix(cluster) {
+  const container = document.getElementById('priceMatrixContainer');
+  if (!container) return;
+
+  const list = PRICE_CATALOG[cluster] || PRICE_CATALOG.nagoya;
+  container.innerHTML = list.map(item => `
+    <div class="price-unit-card">
+      <div class="price-unit-head">
+        <div>
+          <span class="price-unit-id">${item.id}</span>
+          <div class="price-unit-dims">${item.spec}</div>
+        </div>
+        <button class="unit-inv-select-btn" type="button" onclick="selectCatalogUnit('${item.id}', '${item.ck}')">
+          Pilih Unit
+        </button>
+      </div>
+      <div class="price-unit-grid">
+        <div class="price-plan-cell">
+          <span class="price-plan-lbl">Cash Keras (1 Bln)</span>
+          <span class="price-plan-val">${item.ck}</span>
+        </div>
+        <div class="price-plan-cell">
+          <span class="price-plan-lbl">Cash Tempo 12 Bln</span>
+          <span class="price-plan-val">${item.ct12}</span>
+        </div>
+        <div class="price-plan-cell">
+          <span class="price-plan-lbl">Cash Tempo 24 Bln</span>
+          <span class="price-plan-val">${item.ct24}</span>
+        </div>
+        <div class="price-plan-cell">
+          <span class="price-plan-lbl">KPR Bank (DP 30%)</span>
+          <span class="price-plan-val">${item.kpr}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function selectCatalogUnit(unitName, priceText) {
+  const lotMatch = unitName.split(' ')[1] || unitName;
+  selectedLotId = lotMatch;
+  selectedPriceText = priceText;
+  saveSiteplanChoice();
+  openSavedConfigModal();
+}
+
+function initSuratCintaMagazine() {
+  renderSuratTheme(currentSuratThemeIdx);
+  renderSpecDetail(currentSpecType);
+  renderPriceMatrix(currentPriceCluster);
+}
+
+/* --------------------------------------------------------------------------
    INIT ON LOAD
    -------------------------------------------------------------------------- */
 window.addEventListener('resize', () => {
@@ -2480,5 +2913,6 @@ window.addEventListener('DOMContentLoaded', () => {
   updateFacilitiesCount();
   setup360Viewer();
   renderSitePlan('nagoya');
+  initSuratCintaMagazine();
   runAfterDelayOpening();
 });
