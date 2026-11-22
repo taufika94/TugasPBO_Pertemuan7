@@ -1708,7 +1708,7 @@ function openQuickModal(type) {
 
       <button class="btn-primary-forest" style="margin-top:14px; width:100%;" onclick="closeQuickModal(); finishTourAndExit(); setTimeout(() => switchLandingTab('SuratCinta', document.getElementById('tabBtnSuratCinta')), 250);" type="button">
         <span>Buka Majalah 99 Keunggulan Lengkap</span>
-        <span>→</span>
+        
       </button>
     `;
   } else if (type === 'wa') {
@@ -1719,7 +1719,7 @@ function openQuickModal(type) {
       </p>
       <button class="btn-primary-forest" onclick="closeQuickModal()" type="button">
         <span>Kirim Pesan WhatsApp Sekarang</span>
-        <span>→</span>
+        
       </button>
     `;
   } else if (type === 'save') {
@@ -1772,7 +1772,7 @@ function openQuickModal(type) {
       </div>
       <button class="btn-primary-forest" onclick="finishTourAndExit()" type="button">
         <span>Selesai</span>
-        <span>→</span>
+        
       </button>
     `;
   } else if (type === 'visit' || type === 'video' || type === 'booking') {
@@ -1792,7 +1792,7 @@ function openQuickModal(type) {
       </div>
       <button class="btn-primary-forest" onclick="closeQuickModal()" type="button">
         <span>Konfirmasi Langkah Ini</span>
-        <span>→</span>
+        
       </button>
     `;
   }
@@ -3288,13 +3288,13 @@ function renderSuratTheme(idx) {
       </div>
       <div class="theme-nav-actions">
         <button type="button" class="btn-theme-page btn-theme-prev" onclick="prevSuratTheme()" ${idx === 0 ? 'disabled' : ''} aria-label="Tema Sebelumnya">
-          <span>← <span class="nav-btn-lbl">Tema </span>Sebelumnya</span>
+          <span><span class="nav-btn-lbl">Tema </span>Sebelumnya</span>
         </button>
         <div class="theme-page-indicator">
           <strong>${idx + 1}</strong> <span class="indicator-sub">dari 11 Tema</span>
         </div>
         <button type="button" class="btn-theme-page btn-theme-next" onclick="nextSuratTheme()" ${idx === SURAT_THEMES.length - 1 ? 'disabled' : ''} aria-label="Tema Berikutnya">
-          <span><span class="nav-btn-lbl">Tema </span>Berikutnya →</span>
+          <span><span class="nav-btn-lbl">Tema </span>Berikutnya</span>
         </button>
       </div>
     </div>
