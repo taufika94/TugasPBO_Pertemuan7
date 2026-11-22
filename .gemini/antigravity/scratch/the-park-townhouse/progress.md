@@ -625,3 +625,21 @@
   - **Tokyo (app.js)**:
     - Distributed the 7 lots (B.1–B.7) across the single horizontal road row (y: 38%) spanning from x: 13.5% on the left to x: 88.0% on the right, eliminating central cluster pile-up.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #40: Remove Map Watermark & Declutter Ruang 03 Leaflet Markers
+- **Context & Objective**: Resolve CARTO Voyager "API KEY REQUIRED - basemaps/apikey" watermark and overlapping markers in `03 / 07 · RUANG PETA` (`parkLeafletMap`) and Beranda (`berandaLeafletMapInstance`).
+- **Root Cause**:
+  - CARTO Voyager tile service enforced API keys on web referrers, stamping tiles with a diagonal "API KEY REQUIRED" watermark.
+  - Markers in Ruang 03 used tightly packed geographic coordinates (< 200m) at low initial zoom (13.5), causing all 9 cluster and facility pills to pile up over the center circle.
+- **Key Changes Implemented**:
+  - **Tile Provider (app.js)**:
+    - Migrated from CARTO Voyager to **Esri World Street Map** (`https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}`), eliminating all watermarks and 403 Forbidden blocks while preserving sharp street and greenery details.
+  - **Marker Spatial Distribution & Initial Zoom (app.js)**:
+    - Adjusted initial zoom from 13.5 to 14.2 for generous breathing room.
+    - Balanced cluster coordinates: Osaka Gold North (-7.6760, 110.8430), Nagoya Diamond East (-7.6835, 110.8480), and Tokyo Emerald West (-7.6830, 110.8350).
+    - Spaced facility pins along natural corridors (RSUD, SMAN 1, Alun-Alun, Stasiun, Gelora & Tenis, Jl. Sudirman).
+  - **Pill Geometry (app.js, styles.css)**:
+    - Reduced marker icon bounds from 110x28 to 95x26 and 90x26 with tighter padding and font sizing for crisp presentation.
+- **Status**: Completed, Verified & Auto-Pushed.

@@ -2196,9 +2196,9 @@ const MAP_FACILITIES = [
   {
     id: 'rsud',
     name: 'RSUD Ir. Soekarno',
-    short: 'RSUD Soekarno',
+    short: 'RSUD',
     category: 'KESEHATAN',
-    latLng: [-7.6908, 110.8335],
+    latLng: [-7.6845, 110.8385],
     distance: 2.1,
     duration: '6 mnt berkendara',
     iconType: 'hospital',
@@ -2210,7 +2210,7 @@ const MAP_FACILITIES = [
     name: 'SMA Negeri 1 Sukoharjo',
     short: 'SMAN 1',
     category: 'PENDIDIKAN',
-    latLng: [-7.6865, 110.8385],
+    latLng: [-7.6865, 110.8395],
     distance: 2.5,
     duration: '5 mnt berkendara',
     iconType: 'school',
@@ -2222,7 +2222,7 @@ const MAP_FACILITIES = [
     name: 'Alun-Alun Satya Negara',
     short: 'Alun-Alun',
     category: 'PEMERINTAHAN',
-    latLng: [-7.6806, 110.8427],
+    latLng: [-7.6890, 110.8380],
     distance: 3.2,
     duration: '8 mnt berkendara',
     iconType: 'government',
@@ -2234,7 +2234,7 @@ const MAP_FACILITIES = [
     name: 'Stasiun Sukoharjo',
     short: 'Stasiun',
     category: 'TRANSPORTASI',
-    latLng: [-7.6775, 110.8478],
+    latLng: [-7.6915, 110.8415],
     distance: 2.8,
     duration: '7 mnt berkendara',
     iconType: 'train',
@@ -2273,7 +2273,7 @@ const MAP_EXTRA_SPOTS = [
     name: 'Gelora Merdeka & Lapangan Tenis',
     short: 'Gelora & Tenis',
     category: 'OLAHRAGA & REKREASI',
-    latLng: [-7.6855, 110.8445],
+    latLng: [-7.6855, 110.8455],
     distance: 1.2,
     duration: '2 mnt berkendara',
     iconType: 'sports',
@@ -2285,7 +2285,7 @@ const MAP_EXTRA_SPOTS = [
     name: 'Jl. Jendral Sudirman Sukoharjo',
     short: 'Jl. Sudirman',
     category: 'AKSES UTAMA',
-    latLng: [-7.6840, 110.8410],
+    latLng: [-7.6795, 110.8410],
     distance: 0.8,
     duration: '1 mnt berkendara',
     iconType: 'cluster',
@@ -2301,7 +2301,7 @@ const MAP_CLUSTERS = [
     short: 'Nagoya',
     tag: 'Diamond',
     category: 'KLASTER THE PARK',
-    latLng: [-7.6836, 110.8415],
+    latLng: [-7.6835, 110.8480],
     distance: 0.0,
     duration: 'Titik Hunian Utama',
     iconType: 'cluster',
@@ -2314,7 +2314,7 @@ const MAP_CLUSTERS = [
     short: 'Osaka',
     tag: 'Gold',
     category: 'KLASTER THE PARK',
-    latLng: [-7.6818, 110.8402],
+    latLng: [-7.6760, 110.8430],
     distance: 0.1,
     duration: 'Titik Hunian Utama',
     iconType: 'cluster',
@@ -2327,7 +2327,7 @@ const MAP_CLUSTERS = [
     short: 'Tokyo',
     tag: 'Emerald',
     category: 'KLASTER THE PARK',
-    latLng: [-7.6845, 110.8388],
+    latLng: [-7.6830, 110.8350],
     distance: 0.1,
     duration: 'Titik Hunian Utama',
     iconType: 'cluster',
@@ -2370,16 +2370,15 @@ function setupLeafletMap(containerId, isModal) {
 
   const map = L.map(containerId, {
     center: SUKOHARJO_CENTER,
-    zoom: 13.5,
+    zoom: 14.2,
     scrollWheelZoom: true,
     zoomControl: true,
     attributionControl: true
   });
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    maxZoom: 20,
-    subdomains: 'abcd',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.esri.com/">Esri</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
 
   // Concentric Group Circles (Circle 1 - 3 based on region distance)
@@ -2441,8 +2440,8 @@ function setupLeafletMap(containerId, isModal) {
   const clusterIcon = (name, tag) => L.divIcon({
     className: '',
     html: `<div class="cluster-pill-divicon"><span class="cluster-pill-dot"></span><span>${name}</span><span class="cluster-pill-sub">${tag}</span></div>`,
-    iconSize: [110, 28],
-    iconAnchor: [55, 14]
+    iconSize: [95, 26],
+    iconAnchor: [47, 13]
   });
 
   MAP_CLUSTERS.forEach((c) => {
@@ -2456,8 +2455,8 @@ function setupLeafletMap(containerId, isModal) {
   const facilityIcon = (item) => L.divIcon({
     className: '',
     html: `<div class="facility-pin-divicon" data-id="${item.id}" title="${item.name}">${getCategoryIconSvg(item.iconType)}<span>${item.short}</span></div>`,
-    iconSize: [110, 28],
-    iconAnchor: [55, 14]
+    iconSize: [90, 26],
+    iconAnchor: [45, 13]
   });
 
   MAP_FACILITIES.forEach((f) => {
@@ -3449,11 +3448,10 @@ function initBerandaLeafletMap() {
   // Top-right zoom control
   L.control.zoom({ position: 'topright' }).addTo(berandaLeafletMapInstance);
 
-  // OpenStreetMap CARTO Voyager tile layer (High-reliability, zero 403 blocks)
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    maxZoom: 20,
-    subdomains: 'abcd',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+  // Esri World Street Map tile layer (clean, high-resolution, zero watermark, zero blocks)
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.esri.com/">Esri</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(berandaLeafletMapInstance);
 
   // Dynamic green radius circle per Image 6
