@@ -290,3 +290,34 @@
   - **Mandatory Bottom Bar Navigation Update**:
     - Re-styled fixed Bottom Navigation Bar to crisp white `#ffffff` with `#e8e2d5` border-top, keeping full Rule 5 compliance (`calc(68px + env(safe-area-inset-bottom))` clearance and 44x44px touch targets).
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #22: Comprehensive Official Beranda Homepage Architecture & Room 05 Chip Hygiene
+- **Context & Objective**: Fulfill user request #10 by reconstructing `#panelBeranda` to precisely match the official The Park Townhouse website structure with all 17 interactive sections, Leaflet interactive map with POIs, Master Plan lot inspector, live investment ROI simulator, dynamic KPR calculator, and eliminating the horizontal overflow in Room 05 facility chips.
+- **Key Changes Implemented**:
+  - **Room 05 Facility Chips Fix**:
+    - Updated `.facility-chips-grid` to `grid-template-columns: repeat(2, minmax(0, 1fr))` with `gap: 6px`.
+    - Set `.facility-chip` to `min-width: 0; width: 100%; box-sizing: border-box; overflow: hidden; justify-content: flex-start; gap: 5px; padding: 6px 7px`.
+    - Set `.facility-chip .f-name` to `flex: 1; min-width: 0; text-overflow: ellipsis; white-space: nowrap; font-size: 10px`.
+    - Set `.facility-chip .f-count` to `font-size: 8px; flex-shrink: 0; margin-left: auto; padding: 1px 4px`.
+    - Fully resolved the right-edge cutoffs on narrow mobile screens (Image 2).
+  - **Official Beranda Homepage Architecture (17 Full Sections)**:
+    1. *Running Marquee Ticker Bar*: `PRESALE EXCLUSIVE • PROMO CASH KERAS DISKON MAKSIMAL • BOOKING RP 5 JUTA • HANYA 30 UNIT • SHM PECAH SEMPURNA (Nagoya)`.
+    2. *Hero Presale Header*: `PRESALE EXCLUSIVE · 14 JULI 2026`, Japanese subtitle `「和モダン • 贅沢な暮らし」`, 4 metric badges (Rp 400 Jt, 30 Unit, 177 m², ± 100 m), and compact 16:9 atmosphere showcase with play/pause and 5 scenes.
+    3. *Nilai Lebih Investasi*: 4 pillar cards (30 Unit, 88 Keunggulan, 18% Capital Gain, Booking 5 Jt).
+    4. *Lokasi & Radius (Interactive Leaflet Map & 17 POIs)*: `#berandaLeafletMap` with cluster tabs (Nagoya, Osaka, Tokyo), 8 category filter pills (Semua, Olahraga, Ibadah, Pendidikan, Kesehatan, Pemerintahan, Rekreasi, Belanja), interactive POI list with distance tags and click-to-flyTo, plus Google Maps & 88 Alasan link actions.
+    5. *Master Plan Interaktif*: Cluster selector tabs, lot status filters (Semua 9, Tersedia 9, Booking 0, Terjual 0), compass `UTARA`, interactive lots A.01–A.09, and dynamic lot inspector drawer.
+    6. *Hidup Lebih Nyaman*: 4 feature cards (ROW 7m, One Gate RFID, CCTV 24H, RTH) + E-Brochure PDF download.
+    7. *Clubhouse & Andara Imperial Super App*: Interactive smartphone preview with 6 modules (Smart Lock, QR Tamu, Booking, Tagihan, Lapor, Darurat) and live feedback toast.
+    8. *Media Sosial Resmi*: Instagram, TikTok, Facebook, YouTube, and WhatsApp sales links.
+    9. *11 Pilar Keunggulan*: 11 cards detailing Japandi design, legalitas SHM, kawasan bebas banjir, capital gain, dsb.
+    10. *Simulasi Investasi & Sewa*: Interactive tabs (Tipe 60 The Oasis vs Tipe 80 The Imperial) with live ROI breakdown (Rp 674.655.879 ROI, 135% total, 27.1% p.a., 6.9% yield).
+    11. *Tipe Unit (Katalog Hunian)*: Dedicated luxury product cards for Tipe Gold, Tipe Diamond, Tipe Royal Diamond with direct order actions and "Lihat Denah" floor plan modal.
+    12. *Fasilitas Premium 6-Grid*: Clubhouse 2 Lantai, Swimming Pool, Gym Center, Mini Golf 9 Hole, Game Station 4K, One Gate Security.
+    13. *Semua Tentang The Park Townhouse*: 5 interactive tabs (Tentang Kami, Spesifikasi Material, Progres Lapangan, Cara Pembelian, Promo Presale).
+    14. *Kalkulator KPR Interaktif*: Real-time mortgage formula calculation with property price slider, DP % slider, tenor dropdown, and interest rate dropdown.
+    15. *Testimoni "Kata Mereka"*: 3 verified buyer testimonials with 5-star ratings.
+    16. *Pusat Informasi (FAQ Accordion)*: 5 collapsible Q&A items with category filters (Legalitas, Pembayaran, Fasilitas).
+    17. *Final CTA & Bank Partner Badges*: "Kunci Kavling Anda Hari Ini - Booking Rp 5 Juta" with Bank Mandiri, BCA, BRI, BNI, BTN Syariah, BSI badges and Estate Footer.
+- **Status**: Completed & Verified.

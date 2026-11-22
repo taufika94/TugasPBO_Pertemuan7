@@ -1126,91 +1126,548 @@
         <div class="landing-content-scroll" id="landingScrollContent">
           <!-- TAB 1: BERANDA -->
           <section class="landing-tab-panel is-active" id="panelBeranda">
-            <!-- Hero Narrative Header -->
-            <div class="landing-hero-card">
-              <div class="landing-hero-img-wrap">
-                <img src="assets/townhouse-hero.jpg" alt="The Park Townhouse Sukoharjo" class="landing-hero-img" />
-                <div class="landing-hero-overlay">
-                  <span class="hero-chip">Katalog Hunian Modern Japandi</span>
-                  <h1 class="hero-headline">Ada rumah. Ada rasa pulang.</h1>
-                  <p class="hero-subtext">
-                    Bukan sekadar bangunan dua lantai. Ini tempat di mana lelah Anda luruh saat gerbang Avenue Grand Gate terbuka menyambut Anda pulang.
-                  </p>
-                </div>
+            <!-- 1. RUNNING ANNOUNCEMENT MARQUEE TICKER -->
+            <div class="marquee-ticker-bar">
+              <div class="marquee-track">
+                <span>PRESALE EXCLUSIVE • PROMO CASH KERAS DISKON MAKSIMAL • BOOKING RP 5 JUTA • HANYA 30 UNIT • SHM PECAH SEMPURNA (Nagoya) • PRESALE EXCLUSIVE • PROMO CASH KERAS DISKON MAKSIMAL • BOOKING RP 5 JUTA • HANYA 30 UNIT • SHM PECAH SEMPURNA (Nagoya) • </span>
+                <span>PRESALE EXCLUSIVE • PROMO CASH KERAS DISKON MAKSIMAL • BOOKING RP 5 JUTA • HANYA 30 UNIT • SHM PECAH SEMPURNA (Nagoya) • PRESALE EXCLUSIVE • PROMO CASH KERAS DISKON MAKSIMAL • BOOKING RP 5 JUTA • HANYA 30 UNIT • SHM PECAH SEMPURNA (Nagoya) • </span>
               </div>
             </div>
 
-            <!-- Key Estate Highlights (4 Stat Badges) -->
-            <div class="landing-metrics-grid">
-              <div class="metric-cell">
-                <strong>30</strong>
-                <span>Unit Hunian</span>
+            <!-- 2. PRESALE EXCLUSIVE HERO HEADER -->
+            <div class="beranda-hero-box">
+              <div class="hero-top-eyebrow">
+                <span class="eyebrow-pill">PRESALE EXCLUSIVE · 14 JULI 2026</span>
+                <span class="eyebrow-jp">「和モダン • 贅沢な暮らし」</span>
               </div>
-              <div class="metric-cell">
-                <strong>3</strong>
-                <span>Tipe Klaster</span>
-              </div>
-              <div class="metric-cell">
-                <strong>Rp 4,9 jt</strong>
-                <span>Cicilan Mulai/bln</span>
-              </div>
-              <div class="metric-cell">
-                <strong>100%</strong>
-                <span>SHM Pecah Sempurna</span>
-              </div>
-            </div>
+              <h1 class="beranda-hero-title">Ada rumah. Ada rasa pulang.</h1>
+              <p class="beranda-hero-sub">
+                Bukan sekadar bangunan dua lantai. Ini tempat di mana lelah Anda luruh saat gerbang Avenue Grand Gate terbuka menyambut Anda pulang di koridor emas Sukoharjo.
+              </p>
 
-            <!-- CINEMATIC VIDEO & ATMOSPHERE SHOWCASE -->
-            <div class="landing-video-card" id="landingVideoCard">
-              <div class="landing-video-head">
-                <div class="video-head-badge">
-                  <span class="video-live-dot"></span>
-                  <span>SINEMA KAWASAN · 4K ATMOSPHERE</span>
+              <!-- 4 Stat Badges Grid -->
+              <div class="beranda-metrics-grid">
+                <div class="b-metric-cell">
+                  <strong>Rp 400 Jt</strong>
+                  <span>Harga Presale Mulai</span>
                 </div>
-                <h3 class="video-head-title">Menyusuri Keindahan The Park Townhouse</h3>
-                <p class="video-head-desc">Saksikan visual udara kawasan, kemegahan gerbang, kehangatan interior, dan fasilitas clubhouse secara langsung.</p>
+                <div class="b-metric-cell">
+                  <strong>30 Unit</strong>
+                  <span>Kawasan Eksklusif</span>
+                </div>
+                <div class="b-metric-cell">
+                  <strong>177 m²</strong>
+                  <span>Clubhouse 2 Lantai</span>
+                </div>
+                <div class="b-metric-cell">
+                  <strong>± 100 m</strong>
+                  <span>Ke Gelora Merdeka</span>
+                </div>
               </div>
 
-              <div class="video-viewport-frame" id="videoViewportFrame">
-                <img src="assets/drive/aerial-drone.jpeg" alt="Sinema The Park Townhouse" class="video-viewport-media" id="videoDisplayImg" />
-                <div class="video-overlay-gradient"></div>
-
-                <div class="video-play-badge" id="videoPlayBadge" onclick="toggleLandingVideoPlay()">
-                  <button type="button" class="btn-play-action" id="btnVideoPlayToggle" aria-label="Play / Pause Showcase">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" id="videoPlayIcon">
+              <!-- Compact Cinematic Atmosphere Showcase (Aspect 16:9, max-height 220px) -->
+              <div class="landing-video-card" id="landingVideoCard">
+                <div class="video-head-row">
+                  <div class="video-head-badge">
+                    <span class="video-live-dot"></span>
+                    <span>SINEMA KAWASAN · 4K ATMOSPHERE</span>
+                  </div>
+                  <button type="button" class="btn-video-toggle-mini" id="btnVideoPlayToggle" onclick="toggleLandingVideoPlay()" title="Putar Otomatis">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" id="videoPlayIcon">
                       <polygon points="5 3 19 12 5 21 5 3" />
                     </svg>
+                    <span id="videoPlayStatus">Putar</span>
                   </button>
-                  <span id="videoPlayStatus">Putar Sinema Otomatis</span>
                 </div>
 
-                <div class="video-caption-bar">
-                  <span class="video-scene-tag" id="videoSceneTag">Scene 01 · Drone Kawasan</span>
-                  <p class="video-scene-desc" id="videoSceneDesc">Pemandangan udara 30 unit hunian Japandi Modern diapit keteduhan alam Sukoharjo.</p>
+                <div class="video-viewport-frame" id="videoViewportFrame">
+                  <img src="assets/drive/aerial-drone.jpeg" alt="Sinema The Park Townhouse" class="video-viewport-media" id="videoDisplayImg" />
+                  <div class="video-overlay-gradient"></div>
+                  <div class="video-caption-bar">
+                    <span class="video-scene-tag" id="videoSceneTag">Scene 01 · Drone Kawasan</span>
+                    <p class="video-scene-desc" id="videoSceneDesc">Pemandangan udara 30 unit hunian Japandi Modern diapit keteduhan alam Sukoharjo.</p>
+                  </div>
+                </div>
+
+                <!-- Video Scene Selector Chips -->
+                <div class="video-scene-selector">
+                  <button type="button" class="video-scene-btn is-active" id="vSceneBtn0" onclick="switchLandingVideoScene(0, this)">
+                    <span>01. Drone</span>
+                  </button>
+                  <button type="button" class="video-scene-btn" id="vSceneBtn1" onclick="switchLandingVideoScene(1, this)">
+                    <span>02. Gate</span>
+                  </button>
+                  <button type="button" class="video-scene-btn" id="vSceneBtn2" onclick="switchLandingVideoScene(2, this)">
+                    <span>03. Fasad</span>
+                  </button>
+                  <button type="button" class="video-scene-btn" id="vSceneBtn3" onclick="switchLandingVideoScene(3, this)">
+                    <span>04. Interior</span>
+                  </button>
+                  <button type="button" class="video-scene-btn" id="vSceneBtn4" onclick="switchLandingVideoScene(4, this)">
+                    <span>05. Club</span>
+                  </button>
                 </div>
               </div>
 
-              <!-- Video Scene Selector Chips -->
-              <div class="video-scene-selector">
-                <button type="button" class="video-scene-btn is-active" id="vSceneBtn0" onclick="switchLandingVideoScene(0, this)">
-                  <span>01. Peta Drone</span>
-                </button>
-                <button type="button" class="video-scene-btn" id="vSceneBtn1" onclick="switchLandingVideoScene(1, this)">
-                  <span>02. Grand Gate</span>
-                </button>
-                <button type="button" class="video-scene-btn" id="vSceneBtn2" onclick="switchLandingVideoScene(2, this)">
-                  <span>03. Fasad Senja</span>
-                </button>
-                <button type="button" class="video-scene-btn" id="vSceneBtn3" onclick="switchLandingVideoScene(3, this)">
-                  <span>04. Interior Rumah</span>
-                </button>
-                <button type="button" class="video-scene-btn" id="vSceneBtn4" onclick="switchLandingVideoScene(4, this)">
-                  <span>05. Clubhouse &amp; Pool</span>
+              <!-- Primary Hero CTA -->
+              <div class="hero-cta-action">
+                <button type="button" class="btn-primary-forest btn-block" onclick="openOrderModal('Nagoya (Tipe Gold)', 'A.02', '650.000.000')">
+                  <span>Amankan Unit Presale · Booking Rp 5 Juta</span>
+                  <span>→</span>
                 </button>
               </div>
             </div>
 
-            <!-- CARD PRODUK HUNIAN (DEDICATED LUXURY PRODUCT CARDS) -->
+            <!-- 3. NILAI LEBIH INVESTASI (4 PILLARS) -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">NILAI LEBIH INVESTASI</span>
+                <h2 class="section-card-title">Mengapa The Park Townhouse?</h2>
+                <p class="section-card-sub">Kombinasi langka antara kenyamanan hidup pribadi dan akselerasi capital gain di pusat kota Sukoharjo.</p>
+              </div>
+
+              <div class="invest-pillars-grid">
+                <div class="invest-pillar-item">
+                  <div class="pillar-num">30</div>
+                  <div class="pillar-title">Unit Terbatas</div>
+                  <div class="pillar-desc">Privasi dan ketenangan maksimal dalam enclave mandiri Japandi.</div>
+                </div>
+                <div class="invest-pillar-item">
+                  <div class="pillar-num">88</div>
+                  <div class="pillar-title">Keunggulan Kawasan</div>
+                  <div class="pillar-desc">Fasilitas terlengkap tanpa perlu membership tambahan.</div>
+                </div>
+                <div class="invest-pillar-item">
+                  <div class="pillar-num">18%</div>
+                  <div class="pillar-title">Capital Gain/Tahun</div>
+                  <div class="pillar-desc">Pertumbuhan nilai aset properti di koridor emas Jl. Sudirman.</div>
+                </div>
+                <div class="invest-pillar-item">
+                  <div class="pillar-num">5 Jt</div>
+                  <div class="pillar-title">Booking Perdana</div>
+                  <div class="pillar-desc">Kunci kavling impian Anda sebelum penyesuaian harga tahap 2.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. LOKASI & RADIUS (LEAFLET INTERAKTIF & 17 POI) -->
+            <div class="landing-section-card" id="secLokasiRadius">
+              <div class="section-card-head">
+                <span class="section-tag-gold">LOKASI &amp; RADIUS</span>
+                <h2 class="section-card-title">Terdekat ke Segala Fasilitas Kota</h2>
+                <p class="section-card-sub">Tepat di koridor emas Jl. Jenderal Sudirman. Klik penanda di samping peta — peta akan menuju lokasi &amp; menampilkan fotonya.</p>
+              </div>
+
+              <!-- Cluster Tab Selectors -->
+              <div class="cluster-pill-tabs">
+                <button type="button" class="cluster-pill-btn is-active" onclick="switchBerandaClusterMap('nagoya', this)">Cluster Nagoya</button>
+                <button type="button" class="cluster-pill-btn" onclick="switchBerandaClusterMap('osaka', this)">Cluster Osaka</button>
+                <button type="button" class="cluster-pill-btn" onclick="switchBerandaClusterMap('tokyo', this)">Cluster Tokyo</button>
+              </div>
+
+              <!-- Interactive Leaflet Map Container -->
+              <div class="beranda-map-frame">
+                <div id="berandaLeafletMap" class="beranda-leaflet-map"></div>
+                <div class="map-floating-legend">
+                  <span class="legend-badge"><span class="legend-dot green"></span> The Park Townhouse</span>
+                  <span class="legend-badge"><span class="legend-dot gold"></span> Fasilitas Terpilih</span>
+                </div>
+              </div>
+
+              <!-- POI Category Filter Pills -->
+              <div class="poi-category-bar">
+                <span class="poi-filter-label">Kategori:</span>
+                <div class="poi-chips-scroll">
+                  <button type="button" class="poi-cat-chip is-active" onclick="filterBerandaPOI('Semua', this)">Semua</button>
+                  <button type="button" class="poi-cat-chip" onclick="filterBerandaPOI('Olahraga', this)">Olahraga</button>
+                  <button type="button" class="poi-cat-chip" onclick="filterBerandaPOI('Ibadah', this)">Ibadah</button>
+                  <button type="button" class="poi-cat-chip" onclick="filterBerandaPOI('Pendidikan', this)">Pendidikan</button>
+                  <button type="button" class="poi-cat-chip" onclick="filterBerandaPOI('Kesehatan', this)">Kesehatan</button>
+                  <button type="button" class="poi-cat-chip" onclick="filterBerandaPOI('Pemerintahan', this)">Pemerintahan</button>
+                  <button type="button" class="poi-cat-chip" onclick="filterBerandaPOI('Rekreasi', this)">Rekreasi</button>
+                  <button type="button" class="poi-cat-chip" onclick="filterBerandaPOI('Belanja', this)">Belanja</button>
+                </div>
+              </div>
+
+              <!-- POI Interactive List (17 Destination Items) -->
+              <div class="poi-interactive-list" id="berandaPoiList">
+                <!-- Dynamically rendered or static with instant tap triggers -->
+              </div>
+
+              <!-- Map Quick Actions -->
+              <div class="map-actions-row">
+                <a href="https://www.google.com/maps/search/?api=1&query=-7.673895340749299,110.84397890839111" target="_blank" rel="noopener noreferrer" class="btn-secondary-link">
+                  <span>Buka di Google Maps</span>
+                  <span>↗</span>
+                </a>
+                <button type="button" class="btn-primary-forest" onclick="switchLandingTab('suratcinta')">
+                  <span>88 Alasan Lokasi Ini Sempurna</span>
+                  <span>→</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 5. MASTER PLAN INTERAKTIF -->
+            <div class="landing-section-card" id="secMasterPlan">
+              <div class="section-card-head">
+                <span class="section-tag-gold">MASTER PLAN INTERAKTIF</span>
+                <h2 class="section-card-title">Pilih Cluster untuk Melihat Denah &amp; Status Unit</h2>
+                <p class="section-card-sub">Denah kawasan interaktif. Klik kavling untuk melihat nomor, tipe, luas, dan status unit.</p>
+              </div>
+
+              <div class="cluster-pill-tabs">
+                <button type="button" class="cluster-pill-btn is-active" onclick="switchBerandaLotCluster('nagoya', this)">Nagoya</button>
+                <button type="button" class="cluster-pill-btn" onclick="switchBerandaLotCluster('osaka', this)">Osaka</button>
+                <button type="button" class="cluster-pill-btn" onclick="switchBerandaLotCluster('tokyo', this)">Tokyo</button>
+              </div>
+
+              <!-- Lot Status Count Chips -->
+              <div class="lot-status-legend">
+                <button type="button" class="status-legend-chip is-active" onclick="filterBerandaLots('all', this)">Semua <strong id="cntLotAll">9</strong></button>
+                <button type="button" class="status-legend-chip" onclick="filterBerandaLots('tersedia', this)">Tersedia <strong id="cntLotAvail">9</strong></button>
+                <button type="button" class="status-legend-chip" onclick="filterBerandaLots('booking', this)">Booking <strong id="cntLotBook">0</strong></button>
+                <button type="button" class="status-legend-chip" onclick="filterBerandaLots('terjual', this)">Terjual <strong id="cntLotSold">0</strong></button>
+              </div>
+
+              <!-- Interactive Master Plan Layout Box with Compass UTARA -->
+              <div class="masterplan-viewport-box">
+                <div class="compass-badge">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <polygon points="12 2 15 11 12 9 9 11 12 2" fill="#c49a45" />
+                    <polygon points="12 22 9 13 12 15 15 13 12 22" fill="#7a827d" />
+                  </svg>
+                  <span>UTARA</span>
+                </div>
+                <div class="masterplan-lots-grid" id="berandaMasterplanGrid">
+                  <!-- Lots rendered via JS (A.01 - A.09) -->
+                </div>
+              </div>
+
+              <!-- Selected Lot Inspector Drawer Card -->
+              <div class="lot-inspector-card" id="berandaLotInspector">
+                <div class="inspector-badge-row">
+                  <span class="inspector-tag" id="inspLotTag">Kavling Nagoya A.02</span>
+                  <span class="inspector-status" id="inspLotStatus">TERSEDIA</span>
+                </div>
+                <div class="inspector-details-row">
+                  <div class="insp-stat"><strong>LB 75 m²</strong><span>Bangunan</span></div>
+                  <div class="insp-stat"><strong>LT 63 m²</strong><span>Tanah</span></div>
+                  <div class="insp-stat"><strong>3 KT · 2 KM</strong><span>Kamar</span></div>
+                  <div class="insp-stat"><strong class="gold-text" id="inspLotPrice">Rp 650 Juta</strong><span>Cash Keras</span></div>
+                </div>
+                <button type="button" class="btn-primary-forest btn-block" onclick="orderInspectedLot()">
+                  <span>Pesan Kavling Ini Sekarang</span>
+                  <span>→</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 6. HIDUP LEBIH NYAMAN (FASILITAS & KEAMANAN KAWASAN) -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">HIDUP LEBIH NYAMAN</span>
+                <h2 class="section-card-title">Fasilitas &amp; Keamanan Kawasan</h2>
+                <p class="section-card-sub">Dirancang untuk kenyamanan keluarga modern dengan standar privasi tinggi.</p>
+              </div>
+
+              <div class="comfort-features-grid">
+                <div class="comfort-feature-card">
+                  <div class="comfort-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="4" y1="21" x2="4" y2="14" /><line x1="4" y1="10" x2="4" y2="3" />
+                      <line x1="12" y1="21" x2="12" y2="12" /><line x1="12" y1="8" x2="12" y2="3" />
+                      <line x1="20" y1="21" x2="20" y2="16" /><line x1="20" y1="12" x2="20" y2="3" />
+                      <line x1="1" y1="14" x2="7" y2="14" /><line x1="9" y1="8" x2="15" y2="8" /><line x1="17" y1="16" x2="23" y2="16" />
+                    </svg>
+                  </div>
+                  <h3 class="comfort-title">ROW Jalan 7 Meter</h3>
+                  <p class="comfort-desc">Akses jalan lebar, dua mobil papasan leluasa dengan kanopi hijau teduh.</p>
+                </div>
+
+                <div class="comfort-feature-card">
+                  <div class="comfort-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                  </div>
+                  <h3 class="comfort-title">One Gate System</h3>
+                  <p class="comfort-desc">Akses tunggal dengan pos keamanan 24 jam dan barrier gate otomatis RFID.</p>
+                </div>
+
+                <div class="comfort-feature-card">
+                  <div class="comfort-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                      <circle cx="12" cy="13" r="4" />
+                    </svg>
+                  </div>
+                  <h3 class="comfort-title">CCTV 24 Jam Kawasan</h3>
+                  <p class="comfort-desc">Pemantauan menyeluruh di setiap sudut gerbang, clubhouse, dan area publik.</p>
+                </div>
+
+                <div class="comfort-feature-card">
+                  <div class="comfort-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 22v-6M12 16c-3 0-5-2-5-5a5 5 0 0 1 10 0c0 3-2 5-5 5z" />
+                    </svg>
+                  </div>
+                  <h3 class="comfort-title">Ruang Terbuka Hijau</h3>
+                  <p class="comfort-desc">Taman lanskap tematik sebagai paru-paru kawasan dan ruang rileks anak.</p>
+                </div>
+              </div>
+
+              <!-- Brochure Download Action -->
+              <div class="brochure-download-bar">
+                <a href="The%20Park%20Townhouse%20Brochure.pdf" download="The-Park-Townhouse-Brochure.pdf" class="btn-brochure-action">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  <span>Unduh E-Brochure Lengkap (PDF)</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- 7. CLUBHOUSE & ANDARA IMPERIAL SUPER APP -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">CLUBHOUSE &amp; SUPER APP</span>
+                <h2 class="section-card-title">Satu Aplikasi. Semua Kendali di Genggaman.</h2>
+                <p class="section-card-sub">Nikmati kemudahan pengelolaan hunian, akses gate, reservasi clubhouse, hingga pembayaran tagihan via smartphone.</p>
+              </div>
+
+              <div class="app-mockup-frame">
+                <div class="app-screen-container">
+                  <div class="app-header-bar">
+                    <span class="app-brand-name">THE PARK RESIDENCE APP</span>
+                    <span class="app-battery-status">4G 100%</span>
+                  </div>
+
+                  <div class="app-user-greeting">
+                    <span class="app-greet-sub">Selamat Sore,</span>
+                    <h4 class="app-greet-name">Bapak/Ibu Penghuni</h4>
+                  </div>
+
+                  <!-- 6 Smart App Modules -->
+                  <div class="app-icons-grid">
+                    <button type="button" class="app-icon-item" onclick="triggerAppFeature('lock')">
+                      <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                      </div>
+                      <span>Smart Lock</span>
+                    </button>
+
+                    <button type="button" class="app-icon-item" onclick="triggerAppFeature('qr')">
+                      <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><rect x="14" y="14" width="7" height="7" />
+                        </svg>
+                      </div>
+                      <span>QR Tamu</span>
+                    </button>
+
+                    <button type="button" class="app-icon-item" onclick="triggerAppFeature('booking')">
+                      <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                          <line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
+                        </svg>
+                      </div>
+                      <span>Booking Club</span>
+                    </button>
+
+                    <button type="button" class="app-icon-item" onclick="triggerAppFeature('billing')">
+                      <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                          <line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                      </div>
+                      <span>Tagihan IPL</span>
+                    </button>
+
+                    <button type="button" class="app-icon-item" onclick="triggerAppFeature('report')">
+                      <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg>
+                      </div>
+                      <span>Lapor Estate</span>
+                    </button>
+
+                    <button type="button" class="app-icon-item alert-icon" onclick="triggerAppFeature('panic')">
+                      <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="12" cy="12" r="10" />
+                          <line x1="12" y1="8" x2="12" y2="12" />
+                          <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                      </div>
+                      <span>Darurat 24H</span>
+                    </button>
+                  </div>
+
+                  <div class="app-toast-feedback" id="appMockToast">Sentuh salah satu fitur untuk demonstrasi</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 8. MEDIA SOSIAL RESMI -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">KONEKSI &amp; KOMUNITAS</span>
+                <h2 class="section-card-title">Media Sosial Resmi</h2>
+                <p class="section-card-sub">Ikuti kabar pembangunan harian, dokumentasi foto, dan promo eksklusif kami.</p>
+              </div>
+
+              <div class="social-links-grid">
+                <a href="https://instagram.com/theparktownhouse" target="_blank" rel="noopener noreferrer" class="social-link-pill">
+                  <span class="social-name">Instagram</span>
+                  <span class="social-handle">@theparktownhouse</span>
+                </a>
+                <a href="https://tiktok.com/@theparktownhouse" target="_blank" rel="noopener noreferrer" class="social-link-pill">
+                  <span class="social-name">TikTok</span>
+                  <span class="social-handle">@theparktownhouse</span>
+                </a>
+                <a href="https://facebook.com/theparktownhouse" target="_blank" rel="noopener noreferrer" class="social-link-pill">
+                  <span class="social-name">Facebook</span>
+                  <span class="social-handle">The Park Townhouse</span>
+                </a>
+                <a href="https://youtube.com/@theparktownhouse" target="_blank" rel="noopener noreferrer" class="social-link-pill">
+                  <span class="social-name">YouTube</span>
+                  <span class="social-handle">The Park Townhouse Official</span>
+                </a>
+                <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="social-link-pill whatsapp-pill">
+                  <span class="social-name">WhatsApp Sales</span>
+                  <span class="social-handle">+62 812-3456-7890</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- 9. 11 PILAR KEUNGGULAN -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">STANDAR JAPANDI</span>
+                <h2 class="section-card-title">11 Pilar Keunggulan</h2>
+                <p class="section-card-sub">Fondasi rancang bangun yang menjadikan The Park Townhouse hunian idaman di Sukoharjo.</p>
+              </div>
+
+              <div class="eleven-pillars-grid">
+                <div class="eleven-pillar-card">
+                  <div class="ep-num">01</div>
+                  <h4 class="ep-title">Desain Japandi Modern</h4>
+                  <p class="ep-desc">Kombinasi estetika bersih Jepang dan kehangatan Skandinavia dua lantai.</p>
+                </div>
+                <div class="eleven-pillar-card">
+                  <div class="ep-num">02</div>
+                  <h4 class="ep-title">Koridor Emas Sukoharjo</h4>
+                  <p class="ep-desc">Akses tercepat ke Gelora Merdeka, Jl. Jenderal Sudirman, dan fasilitas publik.</p>
+                </div>
+                <div class="eleven-pillar-card">
+                  <div class="ep-num">03</div>
+                  <h4 class="ep-title">Legalitas SHM Pecah</h4>
+                  <p class="ep-desc">Sertifikat sudah pecah per kavling (Nagoya), IMB/PBG siap AJB langsung.</p>
+                </div>
+                <div class="eleven-pillar-card">
+                  <div class="ep-num">04</div>
+                  <h4 class="ep-title">Clubhouse Eksklusif 177 m²</h4>
+                  <p class="ep-desc">Kolam renang dewasa & anak, gym center, serta mini golf 9-hole.</p>
+                </div>
+                <div class="eleven-pillar-card">
+                  <div class="ep-num">05</div>
+                  <h4 class="ep-title">Smart One-Gate RFID</h4>
+                  <p class="ep-desc">Keamanan pos 24 jam dengan barrier gate otomatis dan integrasi mobile app.</p>
+                </div>
+                <div class="eleven-pillar-card">
+                  <div class="ep-num">06</div>
+                  <h4 class="ep-title">ROW Jalan Lebar 7 Meter</h4>
+                  <p class="ep-desc">Paving mutu K-350, manuver kendaraan dua arah leluasa dan kanopi teduh.</p>
+                </div>
+                <div class="eleven-pillar-card">
+                  <div class="ep-num">07</div>
+                  <h4 class="ep-title">Bebas Banjir Dataran Tinggi</h4>
+                  <p class="ep-desc">Elevasi kawasan aman dengan sistem drainase tertutup berskala modern.</p>
+                </div>
+                <div class="eleven-pillar-card">
+                  <div class="ep-num">08</div>
+                  <h4 class="ep-title">Garasi Dalam + Carport</h4>
+                  <p class="ep-desc">Mobil terlindung aman di dalam rumah dengan ventilasi udara terintegrasi.</p>
+                </div>
+                <div class="eleven-pillar-card">
+                  <div class="ep-num">09</div>
+                  <h4 class="ep-title">Potensi Capital Gain 18%</h4>
+                  <p class="ep-desc">Perkembangan kawasan pesat dengan potensi sewa tinggi bagi ekspatriat & profesional.</p>
+                </div>
+                <div class="eleven-pillar-card">
+                  <div class="ep-num">10</div>
+                  <h4 class="ep-title">Fleksibilitas Denah Ruang</h4>
+                  <p class="ep-desc">Denah lantai 1 & 2 dapat dikustomisasi sesuai preferensi kebutuhan keluarga.</p>
+                </div>
+                <div class="eleven-pillar-card">
+                  <div class="ep-num">11</div>
+                  <h4 class="ep-title">Estate Management Mandiri</h4>
+                  <p class="ep-desc">Perawatan kebersihan lingkungan, keamanan, dan fasilitas clubhouse terkelola profesional.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 10. SIMULASI INVESTASI & SEWA (LIVE YIELD & ROI) -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">PROYEKSI BISNIS</span>
+                <h2 class="section-card-title">Simulasi Investasi &amp; Sewa</h2>
+                <p class="section-card-sub">Hitung potensi imbal hasil (ROI) dan passive income sewa tahunan Anda.</p>
+              </div>
+
+              <!-- Type Toggle -->
+              <div class="cluster-pill-tabs">
+                <button type="button" class="cluster-pill-btn is-active" id="btnInvestTipe60" onclick="switchBerandaInvestType('tipe60', this)">Tipe 60 (The Oasis)</button>
+                <button type="button" class="cluster-pill-btn" id="btnInvestTipe80" onclick="switchBerandaInvestType('tipe80', this)">Tipe 80 (The Imperial)</button>
+              </div>
+
+              <!-- Calculation Output Box -->
+              <div class="invest-calc-box">
+                <div class="invest-stats-header">
+                  <div class="stat-main">
+                    <span class="stat-label">Total Keuntungan 5 Tahun (ROI)</span>
+                    <h3 class="stat-val" id="investRoiVal">Rp 674.655.879</h3>
+                    <span class="stat-badge-green" id="investRoiPercent">+135% Return on Investment</span>
+                  </div>
+                </div>
+
+                <div class="invest-breakdown-list">
+                  <div class="breakdown-row">
+                    <span>Estimasi Harga Beli Saat Ini:</span>
+                    <strong id="investBuyPrice">Rp 500.000.000</strong>
+                  </div>
+                  <div class="breakdown-row">
+                    <span>Estimasi Sewa Tahunan:</span>
+                    <strong id="investRentalYield">Rp 35.000.000 / thn</strong>
+                  </div>
+                  <div class="breakdown-row">
+                    <span>Kenaikan Properti Tahunan:</span>
+                    <strong id="investCapitalGain">15% / tahun</strong>
+                  </div>
+                  <div class="breakdown-row">
+                    <span>Proyeksi Nilai Tahun ke-5:</span>
+                    <strong id="investYear5Val">Rp 1.174.655.879</strong>
+                  </div>
+                  <div class="breakdown-row highlight-row">
+                    <span>Annualized Capital Gain:</span>
+                    <strong id="investAnnualized">27.1% p.a.</strong>
+                  </div>
+                  <div class="breakdown-row highlight-row">
+                    <span>Rental Yield Rate:</span>
+                    <strong id="investYieldRate">6.9% / tahun</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 11. TIPE UNIT (DEDICATED LUXURY PRODUCT CARDS) -->
             <div class="product-showcase-section" id="productShowcaseSection">
               <div class="product-showcase-header">
                 <span class="section-tag">KATALOG PRODUK UTAMA</span>
@@ -1225,63 +1682,35 @@
                     <span class="badge-ready">Ready &amp; Indent</span>
                     <span class="badge-cluster">Klaster Nagoya</span>
                   </div>
-                  <div class="product-img-wrap">
-                    <img src="assets/drive/house.jpeg" alt="Tipe Gold Klaster Nagoya" class="product-img" />
-                    <div class="product-img-tag">Tipe Paling Favorit</div>
+                  <div class="product-card-img-wrap">
+                    <img src="assets/drive/interior-japandi.jpeg" alt="Tipe Gold Nagoya" class="product-card-img" />
+                    <span class="product-card-spec-tag">LB 75 m² · LT 60–63 m²</span>
                   </div>
-                  <div class="product-card-content">
+                  <div class="product-card-body">
                     <div class="product-title-row">
-                      <div>
-                        <h4 class="product-name">Tipe Gold (LB 75 m²)</h4>
-                        <span class="product-lot-info">Luas Tanah 60–63 m² · 2 Lantai</span>
+                      <h4 class="product-name">Tipe Gold (Nagoya)</h4>
+                      <span class="product-code">B.02 – B.04</span>
+                    </div>
+                    <p class="product-tagline">Hunian Japandi terdepan dengan akses tercepat ke gerbang dan clubhouse.</p>
+                    <div class="product-features-row">
+                      <span><strong>3</strong> KT</span>
+                      <span><strong>2</strong> KM</span>
+                      <span><strong>1+1</strong> Garasi</span>
+                      <span><strong>2</strong> Lantai</span>
+                    </div>
+                    <div class="product-pricing-box">
+                      <div class="price-row">
+                        <span class="price-label">Cash Keras (Nov 2026):</span>
+                        <strong class="price-val">Rp 650 Juta</strong>
                       </div>
-                      <div class="product-price-pill">
-                        <small>Mulai</small>
-                        <strong>Rp 650 Jt</strong>
+                      <div class="price-sub-row">
+                        <span>Cash Tempo 24 bln: Rp 30,5 jt/bln</span>
+                        <span>KPR: Rp 4,2 jt/bln</span>
                       </div>
                     </div>
-                    <p class="product-tagline">
-                      Hunian Japandi efisien dengan garasi dalam tertutup, taman belakang sirkulasi terbuka, dan akses selangkah ke The Park Clubhouse.
-                    </p>
-                    <div class="product-specs-list">
-                      <div class="p-spec-box">
-                        <strong>3 KT</strong>
-                        <span>Kamar Tidur</span>
-                      </div>
-                      <div class="p-spec-box">
-                        <strong>2 KM</strong>
-                        <span>Kamar Mandi</span>
-                      </div>
-                      <div class="p-spec-box">
-                        <strong>1+1</strong>
-                        <span>Garasi + Carport</span>
-                      </div>
-                      <div class="p-spec-box">
-                        <strong>2.200 VA</strong>
-                        <span>Listrik Standar</span>
-                      </div>
-                    </div>
-                    <div class="product-pricing-strip">
-                      <div class="p-price-col">
-                        <span>Cash Keras:</span>
-                        <strong>Rp 650 Juta</strong>
-                      </div>
-                      <div class="p-price-col">
-                        <span>Cash Bertahap (24 Bln):</span>
-                        <strong>Rp 30,5 jt / bln (0%)</strong>
-                      </div>
-                      <div class="p-price-col">
-                        <span>Cicilan KPR (DP 30%):</span>
-                        <strong>Rp 4,2 jt / bln</strong>
-                      </div>
-                    </div>
-                    <div class="product-cta-row">
-                      <button type="button" class="btn-product-order" onclick="selectCatalogUnit('Nagoya B.04', 'Rp 650 Juta')">
-                        Pilih Tipe Gold
-                      </button>
-                      <button type="button" class="btn-product-spec" onclick="openSpecDenahModal('tipe60')">
-                        Lihat Denah
-                      </button>
+                    <div class="product-card-actions">
+                      <button type="button" class="btn-card-denah" onclick="openDenahSpecModal('Tipe Gold (Nagoya)', 'denah-tipe60.jpg')">Lihat Denah</button>
+                      <button type="button" class="btn-card-order" onclick="openOrderModal('Tipe Gold (Nagoya)', 'B.02-B.04', '650.000.000')">Pesan Unit</button>
                     </div>
                   </div>
                 </div>
@@ -1289,66 +1718,38 @@
                 <!-- PRODUCT CARD 2: TIPE DIAMOND (TOKYO) -->
                 <div class="product-card-item">
                   <div class="product-card-badge-row">
-                    <span class="badge-exclusive">Enclave 7 Unit</span>
+                    <span class="badge-ready">Eksklusif Intim</span>
                     <span class="badge-cluster">Klaster Tokyo</span>
                   </div>
-                  <div class="product-img-wrap">
-                    <img src="assets/drive/housee.jpeg" alt="Tipe Diamond Klaster Tokyo" class="product-img" />
-                    <div class="product-img-tag">Personal &amp; Intim</div>
+                  <div class="product-card-img-wrap">
+                    <img src="assets/drive/fasad-senja.jpeg" alt="Tipe Diamond Tokyo" class="product-card-img" />
+                    <span class="product-card-spec-tag">LB 80 m² · LT 80 m²</span>
                   </div>
-                  <div class="product-card-content">
+                  <div class="product-card-body">
                     <div class="product-title-row">
-                      <div>
-                        <h4 class="product-name">Tipe Diamond (LB 80 m²)</h4>
-                        <span class="product-lot-info">Luas Tanah 80 m² · 2 Lantai</span>
+                      <h4 class="product-name">Tipe Diamond (Tokyo)</h4>
+                      <span class="product-code">A.05 – A.08</span>
+                    </div>
+                    <p class="product-tagline">Skala lingkungan lebih privat dengan taman belakang ekstra dan fleksibilitas ruang.</p>
+                    <div class="product-features-row">
+                      <span><strong>3–4</strong> KT</span>
+                      <span><strong>2–3</strong> KM</span>
+                      <span><strong>1+1</strong> Garasi</span>
+                      <span><strong>2</strong> Lantai</span>
+                    </div>
+                    <div class="product-pricing-box">
+                      <div class="price-row">
+                        <span class="price-label">Cash Keras (Nov 2026):</span>
+                        <strong class="price-val">Rp 679 Juta</strong>
                       </div>
-                      <div class="product-price-pill">
-                        <small>Mulai</small>
-                        <strong>Rp 679 Jt</strong>
+                      <div class="price-sub-row">
+                        <span>Cash Tempo 24 bln: Rp 31,9 jt/bln</span>
+                        <span>KPR: Rp 4,4 jt/bln</span>
                       </div>
                     </div>
-                    <p class="product-tagline">
-                      Sentuhan arsitektur minimalis bernuansa Tokyo dengan inner courtyard zen dan viewing deck lantai 2 menghadap panorama Gunung Lawu.
-                    </p>
-                    <div class="product-specs-list">
-                      <div class="p-spec-box">
-                        <strong>3–4 KT</strong>
-                        <span>Kamar Tidur</span>
-                      </div>
-                      <div class="p-spec-box">
-                        <strong>2–3 KM</strong>
-                        <span>Kamar Mandi</span>
-                      </div>
-                      <div class="p-spec-box">
-                        <strong>1+1</strong>
-                        <span>Garasi + Carport</span>
-                      </div>
-                      <div class="p-spec-box">
-                        <strong>2.200 VA</strong>
-                        <span>Listrik Standar</span>
-                      </div>
-                    </div>
-                    <div class="product-pricing-strip">
-                      <div class="p-price-col">
-                        <span>Cash Keras:</span>
-                        <strong>Rp 679 Juta</strong>
-                      </div>
-                      <div class="p-price-col">
-                        <span>Cash Bertahap (24 Bln):</span>
-                        <strong>Rp 31,9 jt / bln (0%)</strong>
-                      </div>
-                      <div class="p-price-col">
-                        <span>Cicilan KPR (DP 30%):</span>
-                        <strong>Rp 4,4 jt / bln</strong>
-                      </div>
-                    </div>
-                    <div class="product-cta-row">
-                      <button type="button" class="btn-product-order" onclick="selectCatalogUnit('Tokyo B.1', 'Rp 679 Juta')">
-                        Pilih Tipe Diamond
-                      </button>
-                      <button type="button" class="btn-product-spec" onclick="openSpecDenahModal('tipe80')">
-                        Lihat Denah
-                      </button>
+                    <div class="product-card-actions">
+                      <button type="button" class="btn-card-denah" onclick="openDenahSpecModal('Tipe Diamond (Tokyo)', 'denah-tipe60.jpg')">Lihat Denah</button>
+                      <button type="button" class="btn-card-order" onclick="openOrderModal('Tipe Diamond (Tokyo)', 'A.05-A.08', '679.000.000')">Pesan Unit</button>
                     </div>
                   </div>
                 </div>
@@ -1356,267 +1757,418 @@
                 <!-- PRODUCT CARD 3: TIPE ROYAL DIAMOND (OSAKA) -->
                 <div class="product-card-item">
                   <div class="product-card-badge-row">
-                    <span class="badge-royal">Kavling Terluas</span>
+                    <span class="badge-ready">Grand Luxury</span>
                     <span class="badge-cluster">Klaster Osaka</span>
                   </div>
-                  <div class="product-img-wrap">
-                    <img src="assets/drive/aerial-drone.jpeg" alt="Tipe Royal Diamond Klaster Osaka" class="product-img" />
-                    <div class="product-img-tag">Muat 3 Mobil Keluarga</div>
+                  <div class="product-card-img-wrap">
+                    <img src="assets/drive/aerial-drone.jpeg" alt="Tipe Royal Diamond Osaka" class="product-card-img" />
+                    <span class="product-card-spec-tag">LB 110 m² · LT 90–125 m²</span>
                   </div>
-                  <div class="product-card-content">
+                  <div class="product-card-body">
                     <div class="product-title-row">
-                      <div>
-                        <h4 class="product-name">Tipe Royal Diamond (LB 110 m²)</h4>
-                        <span class="product-lot-info">Luas Tanah 90–125 m² · 2 Lantai</span>
+                      <h4 class="product-name">Tipe Royal Diamond (Osaka)</h4>
+                      <span class="product-code">C.01 – C.06</span>
+                    </div>
+                    <p class="product-tagline">Varian termewah dengan garasi dobel muat hingga 3 mobil keluarga dan suite bedroom luas.</p>
+                    <div class="product-features-row">
+                      <span><strong>4</strong> KT</span>
+                      <span><strong>3</strong> KM</span>
+                      <span><strong>2+1</strong> Garasi (3 Mobil)</span>
+                      <span><strong>2</strong> Lantai</span>
+                    </div>
+                    <div class="product-pricing-box">
+                      <div class="price-row">
+                        <span class="price-label">Cash Keras (Nov 2026):</span>
+                        <strong class="price-val">Rp 895 Juta</strong>
                       </div>
-                      <div class="product-price-pill">
-                        <small>Mulai</small>
-                        <strong>Rp 895 Jt</strong>
+                      <div class="price-sub-row">
+                        <span>Cash Tempo 24 bln: Rp 42,1 jt/bln</span>
+                        <span>KPR: Rp 5,8 jt/bln</span>
                       </div>
                     </div>
-                    <p class="product-tagline">
-                      Hunian megah keluarga multi-generasi dengan kapasitas 2 garasi tertutup + 1 carport, kamar tidur lantai 1 ramah lansia, dan void ganda.
-                    </p>
-                    <div class="product-specs-list">
-                      <div class="p-spec-box">
-                        <strong>4 KT</strong>
-                        <span>Kamar Tidur</span>
-                      </div>
-                      <div class="p-spec-box">
-                        <strong>3 KM</strong>
-                        <span>Kamar Mandi</span>
-                      </div>
-                      <div class="p-spec-box">
-                        <strong>2+1</strong>
-                        <span>Muat 3 Mobil</span>
-                      </div>
-                      <div class="p-spec-box">
-                        <strong>3.500 VA</strong>
-                        <span>Daya Premium</span>
-                      </div>
-                    </div>
-                    <div class="product-pricing-strip">
-                      <div class="p-price-col">
-                        <span>Cash Keras:</span>
-                        <strong>Rp 895 Juta</strong>
-                      </div>
-                      <div class="p-price-col">
-                        <span>Cash Bertahap (24 Bln):</span>
-                        <strong>Rp 42,1 jt / bln (0%)</strong>
-                      </div>
-                      <div class="p-price-col">
-                        <span>Cicilan KPR (DP 30%):</span>
-                        <strong>Rp 5,8 jt / bln</strong>
-                      </div>
-                    </div>
-                    <div class="product-cta-row">
-                      <button type="button" class="btn-product-order" onclick="selectCatalogUnit('Osaka A.1', 'Rp 895 Juta')">
-                        Pilih Tipe Royal
-                      </button>
-                      <button type="button" class="btn-product-spec" onclick="openSpecDenahModal('tipe110')">
-                        Lihat Denah
-                      </button>
+                    <div class="product-card-actions">
+                      <button type="button" class="btn-card-denah" onclick="openDenahSpecModal('Tipe Royal Diamond (Osaka)', 'denah-tipe110.jpg')">Lihat Denah</button>
+                      <button type="button" class="btn-card-order" onclick="openOrderModal('Tipe Royal Diamond (Osaka)', 'C.01-C.06', '895.000.000')">Pesan Unit</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- VISUAL GALLERY SHOWCASE (GAMBAR MENARIK KAWASAN) -->
-            <div class="visual-gallery-section" id="visualGallerySection">
-              <div class="product-showcase-header">
-                <span class="section-tag">GALERI VISUAL AUTENTIK</span>
-                <h3 class="section-title">Dokumentasi &amp; Suasana Kawasan</h3>
-                <p class="section-desc">Potret nyata arsitektur Japandi, keteduhan jalan cluster, dan fasilitas rekreasi The Park Townhouse.</p>
+            <!-- 12. FASILITAS PREMIUM 6-GRID -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">FASILITAS KAWASAN</span>
+                <h2 class="section-card-title">Fasilitas Eksklusif Penghuni</h2>
+                <p class="section-card-sub">Nikmati fasilitas resor bintang lima tepat beberapa langkah dari pintu rumah Anda.</p>
               </div>
 
-              <div class="visual-gallery-grid">
-                <div class="gallery-tile-card">
-                  <div class="gallery-tile-img-wrap">
-                    <img src="assets/drive/aerial-drone.jpeg" alt="Pemandangan Udara Kawasan" class="gallery-tile-img" />
-                    <span class="gallery-tile-badge">Udara</span>
+              <div class="facilities-six-grid">
+                <div class="facility-six-card">
+                  <div class="f-six-img-box">
+                    <img src="assets/drive/clubhouse-pool.jpeg" alt="Clubhouse 2 Lantai" />
                   </div>
-                  <div class="gallery-tile-meta">
-                    <strong>Pemandangan Udara 30 Unit</strong>
-                    <span>Kompleks terpadu dengan jalan ROW 7–8 meter</span>
-                  </div>
-                </div>
-
-                <div class="gallery-tile-card">
-                  <div class="gallery-tile-img-wrap">
-                    <img src="assets/drive/clubhouse.png" alt="The Park Clubhouse" class="gallery-tile-img" />
-                    <span class="gallery-tile-badge">Clubhouse</span>
-                  </div>
-                  <div class="gallery-tile-meta">
-                    <strong>The Park Clubhouse 177,25 m²</strong>
-                    <span>Kolam renang infinity, fitness gym &amp; café resto</span>
+                  <div class="f-six-content">
+                    <h4>Clubhouse 2 Lantai</h4>
+                    <p>Luas 177,25 m² dengan area lounge, meeting hall, dan sanitair mewah.</p>
                   </div>
                 </div>
 
-                <div class="gallery-tile-card">
-                  <div class="gallery-tile-img-wrap">
-                    <img src="assets/drive/gate.png" alt="Grand Gate" class="gallery-tile-img" />
-                    <span class="gallery-tile-badge">Keamanan</span>
+                <div class="facility-six-card">
+                  <div class="f-six-img-box">
+                    <img src="assets/drive/clubhouse-pool.jpeg" alt="Infinity Swimming Pool" />
                   </div>
-                  <div class="gallery-tile-meta">
-                    <strong>Avenue Grand Gate &amp; RFID</strong>
-                    <span>Akses tunggal one-gate dengan CCTV 4K &amp; satpam 24/7</span>
-                  </div>
-                </div>
-
-                <div class="gallery-tile-card">
-                  <div class="gallery-tile-img-wrap">
-                    <img src="assets/drive/dalam-6.png" alt="Interior Ruang Tamu" class="gallery-tile-img" />
-                    <span class="gallery-tile-badge">Interior</span>
-                  </div>
-                  <div class="gallery-tile-meta">
-                    <strong>Ruang Keluarga Open-Plan</strong>
-                    <span>Tangga gantung minimalis dan cahaya alami melimpah</span>
+                  <div class="f-six-content">
+                    <h4>Swimming Pool</h4>
+                    <p>Kolam renang dewasa berstandar resor dengan kolam renang anak terpisah.</p>
                   </div>
                 </div>
 
-                <div class="gallery-tile-card">
-                  <div class="gallery-tile-img-wrap">
-                    <img src="assets/drive/dalam-9.png" alt="Kamar Tidur Utama" class="gallery-tile-img" />
-                    <span class="gallery-tile-badge">Kamar Tidur</span>
+                <div class="facility-six-card">
+                  <div class="f-six-img-box">
+                    <img src="assets/drive/fasad-senja.jpeg" alt="Fitness Gym Center" />
                   </div>
-                  <div class="gallery-tile-meta">
-                    <strong>Master Bedroom Suite</strong>
-                    <span>Lantai kayu hangat dengan sirkulasi angin sejuk</span>
+                  <div class="f-six-content">
+                    <h4>Fitness Gym Center</h4>
+                    <p>Peralatan kardio dan beban lengkap untuk menunjang gaya hidup sehat.</p>
                   </div>
                 </div>
 
-                <div class="gallery-tile-card">
-                  <div class="gallery-tile-img-wrap">
-                    <img src="assets/drive/alun-alun.jpg" alt="Alun Alun Sukoharjo" class="gallery-tile-img" />
-                    <span class="gallery-tile-badge">Lingkungan</span>
+                <div class="facility-six-card">
+                  <div class="f-six-img-box">
+                    <img src="assets/drive/interior-japandi.jpeg" alt="Mini Golf 9 Hole" />
                   </div>
-                  <div class="gallery-tile-meta">
-                    <strong>Menit dari Pusat Kota</strong>
-                    <span>Dekat Alun-Alun Satya Negara &amp; RSUD Sukoharjo</span>
+                  <div class="f-six-content">
+                    <h4>Mini Golf 9-Hole</h4>
+                    <p>Area putting green rekreasi santai bersama keluarga dan rekan.</p>
+                  </div>
+                </div>
+
+                <div class="facility-six-card">
+                  <div class="f-six-img-box">
+                    <img src="assets/drive/grand-gate.jpeg" alt="Game Station 4K" />
+                  </div>
+                  <div class="f-six-content">
+                    <h4>Game Station 4K</h4>
+                    <p>Ruang multimedia interaktif untuk anak dan remaja berekreasi.</p>
+                  </div>
+                </div>
+
+                <div class="facility-six-card">
+                  <div class="f-six-img-box">
+                    <img src="assets/drive/aerial-drone.jpeg" alt="Smart One Gate" />
+                  </div>
+                  <div class="f-six-content">
+                    <h4>One-Gate Security</h4>
+                    <p>Pos penjagaan 24 jam dengan barrier RFID dan kamera CCTV pengawas.</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Catalog Filters Box -->
-            <div class="catalog-filters-card">
-              <div class="filter-header-row">
-                <span class="filter-main-title">PILIHAN UNIT PER KLASTER</span>
-                <button class="filter-reset-btn" type="button" onclick="resetCatalogFilters()">Reset Filter</button>
+            <!-- 13. SEMUA TENTANG THE PARK TOWNHOUSE (5 TABS) -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">INFORMASI KOMPREHENSIF</span>
+                <h2 class="section-card-title">Semua Tentang The Park Townhouse</h2>
+                <p class="section-card-sub">Transparansi menyeluruh mulai dari developer, spesifikasi material, progres proyek, hingga cara pembelian.</p>
               </div>
 
-              <!-- Filter 1: Tipe Unit -->
-              <div class="filter-line">
-                <span class="filter-label">Tipe Unit:</span>
-                <div class="filter-chips">
-                  <button class="f-chip is-active" data-filter="type" data-val="all" onclick="filterCatalog('type', 'all', this)">Semua</button>
-                  <button class="f-chip" data-filter="type" data-val="T60" onclick="filterCatalog('type', 'T60', this)">T60 (3KT · 63m²)</button>
-                  <button class="f-chip" data-filter="type" data-val="T80" onclick="filterCatalog('type', 'T80', this)">T80 (4KT · 88m²)</button>
-                  <button class="f-chip" data-filter="type" data-val="T110" onclick="filterCatalog('type', 'T110', this)">T110 (4KT · 110m²)</button>
+              <!-- 5 Tab Buttons -->
+              <div class="about-five-tabs">
+                <button type="button" class="about-tab-btn is-active" onclick="switchBerandaAboutTab('tentang', this)">Tentang Kami</button>
+                <button type="button" class="about-tab-btn" onclick="switchBerandaAboutTab('spesifikasi', this)">Spesifikasi</button>
+                <button type="button" class="about-tab-btn" onclick="switchBerandaAboutTab('progres', this)">Progres</button>
+                <button type="button" class="about-tab-btn" onclick="switchBerandaAboutTab('cara', this)">Cara Pembelian</button>
+                <button type="button" class="about-tab-btn" onclick="switchBerandaAboutTab('promo', this)">Promo Presale</button>
+              </div>
+
+              <!-- 5 Tab Content Panes -->
+              <div class="about-tab-content-box" id="aboutTabContentBox">
+                <!-- PANE 1: TENTANG KAMI -->
+                <div class="about-pane is-active" id="paneAboutTentang">
+                  <h4>Visi Developer: Hunian Berkelanjutan &amp; Elegan</h4>
+                  <p>The Park Townhouse dikembangkan oleh <strong>PT Andara Rejo Makmur</strong> dengan komitmen menghadirkan arsitektur berstandar tinggi yang menyatukan fungsi, estetika Japandi, dan kenyamanan lingkungan.</p>
+                  <div class="about-meta-grid">
+                    <div class="meta-item"><strong>3 Klaster:</strong><span>Nagoya, Osaka, Tokyo</span></div>
+                    <div class="meta-item"><strong>Total Unit:</strong><span>30 Unit Eksklusif</span></div>
+                    <div class="meta-item"><strong>Lokasi:</strong><span>Avenue Grand Gate, Sukoharjo</span></div>
+                    <div class="meta-item"><strong>Legalitas:</strong><span>SHM Pecah Sempurna</span></div>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Filter 2: Luas Tanah -->
-              <div class="filter-line">
-                <span class="filter-label">Luas Tanah:</span>
-                <div class="filter-chips">
-                  <button class="f-chip is-active" data-filter="lot" data-val="all" onclick="filterCatalog('lot', 'all', this)">Semua</button>
-                  <button class="f-chip" data-filter="lot" data-val="under80" onclick="filterCatalog('lot', 'under80', this)">&lt; 80m²</button>
-                  <button class="f-chip" data-filter="lot" data-val="80to90" onclick="filterCatalog('lot', '80to90', this)">80–90m²</button>
-                  <button class="f-chip" data-filter="lot" data-val="above90" onclick="filterCatalog('lot', 'above90', this)">&gt; 90m²</button>
+                <!-- PANE 2: SPESIFIKASI MATERIAL -->
+                <div class="about-pane" id="paneAboutSpesifikasi" style="display: none;">
+                  <h4>Spesifikasi Bangunan Berkualitas Tinggi</h4>
+                  <ul class="spec-bullet-list">
+                    <li><strong>Struktur:</strong> Beton bertulang besi ulir standar SNI</li>
+                    <li><strong>Dinding:</strong> Bata merah plester aci, cat Jotun eksterior tahan cuaca</li>
+                    <li><strong>Lantai:</strong> Granit tile 60×60 cm glazed polished motif natural</li>
+                    <li><strong>Kusen &amp; Jendela:</strong> Aluminium anodized cokelat tua tahan rayap</li>
+                    <li><strong>Sanitair:</strong> Kloset duduk TOTO, shower column, wastafel marmer</li>
+                    <li><strong>Rangka Atap:</strong> Baja ringan Bluescope dengan genteng beton flat</li>
+                    <li><strong>Listrik &amp; Air:</strong> PLN 2.200 VA under-ground, sumur bor jernih</li>
+                  </ul>
                 </div>
-              </div>
 
-              <!-- Filter 3: Range Harga -->
-              <div class="filter-line">
-                <span class="filter-label">Range Harga:</span>
-                <div class="filter-chips">
-                  <button class="f-chip is-active" data-filter="price" data-val="all" onclick="filterCatalog('price', 'all', this)">Semua</button>
-                  <button class="f-chip" data-filter="price" data-val="under600" onclick="filterCatalog('price', 'under600', this)">&lt; 600jt</button>
-                  <button class="f-chip" data-filter="price" data-val="600to750" onclick="filterCatalog('price', '600to750', this)">600–750jt</button>
-                  <button class="f-chip" data-filter="price" data-val="above750" onclick="filterCatalog('price', 'above750', this)">&gt; 750jt</button>
+                <!-- PANE 3: PROGRES LAPANGAN -->
+                <div class="about-pane" id="paneAboutProgres" style="display: none;">
+                  <h4>Laporan Progres Pembangunan Lapangan</h4>
+                  <div class="progress-milestone-list">
+                    <div class="p-milestone done">
+                      <span class="pm-dot">✓</span>
+                      <div><strong>Perizinan &amp; Pemecahan SHM:</strong> 100% Selesai</div>
+                    </div>
+                    <div class="p-milestone done">
+                      <span class="pm-dot">✓</span>
+                      <div><strong>Pematangan Lahan &amp; Cut-Fill:</strong> 100% Selesai</div>
+                    </div>
+                    <div class="p-milestone progress">
+                      <span class="pm-dot">●</span>
+                      <div><strong>Pembangunan Grand Gate &amp; ROW Jalan:</strong> 85% On-Going</div>
+                    </div>
+                    <div class="p-milestone next">
+                      <span class="pm-dot">○</span>
+                      <div><strong>Struktur Clubhouse &amp; Kolam Renang:</strong> Tahap Pengecoran</div>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Filter 4: Posisi Kavling -->
-              <div class="filter-line">
-                <span class="filter-label">Posisi Kavling:</span>
-                <div class="filter-chips">
-                  <button class="f-chip is-active" data-filter="pos" data-val="all" onclick="filterCatalog('pos', 'all', this)">Semua Posisi</button>
-                  <button class="f-chip" data-filter="pos" data-val="hook" onclick="filterCatalog('pos', 'hook', this)">Hook / Pojok</button>
-                  <button class="f-chip" data-filter="pos" data-val="gate" onclick="filterCatalog('pos', 'gate', this)">Dekat Gerbang</button>
-                  <button class="f-chip" data-filter="pos" data-val="inner" onclick="filterCatalog('pos', 'inner', this)">Posisi Dalam</button>
+                <!-- PANE 4: CARA PEMBELIAN -->
+                <div class="about-pane" id="paneAboutCara" style="display: none;">
+                  <h4>3 Skema Fleksibel Pembelian Unit</h4>
+                  <div class="skema-explain-list">
+                    <div class="skema-item">
+                      <strong>1. Cash Keras:</strong> Diskon maksimal harga perdana presale, pelunasan 1 bulan setelah booking Rp 5 Jt.
+                    </div>
+                    <div class="skema-item">
+                      <strong>2. Cash Bertahap (Cash Tempo):</strong> DP 40% (termasuk booking fee), sisa diangsur flat tanpa bunga selama 12 atau 24 bulan.
+                    </div>
+                    <div class="skema-item">
+                      <strong>3. KPR Bank:</strong> DP 10%–30%, didukung bank rekanan nasional (BCA, Mandiri, BNI, BTN Syariah, BSI) hingga 25 tahun.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PANE 5: PROMO PRESALE -->
+                <div class="about-pane" id="paneAboutPromo" style="display: none;">
+                  <h4>Paket Keuntungan Khusus Pembeli Presale</h4>
+                  <div class="promo-bonus-box">
+                    <span class="promo-tag">LIMITED BENEFIT</span>
+                    <ul class="promo-list">
+                      <li>★ Gratis Biaya BPHTB, Biaya AJB, dan Balik Nama (BBN)</li>
+                      <li>★ Bonus Kanopi Carport Solar Guard Modern</li>
+                      <li>★ Bonus Instalasi Smart Door Lock Digital RFID &amp; PIN</li>
+                      <li>★ Bonus Pompa Pendorong &amp; Tandon Air 1.000 Liter</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Cluster Nagoya Section -->
-            <div class="cluster-showcase-card" id="clusterCardNagoya">
-              <div class="cluster-card-head">
+            <!-- 14. KALKULATOR KPR INTERAKTIF -->
+            <div class="landing-section-card" id="secKalkulatorKpr">
+              <div class="section-card-head">
+                <span class="section-tag-gold">SIMULASI ANGSURAN</span>
+                <h2 class="section-card-title">Kalkulator KPR Interaktif</h2>
+                <p class="section-card-sub">Sesuaikan harga properti, uang muka (DP), tenor, dan suku bunga untuk melihat perkiraan cicilan bulanan.</p>
+              </div>
+
+              <div class="kpr-calc-container">
+                <!-- Sliders & Inputs -->
+                <div class="kpr-input-group">
+                  <div class="kpr-input-row">
+                    <label>Harga Properti</label>
+                    <span class="kpr-live-val" id="kprDisplayPrice">Rp 650.000.000</span>
+                  </div>
+                  <input type="range" min="400000000" max="1500000000" step="25000000" value="650000000" class="kpr-range-slider" id="kprPriceSlider" oninput="updateKprFromSlider()" />
+                </div>
+
+                <div class="kpr-input-group">
+                  <div class="kpr-input-row">
+                    <label>Uang Muka (DP %)</label>
+                    <span class="kpr-live-val" id="kprDisplayDp">20% (Rp 130.000.000)</span>
+                  </div>
+                  <input type="range" min="10" max="50" step="5" value="20" class="kpr-range-slider" id="kprDpSlider" oninput="updateKprFromSlider()" />
+                </div>
+
+                <div class="kpr-input-row-duo">
+                  <div class="kpr-input-group">
+                    <label>Jangka Waktu (Tenor)</label>
+                    <select class="kpr-select-input" id="kprTenorSelect" onchange="updateKprFromSlider()">
+                      <option value="5">5 Tahun</option>
+                      <option value="10">10 Tahun</option>
+                      <option value="15" selected>15 Tahun</option>
+                      <option value="20">20 Tahun</option>
+                      <option value="25">25 Tahun</option>
+                    </select>
+                  </div>
+                  <div class="kpr-input-group">
+                    <label>Suku Bunga (% / Thn)</label>
+                    <select class="kpr-select-input" id="kprInterestSelect" onchange="updateKprFromSlider()">
+                      <option value="5.5">5.5% (Promo Fixed 3 Thn)</option>
+                      <option value="6.5">6.5% (Promo Fixed 5 Thn)</option>
+                      <option value="7.5" selected>7.5% (Estimasi Rata-rata)</option>
+                      <option value="8.5">8.5% (Standard Floating)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Live Results -->
+                <div class="kpr-result-card">
+                  <span class="kpr-res-label">Perkiraan Angsuran / Bulan:</span>
+                  <h3 class="kpr-res-amount" id="kprMonthlyInstallment">Rp 4.821.200 / bln</h3>
+                  <div class="kpr-res-meta">
+                    <span>Plafon Kredit: <strong id="kprLoanPrincipal">Rp 520.000.000</strong></span>
+                    <span>Total Tenor: <strong id="kprTenorMonths">180 Bulan</strong></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 15. TESTIMONI "KATA MEREKA" -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">TESTIMONI PEMBELI</span>
+                <h2 class="section-card-title">Kata Mereka</h2>
+                <p class="section-card-sub">Kisah nyata dari para pembeli awal yang telah mempercayakan tempat tinggalnya di The Park Townhouse.</p>
+              </div>
+
+              <div class="testimonial-cards-grid">
+                <div class="testimonial-item">
+                  <div class="t-stars">★★★★★</div>
+                  <p class="t-quote">"Pilihan terbaik di Sukoharjo. Lokasinya dekat banget sama Gelora Merdeka, tapi begitu masuk gerbang, suasanya tenang dan adem kayak di villa."</p>
+                  <div class="t-author">
+                    <strong>dr. Arya Wicaksono</strong>
+                    <span>Pembeli Tipe Diamond (Tokyo) · Sukoharjo</span>
+                  </div>
+                </div>
+
+                <div class="testimonial-item">
+                  <div class="t-stars">★★★★★</div>
+                  <p class="t-quote">"Fasilitas clubhousenya juara. Jarang sekali ada townhouse di kawasan Solo Selatan yang menyediakan kolam renang dan mini golf tanpa iuran membership lagi."</p>
+                  <div class="t-author">
+                    <strong>H. Bambang Sugiarto</strong>
+                    <span>Investor &amp; Pengusaha Tekstil · Solo</span>
+                  </div>
+                </div>
+
+                <div class="testimonial-item">
+                  <div class="t-stars">★★★★★</div>
+                  <p class="t-quote">"Sertifikatnya sudah pecah sempurna per kavling, jadi legalitasnya benar-benar aman. Proses KPR juga dibantu lancar dari booking sampai akad."</p>
+                  <div class="t-author">
+                    <strong>Nadia Pramudita, S.T.</strong>
+                    <span>Pembeli Tipe Gold (Nagoya)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 16. PUSAT INFORMASI (FAQ ACCORDION) -->
+            <div class="landing-section-card">
+              <div class="section-card-head">
+                <span class="section-tag-gold">TANYA JAWAB</span>
+                <h2 class="section-card-title">Pusat Informasi (FAQ)</h2>
+                <p class="section-card-sub">Jawaban lengkap seputar legalitas, pembelian, konstruksi, dan fasilitas.</p>
+              </div>
+
+              <!-- FAQ Category Tabs -->
+              <div class="faq-category-pills">
+                <button type="button" class="faq-cat-btn is-active" onclick="filterFaqCategory('all', this)">Semua Pertanyaan</button>
+                <button type="button" class="faq-cat-btn" onclick="filterFaqCategory('legalitas', this)">Legalitas</button>
+                <button type="button" class="faq-cat-btn" onclick="filterFaqCategory('pembayaran', this)">Pembayaran</button>
+                <button type="button" class="faq-cat-btn" onclick="filterFaqCategory('fasilitas', this)">Fasilitas</button>
+              </div>
+
+              <!-- Accordion List -->
+              <div class="faq-accordion-list">
+                <div class="faq-item is-open" data-cat="legalitas">
+                  <button type="button" class="faq-question-btn" onclick="toggleFaqAccordion(this)">
+                    <span>Bagaimana status legalitas dan sertifikat The Park Townhouse?</span>
+                    <span class="faq-arrow">▼</span>
+                  </button>
+                  <div class="faq-answer-pane">
+                    <p>Status legalitas The Park Townhouse 100% aman dan clean. Sertifikat Hak Milik (SHM) untuk Klaster Nagoya sudah pecah sempurna per kavling, Persetujuan Bangunan Gedung (PBG) lengkap, dan siap proses Akta Jual Beli (AJB) serta Balik Nama ke pembeli.</p>
+                  </div>
+                </div>
+
+                <div class="faq-item" data-cat="pembayaran">
+                  <button type="button" class="faq-question-btn" onclick="toggleFaqAccordion(this)">
+                    <span>Berapa nominal booking fee dan apakah bisa hangus?</span>
+                    <span class="faq-arrow">▼</span>
+                  </button>
+                  <div class="faq-answer-pane" style="display: none;">
+                    <p>Booking fee sebesar Rp 5.000.000 untuk mengunci nomor kavling dan harga presale promo perdana. Booking fee sudah memotong harga jual rumah.</p>
+                  </div>
+                </div>
+
+                <div class="faq-item" data-cat="pembayaran">
+                  <button type="button" class="faq-question-btn" onclick="toggleFaqAccordion(this)">
+                    <span>Bank apa saja yang bekerjasama untuk fasilitas KPR?</span>
+                    <span class="faq-arrow">▼</span>
+                  </button>
+                  <div class="faq-answer-pane" style="display: none;">
+                    <p>Kami telah bermitra resmi dengan Bank Mandiri, BCA, Bank BRI, BNI, BTN Syariah, serta BSI. Tim administrasi kami akan mendampingi pemberkasan dari awal hingga akad kredit tuntas.</p>
+                  </div>
+                </div>
+
+                <div class="faq-item" data-cat="fasilitas">
+                  <button type="button" class="faq-question-btn" onclick="toggleFaqAccordion(this)">
+                    <span>Apakah fasilitas clubhouse dikenakan biaya iuran tambahan?</span>
+                    <span class="faq-arrow">▼</span>
+                  </button>
+                  <div class="faq-answer-pane" style="display: none;">
+                    <p>Tidak ada biaya membership terpisah. Seluruh penghuni berhak menikmati kolam renang, fitness center, lounge, mini golf, dan taman secara gratis sebagai bagian dari Iuran Pengelolaan Lingkungan (IPL) rutin.</p>
+                  </div>
+                </div>
+
+                <div class="faq-item" data-cat="legalitas">
+                  <button type="button" class="faq-question-btn" onclick="toggleFaqAccordion(this)">
+                    <span>Apakah denah tata ruang dalam rumah boleh dikustomisasi?</span>
+                    <span class="faq-arrow">▼</span>
+                  </button>
+                  <div class="faq-answer-pane" style="display: none;">
+                    <p>Ya, arsitektur interior The Park Townhouse bersifat fleksibel. Anda dapat mengkustomisasi sekat ruangan, fungsi kamar, dan tata letak lantai 2 selama tidak mengubah fasad eksterior dan struktur kolom utama.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 17. FINAL CALL TO ACTION & BANK PARTNERS -->
+            <div class="landing-cta-banner">
+              <span class="cta-banner-pill">KESEMPATAN TERBATAS</span>
+              <h2 class="cta-banner-title">Kunci Kavling Anda Hari Ini</h2>
+              <p class="cta-banner-sub">Amankan harga perdana presale dan diskon maksimal cash keras sebelum kuota 30 unit terpenuhi.</p>
+              <div class="cta-banner-action">
+                <button type="button" class="btn-primary-forest btn-lg" onclick="openOrderModal('Nagoya (Tipe Gold)', 'A.02', '650.000.000')">
+                  <span>Booking Rp 5 Juta Sekarang</span>
+                  <span>→</span>
+                </button>
+              </div>
+
+              <!-- Bank Partners Badges -->
+              <div class="bank-partners-row">
+                <span class="bank-lead">Didukung Bank Rekanan KPR:</span>
+                <div class="bank-badges-wrap">
+                  <span class="bank-chip">BANK MANDIRI</span>
+                  <span class="bank-chip">BANK BCA</span>
+                  <span class="bank-chip">BANK BRI</span>
+                  <span class="bank-chip">BANK BNI</span>
+                  <span class="bank-chip">BTN SYARIAH</span>
+                  <span class="bank-chip">BANK BSI</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ESTATE FOOTER -->
+            <footer class="estate-footer-card">
+              <div class="estate-footer-brand">
+                <img src="assets/drive/logo-tpt.png" alt="Logo The Park Townhouse" class="footer-logo" />
                 <div>
-                  <span class="cluster-badge">14 Unit Tersedia · SHM Siap</span>
-                  <h3 class="cluster-name">Klaster Nagoya</h3>
-                  <p class="cluster-quote">Tipe compact dengan rooftop pribadi dan view Gunung Lawu.</p>
-                </div>
-                <div class="cluster-price-tag">
-                  <span>Mulai</span>
-                  <strong>Rp 498 Juta</strong>
+                  <h4 class="footer-title">THE PARK TOWNHOUSE</h4>
+                  <span class="footer-sub">Harmony of Modern Japandi &amp; Tropical Grandeur</span>
                 </div>
               </div>
-              <div class="cluster-quick-specs">
-                <span>LB 60–80 m²</span> · <span>LT 63–99 m²</span> · <span>3–4 KT</span> · <span>2–3 KM</span>
-              </div>
-              <div class="units-inventory-grid" id="nagoyaUnitsGrid">
-                <!-- Populated via JavaScript dynamically -->
-              </div>
-            </div>
-
-            <!-- Cluster Tokyo Section -->
-            <div class="cluster-showcase-card" id="clusterCardTokyo">
-              <div class="cluster-card-head">
-                <div>
-                  <span class="cluster-badge">7 Unit Tersedia</span>
-                  <h3 class="cluster-name">Klaster Tokyo</h3>
-                  <p class="cluster-quote">Desain modern minimalis bernuansa Jepang dengan inner courtyard.</p>
-                </div>
-                <div class="cluster-price-tag">
-                  <span>Mulai</span>
-                  <strong>Rp 679 Juta</strong>
-                </div>
-              </div>
-              <div class="cluster-quick-specs">
-                <span>LB 60–80 m²</span> · <span>LT 90–125 m²</span> · <span>3–4 KT</span> · <span>2–3 KM</span>
-              </div>
-              <div class="units-inventory-grid" id="tokyoUnitsGrid">
-                <!-- Populated via JavaScript dynamically -->
-              </div>
-            </div>
-
-            <!-- Cluster Osaka Section -->
-            <div class="cluster-showcase-card" id="clusterCardOsaka">
-              <div class="cluster-card-head">
-                <div>
-                  <span class="cluster-badge">9 Unit Tersedia</span>
-                  <h3 class="cluster-name">Klaster Osaka</h3>
-                  <p class="cluster-quote">Hunian elegan dengan carport 2 mobil penuh dan fasad megah.</p>
-                </div>
-                <div class="cluster-price-tag">
-                  <span>Mulai</span>
-                  <strong>Rp 685 Juta</strong>
-                </div>
-              </div>
-              <div class="cluster-quick-specs">
-                <span>LB 60–80 m²</span> · <span>LT 90–110 m²</span> · <span>3–4 KT</span> · <span>2–3 KM</span>
-              </div>
-              <div class="units-inventory-grid" id="osakaUnitsGrid">
-                <!-- Populated via JavaScript dynamically -->
-              </div>
-            </div>
-
-            <!-- Developer Brand Footer Card -->
-            <div class="estate-footer-card">
-              <div class="estate-footer-title">THE PARK TOWNHOUSE</div>
               <p class="estate-footer-desc">
                 Hunian premium berarsitektur Japandi di Avenue Grand Gate, Sukoharjo. Dikembangkan dengan sepenuh hati oleh PT Andara Rejo Makmur.
               </p>
@@ -1636,7 +2188,7 @@
                   Senin – Sabtu · 09.00 – 17.00 WIB
                 </span>
               </div>
-            </div>
+            </footer>
           </section>
 
           <!-- TAB 2: SURAT CINTA (99 KEUNGGULAN · DELUXE STORYTELLING) -->

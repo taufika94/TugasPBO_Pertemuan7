@@ -1814,6 +1814,7 @@ let catalogFilterState = {
 };
 
 function initLandingPage() {
+  setTimeout(initBerandaLeafletMap, 300);
   renderLandingUnits();
   switchLandingSiteplan('nagoya');
 }
@@ -1912,7 +1913,10 @@ function switchLandingTab(tabName, btnEl) {
   const scrollContainer = document.getElementById('landingScrollContent');
   if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
 
-  if (tabName === 'SitePlan') {
+  if (tabName === 'Beranda') {
+    initBerandaLeafletMap();
+    setTimeout(() => { if (berandaLeafletMapInstance) berandaLeafletMapInstance.invalidateSize(); }, 200);
+  } else if (tabName === 'SitePlan') {
     switchLandingSiteplan('nagoya');
   } else if (tabName === 'SuratCinta') {
     initSuratCintaMagazine();
@@ -3204,3 +3208,415 @@ window.addEventListener('DOMContentLoaded', () => {
   if (cardsCountLabel) cardsCountLabel.textContent = `${unlockedKeunggulanCount}/99`;
   runAfterDelayOpening();
 });
+
+
+/* ============================================================
+   BERANDA INTERACTIVE CONTROLLERS & LEAFLET MAP
+   ============================================================ */
+
+const BERANDA_POIS = [
+  { name: 'Stadion Gelora Merdeka Sukoharjo', distNagoya: '± 100 m', distOthers: '± 300 m', cat: 'Olahraga', coords: [-7.6748, 110.8432] },
+  { name: 'Lapangan Basket Gelora', distNagoya: '± 100 m', distOthers: '± 300 m', cat: 'Olahraga', coords: [-7.6751, 110.8435] },
+  { name: 'Lapangan Tenis Sukoharjo', distNagoya: '± 100 m', distOthers: '± 300 m', cat: 'Olahraga', coords: [-7.6745, 110.8438] },
+  { name: 'Lapangan Skateboard', distNagoya: '± 100 m', distOthers: '± 300 m', cat: 'Olahraga', coords: [-7.6742, 110.8429] },
+  { name: 'Lapangan Panahan', distNagoya: '± 100 m', distOthers: '± 300 m', cat: 'Olahraga', coords: [-7.6753, 110.8425] },
+  { name: 'Masjid Al-Hidayah', distNagoya: '± 700 m', distOthers: '± 50 m', cat: 'Ibadah', coords: [-7.6725, 110.8415] },
+  { name: 'SMKN 1 Sukoharjo', distNagoya: '± 750 m', distOthers: '± 300 m', cat: 'Pendidikan', coords: [-7.6718, 110.8420] },
+  { name: 'RSUD IR Soekarno Kab. Sukoharjo', distNagoya: '± 2.3 km', distOthers: '± 2.2 km', cat: 'Kesehatan', coords: [-7.6830, 110.8405] },
+  { name: 'Kejaksaan Negeri Sukoharjo', distNagoya: '± 700 m', distOthers: '± 250 m', cat: 'Pemerintahan', coords: [-7.6720, 110.8445] },
+  { name: 'Kantor Kementerian Agama Sukoharjo', distNagoya: '± 700 m', distOthers: '± 250 m', cat: 'Pemerintahan', coords: [-7.6722, 110.8450] },
+  { name: 'Pusat Layanan Haji dan Umrah Terpadu', distNagoya: '± 700 m', distOthers: '± 250 m', cat: 'Pemerintahan', coords: [-7.6724, 110.8455] },
+  { name: 'Alun-Alun Kota Sukoharjo', distNagoya: '± 1.7 km', distOthers: '± 1.9 km', cat: 'Rekreasi', coords: [-7.6780, 110.8350] },
+  { name: 'Taman Pramuka', distNagoya: '± 1.7 km', distOthers: '± 1.9 km', cat: 'Rekreasi', coords: [-7.6785, 110.8360] },
+  { name: 'Universitas Veteran Bangun Nusantara', distNagoya: '± 1.3 km', distOthers: '± 500 m', cat: 'Pendidikan', coords: [-7.6705, 110.8395] },
+  { name: 'SMA Negeri 3 Sukoharjo', distNagoya: '± 1.2 km', distOthers: '± 400 m', cat: 'Pendidikan', coords: [-7.6710, 110.8400] },
+  { name: 'SD Negeri Jombor 3 Sukoharjo', distNagoya: '± 1.1 km', distOthers: '± 400 m', cat: 'Pendidikan', coords: [-7.6712, 110.8410] },
+  { name: 'Pusat Perbelanjaan & Niaga', distNagoya: '± 700 m', distOthers: '± 500 m', cat: 'Belanja', coords: [-7.6760, 110.8412] }
+];
+
+let berandaLeafletMapInstance = null;
+let berandaPoiMarkers = [];
+let currentBerandaPoiFilter = 'Semua';
+let activeBerandaCluster = 'nagoya';
+
+function initBerandaLeafletMap() {
+  const mapEl = document.getElementById('berandaLeafletMap');
+  if (!mapEl || berandaLeafletMapInstance) return;
+
+  const defaultCenter = [-7.673895, 110.843978];
+  berandaLeafletMapInstance = L.map('berandaLeafletMap', {
+    center: defaultCenter,
+    zoom: 14.5,
+    scrollWheelZoom: false,
+    zoomControl: true,
+    attributionControl: false
+  });
+
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 19
+  }).addTo(berandaLeafletMapInstance);
+
+  // Add The Park Townhouse main location pin
+  const mainIcon = L.divIcon({
+    className: 'custom-townhouse-pin',
+    html: '<div style="background:#16241c;color:#e5d3af;padding:4px 8px;border-radius:12px;border:1px solid #c49a45;font-weight:700;font-size:10px;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,0.35);">★ THE PARK TOWNHOUSE</div>',
+    iconSize: [120, 28],
+    iconAnchor: [60, 14]
+  });
+  L.marker(defaultCenter, { icon: mainIcon }).addTo(berandaLeafletMapInstance)
+    .bindPopup('<b>The Park Townhouse Sukoharjo</b><br>Avenue Grand Gate');
+
+  // Add POI markers
+  renderBerandaPoiList();
+  renderBerandaMasterplanGrid('nagoya');
+  updateKprFromSlider();
+}
+
+function renderBerandaPoiList() {
+  const container = document.getElementById('berandaPoiList');
+  if (!container) return;
+
+  // Clear existing markers
+  if (berandaLeafletMapInstance) {
+    berandaPoiMarkers.forEach(m => berandaLeafletMapInstance.removeLayer(m));
+    berandaPoiMarkers = [];
+  }
+
+  container.innerHTML = '';
+  const filtered = currentBerandaPoiFilter === 'Semua' 
+    ? BERANDA_POIS 
+    : BERANDA_POIS.filter(p => p.cat === currentBerandaPoiFilter);
+
+  filtered.forEach((poi, idx) => {
+    // Add to HTML list
+    const card = document.createElement('div');
+    card.className = 'poi-interactive-card';
+    card.onclick = () => focusBerandaPOI(BERANDA_POIS.indexOf(poi));
+    const distText = activeBerandaCluster === 'nagoya' 
+      ? poi.distNagoya + ' (Nagoya)' 
+      : poi.distOthers + ' (' + activeBerandaCluster.toUpperCase() + ')';
+
+    card.innerHTML = 
+      '<div class="poi-card-left">' +
+        '<div class="poi-card-name">' + poi.name + '</div>' +
+        '<div class="poi-card-meta">' +
+          '<span class="poi-dist-chip">' + distText + '</span>' +
+          '<span class="poi-badge-cat">' + poi.cat + '</span>' +
+        '</div>' +
+      '</div>' +
+      '<div style="font-size:11px;color:#c49a45;font-weight:700;">📍</div>';
+    container.appendChild(card);
+
+    // Add marker to map
+    if (berandaLeafletMapInstance && poi.coords) {
+      const marker = L.circleMarker(poi.coords, {
+        radius: 6,
+        fillColor: '#2e7d32',
+        color: '#ffffff',
+        weight: 1.5,
+        fillOpacity: 0.9
+      }).addTo(berandaLeafletMapInstance);
+
+      marker.bindPopup('<b>' + poi.name + '</b><br>Kategori: ' + poi.cat + '<br>Jarak: ' + distText);
+      berandaPoiMarkers.push(marker);
+    }
+  });
+}
+
+function filterBerandaPOI(category, btnEl) {
+  currentBerandaPoiFilter = category;
+  if (btnEl && btnEl.parentElement) {
+    btnEl.parentElement.querySelectorAll('.poi-cat-chip').forEach(c => c.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  }
+  renderBerandaPoiList();
+}
+
+function focusBerandaPOI(poiIndex) {
+  const poi = BERANDA_POIS[poiIndex];
+  if (!poi || !berandaLeafletMapInstance) return;
+
+  berandaLeafletMapInstance.flyTo(poi.coords, 16, { animate: true, duration: 0.8 });
+  const marker = berandaPoiMarkers.find(m => {
+    const latLng = m.getLatLng();
+    return Math.abs(latLng.lat - poi.coords[0]) < 0.0001 && Math.abs(latLng.lng - poi.coords[1]) < 0.0001;
+  });
+  if (marker) {
+    marker.openPopup();
+  }
+}
+
+function switchBerandaClusterMap(clusterKey, btnEl) {
+  activeBerandaCluster = clusterKey;
+  if (btnEl && btnEl.parentElement) {
+    btnEl.parentElement.querySelectorAll('.cluster-pill-btn').forEach(b => b.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  }
+
+  const coords = {
+    nagoya: [-7.673895, 110.843978],
+    osaka: [-7.6720, 110.8415],
+    tokyo: [-7.6715, 110.8410]
+  };
+
+  if (berandaLeafletMapInstance && coords[clusterKey]) {
+    berandaLeafletMapInstance.flyTo(coords[clusterKey], 15, { animate: true, duration: 0.8 });
+  }
+  renderBerandaPoiList();
+}
+
+/* Master Plan Lot Grid Controller */
+let currentBerandaLotCluster = 'nagoya';
+let currentBerandaLotFilter = 'all';
+let inspectedLotNumber = 'A.02';
+
+const BERANDA_LOTS = {
+  nagoya: [
+    { num: 'A.01', type: 'Gold (LB 75 / LT 60)', price: 'Rp 650 Juta', status: 'tersedia' },
+    { num: 'A.02', type: 'Gold (LB 75 / LT 63)', price: 'Rp 650 Juta', status: 'tersedia' },
+    { num: 'A.03', type: 'Gold (LB 75 / LT 63)', price: 'Rp 650 Juta', status: 'tersedia' },
+    { num: 'A.04', type: 'Gold (LB 75 / LT 60)', price: 'Rp 650 Juta', status: 'tersedia' },
+    { num: 'A.05', type: 'Gold (LB 75 / LT 63)', price: 'Rp 650 Juta', status: 'tersedia' },
+    { num: 'A.06', type: 'Gold (LB 75 / LT 63)', price: 'Rp 650 Juta', status: 'tersedia' },
+    { num: 'A.07', type: 'Gold (LB 75 / LT 63)', price: 'Rp 650 Juta', status: 'tersedia' },
+    { num: 'A.08', type: 'Gold (LB 75 / LT 63)', price: 'Rp 650 Juta', status: 'tersedia' },
+    { num: 'A.09', type: 'Gold Hook (LB 78 / LT 72)', price: 'Rp 675 Juta', status: 'tersedia' }
+  ],
+  osaka: [
+    { num: 'B.01', type: 'Royal Diamond (LB 110 / LT 90)', price: 'Rp 895 Juta', status: 'tersedia' },
+    { num: 'B.02', type: 'Royal Diamond (LB 110 / LT 100)', price: 'Rp 920 Juta', status: 'tersedia' },
+    { num: 'B.03', type: 'Royal Diamond (LB 110 / LT 100)', price: 'Rp 920 Juta', status: 'tersedia' },
+    { num: 'B.04', type: 'Royal Diamond (LB 110 / LT 105)', price: 'Rp 935 Juta', status: 'tersedia' },
+    { num: 'B.05', type: 'Royal Diamond (LB 110 / LT 110)', price: 'Rp 950 Juta', status: 'tersedia' },
+    { num: 'B.06', type: 'Royal Diamond (LB 110 / LT 125)', price: 'Rp 995 Juta', status: 'tersedia' }
+  ],
+  tokyo: [
+    { num: 'C.01', type: 'Diamond (LB 80 / LT 80)', price: 'Rp 679 Juta', status: 'tersedia' },
+    { num: 'C.02', type: 'Diamond (LB 80 / LT 80)', price: 'Rp 679 Juta', status: 'tersedia' },
+    { num: 'C.03', type: 'Diamond (LB 80 / LT 80)', price: 'Rp 679 Juta', status: 'tersedia' },
+    { num: 'C.04', type: 'Diamond (LB 80 / LT 80)', price: 'Rp 679 Juta', status: 'tersedia' },
+    { num: 'C.05', type: 'Diamond (LB 80 / LT 80)', price: 'Rp 679 Juta', status: 'tersedia' },
+    { num: 'C.06', type: 'Diamond (LB 80 / LT 80)', price: 'Rp 679 Juta', status: 'tersedia' }
+  ]
+};
+
+function renderBerandaMasterplanGrid(clusterKey) {
+  const grid = document.getElementById('berandaMasterplanGrid');
+  if (!grid) return;
+
+  const lots = BERANDA_LOTS[clusterKey] || [];
+  grid.innerHTML = '';
+
+  lots.forEach(lot => {
+    const card = document.createElement('div');
+    card.className = 'mp-lot-card ' + (lot.num === inspectedLotNumber ? 'is-active' : '');
+    card.onclick = () => selectBerandaLot(lot.num, clusterKey);
+    card.innerHTML = 
+      '<div class="mp-lot-num">' + lot.num + '</div>' +
+      '<div style="font-size:9px;color:#55635b;">' + lot.type.split('(')[0] + '</div>' +
+      '<div class="mp-lot-status">' + lot.status.toUpperCase() + '</div>';
+    grid.appendChild(card);
+  });
+
+  // Update status count numbers
+  const cntAll = document.getElementById('cntLotAll');
+  const cntAvail = document.getElementById('cntLotAvail');
+  if (cntAll) cntAll.textContent = lots.length;
+  if (cntAvail) cntAvail.textContent = lots.filter(l => l.status === 'tersedia').length;
+}
+
+function switchBerandaLotCluster(clusterKey, btnEl) {
+  currentBerandaLotCluster = clusterKey;
+  if (btnEl && btnEl.parentElement) {
+    btnEl.parentElement.querySelectorAll('.cluster-pill-btn').forEach(b => b.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  }
+  const lots = BERANDA_LOTS[clusterKey];
+  if (lots && lots[0]) {
+    inspectedLotNumber = lots[0].num;
+    updateInspectorCard(lots[0], clusterKey);
+  }
+  renderBerandaMasterplanGrid(clusterKey);
+}
+
+function filterBerandaLots(status, btnEl) {
+  currentBerandaLotFilter = status;
+  if (btnEl && btnEl.parentElement) {
+    btnEl.parentElement.querySelectorAll('.status-legend-chip').forEach(b => b.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  }
+}
+
+function selectBerandaLot(lotNum, clusterKey) {
+  inspectedLotNumber = lotNum;
+  const cluster = clusterKey || currentBerandaLotCluster;
+  const lot = (BERANDA_LOTS[cluster] || []).find(l => l.num === lotNum);
+  if (lot) {
+    updateInspectorCard(lot, cluster);
+  }
+  renderBerandaMasterplanGrid(cluster);
+}
+
+function updateInspectorCard(lot, cluster) {
+  const tagEl = document.getElementById('inspLotTag');
+  const priceEl = document.getElementById('inspLotPrice');
+  const statusEl = document.getElementById('inspLotStatus');
+
+  if (tagEl) tagEl.textContent = 'Kavling ' + cluster.toUpperCase() + ' ' + lot.num;
+  if (priceEl) priceEl.textContent = lot.price;
+  if (statusEl) statusEl.textContent = lot.status.toUpperCase();
+}
+
+function orderInspectedLot() {
+  openOrderModal('Klaster ' + currentBerandaLotCluster.toUpperCase(), inspectedLotNumber, '650.000.000');
+}
+
+/* Investment Simulator Switcher */
+function switchBerandaInvestType(type, btnEl) {
+  if (btnEl && btnEl.parentElement) {
+    btnEl.parentElement.querySelectorAll('.cluster-pill-btn').forEach(b => b.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  }
+
+  const roiVal = document.getElementById('investRoiVal');
+  const roiPct = document.getElementById('investRoiPercent');
+  const buyPrice = document.getElementById('investBuyPrice');
+  const rentYield = document.getElementById('investRentalYield');
+  const capGain = document.getElementById('investCapitalGain');
+  const year5Val = document.getElementById('investYear5Val');
+  const annualized = document.getElementById('investAnnualized');
+  const yieldRate = document.getElementById('investYieldRate');
+
+  if (type === 'tipe60') {
+    if (roiVal) roiVal.textContent = 'Rp 674.655.879';
+    if (roiPct) roiPct.textContent = '+135% Return on Investment';
+    if (buyPrice) buyPrice.textContent = 'Rp 500.000.000';
+    if (rentYield) rentYield.textContent = 'Rp 35.000.000 / thn';
+    if (capGain) capGain.textContent = '15% / tahun';
+    if (year5Val) year5Val.textContent = 'Rp 1.174.655.879';
+    if (annualized) annualized.textContent = '27.1% p.a.';
+    if (yieldRate) yieldRate.textContent = '6.9% / tahun';
+  } else {
+    if (roiVal) roiVal.textContent = 'Rp 916.650.000';
+    if (roiPct) roiPct.textContent = '+135% Return on Investment';
+    if (buyPrice) buyPrice.textContent = 'Rp 679.000.000';
+    if (rentYield) rentYield.textContent = 'Rp 48.000.000 / thn';
+    if (capGain) capGain.textContent = '15% / tahun';
+    if (year5Val) year5Val.textContent = 'Rp 1.595.650.000';
+    if (annualized) annualized.textContent = '27.1% p.a.';
+    if (yieldRate) yieldRate.textContent = '7.1% / tahun';
+  }
+}
+
+/* About 5-Tabs Switcher */
+function switchBerandaAboutTab(tabName, btnEl) {
+  if (btnEl && btnEl.parentElement) {
+    btnEl.parentElement.querySelectorAll('.about-tab-btn').forEach(b => b.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  }
+
+  const panes = {
+    tentang: document.getElementById('paneAboutTentang'),
+    spesifikasi: document.getElementById('paneAboutSpesifikasi'),
+    progres: document.getElementById('paneAboutProgres'),
+    cara: document.getElementById('paneAboutCara'),
+    promo: document.getElementById('paneAboutPromo')
+  };
+
+  Object.keys(panes).forEach(k => {
+    if (panes[k]) {
+      panes[k].style.display = k === tabName ? 'block' : 'none';
+      panes[k].classList.toggle('is-active', k === tabName);
+    }
+  });
+}
+
+/* Interactive KPR Calculator */
+function updateKprFromSlider() {
+  const priceSlider = document.getElementById('kprPriceSlider');
+  const dpSlider = document.getElementById('kprDpSlider');
+  const tenorSelect = document.getElementById('kprTenorSelect');
+  const interestSelect = document.getElementById('kprInterestSelect');
+
+  if (!priceSlider || !dpSlider || !tenorSelect || !interestSelect) return;
+
+  const price = parseFloat(priceSlider.value) || 650000000;
+  const dpPct = parseFloat(dpSlider.value) || 20;
+  const tenorYears = parseFloat(tenorSelect.value) || 15;
+  const interestPct = parseFloat(interestSelect.value) || 7.5;
+
+  const dpAmount = price * (dpPct / 100);
+  const loanPrincipal = price - dpAmount;
+  const totalMonths = tenorYears * 12;
+  const monthlyRate = (interestPct / 100) / 12;
+
+  // Annuity formula: M = P * [r(1+r)^n] / [(1+r)^n - 1]
+  const installment = (loanPrincipal * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / 
+                      (Math.pow(1 + monthlyRate, totalMonths) - 1);
+
+  // Update UI
+  const displayPrice = document.getElementById('kprDisplayPrice');
+  const displayDp = document.getElementById('kprDisplayDp');
+  const displayInstallment = document.getElementById('kprMonthlyInstallment');
+  const displayPrincipal = document.getElementById('kprLoanPrincipal');
+  const displayTenor = document.getElementById('kprTenorMonths');
+
+  if (displayPrice) displayPrice.textContent = 'Rp ' + price.toLocaleString('id-ID');
+  if (displayDp) displayDp.textContent = dpPct + '% (Rp ' + dpAmount.toLocaleString('id-ID') + ')';
+  if (displayInstallment) displayInstallment.textContent = 'Rp ' + Math.round(installment).toLocaleString('id-ID') + ' / bln';
+  if (displayPrincipal) displayPrincipal.textContent = 'Rp ' + loanPrincipal.toLocaleString('id-ID');
+  if (displayTenor) displayTenor.textContent = totalMonths + ' Bulan (' + tenorYears + ' Thn)';
+}
+
+/* Super App Feedback Toast */
+function triggerAppFeature(featureKey) {
+  const toast = document.getElementById('appMockToast');
+  if (!toast) return;
+
+  const messages = {
+    lock: '✓ Smart Door Lock terhubung: Pintu Depan Terbuka (Akses Bluetooth/PIN Aman)',
+    qr: '✓ QR Code Akses Tamu 24 Jam berhasil dibuat dan dikirim ke kontak WhatsApp Anda',
+    booking: '✓ Reservasi Kolam Renang & Main Hall Clubhouse dikonfirmasi untuk Minggu Pagi',
+    billing: '✓ Tagihan IPL & Air Bersih bulan berjalan: LUNAS (Auto-debit Terjadwal)',
+    report: '✓ Laporan kendala ke Estate Management diterima: Petugas teknisi segera merapat',
+    panic: '🚨 Sinyal Darurat terkirim ke Pos Keamanan Utama! Security sedang meluncur ke unit'
+  };
+
+  toast.textContent = messages[featureKey] || 'Fitur aktif';
+  toast.style.borderColor = featureKey === 'panic' ? '#e53935' : '#81c784';
+  toast.style.color = featureKey === 'panic' ? '#ffcdd2' : '#c8e6c9';
+}
+
+/* FAQ Accordion Controller */
+function toggleFaqAccordion(btn) {
+  const item = btn.closest('.faq-item');
+  if (!item) return;
+
+  const pane = item.querySelector('.faq-answer-pane');
+  const isOpen = item.classList.contains('is-open');
+
+  if (isOpen) {
+    item.classList.remove('is-open');
+    if (pane) pane.style.display = 'none';
+  } else {
+    item.classList.add('is-open');
+    if (pane) pane.style.display = 'block';
+  }
+}
+
+function filterFaqCategory(category, btnEl) {
+  if (btnEl && btnEl.parentElement) {
+    btnEl.parentElement.querySelectorAll('.faq-cat-btn').forEach(b => b.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  }
+
+  const items = document.querySelectorAll('.faq-accordion-list .faq-item');
+  items.forEach(item => {
+    const itemCat = item.getAttribute('data-cat');
+    if (category === 'all' || itemCat === category) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
