@@ -452,6 +452,20 @@
             </div>
           </div>
 
+          <!-- Room 04 Quick Mode Switcher & Auto-Scroll Nav -->
+          <div class="room4-nav-pills stagger-item" data-delay="270">
+            <button class="r4-nav-pill is-active" id="btnJumpCustomizer" onclick="scrollToRoom4Section('customizerCard', this)" type="button">
+              <span class="pill-icon">📐</span>
+              <span>Kustomisasi Ruang</span>
+              <span class="pill-arrow">↓</span>
+            </button>
+            <button class="r4-nav-pill" id="btnJumpSiteplan" onclick="scrollToRoom4Section('siteplanCard', this)" type="button">
+              <span class="pill-icon">🗺️</span>
+              <span>Pilih Site Plan</span>
+              <span class="pill-arrow">↓</span>
+            </button>
+          </div>
+
           <!-- KUSTOMISASI DENAH & TATA RUANG (Image 2) -->
           <div class="room-card compact-card customizer-card stagger-item" data-delay="300" id="customizerCard">
             <div class="customizer-header">
@@ -618,10 +632,10 @@
             <!-- Tombol Simpan Kustomisasi -->
             <div class="customizer-actions">
               <button class="btn-primary-forest btn-save-custom" id="btnSaveCustom" onclick="saveRoomCustomization()" type="button">
-                <span>✓ Simpan Desain Ruangan &amp; Selesaikan Kustomisasi</span>
+                <span>✓ Simpan Desain Ruangan</span>
               </button>
               <div class="custom-success-banner" id="customSuccessBanner" aria-live="polite">
-                <span>✓ Desain ruangan tersimpan! Tombol perjalanan berikutnya di bawah telah terbuka.</span>
+                <span>✓ Desain ruangan tersimpan! Menggeser ke Site Plan untuk konfirmasi kavling...</span>
               </div>
             </div>
           </div>
@@ -696,6 +710,16 @@
               <div class="siteplan-stat-cell">
                 <span class="stat-name">RTH Kawasan</span>
                 <strong class="stat-number" id="statRthVal">119,60 m²</strong>
+              </div>
+            </div>
+
+            <!-- Site Plan Confirmation Action -->
+            <div class="siteplan-actions">
+              <button class="btn-primary-forest btn-save-siteplan" id="btnSaveSiteplan" onclick="saveSiteplanChoice()" type="button">
+                <span id="btnSaveSiteplanText">✓ Konfirmasi &amp; Simpan Kavling</span>
+              </button>
+              <div class="custom-success-banner siteplan-success-banner" id="siteplanSuccessBanner" aria-live="polite">
+                <span id="siteplanSuccessText">✓ Pilihan kavling tersimpan!</span>
               </div>
             </div>
           </div>

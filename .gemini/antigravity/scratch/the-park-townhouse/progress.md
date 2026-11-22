@@ -184,3 +184,15 @@
   - **Multi-Stage Photographic Blur & Brightness**: Engineered a 5-step keyframe curve (`20px blur` + `1.75x brightness` + `1.3x saturation` -> `10px blur` -> `3.5px blur` -> `0.8px blur` -> `0px crisp focus`), coupled with golden motes burst (`natureFX.burstMotes`) for seamless visual warmth.
   - **Soft Vignetted Map Exit (`is-exiting-fade`)**: Configured Room 03 exit with smooth scale `1.04` and `14px blur` over 0.85s for gentle cross-dissolve.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #16: Room 04 Compact Addons Grid, Auto-Scroll Section Transitions & Site Plan Confirmation Button
+- **Context & Objective**: Refine Room 04 layout and interaction flow per user feedback: compact 2-column addons checklist without text wrapping, interactive navigation pills to jump/scroll to customizer or site plan, explicit site plan lot confirmation button, and auto-scroll transitions after saving.
+- **Key Changes Implemented**:
+  - **Sleek 2-Column Addons Grid**: Re-architected `.addons-grid` into a clean 2-column layout (`grid-template-columns: repeat(2, 1fr)`) with compact items (38px height, 14px checkboxes, 9.5px font) eliminating vertical clutter and awkward text breaks.
+  - **Quick Section Nav Pills (`.room4-nav-pills`)**: Added navigation pills (`#btnJumpCustomizer`, `#btnJumpSiteplan`) above the customizer card with frosted glass style and active green accent for quick jumping between room customization and site plan selection.
+  - **Section Auto-Scroll Transitions (`scrollToRoom4Section`)**: Created smooth localized scrolling within `#room-4` (`room4.scrollTo({ top: target.offsetTop - 12, behavior: 'smooth' })`) with focus highlight glow animation (`@keyframes sectionFocusGlow`). Saving room customization automatically smooth-scrolls down to the site plan section.
+  - **Explicit Site Plan Save Button (`#btnSaveSiteplan`)**: Integrated `✓ Konfirmasi & Simpan Kavling [ID]` button with active confirmation state and dynamic text update upon lot selection.
+  - **Streamlined Dual Progression**: Updated `checkUnlockProgress()` so `#btnNextToRoom5` (`Intip Kehidupan Bersama →`) unlocks once both room customization and site plan lot are explicitly confirmed.
+- **Status**: Completed & Verified.

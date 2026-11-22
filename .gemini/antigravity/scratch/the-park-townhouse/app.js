@@ -852,6 +852,32 @@ let selectedLotId = null;
 let hasSelectedSiteplanLot = false;
 let hasSavedRoomCustomization = false;
 
+function scrollToRoom4Section(sectionId, btnEl) {
+  const room4 = document.getElementById('room-4');
+  const target = document.getElementById(sectionId);
+  if (!room4 || !target) return;
+
+  if (btnEl) {
+    document.querySelectorAll('.r4-nav-pill').forEach((b) => b.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  } else {
+    const pillId = sectionId === 'customizerCard' ? 'btnJumpCustomizer' : 'btnJumpSiteplan';
+    const pill = document.getElementById(pillId);
+    if (pill) {
+      document.querySelectorAll('.r4-nav-pill').forEach((b) => b.classList.remove('is-active'));
+      pill.classList.add('is-active');
+    }
+  }
+
+  const targetTop = target.offsetTop - 12;
+  room4.scrollTo({ top: targetTop, behavior: 'smooth' });
+
+  target.classList.remove('is-section-focused');
+  void target.offsetWidth;
+  target.classList.add('is-section-focused');
+  setTimeout(() => target.classList.remove('is-section-focused'), 1000);
+}
+
 function checkUnlockProgress() {
   const nextBtn = document.getElementById('btnNextToRoom5');
   const lockedHint = document.getElementById('navHintLocked');
@@ -866,26 +892,26 @@ function checkUnlockProgress() {
       lockedHint.classList.add('is-hidden');
     }
     if (banner) {
-      banner.innerHTML = '<span>✓ Denah interior tersimpan &amp; kavling terpilih! Tombol perjalanan di bawah telah terbuka.</span>';
-      banner.classList.add('is-visible');
+      banner.innerHTML = '<span>✓ Denah interior tersimpan &amp; kavling terkonfirmasi! Tombol perjalanan terbuka di bawah.</span>';
+      banner.classList.add('is-shown');
     }
   } else if (hasSelectedSiteplanLot && !hasSavedRoomCustomization) {
     if (nextBtn) nextBtn.classList.add('is-hidden');
     if (lockedHint) {
       lockedHint.classList.remove('is-hidden');
-      lockedHint.innerHTML = '<span>🔒 Kavling dipilih! Tekan "✓ Simpan Desain Ruangan" di atas untuk membuka tombol lanjut.</span>';
+      lockedHint.innerHTML = '<span>🔒 Kavling terkonfirmasi! Tekan "✓ Simpan Desain Ruangan" di atas untuk membuka tombol lanjut.</span>';
     }
   } else if (!hasSelectedSiteplanLot && hasSavedRoomCustomization) {
     if (nextBtn) nextBtn.classList.add('is-hidden');
     if (lockedHint) {
       lockedHint.classList.remove('is-hidden');
-      lockedHint.innerHTML = '<span>🔒 Kustomisasi ruangan tersimpan! Pilih nomor kavling di Site Plan untuk membuka tombol lanjut.</span>';
+      lockedHint.innerHTML = '<span>🔒 Kustomisasi ruangan tersimpan! Tekan "✓ Konfirmasi &amp; Simpan Kavling" di Site Plan untuk membuka tombol lanjut.</span>';
     }
   } else {
     if (nextBtn) nextBtn.classList.add('is-hidden');
     if (lockedHint) {
       lockedHint.classList.remove('is-hidden');
-      lockedHint.innerHTML = '<span>🔒 Selesaikan kustomisasi tata ruang &amp; pilih kavling di site plan untuk membuka tombol lanjut</span>';
+      lockedHint.innerHTML = '<span>🔒 Selesaikan kustomisasi tata ruang &amp; konfirmasi kavling di site plan untuk membuka tombol lanjut</span>';
     }
   }
 }
@@ -969,9 +995,9 @@ function selectKavlingLot(lotId, isUserClick = true) {
   if (type) type.textContent = lot.type;
   if (price) price.textContent = lot.price;
 
-  if (isUserClick) {
-    hasSelectedSiteplanLot = true;
-    checkUnlockProgress();
+  const btnText = document.getElementById('btnSaveSiteplanText');
+  if (btnText) {
+    btnText.textContent = `✓ Konfirmasi & Simpan Kavling ${lot.id}`;
   }
 }
 
@@ -1169,6 +1195,39 @@ function updateCustomizerTotal() {
 
 function saveRoomCustomization() {
   hasSavedRoomCustomization = true;
+  const banner = document.getElementById('customSuccessBanner');
+  if (banner) {
+    banner.innerHTML = '<span>✓ Desain ruangan tersimpan! Menggeser ke Site Plan untuk konfirmasi kavling...</span>';
+    banner.classList.add('is-shown');
+  }
+
+  checkUnlockProgress();
+
+  // Auto scroll down to siteplan with smooth transition
+  setTimeout(() => {
+    scrollToRoom4Section('siteplanCard');
+  }, 350);
+
+  unlockCard({ id: 22, title: 'Kustomisasi Denah Interior Tersimpan', room: 'Ruang Rumah' });
+}
+
+function saveSiteplanChoice() {
+  hasSelectedSiteplanLot = true;
+  const data = SITEPLAN_DATA[currentClusterKey] || SITEPLAN_DATA.nagoya;
+  const lot = data.lots.find((l) => l.id === selectedLotId) || data.lots[0];
+  const lotLabel = lot ? lot.name : (selectedLotId || 'Kavling');
+
+  const banner = document.getElementById('siteplanSuccessBanner');
+  if (banner) {
+    banner.innerHTML = `<span>✓ Pilihan <strong>${lotLabel}</strong> berhasil dikonfirmasi!</span>`;
+    banner.classList.add('is-shown');
+  }
+
+  const btnText = document.getElementById('btnSaveSiteplanText');
+  if (btnText) {
+    btnText.textContent = `✓ ${lotLabel} Terkonfirmasi`;
+  }
+
   checkUnlockProgress();
 
   if (hasSelectedSiteplanLot && hasSavedRoomCustomization) {
@@ -1176,11 +1235,15 @@ function saveRoomCustomization() {
     if (room4Section) {
       setTimeout(() => {
         room4Section.scrollTo({ top: room4Section.scrollHeight, behavior: 'smooth' });
-      }, 150);
+      }, 250);
     }
+  } else if (!hasSavedRoomCustomization) {
+    setTimeout(() => {
+      scrollToRoom4Section('customizerCard');
+    }, 450);
   }
 
-  unlockCard({ id: 22, title: 'Kustomisasi Denah Interior Tersimpan', room: 'Ruang Rumah' });
+  unlockCard({ id: 23, title: `Kavling ${lotLabel} Terkonfirmasi`, room: 'Ruang Rumah' });
 }
 
 /* --------------------------------------------------------------------------
