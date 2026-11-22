@@ -364,3 +364,15 @@
     - Set soft, understated natural shadow (`0 3px 12px rgba(0, 0, 0, 0.22)`) with a warm matte Japandi sand palette (`#d8c6a2` default, `#dfceab` hover).
     - Preserved 44px mobile touch target ergonomics and subtle active click feedback.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #26: Align Room 01 Headline Typography with Room 02 Room-Title Style
+- **Context & Objective**: Match the typography style of "Ada rumah. Ada rasa pulang." in Room 01 (`media_1795322341695_b6026304.png`) to the exact style of "Pagi seperti apa yang ingin Anda bangun?" (`.room-title`).
+- **Key Changes Implemented**:
+  - **Typography Alignment (`styles.css` & `index.html`)**:
+    - Changed `.hero-headline` font size from `36px` to `24px`.
+    - Set `line-height` to `1.14` and `margin-bottom: 8px` (matching `.room-title`).
+    - Removed custom `-0.01em` letter spacing to preserve natural serif rendering.
+    - Added `.room-title` class to `<h1 class="room-title hero-headline">` in Room 01.
+- **Status**: Completed & Verified.

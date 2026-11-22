@@ -1976,11 +1976,11 @@ body {
 /* Room 01 Typography & Buttons */
 .hero-headline {
   font-family: var(--font-serif);
-  font-size: 36px;
+  font-size: 24px;
   font-weight: 400;
-  line-height: 1.08;
+  line-height: 1.14;
   color: #f6f3ec;
-  letter-spacing: -0.01em;
+  margin-bottom: 8px;
 }
 
 .hero-subcopy {
