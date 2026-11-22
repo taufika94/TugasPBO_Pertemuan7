@@ -601,10 +601,18 @@ function goToRoom(roomNum) {
   const nextRoomEl = document.getElementById(`room-${roomNum}`);
   const goingForward = roomNum > currentRoom;
 
-  // Room 03 -> 04 uses Fade-in from Center transition ("fade in dari tengah")
+  // Room 03 -> 04 uses Fade-in from Center transition ("fade in dari tengah") with Light Bloom & Cinematic Blur
   if (roomNum === 4 && currentRoom === 3) {
     updateBackgroundScene(roomNum);
     triggerRoomNatureFX(roomNum);
+    natureFX.burstMotes(natureFX.width / 2, natureFX.height * 0.48, 28);
+
+    const bloomEl = document.getElementById('centerLightBloom');
+    if (bloomEl) {
+      bloomEl.classList.remove('is-blooming');
+      void bloomEl.offsetWidth;
+      bloomEl.classList.add('is-blooming');
+    }
 
     if (prevRoomEl) {
       prevRoomEl.classList.remove('is-active');
@@ -621,13 +629,14 @@ function goToRoom(roomNum) {
       }
       if (roomCardsMap[roomNum]) unlockCard(roomCardsMap[roomNum]);
       currentRoom = roomNum;
-    }, 180);
+    }, 120);
 
     setTimeout(() => {
       if (prevRoomEl) prevRoomEl.classList.remove('is-exiting-fade');
       if (nextRoomEl) nextRoomEl.classList.remove('is-center-fade-in');
+      if (bloomEl) bloomEl.classList.remove('is-blooming');
       isTransitioning = false;
-    }, 950);
+    }, 1300);
     return;
   }
 

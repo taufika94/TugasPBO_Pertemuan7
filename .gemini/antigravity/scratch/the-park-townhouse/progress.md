@@ -173,3 +173,14 @@
   - **Double Unlock Progression Gate**: Wired `hasSelectedSiteplanLot` and `hasSavedRoomCustomization`; `#btnNextToRoom5` (`Intip Kehidupan Bersama →`) is revealed ONLY when both requirements are fulfilled, with `#navHintLocked` dynamically explaining whichever step remains incomplete.
   - **360° Interior Panorama Enhanced**: Added live compass degree readout (`#panoAngleBadge`), quick angle presets (`Ruang Tamu`, `Kamar Utama`, `Dapur & Tangga`), and idle continuous gentle panning.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #15: Cinematic Center Fade-In with Warm Light Bloom & Multi-Stage Blur Dissipation
+- **Context & Objective**: Enhance the Room 03 (Ruang Peta) to Room 04 (Ruang Rumah) transition with ultra-smooth easing, warm golden center light bloom, and multi-stage depth-of-field blur dissipation.
+- **Key Changes Implemented**:
+  - **Ultra-Smooth Center Radial Fade In**: Replaced basic cubic bezier with a refined luxury easing `cubic-bezier(0.2, 0.9, 0.28, 1)` across 1.25s duration, transitioning scale smoothly from `0.86` to `1` with radial clip-path expansion from `circle(8%)` to `circle(150%)`.
+  - **Warm Golden Light Bloom (`#centerLightBloom`)**: Added radial lens bloom element radiating warm amber light (`rgba(255, 248, 225, 0.95)` through `rgba(245, 207, 135, 0.72)`) expanding from `50% 48%` to mimic natural daylight flooding the room upon entrance.
+  - **Multi-Stage Photographic Blur & Brightness**: Engineered a 5-step keyframe curve (`20px blur` + `1.75x brightness` + `1.3x saturation` -> `10px blur` -> `3.5px blur` -> `0.8px blur` -> `0px crisp focus`), coupled with golden motes burst (`natureFX.burstMotes`) for seamless visual warmth.
+  - **Soft Vignetted Map Exit (`is-exiting-fade`)**: Configured Room 03 exit with smooth scale `1.04` and `14px blur` over 0.85s for gentle cross-dissolve.
+- **Status**: Completed & Verified.
