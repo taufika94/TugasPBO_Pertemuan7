@@ -854,3 +854,24 @@
     - Converted `.surat-calc-container` into a 2-column grid layout for screens >= 680px.
     - Compacted input heights to 38px, reduced payment breakdown box and comparison cards padding.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #55: Global Harmonization of Typography, Color Palette, Layout & Button Sizing
+- **Context & Objective**: Eliminate disparate styling, oversized typography, mismatched color palettes, and bloated buttons across all views (Beranda, Unit, Surat Cinta, Master Plan, and Modals) into a unified, harmonious Japandi Modern design system.
+- **Key Changes Implemented**:
+  - **Typographic Scale Unification (styles.css)**:
+    - Standardized all Section Headings (`.section-card-title`, `.section-title`, `.section-lead-title`, `.cb-name`, `.castle-name`, `.siteplan-cluster-title`) to `16px - 17.5px` with `var(--font-serif)` bold, replacing oversized 22px-30px variants.
+    - Standardized Hero/Page Headings to `clamp(17px, 3.2vw, 20px)`.
+    - Standardized Card Titles & Unit IDs (`.pillar-title`, `.uic-id`, `.b-unit-id`, `.kavling-id-title`, `.price-unit-id`) to `13px - 14px` bold (eliminating overlap on images).
+    - Standardized Highlight Metrics & Large Numbers (`.pillar-num`, `.stat-val`, `.m-val`, `.castle-price-val`, `.cb-p-val`, `.price-val`) to `15px - 16px` bold (replacing oversized 22px-26px numbers).
+    - Standardized Eyebrows/Tags to `9px - 10px` uppercase, and Body text to `11px - 11.5px`.
+  - **Unified Button System (styles.css)**:
+    - Primary Action Buttons (`.btn-primary-forest`, `.btn-order-kavling-champagne`, `.uic-action-btn`, `.btn-card-order`, `.btn-save-siteplan`, `.btn-open-door`): Standardized to compact `38px` height (padding `0 14px-16px`), `11.5px` semi-bold font, `8px` border radius, and deep forest green gradient (`linear-gradient(135deg, #11332a 0%, #1e4d40 100%)`).
+    - Secondary/Outline Buttons (`.btn-secondary-link`, `.btn-card-denah`, `.btn-castle-detail`, `.btn-reset-filters`, `.price-tab-pill`, `.spec-tab-btn`): Standardized to `34px - 36px` height, `11px` font, clean neutral surface (`#fbfaf7`), and `1px solid #dcd5c7` border with high-contrast text.
+    - Filter/Pill/Chip Buttons (`.cluster-pill-btn`, `.radius-filter-pill`, `.cluster-focus-pill`, `.f-chip`, `.poi-cat-chip`, `.sp-cluster-btn`, `.kavling-pill-btn`): Standardized to `32px - 34px` height (down from bloated 44px), `10.5px - 11px` font, and 6px/pill border radius.
+  - **Layout & Card Harmony (styles.css)**:
+    - Standardized card border radius to `12px` across `.landing-section-card`, `#secMasterPlan`, `.cluster-block-card`, `.unit-filter-card`, `.unit-hero-header-card`, and `.landing-hero-card`.
+    - Standardized content panel max width to `860px; margin: 0 auto; width: 100%;` across `.landing-tab-panel`, `.unit-catalog-page-container`, and `.surat-magazine-container`.
+    - Compacted `.b-unit-preview-card` to 160px x 215px and `.cluster-castle-hero-card` to 230px height.
+- **Status**: Completed, Verified & Auto-Pushed.
