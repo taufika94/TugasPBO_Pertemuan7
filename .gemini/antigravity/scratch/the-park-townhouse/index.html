@@ -1709,10 +1709,10 @@
 
             <!-- 11. TIPE UNIT (DEDICATED LUXURY PRODUCT CARDS) -->
             <div class="product-showcase-section" id="productShowcaseSection">
-              <div class="product-showcase-header">
-                <span class="section-tag">KATALOG PRODUK UTAMA</span>
-                <h3 class="section-title">Pilihan Tipe Produk Hunian</h3>
-                <p class="section-desc">Setiap tipe dirancang dengan standar arsitektur Japandi dua lantai, garasi tertutup, dan sertifikat SHM pecah sempurna.</p>
+              <div class="section-card-head">
+                <span class="section-tag-gold">KATALOG PRODUK UTAMA</span>
+                <h2 class="section-card-title">Pilihan Tipe Produk Hunian</h2>
+                <p class="section-card-sub">Setiap tipe dirancang dengan standar arsitektur Japandi dua lantai, garasi tertutup, dan sertifikat SHM pecah sempurna.</p>
               </div>
 
               <div class="product-cards-grid">
@@ -1723,20 +1723,22 @@
                     <span class="badge-cluster">Klaster Nagoya</span>
                   </div>
                   <div class="product-card-img-wrap">
-                    <img src="assets/drive/interior-japandi.jpeg" alt="Tipe Gold Nagoya" class="product-card-img" />
-                    <span class="product-card-spec-tag">LB 75 m² · LT 60–63 m²</span>
+                    <img src="assets/drive/house.jpeg" alt="Tipe Gold Nagoya" class="product-card-img" />
+                    <span class="product-card-spec-tag">Tipe Gold Nagoya LB 75 m² · LT 60–63 m²</span>
                   </div>
                   <div class="product-card-body">
                     <div class="product-title-row">
-                      <h4 class="product-name">Tipe Gold (Nagoya)</h4>
-                      <span class="product-code">B.02 – B.04</span>
+                      <div>
+                        <h4 class="product-name">Tipe Gold (Nagoya)</h4>
+                        <span class="product-code">B.02 – B.04</span>
+                      </div>
                     </div>
                     <p class="product-tagline">Hunian Japandi terdepan dengan akses tercepat ke gerbang dan clubhouse.</p>
                     <div class="product-features-row">
-                      <span><strong>3</strong> KT</span>
-                      <span><strong>2</strong> KM</span>
-                      <span><strong>1+1</strong> Garasi</span>
-                      <span><strong>2</strong> Lantai</span>
+                      <div class="feat-badge"><span>KT</span><strong>3</strong></div>
+                      <div class="feat-badge"><span>KM</span><strong>2</strong></div>
+                      <div class="feat-badge"><span>Garasi</span><strong>1+1</strong></div>
+                      <div class="feat-badge"><span>Lantai</span><strong>2</strong></div>
                     </div>
                     <div class="product-pricing-box">
                       <div class="price-row">
@@ -1744,13 +1746,19 @@
                         <strong class="price-val">Rp 650 Juta</strong>
                       </div>
                       <div class="price-sub-row">
-                        <span>Cash Tempo 24 bln: Rp 30,5 jt/bln</span>
-                        <span>KPR: Rp 4,2 jt/bln</span>
+                        <span>Cash Tempo 24 bln: <strong>Rp 30,5 jt/bln</strong></span>
+                        <span>KPR: <strong>Rp 4,2 jt/bln</strong></span>
                       </div>
                     </div>
                     <div class="product-card-actions">
-                      <button type="button" class="btn-card-denah" onclick="openDenahSpecModal('Tipe Gold (Nagoya)', 'denah-tipe60.jpg')">Lihat Denah</button>
-                      <button type="button" class="btn-card-order" onclick="openOrderModal('Tipe Gold (Nagoya)', 'B.02-B.04', '650.000.000')">Pesan Unit</button>
+                      <button type="button" class="btn-card-denah" onclick="openDenahSpecModal('Tipe Gold (Nagoya)', 'denah-tipe60.jpg')">
+                        <span>Lihat Denah</span>
+                        <span>↗</span>
+                      </button>
+                      <button type="button" class="btn-card-order" onclick="openOrderModal('Tipe Gold (Nagoya)', 'B.02-B.04', 'Rp 650 Juta')">
+                        <span>Pesan Unit</span>
+                        <span>→</span>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -1758,24 +1766,26 @@
                 <!-- PRODUCT CARD 2: TIPE DIAMOND (TOKYO) -->
                 <div class="product-card-item">
                   <div class="product-card-badge-row">
-                    <span class="badge-ready">Eksklusif Intim</span>
+                    <span class="badge-ready badge-exclusive">Eksklusif Intim</span>
                     <span class="badge-cluster">Klaster Tokyo</span>
                   </div>
                   <div class="product-card-img-wrap">
-                    <img src="assets/drive/fasad-senja.jpeg" alt="Tipe Diamond Tokyo" class="product-card-img" />
-                    <span class="product-card-spec-tag">LB 80 m² · LT 80 m²</span>
+                    <img src="assets/drive/dalam-6.png" alt="Tipe Diamond Tokyo" class="product-card-img" />
+                    <span class="product-card-spec-tag">Tipe Diamond Tokyo LB 80 m² · LT 80 m²</span>
                   </div>
                   <div class="product-card-body">
                     <div class="product-title-row">
-                      <h4 class="product-name">Tipe Diamond (Tokyo)</h4>
-                      <span class="product-code">A.05 – A.08</span>
+                      <div>
+                        <h4 class="product-name">Tipe Diamond (Tokyo)</h4>
+                        <span class="product-code">A.05 – A.08</span>
+                      </div>
                     </div>
                     <p class="product-tagline">Skala lingkungan lebih privat dengan taman belakang ekstra dan fleksibilitas ruang.</p>
                     <div class="product-features-row">
-                      <span><strong>3–4</strong> KT</span>
-                      <span><strong>2–3</strong> KM</span>
-                      <span><strong>1+1</strong> Garasi</span>
-                      <span><strong>2</strong> Lantai</span>
+                      <div class="feat-badge"><span>KT</span><strong>3–4</strong></div>
+                      <div class="feat-badge"><span>KM</span><strong>2–3</strong></div>
+                      <div class="feat-badge"><span>Garasi</span><strong>1+1</strong></div>
+                      <div class="feat-badge"><span>Lantai</span><strong>2</strong></div>
                     </div>
                     <div class="product-pricing-box">
                       <div class="price-row">
@@ -1783,13 +1793,19 @@
                         <strong class="price-val">Rp 679 Juta</strong>
                       </div>
                       <div class="price-sub-row">
-                        <span>Cash Tempo 24 bln: Rp 31,9 jt/bln</span>
-                        <span>KPR: Rp 4,4 jt/bln</span>
+                        <span>Cash Tempo 24 bln: <strong>Rp 31,9 jt/bln</strong></span>
+                        <span>KPR: <strong>Rp 4,4 jt/bln</strong></span>
                       </div>
                     </div>
                     <div class="product-card-actions">
-                      <button type="button" class="btn-card-denah" onclick="openDenahSpecModal('Tipe Diamond (Tokyo)', 'denah-tipe60.jpg')">Lihat Denah</button>
-                      <button type="button" class="btn-card-order" onclick="openOrderModal('Tipe Diamond (Tokyo)', 'A.05-A.08', '679.000.000')">Pesan Unit</button>
+                      <button type="button" class="btn-card-denah" onclick="openDenahSpecModal('Tipe Diamond (Tokyo)', 'denah-tipe80.jpg')">
+                        <span>Lihat Denah</span>
+                        <span>↗</span>
+                      </button>
+                      <button type="button" class="btn-card-order" onclick="openOrderModal('Tipe Diamond (Tokyo)', 'A.05-A.08', 'Rp 679 Juta')">
+                        <span>Pesan Unit</span>
+                        <span>→</span>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -1797,24 +1813,26 @@
                 <!-- PRODUCT CARD 3: TIPE ROYAL DIAMOND (OSAKA) -->
                 <div class="product-card-item">
                   <div class="product-card-badge-row">
-                    <span class="badge-ready">Grand Luxury</span>
+                    <span class="badge-ready badge-royal">Grand Luxury</span>
                     <span class="badge-cluster">Klaster Osaka</span>
                   </div>
                   <div class="product-card-img-wrap">
-                    <img src="assets/drive/aerial-drone.jpeg" alt="Tipe Royal Diamond Osaka" class="product-card-img" />
-                    <span class="product-card-spec-tag">LB 110 m² · LT 90–125 m²</span>
+                    <img src="assets/drive/housee.jpeg" alt="Tipe Royal Diamond Osaka" class="product-card-img" />
+                    <span class="product-card-spec-tag">Tipe Royal Diamond Osaka LB 110 m² · LT 90–125 m²</span>
                   </div>
                   <div class="product-card-body">
                     <div class="product-title-row">
-                      <h4 class="product-name">Tipe Royal Diamond (Osaka)</h4>
-                      <span class="product-code">C.01 – C.06</span>
+                      <div>
+                        <h4 class="product-name">Tipe Royal Diamond (Osaka)</h4>
+                        <span class="product-code">C.01 – C.06</span>
+                      </div>
                     </div>
                     <p class="product-tagline">Varian termewah dengan garasi dobel muat hingga 3 mobil keluarga dan suite bedroom luas.</p>
                     <div class="product-features-row">
-                      <span><strong>4</strong> KT</span>
-                      <span><strong>3</strong> KM</span>
-                      <span><strong>2+1</strong> Garasi (3 Mobil)</span>
-                      <span><strong>2</strong> Lantai</span>
+                      <div class="feat-badge"><span>KT</span><strong>4</strong></div>
+                      <div class="feat-badge"><span>KM</span><strong>3</strong></div>
+                      <div class="feat-badge"><span>Garasi</span><strong>2+1 (3 Mobil)</strong></div>
+                      <div class="feat-badge"><span>Lantai</span><strong>2</strong></div>
                     </div>
                     <div class="product-pricing-box">
                       <div class="price-row">
@@ -1822,13 +1840,19 @@
                         <strong class="price-val">Rp 895 Juta</strong>
                       </div>
                       <div class="price-sub-row">
-                        <span>Cash Tempo 24 bln: Rp 42,1 jt/bln</span>
-                        <span>KPR: Rp 5,8 jt/bln</span>
+                        <span>Cash Tempo 24 bln: <strong>Rp 42,1 jt/bln</strong></span>
+                        <span>KPR: <strong>Rp 5,8 jt/bln</strong></span>
                       </div>
                     </div>
                     <div class="product-card-actions">
-                      <button type="button" class="btn-card-denah" onclick="openDenahSpecModal('Tipe Royal Diamond (Osaka)', 'denah-tipe110.jpg')">Lihat Denah</button>
-                      <button type="button" class="btn-card-order" onclick="openOrderModal('Tipe Royal Diamond (Osaka)', 'C.01-C.06', '895.000.000')">Pesan Unit</button>
+                      <button type="button" class="btn-card-denah" onclick="openDenahSpecModal('Tipe Royal Diamond (Osaka)', 'denah-tipe110.jpg')">
+                        <span>Lihat Denah</span>
+                        <span>↗</span>
+                      </button>
+                      <button type="button" class="btn-card-order" onclick="openOrderModal('Tipe Royal Diamond (Osaka)', 'C.01-C.06', 'Rp 895 Juta')">
+                        <span>Pesan Unit</span>
+                        <span>→</span>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -1836,7 +1860,7 @@
             </div>
 
             <!-- 12. FASILITAS PREMIUM 6-GRID -->
-            <div class="landing-section-card">
+            <div class="landing-section-card" id="secFasilitasKawasan">
               <div class="section-card-head">
                 <span class="section-tag-gold">FASILITAS KAWASAN</span>
                 <h2 class="section-card-title">Fasilitas Eksklusif Penghuni</h2>
@@ -1846,60 +1870,84 @@
               <div class="facilities-six-grid">
                 <div class="facility-six-card">
                   <div class="f-six-img-box">
-                    <img src="assets/drive/clubhouse-pool.jpeg" alt="Clubhouse 2 Lantai" />
+                    <img src="assets/drive/clubhouse.png" alt="Clubhouse 2 Lantai" />
+                    <span class="f-six-tag">Clubhouse</span>
                   </div>
                   <div class="f-six-content">
-                    <h4>Clubhouse 2 Lantai</h4>
+                    <div class="f-six-title-row">
+                      <h4>Clubhouse 2 Lantai</h4>
+                      <span class="f-six-num">01</span>
+                    </div>
                     <p>Luas 177,25 m² dengan area lounge, meeting hall, dan sanitair mewah.</p>
                   </div>
                 </div>
 
                 <div class="facility-six-card">
                   <div class="f-six-img-box">
-                    <img src="assets/drive/clubhouse-pool.jpeg" alt="Infinity Swimming Pool" />
+                    <img src="assets/drive/clubhousee.png" alt="Infinity Swimming Pool" />
+                    <span class="f-six-tag">Infinity Pool</span>
                   </div>
                   <div class="f-six-content">
-                    <h4>Swimming Pool</h4>
+                    <div class="f-six-title-row">
+                      <h4>Swimming Pool</h4>
+                      <span class="f-six-num">02</span>
+                    </div>
                     <p>Kolam renang dewasa berstandar resor dengan kolam renang anak terpisah.</p>
                   </div>
                 </div>
 
                 <div class="facility-six-card">
                   <div class="f-six-img-box">
-                    <img src="assets/drive/fasad-senja.jpeg" alt="Fitness Gym Center" />
+                    <img src="assets/room-bersama.jpg" alt="Fitness Gym Center" />
+                    <span class="f-six-tag">Fitness Center</span>
                   </div>
                   <div class="f-six-content">
-                    <h4>Fitness Gym Center</h4>
+                    <div class="f-six-title-row">
+                      <h4>Fitness Gym Center</h4>
+                      <span class="f-six-num">03</span>
+                    </div>
                     <p>Peralatan kardio dan beban lengkap untuk menunjang gaya hidup sehat.</p>
                   </div>
                 </div>
 
                 <div class="facility-six-card">
                   <div class="f-six-img-box">
-                    <img src="assets/drive/interior-japandi.jpeg" alt="Mini Golf 9 Hole" />
+                    <img src="assets/drive/housee.jpeg" alt="Mini Golf 9 Hole" />
+                    <span class="f-six-tag">Mini Golf</span>
                   </div>
                   <div class="f-six-content">
-                    <h4>Mini Golf 9-Hole</h4>
+                    <div class="f-six-title-row">
+                      <h4>Mini Golf 9-Hole</h4>
+                      <span class="f-six-num">04</span>
+                    </div>
                     <p>Area putting green rekreasi santai bersama keluarga dan rekan.</p>
                   </div>
                 </div>
 
                 <div class="facility-six-card">
                   <div class="f-six-img-box">
-                    <img src="assets/drive/grand-gate.jpeg" alt="Game Station 4K" />
+                    <img src="assets/drive/dalam-12.png" alt="Game Station 4K" />
+                    <span class="f-six-tag">Multimedia</span>
                   </div>
                   <div class="f-six-content">
-                    <h4>Game Station 4K</h4>
+                    <div class="f-six-title-row">
+                      <h4>Game Station 4K</h4>
+                      <span class="f-six-num">05</span>
+                    </div>
                     <p>Ruang multimedia interaktif untuk anak dan remaja berekreasi.</p>
                   </div>
                 </div>
 
                 <div class="facility-six-card">
                   <div class="f-six-img-box">
-                    <img src="assets/drive/aerial-drone.jpeg" alt="Smart One Gate" />
+                    <img src="assets/drive/gate.png" alt="Smart One Gate" />
+                    <span class="f-six-tag">One Gate RFID</span>
                   </div>
                   <div class="f-six-content">
-                    <h4>One-Gate Security</h4>
+                    <div class="f-six-title-row">
+                      <h4>One-Gate Security</h4>
+                      <span class="f-six-num">06</span>
+                    </div>
                     <p>Pos penjagaan 24 jam dengan barrier RFID dan kamera CCTV pengawas.</p>
                   </div>
                 </div>

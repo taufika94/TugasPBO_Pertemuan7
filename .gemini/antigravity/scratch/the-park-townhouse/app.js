@@ -3213,6 +3213,54 @@ function confirmUnitFromDenahModal() {
   selectCatalogUnit(currentSpecModalUnit, currentSpecModalPrice);
 }
 
+function openDenahSpecModal(typeTitle, imgPath) {
+  const modal = document.getElementById('denahSpecModal');
+  const title = document.getElementById('denahSpecModalTitle');
+  const img = document.getElementById('denahSpecModalImg');
+  const details = document.getElementById('denahSpecModalDetails');
+  const ctaText = document.getElementById('denahSpecCtaText');
+  if (!modal) return;
+
+  if (title) title.textContent = typeTitle || 'Denah Arsitektur Japandi';
+  if (img) img.src = imgPath ? `assets/drive/${imgPath}` : 'assets/drive/denah-tipe60.jpg';
+  if (ctaText) ctaText.textContent = `Pesan ${typeTitle || 'Unit'}`;
+
+  if (details) {
+    if (typeTitle && typeTitle.includes('110')) {
+      details.innerHTML = `
+        <div class="saved-item-row"><span>Luas Bangunan:</span><strong>110 m² (2 Lantai)</strong></div>
+        <div class="saved-item-row"><span>Luas Tanah:</span><strong>90–125 m²</strong></div>
+        <div class="saved-item-row"><span>Kamar Tidur:</span><strong>4 Kamar Tidur</strong></div>
+        <div class="saved-item-row"><span>Kapasitas Parkir:</span><strong>2 Garasi + 1 Carport (3 Mobil)</strong></div>
+        <div class="saved-item-row"><span>Harga Mulai:</span><strong>Rp 895 Juta (Cash Keras)</strong></div>
+      `;
+    } else if (typeTitle && typeTitle.includes('Diamond')) {
+      details.innerHTML = `
+        <div class="saved-item-row"><span>Luas Bangunan:</span><strong>80 m² (2 Lantai)</strong></div>
+        <div class="saved-item-row"><span>Luas Tanah:</span><strong>80 m²</strong></div>
+        <div class="saved-item-row"><span>Kamar Tidur:</span><strong>3–4 Kamar Tidur</strong></div>
+        <div class="saved-item-row"><span>Kapasitas Parkir:</span><strong>1 Garasi Dalam + 1 Carport</strong></div>
+        <div class="saved-item-row"><span>Harga Mulai:</span><strong>Rp 679 Juta (Cash Keras)</strong></div>
+      `;
+    } else {
+      details.innerHTML = `
+        <div class="saved-item-row"><span>Luas Bangunan:</span><strong>75 m² (2 Lantai)</strong></div>
+        <div class="saved-item-row"><span>Luas Tanah:</span><strong>60–63 m²</strong></div>
+        <div class="saved-item-row"><span>Kamar Tidur:</span><strong>3 Kamar Tidur</strong></div>
+        <div class="saved-item-row"><span>Kapasitas Parkir:</span><strong>1 Garasi Dalam + 1 Carport</strong></div>
+        <div class="saved-item-row"><span>Harga Mulai:</span><strong>Rp 650 Juta (Cash Keras)</strong></div>
+      `;
+    }
+  }
+
+  modal.style.display = 'flex';
+}
+
+function openOrderModal(clusterOrType, lotCode, price) {
+  const text = `Halo Marketing The Park Townhouse, saya tertarik untuk konsultasi dan pemesanan ${clusterOrType || 'unit'} (Kavling ${lotCode || ''}) dengan harga ${price || ''}. Mohon info ketersediaan unit dan jadwal visit ke Marketing Gallery Sukoharjo.`;
+  window.open(`https://wa.me/628174983251?text=${encodeURIComponent(text)}`, '_blank');
+}
+
 /* --------------------------------------------------------------------------
    INIT ON LOAD
    -------------------------------------------------------------------------- */

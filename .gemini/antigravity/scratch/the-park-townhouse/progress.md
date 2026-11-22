@@ -467,3 +467,23 @@
     - Updated `selectBerandaLot` to apply semantic status classes (`status-available`, `status-booked`, `status-sold`).
     - Enhanced `orderInspectedLot` to pass dynamic lot prices accurately to `openOrderModal`.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #31: Deluxe Layout Architecture for Katalog Produk Utama & Fasilitas Kawasan
+- **Context & Objective**: Refactor and polish the UI layout for **KATALOG PRODUK UTAMA** (Pilihan Tipe Produk Hunian: Gold, Diamond, Royal Diamond) and **FASILITAS KAWASAN** (Fasilitas Eksklusif Penghuni: Clubhouse, Infinity Pool, Gym, Mini Golf, Game Station, One Gate Security).
+- **Key Changes Implemented**:
+  - **Katalog Produk Utama (`.product-showcase-section`, `.product-card-item`)**:
+    - Structured bespoke product cards with status chips (`Ready & Indent`, `Eksklusif Intim`, `Grand Luxury`) and cluster tags.
+    - Linked high-resolution authentic local renders (`house.jpeg`, `dalam-6.png`, `housee.jpeg`) with 16:9 ratio and frosted dimensional tags (`LB 75 m² · LT 60–63 m²`, etc.).
+    - Built a structured 4-item specification grid (`.product-features-row`) with distinct tiles for Kamar Tidur, Kamar Mandi, Garasi (1+1 to 3 mobil), and 2 Lantai.
+    - Styled dedicated financial breakdown boxes (`.product-pricing-box`) highlighting bold gold Cash Keras prices (`#936e28`, font-size 18px), Cash Tempo 24 bulan, and Bank KPR estimates.
+    - Added dual tactile CTAs: secondary outline `[Lihat Denah ↗]` and rich forest green `[Pesan Unit →]`.
+  - **Fasilitas Kawasan (`.facilities-six-grid`, `.facility-six-card`)**:
+    - Re-architected 6-item facility grid into a clean, responsive 2-column layout (collapsing cleanly on narrow viewports with zero horizontal overflow).
+    - Linked real assets for all 6 amenities (`clubhouse.png`, `clubhousee.png`, `room-bersama.jpg`, `housee.jpeg`, `dalam-12.png`, `gate.png`).
+    - Added floating category badges (`.f-six-tag`) and numbered serial tags (`01` to `06`), paired with crisp typography and subtle card lift on hover.
+  - **Modal & Consultation Handlers (`app.js`)**:
+    - Defined `openDenahSpecModal(typeTitle, imgPath)` to dynamically populate architectural blueprint modals (`denah-tipe60.jpg`, `denah-tipe80.jpg`, `denah-tipe110.jpg`).
+    - Defined `openOrderModal(clusterOrType, lotCode, price)` to initiate direct WhatsApp VIP consultations with pre-populated unit and pricing data.
+- **Status**: Completed & Verified.
