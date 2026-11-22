@@ -1256,12 +1256,25 @@
                 <button type="button" class="cluster-pill-btn" onclick="switchBerandaClusterMap('tokyo', this)">Cluster Tokyo</button>
               </div>
 
-              <!-- Interactive Leaflet Map Container -->
+              <!-- Circle Distance Region Filter (Circle 1 - 3) -->
+              <div class="circle-region-bar">
+                <span class="circle-filter-label">Lingkar Jarak:</span>
+                <div class="circle-chips-scroll">
+                  <button type="button" class="circle-chip is-active" id="btnCircleAll" onclick="filterBerandaCircle('all', this)">Semua Lingkar</button>
+                  <button type="button" class="circle-chip chip-c1" id="btnCircle1" onclick="filterBerandaCircle(1, this)"><span class="dot-c1"></span> Circle 1 (≤ 1.0 km)</button>
+                  <button type="button" class="circle-chip chip-c2" id="btnCircle2" onclick="filterBerandaCircle(2, this)"><span class="dot-c2"></span> Circle 2 (1.0–2.5 km)</button>
+                  <button type="button" class="circle-chip chip-c3" id="btnCircle3" onclick="filterBerandaCircle(3, this)"><span class="dot-c3"></span> Circle 3 (2.5–4.5 km)</button>
+                </div>
+              </div>
+
+              <!-- Interactive Leaflet Map Container with 3-Circle Radar -->
               <div class="beranda-map-frame">
                 <div id="berandaLeafletMap" class="beranda-leaflet-map"></div>
                 <div class="map-floating-legend">
-                  <span class="legend-badge"><span class="legend-dot green"></span> The Park Townhouse</span>
-                  <span class="legend-badge"><span class="legend-dot gold"></span> Fasilitas Terpilih</span>
+                  <span class="legend-badge"><span class="legend-dot green"></span> Pusat Kawasan</span>
+                  <span class="legend-badge"><span class="legend-dot ring-c1"></span> Circle 1 (1.0 km)</span>
+                  <span class="legend-badge"><span class="legend-dot ring-c2"></span> Circle 2 (2.5 km)</span>
+                  <span class="legend-badge"><span class="legend-dot ring-c3"></span> Circle 3 (4.5 km)</span>
                 </div>
               </div>
 

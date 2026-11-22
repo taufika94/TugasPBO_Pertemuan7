@@ -532,3 +532,23 @@
   - **Lokasi & Radius (pp.js)**: Aligned map center to SUKOHARJO_CENTER [-7.6833, 110.8405] and configured radar rings.
   - **Beranda Site Plan (index.html, styles.css, pp.js)**: Replaced chunky boxes with the bespoke 4-column pill grid, clean vertical lot specs, and champagne action button matching Ruang 4/7.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #35: Concentric Group Circles (Circle 1–3) Implementation on Interactive Maps
+- **Context & Objective**: Group map destinations into 3 concentric distance tiers (Circle 1–3) per user request:
+  1. Circle 1: Radius Inti (≤ 1.0 km) · Jalan Kaki & Aktivitas Harian.
+  2. Circle 2: Radius Urban (1.0–2.5 km) · Pusat Layanan Kota & RSUD.
+  3. Circle 3: Radius Regional (2.5–4.5 km) · Sentra Solo Baru, Stasiun & Tol.
+- **Key Changes Implemented**:
+  - **Leaflet Concentric Radar Rings (pp.js)**:
+    - Placed 3 distinct concentric radar circles on both Beranda map and Ruang 3 map with high-visibility styling: Gold for Circle 1, Emerald Green for Circle 2, and Forest/Teal for Circle 3, each bound with informative tooltips.
+  - **Interactive Circle Region Filter Bar (index.html, styles.css, pp.js)**:
+    - Added dedicated filter tabs for Semua Lingkar, Circle 1 (≤ 1.0 km), Circle 2 (1.0–2.5 km), and Circle 3 (2.5–4.5 km).
+    - Integrated smooth camera fly-to animations and dynamic ring opacity/border-weight emphasis upon selecting any circle tier.
+  - **POI Classification & Badges (pp.js, styles.css)**:
+    - Categorized all POIs into their respective circle tiers and added regional destination landmarks for Circle 3 (Stasiun Kereta Sukoharjo, The Park Mall Solo Baru, Akses Tol).
+    - Rendered high-contrast semantic .poi-circle-chip badges (c1, c2, c3) on every POI card and colored map circle markers to match their respective circle tier.
+  - **Floating Map Legend (index.html, styles.css)**:
+    - Updated map overlay legend with dot badges for Pusat Kawasan, Circle 1 (1.0 km), Circle 2 (2.5 km), and Circle 3 (4.5 km).
+- **Status**: Completed & Verified.

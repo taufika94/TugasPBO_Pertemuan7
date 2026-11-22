@@ -2294,27 +2294,40 @@ function setupLeafletMap(containerId, isModal) {
     attribution: '&copy; <a href="https://www.esri.com/">Esri</a>'
   }).addTo(map);
 
-  const outerCircle = L.circle(SUKOHARJO_CENTER, {
-    radius: currentSearchRadius,
+  // Concentric Group Circles (Circle 1 - 3 based on region distance)
+  const circle3 = L.circle(SUKOHARJO_CENTER, {
+    radius: 4500,
+    color: '#1d5138',
+    weight: 2,
+    dashArray: '8, 6',
+    fillColor: '#80cbc4',
+    fillOpacity: 0.08
+  }).addTo(map)
+    .bindTooltip('<b>Circle 3 · Radius Regional (4.5 km)</b><br>Sentra Solo Baru, Stasiun & Tol', { permanent: false, direction: 'top' });
+
+  const circle2 = L.circle(SUKOHARJO_CENTER, {
+    radius: 2500,
     color: '#2e7d32',
     weight: 2,
     fillColor: '#a5d6a7',
-    fillOpacity: 0.16
-  }).addTo(map);
+    fillOpacity: 0.12
+  }).addTo(map)
+    .bindTooltip('<b>Circle 2 · Radius Urban (2.5 km)</b><br>Pusat Pemerintahan, RSUD & Pendidikan', { permanent: false, direction: 'top' });
 
-  const innerCircle = L.circle(SUKOHARJO_CENTER, {
-    radius: Math.min(currentSearchRadius * 0.25, 1200),
-    color: '#4caf50',
-    weight: 1.2,
-    dashArray: '4, 4',
-    fillColor: '#c8e6c9',
-    fillOpacity: 0.22
-  }).addTo(map);
+  const circle1 = L.circle(SUKOHARJO_CENTER, {
+    radius: 1000,
+    color: '#b48a3c',
+    weight: 2,
+    dashArray: '5, 5',
+    fillColor: '#dfb96d',
+    fillOpacity: 0.16
+  }).addTo(map)
+    .bindTooltip('<b>Circle 1 · Radius Inti (1.0 km)</b><br>Jalan Kaki & Aktivitas Harian', { permanent: false, direction: 'top' });
 
   if (isModal) {
-    modalCircleLayers = [outerCircle, innerCircle];
+    modalCircleLayers = [circle3, circle2, circle1];
   } else {
-    mapCircleLayers = [outerCircle, innerCircle];
+    mapCircleLayers = [circle3, circle2, circle1];
   }
 
   const centerHomeIcon = L.divIcon({
@@ -3286,28 +3299,40 @@ window.addEventListener('DOMContentLoaded', () => {
    ============================================================ */
 
 const BERANDA_POIS = [
-  { name: 'Stadion Gelora Merdeka Sukoharjo', distNagoya: '± 100 m', distOthers: '± 300 m', cat: 'Olahraga', coords: [-7.6748, 110.8432] },
-  { name: 'Lapangan Basket Gelora', distNagoya: '± 100 m', distOthers: '± 300 m', cat: 'Olahraga', coords: [-7.6751, 110.8435] },
-  { name: 'Lapangan Tenis Sukoharjo', distNagoya: '± 100 m', distOthers: '± 300 m', cat: 'Olahraga', coords: [-7.6745, 110.8438] },
-  { name: 'Lapangan Skateboard', distNagoya: '± 100 m', distOthers: '± 300 m', cat: 'Olahraga', coords: [-7.6742, 110.8429] },
-  { name: 'Lapangan Panahan', distNagoya: '± 100 m', distOthers: '± 300 m', cat: 'Olahraga', coords: [-7.6753, 110.8425] },
-  { name: 'Masjid Al-Hidayah', distNagoya: '± 700 m', distOthers: '± 50 m', cat: 'Ibadah', coords: [-7.6725, 110.8415] },
-  { name: 'SMKN 1 Sukoharjo', distNagoya: '± 750 m', distOthers: '± 300 m', cat: 'Pendidikan', coords: [-7.6718, 110.8420] },
-  { name: 'RSUD IR Soekarno Kab. Sukoharjo', distNagoya: '± 2.3 km', distOthers: '± 2.2 km', cat: 'Kesehatan', coords: [-7.6830, 110.8405] },
-  { name: 'Kejaksaan Negeri Sukoharjo', distNagoya: '± 700 m', distOthers: '± 250 m', cat: 'Pemerintahan', coords: [-7.6720, 110.8445] },
-  { name: 'Kantor Kementerian Agama Sukoharjo', distNagoya: '± 700 m', distOthers: '± 250 m', cat: 'Pemerintahan', coords: [-7.6722, 110.8450] },
-  { name: 'Pusat Layanan Haji dan Umrah Terpadu', distNagoya: '± 700 m', distOthers: '± 250 m', cat: 'Pemerintahan', coords: [-7.6724, 110.8455] },
-  { name: 'Alun-Alun Kota Sukoharjo', distNagoya: '± 1.7 km', distOthers: '± 1.9 km', cat: 'Rekreasi', coords: [-7.6780, 110.8350] },
-  { name: 'Taman Pramuka', distNagoya: '± 1.7 km', distOthers: '± 1.9 km', cat: 'Rekreasi', coords: [-7.6785, 110.8360] },
-  { name: 'Universitas Veteran Bangun Nusantara', distNagoya: '± 1.3 km', distOthers: '± 500 m', cat: 'Pendidikan', coords: [-7.6705, 110.8395] },
-  { name: 'SMA Negeri 3 Sukoharjo', distNagoya: '± 1.2 km', distOthers: '± 400 m', cat: 'Pendidikan', coords: [-7.6710, 110.8400] },
-  { name: 'SD Negeri Jombor 3 Sukoharjo', distNagoya: '± 1.1 km', distOthers: '± 400 m', cat: 'Pendidikan', coords: [-7.6712, 110.8410] },
-  { name: 'Pusat Perbelanjaan & Niaga', distNagoya: '± 700 m', distOthers: '± 500 m', cat: 'Belanja', coords: [-7.6760, 110.8412] }
+  // Circle 1 · Radius Inti (≤ 1.0 km)
+  { name: 'Stadion Gelora Merdeka Sukoharjo', distNagoya: '± 100 m', distOthers: '± 300 m', cat: 'Olahraga', circle: 1, coords: [-7.6748, 110.8432] },
+  { name: 'Lapangan Basket Gelora', distNagoya: '± 100 m', distOthers: '± 300 m', cat: 'Olahraga', circle: 1, coords: [-7.6751, 110.8435] },
+  { name: 'Lapangan Tenis Sukoharjo', distNagoya: '± 100 m', distOthers: '± 300 m', cat: 'Olahraga', circle: 1, coords: [-7.6745, 110.8438] },
+  { name: 'Lapangan Skateboard Gelora', distNagoya: '± 100 m', distOthers: '± 300 m', cat: 'Olahraga', circle: 1, coords: [-7.6742, 110.8429] },
+  { name: 'Lapangan Panahan Merdeka', distNagoya: '± 100 m', distOthers: '± 300 m', cat: 'Olahraga', circle: 1, coords: [-7.6753, 110.8425] },
+  { name: 'Masjid Al-Hidayah', distNagoya: '± 700 m', distOthers: '± 50 m', cat: 'Ibadah', circle: 1, coords: [-7.6725, 110.8415] },
+  { name: 'SMKN 1 Sukoharjo', distNagoya: '± 750 m', distOthers: '± 300 m', cat: 'Pendidikan', circle: 1, coords: [-7.6718, 110.8420] },
+  { name: 'Kejaksaan Negeri Sukoharjo', distNagoya: '± 700 m', distOthers: '± 250 m', cat: 'Pemerintahan', circle: 1, coords: [-7.6720, 110.8445] },
+  { name: 'Kantor Kementerian Agama Sukoharjo', distNagoya: '± 700 m', distOthers: '± 250 m', cat: 'Pemerintahan', circle: 1, coords: [-7.6722, 110.8450] },
+  { name: 'Pusat Layanan Haji dan Umrah Terpadu', distNagoya: '± 700 m', distOthers: '± 250 m', cat: 'Pemerintahan', circle: 1, coords: [-7.6724, 110.8455] },
+  { name: 'Pusat Perbelanjaan & Niaga Lokal', distNagoya: '± 700 m', distOthers: '± 500 m', cat: 'Belanja', circle: 1, coords: [-7.6760, 110.8412] },
+
+  // Circle 2 · Radius Urban (1.0–2.5 km)
+  { name: 'SD Negeri Jombor 3 Sukoharjo', distNagoya: '± 1.1 km', distOthers: '± 400 m', cat: 'Pendidikan', circle: 2, coords: [-7.6712, 110.8410] },
+  { name: 'SMA Negeri 3 Sukoharjo', distNagoya: '± 1.2 km', distOthers: '± 400 m', cat: 'Pendidikan', circle: 2, coords: [-7.6710, 110.8400] },
+  { name: 'Universitas Veteran Bangun Nusantara', distNagoya: '± 1.3 km', distOthers: '± 500 m', cat: 'Pendidikan', coords: [-7.6705, 110.8395], circle: 2 },
+  { name: 'Alun-Alun Kota Sukoharjo', distNagoya: '± 1.7 km', distOthers: '± 1.9 km', cat: 'Rekreasi', circle: 2, coords: [-7.6780, 110.8350] },
+  { name: 'Taman Pramuka Sukoharjo', distNagoya: '± 1.7 km', distOthers: '± 1.9 km', cat: 'Rekreasi', circle: 2, coords: [-7.6785, 110.8360] },
+  { name: 'RSUD IR Soekarno Kab. Sukoharjo', distNagoya: '± 2.3 km', distOthers: '± 2.2 km', cat: 'Kesehatan', circle: 2, coords: [-7.6830, 110.8405] },
+
+  // Circle 3 · Radius Regional (2.5–4.5 km)
+  { name: 'Stasiun Kereta Sukoharjo', distNagoya: '± 3.2 km', distOthers: '± 3.0 km', cat: 'Pemerintahan', circle: 3, coords: [-7.6950, 110.8350] },
+  { name: 'The Park Mall & Sentra Solo Baru', distNagoya: '± 4.5 km', distOthers: '± 4.2 km', cat: 'Belanja', circle: 3, coords: [-7.6520, 110.8250] },
+  { name: 'Akses Pintu Tol & Sentra Arteri', distNagoya: '± 4.2 km', distOthers: '± 4.0 km', cat: 'Pemerintahan', circle: 3, coords: [-7.6550, 110.8550] }
 ];
 
 let berandaLeafletMapInstance = null;
 let berandaPoiMarkers = [];
+let berandaCircle1Layer = null;
+let berandaCircle2Layer = null;
+let berandaCircle3Layer = null;
 let currentBerandaPoiFilter = 'Semua';
+let currentBerandaCircleFilter = 'all';
 let activeBerandaCluster = 'nagoya';
 
 function initBerandaLeafletMap() {
@@ -3317,7 +3342,7 @@ function initBerandaLeafletMap() {
   const defaultCenter = [-7.6833, 110.8405];
   berandaLeafletMapInstance = L.map('berandaLeafletMap', {
     center: defaultCenter,
-    zoom: 14,
+    zoom: 13.8,
     scrollWheelZoom: false,
     zoomControl: true,
     attributionControl: false
@@ -3327,23 +3352,37 @@ function initBerandaLeafletMap() {
     maxZoom: 19
   }).addTo(berandaLeafletMapInstance);
 
-  // Concentric radar circles (1 km, 2.5 km) matching Room 03
-  L.circle(defaultCenter, {
+  // Circle 3 (Radius 4.5 km · Lingkar Regional)
+  berandaCircle3Layer = L.circle(defaultCenter, {
+    radius: 4500,
+    color: '#1d5138',
+    weight: 2,
+    dashArray: '8, 6',
+    fillColor: '#80cbc4',
+    fillOpacity: 0.08
+  }).addTo(berandaLeafletMapInstance)
+    .bindTooltip('<b>Circle 3 · Radius Regional (4.5 km)</b><br>Sentra Solo Baru, Stasiun & Tol', { permanent: false, direction: 'top' });
+
+  // Circle 2 (Radius 2.5 km · Lingkar Urban)
+  berandaCircle2Layer = L.circle(defaultCenter, {
     radius: 2500,
     color: '#2e7d32',
     weight: 2,
     fillColor: '#a5d6a7',
     fillOpacity: 0.12
-  }).addTo(berandaLeafletMapInstance);
+  }).addTo(berandaLeafletMapInstance)
+    .bindTooltip('<b>Circle 2 · Radius Urban (2.5 km)</b><br>Pusat Layanan Kota & RSUD', { permanent: false, direction: 'top' });
 
-  L.circle(defaultCenter, {
+  // Circle 1 (Radius 1.0 km · Lingkar Inti)
+  berandaCircle1Layer = L.circle(defaultCenter, {
     radius: 1000,
-    color: '#c49a45',
-    weight: 1.5,
+    color: '#b48a3c',
+    weight: 2,
     dashArray: '5, 5',
-    fillColor: '#e5d3af',
-    fillOpacity: 0.18
-  }).addTo(berandaLeafletMapInstance);
+    fillColor: '#dfb96d',
+    fillOpacity: 0.16
+  }).addTo(berandaLeafletMapInstance)
+    .bindTooltip('<b>Circle 1 · Radius Inti (1.0 km)</b><br>Jalan Kaki & Aktivitas Harian', { permanent: false, direction: 'top' });
 
   // Add The Park Townhouse main location pin
   const mainIcon = L.divIcon({
@@ -3361,6 +3400,41 @@ function initBerandaLeafletMap() {
   updateKprFromSlider();
 }
 
+function filterBerandaCircle(circleNum, btnEl) {
+  currentBerandaCircleFilter = circleNum;
+  if (btnEl && btnEl.parentElement) {
+    btnEl.parentElement.querySelectorAll('.circle-chip').forEach(c => c.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  }
+
+  const defaultCenter = [-7.6833, 110.8405];
+  if (berandaLeafletMapInstance) {
+    if (circleNum === 1) {
+      berandaLeafletMapInstance.flyTo(defaultCenter, 15.2, { animate: true, duration: 0.7 });
+      if (berandaCircle1Layer) berandaCircle1Layer.setStyle({ weight: 3.5, fillOpacity: 0.25 });
+      if (berandaCircle2Layer) berandaCircle2Layer.setStyle({ weight: 1.2, fillOpacity: 0.05 });
+      if (berandaCircle3Layer) berandaCircle3Layer.setStyle({ weight: 1, fillOpacity: 0.03 });
+    } else if (circleNum === 2) {
+      berandaLeafletMapInstance.flyTo(defaultCenter, 14, { animate: true, duration: 0.7 });
+      if (berandaCircle1Layer) berandaCircle1Layer.setStyle({ weight: 1.5, fillOpacity: 0.12 });
+      if (berandaCircle2Layer) berandaCircle2Layer.setStyle({ weight: 3.5, fillOpacity: 0.22 });
+      if (berandaCircle3Layer) berandaCircle3Layer.setStyle({ weight: 1, fillOpacity: 0.04 });
+    } else if (circleNum === 3) {
+      berandaLeafletMapInstance.flyTo(defaultCenter, 12.8, { animate: true, duration: 0.7 });
+      if (berandaCircle1Layer) berandaCircle1Layer.setStyle({ weight: 1, fillOpacity: 0.08 });
+      if (berandaCircle2Layer) berandaCircle2Layer.setStyle({ weight: 1.5, fillOpacity: 0.10 });
+      if (berandaCircle3Layer) berandaCircle3Layer.setStyle({ weight: 3.5, fillOpacity: 0.18 });
+    } else {
+      berandaLeafletMapInstance.flyTo(defaultCenter, 13.8, { animate: true, duration: 0.7 });
+      if (berandaCircle1Layer) berandaCircle1Layer.setStyle({ weight: 2, fillOpacity: 0.16 });
+      if (berandaCircle2Layer) berandaCircle2Layer.setStyle({ weight: 2, fillOpacity: 0.12 });
+      if (berandaCircle3Layer) berandaCircle3Layer.setStyle({ weight: 2, fillOpacity: 0.08 });
+    }
+  }
+
+  renderBerandaPoiList();
+}
+
 function renderBerandaPoiList() {
   const container = document.getElementById('berandaPoiList');
   if (!container) return;
@@ -3372,12 +3446,13 @@ function renderBerandaPoiList() {
   }
 
   container.innerHTML = '';
-  const filtered = currentBerandaPoiFilter === 'Semua' 
-    ? BERANDA_POIS 
-    : BERANDA_POIS.filter(p => p.cat === currentBerandaPoiFilter);
+  const filtered = BERANDA_POIS.filter(poi => {
+    const matchCat = (currentBerandaPoiFilter === 'Semua' || poi.cat === currentBerandaPoiFilter);
+    const matchCircle = (currentBerandaCircleFilter === 'all' || poi.circle === currentBerandaCircleFilter);
+    return matchCat && matchCircle;
+  });
 
-  filtered.forEach((poi, idx) => {
-    // Add to HTML list
+  filtered.forEach((poi) => {
     const card = document.createElement('div');
     card.className = 'poi-interactive-card';
     card.onclick = () => focusBerandaPOI(BERANDA_POIS.indexOf(poi));
@@ -3390,23 +3465,25 @@ function renderBerandaPoiList() {
         '<div class="poi-card-name">' + poi.name + '</div>' +
         '<div class="poi-card-meta">' +
           '<span class="poi-dist-chip">' + distText + '</span>' +
+          '<span class="poi-circle-chip c' + poi.circle + '">Circle ' + poi.circle + '</span>' +
           '<span class="poi-badge-cat">' + poi.cat + '</span>' +
         '</div>' +
       '</div>' +
       '<div style="font-size:11px;color:#c49a45;font-weight:700;">📍</div>';
     container.appendChild(card);
 
-    // Add marker to map
+    // Add marker to map with color based on circle
     if (berandaLeafletMapInstance && poi.coords) {
+      const pinColor = poi.circle === 1 ? '#b48a3c' : (poi.circle === 2 ? '#2e7d32' : '#1d5138');
       const marker = L.circleMarker(poi.coords, {
-        radius: 6,
-        fillColor: '#2e7d32',
+        radius: 6.5,
+        fillColor: pinColor,
         color: '#ffffff',
         weight: 1.5,
-        fillOpacity: 0.9
+        fillOpacity: 0.95
       }).addTo(berandaLeafletMapInstance);
 
-      marker.bindPopup('<b>' + poi.name + '</b><br>Kategori: ' + poi.cat + '<br>Jarak: ' + distText);
+      marker.bindPopup('<b>' + poi.name + '</b><br><span style="font-size:11px;color:#8a7b62;font-weight:700;">Circle ' + poi.circle + ' (' + (poi.circle === 1 ? '≤ 1 km' : (poi.circle === 2 ? '1–2.5 km' : '2.5–4.5 km')) + ')</span><br>Kategori: ' + poi.cat + '<br>Jarak: ' + distText);
       berandaPoiMarkers.push(marker);
     }
   });
