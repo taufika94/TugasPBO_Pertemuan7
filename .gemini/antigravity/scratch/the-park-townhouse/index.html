@@ -2342,6 +2342,34 @@
           <section class="landing-tab-panel" id="panelSuratCinta" style="display: none;">
             <div class="surat-magazine-container">
 
+              <!-- 11 TEMA & 99 KEUNGGULAN INTERACTIVE EXPLORER (Urutan Paling Atas) -->
+              <div class="surat-section-header" id="section99Keunggulan" style="margin-top: 4px;">
+                <span class="section-tag">99 KEUNGGULAN · SUKOHARJO</span>
+                <h3 class="section-title">Telusuri 11 Tema Keunggulan</h3>
+                <p class="section-desc">Pilih tema di bawah untuk menjelajahi detail ruang, lingkungan, dan fasilitas</p>
+              </div>
+
+              <!-- THEME CHIPS CAROUSEL -->
+              <div class="theme-nav-scroller" id="themeNavScroller">
+                <!-- Dynamically populated or rendered -->
+                <button type="button" class="theme-chip is-active" onclick="switchSuratTheme(0)">01. Dekat Kehidupan</button>
+                <button type="button" class="theme-chip" onclick="switchSuratTheme(1)">02. Pilihan Pribadi</button>
+                <button type="button" class="theme-chip" onclick="switchSuratTheme(2)">03. Ruang Hidup</button>
+                <button type="button" class="theme-chip" onclick="switchSuratTheme(3)">04. Nyaman Tiba</button>
+                <button type="button" class="theme-chip" onclick="switchSuratTheme(4)">05. Waktu Bersama</button>
+                <button type="button" class="theme-chip" onclick="switchSuratTheme(5)">06. Bermain &amp; Tertawa</button>
+                <button type="button" class="theme-chip" onclick="switchSuratTheme(6)">07. Tenang Keseharian</button>
+                <button type="button" class="theme-chip" onclick="switchSuratTheme(7)">08. Kemudahan</button>
+                <button type="button" class="theme-chip" onclick="switchSuratTheme(8)">09. Di Balik Keindahan</button>
+                <button type="button" class="theme-chip" onclick="switchSuratTheme(9)">10. Hal Mendasar</button>
+                <button type="button" class="theme-chip" onclick="switchSuratTheme(10)">11. Memilih Tenang</button>
+              </div>
+
+              <!-- ACTIVE THEME SHOWCASE CONTAINER -->
+              <div class="theme-showcase-box" id="themeShowcaseBox">
+                <!-- Populated via renderSuratTheme() in app.js -->
+              </div>
+
               <!-- COMPACT PROLOGUE BANNER (Click to Open Letter Modal) -->
               <div class="surat-compact-banner">
                 <div class="surat-banner-badge-row">
@@ -2438,34 +2466,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <!-- 11 TEMA & 99 KEUNGGULAN INTERACTIVE EXPLORER -->
-              <div class="surat-section-header" id="section99Keunggulan">
-                <span class="section-tag">99 KEUNGGULAN · SUKOHARJO</span>
-                <h3 class="section-title">Telusuri 11 Tema Keunggulan</h3>
-                <p class="section-desc">Pilih tema di bawah untuk menjelajahi detail ruang, lingkungan, dan fasilitas</p>
-              </div>
-
-              <!-- THEME CHIPS CAROUSEL -->
-              <div class="theme-nav-scroller" id="themeNavScroller">
-                <!-- Dynamically populated or rendered -->
-                <button type="button" class="theme-chip is-active" onclick="switchSuratTheme(0)">01. Dekat Kehidupan</button>
-                <button type="button" class="theme-chip" onclick="switchSuratTheme(1)">02. Pilihan Pribadi</button>
-                <button type="button" class="theme-chip" onclick="switchSuratTheme(2)">03. Ruang Hidup</button>
-                <button type="button" class="theme-chip" onclick="switchSuratTheme(3)">04. Nyaman Tiba</button>
-                <button type="button" class="theme-chip" onclick="switchSuratTheme(4)">05. Waktu Bersama</button>
-                <button type="button" class="theme-chip" onclick="switchSuratTheme(5)">06. Bermain &amp; Tertawa</button>
-                <button type="button" class="theme-chip" onclick="switchSuratTheme(6)">07. Tenang Keseharian</button>
-                <button type="button" class="theme-chip" onclick="switchSuratTheme(7)">08. Kemudahan</button>
-                <button type="button" class="theme-chip" onclick="switchSuratTheme(8)">09. Di Balik Keindahan</button>
-                <button type="button" class="theme-chip" onclick="switchSuratTheme(9)">10. Hal Mendasar</button>
-                <button type="button" class="theme-chip" onclick="switchSuratTheme(10)">11. Memilih Tenang</button>
-              </div>
-
-              <!-- ACTIVE THEME SHOWCASE CONTAINER -->
-              <div class="theme-showcase-box" id="themeShowcaseBox">
-                <!-- Populated via renderSuratTheme() in app.js -->
               </div>
 
               <!-- GOLD VS DIAMOND ARCHITECTURAL SHOWCASE -->
