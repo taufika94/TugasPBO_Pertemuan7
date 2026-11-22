@@ -5201,3 +5201,19 @@
     - Removed `.section-tag-gold` ("DENAH KAWASAN") and `.section-card-sub` ("Pilih klaster untuk melihat posisi kavling...").
     - Centered `.section-card-title` ("Peta Masterplan Kawasan") with clean text alignment and balanced margins.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-23] Progress #75: Compact Layout & Optimized Typography Across Post-Save Landing Pages
+- **Context & Objective**: Prevent oversized layout sprawl and reduce font sizes across all post-save landing pages (Beranda, Unit, Surat Cinta, Site Plan, Fasilitas, Unit Detail, dan Saved Config Drawer), creating a compact, elegant, and balanced mobile-first aesthetic.
+- **Key Changes Implemented**:
+  - **Layout Width Standardization (styles.css)**:
+    - Tightened `.landing-tab-panel`, `.surat-magazine-container`, `#panelSitePlan`, `.unit-catalog-page-container`, and `.unit-detail-page-container` from `max-width: 860px / 820px` to compact `max-width: 480px; margin: 0 auto;`.
+    - Centered and constrained `.saved-config-drawer` to `max-width: 480px; margin: 0 auto;` with reduced padding (`16px 14px 28px` instead of `20px 18px 36px`).
+    - Reduced `.landing-section-card` padding to `12px 14px` and gap to `10px`.
+  - **Typography & Font Sizing Adjustments (styles.css)**:
+    - Reduced `.section-title` from `19px` to clean `16px`.
+    - Reduced `.drawer-title` from `18px` to `15.5px` and `.drawer-badge` to `9px`.
+    - Reduced `.section-desc` line-height and font-size to `10.5px / 1.45`.
+- **Status**: Completed, Verified & Auto-Pushed.

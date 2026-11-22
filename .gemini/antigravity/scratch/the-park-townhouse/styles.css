@@ -4152,12 +4152,12 @@ box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  padding: 12px 14px 24px;
+  padding: 10px 12px 20px;
   scrollbar-width: thin;
   scrollbar-color: rgba(22, 36, 28, 0.2) transparent;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   background: #fbfaf7;
   transition: padding-bottom 0.3s ease;
 }
@@ -4169,9 +4169,9 @@ box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
 .landing-tab-panel {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   animation: fadeIn 0.35s ease forwards;
-  max-width: 860px;
+  max-width: 480px;
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
@@ -4429,15 +4429,15 @@ box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
 
 .section-title {
   font-family: var(--font-serif);
-  font-size: 19px;
+  font-size: 16px;
   color: #16241c;
   margin: 0;
 }
 
 .section-desc {
-  font-size: 11px;
+  font-size: 10.5px;
   color: #4a554e;
-  line-height: 1.5;
+  line-height: 1.45;
   margin: 0;
 }
 
@@ -5030,11 +5030,11 @@ box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
 
 /* Surat Cinta Tab (Deluxe Storytelling Magazine & 99 Keunggulan) */
 .surat-magazine-container {
-  max-width: 820px;
+  max-width: 480px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   padding-bottom: 24px;
   width: 100%;
   box-sizing: border-box;
@@ -7094,7 +7094,7 @@ transition: all 0.2s ease;
 
 /* Site Plan Tab Container Constraint */
 #panelSitePlan {
-  max-width: 860px;
+  max-width: 480px;
   margin: 0 auto;
   width: 100%;
 }
@@ -8466,17 +8466,19 @@ transition: all 0.2s ease;
 
 .saved-config-drawer {
   width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
   max-height: 85vh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #ffffff;
   border-top: 1px solid #e8e2d5;
-  border-radius: 24px 24px 0 0;
-  padding: 20px 18px 36px;
+  border-radius: 20px 20px 0 0;
+  padding: 16px 14px 28px;
   box-shadow: 0 -12px 45px rgba(22, 36, 28, 0.15);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .drawer-header {
@@ -8484,7 +8486,7 @@ transition: all 0.2s ease;
   justify-content: space-between;
   align-items: flex-start;
   border-bottom: 1px solid #f0eae1;
-  padding-bottom: 12px;
+  padding-bottom: 10px;
 }
 
 .drawer-header-left {
@@ -8494,7 +8496,7 @@ transition: all 0.2s ease;
 }
 
 .drawer-badge {
-  font-size: 9.5px;
+  font-size: 9px;
   color: #2e7d32;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -8502,7 +8504,7 @@ transition: all 0.2s ease;
 
 .drawer-title {
   font-family: var(--font-serif);
-  font-size: 18px;
+  font-size: 15.5px;
   color: #16241c;
   margin: 0;
 }
@@ -8798,10 +8800,10 @@ transition: all 0.2s ease;
   background: #ffffff;
   border: 1px solid #e8e2d5;
   border-radius: 12px;
-  padding: 14px 16px;
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   box-shadow: 0 2px 10px rgba(22, 36, 28, 0.04);
 }
 
@@ -11359,12 +11361,12 @@ transition: all 0.2s ease;
 
 /* --- Dedicated Unit Catalog Page (#panelUnit) --- */
 .unit-catalog-page-container {
-  max-width: 860px;
+  max-width: 480px;
   margin: 0 auto;
-  padding: 10px 14px 90px;
+  padding: 8px 10px 85px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   width: 100%;
 }
 
@@ -12230,7 +12232,10 @@ transition: all 0.2s ease;
       .unit-detail-page-container {
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        gap: 12px;
+        max-width: 480px;
+        margin: 0 auto;
+        width: 100%;
         animation: fadeIn 0.25s ease-out;
         padding-bottom: calc(var(--bottom-bar-height) + env(safe-area-inset-bottom, 16px) + 20px);
       }
