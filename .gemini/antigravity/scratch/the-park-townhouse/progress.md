@@ -783,3 +783,20 @@
   - **Script (app.js)**:
     - Cleaned up `switchLandingVideoScene()` to remove DOM updates for `videoSceneTag` and the button active state loop, while maintaining the smooth 5-second automatic atmosphere slideshow.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #50: Harmonize Selected Lot Inspector Card (`#berandaLotInspector`)
+- **Context & Objective**: Align typography, layout, and color palette of `#berandaLotInspector` with the Japandi Modern luxury brand system.
+- **Key Changes Implemented**:
+  - **Header Structure & Typography (index.html, styles.css)**:
+    - Added `#inspLotTag` (`.kavling-id-title`) connected with `app.js` to render the selected lot's title with `var(--font-serif)`.
+    - Styled `.kavling-label` tag with dark green badge (`#2e7d32` on `rgba(46, 125, 50, 0.08)`).
+    - Styled `.kavling-status-badge` with rounded pill borders and status-based colors.
+  - **Specs Breakdown Box (styles.css)**:
+    - Refactored `.kavling-specs-clean` into an elevated breakdown box with `#fbfaf7` background and `#e8e2d5` border.
+    - Updated rows with `justify-content: space-between;` and proper label/value styling.
+    - Styled `.price-row` with dashed divider and `var(--font-serif)` 18px bold price styling in deep forest green (`#11332a`).
+  - **Action Button Harmonization (styles.css)**:
+    - Upgraded `.btn-order-kavling-champagne` from pale champagne to deep forest green gradient (`linear-gradient(135deg, #11332a 0%, #1e4d40 100%)`) with white text and elevation shadow matching other primary actions.
+- **Status**: Completed, Verified & Auto-Pushed.

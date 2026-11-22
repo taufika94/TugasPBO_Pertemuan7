@@ -9383,17 +9383,17 @@ body {
   box-shadow: 0 0 10px rgba(46, 125, 50, 0.45);
 }
 
-/* Selected Lot Inspector Card (Ruang 4/7 Clean Frosted Card) */
+/* Selected Lot Inspector Card (Harmonized Japandi Modern) */
 #secMasterPlan .clean-frosted-card {
   background: #ffffff;
-  border: 1.5px solid #e8e2d5;
-  border-radius: 16px;
-  padding: 18px 16px;
-  margin-top: 16px;
-  box-shadow: 0 4px 18px rgba(22, 36, 28, 0.05);
+  border: 1px solid #e8e2d5;
+  border-radius: 18px;
+  padding: 20px 18px;
+  margin-top: 14px;
+  box-shadow: 0 4px 20px rgba(22, 36, 28, 0.05);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
   box-sizing: border-box;
 }
 
@@ -9401,24 +9401,40 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #ede8de;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0eae1;
 }
 
 #secMasterPlan .kavling-label {
+  font-family: var(--font-sans);
   font-size: 10px;
   letter-spacing: 0.12em;
   font-weight: 700;
-  color: #8a7b62;
+  color: #2e7d32;
+  background: rgba(46, 125, 50, 0.08);
+  padding: 3px 8px;
+  border-radius: 6px;
   text-transform: uppercase;
-  display: block;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+#secMasterPlan .kavling-id-title {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 700;
+  color: #16241c;
+  margin: 0;
+  line-height: 1.25;
 }
 
 #secMasterPlan .kavling-status-badge {
-  font-size: 10px;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
   font-weight: 700;
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 999px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
@@ -9440,67 +9456,86 @@ body {
   border: 1px solid #ffcdd2;
 }
 
-/* Clean Vertical Specs List (Exact Ruang 4/7 Match) */
+/* Harmonized Specs Breakdown Box */
 #secMasterPlan .kavling-specs-clean {
+  background: #fbfaf7;
+  border: 1px solid #e8e2d5;
+  border-radius: 14px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin: 6px 0 12px;
+  gap: 10px;
+  margin: 0;
 }
 
 #secMasterPlan .kavling-clean-row {
   display: flex;
-  align-items: baseline;
-  justify-content: flex-start;
-  gap: 12px;
-  font-size: 14.5px;
-  color: #22362b;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12.5px;
+  color: #4a554e;
+  padding: 3px 0;
 }
 
 #secMasterPlan .kavling-clean-row .label {
-  min-width: 130px;
-  font-size: 14px;
-  color: #55655b;
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  color: #5c6860;
+  font-weight: 500;
 }
 
 #secMasterPlan .kavling-clean-row .val {
-  font-size: 15px;
+  font-family: var(--font-sans);
+  font-size: 13px;
   font-weight: 700;
   color: #16241c;
 }
 
-#secMasterPlan .kavling-clean-row.price-row .val {
-  color: #936e28;
-  font-size: 16px;
-  font-weight: 800;
+#secMasterPlan .kavling-clean-row.price-row {
+  border-top: 1.5px dashed #dfd7c8;
+  padding-top: 10px;
+  margin-top: 4px;
 }
 
-/* Warm Champagne Action Button (Exact Ruang 4/7 Match) */
+#secMasterPlan .kavling-clean-row.price-row .label {
+  font-weight: 700;
+  color: #11332a;
+  font-size: 13px;
+}
+
+#secMasterPlan .kavling-clean-row.price-row .price-val {
+  font-family: var(--font-serif);
+  color: #11332a;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Harmonized Action Button */
 #secMasterPlan .btn-order-kavling-champagne {
-  background: #d8c6a2;
-  color: #16241c;
+  background: linear-gradient(135deg, #11332a 0%, #1e4d40 100%);
+  color: #ffffff;
   border: none;
-  border-radius: 999px;
-  padding: 14px 22px;
+  border-radius: 12px;
+  padding: 14px 20px;
   font-family: var(--font-sans);
   font-size: 13.5px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 14px rgba(17, 51, 42, 0.22);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 10px;
   width: 100%;
   min-height: 48px;
-  /* Touch target Rule 5 */
   transition: all 0.2s ease;
   box-sizing: border-box;
 }
 
 #secMasterPlan .btn-order-kavling-champagne:hover {
-  background: #e2d2b0;
+  background: linear-gradient(135deg, #0d2720 0%, #173d32 100%);
   transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(17, 51, 42, 0.28);
 }
 
 /* Siteplan Cluster Statistics Grid */
