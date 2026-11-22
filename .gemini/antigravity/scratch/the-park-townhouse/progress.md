@@ -5217,3 +5217,19 @@
     - Reduced `.drawer-title` from `18px` to `15.5px` and `.drawer-badge` to `9px`.
     - Reduced `.section-desc` line-height and font-size to `10.5px / 1.45`.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-23] Progress #76: Add Visual Hero Photography & Replace Emojis with Clean SVG Icons on Super App Page
+- **Context & Objective**: Elevate the Super App subpage (`#fasilitasDetail_superapp`) with authentic architectural photography, eliminate decorative emoji icons (`🔐`, `🎫`, `🏊`, `🧾`, `🛠️`, `🚨`), strip remaining arrow symbols, and harmonize the aesthetic with the luxury Japandi design system used throughout the site.
+- **Key Changes Implemented**:
+  - **Photographic Banner Integration (index.html)**:
+    - Added full-bleed `.f-detail-hero-wrap` featuring gate & security access photography (`assets/drive/gate.png`), dark forest gradient overlay, gold eyebrow tag, and concise headline text.
+  - **Emoji Removal & Precision SVG Replacement (index.html & styles.css)**:
+    - Replaced all 6 emoji symbols with clean inline SVG architectural line icons (`.sa-svg-icon` with forest green container accents).
+    - Emergency SOS card styled with a distinctive crimson accent `.sa-svg-sos`.
+  - **Button & Typography Harmonization (index.html & styles.css)**:
+    - Stripped trailing arrow symbols `→` from action buttons and back buttons.
+    - Upgraded `.sa-card-action` from plain underline text to polished pill-style buttons with hover micro-interactions.
+- **Status**: Completed, Verified & Auto-Pushed.

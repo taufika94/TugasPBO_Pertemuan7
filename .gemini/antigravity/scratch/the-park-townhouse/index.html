@@ -3770,7 +3770,6 @@
                 <div class="facility-hub-action-wrap" style="margin-top: 10px;">
                   <button class="btn-primary-forest" type="button" onclick="openFasilitasDetail('superapp')" style="width: 100%;">
                     <span>Lihat Selengkapnya</span>
-                    <span>→</span>
                   </button>
                 </div>
               </div>
@@ -4023,7 +4022,6 @@
             <!-- Navigation Header -->
             <div class="fasilitas-subpage-header">
               <button type="button" class="btn-back-fasilitas" onclick="closeFasilitasDetail()">
-                <span class="back-arrow">←</span>
                 <span>Kembali ke Fasilitas</span>
               </button>
               <div class="fasilitas-subpage-pills">
@@ -4033,38 +4031,42 @@
               </div>
             </div>
 
-            <!-- Hero Card -->
-            <div class="landing-section-card">
-              <div class="section-card-head">
-                <span class="section-tag-gold">FASILITAS DALAM GENGGAMAN</span>
-                <h2 class="section-card-title">Andara Imperial Super App</h2>
-                <p class="section-card-sub">
-                  Bukan sekadar hunian fisik. Nikmati ekosistem kehidupan pintar dalam genggaman tangan Anda — 24 jam sehari, terintegrasi dengan seluruh fasilitas kawasan The Park Townhouse Sukoharjo.
-                </p>
+            <!-- Hero Card with Visual Image -->
+            <div class="landing-section-card" style="padding: 0; overflow: hidden;">
+              <div class="f-detail-hero-wrap">
+                <img src="assets/drive/gate.png" alt="Andara Imperial Super App Living" class="f-detail-hero-img" />
+                <div class="f-detail-hero-overlay">
+                  <span class="section-tag-gold">FASILITAS DALAM GENGGAMAN</span>
+                  <h2 class="section-card-title" style="color: #ffffff; margin: 4px 0 6px;">Andara Imperial Super App</h2>
+                  <p style="color: #e3ede6; font-size: 11px; line-height: 1.5; margin: 0;">
+                    Ekosistem kehidupan pintar dalam genggaman tangan — 24 jam sehari terintegrasi dengan akses gerbang, clubhouse, dan seluruh fasilitas kawasan The Park Townhouse Sukoharjo.
+                  </p>
+                </div>
               </div>
 
-              <div class="superapp-metrics-triptych">
-                <div class="sa-metric-tile">
-                  <strong class="sa-val">Online 24/7</strong>
-                  <span class="sa-lbl">Akses kapan saja</span>
-                </div>
-                <div class="sa-metric-tile">
-                  <strong class="sa-val">Ver. Pro</strong>
-                  <span class="sa-lbl">Fitur lengkap</span>
-                </div>
-                <div class="sa-metric-tile">
-                  <strong class="sa-val">Smart Home IoT</strong>
-                  <span class="sa-lbl">Rumah lebih cerdas</span>
+              <div style="padding: 12px 14px;">
+                <div class="superapp-metrics-triptych">
+                  <div class="sa-metric-tile">
+                    <strong class="sa-val">Online 24/7</strong>
+                    <span class="sa-lbl">Akses Kapan Saja</span>
+                  </div>
+                  <div class="sa-metric-tile">
+                    <strong class="sa-val">Ver. Pro</strong>
+                    <span class="sa-lbl">Fitur Lengkap</span>
+                  </div>
+                  <div class="sa-metric-tile">
+                    <strong class="sa-val">Smart Home IoT</strong>
+                    <span class="sa-lbl">Ekosistem Pintar</span>
+                  </div>
                 </div>
               </div>
             </div>
 
             <!-- FITUR UNGGULAN & DEMO INTERAKTIF -->
             <div class="landing-section-card">
-              <div class="section-card-head">
-                <span class="section-tag-gold">SATU APLIKASI, SEMUA KENDALI</span>
-                <h3 class="section-card-title">Fitur Unggulan Super App</h3>
-                <p class="section-card-sub">Demo interaktif — ketuk kartu fitur untuk mencobanya langsung di layar ponsel.</p>
+              <div class="section-card-head" style="text-align: center; margin-bottom: 4px;">
+                <h3 class="section-card-title" style="text-align: center; margin: 0;">Fitur Unggulan Super App</h3>
+                <p class="section-card-sub" style="text-align: center; margin-top: 4px;">Demo interaktif — ketuk kartu fitur untuk mencoba kendali langsung.</p>
               </div>
 
               <!-- 6 Interactive Feature Cards Grid -->
@@ -4072,65 +4074,100 @@
                 <div class="sa-feature-card" onclick="demoAppAction('lock')">
                   <div class="sa-card-top">
                     <span class="sa-card-badge">TERKUNCI</span>
-                    <span class="sa-card-icon">🔐</span>
+                    <span class="sa-svg-icon">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                      </svg>
+                    </span>
                   </div>
                   <h4>Smart Lock Pintu Utama</h4>
                   <p>Kendalikan kunci pintu rumah dari mana saja via Bluetooth &amp; Wi-Fi IoT — tanpa repot membawa kunci fisik.</p>
-                  <button type="button" class="sa-card-action">Buka Pintu (Unlock) →</button>
+                  <button type="button" class="sa-card-action">Buka Pintu (Unlock)</button>
                 </div>
 
                 <div class="sa-feature-card" onclick="demoAppAction('qr')">
                   <div class="sa-card-top">
                     <span class="sa-card-badge">AVENUE GATE QR</span>
-                    <span class="sa-card-icon">🎫</span>
+                    <span class="sa-svg-icon">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7" />
+                        <rect x="14" y="3" width="7" height="7" />
+                        <rect x="3" y="14" width="7" height="7" />
+                        <path d="M14 14h3v3h-3zM17 17h4v4h-4z" />
+                      </svg>
+                    </span>
                   </div>
                   <h4>Pass Akses QR Tamu</h4>
                   <p>Buat kode QR sementara untuk tamu atau kurir agar bisa langsung melintas gerbang tanpa hambatan.</p>
-                  <button type="button" class="sa-card-action">Generate QR Tamu →</button>
+                  <button type="button" class="sa-card-action">Generate QR Tamu</button>
                 </div>
 
                 <div class="sa-feature-card" onclick="demoAppAction('booking')">
                   <div class="sa-card-top">
                     <span class="sa-card-badge">CLUBHOUSE</span>
-                    <span class="sa-card-icon">🏊</span>
+                    <span class="sa-svg-icon">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                      </svg>
+                    </span>
                   </div>
                   <h4>Booking Gym &amp; Kolam Renang</h4>
                   <p>Reservasi slot olahraga, kolam renang, atau ruang komunitas di clubhouse tanpa perlu antre.</p>
-                  <button type="button" class="sa-card-action">Pesan Slot →</button>
+                  <button type="button" class="sa-card-action">Pesan Slot</button>
                 </div>
 
                 <div class="sa-feature-card" onclick="demoAppAction('ipl')">
                   <div class="sa-card-top">
                     <span class="sa-card-badge">TRANSPARAN</span>
-                    <span class="sa-card-icon">🧾</span>
+                    <span class="sa-svg-icon">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1-2-1-2 1-2-1z" />
+                        <line x1="8" y1="8" x2="16" y2="8" />
+                        <line x1="8" y1="12" x2="16" y2="12" />
+                      </svg>
+                    </span>
                   </div>
                   <h4>Iuran Pemeliharaan (IPL)</h4>
                   <p>Tagihan keamanan, kebersihan, dan perawatan taman dikelola transparan dan dibayar online.</p>
-                  <button type="button" class="sa-card-action">Bayar via Virtual Account →</button>
+                  <button type="button" class="sa-card-action">Bayar Virtual Account</button>
                 </div>
 
                 <div class="sa-feature-card" onclick="demoAppAction('maint')">
                   <div class="sa-card-top">
                     <span class="sa-card-badge">LAYANAN</span>
-                    <span class="sa-card-icon">🛠️</span>
+                    <span class="sa-svg-icon">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                      </svg>
+                    </span>
                   </div>
                   <h4>Lapor Kendala / Maintenance</h4>
                   <p>Ajukan perbaikan atau kendala rumah langsung ke tim pengelola dan pantau progresnya.</p>
-                  <button type="button" class="sa-card-action">Buat Laporan →</button>
+                  <button type="button" class="sa-card-action">Buat Laporan</button>
                 </div>
 
                 <div class="sa-feature-card is-sos-card" onclick="demoAppAction('sos')">
                   <div class="sa-card-top">
                     <span class="sa-card-badge badge-sos">DARURAT</span>
-                    <span class="sa-card-icon">🚨</span>
+                    <span class="sa-svg-icon sa-svg-sos">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 2 22 22 22 12 2" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                      </svg>
+                    </span>
                   </div>
                   <h4>Emergency Panic Button</h4>
                   <p>Satu ketukan memanggil satpam dan bantuan darurat kawasan kapan pun dibutuhkan.</p>
-                  <button type="button" class="sa-card-action">Kirim SOS →</button>
+                  <button type="button" class="sa-card-action">Kirim SOS</button>
                 </div>
               </div>
 
-              <div class="app-demo-feedback" id="appDemoFeedbackSubpage" style="margin-top: 12px;">
+              <div class="app-demo-feedback" id="appDemoFeedbackSubpage" style="margin-top: 10px;">
                 <span>Ketuk kartu fitur di atas untuk mencoba simulasi kendali pintar langsung.</span>
               </div>
             </div>
@@ -4140,11 +4177,10 @@
               <div class="f-detail-footer-cta">
                 <span class="section-tag-gold">EKOSISTEM DIGITAL</span>
                 <h4>Rasakan Hidup Pintar di The Park Townhouse Sukoharjo</h4>
-                <p style="color: #5c6860; font-size: 11.5px; margin: 4px 0 14px;">Setiap unit otomatis terhubung ke Andara Imperial Super App setelah serah terima.</p>
+                <p style="color: #5c6860; font-size: 11px; margin: 4px 0 12px;">Setiap unit otomatis terhubung ke Andara Imperial Super App setelah serah terima.</p>
                 <div class="f-cta-btns-row">
                   <button type="button" class="btn-primary-forest" onclick="switchLandingTab('Unit')">
                     <span>Amankan Unit Anda</span>
-                    <span>→</span>
                   </button>
                   <button type="button" class="btn-secondary-link" onclick="openQuickModal('wa')">
                     <span>Tanya Marketing</span>

@@ -7965,8 +7965,20 @@ transition: all 0.2s ease;
   background: rgba(211, 47, 47, 0.1);
 }
 
-.sa-card-icon {
-  font-size: 14px;
+.sa-svg-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(17, 51, 42, 0.08);
+  color: #11332a;
+}
+
+.sa-svg-icon.sa-svg-sos {
+  background: rgba(211, 47, 47, 0.12);
+  color: #d32f2f;
 }
 
 .sa-feature-card h4 {
@@ -7987,13 +7999,20 @@ transition: all 0.2s ease;
   align-self: flex-start;
   margin-top: 6px;
   border: none;
-  background: transparent;
-  color: #2e7d32;
+  background: rgba(46, 125, 50, 0.08);
+  color: #11332a;
   font-size: 9.5px;
   font-weight: 700;
-  padding: 0;
+  padding: 4px 8px;
+  border-radius: 6px;
   cursor: pointer;
-  text-decoration: underline;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.sa-card-action:hover {
+  background: #11332a;
+  color: #ffffff;
 }
 
 /* Hospitality Services Grid with Photographic Headers */
