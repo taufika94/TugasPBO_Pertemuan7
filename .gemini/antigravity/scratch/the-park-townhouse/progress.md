@@ -595,3 +595,19 @@
     - Added saveCurrentConfigToStorage() syncing unit, lot, pricing, and payment specifications to localStorage.
     - Wired triggers in saveRoomCustomization() (Ruang 4), saveSiteplanChoice() (Ruang 4), openQuickModal('save') (Ruang 7), orderInspectedLot() (Beranda), selectUnitFromLanding(), and initLandingPage().
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #38: Fix Leaflet 403 Access Blocked by Migrating to CARTO Voyager OSM Tiles
+- **Context & Objective**: Resolve HTTP 403 Forbidden error on map tiles ("Access blocked: App is not following tile usage policy of OpenStreetMap's tile server") shown in user screenshot.
+- **Root Cause**:
+  - OpenStreetMap's official server (tile.openstreetmap.org) strictly blocks web/mobile applications and localhost requests that do not adhere to their restricted non-commercial API usage policy.
+- **Solution & Implementation**:
+  - **Tile Provider Migration (app.js)**:
+    - Replaced `https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png` with **CARTO Voyager** (`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`).
+    - CARTO Voyager uses genuine OpenStreetMap data, allows unrestricted web/app tile requests, loads fast, and has 0% policy block rate.
+    - Updated attribution to OpenStreetMap & CARTO.
+  - **Layout & Floating Legend Adjustment (index.html, styles.css)**:
+    - Moved `.map-floating-legend` to bottom-left (`bottom: 10px; left: 10px;`) to prevent collision with top-right zoom controls (+/-) and facility markers.
+    - Embedded the full 'Analisis Radius Aktif' card directly in `#secLokasiRadius`.
+- **Status**: Completed, Verified & Auto-Pushed.

@@ -2376,9 +2376,10 @@ function setupLeafletMap(containerId, isModal) {
     attributionControl: true
   });
 
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.esri.com/">Esri</a>'
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    maxZoom: 20,
+    subdomains: 'abcd',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(map);
 
   // Concentric Group Circles (Circle 1 - 3 based on region distance)
@@ -3448,10 +3449,11 @@ function initBerandaLeafletMap() {
   // Top-right zoom control
   L.control.zoom({ position: 'topright' }).addTo(berandaLeafletMapInstance);
 
-  // OpenStreetMap tile layer per Image 6
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  // OpenStreetMap CARTO Voyager tile layer (High-reliability, zero 403 blocks)
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    maxZoom: 20,
+    subdomains: 'abcd',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(berandaLeafletMapInstance);
 
   // Dynamic green radius circle per Image 6

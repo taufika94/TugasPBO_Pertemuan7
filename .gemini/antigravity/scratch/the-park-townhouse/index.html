@@ -1131,45 +1131,6 @@
               </div>
             </div>
 
-            <!-- Compact Cinematic Atmosphere Showcase (Aspect 16:9) Directly Below Navbar -->
-            <div class="landing-video-card" id="landingVideoCard">
-              <div class="video-head-row">
-                <button type="button" class="btn-video-toggle-mini" id="btnVideoPlayToggle" onclick="toggleLandingVideoPlay()" title="Putar Otomatis">
-                  <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" id="videoPlayIcon">
-                    <rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" />
-                  </svg>
-                </button>
-              </div>
-
-              <div class="video-viewport-frame" id="videoViewportFrame">
-                <img src="assets/drive/dalam-6.png" alt="Sinema The Park Townhouse" class="video-viewport-media" id="videoDisplayImg" style="opacity: 1;" />
-                <div class="video-overlay-gradient"></div>
-                <div class="video-caption-bar">
-                  <span class="video-scene-tag" id="videoSceneTag">Scene 01 · Interior Hangat Bersahaja</span>
-                  <p class="video-scene-desc" id="videoSceneDesc">Ruang keluarga open-plan lantai granit berpadu tangga kayu gantung dan pencahayaan alami.</p>
-                </div>
-              </div>
-
-              <!-- Video Scene Selector Chips -->
-              <div class="video-scene-selector">
-                <button type="button" class="video-scene-btn is-active" id="vSceneBtn0" onclick="switchLandingVideoScene(0, this)">
-                  <span>01. Interior</span>
-                </button>
-                <button type="button" class="video-scene-btn" id="vSceneBtn1" onclick="switchLandingVideoScene(1, this)">
-                  <span>02. Drone</span>
-                </button>
-                <button type="button" class="video-scene-btn" id="vSceneBtn2" onclick="switchLandingVideoScene(2, this)">
-                  <span>03. Gate</span>
-                </button>
-                <button type="button" class="video-scene-btn" id="vSceneBtn3" onclick="switchLandingVideoScene(3, this)">
-                  <span>04. Fasad</span>
-                </button>
-                <button type="button" class="video-scene-btn" id="vSceneBtn4" onclick="switchLandingVideoScene(4, this)">
-                  <span>05. Club</span>
-                </button>
-              </div>
-            </div>
-
             <!-- 2. PRESALE EXCLUSIVE HERO HEADER -->
             <div class="beranda-hero-box">
               <div class="hero-top-eyebrow">
@@ -1199,6 +1160,25 @@
                   <span>Ke Gelora Merdeka</span>
                 </div>
               </div>
+
+              <!-- Compact Cinematic Atmosphere Showcase (Aspect 16:9, max-height 220px) -->
+              <div class="landing-video-card" id="landingVideoCard">
+                <div class="video-head-row">
+                  <button type="button" class="btn-video-toggle-mini" id="btnVideoPlayToggle" onclick="toggleLandingVideoPlay()" title="Putar Otomatis">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" id="videoPlayIcon">
+                      <polygon points="5 3 19 12 5 21 5 3" />
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="video-viewport-frame" id="videoViewportFrame">
+                  <img src="assets/drive/aerial-drone.jpeg" alt="Sinema The Park Townhouse" class="video-viewport-media" id="videoDisplayImg" />
+                  <div class="video-overlay-gradient"></div>
+                  <div class="video-caption-bar">
+                    <span class="video-scene-tag" id="videoSceneTag">Scene 01 · Drone Kawasan</span>
+                    <p class="video-scene-desc" id="videoSceneDesc">Pemandangan udara 30 unit hunian Japandi Modern diapit keteduhan alam Sukoharjo.</p>
+                  </div>
+                </div>
 
                 <!-- Video Scene Selector Chips -->
                 <div class="video-scene-selector">
@@ -1269,7 +1249,7 @@
                 <p class="section-card-sub">Tepat di koridor emas Jl. Jenderal Sudirman. Klik penanda di samping peta — peta akan menuju lokasi &amp; menampilkan fotonya.</p>
               </div>
 
-              <!-- Analisis Radius Aktif Card (Matching User Image Specification) -->
+              <!-- Analisis Radius Aktif Card (Sesuai Spesifikasi Peta) -->
               <div class="beranda-radius-analysis-card">
                 <div class="analysis-top-row">
                   <span class="analysis-label-eyebrow">ANALISIS RADIUS AKTIF</span>
@@ -1302,9 +1282,15 @@
                 </div>
               </div>
 
-              <!-- Interactive Leaflet Map Container per Image 6 -->
+              <!-- Interactive Leaflet Map Container -->
               <div class="beranda-map-frame">
                 <div id="berandaLeafletMap" class="beranda-leaflet-map"></div>
+                <div class="map-floating-legend">
+                  <span class="legend-badge"><span class="legend-dot green"></span> Pusat Kawasan</span>
+                  <span class="legend-badge"><span class="legend-dot ring-c1"></span> Circle 1 (1.0 km)</span>
+                  <span class="legend-badge"><span class="legend-dot ring-c2"></span> Circle 2 (2.5 km)</span>
+                  <span class="legend-badge"><span class="legend-dot ring-c3"></span> Circle 3 (4.5 km)</span>
+                </div>
                 <div class="map-scroll-hint-pill">
                   <span class="hint-bullet">●</span>
                   <span>Klik peta untuk zoom dengan scroll</span>
@@ -1328,7 +1314,7 @@
 
               <!-- POI Interactive List (17 Destination Items) -->
               <div class="poi-interactive-list" id="berandaPoiList">
-                <!-- Dynamically rendered with instant tap triggers -->
+                <!-- Dynamically rendered or static with instant tap triggers -->
               </div>
 
               <!-- Map Quick Actions -->

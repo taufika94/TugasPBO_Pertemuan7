@@ -6991,8 +6991,8 @@ body {
 
 .map-floating-legend {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  bottom: 10px;
+  left: 10px;
   z-index: 1000;
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(8px);
@@ -7005,6 +7005,7 @@ body {
   font-size: 9px;
   font-weight: 600;
   color: #16241c;
+  pointer-events: none;
 }
 
 .legend-badge {
