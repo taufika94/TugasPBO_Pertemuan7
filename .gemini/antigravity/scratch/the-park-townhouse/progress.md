@@ -337,3 +337,18 @@
     - Built `startDoorOpeningSequence()` to trigger spark bursts, warm seam glow, and perspective door swinging upon button tap.
     - Wired `#replayOpeningBtn` to re-enter standby state, allowing replay of the interactive door opening experience.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #24: Scope Breakdown-Row Typography & Fix Room 06 Contrast
+- **Context & Objective**: Resolve text visibility bug in Room 06 (Ruang Hitung) shown in user screenshot `media_1795321881955_f6837185.png`, where `Booking Fee (Tanda Jadi)` and `Pelunasan (Bulan ke-1)` rows appeared dark gray and their values (`Rp 5.000.000`, `Rp 645.000.000`) were rendered dark green on dark green background, making them invisible.
+- **Root Cause**:
+  - The generic `.breakdown-row` selector introduced for the white Beranda investment calculator on line 7322 (`color: #425047; border-bottom: 1px dashed #e8e2d5;` and `.breakdown-row strong { color: #16241c; }`) globally cascaded and overrode the dark-theme Room 06 payment breakdown rows.
+- **Key Changes Implemented**:
+  - **Scoped Beranda Investment Rows**: Renamed selector to `.invest-breakdown-list .breakdown-row` and `.invest-breakdown-list .breakdown-row strong`, isolating light theme styles strictly to Beranda.
+  - **Explicit High-Contrast Room 06 Styling**:
+    - Scoped to `.calc-breakdown-list .breakdown-row`: set `color: rgba(243, 239, 230, 0.88)`, `border-bottom: none`.
+    - Scoped `.calc-breakdown-list .breakdown-row strong`: set `color: #f3efe6` (clean luminous white) with `font-weight: 600`.
+    - Maintained `.calc-breakdown-list .breakdown-row.is-total strong`: set `color: #e5d3af` (warm gold).
+    - Preserved `.calc-breakdown-list .breakdown-row.is-highlight strong`: set `color: #81c784` (emerald green).
+- **Status**: Completed & Verified.
