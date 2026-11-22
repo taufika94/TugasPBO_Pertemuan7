@@ -513,3 +513,22 @@
     - Styled cluster titles in serif `#16241c` with warm description copy.
     - Added location/character tags (`Jl. Tentara Pelajar · Clubhouse`, `Koridor Jl. Jend. Sudirman`, `Zen Enclave · 7 Unit Privat`) and direct interactive link buttons `[Peta Kawasan →]` switching the site plan view seamlessly to that cluster.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #34: Alignment of Opening, Visual Overlays, Navbar, and Master Plan with Ruang 4/7 Architecture
+- **Context & Objective**: Address the 6 visual refinement requests:
+  1. Soften door button glow and eliminate symbols on 'Buka Pintu'.
+  2. Synchronize typography of 'Ada rumah. Ada rasa pulang.' with Room 2 title style.
+  3. Clean stacked layout for Room 5 and Room 6 visual tags to eliminate horizontal text overlap.
+  4. Match navbar background with opening theme (#0c2318) and ensure no Tur 360 button.
+  5. Harmonize Beranda Leaflet map coordinates and radar circles with Ruang 3 (Ruang Peta) and enforce 99 Keunggulan.
+  6. Re-engineer Beranda Master Plan (#secMasterPlan) into the exact elegant architecture of Ruang 4/7 (4-column pill grid, vertical specs card, champagne pill CTA, top & bottom stats).
+- **Key Changes Implemented**:
+  - **Tombol Buka Pintu (styles.css, index.html)**: Removed pseudo-elements, dimmed box-shadow to 0 2px 8px rgba(0,0,0,0.18), confirmed text is strictly 'Buka Pintu'.
+  - **Room 1 Typography (index.html)**: Removed overriding .hero-headline class so 'Ada rumah. Ada rasa pulang.' renders identically to .room-title in Cormorant Garamond serif.
+  - **Visual Overlays (styles.css)**: Enforced column flex direction, tag pill isolation, and distinct sub-label margins for Room 5 and Room 6.
+  - **Header Navbar (styles.css, index.html)**: Set .landing-navbar background to #0c2318 (deep forest) and verified absence of Tur 360 button.
+  - **Lokasi & Radius (pp.js)**: Aligned map center to SUKOHARJO_CENTER [-7.6833, 110.8405] and configured radar rings.
+  - **Beranda Site Plan (index.html, styles.css, pp.js)**: Replaced chunky boxes with the bespoke 4-column pill grid, clean vertical lot specs, and champagne action button matching Ruang 4/7.
+- **Status**: Completed & Verified.

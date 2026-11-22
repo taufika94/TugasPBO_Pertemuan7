@@ -429,14 +429,20 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
   transition: transform 0.2s ease, opacity 0.3s ease, background-color 0.2s ease, box-shadow 0.2s ease, visibility 0.25s;
+}
+
+.btn-open-door::before,
+.btn-open-door::after {
+  display: none !important;
+  content: none !important;
 }
 
 .btn-open-door:hover {
   transform: translateY(-1px);
   background: #dfceab;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.22);
 }
 
 .btn-open-door:active {
@@ -1288,34 +1294,40 @@ body {
   position: absolute;
   inset: 0;
   z-index: 3;
-  background: linear-gradient(180deg, rgba(22, 36, 28, 0.02) 40%, rgba(22, 36, 28, 0.72) 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  gap: 6px;
+  background: linear-gradient(180deg, rgba(22, 36, 28, 0.02) 40%, rgba(22, 36, 28, 0.78) 100%);
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  align-items: flex-start !important;
+  gap: 4px !important;
   padding: 12px 14px;
   pointer-events: none;
 }
 
 .room-visual-tag {
+  display: inline-flex;
+  align-items: center;
   background: rgba(245, 243, 238, 0.95);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: var(--text-dark);
   font-size: 11px;
   font-weight: 600;
-  padding: 5px 12px;
+  padding: 4px 12px;
   border-radius: 999px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   max-width: 90%;
+  white-space: normal;
 }
 
 .room-visual-sub {
+  display: block;
   color: rgba(255, 255, 255, 0.95);
   font-size: 10.5px;
   font-weight: 500;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  white-space: normal;
+  margin: 0;
 }
 
 /* ==========================================================================
@@ -4000,10 +4012,10 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 10px 16px;
-  background: #16241c;
+  background: #0c2318 !important; /* Exact opening background color */
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(229, 211, 175, 0.2);
+  border-bottom: 1px solid rgba(229, 211, 175, 0.15);
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
   z-index: 85;
 }
@@ -8311,29 +8323,59 @@ body {
   font-style: italic;
 }
 
-#secMasterPlan .kavling-pills-scroll {
+/* Top Summary 4-Stats Box (Ruang 4/7 Style) */
+#secMasterPlan .siteplan-top-specs-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 16px;
+  background: #fbfaf7;
+  border: 1px solid #e8e2d5;
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-top: 10px;
+}
+
+#secMasterPlan .sp-spec-item {
   display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  padding: 2px 0;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+}
+
+#secMasterPlan .sp-spec-item span {
+  color: #64746b;
+  font-weight: 500;
+}
+
+#secMasterPlan .sp-spec-item strong {
+  color: #16241c;
+  font-weight: 700;
+}
+
+#secMasterPlan .kavling-pills-scroll {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 10px;
 }
 
 #secMasterPlan .kavling-pill-btn {
-  flex: 0 0 auto;
-  font-size: 11px;
+  width: 100%;
+  font-size: 10.5px;
   font-weight: 600;
-  padding: 8px 12px;
+  padding: 8px 4px;
   min-height: 44px; /* Strict Rule 5 mobile touch target */
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  background: #fbfaf7;
+  border-radius: 8px;
+  background: #ffffff;
   border: 1.5px solid #dcd4c3;
   color: #16241c; /* High contrast dark text */
   cursor: pointer;
   transition: all 0.2s ease;
   box-sizing: border-box;
+  text-align: center;
 }
 
 #secMasterPlan .kavling-pill-btn:hover {
@@ -8343,23 +8385,23 @@ body {
 
 #secMasterPlan .kavling-pill-btn.is-active {
   background: #16241c;
-  border-color: #16241c;
+  border-color: #2e7d32;
   color: #ffffff;
   font-weight: 700;
-  box-shadow: 0 4px 14px rgba(22, 36, 28, 0.25);
+  box-shadow: 0 0 10px rgba(46, 125, 50, 0.45);
 }
 
-/* Selected Lot Inspector Card */
-#secMasterPlan .kavling-detail-card {
-  background: #fbfaf7;
-  border: 1.5px solid #e0d8c7;
+/* Selected Lot Inspector Card (Ruang 4/7 Clean Frosted Card) */
+#secMasterPlan .clean-frosted-card {
+  background: #ffffff;
+  border: 1.5px solid #e8e2d5;
   border-radius: 16px;
   padding: 18px 16px;
   margin-top: 16px;
   box-shadow: 0 4px 18px rgba(22, 36, 28, 0.05);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   box-sizing: border-box;
 }
 
@@ -8372,20 +8414,12 @@ body {
 }
 
 #secMasterPlan .kavling-label {
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.12em;
   font-weight: 700;
   color: #8a7b62;
   text-transform: uppercase;
   display: block;
-}
-
-#secMasterPlan .kavling-title {
-  font-family: var(--font-serif);
-  font-size: 19px;
-  font-weight: 700;
-  color: #16241c; /* Dark text, high contrast */
-  margin: 2px 0 0 0;
 }
 
 #secMasterPlan .kavling-status-badge {
@@ -8414,71 +8448,66 @@ body {
   border: 1px solid #ffcdd2;
 }
 
-/* Specs 2x2 Grid */
-#secMasterPlan .kavling-specs-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-top: 4px;
-}
-
-#secMasterPlan .kavling-spec-cell {
-  background: #ffffff;
-  border: 1px solid #e8e2d5;
-  border-radius: 10px;
-  padding: 10px 12px;
+/* Clean Vertical Specs List (Exact Ruang 4/7 Match) */
+#secMasterPlan .kavling-specs-clean {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  box-shadow: 0 2px 6px rgba(22, 36, 28, 0.02);
+  gap: 8px;
+  margin: 6px 0 12px;
 }
 
-#secMasterPlan .kavling-spec-cell span {
-  font-size: 9.5px;
-  color: #64746b;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+#secMasterPlan .kavling-clean-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 12px;
+  font-size: 14.5px;
+  color: #22362b;
 }
 
-#secMasterPlan .kavling-spec-cell strong {
+#secMasterPlan .kavling-clean-row .label {
+  min-width: 130px;
   font-size: 14px;
-  color: #16241c;
-  font-weight: 700;
+  color: #55655b;
+  font-weight: 400;
 }
 
-#secMasterPlan .kavling-spec-cell.price-cell strong {
-  color: #936e28;
+#secMasterPlan .kavling-clean-row .val {
   font-size: 15px;
+  font-weight: 700;
+  color: #16241c;
+}
+
+#secMasterPlan .kavling-clean-row.price-row .val {
+  color: #936e28;
+  font-size: 16px;
   font-weight: 800;
 }
 
-/* Primary Forest Action Button */
-#secMasterPlan .btn-order-kavling {
-  background: #16241c;
-  color: #ffffff;
+/* Warm Champagne Action Button (Exact Ruang 4/7 Match) */
+#secMasterPlan .btn-order-kavling-champagne {
+  background: #d8c6a2;
+  color: #16241c;
   border: none;
-  border-radius: 12px;
-  padding: 14px 18px;
+  border-radius: 999px;
+  padding: 14px 22px;
   font-family: var(--font-sans);
   font-size: 13.5px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(22, 36, 28, 0.22);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   min-height: 48px; /* Touch target Rule 5 */
   transition: all 0.2s ease;
-  margin-top: 6px;
   box-sizing: border-box;
 }
 
-#secMasterPlan .btn-order-kavling:hover {
-  background: #24382c;
+#secMasterPlan .btn-order-kavling-champagne:hover {
+  background: #e2d2b0;
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(22, 36, 28, 0.3);
 }
 
 /* Siteplan Cluster Statistics Grid */

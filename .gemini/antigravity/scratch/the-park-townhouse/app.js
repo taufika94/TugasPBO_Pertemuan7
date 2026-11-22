@@ -3314,7 +3314,7 @@ function initBerandaLeafletMap() {
   const mapEl = document.getElementById('berandaLeafletMap');
   if (!mapEl || berandaLeafletMapInstance) return;
 
-  const defaultCenter = [-7.673895, 110.843978];
+  const defaultCenter = [-7.6833, 110.8405];
   berandaLeafletMapInstance = L.map('berandaLeafletMap', {
     center: defaultCenter,
     zoom: 14,
@@ -3502,6 +3502,11 @@ function renderBerandaMasterplanSiteplan(clusterKey) {
   const overlayEl = document.getElementById('berandaSpLotsOverlay');
   const pillsRow = document.getElementById('berandaKavlingPillsRow');
 
+  const topStatKavling = document.getElementById('berandaTopStatKavling');
+  const topStatPrasarana = document.getElementById('berandaTopStatPrasarana');
+  const topStatSarana = document.getElementById('berandaTopStatSarana');
+  const topStatRth = document.getElementById('berandaTopStatRth');
+
   const statKavling = document.getElementById('berandaStatKavlingVal');
   const statPrasarana = document.getElementById('berandaStatPrasaranaVal');
   const statSarana = document.getElementById('berandaStatSaranaVal');
@@ -3512,6 +3517,11 @@ function renderBerandaMasterplanSiteplan(clusterKey) {
   if (tagEl) tagEl.textContent = data.tagSub;
   if (areaEl) areaEl.textContent = data.areaSub;
   if (imgEl) imgEl.src = data.img;
+
+  if (topStatKavling) topStatKavling.textContent = data.stats.kavling;
+  if (topStatPrasarana) topStatPrasarana.textContent = data.stats.prasarana;
+  if (topStatSarana) topStatSarana.textContent = data.stats.sarana;
+  if (topStatRth) topStatRth.textContent = data.stats.rth;
 
   if (statKavling) statKavling.textContent = data.stats.kavling;
   if (statPrasarana) statPrasarana.textContent = data.stats.prasarana;

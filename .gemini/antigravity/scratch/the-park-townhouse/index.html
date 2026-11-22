@@ -147,7 +147,7 @@
             </div>
           </div>
 
-          <h1 class="room-title hero-headline stagger-item" data-delay="380">
+          <h1 class="room-title stagger-item" data-delay="380">
             Ada rumah.<br />
             Ada rasa pulang.
           </h1>
@@ -1312,14 +1312,18 @@
                 <button type="button" class="cluster-pill-btn" id="btnBerandaClusterTokyo" onclick="switchBerandaLotCluster('tokyo', this)">Tokyo</button>
               </div>
 
-              <!-- Cluster Summary Header -->
+              <!-- Cluster Summary Header & Top Specs (Ruang 4/7 Style) -->
               <div class="siteplan-header" style="margin-top: 10px;">
                 <div class="siteplan-title-row">
                   <h3 class="siteplan-cluster-title" id="berandaSpClusterTitle">Nagoya</h3>
                   <span class="siteplan-shm-badge" id="berandaSpShmBadge">SHM sudah pecah sempurna (Nagoya)</span>
                 </div>
-                <div class="siteplan-tag-sub" id="berandaSpTagSub">100 m dari Stadion · Nagoya Road 7 M · Clubhouse</div>
-                <div class="siteplan-area-sub" id="berandaSpAreaSub">Cluster Nagoya · 2392 m²</div>
+                <div class="siteplan-top-specs-box">
+                  <div class="sp-spec-item"><span>Kavling</span> <strong id="berandaTopStatKavling">15 unit</strong></div>
+                  <div class="sp-spec-item"><span>Prasarana</span> <strong id="berandaTopStatPrasarana">832,30 m²</strong></div>
+                  <div class="sp-spec-item"><span>Sarana &amp; Clubhouse</span> <strong id="berandaTopStatSarana">254,25 m²</strong></div>
+                  <div class="sp-spec-item"><span>RTH</span> <strong id="berandaTopStatRth">119,60 m²</strong></div>
+                </div>
               </div>
 
               <!-- Visual Site Plan Map with Clickable Lots -->
@@ -1337,52 +1341,49 @@
                 </div>
               </div>
 
-              <!-- Kavling Quick Selector Label & Scrollable Pills -->
+              <!-- Kavling Quick Selector: Clean 4-Column Pill Grid like Ruang 4/7 -->
               <div class="kavling-quick-selector" style="margin-top: 14px;">
-                <div class="kavling-selector-header">
-                  <span class="kavling-selector-label">PILIH NOMOR KAVLING:</span>
-                  <span class="kavling-selector-hint">Ketuk nomor untuk melihat spesifikasi</span>
-                </div>
                 <div class="kavling-pills-scroll" id="berandaKavlingPillsRow">
-                  <!-- Dynamically rendered pills -->
+                  <!-- Dynamically rendered pills (A.01 · 84 m², etc.) -->
                 </div>
               </div>
 
-              <!-- Selected Lot Inspector Card -->
-              <div class="kavling-detail-card" id="berandaLotInspector" style="margin-top: 14px;">
+              <!-- Selected Lot Inspector Card (Clean Frosted Vertical Stack like Ruang 4/7) -->
+              <div class="kavling-detail-card clean-frosted-card" id="berandaLotInspector" style="margin-top: 14px;">
                 <div class="kavling-detail-header">
                   <div>
                     <span class="kavling-label">KAVLING TERPILIH</span>
-                    <h4 class="kavling-title" id="inspLotTag">Nagoya B.04</h4>
                   </div>
                   <span class="kavling-status-badge status-available" id="inspLotStatus">TERSEDIA</span>
                 </div>
-                <div class="kavling-specs-grid">
-                  <div class="kavling-spec-cell">
-                    <span>Luas Bangunan</span>
-                    <strong id="inspLotLb">75 m²</strong>
+
+                <div class="kavling-specs-clean">
+                  <div class="kavling-clean-row">
+                    <span class="label">Luas Bangunan</span>
+                    <strong class="val" id="inspLotLb">75 m²</strong>
                   </div>
-                  <div class="kavling-spec-cell">
-                    <span>Luas Tanah</span>
-                    <strong id="inspLotLt">63 m²</strong>
+                  <div class="kavling-clean-row">
+                    <span class="label">Luas Tanah</span>
+                    <strong class="val" id="inspLotLt">84 m²</strong>
                   </div>
-                  <div class="kavling-spec-cell">
-                    <span>Tipe Bangunan</span>
-                    <strong id="inspLotType">Gold (3 KT)</strong>
+                  <div class="kavling-clean-row">
+                    <span class="label">Tipe Bangunan</span>
+                    <strong class="val" id="inspLotType">Nagoya Gold (LB 75)</strong>
                   </div>
-                  <div class="kavling-spec-cell price-cell">
-                    <span>Harga Cash Keras</span>
-                    <strong id="inspLotPrice">Rp 650 Juta</strong>
+                  <div class="kavling-clean-row price-row">
+                    <span class="label">Harga Cash Keras</span>
+                    <strong class="val price-val" id="inspLotPrice">Rp 720 Juta</strong>
                   </div>
                 </div>
-                <button type="button" class="btn-order-kavling" onclick="orderInspectedLot()">
+
+                <button type="button" class="btn-order-kavling-champagne" onclick="orderInspectedLot()">
                   <span>Pesan Kavling Ini Sekarang</span>
                   <span>→</span>
                 </button>
               </div>
 
-              <!-- Siteplan Stats Grid -->
-              <div class="siteplan-stats-grid" style="margin-top: 12px;">
+              <!-- Siteplan Bottom Stats Grid -->
+              <div class="siteplan-stats-grid" style="margin-top: 14px;">
                 <div class="siteplan-stat-cell">
                   <span class="stat-name">Kavling</span>
                   <strong class="stat-number" id="berandaStatKavlingVal">15 unit</strong>
