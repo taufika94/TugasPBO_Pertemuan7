@@ -452,20 +452,6 @@
             </div>
           </div>
 
-          <!-- Room 04 Quick Mode Switcher & Auto-Scroll Nav -->
-          <div class="room4-nav-pills stagger-item" data-delay="270">
-            <button class="r4-nav-pill is-active" id="btnJumpCustomizer" onclick="scrollToRoom4Section('customizerCard', this)" type="button">
-              <span class="pill-icon">📐</span>
-              <span>Kustomisasi Ruang</span>
-              <span class="pill-arrow">↓</span>
-            </button>
-            <button class="r4-nav-pill" id="btnJumpSiteplan" onclick="scrollToRoom4Section('siteplanCard', this)" type="button">
-              <span class="pill-icon">🗺️</span>
-              <span>Pilih Site Plan</span>
-              <span class="pill-arrow">↓</span>
-            </button>
-          </div>
-
           <!-- KUSTOMISASI DENAH & TATA RUANG (Image 2) -->
           <div class="room-card compact-card customizer-card stagger-item" data-delay="300" id="customizerCard">
             <div class="customizer-header">
@@ -599,32 +585,32 @@
               <span class="filter-group-label">OPSI ITEM TAMBAHAN</span>
               <div class="addons-grid">
                 <label class="addon-item">
-                  <input type="checkbox" id="addonIsland" onchange="updateCustomizerTotal()" />
-                  <div class="addon-info">
+                  <div class="addon-main">
+                    <input type="checkbox" id="addonIsland" onchange="updateCustomizerTotal()" />
                     <span class="addon-name">Kitchen Island &amp; Granit Table</span>
-                    <span class="addon-price">+Rp 15 Juta</span>
                   </div>
+                  <span class="addon-price">+Rp 15 Juta</span>
                 </label>
                 <label class="addon-item">
-                  <input type="checkbox" id="addonSmart" onchange="updateCustomizerTotal()" />
-                  <div class="addon-info">
+                  <div class="addon-main">
+                    <input type="checkbox" id="addonSmart" onchange="updateCustomizerTotal()" />
                     <span class="addon-name">Smart Home Automation Hub</span>
-                    <span class="addon-price">+Rp 10 Juta</span>
                   </div>
+                  <span class="addon-price">+Rp 10 Juta</span>
                 </label>
                 <label class="addon-item">
-                  <input type="checkbox" id="addonBathtub" onchange="updateCustomizerTotal()" />
-                  <div class="addon-info">
+                  <div class="addon-main">
+                    <input type="checkbox" id="addonBathtub" onchange="updateCustomizerTotal()" />
                     <span class="addon-name">Freestanding Bathtub Master Bath</span>
-                    <span class="addon-price">+Rp 12 Juta</span>
                   </div>
+                  <span class="addon-price">+Rp 12 Juta</span>
                 </label>
                 <label class="addon-item">
-                  <input type="checkbox" id="addonSolar" onchange="updateCustomizerTotal()" />
-                  <div class="addon-info">
+                  <div class="addon-main">
+                    <input type="checkbox" id="addonSolar" onchange="updateCustomizerTotal()" />
                     <span class="addon-name">Solar Guard Canopy Carport</span>
-                    <span class="addon-price">+Rp 8 Juta</span>
                   </div>
+                  <span class="addon-price">+Rp 8 Juta</span>
                 </label>
               </div>
             </div>

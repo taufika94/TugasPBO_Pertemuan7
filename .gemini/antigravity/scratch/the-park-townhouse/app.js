@@ -852,24 +852,12 @@ let selectedLotId = null;
 let hasSelectedSiteplanLot = false;
 let hasSavedRoomCustomization = false;
 
-function scrollToRoom4Section(sectionId, btnEl) {
+function scrollToRoom4Section(sectionId) {
   const room4 = document.getElementById('room-4');
   const target = document.getElementById(sectionId);
   if (!room4 || !target) return;
 
-  if (btnEl) {
-    document.querySelectorAll('.r4-nav-pill').forEach((b) => b.classList.remove('is-active'));
-    btnEl.classList.add('is-active');
-  } else {
-    const pillId = sectionId === 'customizerCard' ? 'btnJumpCustomizer' : 'btnJumpSiteplan';
-    const pill = document.getElementById(pillId);
-    if (pill) {
-      document.querySelectorAll('.r4-nav-pill').forEach((b) => b.classList.remove('is-active'));
-      pill.classList.add('is-active');
-    }
-  }
-
-  const targetTop = target.offsetTop - 12;
+  const targetTop = target.offsetTop - 14;
   room4.scrollTo({ top: targetTop, behavior: 'smooth' });
 
   target.classList.remove('is-section-focused');

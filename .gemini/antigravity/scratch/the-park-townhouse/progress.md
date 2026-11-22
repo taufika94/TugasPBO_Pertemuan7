@@ -196,3 +196,14 @@
   - **Explicit Site Plan Save Button (`#btnSaveSiteplan`)**: Integrated `✓ Konfirmasi & Simpan Kavling [ID]` button with active confirmation state and dynamic text update upon lot selection.
   - **Streamlined Dual Progression**: Updated `checkUnlockProgress()` so `#btnNextToRoom5` (`Intip Kehidupan Bersama →`) unlocks once both room customization and site plan lot are explicitly confirmed.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #17: Refined Room 04 Frame Spacing, Full-Width Addons Stack & Navigation Pills Removal
+- **Context & Objective**: Clean up Room 04 layout per user feedback: remove navigation pills (`📐 Kustomisasi Ruang` and `🗺️ Pilih Site Plan`), restore a spacious full-width 1-column stack for "Opsi Item Tambahan" to prevent text truncation, and balance inter-frame spacing throughout Room 04.
+- **Key Changes Implemented**:
+  - **Removed Navigation Pills**: Deleted `.room4-nav-pills` from `index.html` and cleaned up CSS/JS handlers, allowing the natural flow between 360 viewer, specs, customizer, and site plan.
+  - **Full-Width Addons List**: Redesigned `.addons-grid` as a clean 1-column stack (`flex-direction: column`) with `min-height: 46px` touch targets; aligned checkbox and full title on the left (`.addon-main`) and styled emerald price pills (`.addon-price`) on the right with zero truncation or awkward line wrapping.
+  - **Optimized Inter-Frame Geometry & Spacing**: Calibrated `.room-section.room-rumah-section` with `gap: 18px` and `padding: 4px 16px 56px`, providing clean visual separation between consecutive cards and ample clearance above the bottom navigation controls.
+  - **Enhanced Save Button & Card Margins**: Added 8px top margin and 44px touch height to `#btnSaveCustom` and `#btnSaveSiteplan` with tactile press states.
+- **Status**: Completed & Verified.
