@@ -601,34 +601,33 @@ function goToRoom(roomNum) {
   const nextRoomEl = document.getElementById(`room-${roomNum}`);
   const goingForward = roomNum > currentRoom;
 
-  // Room 03 -> 04 uses smooth Zoom-Into-The-Park transition
+  // Room 03 -> 04 uses Fade-in from Center transition ("fade in dari tengah")
   if (roomNum === 4 && currentRoom === 3) {
     updateBackgroundScene(roomNum);
     triggerRoomNatureFX(roomNum);
 
     if (prevRoomEl) {
       prevRoomEl.classList.remove('is-active');
-      prevRoomEl.classList.add('is-zooming-into-house');
+      prevRoomEl.classList.add('is-exiting-fade');
     }
 
     setTimeout(() => {
       if (nextRoomEl) {
         nextRoomEl.scrollTop = 0;
-        nextRoomEl.classList.remove('is-exiting-up', 'is-exiting-down');
-        nextRoomEl.classList.add('is-active');
+        nextRoomEl.classList.remove('is-exiting-up', 'is-exiting-down', 'is-center-fade-in');
+        void nextRoomEl.offsetWidth;
+        nextRoomEl.classList.add('is-active', 'is-center-fade-in');
         revealRoomStagger(roomNum);
       }
       if (roomCardsMap[roomNum]) unlockCard(roomCardsMap[roomNum]);
       currentRoom = roomNum;
-      if (roomNum === 3) {
-        handleRoom3Enter();
-      }
-    }, 240);
+    }, 180);
 
     setTimeout(() => {
-      if (prevRoomEl) prevRoomEl.classList.remove('is-zooming-into-house');
+      if (prevRoomEl) prevRoomEl.classList.remove('is-exiting-fade');
+      if (nextRoomEl) nextRoomEl.classList.remove('is-center-fade-in');
       isTransitioning = false;
-    }, 1350);
+    }, 950);
     return;
   }
 
@@ -762,6 +761,28 @@ function selectHouseUnit(unitKey, btn) {
    SITE PLAN DATA & INTERACTIVE KAVLING SELECTION
    -------------------------------------------------------------------------- */
 const SITEPLAN_DATA = {
+  tokyo: {
+    title: 'Tokyo',
+    shmText: 'Dalam proses pecah sertifikat',
+    tagSub: 'Zen Garden · Tokyo Road 5 m · kavling terbesar 125 m²',
+    areaSub: 'Cluster Tokyo · 1013 m²',
+    img: 'assets/drive/siteplan-tokyo.jpg',
+    stats: {
+      kavling: '7 unit',
+      prasarana: '279 m²',
+      sarana: '50 m²',
+      rth: '60 m²'
+    },
+    lots: [
+      { id: 'B.1', name: 'Tokyo B.1', type: 'Tokyo Gold (LB 80)', area: '80 m²', price: 'Rp 775 Juta', status: 'Tersedia', x: 45, y: 26 },
+      { id: 'B.2', name: 'Tokyo B.2', type: 'Tokyo Gold (LB 80)', area: '80 m²', price: 'Rp 775 Juta', status: 'Tersedia', x: 45, y: 31 },
+      { id: 'B.3', name: 'Tokyo B.3', type: 'Tokyo Gold (LB 80)', area: '91 m²', price: 'Rp 810 Juta', status: 'Tersedia · Hook', x: 44, y: 37 },
+      { id: 'B.4', name: 'Tokyo B.4', type: 'Tokyo Gold (LB 80)', area: '90 m²', price: 'Rp 805 Juta', status: 'Tersedia', x: 57, y: 31 },
+      { id: 'B.5', name: 'Tokyo B.5', type: 'Tokyo Gold (LB 80)', area: '90 m²', price: 'Rp 805 Juta', status: 'Tersedia', x: 56, y: 37 },
+      { id: 'B.6', name: 'Tokyo B.6', type: 'Tokyo Gold (LB 80)', area: '90 m²', price: 'Rp 805 Juta', status: 'Tersedia · Favorit', x: 55, y: 43 },
+      { id: 'B.7', name: 'Tokyo B.7', type: 'Tokyo Gold (LB 80)', area: '125 m²', price: 'Rp 935 Juta', status: 'Tersedia · Terbesar 125 m²', x: 54, y: 50 }
+    ]
+  },
   nagoya: {
     title: 'Nagoya',
     shmText: 'SHM sudah pecah sempurna (Nagoya)',
@@ -775,64 +796,90 @@ const SITEPLAN_DATA = {
       rth: '119,60 m²'
     },
     lots: [
-      { id: 'B.01', name: 'Nagoya B.01', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia · Rekomendasi', x: 26, y: 38 },
-      { id: 'B.02', name: 'Nagoya B.02', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia', x: 38, y: 38 },
-      { id: 'B.03', name: 'Nagoya B.03', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia', x: 50, y: 38 },
-      { id: 'B.04', name: 'Nagoya B.04', type: 'Nagoya Gold (LB 75)', area: '75 m²', price: 'Rp 680 Juta', status: 'Tersedia · Hook', x: 63, y: 40 },
-      { id: 'B.05', name: 'Nagoya B.05', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Booked', x: 76, y: 42 },
-      { id: 'A.01', name: 'Nagoya A.01', type: 'Nagoya Gold (LB 75)', area: '85 m²', price: 'Rp 730 Juta', status: 'Tersedia · Hook', x: 32, y: 68 },
-      { id: 'A.02', name: 'Nagoya A.02', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia', x: 44, y: 68 },
-      { id: 'A.03', name: 'Nagoya A.03', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia', x: 56, y: 68 },
-      { id: 'A.04', name: 'Nagoya A.04', type: 'Nagoya Gold (LB 75)', area: '70 m²', price: 'Rp 670 Juta', status: 'Tersedia', x: 68, y: 68 }
-    ]
-  },
-  tokyo: {
-    title: 'Tokyo',
-    shmText: 'Dalam proses pecah sertifikat',
-    tagSub: 'Jl. Tentara Pelajar · Koridor Utama · Dekat RSUD',
-    areaSub: 'Cluster Tokyo · 1850 m²',
-    img: 'assets/drive/siteplan-tokyo.jpg',
-    stats: {
-      kavling: '12 unit',
-      prasarana: '640,00 m²',
-      sarana: '180,50 m²',
-      rth: '95,00 m²'
-    },
-    lots: [
-      { id: 'T.01', name: 'Tokyo T.01', type: 'Tokyo Gold (LB 80)', area: '75 m²', price: 'Rp 775 Juta', status: 'Tersedia', x: 28, y: 35 },
-      { id: 'T.02', name: 'Tokyo T.02', type: 'Tokyo Gold (LB 80)', area: '75 m²', price: 'Rp 775 Juta', status: 'Tersedia · Favorit', x: 42, y: 35 },
-      { id: 'T.03', name: 'Tokyo T.03', type: 'Tokyo Gold (LB 80)', area: '80 m²', price: 'Rp 795 Juta', status: 'Tersedia', x: 56, y: 38 },
-      { id: 'T.04', name: 'Tokyo T.04', type: 'Tokyo Gold (LB 80)', area: '92 m²', price: 'Rp 835 Juta', status: 'Tersedia · Hook', x: 70, y: 40 },
-      { id: 'T.05', name: 'Tokyo T.05', type: 'Tokyo Gold (LB 80)', area: '75 m²', price: 'Rp 775 Juta', status: 'Booked', x: 38, y: 68 },
-      { id: 'T.06', name: 'Tokyo T.06', type: 'Tokyo Gold (LB 80)', area: '75 m²', price: 'Rp 775 Juta', status: 'Tersedia', x: 52, y: 68 }
+      { id: 'A.01', name: 'Nagoya A.01', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 16, y: 35 },
+      { id: 'A.02', name: 'Nagoya A.02', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 20, y: 35 },
+      { id: 'A.03', name: 'Nagoya A.03', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 25, y: 35 },
+      { id: 'A.04', name: 'Nagoya A.04', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 30, y: 35 },
+      { id: 'A.05', name: 'Nagoya A.05', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 35, y: 35 },
+      { id: 'A.06', name: 'Nagoya A.06', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 39, y: 35 },
+      { id: 'A.07', name: 'Nagoya A.07', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 44, y: 35 },
+      { id: 'A.08', name: 'Nagoya A.08', type: 'Nagoya Gold (LB 75)', area: '84 m²', price: 'Rp 720 Juta', status: 'Tersedia', x: 48, y: 35 },
+      { id: 'B.02', name: 'Nagoya B.02', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia · Dekat Kolam', x: 67, y: 35 },
+      { id: 'B.03', name: 'Nagoya B.03', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia', x: 71, y: 35 },
+      { id: 'B.04', name: 'Nagoya B.04', type: 'Nagoya Gold (LB 75)', area: '63 m²', price: 'Rp 650 Juta', status: 'Tersedia · Entry', x: 75, y: 35 },
+      { id: 'B.05', name: 'Nagoya B.05', type: 'Nagoya Gold (LB 75)', area: '90 m²', price: 'Rp 745 Juta', status: 'Tersedia · Favorit', x: 80, y: 35 },
+      { id: 'B.06', name: 'Nagoya B.06', type: 'Nagoya Gold (LB 75)', area: '85 m²', price: 'Rp 725 Juta', status: 'Tersedia', x: 85, y: 35 },
+      { id: 'B.07', name: 'Nagoya B.07', type: 'Nagoya Gold (LB 75)', area: '95 m²', price: 'Rp 765 Juta', status: 'Tersedia · Hook', x: 90, y: 35 }
     ]
   },
   osaka: {
     title: 'Osaka',
-    shmText: 'SHM pecah siap AJB Notaris',
-    tagSub: 'Boulevard Utama · Koridor Sudirman · EV Ready',
-    areaSub: 'Cluster Osaka · 3150 m²',
+    shmText: 'Dalam proses pecah sertifikat',
+    tagSub: 'Boulevard 6 m terlebar · Avenue Plaza',
+    areaSub: 'Cluster Osaka · 1312 m²',
     img: 'assets/drive/siteplan-osaka.jpg',
     stats: {
-      kavling: '18 unit',
-      prasarana: '1.120,40 m²',
-      sarana: '340,00 m²',
-      rth: '210,00 m²'
+      kavling: '9 unit',
+      prasarana: '336 m²',
+      sarana: '49 m²',
+      rth: '75 m²'
     },
     lots: [
-      { id: 'O.01', name: 'Osaka A.01', type: 'Osaka Diamond (LB 110)', area: '110 m²', price: 'Rp 1,15 Miliar', status: 'Tersedia · Boulevard', x: 25, y: 32 },
-      { id: 'O.02', name: 'Osaka A.02', type: 'Osaka Diamond (LB 110)', area: '110 m²', price: 'Rp 1,15 Miliar', status: 'Tersedia', x: 39, y: 34 },
-      { id: 'O.03', name: 'Osaka A.03', type: 'Osaka Diamond (LB 110)', area: '110 m²', price: 'Rp 1,15 Miliar', status: 'Tersedia · Favorit', x: 53, y: 36 },
-      { id: 'O.04', name: 'Osaka A.04', type: 'Osaka Diamond (LB 110)', area: '130 m²', price: 'Rp 1,28 Miliar', status: 'Tersedia · Hook EV', x: 68, y: 38 },
-      { id: 'O.05', name: 'Osaka B.01', type: 'Osaka Diamond (LB 110)', area: '110 m²', price: 'Rp 1,15 Miliar', status: 'Booked', x: 34, y: 68 },
-      { id: 'O.06', name: 'Osaka B.02', type: 'Osaka Diamond (LB 110)', area: '110 m²', price: 'Rp 1,15 Miliar', status: 'Tersedia', x: 48, y: 68 },
-      { id: 'O.07', name: 'Osaka B.03', type: 'Osaka Diamond (LB 110)', area: '110 m²', price: 'Rp 1,15 Miliar', status: 'Tersedia', x: 62, y: 68 }
+      { id: 'A.1', name: 'Osaka A.1', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 1,05 Miliar', status: 'Tersedia', x: 44, y: 56 },
+      { id: 'A.2', name: 'Osaka A.2', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 1,05 Miliar', status: 'Tersedia', x: 44, y: 48 },
+      { id: 'A.3', name: 'Osaka A.3', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 1,05 Miliar', status: 'Tersedia', x: 44, y: 40 },
+      { id: 'A.4', name: 'Osaka A.4', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 1,05 Miliar', status: 'Tersedia', x: 44, y: 33 },
+      { id: 'A.5', name: 'Osaka A.5', type: 'Osaka Diamond (LB 110)', area: '90 m²', price: 'Rp 1,05 Miliar', status: 'Tersedia · Hook', x: 44, y: 26 },
+      { id: 'A.6', name: 'Osaka A.6', type: 'Osaka Diamond (LB 110)', area: '110 m²', price: 'Rp 1,15 Miliar', status: 'Tersedia', x: 59, y: 27 },
+      { id: 'A.7', name: 'Osaka A.7', type: 'Osaka Diamond (LB 110)', area: '100 m²', price: 'Rp 1,12 Miliar', status: 'Tersedia', x: 59, y: 34 },
+      { id: 'A.8', name: 'Osaka A.8', type: 'Osaka Diamond (LB 110)', area: '110 m²', price: 'Rp 1,15 Miliar', status: 'Tersedia · Favorit', x: 59, y: 44 },
+      { id: 'A.9', name: 'Osaka A.9', type: 'Osaka Diamond (LB 110)', area: '115 m²', price: 'Rp 1,18 Miliar', status: 'Tersedia · Terbesar', x: 59, y: 53 }
     ]
   }
 };
 
 let currentClusterKey = 'nagoya';
 let selectedLotId = null;
+let hasSelectedSiteplanLot = false;
+let hasSavedRoomCustomization = false;
+
+function checkUnlockProgress() {
+  const nextBtn = document.getElementById('btnNextToRoom5');
+  const lockedHint = document.getElementById('navHintLocked');
+  const banner = document.getElementById('customSuccessBanner');
+
+  if (hasSelectedSiteplanLot && hasSavedRoomCustomization) {
+    if (nextBtn) {
+      nextBtn.classList.remove('is-hidden');
+      nextBtn.classList.add('is-unlocked');
+    }
+    if (lockedHint) {
+      lockedHint.classList.add('is-hidden');
+    }
+    if (banner) {
+      banner.innerHTML = '<span>✓ Denah interior tersimpan &amp; kavling terpilih! Tombol perjalanan di bawah telah terbuka.</span>';
+      banner.classList.add('is-visible');
+    }
+  } else if (hasSelectedSiteplanLot && !hasSavedRoomCustomization) {
+    if (nextBtn) nextBtn.classList.add('is-hidden');
+    if (lockedHint) {
+      lockedHint.classList.remove('is-hidden');
+      lockedHint.innerHTML = '<span>🔒 Kavling dipilih! Tekan "✓ Simpan Desain Ruangan" di atas untuk membuka tombol lanjut.</span>';
+    }
+  } else if (!hasSelectedSiteplanLot && hasSavedRoomCustomization) {
+    if (nextBtn) nextBtn.classList.add('is-hidden');
+    if (lockedHint) {
+      lockedHint.classList.remove('is-hidden');
+      lockedHint.innerHTML = '<span>🔒 Kustomisasi ruangan tersimpan! Pilih nomor kavling di Site Plan untuk membuka tombol lanjut.</span>';
+    }
+  } else {
+    if (nextBtn) nextBtn.classList.add('is-hidden');
+    if (lockedHint) {
+      lockedHint.classList.remove('is-hidden');
+      lockedHint.innerHTML = '<span>🔒 Selesaikan kustomisasi tata ruang &amp; pilih kavling di site plan untuk membuka tombol lanjut</span>';
+    }
+  }
+}
 
 function renderSitePlan(clusterKey) {
   currentClusterKey = clusterKey;
@@ -863,7 +910,7 @@ function renderSitePlan(clusterKey) {
   const overlay = document.getElementById('siteplanLotsOverlay');
   if (overlay) {
     overlay.innerHTML = data.lots.map((lot) => `
-      <button class="siteplan-lot-marker" style="left: ${lot.x}%; top: ${lot.y}%;" onclick="selectKavlingLot('${lot.id}')" type="button" title="${lot.name} (${lot.status})">
+      <button class="siteplan-lot-marker" style="left: ${lot.x}%; top: ${lot.y}%;" onclick="selectKavlingLot('${lot.id}', true)" type="button" title="${lot.name} (${lot.status})">
         ${lot.id}
       </button>
     `).join('');
@@ -872,18 +919,18 @@ function renderSitePlan(clusterKey) {
   const pillsRow = document.getElementById('kavlingPillsRow');
   if (pillsRow) {
     pillsRow.innerHTML = data.lots.map((lot) => `
-      <button class="kavling-pill-btn" id="pill-${lot.id}" onclick="selectKavlingLot('${lot.id}')" type="button">
+      <button class="kavling-pill-btn" id="pill-${lot.id}" onclick="selectKavlingLot('${lot.id}', true)" type="button">
         ${lot.id} · ${lot.area}
       </button>
     `).join('');
   }
 
   if (data.lots.length > 0) {
-    selectKavlingLot(data.lots[0].id);
+    selectKavlingLot(data.lots[0].id, false);
   }
 }
 
-function selectKavlingLot(lotId) {
+function selectKavlingLot(lotId, isUserClick = true) {
   selectedLotId = lotId;
   const data = SITEPLAN_DATA[currentClusterKey] || SITEPLAN_DATA.nagoya;
   const lot = data.lots.find((l) => l.id === lotId) || data.lots[0];
@@ -912,14 +959,49 @@ function selectKavlingLot(lotId) {
   if (area) area.textContent = lot.area;
   if (type) type.textContent = lot.type;
   if (price) price.textContent = lot.price;
+
+  if (isUserClick) {
+    hasSelectedSiteplanLot = true;
+    checkUnlockProgress();
+  }
 }
 
 /* --------------------------------------------------------------------------
-   360° INTERIOR PANORAMA VIEWER
+   360° INTERIOR PANORAMA VIEWER (Interactive Drag & Continuous Idle Pan)
    -------------------------------------------------------------------------- */
 let panoramaOffset = 0;
 let isPanning360 = false;
 let startX360 = 0;
+let lastInteractionTime = Date.now();
+let isAutoSpinning = false;
+
+function updatePanoDegreeUI() {
+  const badge = document.getElementById('panoAngleBadge');
+  if (badge) {
+    const rawDeg = Math.round((((panoramaOffset % 1200) + 1200) % 1200) / 1200 * 360);
+    badge.textContent = `Sudut Pandang ${rawDeg}°`;
+  }
+}
+
+function setPanoramaAngle(angleDeg, btnEl) {
+  const track = document.getElementById('panoramaTrack');
+  if (!track) return;
+  panoramaOffset = (angleDeg / 360) * 1200;
+  track.style.backgroundPosition = `${panoramaOffset}px center`;
+  updatePanoDegreeUI();
+  document.querySelectorAll('.pano-angle-chip').forEach((b) => b.classList.remove('is-active'));
+  if (btnEl) btnEl.classList.add('is-active');
+  lastInteractionTime = Date.now();
+}
+
+function rotatePanorama(delta) {
+  const track = document.getElementById('panoramaTrack');
+  if (!track) return;
+  panoramaOffset += delta;
+  track.style.backgroundPosition = `${panoramaOffset}px center`;
+  updatePanoDegreeUI();
+  lastInteractionTime = Date.now();
+}
 
 function setup360Viewer() {
   const frame = document.getElementById('house360Frame');
@@ -929,6 +1011,7 @@ function setup360Viewer() {
   const onPointerDown = (clientX) => {
     isPanning360 = true;
     startX360 = clientX;
+    lastInteractionTime = Date.now();
     frame.style.cursor = 'grabbing';
   };
 
@@ -936,12 +1019,15 @@ function setup360Viewer() {
     if (!isPanning360) return;
     const deltaX = clientX - startX360;
     startX360 = clientX;
-    panoramaOffset = (panoramaOffset + deltaX * 0.75) % 2000;
+    panoramaOffset += deltaX * 0.85;
     track.style.backgroundPosition = `${panoramaOffset}px center`;
+    updatePanoDegreeUI();
+    lastInteractionTime = Date.now();
   };
 
   const onPointerUp = () => {
     isPanning360 = false;
+    lastInteractionTime = Date.now();
     frame.style.cursor = 'grab';
   };
 
@@ -960,13 +1046,19 @@ function setup360Viewer() {
   }, { passive: true });
 
   window.addEventListener('touchend', onPointerUp);
-}
 
-function rotatePanorama(delta) {
-  const track = document.getElementById('panoramaTrack');
-  if (!track) return;
-  panoramaOffset = (panoramaOffset + delta) % 2000;
-  track.style.backgroundPosition = `${panoramaOffset}px center`;
+  if (!isAutoSpinning) {
+    isAutoSpinning = true;
+    const autoSpinTick = () => {
+      if (!isPanning360 && currentRoom === 4 && Date.now() - lastInteractionTime > 1800) {
+        panoramaOffset += 0.35;
+        track.style.backgroundPosition = `${panoramaOffset}px center`;
+        updatePanoDegreeUI();
+      }
+      requestAnimationFrame(autoSpinTick);
+    };
+    requestAnimationFrame(autoSpinTick);
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -979,22 +1071,79 @@ function selectDenahType(typeNum, btnEl) {
   document.querySelectorAll('.denah-type-btn').forEach((b) => b.classList.remove('is-active'));
   if (btnEl) btnEl.classList.add('is-active');
 
+  const floorplanImg = document.getElementById('floorplanImg');
+  const badgeTitle = document.getElementById('floorplanBadgeTitle');
   const lotText = document.getElementById('denahLotText');
   const bldText = document.getElementById('denahBuildingText');
   const bedsText = document.getElementById('denahBedsText');
+  const row4 = document.getElementById('roomInputRow4');
 
   if (typeNum === '60') {
+    if (floorplanImg) floorplanImg.src = 'assets/drive/denah-tipe60.jpg';
+    if (badgeTitle) badgeTitle.textContent = 'Denah Tipe 60 / LB 75';
     if (lotText) lotText.textContent = '63 m²';
     if (bldText) bldText.textContent = '75 m²';
-    if (bedsText) bedsText.textContent = '3 Kamar';
+    if (bedsText) bedsText.textContent = '3 Kamar Tidur';
+    if (row4) row4.style.display = 'none';
+
+    const lbl1 = document.getElementById('roomLabel1');
+    const sub1 = document.getElementById('roomSub1');
+    if (lbl1) lbl1.textContent = 'Ruangan 01 (Lt. 1)';
+    if (sub1) sub1.textContent = 'Default: Kamar 1 (2,5 x 2m)';
+
+    const lbl2 = document.getElementById('roomLabel2');
+    const sub2 = document.getElementById('roomSub2');
+    if (lbl2) lbl2.textContent = 'Ruangan 02 (Lt. 2)';
+    if (sub2) sub2.textContent = 'Default: Kamar 2 (3 x 2,6m)';
+
+    const lbl3 = document.getElementById('roomLabel3');
+    const sub3 = document.getElementById('roomSub3');
+    if (lbl3) lbl3.textContent = 'Ruangan 03 (Lt. 2)';
+    if (sub3) sub3.textContent = 'Default: Kamar 3 (2 x 3,5m)';
   } else if (typeNum === '80') {
+    if (floorplanImg) floorplanImg.src = 'assets/drive/denah-tipe60.jpg';
+    if (badgeTitle) badgeTitle.textContent = 'Denah Tipe 80 / LB 80';
     if (lotText) lotText.textContent = '75 m²';
     if (bldText) bldText.textContent = '80 m²';
-    if (bedsText) bedsText.textContent = '3 Kamar';
+    if (bedsText) bedsText.textContent = '3 Kamar Tidur';
+    if (row4) row4.style.display = 'none';
+
+    const lbl1 = document.getElementById('roomLabel1');
+    const sub1 = document.getElementById('roomSub1');
+    if (lbl1) lbl1.textContent = 'Ruangan 01 (Lt. 1)';
+    if (sub1) sub1.textContent = 'Default: Kamar 1 (2,5 x 2,5m)';
+
+    const lbl2 = document.getElementById('roomLabel2');
+    const sub2 = document.getElementById('roomSub2');
+    if (lbl2) lbl2.textContent = 'Ruangan 02 (Lt. 2)';
+    if (sub2) sub2.textContent = 'Default: Kamar 2 (3 x 3m)';
+
+    const lbl3 = document.getElementById('roomLabel3');
+    const sub3 = document.getElementById('roomSub3');
+    if (lbl3) lbl3.textContent = 'Ruangan 03 (Lt. 2)';
+    if (sub3) sub3.textContent = 'Default: Kamar 3 (2,5 x 3,5m)';
   } else if (typeNum === '110') {
+    if (floorplanImg) floorplanImg.src = 'assets/drive/denah-tipe110.jpg';
+    if (badgeTitle) badgeTitle.textContent = 'Denah Tipe 110 / LB 110';
     if (lotText) lotText.textContent = '110 m²';
     if (bldText) bldText.textContent = '110 m²';
-    if (bedsText) bedsText.textContent = '4 Kamar';
+    if (bedsText) bedsText.textContent = '4 Kamar Tidur (3 Mobil)';
+    if (row4) row4.style.display = 'flex';
+
+    const lbl1 = document.getElementById('roomLabel1');
+    const sub1 = document.getElementById('roomSub1');
+    if (lbl1) lbl1.textContent = 'Ruangan 01 (Lt. 1)';
+    if (sub1) sub1.textContent = 'Default: Kamar 1 (2,3 x 2,5m)';
+
+    const lbl2 = document.getElementById('roomLabel2');
+    const sub2 = document.getElementById('roomSub2');
+    if (lbl2) lbl2.textContent = 'Ruangan 02 (Lt. 1)';
+    if (sub2) sub2.textContent = 'Default: Kamar 2 (2,5 x 2,5m)';
+
+    const lbl3 = document.getElementById('roomLabel3');
+    const sub3 = document.getElementById('roomSub3');
+    if (lbl3) lbl3.textContent = 'Ruangan 03 (Lt. 2)';
+    if (sub3) sub3.textContent = 'Default: Kamar 3 (2,5 x 2,4m)';
   }
 }
 
@@ -1010,24 +1159,16 @@ function updateCustomizerTotal() {
 }
 
 function saveRoomCustomization() {
-  const banner = document.getElementById('customSuccessBanner');
-  if (banner) {
-    banner.classList.add('is-visible');
-  }
-  const nextBtn = document.getElementById('btnNextToRoom5');
-  if (nextBtn) {
-    nextBtn.classList.remove('is-hidden');
-    nextBtn.classList.add('is-unlocked');
-  }
-  const lockedHint = document.getElementById('navHintLocked');
-  if (lockedHint) {
-    lockedHint.classList.add('is-hidden');
-  }
+  hasSavedRoomCustomization = true;
+  checkUnlockProgress();
 
-  // Smooth scroll down inside Room 04 to present the unlocked button clearly
-  const room4Section = document.getElementById('room-4');
-  if (room4Section) {
-    room4Section.scrollTo({ top: room4Section.scrollHeight, behavior: 'smooth' });
+  if (hasSelectedSiteplanLot && hasSavedRoomCustomization) {
+    const room4Section = document.getElementById('room-4');
+    if (room4Section) {
+      setTimeout(() => {
+        room4Section.scrollTo({ top: room4Section.scrollHeight, behavior: 'smooth' });
+      }, 150);
+    }
   }
 
   unlockCard({ id: 22, title: 'Kustomisasi Denah Interior Tersimpan', room: 'Ruang Rumah' });

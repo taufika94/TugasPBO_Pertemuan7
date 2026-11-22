@@ -410,11 +410,16 @@
             </div>
             <div class="panorama-badge-pill">
               <span class="p-360-icon">360°</span>
-              <span>Panorama Ruang Interaktif</span>
+              <span id="panoAngleBadge">Sudut Pandang 0°</span>
             </div>
             <div class="panorama-drag-hint">
               <span class="drag-hand-icon">✋</span>
-              <span>Geser kiri/kanan untuk rotasi 360°</span>
+              <span>Geser untuk rotasi 360°</span>
+            </div>
+            <div class="panorama-angle-presets">
+              <button class="pano-angle-chip is-active" id="panoPreset1" onclick="setPanoramaAngle(0, this)" type="button">Ruang Tamu</button>
+              <button class="pano-angle-chip" id="panoPreset2" onclick="setPanoramaAngle(120, this)" type="button">Kamar Utama</button>
+              <button class="pano-angle-chip" id="panoPreset3" onclick="setPanoramaAngle(240, this)" type="button">Dapur &amp; Tangga</button>
             </div>
             <div class="panorama-controls">
               <button class="pano-btn" onclick="rotatePanorama(-35)" type="button" aria-label="Putar kiri">⟲</button>
@@ -474,9 +479,9 @@
 
             <!-- Denah Visual Frame -->
             <div class="floorplan-visual-wrap">
-              <img src="assets/drive/denah-custom.jpg" alt="Denah Arsitektural Lantai 1 dan Lantai 2" class="floorplan-img" id="floorplanImg" />
+              <img src="assets/drive/denah-tipe60.jpg" alt="Denah Arsitektural Lantai 1 dan Lantai 2" class="floorplan-img" id="floorplanImg" />
               <div class="floorplan-badge-floating">
-                <span>Denah Lantai 1 &amp; 2</span>
+                <span id="floorplanBadgeTitle">Denah Tipe 60 / LB 75</span>
                 <span class="sub-badge">Skala Presisi</span>
               </div>
             </div>
@@ -489,10 +494,10 @@
               </div>
 
               <div class="room-inputs-list">
-                <div class="room-input-row">
+                <div class="room-input-row" id="roomInputRow1">
                   <label class="room-input-label" for="roomName1">
-                    <span>Ruangan 01 (Lt. 1)</span>
-                    <small>Default: Kamar Tidur Utama (2,5 x 2m)</small>
+                    <span id="roomLabel1">Ruangan 01 (Lt. 1)</span>
+                    <small id="roomSub1">Default: Kamar 1 (2,5 x 2m)</small>
                   </label>
                   <input class="room-input-field" type="text" id="roomName1" value="Kamar Tidur Utama" placeholder="Nama ruangan kustom Anda..." />
                   <div class="room-preset-chips">
@@ -502,10 +507,10 @@
                   </div>
                 </div>
 
-                <div class="room-input-row">
+                <div class="room-input-row" id="roomInputRow2">
                   <label class="room-input-label" for="roomName2">
-                    <span>Ruangan 02 (Lt. 2)</span>
-                    <small>Default: Kamar Tidur 2 (3 x 2,6m)</small>
+                    <span id="roomLabel2">Ruangan 02 (Lt. 2)</span>
+                    <small id="roomSub2">Default: Kamar 2 (3 x 2,6m)</small>
                   </label>
                   <input class="room-input-field" type="text" id="roomName2" value="Kamar Tidur Anak 1" placeholder="Nama ruangan kustom Anda..." />
                   <div class="room-preset-chips">
@@ -515,10 +520,10 @@
                   </div>
                 </div>
 
-                <div class="room-input-row">
+                <div class="room-input-row" id="roomInputRow3">
                   <label class="room-input-label" for="roomName3">
-                    <span>Ruangan 03 (Lt. 2)</span>
-                    <small>Default: Kamar Tidur 3 (2 x 3,5m)</small>
+                    <span id="roomLabel3">Ruangan 03 (Lt. 2)</span>
+                    <small id="roomSub3">Default: Kamar 3 (2 x 3,5m)</small>
                   </label>
                   <input class="room-input-field" type="text" id="roomName3" value="Kamar Tamu / Studio" placeholder="Nama ruangan kustom Anda..." />
                   <div class="room-preset-chips">
@@ -528,10 +533,23 @@
                   </div>
                 </div>
 
-                <div class="room-input-row">
+                <div class="room-input-row is-hidden" id="roomInputRow4" style="display: none;">
+                  <label class="room-input-label" for="roomName4">
+                    <span id="roomLabel4">Ruangan 04 (Lt. 2)</span>
+                    <small id="roomSub4">Default: Kamar 4 (2,5 x 2,4m)</small>
+                  </label>
+                  <input class="room-input-field" type="text" id="roomName4" value="Kamar Anak 2" placeholder="Nama ruangan kustom Anda..." />
+                  <div class="room-preset-chips">
+                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName4', 'Kamar Anak 2')">Kamar Anak 2</button>
+                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName4', 'Home Cinema / Gaming')">Home Cinema</button>
+                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName4', 'Walk-in Closet')">Walk-in Closet</button>
+                  </div>
+                </div>
+
+                <div class="room-input-row" id="roomInputRowGarden">
                   <label class="room-input-label" for="roomNameGarden">
-                    <span>Ruang Terbuka (Lt. 1)</span>
-                    <small>Default: Taman Belakang (3,5 x 1m)</small>
+                    <span id="roomLabelGarden">Ruang Terbuka (Lt. 1)</span>
+                    <small id="roomSubGarden">Default: Taman Belakang (3,5 x 1m)</small>
                   </label>
                   <input class="room-input-field" type="text" id="roomNameGarden" value="Taman Kering Zen &amp; BBQ" placeholder="Nama area terbuka kustom Anda..." />
                   <div class="room-preset-chips">

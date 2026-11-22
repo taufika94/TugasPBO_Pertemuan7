@@ -161,3 +161,15 @@
   - **Conditional Progression Button**: Configured `#btnNextToRoom5` (`Intip Kehidupan Bersama →`) to remain hidden initially with `#navHintLocked` active; clicking `✓ Simpan Desain Ruangan & Selesaikan Kustomisasi` validates choices, shows a success badge, unlocks `#btnNextToRoom5` with a pulse animation, and smoothly scrolls to it.
   - **Interactive Responsive Site Plan**: Integrated cluster site plan diagrams for Nagoya, Tokyo, and Osaka (`assets/drive/siteplan-*.jpg`), featuring interactive clickable lot markers on the site plan overlay and quick selector pill chips displaying live lot status (`Tersedia`, `Booked`, `Hook`), land area, recommended unit, and pricing.
 - **Status**: Completed & Verified (verified DOM bindings and JS syntax).
+
+---
+
+### [2026-11-22] Progress #14: Site Plan Exact Coordinate Pins, Double Unlock Progression & Center Fade In
+- **Context & Objective**: Calibrate site plan pins to exact locations from official images, switch denah layouts to high-res architectural renders (`denah-tipe60.jpg` & `denah-tipe110.jpg`), enforce dual-requirement unlock (Site Plan selection + Room customization saved), enhance 360 viewer with idle auto-rotation & angle degrees, and implement center radial fade-in from Ruang Peta to Ruang Rumah.
+- **Key Changes Implemented**:
+  - **Center Radial Fade In Transition (`is-center-fade-in`)**: Implemented `@keyframes centerFadeIn` expanding outward from center (`scale: 0.68 -> 1`, `clip-path: circle(0%) -> circle(150%)`, blur removal) for transition from Room 03 to Room 04.
+  - **High-Res Denah Switcher**: Placed `assets/drive/denah-tipe60.jpg` and `assets/drive/denah-tipe110.jpg`; `selectDenahType()` dynamically toggles between 3-bedroom (Tipe 60/80) and 4-bedroom/3-car (Tipe 110) layouts and displays `#roomInputRow4` accordingly.
+  - **Site Plan Exact Coordinate Pins**: Calibrated pin coordinates matching the site plan images for Tokyo (`B.1`–`B.7`), Nagoya (`A.01`–`A.08`, `B.02`–`B.07`), and Osaka (`A.1`–`A.9`) with active pulsing badge styling.
+  - **Double Unlock Progression Gate**: Wired `hasSelectedSiteplanLot` and `hasSavedRoomCustomization`; `#btnNextToRoom5` (`Intip Kehidupan Bersama →`) is revealed ONLY when both requirements are fulfilled, with `#navHintLocked` dynamically explaining whichever step remains incomplete.
+  - **360° Interior Panorama Enhanced**: Added live compass degree readout (`#panoAngleBadge`), quick angle presets (`Ruang Tamu`, `Kamar Utama`, `Dapur & Tangga`), and idle continuous gentle panning.
+- **Status**: Completed & Verified.
