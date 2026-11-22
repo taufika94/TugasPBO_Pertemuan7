@@ -4371,54 +4371,12 @@ body {
   z-index: 4;
 }
 
-.video-scene-tag {
-  font-size: 9px;
-  font-weight: 700;
-  color: #81c784;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .video-scene-desc {
   font-size: 11px;
   color: #f3efe6;
-  margin: 2px 0 0;
+  margin: 0;
   line-height: 1.4;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-}
-
-.video-scene-selector {
-  display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  scrollbar-width: none;
-}
-
-.video-scene-selector::-webkit-scrollbar {
-  display: none;
-}
-
-.video-scene-btn {
-  min-height: 34px;
-  padding: 4px 10px;
-  border-radius: 8px;
-  background: #f5f2eb;
-  border: 1px solid #e0d8c7;
-  color: #2c3830;
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.18s ease;
-}
-
-.video-scene-btn.is-active {
-  background: #16241c;
-  color: #ffffff;
-  border-color: #16241c;
-  font-weight: 700;
 }
 
 /* DEDICATED LUXURY PRODUCT CARDS SECTION */

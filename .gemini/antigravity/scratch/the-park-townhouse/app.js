@@ -3357,7 +3357,6 @@ function switchLandingVideoScene(sceneIdx, btnEl) {
   const scene = LANDING_VIDEO_SCENES[sceneIdx];
 
   const imgEl = document.getElementById('videoDisplayImg');
-  const tagEl = document.getElementById('videoSceneTag');
   const descEl = document.getElementById('videoSceneDesc');
 
   if (imgEl) {
@@ -3368,23 +3367,7 @@ function switchLandingVideoScene(sceneIdx, btnEl) {
     }, 180);
   }
 
-  if (tagEl) tagEl.textContent = scene.tag;
   if (descEl) descEl.textContent = scene.desc;
-
-  document.querySelectorAll('.video-scene-btn').forEach((btn, i) => {
-    if (i === sceneIdx) {
-      btn.classList.add('is-active');
-      const vScroller = document.querySelector('.video-scene-selector');
-      if (vScroller && btn) {
-        vScroller.scrollTo({
-          left: btn.offsetLeft - vScroller.clientWidth / 2 + btn.clientWidth / 2,
-          behavior: 'smooth'
-        });
-      }
-    } else {
-      btn.classList.remove('is-active');
-    }
-  });
 }
 
 function toggleLandingVideoPlay() {

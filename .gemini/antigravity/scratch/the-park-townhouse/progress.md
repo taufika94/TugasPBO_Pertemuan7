@@ -769,3 +769,17 @@
   - **Script (app.js)**:
     - Removed `#topVideoSceneBadge` reference and update logic in `switchTopHeroVideo()`.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #49: Remove Atmosphere Showcase Scene Tag & Selector Buttons
+- **Context & Objective**: Remove the green scene title (`#videoSceneTag`: "SCENE 04 · FASAD...") and the bottom selector chip buttons (`.video-scene-selector` `#vSceneBtn[0-4]`) from `#landingVideoCard` as requested by user.
+- **Key Changes Implemented**:
+  - **Markup (index.html)**:
+    - Removed `#videoSceneTag` from `.video-caption-bar`.
+    - Removed `.video-scene-selector` containing all 5 scene buttons (`#vSceneBtn0` to `#vSceneBtn4`).
+  - **Styles (styles.css)**:
+    - Deleted CSS rules for `.video-scene-tag`, `.video-scene-selector`, and `.video-scene-btn`.
+  - **Script (app.js)**:
+    - Cleaned up `switchLandingVideoScene()` to remove DOM updates for `videoSceneTag` and the button active state loop, while maintaining the smooth 5-second automatic atmosphere slideshow.
+- **Status**: Completed, Verified & Auto-Pushed.
