@@ -59,7 +59,8 @@
         <p class="opening-caption" id="openingCaption">Setiap langkah jauh, selalu mencari jalan pulang…</p>
 
         <!-- Tombol Buka Pintu Utama -->
-        <button class="btn-open-door" id="btnOpenDoor" type="button" onclick="startDoorOpeningSequence()" title="Buka Pintu">
+        <button class="btn-open-door" id="btnOpenDoor" type="button" onclick="startDoorOpeningSequence()"
+          title="Buka Pintu">
           <span>Buka Pintu</span>
         </button>
 
@@ -339,13 +340,16 @@
             <h2 class="room-title">Dekat ke mana-mana, tetap teduh untuk pulang.</h2>
 
             <div class="distance-chips" id="distanceChipsContainer" aria-label="Pilihan lokasi fasilitas terdekat">
-              <button class="dist-chip" data-facility="sudirman" onclick="openFacilityDetail('sudirman', this)" type="button">
+              <button class="dist-chip" data-facility="sudirman" onclick="openFacilityDetail('sudirman', this)"
+                type="button">
                 Sudirman <strong>1 mnt</strong>
               </button>
-              <button class="dist-chip" data-facility="gelora" onclick="openFacilityDetail('gelora', this)" type="button">
+              <button class="dist-chip" data-facility="gelora" onclick="openFacilityDetail('gelora', this)"
+                type="button">
                 Gelora Merdeka <strong>2 mnt</strong>
               </button>
-              <button class="dist-chip" data-facility="alun-alun" onclick="openFacilityDetail('alun-alun', this)" type="button">
+              <button class="dist-chip" data-facility="alun-alun" onclick="openFacilityDetail('alun-alun', this)"
+                type="button">
                 Alun-Alun <strong>3 mnt</strong>
               </button>
               <button class="dist-chip" data-facility="sman1" onclick="openFacilityDetail('sman1', this)" type="button">
@@ -354,13 +358,16 @@
               <button class="dist-chip" data-facility="rsud" onclick="openFacilityDetail('rsud', this)" type="button">
                 RSUD Soekarno <strong>6 mnt</strong>
               </button>
-              <button class="dist-chip" data-facility="stasiun" onclick="openFacilityDetail('stasiun', this)" type="button">
+              <button class="dist-chip" data-facility="stasiun" onclick="openFacilityDetail('stasiun', this)"
+                type="button">
                 Stasiun <strong>7 mnt</strong>
               </button>
-              <button class="dist-chip" data-facility="rs-indriati" onclick="openFacilityDetail('rs-indriati', this)" type="button">
+              <button class="dist-chip" data-facility="rs-indriati" onclick="openFacilityDetail('rs-indriati', this)"
+                type="button">
                 RS Indriati <strong>12 mnt</strong>
               </button>
-              <button class="dist-chip" data-facility="pakuwon" onclick="openFacilityDetail('pakuwon', this)" type="button">
+              <button class="dist-chip" data-facility="pakuwon" onclick="openFacilityDetail('pakuwon', this)"
+                type="button">
                 Pakuwon Mall <strong>14 mnt</strong>
               </button>
             </div>
@@ -395,7 +402,8 @@
 
           <!-- Unit Selector Tabs -->
           <div class="unit-tabs stagger-item" data-delay="120">
-            <button class="unit-tab-btn is-active" id="tab-nagoya" onclick="selectHouseUnit('nagoya', this)" type="button">
+            <button class="unit-tab-btn is-active" id="tab-nagoya" onclick="selectHouseUnit('nagoya', this)"
+              type="button">
               Nagoya
               <span>LB 75 m²</span>
             </button>
@@ -412,7 +420,8 @@
           <!-- 360-Degree Interactive Interior Panorama Viewer -->
           <div class="room-visual-frame room-360-frame is-hero-tall stagger-item" data-delay="180" id="house360Frame">
             <div class="panorama-viewport" id="panoramaViewport">
-              <div class="panorama-track" id="panoramaTrack" style="background-image: url('assets/drive/dalam-6.png');"></div>
+              <div class="panorama-track" id="panoramaTrack" style="background-image: url('assets/drive/dalam-6.png');">
+              </div>
             </div>
             <div class="panorama-badge-pill">
               <span class="p-360-icon">360°</span>
@@ -427,9 +436,12 @@
               <span>Geser untuk rotasi 360°</span>
             </div>
             <div class="panorama-angle-presets">
-              <button class="pano-angle-chip is-active" id="panoPreset1" onclick="setPanoramaAngle(0, this)" type="button">Ruang Tamu</button>
-              <button class="pano-angle-chip" id="panoPreset2" onclick="setPanoramaAngle(120, this)" type="button">Kamar Utama</button>
-              <button class="pano-angle-chip" id="panoPreset3" onclick="setPanoramaAngle(240, this)" type="button">Dapur &amp; Tangga</button>
+              <button class="pano-angle-chip is-active" id="panoPreset1" onclick="setPanoramaAngle(0, this)"
+                type="button">Ruang Tamu</button>
+              <button class="pano-angle-chip" id="panoPreset2" onclick="setPanoramaAngle(120, this)" type="button">Kamar
+                Utama</button>
+              <button class="pano-angle-chip" id="panoPreset3" onclick="setPanoramaAngle(240, this)" type="button">Dapur
+                &amp; Tangga</button>
             </div>
             <div class="panorama-controls">
               <button class="pano-btn" onclick="rotatePanorama(-35)" type="button" aria-label="Putar kiri">⟲</button>
@@ -481,20 +493,26 @@
 
             <div class="facade-policy-box">
               <p>
-                <strong>Ketentuan Fasad:</strong> Fasad eksterior 2 lantai Modern Japandi dirancang permanen untuk keselarasan kawasan cluster (tidak dapat diubah). Namun, <strong>seluruh sekat, nama ruangan, dan fungsi interior 100% bebas Anda kustomisasi</strong> sesuai gaya hidup keluarga.
+                <strong>Ketentuan Fasad:</strong> Fasad eksterior 2 lantai Modern Japandi dirancang permanen untuk
+                keselarasan kawasan cluster (tidak dapat diubah). Namun, <strong>seluruh sekat, nama ruangan, dan fungsi
+                  interior 100% bebas Anda kustomisasi</strong> sesuai gaya hidup keluarga.
               </p>
             </div>
 
             <!-- Floor Plan Tabs -->
             <div class="denah-type-selector">
-              <button class="denah-type-btn is-active" id="denahType60" onclick="selectDenahType('60', this)" type="button">Tipe 60 (LB 75 m²)</button>
-              <button class="denah-type-btn" id="denahType80" onclick="selectDenahType('80', this)" type="button">Tipe 80 (LB 80 m²)</button>
-              <button class="denah-type-btn" id="denahType110" onclick="selectDenahType('110', this)" type="button">Tipe 110 (LB 110 m²)</button>
+              <button class="denah-type-btn is-active" id="denahType60" onclick="selectDenahType('60', this)"
+                type="button">Tipe 60 (LB 75 m²)</button>
+              <button class="denah-type-btn" id="denahType80" onclick="selectDenahType('80', this)" type="button">Tipe
+                80 (LB 80 m²)</button>
+              <button class="denah-type-btn" id="denahType110" onclick="selectDenahType('110', this)" type="button">Tipe
+                110 (LB 110 m²)</button>
             </div>
 
             <!-- Denah Visual Frame -->
             <div class="floorplan-visual-wrap">
-              <img src="assets/drive/denah-tipe60.jpg" alt="Denah Arsitektural Lantai 1 dan Lantai 2" class="floorplan-img" id="floorplanImg" />
+              <img src="assets/drive/denah-tipe60.jpg" alt="Denah Arsitektural Lantai 1 dan Lantai 2"
+                class="floorplan-img" id="floorplanImg" />
               <div class="floorplan-badge-floating">
                 <span id="floorplanBadgeTitle">Denah Tipe 60 / LB 75</span>
                 <span class="sub-badge">Skala Presisi</span>
@@ -514,11 +532,15 @@
                     <span id="roomLabel1">Ruangan 01 (Lt. 1)</span>
                     <small id="roomSub1">Default: Kamar 1 (2,5 x 2m)</small>
                   </label>
-                  <input class="room-input-field" type="text" id="roomName1" value="Kamar Tidur Utama" placeholder="Nama ruangan kustom Anda..." />
+                  <input class="room-input-field" type="text" id="roomName1" value="Kamar Tidur Utama"
+                    placeholder="Nama ruangan kustom Anda..." />
                   <div class="room-preset-chips">
-                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName1', 'Master Suite &amp; Wardrobe')">Master Suite</button>
-                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName1', 'Kamar Orang Tua / Lansia')">Kamar Orang Tua</button>
-                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName1', 'Ruang Kerja Privat')">Ruang Kerja</button>
+                    <button class="preset-chip" type="button"
+                      onclick="setRoomPreset('roomName1', 'Master Suite &amp; Wardrobe')">Master Suite</button>
+                    <button class="preset-chip" type="button"
+                      onclick="setRoomPreset('roomName1', 'Kamar Orang Tua / Lansia')">Kamar Orang Tua</button>
+                    <button class="preset-chip" type="button"
+                      onclick="setRoomPreset('roomName1', 'Ruang Kerja Privat')">Ruang Kerja</button>
                   </div>
                 </div>
 
@@ -527,11 +549,15 @@
                     <span id="roomLabel2">Ruangan 02 (Lt. 2)</span>
                     <small id="roomSub2">Default: Kamar 2 (3 x 2,6m)</small>
                   </label>
-                  <input class="room-input-field" type="text" id="roomName2" value="Kamar Tidur Anak 1" placeholder="Nama ruangan kustom Anda..." />
+                  <input class="room-input-field" type="text" id="roomName2" value="Kamar Tidur Anak 1"
+                    placeholder="Nama ruangan kustom Anda..." />
                   <div class="room-preset-chips">
-                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName2', 'Kamar Anak Montessori')">Kamar Anak</button>
-                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName2', 'Studio Kreatif &amp; Library')">Studio / Library</button>
-                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName2', 'Walk-in Dressing Room')">Dressing Room</button>
+                    <button class="preset-chip" type="button"
+                      onclick="setRoomPreset('roomName2', 'Kamar Anak Montessori')">Kamar Anak</button>
+                    <button class="preset-chip" type="button"
+                      onclick="setRoomPreset('roomName2', 'Studio Kreatif &amp; Library')">Studio / Library</button>
+                    <button class="preset-chip" type="button"
+                      onclick="setRoomPreset('roomName2', 'Walk-in Dressing Room')">Dressing Room</button>
                   </div>
                 </div>
 
@@ -540,11 +566,15 @@
                     <span id="roomLabel3">Ruangan 03 (Lt. 2)</span>
                     <small id="roomSub3">Default: Kamar 3 (2 x 3,5m)</small>
                   </label>
-                  <input class="room-input-field" type="text" id="roomName3" value="Kamar Tamu / Studio" placeholder="Nama ruangan kustom Anda..." />
+                  <input class="room-input-field" type="text" id="roomName3" value="Kamar Tamu / Studio"
+                    placeholder="Nama ruangan kustom Anda..." />
                   <div class="room-preset-chips">
-                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName3', 'Kamar Tidur Tamu')">Kamar Tamu</button>
-                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName3', 'Gym &amp; Yoga Sanctuary')">Gym &amp; Yoga</button>
-                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName3', 'Mushola / Ruang Doa')">Mushola</button>
+                    <button class="preset-chip" type="button"
+                      onclick="setRoomPreset('roomName3', 'Kamar Tidur Tamu')">Kamar Tamu</button>
+                    <button class="preset-chip" type="button"
+                      onclick="setRoomPreset('roomName3', 'Gym &amp; Yoga Sanctuary')">Gym &amp; Yoga</button>
+                    <button class="preset-chip" type="button"
+                      onclick="setRoomPreset('roomName3', 'Mushola / Ruang Doa')">Mushola</button>
                   </div>
                 </div>
 
@@ -553,11 +583,15 @@
                     <span id="roomLabel4">Ruangan 04 (Lt. 2)</span>
                     <small id="roomSub4">Default: Kamar 4 (2,5 x 2,4m)</small>
                   </label>
-                  <input class="room-input-field" type="text" id="roomName4" value="Kamar Anak 2" placeholder="Nama ruangan kustom Anda..." />
+                  <input class="room-input-field" type="text" id="roomName4" value="Kamar Anak 2"
+                    placeholder="Nama ruangan kustom Anda..." />
                   <div class="room-preset-chips">
-                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName4', 'Kamar Anak 2')">Kamar Anak 2</button>
-                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName4', 'Home Cinema / Gaming')">Home Cinema</button>
-                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName4', 'Walk-in Closet')">Walk-in Closet</button>
+                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName4', 'Kamar Anak 2')">Kamar
+                      Anak 2</button>
+                    <button class="preset-chip" type="button"
+                      onclick="setRoomPreset('roomName4', 'Home Cinema / Gaming')">Home Cinema</button>
+                    <button class="preset-chip" type="button"
+                      onclick="setRoomPreset('roomName4', 'Walk-in Closet')">Walk-in Closet</button>
                   </div>
                 </div>
 
@@ -566,11 +600,15 @@
                     <span id="roomLabelGarden">Ruang Terbuka (Lt. 1)</span>
                     <small id="roomSubGarden">Default: Taman Belakang (3,5 x 1m)</small>
                   </label>
-                  <input class="room-input-field" type="text" id="roomNameGarden" value="Taman Kering Zen &amp; BBQ" placeholder="Nama area terbuka kustom Anda..." />
+                  <input class="room-input-field" type="text" id="roomNameGarden" value="Taman Kering Zen &amp; BBQ"
+                    placeholder="Nama area terbuka kustom Anda..." />
                   <div class="room-preset-chips">
-                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomNameGarden', 'Zen Dry Garden')">Zen Garden</button>
-                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomNameGarden', 'Laundry &amp; Drying Area')">Laundry Area</button>
-                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomNameGarden', 'Mini Courtyard Koi')">Kolam Koi</button>
+                    <button class="preset-chip" type="button"
+                      onclick="setRoomPreset('roomNameGarden', 'Zen Dry Garden')">Zen Garden</button>
+                    <button class="preset-chip" type="button"
+                      onclick="setRoomPreset('roomNameGarden', 'Laundry &amp; Drying Area')">Laundry Area</button>
+                    <button class="preset-chip" type="button"
+                      onclick="setRoomPreset('roomNameGarden', 'Mini Courtyard Koi')">Kolam Koi</button>
                   </div>
                 </div>
               </div>
@@ -581,11 +619,14 @@
               <span class="filter-group-label">RINGKASAN STANDAR DENAH</span>
               <div class="denah-spec-list">
                 <div class="denah-spec-row"><span>Luas Tanah</span><strong id="denahLotText">63 m²</strong></div>
-                <div class="denah-spec-row"><span>Luas Bangunan</span><strong id="denahBuildingText">75 m²</strong></div>
+                <div class="denah-spec-row"><span>Luas Bangunan</span><strong id="denahBuildingText">75 m²</strong>
+                </div>
                 <div class="denah-spec-row"><span>Lantai</span><strong>2 Lantai</strong></div>
                 <div class="denah-spec-row"><span>Kamar Tidur</span><strong id="denahBedsText">3 Kamar</strong></div>
-                <div class="denah-spec-row"><span>Kamar Mandi</span><strong>2 Dilengkapi Shower &amp; Hairdryer Ready</strong></div>
-                <div class="denah-spec-row"><span>Carport / Garasi</span><strong>1-2 Mobil (One Gate Protection)</strong></div>
+                <div class="denah-spec-row"><span>Kamar Mandi</span><strong>2 Dilengkapi Shower &amp; Hairdryer
+                    Ready</strong></div>
+                <div class="denah-spec-row"><span>Carport / Garasi</span><strong>1-2 Mobil (One Gate
+                    Protection)</strong></div>
               </div>
               <ul class="denah-bullets-list">
                 <li>1 Pohon Tabebuya berbunga di tiap halaman unit</li>
@@ -631,7 +672,8 @@
 
             <!-- Tombol Simpan Kustomisasi -->
             <div class="customizer-actions">
-              <button class="btn-primary-forest btn-save-custom" id="btnSaveCustom" onclick="saveRoomCustomization()" type="button">
+              <button class="btn-primary-forest btn-save-custom" id="btnSaveCustom" onclick="saveRoomCustomization()"
+                type="button">
                 <span>✓ Simpan Desain Ruangan</span>
               </button>
               <div class="custom-success-banner" id="customSuccessBanner" aria-live="polite">
@@ -653,7 +695,8 @@
 
             <!-- Site Plan Map with Clickable Kavlings -->
             <div class="siteplan-map-container" id="siteplanMapContainer">
-              <img src="assets/drive/siteplan-nagoya.jpg" alt="Site Plan Kawasan Cluster" class="siteplan-img" id="siteplanImg" />
+              <img src="assets/drive/siteplan-nagoya.jpg" alt="Site Plan Kawasan Cluster" class="siteplan-img"
+                id="siteplanImg" />
               <div class="siteplan-lots-overlay" id="siteplanLotsOverlay">
                 <!-- Dynamically rendered kavling interactive buttons -->
               </div>
@@ -715,7 +758,8 @@
 
             <!-- Site Plan Confirmation Action -->
             <div class="siteplan-actions">
-              <button class="btn-primary-forest btn-save-siteplan" id="btnSaveSiteplan" onclick="saveSiteplanChoice()" type="button">
+              <button class="btn-primary-forest btn-save-siteplan" id="btnSaveSiteplan" onclick="saveSiteplanChoice()"
+                type="button">
                 <span id="btnSaveSiteplanText">✓ Konfirmasi &amp; Simpan Kavling</span>
               </button>
               <div class="custom-success-banner siteplan-success-banner" id="siteplanSuccessBanner" aria-live="polite">
@@ -732,7 +776,8 @@
               <span>→</span>
             </button>
             <div class="nav-hint-locked" id="navHintLocked">
-              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-right:4px;">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"
+                style="display:inline-block; vertical-align:middle; margin-right:4px;">
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
@@ -759,8 +804,10 @@
           </div>
 
           <!-- Facility Visual Carousel Frame with Multi-Image Slide & 5s Auto-Rotate -->
-          <div class="room-visual-frame is-hero-tall facility-carousel-frame stagger-item" data-delay="160" id="facilityVisualFrame">
-            <img src="assets/drive/clubhouse.png" alt="Fasilitas Kawasan The Park Townhouse" class="room-visual-img" id="facilityMainImg" />
+          <div class="room-visual-frame is-hero-tall facility-carousel-frame stagger-item" data-delay="160"
+            id="facilityVisualFrame">
+            <img src="assets/drive/clubhouse.png" alt="Fasilitas Kawasan The Park Townhouse" class="room-visual-img"
+              id="facilityMainImg" />
             <div class="facility-carousel-indicators" id="facilityDots">
               <span class="f-dot is-active" onclick="setFacilityImageIndex(0)"></span>
               <span class="f-dot" onclick="setFacilityImageIndex(1)"></span>
@@ -772,14 +819,16 @@
           </div>
 
           <!-- Interactive Facility Card with Auto-Scroll to Top -->
-          <div class="room-card compact-card facility-card stagger-item" data-delay="240" id="facilityTriggerCard" onclick="focusFacilitySection()">
+          <div class="room-card compact-card facility-card stagger-item" data-delay="240" id="facilityTriggerCard"
+            onclick="focusFacilitySection()">
             <div class="facility-card-header">
               <h2 class="room-title" id="facilityTitle">One-gate RFID, smart lock &amp; clubhouse lengkap.</h2>
             </div>
 
             <!-- Facility Selector Chips -->
             <div class="facility-chips-grid">
-              <button class="facility-chip is-active" id="chipClubhouse" type="button" onclick="selectFacility('clubhouse', event)">
+              <button class="facility-chip is-active" id="chipClubhouse" type="button"
+                onclick="selectFacility('clubhouse', event)">
                 <span class="f-icon">
                   <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M2 12c1.5-1 3.5-1 5 0s3.5 1 5 0 3.5-1 5 0 3.5 1 5 0" />
@@ -819,7 +868,9 @@
             <!-- Active Facility Story & Description -->
             <div class="facility-detail-box" id="facilityDetailBox">
               <p class="facility-desc" id="facilityDesc">
-                Clubhouse eksklusif 2 lantai seluas 177,25 m² yang dirancang untuk menghadirkan pengalaman hidup terbaik. Tempat sempurna untuk berenang, berolahraga, dan menciptakan momen berharga setiap hari tanpa biaya keanggotaan tambahan.
+                Clubhouse eksklusif 2 lantai seluas 177,25 m² yang dirancang untuk menghadirkan pengalaman hidup
+                terbaik. Tempat sempurna untuk berenang, berolahraga, dan menciptakan momen berharga setiap hari tanpa
+                biaya keanggotaan tambahan.
               </p>
               <div class="facility-highlights" id="facilityHighlights">
                 <span class="f-highlight-tag">✓ Resort Pool &amp; Lounge</span>
@@ -856,7 +907,8 @@
           </div>
 
           <div class="room-visual-frame stagger-item" data-delay="140">
-            <img src="assets/drive/house.jpeg" alt="Suasana hunian The Park Townhouse" class="room-visual-img" id="calcUnitThumb" />
+            <img src="assets/drive/house.jpeg" alt="Suasana hunian The Park Townhouse" class="room-visual-img"
+              id="calcUnitThumb" />
             <div class="room-visual-overlay">
               <span class="room-visual-tag" id="calcUnitName">Nagoya B.02–B.04 · LB 75 m²</span>
               <span class="room-visual-sub" id="calcUnitSub">Pilihan Skema Pembayaran Fleksibel</span>
@@ -872,10 +924,12 @@
 
             <!-- 3 Payment Scheme Tabs -->
             <div class="payment-tabs-row">
-              <button class="payment-tab-btn is-active" id="btnPayCashKeras" onclick="selectPaymentScheme('cash_keras', this)" type="button">
+              <button class="payment-tab-btn is-active" id="btnPayCashKeras"
+                onclick="selectPaymentScheme('cash_keras', this)" type="button">
                 <span>Cash Keras</span>
               </button>
-              <button class="payment-tab-btn" id="btnPayCashTempo" onclick="selectPaymentScheme('cash_tempo', this)" type="button">
+              <button class="payment-tab-btn" id="btnPayCashTempo" onclick="selectPaymentScheme('cash_tempo', this)"
+                type="button">
                 <span>Cash Bertahap</span>
               </button>
               <button class="payment-tab-btn" id="btnPayKpr" onclick="selectPaymentScheme('kpr', this)" type="button">
@@ -887,7 +941,8 @@
             <div class="payment-scheme-panel" id="panelCashKeras">
               <div class="scheme-desc-box">
                 <span class="scheme-title">Pilihan Terbaik Pra-Launching</span>
-                <p>Booking fee saat reservasi kavling, sisa pelunasan 100% diselesaikan dalam tempo 30 hari kalender (1 bulan). Sertifikat SHM &amp; PBG langsung diproses balik nama resmi.</p>
+                <p>Booking fee saat reservasi kavling, sisa pelunasan 100% diselesaikan dalam tempo 30 hari kalender (1
+                  bulan). Sertifikat SHM &amp; PBG langsung diproses balik nama resmi.</p>
               </div>
               <div class="calc-breakdown-list">
                 <div class="breakdown-row">
@@ -910,8 +965,10 @@
               <div class="tempo-tenor-selector">
                 <span class="tempo-label">PILIH JANGKA WAKTU TEMPO:</span>
                 <div class="tempo-buttons">
-                  <button class="tempo-btn is-active" id="btnTempo12" onclick="setTempoTenor(12, this)" type="button">12 Bulan (1 Tahun)</button>
-                  <button class="tempo-btn" id="btnTempo24" onclick="setTempoTenor(24, this)" type="button">24 Bulan (2 Tahun)</button>
+                  <button class="tempo-btn is-active" id="btnTempo12" onclick="setTempoTenor(12, this)" type="button">12
+                    Bulan (1 Tahun)</button>
+                  <button class="tempo-btn" id="btnTempo24" onclick="setTempoTenor(24, this)" type="button">24 Bulan (2
+                    Tahun)</button>
                 </div>
               </div>
               <div class="calc-breakdown-list">
@@ -943,7 +1000,8 @@
                   <span>Uang Muka (DP <span id="calcDpPct">30%</span>)</span>
                   <strong id="calcDpText">Rp 195 jt</strong>
                 </div>
-                <input type="range" min="10" max="40" step="5" value="30" class="calc-slider" id="calcDpSlider" oninput="updateKprCalc()" />
+                <input type="range" min="10" max="40" step="5" value="30" class="calc-slider" id="calcDpSlider"
+                  oninput="updateKprCalc()" />
                 <small class="calc-hint">Booking fee Rp 5 Juta memotong DP saat pembayaran</small>
               </div>
 
@@ -952,7 +1010,8 @@
                   <span>Tenor KPR</span>
                   <strong id="calcTenorVal">20 Tahun</strong>
                 </div>
-                <input type="range" min="5" max="25" step="1" value="20" class="calc-slider" id="calcTenorSlider" oninput="updateKprCalc()" />
+                <input type="range" min="5" max="25" step="1" value="20" class="calc-slider" id="calcTenorSlider"
+                  oninput="updateKprCalc()" />
               </div>
 
               <div class="calc-breakdown-list">
@@ -998,7 +1057,8 @@
           </div>
 
           <div class="room-visual-frame is-arch is-hero-tall stagger-item" data-delay="180">
-            <img src="assets/drive/aerial-drone.jpeg" alt="Pemandangan Udara (Drone View) The Park Townhouse Sukoharjo" class="room-visual-img" id="finalDroneImg" />
+            <img src="assets/drive/aerial-drone.jpeg" alt="Pemandangan Udara (Drone View) The Park Townhouse Sukoharjo"
+              class="room-visual-img" id="finalDroneImg" />
             <div class="room-visual-overlay">
               <span class="room-visual-tag">Drone Aerial View</span>
               <span class="room-visual-sub">Avenue Grand Gate · Sukoharjo</span>
@@ -1061,7 +1121,8 @@
            DOOR CLOSING SEQUENCE OVERLAY (Animasi Pintu Tertutup Menuju Luar Rumah)
            ================================================================ -->
       <div class="door-closing-overlay" id="doorClosingOverlay" aria-hidden="true" style="display: none;">
-        <div class="closing-backdrop-outside" id="closingBgOutside" style="background-image: url('assets/drive/gate.png');"></div>
+        <div class="closing-backdrop-outside" id="closingBgOutside"
+          style="background-image: url('assets/drive/gate.png');"></div>
         <div class="closing-ambient-glow"></div>
 
         <div class="closing-portal-wrap" id="closingPortalWrap">
@@ -1091,7 +1152,8 @@
           <span class="closing-tag">Kepulangan Teduh</span>
           <h3 class="closing-title">Pintu Rumah Tertutup Rapi</h3>
           <p class="closing-desc">
-            "Ada rumah. Ada rasa pulang. Perjalanan mencari hunian impian Anda kini berlanjut di Beranda The Park Townhouse..."
+            "Ada rumah. Ada rasa pulang. Perjalanan mencari hunian impian Anda kini berlanjut di Beranda The Park
+            Townhouse..."
           </p>
         </div>
       </div>
@@ -1110,7 +1172,8 @@
             </div>
           </div>
           <div class="landing-nav-actions">
-            <button class="landing-bookmark-btn" id="landingBookmarkBtn" onclick="openSavedConfigModal()" type="button" title="Konfigurasi Rumah Tersimpan">
+            <button class="landing-bookmark-btn" id="landingBookmarkBtn" onclick="openSavedConfigModal()" type="button"
+              title="Konfigurasi Rumah Tersimpan">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
                 <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z" />
               </svg>
@@ -1137,22 +1200,8 @@
                     <span class="video-live-dot"></span>
                     <span id="topVideoSceneBadge">Sinema 01 · Japandi Luxury Living</span>
                   </div>
-                  <p class="top-video-caption" id="topVideoCaption">Kawasan hunian eksklusif dua lantai diapit keteduhan alam dan kemudahan koridor Sukoharjo.</p>
-                </div>
-
-                <!-- Floating Playback Controls -->
-                <div class="top-video-floating-actions">
-                  <button type="button" class="btn-top-video-action" id="btnTopVideoMute" onclick="toggleTopHeroVideoMute()" title="Nyalakan / Senyapkan Suara">
-                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" id="topVideoMuteIcon">
-                      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" />
-                      <line x1="23" y1="9" x2="17" y2="15" /><line x1="17" y1="9" x2="23" y2="15" />
-                    </svg>
-                  </button>
-                  <button type="button" class="btn-top-video-action" onclick="advanceTopHeroVideo(1)" title="Video Berikutnya">
-                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                  </button>
+                  <p class="top-video-caption" id="topVideoCaption">Kawasan hunian eksklusif dua lantai diapit keteduhan
+                    alam dan kemudahan koridor Sukoharjo.</p>
                 </div>
               </div>
             </div>
@@ -1160,8 +1209,12 @@
             <!-- 1. RUNNING ANNOUNCEMENT MARQUEE TICKER -->
             <div class="marquee-ticker-bar">
               <div class="marquee-track">
-                <span>SEBUAH ALAMAT • BEGITU BANYAK ARTI • 30 KELUARGA TERPILIH DALAM KETENANGAN JAPANDI MODERN • KORIDOR EMAS SUKOHARJO • RUANG UNTUK PULANG DAN MELETAKKAN LELAH • SHM PECAH SEMPURNA • DUA LANTAI DENGAN GARASI DALAM • FASILITAS BERSAMA TANPA BIAYA TERPISAH • </span>
-                <span>SEBUAH ALAMAT • BEGITU BANYAK ARTI • 30 KELUARGA TERPILIH DALAM KETENANGAN JAPANDI MODERN • KORIDOR EMAS SUKOHARJO • RUANG UNTUK PULANG DAN MELETAKKAN LELAH • SHM PECAH SEMPURNA • DUA LANTAI DENGAN GARASI DALAM • FASILITAS BERSAMA TANPA BIAYA TERPISAH • </span>
+                <span>SEBUAH ALAMAT • BEGITU BANYAK ARTI • 30 KELUARGA TERPILIH DALAM KETENANGAN JAPANDI MODERN •
+                  KORIDOR EMAS SUKOHARJO • RUANG UNTUK PULANG DAN MELETAKKAN LELAH • SHM PECAH SEMPURNA • DUA LANTAI
+                  DENGAN GARASI DALAM • FASILITAS BERSAMA TANPA BIAYA TERPISAH • </span>
+                <span>SEBUAH ALAMAT • BEGITU BANYAK ARTI • 30 KELUARGA TERPILIH DALAM KETENANGAN JAPANDI MODERN •
+                  KORIDOR EMAS SUKOHARJO • RUANG UNTUK PULANG DAN MELETAKKAN LELAH • SHM PECAH SEMPURNA • DUA LANTAI
+                  DENGAN GARASI DALAM • FASILITAS BERSAMA TANPA BIAYA TERPISAH • </span>
               </div>
             </div>
 
@@ -1172,7 +1225,9 @@
               </div>
               <h1 class="beranda-hero-title">Ada rumah. Ada rasa pulang.</h1>
               <p class="beranda-hero-sub">
-                Barangkali rumah yang Anda cari bukan yang paling banyak menarik perhatian, melainkan ruang untuk meletakkan lelah, membesarkan tawa bersama orang terdekat, dan menyambut hari dengan ritme yang lebih tertata.
+                Barangkali rumah yang Anda cari bukan yang paling banyak menarik perhatian, melainkan ruang untuk
+                meletakkan lelah, membesarkan tawa bersama orang terdekat, dan menyambut hari dengan ritme yang lebih
+                tertata.
               </p>
 
               <!-- 4 Stat Badges Grid with Dynamic Counter Animation -->
@@ -1198,29 +1253,36 @@
               <!-- Compact Cinematic Atmosphere Showcase (Aspect 16:9, max-height 220px) -->
               <div class="landing-video-card" id="landingVideoCard">
                 <div class="video-viewport-frame" id="videoViewportFrame">
-                  <img src="assets/drive/aerial-drone.jpeg" alt="Sinema The Park Townhouse" class="video-viewport-media" id="videoDisplayImg" />
+                  <img src="assets/drive/aerial-drone.jpeg" alt="Sinema The Park Townhouse" class="video-viewport-media"
+                    id="videoDisplayImg" />
                   <div class="video-overlay-gradient"></div>
                   <div class="video-caption-bar">
                     <span class="video-scene-tag" id="videoSceneTag">Scene 01 · Drone Kawasan</span>
-                    <p class="video-scene-desc" id="videoSceneDesc">Pemandangan udara 30 unit hunian Japandi Modern diapit keteduhan alam Sukoharjo.</p>
+                    <p class="video-scene-desc" id="videoSceneDesc">Pemandangan udara 30 unit hunian Japandi Modern
+                      diapit keteduhan alam Sukoharjo.</p>
                   </div>
                 </div>
 
                 <!-- Video Scene Selector Chips -->
                 <div class="video-scene-selector">
-                  <button type="button" class="video-scene-btn is-active" id="vSceneBtn0" onclick="switchLandingVideoScene(0, this)">
+                  <button type="button" class="video-scene-btn is-active" id="vSceneBtn0"
+                    onclick="switchLandingVideoScene(0, this)">
                     <span>01. Drone</span>
                   </button>
-                  <button type="button" class="video-scene-btn" id="vSceneBtn1" onclick="switchLandingVideoScene(1, this)">
+                  <button type="button" class="video-scene-btn" id="vSceneBtn1"
+                    onclick="switchLandingVideoScene(1, this)">
                     <span>02. Gate</span>
                   </button>
-                  <button type="button" class="video-scene-btn" id="vSceneBtn2" onclick="switchLandingVideoScene(2, this)">
+                  <button type="button" class="video-scene-btn" id="vSceneBtn2"
+                    onclick="switchLandingVideoScene(2, this)">
                     <span>03. Fasad</span>
                   </button>
-                  <button type="button" class="video-scene-btn" id="vSceneBtn3" onclick="switchLandingVideoScene(3, this)">
+                  <button type="button" class="video-scene-btn" id="vSceneBtn3"
+                    onclick="switchLandingVideoScene(3, this)">
                     <span>04. Interior</span>
                   </button>
-                  <button type="button" class="video-scene-btn" id="vSceneBtn4" onclick="switchLandingVideoScene(4, this)">
+                  <button type="button" class="video-scene-btn" id="vSceneBtn4"
+                    onclick="switchLandingVideoScene(4, this)">
                     <span>05. Club</span>
                   </button>
                 </div>
@@ -1228,7 +1290,8 @@
 
               <!-- Primary Hero CTA -->
               <div class="hero-cta-action">
-                <button type="button" class="btn-primary-forest btn-block" onclick="openOrderModal('Nagoya (Tipe Gold)', 'A.02', '650.000.000')">
+                <button type="button" class="btn-primary-forest btn-block"
+                  onclick="openOrderModal('Nagoya (Tipe Gold)', 'A.02', '650.000.000')">
                   <span>Amankan Unit Presale · Booking Rp 5 Juta</span>
                   <span>→</span>
                 </button>
@@ -1240,7 +1303,8 @@
               <div class="section-card-head">
                 <span class="section-tag-gold">NILAI LEBIH INVESTASI</span>
                 <h2 class="section-card-title">Mengapa The Park Townhouse?</h2>
-                <p class="section-card-sub">Kombinasi langka antara kenyamanan hidup pribadi dan akselerasi capital gain di pusat kota Sukoharjo.</p>
+                <p class="section-card-sub">Kombinasi langka antara kenyamanan hidup pribadi dan akselerasi capital gain
+                  di pusat kota Sukoharjo.</p>
               </div>
 
               <div class="invest-pillars-grid">
@@ -1272,7 +1336,8 @@
               <div class="section-card-head">
                 <span class="section-tag-gold">LOKASI &amp; RADIUS</span>
                 <h2 class="section-card-title">Terdekat ke Segala Fasilitas Kota</h2>
-                <p class="section-card-sub">Tepat di koridor emas Jl. Jenderal Sudirman. Klik penanda di samping peta — peta akan menuju lokasi &amp; menampilkan fotonya.</p>
+                <p class="section-card-sub">Tepat di koridor emas Jl. Jenderal Sudirman. Klik penanda di samping peta —
+                  peta akan menuju lokasi &amp; menampilkan fotonya.</p>
               </div>
 
               <!-- Analisis Radius Aktif Card (Sesuai Spesifikasi Peta) -->
@@ -1287,12 +1352,18 @@
                 <div class="analysis-pill-group">
                   <span class="analysis-group-title">Radius Pencarian:</span>
                   <div class="analysis-pills-row">
-                    <button type="button" class="radius-filter-pill" onclick="setBerandaSearchRadius(500, this)">500 m</button>
-                    <button type="button" class="radius-filter-pill" onclick="setBerandaSearchRadius(1000, this)">1 km</button>
-                    <button type="button" class="radius-filter-pill is-active" onclick="setBerandaSearchRadius(3000, this)">3 km</button>
-                    <button type="button" class="radius-filter-pill" onclick="setBerandaSearchRadius(5000, this)">5 km</button>
-                    <button type="button" class="radius-filter-pill" onclick="setBerandaSearchRadius(10000, this)">10 km</button>
-                    <button type="button" class="radius-filter-pill" onclick="setBerandaSearchRadius(25000, this)">25 km</button>
+                    <button type="button" class="radius-filter-pill" onclick="setBerandaSearchRadius(500, this)">500
+                      m</button>
+                    <button type="button" class="radius-filter-pill" onclick="setBerandaSearchRadius(1000, this)">1
+                      km</button>
+                    <button type="button" class="radius-filter-pill is-active"
+                      onclick="setBerandaSearchRadius(3000, this)">3 km</button>
+                    <button type="button" class="radius-filter-pill" onclick="setBerandaSearchRadius(5000, this)">5
+                      km</button>
+                    <button type="button" class="radius-filter-pill" onclick="setBerandaSearchRadius(10000, this)">10
+                      km</button>
+                    <button type="button" class="radius-filter-pill" onclick="setBerandaSearchRadius(25000, this)">25
+                      km</button>
                   </div>
                 </div>
 
@@ -1300,10 +1371,14 @@
                 <div class="analysis-pill-group">
                   <span class="analysis-group-title">Fokus Klaster:</span>
                   <div class="analysis-pills-row">
-                    <button type="button" class="cluster-focus-pill is-active" onclick="focusBerandaCluster('all', this)">Semua (3)</button>
-                    <button type="button" class="cluster-focus-pill" onclick="focusBerandaCluster('nagoya', this)">Nagoya</button>
-                    <button type="button" class="cluster-focus-pill" onclick="focusBerandaCluster('osaka', this)">Osaka</button>
-                    <button type="button" class="cluster-focus-pill" onclick="focusBerandaCluster('tokyo', this)">Tokyo</button>
+                    <button type="button" class="cluster-focus-pill is-active"
+                      onclick="focusBerandaCluster('all', this)">Semua (3)</button>
+                    <button type="button" class="cluster-focus-pill"
+                      onclick="focusBerandaCluster('nagoya', this)">Nagoya</button>
+                    <button type="button" class="cluster-focus-pill"
+                      onclick="focusBerandaCluster('osaka', this)">Osaka</button>
+                    <button type="button" class="cluster-focus-pill"
+                      onclick="focusBerandaCluster('tokyo', this)">Tokyo</button>
                   </div>
                 </div>
               </div>
@@ -1327,14 +1402,21 @@
               <div class="poi-category-bar">
                 <span class="poi-filter-label">Kategori:</span>
                 <div class="poi-chips-scroll">
-                  <button type="button" class="poi-cat-chip is-active" onclick="filterBerandaPOI('Semua', this)">Semua</button>
-                  <button type="button" class="poi-cat-chip" onclick="filterBerandaPOI('Olahraga', this)">Olahraga</button>
+                  <button type="button" class="poi-cat-chip is-active"
+                    onclick="filterBerandaPOI('Semua', this)">Semua</button>
+                  <button type="button" class="poi-cat-chip"
+                    onclick="filterBerandaPOI('Olahraga', this)">Olahraga</button>
                   <button type="button" class="poi-cat-chip" onclick="filterBerandaPOI('Ibadah', this)">Ibadah</button>
-                  <button type="button" class="poi-cat-chip" onclick="filterBerandaPOI('Pendidikan', this)">Pendidikan</button>
-                  <button type="button" class="poi-cat-chip" onclick="filterBerandaPOI('Kesehatan', this)">Kesehatan</button>
-                  <button type="button" class="poi-cat-chip" onclick="filterBerandaPOI('Pemerintahan', this)">Pemerintahan</button>
-                  <button type="button" class="poi-cat-chip" onclick="filterBerandaPOI('Rekreasi', this)">Rekreasi</button>
-                  <button type="button" class="poi-cat-chip" onclick="filterBerandaPOI('Belanja', this)">Belanja</button>
+                  <button type="button" class="poi-cat-chip"
+                    onclick="filterBerandaPOI('Pendidikan', this)">Pendidikan</button>
+                  <button type="button" class="poi-cat-chip"
+                    onclick="filterBerandaPOI('Kesehatan', this)">Kesehatan</button>
+                  <button type="button" class="poi-cat-chip"
+                    onclick="filterBerandaPOI('Pemerintahan', this)">Pemerintahan</button>
+                  <button type="button" class="poi-cat-chip"
+                    onclick="filterBerandaPOI('Rekreasi', this)">Rekreasi</button>
+                  <button type="button" class="poi-cat-chip"
+                    onclick="filterBerandaPOI('Belanja', this)">Belanja</button>
                 </div>
               </div>
 
@@ -1345,7 +1427,8 @@
 
               <!-- Map Quick Actions -->
               <div class="map-actions-row">
-                <a href="https://www.google.com/maps/search/?api=1&query=-7.673895340749299,110.84397890839111" target="_blank" rel="noopener noreferrer" class="btn-secondary-link">
+                <a href="https://www.google.com/maps/search/?api=1&query=-7.673895340749299,110.84397890839111"
+                  target="_blank" rel="noopener noreferrer" class="btn-secondary-link">
                   <span>Buka di Google Maps</span>
                   <span>↗</span>
                 </a>
@@ -1361,13 +1444,17 @@
               <div class="section-card-head">
                 <span class="section-tag-gold">DENAH KAWASAN</span>
                 <h2 class="section-card-title">Temukan Ritme Klaster yang Sesuai</h2>
-                <p class="section-card-sub">Nagoya yang dekat fasilitas bersama, Osaka yang berirama aktif, atau Tokyo yang tenang dan intim. Anda cukup menemukan yang paling selaras dengan ritme keluarga.</p>
+                <p class="section-card-sub">Nagoya yang dekat fasilitas bersama, Osaka yang berirama aktif, atau Tokyo
+                  yang tenang dan intim. Anda cukup menemukan yang paling selaras dengan ritme keluarga.</p>
               </div>
 
               <div class="cluster-pill-tabs">
-                <button type="button" class="cluster-pill-btn is-active" id="btnBerandaClusterNagoya" onclick="switchBerandaLotCluster('nagoya', this)">Nagoya</button>
-                <button type="button" class="cluster-pill-btn" id="btnBerandaClusterOsaka" onclick="switchBerandaLotCluster('osaka', this)">Osaka</button>
-                <button type="button" class="cluster-pill-btn" id="btnBerandaClusterTokyo" onclick="switchBerandaLotCluster('tokyo', this)">Tokyo</button>
+                <button type="button" class="cluster-pill-btn is-active" id="btnBerandaClusterNagoya"
+                  onclick="switchBerandaLotCluster('nagoya', this)">Nagoya</button>
+                <button type="button" class="cluster-pill-btn" id="btnBerandaClusterOsaka"
+                  onclick="switchBerandaLotCluster('osaka', this)">Osaka</button>
+                <button type="button" class="cluster-pill-btn" id="btnBerandaClusterTokyo"
+                  onclick="switchBerandaLotCluster('tokyo', this)">Tokyo</button>
               </div>
 
               <!-- Cluster Summary Header & Top Specs (Ruang 4/7 Style) -->
@@ -1377,9 +1464,12 @@
                   <span class="siteplan-shm-badge" id="berandaSpShmBadge">SHM sudah pecah sempurna (Nagoya)</span>
                 </div>
                 <div class="siteplan-top-specs-box">
-                  <div class="sp-spec-item"><span>Kavling</span> <strong id="berandaTopStatKavling">15 unit</strong></div>
-                  <div class="sp-spec-item"><span>Prasarana</span> <strong id="berandaTopStatPrasarana">832,30 m²</strong></div>
-                  <div class="sp-spec-item"><span>Sarana &amp; Clubhouse</span> <strong id="berandaTopStatSarana">254,25 m²</strong></div>
+                  <div class="sp-spec-item"><span>Kavling</span> <strong id="berandaTopStatKavling">15 unit</strong>
+                  </div>
+                  <div class="sp-spec-item"><span>Prasarana</span> <strong id="berandaTopStatPrasarana">832,30
+                      m²</strong></div>
+                  <div class="sp-spec-item"><span>Sarana &amp; Clubhouse</span> <strong id="berandaTopStatSarana">254,25
+                      m²</strong></div>
                   <div class="sp-spec-item"><span>RTH</span> <strong id="berandaTopStatRth">119,60 m²</strong></div>
                 </div>
               </div>
@@ -1393,7 +1483,8 @@
                   </svg>
                   <span>UTARA</span>
                 </div>
-                <img src="assets/drive/siteplan-nagoya.jpg" alt="Site Plan Kawasan" class="siteplan-img" id="berandaSpImg" />
+                <img src="assets/drive/siteplan-nagoya.jpg" alt="Site Plan Kawasan" class="siteplan-img"
+                  id="berandaSpImg" />
                 <div class="siteplan-lots-overlay" id="berandaSpLotsOverlay">
                   <!-- Dynamically rendered kavling interactive buttons -->
                 </div>
@@ -1466,17 +1557,23 @@
               <div class="section-card-head">
                 <span class="section-tag-gold">HIDUP LEBIH NYAMAN</span>
                 <h2 class="section-card-title">Fasilitas &amp; Keamanan Kawasan</h2>
-                <p class="section-card-sub">Dirancang untuk kenyamanan keluarga modern dengan standar privasi tinggi.</p>
+                <p class="section-card-sub">Dirancang untuk kenyamanan keluarga modern dengan standar privasi tinggi.
+                </p>
               </div>
 
               <div class="comfort-features-grid">
                 <div class="comfort-feature-card">
                   <div class="comfort-icon">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                      <line x1="4" y1="21" x2="4" y2="14" /><line x1="4" y1="10" x2="4" y2="3" />
-                      <line x1="12" y1="21" x2="12" y2="12" /><line x1="12" y1="8" x2="12" y2="3" />
-                      <line x1="20" y1="21" x2="20" y2="16" /><line x1="20" y1="12" x2="20" y2="3" />
-                      <line x1="1" y1="14" x2="7" y2="14" /><line x1="9" y1="8" x2="15" y2="8" /><line x1="17" y1="16" x2="23" y2="16" />
+                      <line x1="4" y1="21" x2="4" y2="14" />
+                      <line x1="4" y1="10" x2="4" y2="3" />
+                      <line x1="12" y1="21" x2="12" y2="12" />
+                      <line x1="12" y1="8" x2="12" y2="3" />
+                      <line x1="20" y1="21" x2="20" y2="16" />
+                      <line x1="20" y1="12" x2="20" y2="3" />
+                      <line x1="1" y1="14" x2="7" y2="14" />
+                      <line x1="9" y1="8" x2="15" y2="8" />
+                      <line x1="17" y1="16" x2="23" y2="16" />
                     </svg>
                   </div>
                   <h3 class="comfort-title">ROW Jalan 7 Meter</h3>
@@ -1517,7 +1614,8 @@
 
               <!-- Brochure Download Action -->
               <div class="brochure-download-bar">
-                <a href="The%20Park%20Townhouse%20Brochure.pdf" download="The-Park-Townhouse-Brochure.pdf" class="btn-brochure-action">
+                <a href="The%20Park%20Townhouse%20Brochure.pdf" download="The-Park-Townhouse-Brochure.pdf"
+                  class="btn-brochure-action">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                     <polyline points="7 10 12 15 17 10" />
@@ -1533,7 +1631,8 @@
               <div class="section-card-head">
                 <span class="section-tag-gold">CLUBHOUSE &amp; SUPER APP</span>
                 <h2 class="section-card-title">Satu Aplikasi. Semua Kendali di Genggaman.</h2>
-                <p class="section-card-sub">Nikmati kemudahan pengelolaan hunian, akses gate, reservasi clubhouse, hingga pembayaran tagihan via smartphone.</p>
+                <p class="section-card-sub">Nikmati kemudahan pengelolaan hunian, akses gate, reservasi clubhouse,
+                  hingga pembayaran tagihan via smartphone.</p>
               </div>
 
               <div class="app-mockup-frame">
@@ -1552,7 +1651,8 @@
                   <div class="app-icons-grid">
                     <button type="button" class="app-icon-item" onclick="triggerAppFeature('lock')">
                       <div class="icon-circle">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                          stroke-width="2">
                           <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                           <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                         </svg>
@@ -1562,8 +1662,12 @@
 
                     <button type="button" class="app-icon-item" onclick="triggerAppFeature('qr')">
                       <div class="icon-circle">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                          <rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><rect x="14" y="14" width="7" height="7" />
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                          stroke-width="2">
+                          <rect x="3" y="3" width="7" height="7" />
+                          <rect x="14" y="3" width="7" height="7" />
+                          <rect x="3" y="14" width="7" height="7" />
+                          <rect x="14" y="14" width="7" height="7" />
                         </svg>
                       </div>
                       <span>QR Tamu</span>
@@ -1571,9 +1675,12 @@
 
                     <button type="button" class="app-icon-item" onclick="triggerAppFeature('booking')">
                       <div class="icon-circle">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                          stroke-width="2">
                           <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                          <line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
+                          <line x1="16" y1="2" x2="16" y2="6" />
+                          <line x1="8" y1="2" x2="8" y2="6" />
+                          <line x1="3" y1="10" x2="21" y2="10" />
                         </svg>
                       </div>
                       <span>Booking Club</span>
@@ -1581,8 +1688,10 @@
 
                     <button type="button" class="app-icon-item" onclick="triggerAppFeature('billing')">
                       <div class="icon-circle">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                          <line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                          stroke-width="2">
+                          <line x1="12" y1="1" x2="12" y2="23" />
+                          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                         </svg>
                       </div>
                       <span>Tagihan IPL</span>
@@ -1590,7 +1699,8 @@
 
                     <button type="button" class="app-icon-item" onclick="triggerAppFeature('report')">
                       <div class="icon-circle">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                          stroke-width="2">
                           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                         </svg>
                       </div>
@@ -1599,7 +1709,8 @@
 
                     <button type="button" class="app-icon-item alert-icon" onclick="triggerAppFeature('panic')">
                       <div class="icon-circle">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                          stroke-width="2">
                           <circle cx="12" cy="12" r="10" />
                           <line x1="12" y1="8" x2="12" y2="12" />
                           <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -1619,27 +1730,33 @@
               <div class="section-card-head">
                 <span class="section-tag-gold">KONEKSI &amp; KOMUNITAS</span>
                 <h2 class="section-card-title">Media Sosial Resmi</h2>
-                <p class="section-card-sub">Ikuti catatan pembangunan berkala, dokumentasi sudut kawasan, dan suasana kebersamaan di The Park Townhouse.</p>
+                <p class="section-card-sub">Ikuti catatan pembangunan berkala, dokumentasi sudut kawasan, dan suasana
+                  kebersamaan di The Park Townhouse.</p>
               </div>
 
               <div class="social-links-grid">
-                <a href="https://instagram.com/theparktownhouse" target="_blank" rel="noopener noreferrer" class="social-link-pill">
+                <a href="https://instagram.com/theparktownhouse" target="_blank" rel="noopener noreferrer"
+                  class="social-link-pill">
                   <span class="social-name">Instagram</span>
                   <span class="social-handle">@theparktownhouse</span>
                 </a>
-                <a href="https://tiktok.com/@theparktownhouse" target="_blank" rel="noopener noreferrer" class="social-link-pill">
+                <a href="https://tiktok.com/@theparktownhouse" target="_blank" rel="noopener noreferrer"
+                  class="social-link-pill">
                   <span class="social-name">TikTok</span>
                   <span class="social-handle">@theparktownhouse</span>
                 </a>
-                <a href="https://facebook.com/theparktownhouse" target="_blank" rel="noopener noreferrer" class="social-link-pill">
+                <a href="https://facebook.com/theparktownhouse" target="_blank" rel="noopener noreferrer"
+                  class="social-link-pill">
                   <span class="social-name">Facebook</span>
                   <span class="social-handle">The Park Townhouse</span>
                 </a>
-                <a href="https://youtube.com/@theparktownhouse" target="_blank" rel="noopener noreferrer" class="social-link-pill">
+                <a href="https://youtube.com/@theparktownhouse" target="_blank" rel="noopener noreferrer"
+                  class="social-link-pill">
                   <span class="social-name">YouTube</span>
                   <span class="social-handle">The Park Townhouse Official</span>
                 </a>
-                <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="social-link-pill whatsapp-pill">
+                <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer"
+                  class="social-link-pill whatsapp-pill">
                   <span class="social-name">WhatsApp Sales</span>
                   <span class="social-handle">+62 812-3456-7890</span>
                 </a>
@@ -1651,7 +1768,8 @@
               <div class="section-card-head">
                 <span class="section-tag-gold">STANDAR JAPANDI</span>
                 <h2 class="section-card-title">11 Pilar Keunggulan</h2>
-                <p class="section-card-sub">Fondasi rancang bangun yang menjadikan The Park Townhouse hunian idaman di Sukoharjo.</p>
+                <p class="section-card-sub">Fondasi rancang bangun yang menjadikan The Park Townhouse hunian idaman di
+                  Sukoharjo.</p>
               </div>
 
               <div class="eleven-pillars-grid">
@@ -1698,7 +1816,8 @@
                 <div class="eleven-pillar-card">
                   <div class="ep-num">09</div>
                   <h4 class="ep-title">Potensi Capital Gain 18%</h4>
-                  <p class="ep-desc">Perkembangan kawasan pesat dengan potensi sewa tinggi bagi ekspatriat & profesional.</p>
+                  <p class="ep-desc">Perkembangan kawasan pesat dengan potensi sewa tinggi bagi ekspatriat &
+                    profesional.</p>
                 </div>
                 <div class="eleven-pillar-card">
                   <div class="ep-num">10</div>
@@ -1708,7 +1827,8 @@
                 <div class="eleven-pillar-card">
                   <div class="ep-num">11</div>
                   <h4 class="ep-title">Estate Management Mandiri</h4>
-                  <p class="ep-desc">Perawatan kebersihan lingkungan, keamanan, dan fasilitas clubhouse terkelola profesional.</p>
+                  <p class="ep-desc">Perawatan kebersihan lingkungan, keamanan, dan fasilitas clubhouse terkelola
+                    profesional.</p>
                 </div>
               </div>
             </div>
@@ -1723,8 +1843,10 @@
 
               <!-- Type Toggle -->
               <div class="cluster-pill-tabs">
-                <button type="button" class="cluster-pill-btn is-active" id="btnInvestTipe60" onclick="switchBerandaInvestType('tipe60', this)">Tipe 60 (The Oasis)</button>
-                <button type="button" class="cluster-pill-btn" id="btnInvestTipe80" onclick="switchBerandaInvestType('tipe80', this)">Tipe 80 (The Imperial)</button>
+                <button type="button" class="cluster-pill-btn is-active" id="btnInvestTipe60"
+                  onclick="switchBerandaInvestType('tipe60', this)">Tipe 60 (The Oasis)</button>
+                <button type="button" class="cluster-pill-btn" id="btnInvestTipe80"
+                  onclick="switchBerandaInvestType('tipe80', this)">Tipe 80 (The Imperial)</button>
               </div>
 
               <!-- Calculation Output Box -->
@@ -1771,7 +1893,8 @@
               <div class="section-card-head">
                 <span class="section-tag-gold">KATALOG PRODUK UTAMA</span>
                 <h2 class="section-card-title">Pilihan Tipe Produk Hunian</h2>
-                <p class="section-card-sub">Setiap tipe dirancang dengan standar arsitektur Japandi dua lantai, garasi tertutup, dan sertifikat SHM pecah sempurna.</p>
+                <p class="section-card-sub">Setiap tipe dirancang dengan standar arsitektur Japandi dua lantai, garasi
+                  tertutup, dan sertifikat SHM pecah sempurna.</p>
               </div>
 
               <div class="product-cards-grid">
@@ -1792,7 +1915,8 @@
                         <span class="product-code">B.02 – B.04</span>
                       </div>
                     </div>
-                    <p class="product-tagline">Hunian Japandi terdepan dengan akses tercepat ke gerbang dan clubhouse.</p>
+                    <p class="product-tagline">Hunian Japandi terdepan dengan akses tercepat ke gerbang dan clubhouse.
+                    </p>
                     <div class="product-features-row">
                       <div class="feat-badge"><span>KT</span><strong>3</strong></div>
                       <div class="feat-badge"><span>KM</span><strong>2</strong></div>
@@ -1810,11 +1934,13 @@
                       </div>
                     </div>
                     <div class="product-card-actions">
-                      <button type="button" class="btn-card-denah" onclick="openDenahSpecModal('Tipe Gold (Nagoya)', 'denah-tipe60.jpg')">
+                      <button type="button" class="btn-card-denah"
+                        onclick="openDenahSpecModal('Tipe Gold (Nagoya)', 'denah-tipe60.jpg')">
                         <span>Lihat Denah</span>
                         <span>↗</span>
                       </button>
-                      <button type="button" class="btn-card-order" onclick="openOrderModal('Tipe Gold (Nagoya)', 'B.02-B.04', 'Rp 650 Juta')">
+                      <button type="button" class="btn-card-order"
+                        onclick="openOrderModal('Tipe Gold (Nagoya)', 'B.02-B.04', 'Rp 650 Juta')">
                         <span>Pesan Unit</span>
                         <span>→</span>
                       </button>
@@ -1839,7 +1965,8 @@
                         <span class="product-code">A.05 – A.08</span>
                       </div>
                     </div>
-                    <p class="product-tagline">Skala lingkungan lebih privat dengan taman belakang ekstra dan fleksibilitas ruang.</p>
+                    <p class="product-tagline">Skala lingkungan lebih privat dengan taman belakang ekstra dan
+                      fleksibilitas ruang.</p>
                     <div class="product-features-row">
                       <div class="feat-badge"><span>KT</span><strong>3–4</strong></div>
                       <div class="feat-badge"><span>KM</span><strong>2–3</strong></div>
@@ -1857,11 +1984,13 @@
                       </div>
                     </div>
                     <div class="product-card-actions">
-                      <button type="button" class="btn-card-denah" onclick="openDenahSpecModal('Tipe Diamond (Tokyo)', 'denah-tipe80.jpg')">
+                      <button type="button" class="btn-card-denah"
+                        onclick="openDenahSpecModal('Tipe Diamond (Tokyo)', 'denah-tipe80.jpg')">
                         <span>Lihat Denah</span>
                         <span>↗</span>
                       </button>
-                      <button type="button" class="btn-card-order" onclick="openOrderModal('Tipe Diamond (Tokyo)', 'A.05-A.08', 'Rp 679 Juta')">
+                      <button type="button" class="btn-card-order"
+                        onclick="openOrderModal('Tipe Diamond (Tokyo)', 'A.05-A.08', 'Rp 679 Juta')">
                         <span>Pesan Unit</span>
                         <span>→</span>
                       </button>
@@ -1886,7 +2015,8 @@
                         <span class="product-code">C.01 – C.06</span>
                       </div>
                     </div>
-                    <p class="product-tagline">Varian termewah dengan garasi dobel muat hingga 3 mobil keluarga dan suite bedroom luas.</p>
+                    <p class="product-tagline">Varian termewah dengan garasi dobel muat hingga 3 mobil keluarga dan
+                      suite bedroom luas.</p>
                     <div class="product-features-row">
                       <div class="feat-badge"><span>KT</span><strong>4</strong></div>
                       <div class="feat-badge"><span>KM</span><strong>3</strong></div>
@@ -1904,11 +2034,13 @@
                       </div>
                     </div>
                     <div class="product-card-actions">
-                      <button type="button" class="btn-card-denah" onclick="openDenahSpecModal('Tipe Royal Diamond (Osaka)', 'denah-tipe110.jpg')">
+                      <button type="button" class="btn-card-denah"
+                        onclick="openDenahSpecModal('Tipe Royal Diamond (Osaka)', 'denah-tipe110.jpg')">
                         <span>Lihat Denah</span>
                         <span>↗</span>
                       </button>
-                      <button type="button" class="btn-card-order" onclick="openOrderModal('Tipe Royal Diamond (Osaka)', 'C.01-C.06', 'Rp 895 Juta')">
+                      <button type="button" class="btn-card-order"
+                        onclick="openOrderModal('Tipe Royal Diamond (Osaka)', 'C.01-C.06', 'Rp 895 Juta')">
                         <span>Pesan Unit</span>
                         <span>→</span>
                       </button>
@@ -1923,7 +2055,8 @@
               <div class="section-card-head">
                 <span class="section-tag-gold">FASILITAS KAWASAN</span>
                 <h2 class="section-card-title">Fasilitas Eksklusif Penghuni</h2>
-                <p class="section-card-sub">Nikmati fasilitas resor bintang lima tepat beberapa langkah dari pintu rumah Anda.</p>
+                <p class="section-card-sub">Nikmati fasilitas resor bintang lima tepat beberapa langkah dari pintu rumah
+                  Anda.</p>
               </div>
 
               <div class="facilities-six-grid">
@@ -2018,16 +2151,22 @@
               <div class="section-card-head">
                 <span class="section-tag-gold">INFORMASI KOMPREHENSIF</span>
                 <h2 class="section-card-title">Semua Tentang The Park Townhouse</h2>
-                <p class="section-card-sub">Transparansi menyeluruh mulai dari developer, spesifikasi material, progres proyek, hingga cara pembelian.</p>
+                <p class="section-card-sub">Transparansi menyeluruh mulai dari developer, spesifikasi material, progres
+                  proyek, hingga cara pembelian.</p>
               </div>
 
               <!-- 5 Tab Buttons -->
               <div class="about-five-tabs">
-                <button type="button" class="about-tab-btn is-active" onclick="switchBerandaAboutTab('tentang', this)">Tentang Kami</button>
-                <button type="button" class="about-tab-btn" onclick="switchBerandaAboutTab('spesifikasi', this)">Spesifikasi</button>
-                <button type="button" class="about-tab-btn" onclick="switchBerandaAboutTab('progres', this)">Progres</button>
-                <button type="button" class="about-tab-btn" onclick="switchBerandaAboutTab('cara', this)">Cara Pembelian</button>
-                <button type="button" class="about-tab-btn" onclick="switchBerandaAboutTab('promo', this)">Jaminan Kenyamanan</button>
+                <button type="button" class="about-tab-btn is-active"
+                  onclick="switchBerandaAboutTab('tentang', this)">Tentang Kami</button>
+                <button type="button" class="about-tab-btn"
+                  onclick="switchBerandaAboutTab('spesifikasi', this)">Spesifikasi</button>
+                <button type="button" class="about-tab-btn"
+                  onclick="switchBerandaAboutTab('progres', this)">Progres</button>
+                <button type="button" class="about-tab-btn" onclick="switchBerandaAboutTab('cara', this)">Cara
+                  Pembelian</button>
+                <button type="button" class="about-tab-btn" onclick="switchBerandaAboutTab('promo', this)">Jaminan
+                  Kenyamanan</button>
               </div>
 
               <!-- 5 Tab Content Panes -->
@@ -2035,7 +2174,9 @@
                 <!-- PANE 1: TENTANG KAMI -->
                 <div class="about-pane is-active" id="paneAboutTentang">
                   <h4>Visi Developer: Hunian Berkelanjutan &amp; Elegan</h4>
-                  <p>The Park Townhouse dikembangkan oleh <strong>PT Andara Rejo Makmur</strong> dengan komitmen menghadirkan arsitektur berstandar tinggi yang menyatukan fungsi, estetika Japandi, dan kenyamanan lingkungan.</p>
+                  <p>The Park Townhouse dikembangkan oleh <strong>PT Andara Rejo Makmur</strong> dengan komitmen
+                    menghadirkan arsitektur berstandar tinggi yang menyatukan fungsi, estetika Japandi, dan kenyamanan
+                    lingkungan.</p>
                   <div class="about-meta-grid">
                     <div class="meta-item"><strong>3 Klaster:</strong><span>Nagoya, Osaka, Tokyo</span></div>
                     <div class="meta-item"><strong>Total Unit:</strong><span>30 Unit Eksklusif</span></div>
@@ -2086,13 +2227,16 @@
                   <h4>3 Skema Fleksibel Pembelian Unit</h4>
                   <div class="skema-explain-list">
                     <div class="skema-item">
-                      <strong>1. Cash Keras:</strong> Diskon maksimal harga perdana presale, pelunasan 1 bulan setelah booking Rp 5 Jt.
+                      <strong>1. Cash Keras:</strong> Diskon maksimal harga perdana presale, pelunasan 1 bulan setelah
+                      booking Rp 5 Jt.
                     </div>
                     <div class="skema-item">
-                      <strong>2. Cash Bertahap (Cash Tempo):</strong> DP 40% (termasuk booking fee), sisa diangsur flat tanpa bunga selama 12 atau 24 bulan.
+                      <strong>2. Cash Bertahap (Cash Tempo):</strong> DP 40% (termasuk booking fee), sisa diangsur flat
+                      tanpa bunga selama 12 atau 24 bulan.
                     </div>
                     <div class="skema-item">
-                      <strong>3. KPR Bank:</strong> DP 10%–30%, didukung bank rekanan nasional (BCA, Mandiri, BNI, BTN Syariah, BSI) hingga 25 tahun.
+                      <strong>3. KPR Bank:</strong> DP 10%–30%, didukung bank rekanan nasional (BCA, Mandiri, BNI, BTN
+                      Syariah, BSI) hingga 25 tahun.
                     </div>
                   </div>
                 </div>
@@ -2118,7 +2262,8 @@
               <div class="section-card-head">
                 <span class="section-tag-gold">SIMULASI ANGSURAN</span>
                 <h2 class="section-card-title">Kalkulator KPR Interaktif</h2>
-                <p class="section-card-sub">Sesuaikan harga properti, uang muka (DP), tenor, dan suku bunga untuk melihat perkiraan cicilan bulanan.</p>
+                <p class="section-card-sub">Sesuaikan harga properti, uang muka (DP), tenor, dan suku bunga untuk
+                  melihat perkiraan cicilan bulanan.</p>
               </div>
 
               <div class="kpr-calc-container">
@@ -2128,7 +2273,8 @@
                     <label>Harga Properti</label>
                     <span class="kpr-live-val" id="kprDisplayPrice">Rp 650.000.000</span>
                   </div>
-                  <input type="range" min="400000000" max="1500000000" step="25000000" value="650000000" class="kpr-range-slider" id="kprPriceSlider" oninput="updateKprFromSlider()" />
+                  <input type="range" min="400000000" max="1500000000" step="25000000" value="650000000"
+                    class="kpr-range-slider" id="kprPriceSlider" oninput="updateKprFromSlider()" />
                 </div>
 
                 <div class="kpr-input-group">
@@ -2136,7 +2282,8 @@
                     <label>Uang Muka (DP %)</label>
                     <span class="kpr-live-val" id="kprDisplayDp">20% (Rp 130.000.000)</span>
                   </div>
-                  <input type="range" min="10" max="50" step="5" value="20" class="kpr-range-slider" id="kprDpSlider" oninput="updateKprFromSlider()" />
+                  <input type="range" min="10" max="50" step="5" value="20" class="kpr-range-slider" id="kprDpSlider"
+                    oninput="updateKprFromSlider()" />
                 </div>
 
                 <div class="kpr-input-row-duo">
@@ -2178,13 +2325,15 @@
               <div class="section-card-head">
                 <span class="section-tag-gold">TESTIMONI PEMBELI</span>
                 <h2 class="section-card-title">Kata Mereka</h2>
-                <p class="section-card-sub">Kisah nyata dari para pembeli awal yang telah mempercayakan tempat tinggalnya di The Park Townhouse.</p>
+                <p class="section-card-sub">Kisah nyata dari para pembeli awal yang telah mempercayakan tempat
+                  tinggalnya di The Park Townhouse.</p>
               </div>
 
               <div class="testimonial-cards-grid">
                 <div class="testimonial-item">
                   <div class="t-stars">★★★★★</div>
-                  <p class="t-quote">"Yang paling membuat kami tenang adalah udaranya yang segar dan lingkungan yang dekat clubhouse. Anak-anak bisa berenang sore tanpa kami harus cemas akan lalu-lintas luar."</p>
+                  <p class="t-quote">"Yang paling membuat kami tenang adalah udaranya yang segar dan lingkungan yang
+                    dekat clubhouse. Anak-anak bisa berenang sore tanpa kami harus cemas akan lalu-lintas luar."</p>
                   <div class="t-author">
                     <strong>dr. Arya Wicaksono</strong>
                     <span>Pembeli Tipe Diamond (Tokyo) · Sukoharjo</span>
@@ -2193,7 +2342,8 @@
 
                 <div class="testimonial-item">
                   <div class="t-stars">★★★★★</div>
-                  <p class="t-quote">"Kami menghargai skala lingkungannya yang hanya 30 unit. Tidak terlalu ramai, hubungannya hangat, dan sertifikat SHM sudah pecah resmi per kavling sejak awal."</p>
+                  <p class="t-quote">"Kami menghargai skala lingkungannya yang hanya 30 unit. Tidak terlalu ramai,
+                    hubungannya hangat, dan sertifikat SHM sudah pecah resmi per kavling sejak awal."</p>
                   <div class="t-author">
                     <strong>H. Bambang Sugiarto</strong>
                     <span>Investor &amp; Pengusaha Tekstil · Solo</span>
@@ -2202,7 +2352,8 @@
 
                 <div class="testimonial-item">
                   <div class="t-stars">★★★★★</div>
-                  <p class="t-quote">"Tata ruangnya efisien dan pencahayaan alaminya luar biasa. Begitu pulang kerja dan masuk ke ruang keluarga, rasa lelah seharian benar-benar luruh."</p>
+                  <p class="t-quote">"Tata ruangnya efisien dan pencahayaan alaminya luar biasa. Begitu pulang kerja dan
+                    masuk ke ruang keluarga, rasa lelah seharian benar-benar luruh."</p>
                   <div class="t-author">
                     <strong>Nadia Pramudita, S.T.</strong>
                     <span>Pembeli Tipe Gold (Nagoya)</span>
@@ -2216,15 +2367,20 @@
               <div class="section-card-head">
                 <span class="section-tag-gold">TANYA JAWAB</span>
                 <h2 class="section-card-title">Pusat Informasi (FAQ)</h2>
-                <p class="section-card-sub">Penjelasan terbuka dan jujur seputar status legalitas SHM, fleksibilitas kustomisasi denah, hingga skema pembiayaan.</p>
+                <p class="section-card-sub">Penjelasan terbuka dan jujur seputar status legalitas SHM, fleksibilitas
+                  kustomisasi denah, hingga skema pembiayaan.</p>
               </div>
 
               <!-- FAQ Category Tabs -->
               <div class="faq-category-pills">
-                <button type="button" class="faq-cat-btn is-active" onclick="filterFaqCategory('all', this)">Semua Pertanyaan</button>
-                <button type="button" class="faq-cat-btn" onclick="filterFaqCategory('legalitas', this)">Legalitas</button>
-                <button type="button" class="faq-cat-btn" onclick="filterFaqCategory('pembayaran', this)">Pembayaran</button>
-                <button type="button" class="faq-cat-btn" onclick="filterFaqCategory('fasilitas', this)">Fasilitas</button>
+                <button type="button" class="faq-cat-btn is-active" onclick="filterFaqCategory('all', this)">Semua
+                  Pertanyaan</button>
+                <button type="button" class="faq-cat-btn"
+                  onclick="filterFaqCategory('legalitas', this)">Legalitas</button>
+                <button type="button" class="faq-cat-btn"
+                  onclick="filterFaqCategory('pembayaran', this)">Pembayaran</button>
+                <button type="button" class="faq-cat-btn"
+                  onclick="filterFaqCategory('fasilitas', this)">Fasilitas</button>
               </div>
 
               <!-- Accordion List -->
@@ -2235,7 +2391,9 @@
                     <span class="faq-arrow">▼</span>
                   </button>
                   <div class="faq-answer-pane">
-                    <p>Status legalitas The Park Townhouse 100% aman dan clean. Sertifikat Hak Milik (SHM) untuk Klaster Nagoya sudah pecah sempurna per kavling, Persetujuan Bangunan Gedung (PBG) lengkap, dan siap proses Akta Jual Beli (AJB) serta Balik Nama ke pembeli.</p>
+                    <p>Status legalitas The Park Townhouse 100% aman dan clean. Sertifikat Hak Milik (SHM) untuk Klaster
+                      Nagoya sudah pecah sempurna per kavling, Persetujuan Bangunan Gedung (PBG) lengkap, dan siap
+                      proses Akta Jual Beli (AJB) serta Balik Nama ke pembeli.</p>
                   </div>
                 </div>
 
@@ -2245,7 +2403,8 @@
                     <span class="faq-arrow">▼</span>
                   </button>
                   <div class="faq-answer-pane" style="display: none;">
-                    <p>Booking fee sebesar Rp 5.000.000 untuk mengunci nomor kavling dan harga presale promo perdana. Booking fee sudah memotong harga jual rumah.</p>
+                    <p>Booking fee sebesar Rp 5.000.000 untuk mengunci nomor kavling dan harga presale promo perdana.
+                      Booking fee sudah memotong harga jual rumah.</p>
                   </div>
                 </div>
 
@@ -2255,7 +2414,8 @@
                     <span class="faq-arrow">▼</span>
                   </button>
                   <div class="faq-answer-pane" style="display: none;">
-                    <p>Kami telah bermitra resmi dengan Bank Mandiri, BCA, Bank BRI, BNI, BTN Syariah, serta BSI. Tim administrasi kami akan mendampingi pemberkasan dari awal hingga akad kredit tuntas.</p>
+                    <p>Kami telah bermitra resmi dengan Bank Mandiri, BCA, Bank BRI, BNI, BTN Syariah, serta BSI. Tim
+                      administrasi kami akan mendampingi pemberkasan dari awal hingga akad kredit tuntas.</p>
                   </div>
                 </div>
 
@@ -2265,7 +2425,9 @@
                     <span class="faq-arrow">▼</span>
                   </button>
                   <div class="faq-answer-pane" style="display: none;">
-                    <p>Tidak ada biaya membership terpisah. Seluruh penghuni berhak menikmati kolam renang, fitness center, lounge, mini golf, dan taman secara gratis sebagai bagian dari Iuran Pengelolaan Lingkungan (IPL) rutin.</p>
+                    <p>Tidak ada biaya membership terpisah. Seluruh penghuni berhak menikmati kolam renang, fitness
+                      center, lounge, mini golf, dan taman secara gratis sebagai bagian dari Iuran Pengelolaan
+                      Lingkungan (IPL) rutin.</p>
                   </div>
                 </div>
 
@@ -2275,7 +2437,9 @@
                     <span class="faq-arrow">▼</span>
                   </button>
                   <div class="faq-answer-pane" style="display: none;">
-                    <p>Ya, arsitektur interior The Park Townhouse bersifat fleksibel. Anda dapat mengkustomisasi sekat ruangan, fungsi kamar, dan tata letak lantai 2 selama tidak mengubah fasad eksterior dan struktur kolom utama.</p>
+                    <p>Ya, arsitektur interior The Park Townhouse bersifat fleksibel. Anda dapat mengkustomisasi sekat
+                      ruangan, fungsi kamar, dan tata letak lantai 2 selama tidak mengubah fasad eksterior dan struktur
+                      kolom utama.</p>
                   </div>
                 </div>
               </div>
@@ -2285,9 +2449,12 @@
             <div class="landing-cta-banner">
               <span class="cta-banner-pill">LANGKAH BERSAHAJA</span>
               <h2 class="cta-banner-title">Menemukan Rumah yang Terasa Tepat untuk Dijalani</h2>
-              <p class="cta-banner-sub">Membeli rumah adalah keputusan sakral keluarga. Anda tidak harus merasa terdesak; luangkan waktu untuk berbincang santai, memahami ritme kawasan, dan melihat apakah The Park Townhouse adalah tempat pulang yang Anda cari.</p>
+              <p class="cta-banner-sub">Membeli rumah adalah keputusan sakral keluarga. Anda tidak harus merasa
+                terdesak; luangkan waktu untuk berbincang santai, memahami ritme kawasan, dan melihat apakah The Park
+                Townhouse adalah tempat pulang yang Anda cari.</p>
               <div class="cta-banner-action">
-                <button type="button" class="btn-primary-forest btn-lg" onclick="openOrderModal('Nagoya (Tipe Gold)', 'A.02', '650.000.000')">
+                <button type="button" class="btn-primary-forest btn-lg"
+                  onclick="openOrderModal('Nagoya (Tipe Gold)', 'A.02', '650.000.000')">
                   <span>Mulai Percakapan dengan Mr. Andara</span>
                   <span>→</span>
                 </button>
@@ -2317,18 +2484,21 @@
                 </div>
               </div>
               <p class="estate-footer-desc">
-                Hunian premium berarsitektur Japandi di Avenue Grand Gate, Sukoharjo. Dikembangkan dengan sepenuh hati oleh PT Andara Rejo Makmur.
+                Hunian premium berarsitektur Japandi di Avenue Grand Gate, Sukoharjo. Dikembangkan dengan sepenuh hati
+                oleh PT Andara Rejo Makmur.
               </p>
               <div class="estate-footer-meta">
                 <span>
-                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-right:3px;">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"
+                    style="display:inline-block; vertical-align:middle; margin-right:3px;">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
                   Kp. Duabelasan, Jombor, Bendosari, Sukoharjo
                 </span>
                 <span>
-                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-right:3px;">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"
+                    style="display:inline-block; vertical-align:middle; margin-right:3px;">
                     <circle cx="12" cy="12" r="10" />
                     <polyline points="12 6 12 12 16 14" />
                   </svg>
@@ -2346,18 +2516,21 @@
               <div class="surat-section-header" id="section99Keunggulan" style="margin-top: 4px;">
                 <span class="section-tag">99 KEUNGGULAN · SUKOHARJO</span>
                 <h3 class="section-title">Telusuri 11 Tema Keunggulan</h3>
-                <p class="section-desc">Pilih tema di bawah untuk menjelajahi detail ruang, lingkungan, dan fasilitas</p>
+                <p class="section-desc">Pilih tema di bawah untuk menjelajahi detail ruang, lingkungan, dan fasilitas
+                </p>
               </div>
 
               <!-- THEME CHIPS CAROUSEL -->
               <div class="theme-nav-scroller" id="themeNavScroller">
                 <!-- Dynamically populated or rendered -->
-                <button type="button" class="theme-chip is-active" onclick="switchSuratTheme(0)">01. Dekat Kehidupan</button>
+                <button type="button" class="theme-chip is-active" onclick="switchSuratTheme(0)">01. Dekat
+                  Kehidupan</button>
                 <button type="button" class="theme-chip" onclick="switchSuratTheme(1)">02. Pilihan Pribadi</button>
                 <button type="button" class="theme-chip" onclick="switchSuratTheme(2)">03. Ruang Hidup</button>
                 <button type="button" class="theme-chip" onclick="switchSuratTheme(3)">04. Nyaman Tiba</button>
                 <button type="button" class="theme-chip" onclick="switchSuratTheme(4)">05. Waktu Bersama</button>
-                <button type="button" class="theme-chip" onclick="switchSuratTheme(5)">06. Bermain &amp; Tertawa</button>
+                <button type="button" class="theme-chip" onclick="switchSuratTheme(5)">06. Bermain &amp;
+                  Tertawa</button>
                 <button type="button" class="theme-chip" onclick="switchSuratTheme(6)">07. Tenang Keseharian</button>
                 <button type="button" class="theme-chip" onclick="switchSuratTheme(7)">08. Kemudahan</button>
                 <button type="button" class="theme-chip" onclick="switchSuratTheme(8)">09. Di Balik Keindahan</button>
@@ -2380,11 +2553,12 @@
                   <span class="surat-banner-tag">Pesan Calon Penghuni</span>
                 </div>
                 <h2 class="surat-banner-title">Sebuah Alamat. Begitu Banyak Arti.</h2>
-                <p class="surat-banner-sub">Pesan hangat untuk Anda yang ingin menemukan tempat pulang dan ritme hidup terbaik di Sukoharjo.</p>
+                <p class="surat-banner-sub">Pesan hangat untuk Anda yang ingin menemukan tempat pulang dan ritme hidup
+                  terbaik di Sukoharjo.</p>
                 <button type="button" class="btn-open-surat-modal" onclick="openSuratPrologueModal()">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                    <polyline points="22,6 12,13 2,6"/>
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
                   </svg>
                   <span>Buka Surat untuk Calon Penghuni</span>
                 </button>
@@ -2394,7 +2568,8 @@
               <div class="surat-section-header">
                 <span class="section-tag-gold">KARAKTER KAWASAN</span>
                 <h3 class="section-title">Temukan Ritme yang Sesuai</h3>
-                <p class="section-desc">Pilihan 60–110 m² Luas Bangunan &amp; 63–125 m² Luas Tanah dalam 3 klaster tematik</p>
+                <p class="section-desc">Pilihan 60–110 m² Luas Bangunan &amp; 63–125 m² Luas Tanah dalam 3 klaster
+                  tematik</p>
               </div>
 
               <div class="cluster-triptych-grid">
@@ -2410,10 +2585,12 @@
                       <h4 class="cluster-card-name">Nagoya</h4>
                       <span class="cluster-unit-pill pill-available">14 Unit Tersedia</span>
                     </div>
-                    <p class="cluster-card-desc">Dekat clubhouse dan pusat fasilitas bersama di Jalan Tentara Pelajar.</p>
+                    <p class="cluster-card-desc">Dekat clubhouse dan pusat fasilitas bersama di Jalan Tentara Pelajar.
+                    </p>
                     <div class="cluster-card-stat">
                       <span class="stat-loc">Jl. Tentara Pelajar · Clubhouse</span>
-                      <button type="button" class="btn-cluster-explore" onclick="switchLandingTab('siteplan'); switchLandingSiteplan('nagoya')">
+                      <button type="button" class="btn-cluster-explore"
+                        onclick="switchLandingTab('siteplan'); switchLandingSiteplan('nagoya')">
                         <span>Peta Kawasan</span>
                         <span>→</span>
                       </button>
@@ -2433,10 +2610,12 @@
                       <h4 class="cluster-card-name">Osaka</h4>
                       <span class="cluster-unit-pill pill-exclusive">9 Unit Eksklusif</span>
                     </div>
-                    <p class="cluster-card-desc">Karakter koridor utama Jenderal Sudirman untuk Anda yang dekat dengan ritme kota.</p>
+                    <p class="cluster-card-desc">Karakter koridor utama Jenderal Sudirman untuk Anda yang dekat dengan
+                      ritme kota.</p>
                     <div class="cluster-card-stat">
                       <span class="stat-loc">Koridor Jl. Jend. Sudirman</span>
-                      <button type="button" class="btn-cluster-explore" onclick="switchLandingTab('siteplan'); switchLandingSiteplan('osaka')">
+                      <button type="button" class="btn-cluster-explore"
+                        onclick="switchLandingTab('siteplan'); switchLandingSiteplan('osaka')">
                         <span>Peta Kawasan</span>
                         <span>→</span>
                       </button>
@@ -2456,10 +2635,12 @@
                       <h4 class="cluster-card-name">Tokyo</h4>
                       <span class="cluster-unit-pill pill-limited">7 Unit Terbatas</span>
                     </div>
-                    <p class="cluster-card-desc">Enclave privat tujuh unit untuk pilihan lingkungan yang lebih personal dan tenang.</p>
+                    <p class="cluster-card-desc">Enclave privat tujuh unit untuk pilihan lingkungan yang lebih personal
+                      dan tenang.</p>
                     <div class="cluster-card-stat">
                       <span class="stat-loc">Zen Enclave · 7 Unit Privat</span>
-                      <button type="button" class="btn-cluster-explore" onclick="switchLandingTab('siteplan'); switchLandingSiteplan('tokyo')">
+                      <button type="button" class="btn-cluster-explore"
+                        onclick="switchLandingTab('siteplan'); switchLandingSiteplan('tokyo')">
                         <span>Peta Kawasan</span>
                         <span>→</span>
                       </button>
@@ -2496,9 +2677,12 @@
               </div>
 
               <div class="price-cluster-selector">
-                <button type="button" class="price-tab-pill is-active" id="btnPriceNagoya" onclick="switchPriceCluster('nagoya')">Nagoya (14 Unit)</button>
-                <button type="button" class="price-tab-pill" id="btnPriceTokyo" onclick="switchPriceCluster('tokyo')">Tokyo (7 Unit)</button>
-                <button type="button" class="price-tab-pill" id="btnPriceOsaka" onclick="switchPriceCluster('osaka')">Osaka (9 Unit)</button>
+                <button type="button" class="price-tab-pill is-active" id="btnPriceNagoya"
+                  onclick="switchPriceCluster('nagoya')">Nagoya (14 Unit)</button>
+                <button type="button" class="price-tab-pill" id="btnPriceTokyo"
+                  onclick="switchPriceCluster('tokyo')">Tokyo (7 Unit)</button>
+                <button type="button" class="price-tab-pill" id="btnPriceOsaka"
+                  onclick="switchPriceCluster('osaka')">Osaka (9 Unit)</button>
               </div>
 
               <div class="price-matrix-container" id="priceMatrixContainer">
@@ -2517,7 +2701,8 @@
                   <div class="step-number-circle">1</div>
                   <h4 class="step-guide-title">Bicarakan Pilihan</h4>
                   <p class="step-guide-text">
-                    Sampaikan kebutuhan keluarga, ritme harian, atau skema pembayaran yang paling nyaman bagi Anda. Kami siap mendengarkan.
+                    Sampaikan kebutuhan keluarga, ritme harian, atau skema pembayaran yang paling nyaman bagi Anda. Kami
+                    siap mendengarkan.
                   </p>
                 </div>
 
@@ -2525,7 +2710,8 @@
                   <div class="step-number-circle">2</div>
                   <h4 class="step-guide-title">Lihat &amp; Pahami</h4>
                   <p class="step-guide-text">
-                    Kunjungi lokasi di Sukoharjo. Hirup udaranya, lihat langsung progres lapangan, dan rasakan ketenangan lingkungannya.
+                    Kunjungi lokasi di Sukoharjo. Hirup udaranya, lihat langsung progres lapangan, dan rasakan
+                    ketenangan lingkungannya.
                   </p>
                 </div>
 
@@ -2533,7 +2719,8 @@
                   <div class="step-number-circle">3</div>
                   <h4 class="step-guide-title">Tentukan Langkah</h4>
                   <p class="step-guide-text">
-                    Bila telah menemukan yang tepat, kunci pilihan unit Anda dengan Booking Fee Rp 5 Juta (sudah memotong DP / harga jual).
+                    Bila telah menemukan yang tepat, kunci pilihan unit Anda dengan Booking Fee Rp 5 Juta (sudah
+                    memotong DP / harga jual).
                   </p>
                 </div>
               </div>
@@ -2553,9 +2740,11 @@
                 </div>
 
                 <div class="consultant-cta-wrap">
-                  <a href="https://wa.me/62882007392379?text=Halo%20Mr%20Andara%2C%20saya%20tertarik%20dengan%20The%20Park%20Townhouse%20Sukoharjo" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-consult">
+                  <a href="https://wa.me/62882007392379?text=Halo%20Mr%20Andara%2C%20saya%20tertarik%20dengan%20The%20Park%20Townhouse%20Sukoharjo"
+                    target="_blank" rel="noopener noreferrer" class="btn-whatsapp-consult">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.11 7.44C8.94 7.44 8.68 7.5 8.46 7.74C8.24 7.97 7.62 8.56 7.62 9.75C7.62 10.94 8.49 12.08 8.61 12.24C8.73 12.41 10.3 14.83 12.72 15.87C13.3 16.12 13.75 16.27 14.1 16.38C14.68 16.57 15.22 16.54 15.64 16.48C16.11 16.41 17.07 15.89 17.27 15.33C17.47 14.77 17.47 14.29 17.41 14.19C17.35 14.09 17.19 14.03 16.94 13.91C16.69 13.79 15.48 13.19 15.25 13.11C15.02 13.03 14.86 12.99 14.7 13.23C14.54 13.47 14.08 14.01 13.94 14.17C13.8 14.33 13.66 14.35 13.41 14.23C13.16 14.11 12.36 13.85 11.41 13C10.67 12.34 10.17 11.53 10.02 11.29C9.88 11.04 10 10.91 10.13 10.78C10.24 10.67 10.38 10.49 10.5 10.35C10.62 10.21 10.66 10.11 10.74 9.95C10.82 9.79 10.78 9.65 10.72 9.53C10.66 9.41 10.2 8.27 10.01 7.81C9.82 7.36 9.63 7.42 9.49 7.41C9.36 7.41 9.24 7.44 9.11 7.44Z" />
+                      <path
+                        d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.11 7.44C8.94 7.44 8.68 7.5 8.46 7.74C8.24 7.97 7.62 8.56 7.62 9.75C7.62 10.94 8.49 12.08 8.61 12.24C8.73 12.41 10.3 14.83 12.72 15.87C13.3 16.12 13.75 16.27 14.1 16.38C14.68 16.57 15.22 16.54 15.64 16.48C16.11 16.41 17.07 15.89 17.27 15.33C17.47 14.77 17.47 14.29 17.41 14.19C17.35 14.09 17.19 14.03 16.94 13.91C16.69 13.79 15.48 13.19 15.25 13.11C15.02 13.03 14.86 12.99 14.7 13.23C14.54 13.47 14.08 14.01 13.94 14.17C13.8 14.33 13.66 14.35 13.41 14.23C13.16 14.11 12.36 13.85 11.41 13C10.67 12.34 10.17 11.53 10.02 11.29C9.88 11.04 10 10.91 10.13 10.78C10.24 10.67 10.38 10.49 10.5 10.35C10.62 10.21 10.66 10.11 10.74 9.95C10.82 9.79 10.78 9.65 10.72 9.53C10.66 9.41 10.2 8.27 10.01 7.81C9.82 7.36 9.63 7.42 9.49 7.41C9.36 7.41 9.24 7.44 9.11 7.44Z" />
                     </svg>
                     <span>Hubungi Mr. Andara via WhatsApp</span>
                   </a>
@@ -2565,12 +2754,13 @@
                 </div>
               </div>
 
-            
+
               <!-- 9. KALKULATOR PEMBAYARAN & KPR (DELUXE INTERACTIVE CALCULATOR) -->
               <div class="surat-section-header" id="sectionKalkulatorPembayaran">
                 <span class="section-tag">SIMULASI &amp; SKEMA</span>
                 <h3 class="section-title">Kalkulator Pembayaran</h3>
-                <p class="section-desc">Pilih unit + tahap + skema — kalkulator otomatis menghitung harga jual, uang muka, cicilan (PMT), milestone, dan estimasi biaya tambahan.</p>
+                <p class="section-desc">Pilih unit + tahap + skema — kalkulator otomatis menghitung harga jual, uang
+                  muka, cicilan (PMT), milestone, dan estimasi biaya tambahan.</p>
               </div>
 
               <div class="surat-calc-container" id="suratPaymentCalculator">
@@ -2624,9 +2814,12 @@
                   <div class="calc-form-group">
                     <label class="calc-form-label">Tahap Launching</label>
                     <div class="calc-pill-tabs" id="suratCalcStageTabs">
-                      <button type="button" class="calc-tab-pill is-active" data-stage="pra" onclick="setSuratCalcStage('pra', this)">Pra-Launch</button>
-                      <button type="button" class="calc-tab-pill" data-stage="soft" onclick="setSuratCalcStage('soft', this)">Soft-Launch</button>
-                      <button type="button" class="calc-tab-pill" data-stage="grand" onclick="setSuratCalcStage('grand', this)">Grand-Launch</button>
+                      <button type="button" class="calc-tab-pill is-active" data-stage="pra"
+                        onclick="setSuratCalcStage('pra', this)">Pra-Launch</button>
+                      <button type="button" class="calc-tab-pill" data-stage="soft"
+                        onclick="setSuratCalcStage('soft', this)">Soft-Launch</button>
+                      <button type="button" class="calc-tab-pill" data-stage="grand"
+                        onclick="setSuratCalcStage('grand', this)">Grand-Launch</button>
                     </div>
                   </div>
 
@@ -2634,24 +2827,29 @@
                   <div class="calc-form-group">
                     <label class="calc-form-label">Skema Pembayaran</label>
                     <div class="calc-scheme-grid" id="suratCalcSchemeTabs">
-                      <button type="button" class="calc-scheme-btn is-active" data-scheme="cash_keras" onclick="setSuratCalcScheme('cash_keras', this)">
+                      <button type="button" class="calc-scheme-btn is-active" data-scheme="cash_keras"
+                        onclick="setSuratCalcScheme('cash_keras', this)">
                         <strong>Cash Keras</strong>
                         <span>Pelunasan 1 Bulan</span>
                       </button>
-                      <button type="button" class="calc-scheme-btn" data-scheme="cash_12" onclick="setSuratCalcScheme('cash_12', this)">
+                      <button type="button" class="calc-scheme-btn" data-scheme="cash_12"
+                        onclick="setSuratCalcScheme('cash_12', this)">
                         <strong>Cash Bertahap 12 Bulan</strong>
                         <span>12 Bulan · Bunga 0%</span>
                       </button>
-                      <button type="button" class="calc-scheme-btn" data-scheme="cash_24" onclick="setSuratCalcScheme('cash_24', this)">
+                      <button type="button" class="calc-scheme-btn" data-scheme="cash_24"
+                        onclick="setSuratCalcScheme('cash_24', this)">
                         <strong>Cash Bertahap 24 Bulan</strong>
                         <span>24 Bulan · Bunga 0%</span>
                       </button>
-                      <button type="button" class="calc-scheme-btn" data-scheme="kpr" onclick="setSuratCalcScheme('kpr', this)">
+                      <button type="button" class="calc-scheme-btn" data-scheme="kpr"
+                        onclick="setSuratCalcScheme('kpr', this)">
                         <strong>KPR Bank Mitra</strong>
                         <span>DP 30% · Tenor Fleksibel</span>
                       </button>
                     </div>
-                    <span class="calc-scheme-caption">Skema in-house tanpa bunga (0% flat). Slider tenor &amp; bunga muncul saat memilih KPR.</span>
+                    <span class="calc-scheme-caption">Skema in-house tanpa bunga (0% flat). Slider tenor &amp; bunga
+                      muncul saat memilih KPR.</span>
                   </div>
 
                   <!-- Conditional KPR Sliders -->
@@ -2661,7 +2859,8 @@
                         <span>Tenor KPR Bank</span>
                         <strong id="suratKprTenorVal">15 Tahun (180 Bln)</strong>
                       </div>
-                      <input type="range" min="5" max="25" step="5" value="15" class="calc-range-slider" id="suratKprTenorSlider" oninput="onSuratKprSliderChange()" />
+                      <input type="range" min="5" max="25" step="5" value="15" class="calc-range-slider"
+                        id="suratKprTenorSlider" oninput="onSuratKprSliderChange()" />
                       <div class="slider-marks">
                         <span>5 Thn</span>
                         <span>10 Thn</span>
@@ -2676,7 +2875,8 @@
                         <span>Indikasi Bunga KPR</span>
                         <strong id="suratKprRateVal">8.25% p.a</strong>
                       </div>
-                      <input type="range" min="5.0" max="11.0" step="0.25" value="8.25" class="calc-range-slider" id="suratKprRateSlider" oninput="onSuratKprSliderChange()" />
+                      <input type="range" min="5.0" max="11.0" step="0.25" value="8.25" class="calc-range-slider"
+                        id="suratKprRateSlider" oninput="onSuratKprSliderChange()" />
                       <div class="slider-marks">
                         <span>5.0%</span>
                         <span>7.5%</span>
@@ -2747,7 +2947,8 @@
                       <span>Pesan Unit Ini</span>
                       <span>→</span>
                     </button>
-                    <button type="button" class="btn-outline-forest calc-cta-btn" onclick="switchLandingTab('SitePlan')">
+                    <button type="button" class="btn-outline-forest calc-cta-btn"
+                      onclick="switchLandingTab('SitePlan')">
                       <span>Pilih Kavling</span>
                     </button>
                   </div>
@@ -2805,20 +3006,25 @@
                 <span class="siteplan-shm-pill">SHM Sudah Pecah Sempurna</span>
                 <h2 class="siteplan-page-title">Peta Masterplan Kawasan</h2>
                 <p class="siteplan-page-desc">
-                  Pilih klaster untuk melihat peta site plan, letak nomor kavling, arah hadap matahari, dan kedekatan dengan fasilitas clubhouse.
+                  Pilih klaster untuk melihat peta site plan, letak nomor kavling, arah hadap matahari, dan kedekatan
+                  dengan fasilitas clubhouse.
                 </p>
               </div>
 
               <!-- Cluster Switcher Buttons -->
               <div class="siteplan-cluster-tabs">
-                <button class="sp-cluster-btn is-active" id="spTabNagoya" onclick="switchLandingSiteplan('nagoya', this)" type="button">Klaster Nagoya</button>
-                <button class="sp-cluster-btn" id="spTabTokyo" onclick="switchLandingSiteplan('tokyo', this)" type="button">Klaster Tokyo</button>
-                <button class="sp-cluster-btn" id="spTabOsaka" onclick="switchLandingSiteplan('osaka', this)" type="button">Klaster Osaka</button>
+                <button class="sp-cluster-btn is-active" id="spTabNagoya"
+                  onclick="switchLandingSiteplan('nagoya', this)" type="button">Klaster Nagoya</button>
+                <button class="sp-cluster-btn" id="spTabTokyo" onclick="switchLandingSiteplan('tokyo', this)"
+                  type="button">Klaster Tokyo</button>
+                <button class="sp-cluster-btn" id="spTabOsaka" onclick="switchLandingSiteplan('osaka', this)"
+                  type="button">Klaster Osaka</button>
               </div>
 
               <!-- Masterplan Visual with Dynamic Pins -->
               <div class="siteplan-display-wrap">
-                <img src="assets/drive/siteplan-nagoya.jpg" alt="Site Plan Kawasan The Park Townhouse" class="siteplan-display-img" id="spDisplayImg" />
+                <img src="assets/drive/siteplan-nagoya.jpg" alt="Site Plan Kawasan The Park Townhouse"
+                  class="siteplan-display-img" id="spDisplayImg" />
                 <div class="siteplan-lots-overlay" id="spLotsOverlay">
                   <!-- Rendered dynamically via JS -->
                 </div>
@@ -2880,12 +3086,14 @@
             <!-- SUB-SECTION 1: THE PARK CLUBHOUSE -->
             <div class="facility-showcase-box">
               <div class="facility-hero-img-wrap">
-                <img src="assets/drive/clubhouse.png" alt="Clubhouse The Park Townhouse" class="facility-showcase-img" />
+                <img src="assets/drive/clubhouse.png" alt="Clubhouse The Park Townhouse"
+                  class="facility-showcase-img" />
                 <div class="facility-hero-overlay">
                   <span class="facility-hero-badge">Exclusive Facilities</span>
                   <h2 class="facility-hero-title">The Park Clubhouse (177,25 m²)</h2>
                   <p class="facility-hero-desc">
-                    Clubhouse eksklusif 2 lantai yang dirancang untuk menghadirkan kenyamanan berolahraga, bersantai, dan bercengkerama bersama keluarga setiap hari tanpa membership terpisah.
+                    Clubhouse eksklusif 2 lantai yang dirancang untuk menghadirkan kenyamanan berolahraga, bersantai,
+                    dan bercengkerama bersama keluarga setiap hari tanpa membership terpisah.
                   </p>
                 </div>
               </div>
@@ -2920,7 +3128,8 @@
                 <span class="superapp-badge">Smart Living Ecosystem</span>
                 <h3 class="superapp-title">Andara Imperial Super App</h3>
                 <p class="superapp-desc">
-                  Bukan sekadar hunian fisik. Nikmati kendali rumah pintar dan ekosistem kawasan dalam genggaman ponsel Anda selama 24 jam sehari.
+                  Bukan sekadar hunian fisik. Nikmati kendali rumah pintar dan ekosistem kawasan dalam genggaman ponsel
+                  Anda selama 24 jam sehari.
                 </p>
               </div>
 
@@ -2940,7 +3149,8 @@
                 <div class="mockup-app-grid">
                   <button class="app-feature-btn" type="button" onclick="demoAppAction('lock')">
                     <span class="app-icon">
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                        stroke-width="2">
                         <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                         <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                       </svg>
@@ -2949,7 +3159,8 @@
                   </button>
                   <button class="app-feature-btn" type="button" onclick="demoAppAction('qr')">
                     <span class="app-icon">
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                        stroke-width="2">
                         <rect x="3" y="3" width="7" height="7" />
                         <rect x="14" y="3" width="7" height="7" />
                         <rect x="3" y="14" width="7" height="7" />
@@ -2960,7 +3171,8 @@
                   </button>
                   <button class="app-feature-btn" type="button" onclick="demoAppAction('booking')">
                     <span class="app-icon">
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                        stroke-width="2">
                         <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                         <line x1="16" y1="2" x2="16" y2="6" />
                         <line x1="8" y1="2" x2="8" y2="6" />
@@ -2971,8 +3183,10 @@
                   </button>
                   <button class="app-feature-btn" type="button" onclick="demoAppAction('ipl')">
                     <span class="app-icon">
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1-2-1-2 1-2-1z" />
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path
+                          d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1-2-1-2 1-2-1z" />
                         <line x1="8" y1="8" x2="16" y2="8" />
                         <line x1="8" y1="12" x2="16" y2="12" />
                       </svg>
@@ -2981,15 +3195,18 @@
                   </button>
                   <button class="app-feature-btn" type="button" onclick="demoAppAction('maint')">
                     <span class="app-icon">
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path
+                          d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
                       </svg>
                     </span>
                     <span class="app-lbl">Lapor Kendala</span>
                   </button>
                   <button class="app-feature-btn is-sos" type="button" onclick="demoAppAction('sos')">
                     <span class="app-icon">
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                        stroke-width="2">
                         <polygon points="12 2 2 22 22 22 12 2" />
                         <line x1="12" y1="9" x2="12" y2="13" />
                         <line x1="12" y1="17" x2="12.01" y2="17" />
@@ -3012,7 +3229,8 @@
                 <span class="superapp-badge">Layanan Pengelolaan Properti</span>
                 <h3 class="superapp-title">Andara Manajemen Hospitality</h3>
                 <p class="hospitality-desc">
-                  Beli, titipkan, sewakan — nikmati penghasilan pasif (yield 6–8% p.a.) tanpa repot. Kami mengelola unit The Park Townhouse Anda secara penuh dengan standar hotel bintang lima.
+                  Beli, titipkan, sewakan — nikmati penghasilan pasif (yield 6–8% p.a.) tanpa repot. Kami mengelola unit
+                  The Park Townhouse Anda secara penuh dengan standar hotel bintang lima.
                 </p>
               </div>
 
@@ -3062,7 +3280,8 @@
 
         <!-- Mandatory Bottom Navigation Bar (Shown ONLY after saving configuration) -->
         <nav class="landing-bottom-bar" id="landingBottomBar" style="display: none;">
-          <button class="bottom-nav-tab is-active" id="tabBtnBeranda" onclick="switchLandingTab('Beranda', this)" type="button">
+          <button class="bottom-nav-tab is-active" id="tabBtnBeranda" onclick="switchLandingTab('Beranda', this)"
+            type="button">
             <span class="b-icon">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M3 10l9-7 9 7v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10z" />
@@ -3071,7 +3290,8 @@
             </span>
             <span class="b-text">Beranda</span>
           </button>
-          <button class="bottom-nav-tab" id="tabBtnSuratCinta" onclick="switchLandingTab('SuratCinta', this)" type="button">
+          <button class="bottom-nav-tab" id="tabBtnSuratCinta" onclick="switchLandingTab('SuratCinta', this)"
+            type="button">
             <span class="b-icon">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
@@ -3090,7 +3310,8 @@
             </span>
             <span class="b-text">Site Plan</span>
           </button>
-          <button class="bottom-nav-tab" id="tabBtnFasilitas" onclick="switchLandingTab('Fasilitas', this)" type="button">
+          <button class="bottom-nav-tab" id="tabBtnFasilitas" onclick="switchLandingTab('Fasilitas', this)"
+            type="button">
             <span class="b-icon">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8">
                 <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -3134,13 +3355,18 @@
               Untuk Anda yang ingin menemukan tempat pulang,
             </p>
             <p>
-              Barangkali rumah yang Anda inginkan sederhana: ruang untuk meletakkan lelah, berkumpul bersama orang terdekat, dan lingkungan yang membuat keseharian mengalir tenang.
+              Barangkali rumah yang Anda inginkan sederhana: ruang untuk meletakkan lelah, berkumpul bersama orang
+              terdekat, dan lingkungan yang membuat keseharian mengalir tenang.
             </p>
             <blockquote class="surat-pullquote">
-              "Semoga Anda menemukan bukan hanya rumah yang menarik untuk dilihat, tetapi rumah yang terasa tepat untuk dijalani."
+              "Semoga Anda menemukan bukan hanya rumah yang menarik untuk dilihat, tetapi rumah yang terasa tepat untuk
+              dijalani."
             </blockquote>
             <p>
-              Dengan arsitektur Japandi Modern dua lantai dan garasi dalam, The Park Townhouse menghadirkan fungsi ruang yang hangat. Tiga klaster membawa ritme tersendiri: <strong>Nagoya</strong> dekat fasilitas bersama, <strong>Osaka</strong> selaras denyut koridor kota, dan <strong>Tokyo</strong> menghadirkan ketenangan privat. Cukup temukan yang paling sesuai dengan cara Anda menjalani hari.
+              Dengan arsitektur Japandi Modern dua lantai dan garasi dalam, The Park Townhouse menghadirkan fungsi ruang
+              yang hangat. Tiga klaster membawa ritme tersendiri: <strong>Nagoya</strong> dekat fasilitas bersama,
+              <strong>Osaka</strong> selaras denyut koridor kota, dan <strong>Tokyo</strong> menghadirkan ketenangan
+              privat. Cukup temukan yang paling sesuai dengan cara Anda menjalani hari.
             </p>
             <div class="surat-signature-block">
               <span class="sig-note">Dengan hangat,</span>
@@ -3161,12 +3387,14 @@
       <!-- ================================================================
            SAVED CONFIGURATION BOOKMARK DRAWER / MODAL
            ================================================================ -->
-      <div class="saved-config-modal-backdrop" id="savedConfigModal" onclick="closeSavedConfigModal(event)" style="display: none;">
+      <div class="saved-config-modal-backdrop" id="savedConfigModal" onclick="closeSavedConfigModal(event)"
+        style="display: none;">
         <div class="saved-config-drawer" onclick="event.stopPropagation()">
           <div class="drawer-header">
             <div class="drawer-header-left">
               <span class="drawer-badge">
-                <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" style="display:inline-block; vertical-align:middle; margin-right:4px;">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"
+                  style="display:inline-block; vertical-align:middle; margin-right:4px;">
                   <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
                 </svg>
                 Konfigurasi Rumah Pilihan
@@ -3232,7 +3460,8 @@
       </div>
 
       <!-- DENAH SPEC MODAL (FLOOR PLAN PREVIEW) -->
-      <div class="saved-config-modal-backdrop" id="denahSpecModal" onclick="closeSpecDenahModal(event)" style="display: none;">
+      <div class="saved-config-modal-backdrop" id="denahSpecModal" onclick="closeSpecDenahModal(event)"
+        style="display: none;">
         <div class="saved-config-drawer" onclick="event.stopPropagation()">
           <div class="drawer-header">
             <div class="drawer-header-left">
@@ -3242,12 +3471,15 @@
             <button class="drawer-close-btn" onclick="closeSpecDenahModal()" type="button">✕</button>
           </div>
           <div class="drawer-body">
-            <div class="spec-image-box" style="margin-bottom: 12px; border-radius: 12px; overflow: hidden; border: 1px solid #e8e2d5; background: #ffffff;">
-              <img id="denahSpecModalImg" src="assets/drive/denah-tipe60.jpg" alt="Denah Arsitektur" style="width: 100%; height: auto; display: block;" />
+            <div class="spec-image-box"
+              style="margin-bottom: 12px; border-radius: 12px; overflow: hidden; border: 1px solid #e8e2d5; background: #ffffff;">
+              <img id="denahSpecModalImg" src="assets/drive/denah-tipe60.jpg" alt="Denah Arsitektur"
+                style="width: 100%; height: auto; display: block;" />
             </div>
             <div id="denahSpecModalDetails" style="display: flex; flex-direction: column; gap: 8px;"></div>
             <div class="drawer-cta-actions" style="margin-top: 14px;">
-              <button class="btn-primary-forest" type="button" id="btnSelectFromDenahModal" onclick="confirmUnitFromDenahModal()">
+              <button class="btn-primary-forest" type="button" id="btnSelectFromDenahModal"
+                onclick="confirmUnitFromDenahModal()">
                 <span id="denahSpecCtaText">Pesan Kavling + Denah Ini</span>
                 <span>→</span>
               </button>

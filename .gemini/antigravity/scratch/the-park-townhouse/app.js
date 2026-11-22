@@ -3241,41 +3241,6 @@ function advanceTopHeroVideo(step = 1) {
   switchTopHeroVideo(currentTopVideoIdx + step);
 }
 
-function toggleTopHeroVideoPlay() {
-  const videoEl = document.getElementById('berandaHeroVideo');
-  const iconEl = document.getElementById('topVideoPlayIcon');
-  if (!videoEl) return;
-
-  if (videoEl.paused) {
-    videoEl.play();
-    isTopVideoPaused = false;
-    if (iconEl) {
-      iconEl.innerHTML = '<rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" />';
-    }
-  } else {
-    videoEl.pause();
-    isTopVideoPaused = true;
-    if (iconEl) {
-      iconEl.innerHTML = '<polygon points="5 3 19 12 5 21 5 3" />';
-    }
-  }
-}
-
-function toggleTopHeroVideoMute() {
-  const videoEl = document.getElementById('berandaHeroVideo');
-  const iconEl = document.getElementById('topVideoMuteIcon');
-  if (!videoEl) return;
-
-  videoEl.muted = !videoEl.muted;
-  if (iconEl) {
-    if (videoEl.muted) {
-      iconEl.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';
-    } else {
-      iconEl.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>';
-    }
-  }
-}
-
 function initLandingNavbarScrollTrigger() {
   const scrollContainer = document.getElementById('landingScrollContent');
   const navbar = document.querySelector('.landing-navbar');

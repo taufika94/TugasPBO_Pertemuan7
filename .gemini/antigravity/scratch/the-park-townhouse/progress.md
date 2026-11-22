@@ -730,3 +730,16 @@
     - Styled stage pills (`.calc-tab-pill`) and scheme buttons (`.calc-scheme-btn`) ensuring minimum 44px–56px touch targets.
     - Styled KPR slider controls with `#11332a` accent and fixed visibility toggle (`.calc-kpr-controls.is-hidden { display: none !important; }`).
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #46: Remove Video Floating Action Buttons (Mute & Next Scene)
+- **Context & Objective**: Remove the floating playback controls (circular mute toggle and next video scene arrow) from the top video banner as requested by the user.
+- **Key Changes Implemented**:
+  - **Markup (index.html)**:
+    - Removed `.top-video-floating-actions` containing `#btnTopVideoMute` and the next-video advance button from `#berandaTopVideoBanner`.
+  - **Styles (styles.css)**:
+    - Deleted CSS rules for `.top-video-floating-actions` and `.btn-top-video-action`.
+  - **Script (app.js)**:
+    - Removed unused `toggleTopHeroVideoMute()` and `toggleTopHeroVideoPlay()` helper functions while preserving automated auto-advance on video end.
+- **Status**: Completed, Verified & Auto-Pushed.
