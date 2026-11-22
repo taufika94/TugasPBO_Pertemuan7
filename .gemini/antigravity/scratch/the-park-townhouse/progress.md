@@ -875,3 +875,18 @@
     - Standardized content panel max width to `860px; margin: 0 auto; width: 100%;` across `.landing-tab-panel`, `.unit-catalog-page-container`, and `.surat-magazine-container`.
     - Compacted `.b-unit-preview-card` to 160px x 215px and `.cluster-castle-hero-card` to 230px height.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #56: Copywriting Streamlining & Global Button Color Palette Synchronization
+- **Context & Objective**: Eliminate wordy and redundant filler text across all post-save views (Beranda, Unit, Surat Cinta, Site Plan, Fasilitas), replace with poetic, user-friendly buyer invitations, and synchronize all button color schemes into a unified palette.
+- **Key Changes Implemented**:
+  - **Persuasive & Poetic Japandi Copywriting (index.html)**:
+    - Streamlined Marquee ticker text to rhythmic, impactful statement ("SEBUAH ALAMAT · BEGITU BANYAK ARTI · 30 HUNIAN JAPANDI MODERN · KORIDOR EMAS SUKOHARJO · SHM PECAH SEMPURNA · RUANG PULANG TEDUH KELUARGA · FASILITAS RESOR EKSKLUSIF").
+    - Tightened subtitles and lead copy across Hero, 4 Pilar Investasi, Lokasi & Radius, Unit Showcase, Master Plan, Fasilitas Kawasan, Super App, Media Sosial, 11 Pilar, Simulasi Investasi, Tipe Produk, Tentang Kami, Kalkulator KPR, Testimoni, FAQ, Final CTA Banner, Surat Cinta 11 Tema, 3 Langkah Bersahaja, and Site Plan.
+    - Eliminated long-winded boilerplate while preserving warm, emotive Japandi luxury tone that gently invites homebuyers.
+  - **Global Button Color Palette Synchronization (styles.css)**:
+    - Synchronized all Primary CTA Buttons (`.btn-primary-forest`, `.btn-order-kavling-champagne`, `.uic-action-btn`, `.btn-card-order`, `.btn-open-surat-modal`, `.unit-inv-select-btn`, `.sp-select-lot-btn`, `.btn-surat-modal-proceed`) to consistent deep forest green gradient (`linear-gradient(135deg, #11332a 0%, #1e4d40 100%)`) with white text and clean elevation shadows.
+    - Converted outlier `.btn-open-surat-modal` (previously `#dfb96d` gold) and `.unit-inv-select-btn` (previously `#16241c`) to the unified forest green gradient.
+    - Synchronized Secondary/Outline Action Buttons (`.btn-secondary-link`, `.btn-card-denah`, `.btn-cluster-explore`, `.btn-schedule-visit`, `.btn-outline-forest.calc-cta-btn`, `.btn-reset-filters`) to consistent clean neutral background (`#fbfaf7`), subtle border (`1px solid #dcd4c3`), and dark forest text (`#16241c`).
+- **Status**: Completed, Verified & Auto-Pushed.
