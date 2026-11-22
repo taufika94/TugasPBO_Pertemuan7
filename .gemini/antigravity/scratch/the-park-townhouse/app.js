@@ -1910,16 +1910,171 @@ let catalogFilterState = {
   price: 'all',
   pos: 'all'
 };
+let catalogSortState = 'rec';
+
+const SHOWCASE_CLUSTER_DATA = {
+  nagoya: {
+    name: 'Nagoya',
+    tagline: 'Tipe compact dengan rooftop pribadi.',
+    priceText: 'Rp 498 Juta',
+    avail: 14,
+    total: 15,
+    lb: '60m²/80',
+    lt: '63m²–99m²',
+    beds: '3-4',
+    baths: '2-3',
+    units: [
+      { id: 'A.02', beds: 3, baths: 2, lt: 60, price: 'Rp 699 Juta', status: 'Tersedia', img: 'assets/drive/house.jpeg' },
+      { id: 'A.03', beds: 4, baths: 3, lt: 80, price: 'Rp 782 Juta', status: 'Tersedia', img: 'assets/drive/housee.jpeg' },
+      { id: 'A.04', beds: 3, baths: 2, lt: 60, price: 'Rp 699 Juta', status: 'Tersedia', img: 'assets/drive/dalam-9.png' },
+      { id: 'A.05', beds: 4, baths: 3, lt: 80, price: 'Rp 782 Juta', status: 'Tersedia', img: 'assets/drive/dalam-6.png' },
+      { id: 'A.06', beds: 3, baths: 2, lt: 60, price: 'Rp 699 Juta', status: 'Tersedia', img: 'assets/drive/house.jpeg' },
+      { id: 'A.07', beds: 4, baths: 3, lt: 80, price: 'Rp 787 Juta', status: 'Tersedia', img: 'assets/drive/housee.jpeg' },
+      { id: 'A.08', beds: 3, baths: 2, lt: 60, price: 'Rp 708 Juta', status: 'Tersedia', img: 'assets/drive/dalam-9.png' },
+      { id: 'A.09', beds: 4, baths: 3, lt: 80, price: 'Rp 796 Juta', status: 'Tersedia', img: 'assets/drive/dalam-6.png' },
+      { id: 'B.02', beds: 3, baths: 2, lt: 60, price: 'Rp 498 Juta', status: 'Tersedia', img: 'assets/drive/house.jpeg' },
+      { id: 'B.03', beds: 3, baths: 2, lt: 60, price: 'Rp 498 Juta', status: 'Tersedia', img: 'assets/drive/housee.jpeg' },
+      { id: 'B.04', beds: 3, baths: 2, lt: 60, price: 'Rp 498 Juta', status: 'Tersedia', img: 'assets/drive/dalam-9.png' },
+      { id: 'B.05', beds: 4, baths: 3, lt: 80, price: 'Rp 862 Juta', status: 'Tersedia', img: 'assets/drive/dalam-6.png' },
+      { id: 'B.06', beds: 4, baths: 3, lt: 80, price: 'Rp 857 Juta', status: 'Tersedia', img: 'assets/drive/house.jpeg' },
+      { id: 'B.07', beds: 4, baths: 3, lt: 80, price: 'Rp 857 Juta', status: 'Tersedia', img: 'assets/drive/housee.jpeg' },
+      { id: 'A.01', beds: 3, baths: 2, lt: 60, price: 'Terjual', status: 'Terjual', img: 'assets/drive/dalam-9.png' }
+    ]
+  },
+  tokyo: {
+    name: 'Tokyo',
+    tagline: 'Desain modern minimalis bernuansa Jepang.',
+    priceText: 'Rp 679 Juta',
+    avail: 7,
+    total: 7,
+    lb: '60m²/80',
+    lt: '90m²–125m²',
+    beds: '3-4',
+    baths: '2-3',
+    units: [
+      { id: 'B.1', beds: 3, baths: 2, lt: 60, price: 'Rp 708 Juta', status: 'Tersedia', img: 'assets/drive/dalam-6.png' },
+      { id: 'B.2', beds: 4, baths: 3, lt: 80, price: 'Rp 787 Juta', status: 'Tersedia', img: 'assets/drive/housee.jpeg' },
+      { id: 'B.3', beds: 3, baths: 2, lt: 60, price: 'Rp 679 Juta', status: 'Tersedia', img: 'assets/drive/house.jpeg' },
+      { id: 'B.4', beds: 4, baths: 3, lt: 80, price: 'Rp 791 Juta', status: 'Tersedia', img: 'assets/drive/dalam-9.png' },
+      { id: 'B.5', beds: 3, baths: 2, lt: 60, price: 'Rp 685 Juta', status: 'Tersedia', img: 'assets/drive/dalam-6.png' },
+      { id: 'B.6', beds: 3, baths: 2, lt: 60, price: 'Rp 685 Juta', status: 'Tersedia', img: 'assets/drive/house.jpeg' },
+      { id: 'B.7', beds: 4, baths: 3, lt: 80, price: 'Rp 899 Juta', status: 'Tersedia', img: 'assets/drive/housee.jpeg' }
+    ]
+  },
+  osaka: {
+    name: 'Osaka',
+    tagline: 'Hunian elegan dengan carport 2 mobil penuh.',
+    priceText: 'Rp 685 Juta',
+    avail: 9,
+    total: 9,
+    lb: '60m²/80',
+    lt: '90m²–110m²',
+    beds: '3-4',
+    baths: '2-3',
+    units: [
+      { id: 'A.1', beds: 4, baths: 3, lt: 80, price: 'Rp 791 Juta', status: 'Tersedia', img: 'assets/drive/housee.jpeg' },
+      { id: 'A.2', beds: 3, baths: 2, lt: 60, price: 'Rp 685 Juta', status: 'Tersedia', img: 'assets/drive/house.jpeg' },
+      { id: 'A.3', beds: 3, baths: 2, lt: 60, price: 'Rp 685 Juta', status: 'Tersedia', img: 'assets/drive/dalam-9.png' },
+      { id: 'A.4', beds: 4, baths: 3, lt: 80, price: 'Rp 769 Juta', status: 'Tersedia', img: 'assets/drive/dalam-6.png' },
+      { id: 'A.5', beds: 3, baths: 2, lt: 60, price: 'Rp 690 Juta', status: 'Tersedia', img: 'assets/drive/house.jpeg' },
+      { id: 'A.6', beds: 4, baths: 3, lt: 80, price: 'Rp 834 Juta', status: 'Tersedia', img: 'assets/drive/housee.jpeg' },
+      { id: 'A.7', beds: 4, baths: 3, lt: 80, price: 'Rp 834 Juta', status: 'Tersedia', img: 'assets/drive/dalam-9.png' },
+      { id: 'A.8', beds: 4, baths: 3, lt: 80, price: 'Rp 901 Juta', status: 'Tersedia', img: 'assets/drive/dalam-6.png' },
+      { id: 'A.9', beds: 4, baths: 3, lt: 80, price: 'Rp 906 Juta', status: 'Tersedia', img: 'assets/drive/housee.jpeg' }
+    ]
+  }
+};
 
 function initLandingPage() {
   updateBottomBarVisibility();
   setTimeout(initBerandaLeafletMap, 300);
+  switchBerandaShowcaseCluster('nagoya');
   renderLandingUnits();
   switchLandingSiteplan('nagoya');
   setTimeout(recalculateSuratPayment, 400);
   initTopHeroVideoPlayer();
   initLandingNavbarScrollTrigger();
   initMetricsCounterAnimation();
+}
+
+function switchBerandaShowcaseCluster(clusterKey, btnEl) {
+  const data = SHOWCASE_CLUSTER_DATA[clusterKey] || SHOWCASE_CLUSTER_DATA.nagoya;
+  
+  if (btnEl) {
+    document.querySelectorAll('#berandaShowcaseClusterTabs .cluster-pill-btn').forEach(b => b.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  }
+
+  const nameEl = document.getElementById('showcaseClusterName');
+  const tagEl = document.getElementById('showcaseClusterTagline');
+  const priceEl = document.getElementById('showcaseClusterPrice');
+  const heroCard = document.getElementById('showcaseHeroCard');
+  if (nameEl) nameEl.textContent = data.name;
+  if (tagEl) tagEl.textContent = data.tagline;
+  if (priceEl) priceEl.textContent = data.priceText;
+  if (heroCard) {
+    heroCard.classList.remove('theme-nagoya', 'theme-tokyo', 'theme-osaka');
+    heroCard.classList.add(`theme-${clusterKey}`);
+  }
+
+  const statAvail = document.getElementById('showcaseStatAvail');
+  const statLb = document.getElementById('showcaseStatLb');
+  const statLt = document.getElementById('showcaseStatLt');
+  const statBeds = document.getElementById('showcaseStatBeds');
+  const statBaths = document.getElementById('showcaseStatBaths');
+  const seeAllLbl = document.getElementById('showcaseSeeAllLabel');
+
+  if (statAvail) statAvail.textContent = data.avail;
+  if (statLb) statLb.textContent = data.lb;
+  if (statLt) statLt.textContent = data.lt;
+  if (statBeds) statBeds.textContent = data.beds;
+  if (statBaths) statBaths.textContent = data.baths;
+  if (seeAllLbl) seeAllLbl.textContent = `Lihat Semua ${data.total}`;
+
+  const carousel = document.getElementById('berandaUnitsCarousel');
+  if (carousel) {
+    carousel.innerHTML = data.units.map(u => `
+      <div class="b-unit-preview-card" onclick="switchLandingTab('Unit')">
+        <div class="b-unit-img-wrap">
+          <img src="${u.img}" alt="Unit ${u.id}" loading="lazy" />
+          <span class="b-unit-badge ${u.status === 'Tersedia' ? 'badge-avail' : 'badge-sold'}">${u.status}</span>
+        </div>
+        <div class="b-unit-info-overlay">
+          <div class="b-unit-id">${u.id}</div>
+          <div class="b-unit-specs-row">
+            <span>${u.beds}KT</span>
+            <span>${u.baths}KM</span>
+            <span>${u.lt}m²LT</span>
+          </div>
+          <div class="b-unit-price-box">
+            ${u.status === 'Tersedia' ? `<span class="p-prefix">Mulai</span>` : ''}
+            <strong class="p-amount">${u.price}</strong>
+          </div>
+        </div>
+      </div>
+    `).join('');
+    carousel.scrollTo({ left: 0, behavior: 'smooth' });
+  }
+}
+
+function scrollBerandaUnitsCarousel(dir) {
+  const carousel = document.getElementById('berandaUnitsCarousel');
+  if (carousel) {
+    carousel.scrollBy({ left: dir * 260, behavior: 'smooth' });
+  }
+}
+
+function scrollToClusterUnits(clusterKey) {
+  const norm = clusterKey.charAt(0).toUpperCase() + clusterKey.slice(1).toLowerCase();
+  const el = document.getElementById(`clusterSection${norm}`);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function sortCatalog(sortVal) {
+  catalogSortState = sortVal;
+  renderLandingUnits();
 }
 
 function filterCatalog(filterType, val, btnEl) {
@@ -1934,6 +2089,10 @@ function filterCatalog(filterType, val, btnEl) {
 
 function resetCatalogFilters() {
   catalogFilterState = { type: 'all', lot: 'all', price: 'all', pos: 'all' };
+  catalogSortState = 'rec';
+  const sortSelect = document.getElementById('catalogSortSelect');
+  if (sortSelect) sortSelect.value = 'rec';
+
   document.querySelectorAll('.filter-chips').forEach(group => {
     group.querySelectorAll('.f-chip').forEach((c, idx) => {
       c.classList.toggle('is-active', idx === 0);
@@ -1944,6 +2103,11 @@ function resetCatalogFilters() {
 
 function renderLandingUnits() {
   const clusters = ['nagoya', 'tokyo', 'osaka'];
+  const unitImages = {
+    nagoya: ['assets/drive/house.jpeg', 'assets/drive/housee.jpeg', 'assets/drive/dalam-9.png', 'assets/drive/dalam-6.png'],
+    tokyo: ['assets/drive/dalam-6.png', 'assets/drive/house.jpeg', 'assets/drive/dalam-9.png', 'assets/drive/housee.jpeg'],
+    osaka: ['assets/drive/housee.jpeg', 'assets/drive/house.jpeg', 'assets/drive/dalam-9.png', 'assets/drive/dalam-6.png']
+  };
 
   clusters.forEach(clusterKey => {
     const gridEl = document.getElementById(`${clusterKey}UnitsGrid`);
@@ -1959,43 +2123,102 @@ function renderLandingUnits() {
       units = units.filter(u => u.lt < 80);
     } else if (catalogFilterState.lot === '80to90') {
       units = units.filter(u => u.lt >= 80 && u.lt <= 90);
-    } else if (catalogFilterState.lot === 'above90') {
-      units = units.filter(u => u.lt > 90);
+    } else if (catalogFilterState.lot === '91to100') {
+      units = units.filter(u => u.lt >= 91 && u.lt <= 100);
+    } else if (catalogFilterState.lot === 'above100') {
+      units = units.filter(u => u.lt > 100);
     }
 
     if (catalogFilterState.price === 'under600') {
       units = units.filter(u => u.priceMillion < 600);
     } else if (catalogFilterState.price === '600to750') {
       units = units.filter(u => u.priceMillion >= 600 && u.priceMillion <= 750);
-    } else if (catalogFilterState.price === 'above750') {
-      units = units.filter(u => u.priceMillion > 750);
+    } else if (catalogFilterState.price === '750to900') {
+      units = units.filter(u => u.priceMillion > 750 && u.priceMillion <= 900);
+    } else if (catalogFilterState.price === 'above900') {
+      units = units.filter(u => u.priceMillion > 900);
     }
 
     if (catalogFilterState.pos !== 'all') {
       units = units.filter(u => u.pos === catalogFilterState.pos);
     }
 
+    // Apply sorting
+    if (catalogSortState === 'price-asc') {
+      units.sort((a, b) => a.priceMillion - b.priceMillion);
+    } else if (catalogSortState === 'price-desc') {
+      units.sort((a, b) => b.priceMillion - a.priceMillion);
+    } else if (catalogSortState === 'lot-desc') {
+      units.sort((a, b) => b.lt - a.lt);
+    }
+
     if (units.length === 0) {
-      gridEl.innerHTML = `<div style="grid-column: span 2; text-align:center; padding: 12px; font-size: 11px; color: rgba(243,239,230,0.6);">Tidak ada unit yang cocok dengan kombinasi filter ini.</div>`;
+      gridEl.innerHTML = `<div class="unit-inv-empty">Tidak ada unit yang cocok dengan kombinasi filter ini.</div>`;
       return;
     }
 
-    gridEl.innerHTML = units.map(u => `
-      <div class="unit-inventory-card">
-        <div class="unit-inv-head">
-          <span class="unit-inv-id">${u.id}</span>
-          <span class="unit-inv-status ${u.status === 'Tersedia' ? 'is-avail' : 'is-sold'}">${u.status}</span>
+    const imgs = unitImages[clusterKey] || unitImages.nagoya;
+    gridEl.innerHTML = units.map((u, idx) => {
+      const img = imgs[idx % imgs.length];
+      const isAvail = u.status === 'Tersedia';
+      return `
+        <div class="unit-inventory-card ${!isAvail ? 'is-sold-out' : ''}">
+          <div class="uic-media">
+            <img src="${img}" alt="Kavling ${u.id}" loading="lazy" />
+            <span class="uic-badge ${isAvail ? 'status-avail' : 'status-sold'}">${u.status}</span>
+          </div>
+          <div class="uic-body">
+            <div class="uic-header">
+              <span class="uic-id">${u.id}</span>
+              <span class="uic-type-pill">${u.type}</span>
+            </div>
+            <div class="uic-specs">
+              <span>${u.beds} KT</span>
+              <span class="uic-sep">·</span>
+              <span>${u.baths} KM</span>
+              <span class="uic-sep">·</span>
+              <span>${u.lt} m² LT</span>
+            </div>
+            <div class="uic-price-box">
+              <span class="uic-price-lbl">${isAvail ? 'Mulai' : 'Status'}</span>
+              <strong class="uic-price-val">${isAvail ? `Rp ${u.priceMillion} Juta` : 'Terjual'}</strong>
+            </div>
+            ${isAvail ? `
+              <button class="uic-action-btn" type="button" onclick="selectUnitFromLanding('${clusterKey}', '${u.id}', ${u.priceMillion})">
+                <span>Pesan Kavling Ini</span>
+                <span>→</span>
+              </button>
+            ` : `
+              <button class="uic-action-btn is-disabled" type="button" disabled>
+                <span>Sudah Terjual</span>
+              </button>
+            `}
+          </div>
         </div>
-        <div class="unit-inv-specs">${u.beds}KT · ${u.baths}KM · LT ${u.lt}m²</div>
-        <div class="unit-inv-price">Mulai Rp ${u.priceMillion} Jt</div>
-        ${u.status === 'Tersedia' ? `
-          <button class="unit-inv-select-btn" type="button" onclick="selectUnitFromLanding('${clusterKey}', '${u.id}', ${u.priceMillion})">
-            Pilih Kavling →
-          </button>
-        ` : ''}
-      </div>
-    `).join('');
+      `;
+    }).join('');
   });
+}
+
+function openSalesLoginModal() {
+  const backdrop = document.getElementById('modalBackdrop');
+  const title = document.getElementById('modalTitle');
+  const body = document.getElementById('modalBody');
+  if (backdrop && title && body) {
+    title.textContent = 'Portal Internal Sales & Admin';
+    body.innerHTML = `
+      <div style="padding: 12px 0; text-align: center;">
+        <div style="font-size: 28px; margin-bottom: 8px;">🔐</div>
+        <p style="font-size: 13px; color: #2e3d36; line-height: 1.5; margin-bottom: 16px;">
+          Akses khusus staf pemasaran PT Andara Rejo Makmur. Silakan hubungi koordinator marketing untuk otentikasi akun.
+        </p>
+        <button type="button" class="btn-primary" onclick="closeQuickModal()" style="width: 100%; justify-content: center; padding: 10px 16px; border-radius: 8px; font-weight: 600;">
+          Tutup
+        </button>
+      </div>
+    `;
+    backdrop.classList.add('is-open');
+  }
 }
 
 function selectUnitFromLanding(clusterKey, unitId, priceM) {
@@ -2006,24 +2229,29 @@ function selectUnitFromLanding(clusterKey, unitId, priceM) {
 }
 
 function switchLandingTab(tabName, btnEl) {
+  const norm = tabName.charAt(0).toUpperCase() + tabName.slice(1);
   document.querySelectorAll('.landing-tab-panel').forEach(p => p.style.display = 'none');
   document.querySelectorAll('.bottom-nav-tab').forEach(b => b.classList.remove('is-active'));
 
-  const activePanel = document.getElementById(`panel${tabName}`);
+  const activePanel = document.getElementById(`panel${norm}`);
   if (activePanel) activePanel.style.display = 'flex';
-  if (btnEl) btnEl.classList.add('is-active');
+  
+  const bottomBtn = btnEl || document.getElementById(`tabBtn${norm}`);
+  if (bottomBtn) bottomBtn.classList.add('is-active');
 
   const scrollContainer = document.getElementById('landingScrollContent');
   if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
 
-  if (tabName === 'Beranda') {
+  if (norm === 'Beranda') {
     initBerandaLeafletMap();
     setTimeout(() => { if (berandaLeafletMapInstance) berandaLeafletMapInstance.invalidateSize(); }, 200);
-  } else if (tabName === 'SitePlan') {
+  } else if (norm === 'SitePlan') {
     switchLandingSiteplan('nagoya');
-  } else if (tabName === 'SuratCinta') {
+  } else if (norm === 'SuratCinta') {
     initSuratCintaMagazine();
     setTimeout(openSuratPrologueModal, 150);
+  } else if (norm === 'Unit') {
+    renderLandingUnits();
   }
 }
 

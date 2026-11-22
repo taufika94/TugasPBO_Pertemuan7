@@ -1412,6 +1412,117 @@
               </div>
             </div>
 
+            <!-- 4B. UNIT SHOWCASE PER CLUSTER (Preview Carousel & Link ke Halaman Unit) -->
+            <div class="landing-section-card" id="secBerandaUnitShowcase">
+              <div class="section-card-head">
+                <span class="section-tag-gold">PILIHAN UNIT PER CLUSTER</span>
+                <h2 class="section-card-title">Koleksi Hunian Japandi Modern</h2>
+                <p class="section-card-sub">Jelajahi 30 unit hunian terkurasi dengan 3 karakter klaster: Nagoya, Tokyo, dan Osaka.</p>
+              </div>
+
+              <!-- Cluster Selector Tabs -->
+              <div class="cluster-pill-tabs" id="berandaShowcaseClusterTabs">
+                <button type="button" class="cluster-pill-btn is-active" id="btnShowcaseNagoya" onclick="switchBerandaShowcaseCluster('nagoya', this)">
+                  <span>Nagoya (15 Unit)</span>
+                </button>
+                <button type="button" class="cluster-pill-btn" id="btnShowcaseTokyo" onclick="switchBerandaShowcaseCluster('tokyo', this)">
+                  <span>Tokyo (7 Unit)</span>
+                </button>
+                <button type="button" class="cluster-pill-btn" id="btnShowcaseOsaka" onclick="switchBerandaShowcaseCluster('osaka', this)">
+                  <span>Osaka (9 Unit)</span>
+                </button>
+              </div>
+
+              <!-- Cluster Showcase Box (Exact Match to User Reference Screenshot) -->
+              <div class="cluster-showcase-display" id="clusterShowcaseDisplay">
+                <!-- Left Tall Hero Card -->
+                <div class="cluster-castle-hero-card" id="showcaseHeroCard">
+                  <div class="castle-card-overlay"></div>
+                  <div class="castle-card-content">
+                    <div class="castle-title-row">
+                      <h3 class="castle-name" id="showcaseClusterName">Nagoya</h3>
+                      <span class="castle-gold-dot"></span>
+                    </div>
+                    <p class="castle-tagline" id="showcaseClusterTagline">Tipe compact dengan rooftop pribadi.</p>
+                    <div class="castle-price-block">
+                      <span class="castle-price-lbl">HARGA MULAI</span>
+                      <strong class="castle-price-val" id="showcaseClusterPrice">Rp 498 Juta</strong>
+                    </div>
+                    <button type="button" class="btn-castle-detail" onclick="switchLandingTab('Unit')">
+                      <span>Lihat Detail Klaster</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Right Side: Stats Summary Bar & Horizontal Carousel -->
+                <div class="cluster-showcase-right">
+                  <!-- Summary Stats Bar -->
+                  <div class="showcase-summary-bar">
+                    <div class="showcase-stat-item">
+                      <span class="stat-icon">⌂</span>
+                      <div>
+                        <strong id="showcaseStatAvail">14</strong>
+                        <span>UNIT TERSEDIA</span>
+                      </div>
+                    </div>
+                    <div class="showcase-stat-item">
+                      <span class="stat-icon">◫</span>
+                      <div>
+                        <strong id="showcaseStatLb">60m²/80</strong>
+                        <span>LB MULAI</span>
+                      </div>
+                    </div>
+                    <div class="showcase-stat-item">
+                      <span class="stat-icon">▱</span>
+                      <div>
+                        <strong id="showcaseStatLt">63m²–99m²</strong>
+                        <span>LT MULAI</span>
+                      </div>
+                    </div>
+                    <div class="showcase-stat-item">
+                      <span class="stat-icon">田</span>
+                      <div>
+                        <strong id="showcaseStatBeds">3-4</strong>
+                        <span>KAMAR TIDUR</span>
+                      </div>
+                    </div>
+                    <div class="showcase-stat-item">
+                      <span class="stat-icon">♨</span>
+                      <div>
+                        <strong id="showcaseStatBaths">2-3</strong>
+                        <span>KAMAR MANDI</span>
+                      </div>
+                    </div>
+                    <button type="button" class="showcase-see-all-link" onclick="switchLandingTab('Unit')">
+                      <span id="showcaseSeeAllLabel">Lihat Semua 15</span>
+                      <span>→</span>
+                    </button>
+                  </div>
+
+                  <!-- Carousel Track Container with Left/Right Arrows -->
+                  <div class="showcase-carousel-wrapper">
+                    <button type="button" class="carousel-arrow-btn prev" onclick="scrollBerandaUnitsCarousel(-1)" aria-label="Sebelumnya">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                    </button>
+                    <div class="showcase-units-carousel" id="berandaUnitsCarousel">
+                      <!-- Rendered dynamically by switchBerandaShowcaseCluster -->
+                    </div>
+                    <button type="button" class="carousel-arrow-btn next" onclick="scrollBerandaUnitsCarousel(1)" aria-label="Berikutnya">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- "Lihat Selengkapnya" Bottom CTA Linking to Halaman Unit -->
+              <div class="showcase-cta-bar">
+                <button type="button" class="btn-primary-forest btn-block" onclick="switchLandingTab('Unit')">
+                  <span>Lihat Selengkapnya Katalog 30 Unit</span>
+                  <span>→</span>
+                </button>
+              </div>
+            </div>
+
             <!-- 5. MASTER PLAN INTERAKTIF -->
             <div class="landing-section-card" id="secMasterPlan">
               <div class="section-card-head">
@@ -2482,6 +2593,279 @@
             </footer>
           </section>
 
+          <!-- TAB 1B: UNIT (KATALOG HUNIAN · PILIHAN UNIT PER CLUSTER) -->
+          <section class="landing-tab-panel" id="panelUnit" style="display: none;">
+            <div class="unit-catalog-page-container">
+              <!-- Top Mini Header / Breadcrumb Bar -->
+              <div class="unit-page-nav-bar">
+                <div class="unit-nav-loc">
+                  <span class="unit-nav-dot"></span>
+                  <span>Avenue Grand Gate · Sukoharjo</span>
+                </div>
+                <div class="unit-nav-right">
+                  <span class="unit-lang-pill">ID</span>
+                  <button type="button" class="unit-sales-login-link" onclick="openSalesLoginModal()">Sales Login</button>
+                </div>
+              </div>
+
+              <!-- Quick Links Nav Strip -->
+              <nav class="unit-page-quick-links" aria-label="Navigasi Halaman Unit">
+                <button type="button" class="unit-brand-logo-btn" onclick="switchLandingTab('Beranda')">THEPARKTOWNHOUSE</button>
+                <div class="unit-quick-links-list">
+                  <button type="button" class="unit-quick-link" onclick="switchLandingTab('Beranda')">Beranda</button>
+                  <button type="button" class="unit-quick-link" onclick="switchLandingTab('SuratCinta')">Keunggulan</button>
+                  <button type="button" class="unit-quick-link is-active" onclick="switchLandingTab('Unit')">Unit</button>
+                  <button type="button" class="unit-quick-link" onclick="switchLandingTab('Fasilitas')">Fasilitas</button>
+                  <button type="button" class="unit-quick-link" onclick="switchLandingTab('Beranda')">Lokasi</button>
+                  <button type="button" class="unit-quick-link" onclick="switchLandingTab('SuratCinta')">Kalkulator</button>
+                  <button type="button" class="unit-quick-link" onclick="openOrderModal()">Hubungi Kami</button>
+                </div>
+              </nav>
+
+              <!-- Hero Section Header -->
+              <div class="unit-hero-header-card">
+                <span class="unit-katalog-tag">Katalog Hunian</span>
+                <h1 class="unit-hero-title">Pilihan Unit per Cluster</h1>
+                <p class="unit-hero-sub">30 Unit Hunian Bergaya Japandi Modern</p>
+              </div>
+
+              <!-- 4 Metrics Highlight Grid -->
+              <div class="unit-metrics-banner">
+                <div class="unit-metric-card">
+                  <span class="m-label">Unit Hunian</span>
+                  <strong class="m-val">30</strong>
+                </div>
+                <div class="unit-metric-card">
+                  <span class="m-label">Tipe Cluster</span>
+                  <strong class="m-val">3</strong>
+                </div>
+                <div class="unit-metric-card">
+                  <span class="m-label">Cicilan Mulai*</span>
+                  <strong class="m-val">Rp 4,9jt<span class="m-val-sub">/bulan</span></strong>
+                </div>
+                <div class="unit-metric-card">
+                  <span class="m-label">SHM Pecah Sempurna**</span>
+                  <strong class="m-val">100%</strong>
+                </div>
+              </div>
+              <div class="unit-metrics-footnote">
+                <span>*harga pra launching</span>
+                <span>**Klaster Nagoya</span>
+              </div>
+
+              <!-- Interactive Filters Card -->
+              <div class="unit-filter-card">
+                <div class="filter-controls-grid">
+                  <!-- Tipe Unit -->
+                  <div class="filter-control-group">
+                    <label class="filter-lbl">Tipe Unit</label>
+                    <div class="filter-chips" id="filterGroupType">
+                      <button type="button" class="f-chip is-active" onclick="filterCatalog('type', 'all', this)">Semua</button>
+                      <button type="button" class="f-chip" onclick="filterCatalog('type', 'T60', this)">T60 (3KT, LT 63m²)</button>
+                      <button type="button" class="f-chip" onclick="filterCatalog('type', 'T80', this)">T80 (4KT, LT 88m²)</button>
+                    </div>
+                  </div>
+
+                  <!-- Luas Tanah -->
+                  <div class="filter-control-group">
+                    <label class="filter-lbl">Luas Tanah</label>
+                    <div class="filter-chips" id="filterGroupLot">
+                      <button type="button" class="f-chip is-active" onclick="filterCatalog('lot', 'all', this)">Semua</button>
+                      <button type="button" class="f-chip" onclick="filterCatalog('lot', 'under80', this)">&lt; 80m²</button>
+                      <button type="button" class="f-chip" onclick="filterCatalog('lot', '80to90', this)">80-90m²</button>
+                      <button type="button" class="f-chip" onclick="filterCatalog('lot', '91to100', this)">91-100m²</button>
+                      <button type="button" class="f-chip" onclick="filterCatalog('lot', 'above100', this)">&gt; 100m²</button>
+                    </div>
+                  </div>
+
+                  <!-- Range Harga -->
+                  <div class="filter-control-group">
+                    <label class="filter-lbl">Range Harga</label>
+                    <div class="filter-chips" id="filterGroupPrice">
+                      <button type="button" class="f-chip is-active" onclick="filterCatalog('price', 'all', this)">Semua</button>
+                      <button type="button" class="f-chip" onclick="filterCatalog('price', 'under600', this)">&lt; 600jt</button>
+                      <button type="button" class="f-chip" onclick="filterCatalog('price', '600to750', this)">600-750jt</button>
+                      <button type="button" class="f-chip" onclick="filterCatalog('price', '750to900', this)">750-900jt</button>
+                      <button type="button" class="f-chip" onclick="filterCatalog('price', 'above900', this)">&gt; 900jt</button>
+                    </div>
+                  </div>
+
+                  <!-- Posisi Kavling -->
+                  <div class="filter-control-group">
+                    <label class="filter-lbl">Posisi Kavling</label>
+                    <div class="filter-chips" id="filterGroupPos">
+                      <button type="button" class="f-chip is-active" onclick="filterCatalog('pos', 'all', this)">Semua</button>
+                      <button type="button" class="f-chip" onclick="filterCatalog('pos', 'hook', this)">Hook / Pojok</button>
+                      <button type="button" class="f-chip" onclick="filterCatalog('pos', 'gate', this)">Dekat Gerbang</button>
+                      <button type="button" class="f-chip" onclick="filterCatalog('pos', 'inner', this)">Posisi Dalam</button>
+                    </div>
+                  </div>
+
+                  <!-- Urutkan & Reset -->
+                  <div class="filter-sort-row">
+                    <div class="filter-control-group flex-1">
+                      <label class="filter-lbl">Urutkan</label>
+                      <select class="filter-select-input" id="catalogSortSelect" onchange="sortCatalog(this.value)">
+                        <option value="rec">Rekomendasi</option>
+                        <option value="price-asc">Harga Terendah</option>
+                        <option value="price-desc">Harga Tertinggi</option>
+                        <option value="lot-desc">Luas Tanah Terbesar</option>
+                      </select>
+                    </div>
+                    <button type="button" class="btn-reset-filters" onclick="resetCatalogFilters()">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><polyline points="3 3 3 8 8 8"/></svg>
+                      <span>Reset</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CLUSTER 1: NAGOYA -->
+              <div class="unit-cluster-block" id="clusterSectionNagoya">
+                <div class="cluster-block-card">
+                  <div class="cb-info">
+                    <div class="cb-title-row">
+                      <h2 class="cb-name">Nagoya</h2>
+                      <span class="cb-gold-dot"></span>
+                    </div>
+                    <p class="cb-tagline">Tipe compact dengan rooftop pribadi.</p>
+                    <div class="cb-price-badge">
+                      <span class="cb-p-lbl">Harga mulai</span>
+                      <strong class="cb-p-val">Rp 498 Juta</strong>
+                    </div>
+                    <button type="button" class="cb-detail-link" onclick="switchLandingTab('SitePlan'); switchLandingSiteplan('nagoya')">
+                      <span>Lihat Detail Klaster</span>
+                      <span>→</span>
+                    </button>
+                  </div>
+                  <div class="cb-stats-row">
+                    <div class="cb-stat-pill"><strong>14</strong><span>Unit Tersedia</span></div>
+                    <div class="cb-stat-pill"><strong>60m²/80</strong><span>LB mulai</span></div>
+                    <div class="cb-stat-pill"><strong>63m²–99m²</strong><span>LT mulai</span></div>
+                    <div class="cb-stat-pill"><strong>3-4</strong><span>Kamar Tidur</span></div>
+                    <div class="cb-stat-pill"><strong>2-3</strong><span>Kamar Mandi</span></div>
+                    <button type="button" class="cb-see-all-btn" onclick="scrollToClusterUnits('nagoya')">
+                      <span>Lihat Semua 15 Unit</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="unit-inventory-grid" id="nagoyaUnitsGrid">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+
+              <!-- CLUSTER 2: TOKYO -->
+              <div class="unit-cluster-block" id="clusterSectionTokyo">
+                <div class="cluster-block-card">
+                  <div class="cb-info">
+                    <div class="cb-title-row">
+                      <h2 class="cb-name">Tokyo</h2>
+                      <span class="cb-gold-dot"></span>
+                    </div>
+                    <p class="cb-tagline">Desain modern minimalis bernuansa Jepang.</p>
+                    <div class="cb-price-badge">
+                      <span class="cb-p-lbl">Harga mulai</span>
+                      <strong class="cb-p-val">Rp 679 Juta</strong>
+                    </div>
+                    <button type="button" class="cb-detail-link" onclick="switchLandingTab('SitePlan'); switchLandingSiteplan('tokyo')">
+                      <span>Lihat Detail Klaster</span>
+                      <span>→</span>
+                    </button>
+                  </div>
+                  <div class="cb-stats-row">
+                    <div class="cb-stat-pill"><strong>7</strong><span>Unit Tersedia</span></div>
+                    <div class="cb-stat-pill"><strong>60m²/80</strong><span>LB mulai</span></div>
+                    <div class="cb-stat-pill"><strong>90m²–125m²</strong><span>LT mulai</span></div>
+                    <div class="cb-stat-pill"><strong>3-4</strong><span>Kamar Tidur</span></div>
+                    <div class="cb-stat-pill"><strong>2-3</strong><span>Kamar Mandi</span></div>
+                    <button type="button" class="cb-see-all-btn" onclick="scrollToClusterUnits('tokyo')">
+                      <span>Lihat Semua 7 Unit</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="unit-inventory-grid" id="tokyoUnitsGrid">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+
+              <!-- CLUSTER 3: OSAKA -->
+              <div class="unit-cluster-block" id="clusterSectionOsaka">
+                <div class="cluster-block-card">
+                  <div class="cb-info">
+                    <div class="cb-title-row">
+                      <h2 class="cb-name">Osaka</h2>
+                      <span class="cb-gold-dot"></span>
+                    </div>
+                    <p class="cb-tagline">Hunian elegan dengan carport 2 mobil penuh.</p>
+                    <div class="cb-price-badge">
+                      <span class="cb-p-lbl">Harga mulai</span>
+                      <strong class="cb-p-val">Rp 685 Juta</strong>
+                    </div>
+                    <button type="button" class="cb-detail-link" onclick="switchLandingTab('SitePlan'); switchLandingSiteplan('osaka')">
+                      <span>Lihat Detail Klaster</span>
+                      <span>→</span>
+                    </button>
+                  </div>
+                  <div class="cb-stats-row">
+                    <div class="cb-stat-pill"><strong>9</strong><span>Unit Tersedia</span></div>
+                    <div class="cb-stat-pill"><strong>60m²/80</strong><span>LB mulai</span></div>
+                    <div class="cb-stat-pill"><strong>90m²–110m²</strong><span>LT mulai</span></div>
+                    <div class="cb-stat-pill"><strong>3-4</strong><span>Kamar Tidur</span></div>
+                    <div class="cb-stat-pill"><strong>2-3</strong><span>Kamar Mandi</span></div>
+                    <button type="button" class="cb-see-all-btn" onclick="scrollToClusterUnits('osaka')">
+                      <span>Lihat Semua 9 Unit</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="unit-inventory-grid" id="osakaUnitsGrid">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+
+              <!-- Official Unit Page Footer -->
+              <footer class="unit-page-footer">
+                <div class="unit-footer-main">
+                  <div class="uf-brand">
+                    <strong class="uf-brand-name">The Park Townhouse</strong>
+                    <p class="uf-brand-desc">Hunian premium di Avenue Grand Gate, Sukoharjo. Dikembangkan oleh PT Andara Rejo Makmur.</p>
+                  </div>
+
+                  <div class="uf-links-col">
+                    <span class="uf-col-title">Jelajahi</span>
+                    <div class="uf-nav-links">
+                      <button type="button" onclick="switchLandingTab('Unit')">Pilihan Unit</button>
+                      <button type="button" onclick="switchLandingTab('SuratCinta')">Keunggulan</button>
+                      <button type="button" onclick="switchLandingTab('SitePlan')">Site Plan Real-Time</button>
+                      <button type="button" onclick="openSavedConfigModal()">Konfigurator Denah</button>
+                      <button type="button" onclick="switchLandingTab('Beranda')">Peta Lokasi</button>
+                      <button type="button" onclick="switchLandingTab('SuratCinta')">Kalkulator Pembayaran</button>
+                    </div>
+                  </div>
+
+                  <div class="uf-info-col">
+                    <span class="uf-col-title">Jam Kerja</span>
+                    <p class="uf-info-text">Senin – Sabtu · 09.00 – 17.00 WIB</p>
+                    <span class="uf-col-title" style="margin-top: 10px;">Kontak Marketing</span>
+                    <p class="uf-info-text">Sukoharjo, Jawa Tengah</p>
+                  </div>
+
+                  <div class="uf-internal-col">
+                    <span class="uf-col-title">Internal</span>
+                    <div class="uf-nav-links">
+                      <button type="button" onclick="openSalesLoginModal()">Sales Login</button>
+                      <button type="button" onclick="openSalesLoginModal()">Panel Admin</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="unit-footer-bottom">
+                  <span>© 2026 PT Andara Rejo Makmur. Seluruh hak cipta.</span>
+                  <span class="uf-prototype-tag">Prototipe frontend — aset gambar menyusul.</span>
+                </div>
+              </footer>
+            </div>
+          </section>
+
           <!-- TAB 2: SURAT CINTA (99 KEUNGGULAN · DELUXE STORYTELLING) -->
           <section class="landing-tab-panel" id="panelSuratCinta" style="display: none;">
             <div class="surat-magazine-container">
@@ -3263,6 +3647,18 @@
               </svg>
             </span>
             <span class="b-text">Beranda</span>
+          </button>
+          <button class="bottom-nav-tab" id="tabBtnUnit" onclick="switchLandingTab('Unit', this)"
+            type="button">
+            <span class="b-icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                <rect x="14" y="14" width="7" height="7" rx="1.5" />
+                <rect x="3" y="14" width="7" height="7" rx="1.5" />
+              </svg>
+            </span>
+            <span class="b-text">Unit</span>
           </button>
           <button class="bottom-nav-tab" id="tabBtnSuratCinta" onclick="switchLandingTab('SuratCinta', this)"
             type="button">
