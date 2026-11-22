@@ -2023,6 +2023,7 @@ function switchLandingTab(tabName, btnEl) {
     switchLandingSiteplan('nagoya');
   } else if (tabName === 'SuratCinta') {
     initSuratCintaMagazine();
+    setTimeout(openSuratPrologueModal, 150);
   }
 }
 
@@ -3151,6 +3152,28 @@ function initSuratCintaMagazine() {
   renderPriceMatrix(currentPriceCluster);
 }
 
+function openSuratPrologueModal() {
+  const modal = document.getElementById('suratPrologueModal');
+  if (modal) {
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeSuratPrologueModal() {
+  const modal = document.getElementById('suratPrologueModal');
+  if (modal) {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+}
+
+function handleSuratModalBackdropClick(event) {
+  if (event.target && event.target.id === 'suratPrologueModal') {
+    closeSuratPrologueModal();
+  }
+}
+
 /* --------------------------------------------------------------------------
    09B. TOP HERO VIDEO CAROUSEL & SCROLL / COUNTER CONTROLLER
    -------------------------------------------------------------------------- */
@@ -3188,7 +3211,7 @@ function initTopHeroVideoPlayer() {
     advanceTopHeroVideo(1);
   };
 
-  videoEl.play().catch(() => {});
+  videoEl.play().catch(() => { });
 }
 
 function switchTopHeroVideo(idx) {
@@ -3205,7 +3228,7 @@ function switchTopHeroVideo(idx) {
     videoEl.src = item.src;
     videoEl.load();
     if (!isTopVideoPaused) {
-      videoEl.play().catch(() => {});
+      videoEl.play().catch(() => { });
     }
     videoEl.style.opacity = '1';
   }, 180);

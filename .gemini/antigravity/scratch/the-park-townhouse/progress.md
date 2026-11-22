@@ -683,3 +683,19 @@
   - **Script (app.js)**:
     - Removed progress bar synchronization logic (`ontimeupdate`, `resetTopProgressBars`) and unused button references.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #43: Transform Prologue Letter into Auto Popup Modal on Surat Cinta Tab
+- **Context & Objective**: Display the prologue letter "SURAT UNTUK CALON PENGHUNI" as an automated pop-up modal when the user navigates to the Surat Cinta page, keeping the main page uncluttered with a compact invitation banner to re-open the pop-up anytime.
+- **Key Changes Implemented**:
+  - **Pop-up Modal Structure (index.html)**:
+    - Created `#suratPrologueModal` featuring wax seal header, official document metadata, concise letter body, pullquote, and signature block with close and proceed buttons.
+    - Replaced the large static `.surat-hero-card` on `#panelSuratCinta` with `.surat-compact-banner` containing a gold "Buka Surat untuk Calon Penghuni" button.
+  - **Modal Styling (styles.css)**:
+    - Styled `.surat-modal-backdrop` with dark green glassmorphism blur and smooth entrance scale animation (`.surat-modal-card`).
+    - Styled `.surat-compact-banner` and `.btn-open-surat-modal` for seamless inline aesthetics.
+  - **Controller Logic (app.js)**:
+    - Implemented `openSuratPrologueModal()`, `closeSuratPrologueModal()`, and `handleSuratModalBackdropClick()`.
+    - Wired `switchLandingTab('SuratCinta')` to trigger `openSuratPrologueModal()` automatically upon entering the page.
+- **Status**: Completed, Verified & Auto-Pushed.

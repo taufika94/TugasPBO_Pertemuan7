@@ -2342,41 +2342,24 @@
           <section class="landing-tab-panel" id="panelSuratCinta" style="display: none;">
             <div class="surat-magazine-container">
 
-              <!-- HERO PROLOGUE LETTER -->
-              <div class="surat-hero-card">
-                <div class="surat-wax-seal">
-                  <img src="assets/drive/logo-tpt.png" alt="The Park Townhouse Seal" class="wax-seal-img" />
-                  <div class="wax-seal-meta">
-                    <span class="wax-badge">DOKUMEN RESMI · SUKOHARJO</span>
-                    <span class="wax-date">18 November 2026</span>
+              <!-- COMPACT PROLOGUE BANNER (Click to Open Letter Modal) -->
+              <div class="surat-compact-banner">
+                <div class="surat-banner-badge-row">
+                  <div class="surat-wax-badge-mini">
+                    <img src="assets/drive/logo-tpt.png" alt="Seal" class="wax-seal-mini-img" />
+                    <span>SURAT RESMI DARI PENGEMBANG</span>
                   </div>
+                  <span class="surat-banner-tag">Pesan Calon Penghuni</span>
                 </div>
-
-                <div class="surat-letter-head">
-                  <span class="surat-kicker">SURAT UNTUK CALON PENGHUNI</span>
-                  <h2 class="surat-headline">Sebuah alamat.<br />Begitu banyak arti.</h2>
-                  <p class="surat-subline">Japandi Modern · Nagoya · Osaka · Tokyo · Sukoharjo</p>
-                </div>
-
-                <div class="surat-letter-body">
-                  <p class="surat-lead">
-                    Untuk Anda yang ingin menemukan tempat pulang,
-                  </p>
-                  <p>
-                    Barangkali rumah yang Anda inginkan sederhana: ruang untuk meletakkan lelah, berkumpul bersama orang terdekat, dan lingkungan yang membuat keseharian mengalir tenang.
-                  </p>
-                  <blockquote class="surat-pullquote">
-                    "Semoga Anda menemukan bukan hanya rumah yang menarik untuk dilihat, tetapi rumah yang terasa tepat untuk dijalani."
-                  </blockquote>
-                  <p>
-                    Dengan arsitektur Japandi Modern dua lantai dan garasi dalam, The Park Townhouse menghadirkan fungsi ruang yang hangat. Tiga klaster membawa ritme tersendiri: <strong>Nagoya</strong> dekat fasilitas bersama, <strong>Osaka</strong> selaras denyut koridor kota, dan <strong>Tokyo</strong> menghadirkan ketenangan privat. Cukup temukan yang paling sesuai dengan cara Anda menjalani hari.
-                  </p>
-                  <div class="surat-signature-block">
-                    <span class="sig-note">Dengan hangat,</span>
-                    <strong class="sig-name">The Park Townhouse Sukoharjo</strong>
-                    <span class="sig-clusters">NAGOYA · OSAKA · TOKYO</span>
-                  </div>
-                </div>
+                <h2 class="surat-banner-title">Sebuah Alamat. Begitu Banyak Arti.</h2>
+                <p class="surat-banner-sub">Pesan hangat untuk Anda yang ingin menemukan tempat pulang dan ritme hidup terbaik di Sukoharjo.</p>
+                <button type="button" class="btn-open-surat-modal" onclick="openSuratPrologueModal()">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  <span>Buka Surat untuk Calon Penghuni</span>
+                </button>
               </div>
 
               <!-- TRIPTYCH CLUSTERS PHILOSOPHY -->
@@ -3118,6 +3101,61 @@
             <span class="b-text">Fasilitas</span>
           </button>
         </nav>
+      </div>
+
+      <!-- ================================================================
+           SURAT UNTUK CALON PENGHUNI POP UP MODAL
+           ================================================================ -->
+      <div class="surat-modal-backdrop" id="suratPrologueModal" onclick="handleSuratModalBackdropClick(event)">
+        <div class="surat-modal-card" onclick="event.stopPropagation()">
+          <button type="button" class="surat-modal-close-btn" onclick="closeSuratPrologueModal()" title="Tutup Surat">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+
+          <div class="surat-wax-seal">
+            <img src="assets/drive/logo-tpt.png" alt="The Park Townhouse Seal" class="wax-seal-img" />
+            <div class="wax-seal-meta">
+              <span class="wax-badge">DOKUMEN RESMI · SUKOHARJO</span>
+              <span class="wax-date">18 November 2026</span>
+            </div>
+          </div>
+
+          <div class="surat-letter-head">
+            <span class="surat-kicker">SURAT UNTUK CALON PENGHUNI</span>
+            <h2 class="surat-headline">Sebuah alamat.<br />Begitu banyak arti.</h2>
+            <p class="surat-subline">Japandi Modern · Nagoya · Osaka · Tokyo · Sukoharjo</p>
+          </div>
+
+          <div class="surat-letter-body">
+            <p class="surat-lead">
+              Untuk Anda yang ingin menemukan tempat pulang,
+            </p>
+            <p>
+              Barangkali rumah yang Anda inginkan sederhana: ruang untuk meletakkan lelah, berkumpul bersama orang terdekat, dan lingkungan yang membuat keseharian mengalir tenang.
+            </p>
+            <blockquote class="surat-pullquote">
+              "Semoga Anda menemukan bukan hanya rumah yang menarik untuk dilihat, tetapi rumah yang terasa tepat untuk dijalani."
+            </blockquote>
+            <p>
+              Dengan arsitektur Japandi Modern dua lantai dan garasi dalam, The Park Townhouse menghadirkan fungsi ruang yang hangat. Tiga klaster membawa ritme tersendiri: <strong>Nagoya</strong> dekat fasilitas bersama, <strong>Osaka</strong> selaras denyut koridor kota, dan <strong>Tokyo</strong> menghadirkan ketenangan privat. Cukup temukan yang paling sesuai dengan cara Anda menjalani hari.
+            </p>
+            <div class="surat-signature-block">
+              <span class="sig-note">Dengan hangat,</span>
+              <strong class="sig-name">The Park Townhouse Sukoharjo</strong>
+              <span class="sig-clusters">NAGOYA · OSAKA · TOKYO</span>
+            </div>
+          </div>
+
+          <button type="button" class="btn-surat-modal-proceed" onclick="closeSuratPrologueModal()">
+            <span>Lanjut Eksplorasi Kawasan &amp; Keunggulan</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <!-- ================================================================
