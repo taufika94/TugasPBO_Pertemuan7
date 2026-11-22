@@ -680,6 +680,18 @@
 
 ---
 
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #37: Conditional Mobile Bottom Navigation Bar (Display Only After Config Saved)
 - **Context & Objective**: Display the mobile bottom navigation bar (.landing-bottom-bar) ONLY after the user saves their house/room configuration.
 - **Key Changes Implemented**:
@@ -792,6 +804,18 @@
     - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
   - **Design System Harmonization (styles.css)**:
     - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -911,6 +935,18 @@
 
 ---
 
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #39: Calibrate Siteplan Lot Marker Coordinates Across All 3 Clusters
 - **Context & Objective**: Align lot overlay markers (.siteplan-lot-marker) with their actual physical footprint in the siteplan illustrations for Nagoya, Osaka, and Tokyo, resolving horizontal pile-up and misaligned pills shown in user images.
 - **Key Changes Implemented**:
@@ -1020,6 +1056,18 @@
     - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
   - **Design System Harmonization (styles.css)**:
     - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -1137,6 +1185,18 @@
     - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
   - **Design System Harmonization (styles.css)**:
     - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -1262,6 +1322,18 @@
 
 ---
 
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #42: Remove Video Progress Bars & Pause Toggle Buttons
 - **Context & Objective**: Clean up video overlay clutter requested by user:
   1. Remove the segmented gold progress bars at the top of the video (`.top-video-progress-row`).
@@ -1375,6 +1447,18 @@
     - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
   - **Design System Harmonization (styles.css)**:
     - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -1494,6 +1578,18 @@
 
 ---
 
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #44: Reposition 99 Keunggulan to Top of Surat Cinta Tab
 - **Context & Objective**: Place the interactive 99 Keunggulan section (11 Tema Explorer & Showcase) at the very top of the Surat Cinta page (`#panelSuratCinta`) as requested by the user.
 - **Key Changes Implemented**:
@@ -1598,6 +1694,18 @@
     - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
   - **Design System Harmonization (styles.css)**:
     - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -1723,6 +1831,18 @@
 
 ---
 
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #46: Remove Video Floating Action Buttons (Mute & Next Scene)
 - **Context & Objective**: Remove the floating playback controls (circular mute toggle and next video scene arrow) from the top video banner as requested by the user.
 - **Key Changes Implemented**:
@@ -1831,6 +1951,18 @@
     - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
   - **Design System Harmonization (styles.css)**:
     - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -1947,6 +2079,18 @@
 
 ---
 
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #48: Remove Video Scene Badge & Pill Frame (`.top-video-badge`)
 - **Context & Objective**: Remove the floating "Sinema 01..04" pill badge and its frame overlay from the video banner as requested by the user.
 - **Key Changes Implemented**:
@@ -2055,6 +2199,18 @@
     - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
   - **Design System Harmonization (styles.css)**:
     - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -2168,6 +2324,18 @@
     - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
   - **Design System Harmonization (styles.css)**:
     - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -2288,6 +2456,18 @@
 
 ---
 
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #52: Remove Glowing Green Dot from Bookmark Button
 - **Context & Objective**: Remove the glowing green notification dot (#bookmarkDotPulse) from the bookmark button (#landingBookmarkBtn) in the top landing header as requested by the user.
 - **Key Changes Implemented**:
@@ -2396,6 +2576,18 @@
     - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
   - **Design System Harmonization (styles.css)**:
     - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -2509,6 +2701,18 @@
     - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
   - **Design System Harmonization (styles.css)**:
     - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -2639,6 +2843,18 @@
 
 ---
 
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #55: Global Harmonization of Typography, Color Palette, Layout & Button Sizing
 - **Context & Objective**: Eliminate disparate styling, oversized typography, mismatched color palettes, and bloated buttons across all views (Beranda, Unit, Surat Cinta, Master Plan, and Modals) into a unified, harmonious Japandi Modern design system.
 - **Key Changes Implemented**:
@@ -2759,6 +2975,18 @@
 
 ---
 
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-22] Progress #56: Copywriting Streamlining & Global Button Color Palette Synchronization
 - **Context & Objective**: Eliminate wordy and redundant filler text across all post-save views (Beranda, Unit, Surat Cinta, Site Plan, Fasilitas), replace with poetic, user-friendly buyer invitations, and synchronize all button color schemes into a unified palette.
 - **Key Changes Implemented**:
@@ -2869,6 +3097,18 @@
     - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
   - **Design System Harmonization (styles.css)**:
     - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -2993,6 +3233,18 @@
 
 ---
 
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-23] Progress #58: Engaging Micro-Animations & Ergonomic Enhancement for Mobile Bottom Navigation Bar
 - **Context & Objective**: Implement delightful, user-friendly micro-animations and physical spring dynamics on the mobile bottom navigation bar (`#landingBottomBar`) to keep homebuyers engaged while exploring project destinations.
 - **Key Changes Implemented**:
@@ -3106,6 +3358,18 @@
     - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
   - **Design System Harmonization (styles.css)**:
     - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
 - **Status**: Completed, Verified & Auto-Pushed.
 
 ---
@@ -3229,6 +3493,18 @@
 
 ---
 
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
 ### [2026-11-23] Progress #60: Rich Visual Asset Enrichment & Interactive Lighting Mood Engine
 - **Context & Objective**: Elevate all post-save configuration views (Beranda, Unit, Surat Cinta, Site Plan, Fasilitas) with rich photographic imagery, dynamic brightness & ambiance controls, while strictly preserving synchronized Japandi typography, layout, and palette.
 - **Key Changes Implemented**:
@@ -3341,4 +3617,16 @@
     - Implemented `orderCurrentDetailUnit()` hooking into the global booking modal.
   - **Design System Harmonization (styles.css)**:
     - Applied forest green luxury palette (`#11332a` to `#1e4d40`), champagne gold accents (`#dfb96d`), 12px/14px rounded cards, and proper mobile bottom bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-23] Progress #68: Remove Lighting Mood Switcher Pill Bar from Header
+- **Context & Objective**: Remove the "Siang / Senja / Malam" lighting mood switcher element (`#landingLightingSwitch`) from the global sticky header (`.landing-navbar`) to keep the top bar clean and uncluttered.
+- **Key Changes Implemented**:
+  - **Header Cleanup (index.html)**:
+    - Removed `#landingLightingSwitch` and its 3 mood buttons (`#moodDayBtn`, `#moodDuskBtn`, `#moodNightBtn`) from `.landing-nav-actions`.
+    - Cleaned up top header, retaining only the brand logo and bookmark saved configuration button.
+  - **Stylesheet Optimization (styles.css)**:
+    - Removed `.landing-lighting-switch` and `.lighting-pill-btn` CSS styling rules.
 - **Status**: Completed, Verified & Auto-Pushed.

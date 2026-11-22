@@ -7485,52 +7485,6 @@ transition: all 0.2s ease;
 }
 
 /* Lighting Switch Pill in Top Navbar */
-.landing-lighting-switch {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  background: rgba(22, 36, 28, 0.08);
-  border: 1px solid rgba(229, 211, 175, 0.35);
-  border-radius: 20px;
-  padding: 2px;
-}
-
-.lighting-pill-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  border: none;
-  background: transparent;
-  padding: 3px 8px;
-  border-radius: 14px;
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 600;
-  color: #5c6860;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-height: 26px;
-}
-
-.lighting-pill-btn span {
-  font-size: 11px;
-}
-
-.lighting-pill-btn small {
-  font-size: 9.5px;
-}
-
-.lighting-pill-btn:hover {
-  color: #11332a;
-}
-
-.lighting-pill-btn.is-active {
-  background: #ffffff;
-  color: #11332a;
-  font-weight: 700;
-  box-shadow: 0 1px 4px rgba(22, 36, 28, 0.12);
-}
-
 /* Clubhouse Areas Grid with Rich Imagery */
 .clubhouse-areas-grid {
   display: grid;
