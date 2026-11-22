@@ -801,22 +801,15 @@
     - Upgraded `.btn-order-kavling-champagne` from pale champagne to deep forest green gradient (`linear-gradient(135deg, #11332a 0%, #1e4d40 100%)`) with white text and elevation shadow matching other primary actions.
 - **Status**: Completed, Verified & Auto-Pushed.
 
-### [2026-11-22] Progress #51: Connect Beranda Cluster Preview Showcase & Dedicated Unit Catalog Page (#panelUnit)
-- **Context & Objective**: Implement Beranda cluster preview showcase carousel directly after #secLokasiRadius matching the user reference screenshot, and build the full connected Halaman Unit (#panelUnit) with filters, 30 units inventory, metrics, and bottom bar navigation.
+---
+
+### [2026-11-22] Progress #52: Remove Glowing Green Dot from Bookmark Button
+- **Context & Objective**: Remove the glowing green notification dot (#bookmarkDotPulse) from the bookmark button (#landingBookmarkBtn) in the top landing header as requested by the user.
 - **Key Changes Implemented**:
-  - **Beranda Showcase Carousel (index.html, styles.css, app.js)**:
-    - Added #secBerandaUnitShowcase after #secLokasiRadius with cluster selector pills (Nagoya, Tokyo, Osaka).
-    - Designed tall Japanese castle / pagoda hero card with gold cluster name, tagline, "HARGA MULAI Rp 498 Juta", and frosted glass button linking to #panelUnit.
-    - Added top summary bar with icons and metrics (Unit Tersedia, LB Mulai, LT Mulai, Kamar Tidur, Kamar Mandi) and "Lihat Semua".
-    - Added horizontal scrollable unit preview carousel with circular prev/next arrow buttons, rendering preview cards with lot ID, room count, lot size, price, and status pills.
-  - **Dedicated Halaman Unit (#panelUnit in index.html, styles.css, app.js)**:
-    - Created full catalog page with top mini header, language pill, and Sales Login portal modal.
-    - Added quick links navigation strip (Beranda, Keunggulan, Unit, Fasilitas, Lokasi, Kalkulator, Hubungi Kami).
-    - Built hero header card and 4 highlight metric cards (Unit Hunian: 30, Tipe Cluster: 3, Cicilan Mulai: Rp 4,9jt/bulan, SHM Pecah Sempurna: 100%).
-    - Built interactive filter bar for Tipe Unit, Luas Tanah, Range Harga, Posisi Kavling, and Sort dropdown with Reset button.
-    - Rendered complete inventory for all 3 clusters (Nagoya: 15 unit, Tokyo: 7 unit, Osaka: 9 unit) with facade photos, specs, price, status pills, and direct "Pesan Kavling Ini" order flow.
-    - Added official footer with PT Andara Rejo Makmur info, links, hours, and copyright.
-  - **Bottom Bar & Tab Navigation**:
-    - Added 	abBtnUnit into #landingBottomBar with 44x44px touch targets.
-    - Updated switchLandingTab to support 'Unit', synchronizing tab states and scroll container.
+  - **Markup (index.html)**:
+    - Removed <span class="bookmark-dot-pulse" id="bookmarkDotPulse"></span> from inside #landingBookmarkBtn.
+  - **Styles (styles.css)**:
+    - Deleted CSS rule .bookmark-dot-pulse and its green glow box shadow.
+  - **Script (app.js)**:
+    - Removed DOM query and visibility toggling for ookmarkDotPulse inside updateBottomBarVisibility().
 - **Status**: Completed, Verified & Auto-Pushed.

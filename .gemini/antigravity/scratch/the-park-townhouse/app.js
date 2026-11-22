@@ -19,7 +19,6 @@ function checkHasSavedConfiguration() {
 function updateBottomBarVisibility() {
   const bottomBar = document.getElementById('landingBottomBar');
   const landingView = document.getElementById('landingPageView');
-  const dotPulse = document.getElementById('bookmarkDotPulse');
   const isSaved = checkHasSavedConfiguration();
 
   if (isSaved) {
@@ -30,9 +29,6 @@ function updateBottomBarVisibility() {
     if (landingView) {
       landingView.classList.add('has-saved-config');
     }
-    if (dotPulse) {
-      dotPulse.style.display = 'block';
-    }
   } else {
     if (bottomBar) {
       bottomBar.classList.remove('is-visible');
@@ -40,9 +36,6 @@ function updateBottomBarVisibility() {
     }
     if (landingView) {
       landingView.classList.remove('has-saved-config');
-    }
-    if (dotPulse) {
-      dotPulse.style.display = 'none';
     }
   }
 }

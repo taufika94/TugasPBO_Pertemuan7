@@ -4114,17 +4114,6 @@ body {
   transform: translateY(-1px);
 }
 
-.bookmark-dot-pulse {
-  position: absolute;
-  top: 9px;
-  right: 9px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #2e7d32;
-  box-shadow: 0 0 6px #2e7d32;
-}
-
 /* Landing Content Container with Bottom Bar Clearance */
 .landing-content-scroll {
   flex: 1;
@@ -9807,6 +9796,7 @@ body {
   color: #2e7d32;
   font-size: 12px;
 }
+
 /* ==========================================================================
    BERANDA CLUSTER PREVIEW SHOWCASE & DEDICATED UNIT PAGE STYLING
    ========================================================================== */
