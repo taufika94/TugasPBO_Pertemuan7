@@ -5233,3 +5233,17 @@
     - Stripped trailing arrow symbols `→` from action buttons and back buttons.
     - Upgraded `.sa-card-action` from plain underline text to polished pill-style buttons with hover micro-interactions.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-23] Progress #77: Streamline Hospitality Hero Layout & Photographic Header
+- **Context & Objective**: Clean up the text-heavy and crowded Andara Manajemen Hospitality hero card (`#fasilitasDetail_hospitality`), adding an architectural drone hero image banner, condensing paragraph copy, stripping arrow symbols (`→`, `↓`, `←`), and balancing whitespace/gaps.
+- **Key Changes Implemented**:
+  - **Visual Photographic Integration (index.html)**:
+    - Integrated `.f-detail-hero-wrap` featuring aerial drone photography (`assets/drive/aerial-drone.jpeg`), dark gradient overlay, and gold typography.
+  - **Decluttering & Spacing (index.html)**:
+    - Condensed wordy paragraph text down to one crisp sentence: "Kelola unit sewa dengan standar bintang lima untuk penghasilan pasif maksimal tanpa repot."
+    - Centered badge pills row (`Full-Service`, `6–8% p.a. Yield`, `Laporan Transparan`).
+    - Cleaned buttons removing `→` and `↓`, aligning them side-by-side with balanced 10px spacing.
+- **Status**: Completed, Verified & Auto-Pushed.

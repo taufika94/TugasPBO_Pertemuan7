@@ -3834,7 +3834,6 @@
             <!-- Navigation Header -->
             <div class="fasilitas-subpage-header">
               <button type="button" class="btn-back-fasilitas" onclick="closeFasilitasDetail()">
-                <span class="back-arrow">←</span>
                 <span>Kembali ke Fasilitas</span>
               </button>
               <div class="fasilitas-subpage-pills">
@@ -4195,7 +4194,6 @@
             <!-- Navigation Header -->
             <div class="fasilitas-subpage-header">
               <button type="button" class="btn-back-fasilitas" onclick="closeFasilitasDetail()">
-                <span class="back-arrow">←</span>
                 <span>Kembali ke Fasilitas</span>
               </button>
               <div class="fasilitas-subpage-pills">
@@ -4205,30 +4203,34 @@
               </div>
             </div>
 
-            <!-- Hero Card -->
-            <div class="landing-section-card">
-              <div class="section-card-head">
-                <span class="section-tag-gold">LAYANAN PENGELOLAAN PROPERTI</span>
-                <h2 class="section-card-title">Andara Manajemen Hospitality</h2>
-                <p class="section-card-sub">
-                  Beli, titipkan, sewakan — nikmati penghasilan pasif tanpa repot. Kami kelola unit The Park Townhouse Sukoharjo Anda secara penuh dengan standar hospitality bintang lima, dari mencari penyewa hingga perawatan &amp; pelaporan.
-                </p>
+            <!-- Hero Card with Visual Header & Streamlined Content -->
+            <div class="landing-section-card" style="padding: 0; overflow: hidden;">
+              <div class="f-detail-hero-wrap">
+                <img src="assets/drive/aerial-drone.jpeg" alt="Andara Manajemen Hospitality" class="f-detail-hero-img" />
+                <div class="f-detail-hero-overlay">
+                  <span class="section-tag-gold">LAYANAN PENGELOLAAN PROPERTI</span>
+                  <h2 class="section-card-title" style="color: #ffffff; margin: 4px 0 6px;">Andara Manajemen Hospitality</h2>
+                  <p style="color: #e3ede6; font-size: 11px; line-height: 1.45; margin: 0;">
+                    Kelola unit sewa dengan standar bintang lima untuk penghasilan pasif maksimal tanpa repot.
+                  </p>
+                </div>
               </div>
 
-              <div class="f-cta-btns-row" style="margin-bottom: 12px;">
-                <button type="button" class="btn-primary-forest" onclick="openQuickModal('wa')">
-                  <span>Titipkan Unit Saya</span>
-                  <span>→</span>
-                </button>
-                <button type="button" class="btn-secondary-link" onclick="scrollToHospCalc()">
-                  <span>Simulasi Keuntungan ↓</span>
-                </button>
-              </div>
+              <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 10px;">
+                <div class="f-badge-pills-row" style="justify-content: center;">
+                  <span class="f-badge-pill">Full-Service</span>
+                  <span class="f-badge-pill">6–8% p.a. Yield</span>
+                  <span class="f-badge-pill">Laporan Transparan</span>
+                </div>
 
-              <div class="f-badge-pills-row">
-                <span class="f-badge-pill">Full-Service</span>
-                <span class="f-badge-pill">6–8% p.a. Yield</span>
-                <span class="f-badge-pill">Laporan Transparan</span>
+                <div class="f-cta-btns-row">
+                  <button type="button" class="btn-primary-forest" onclick="openQuickModal('wa')">
+                    <span>Titipkan Unit Saya</span>
+                  </button>
+                  <button type="button" class="btn-secondary-link" onclick="scrollToHospCalc()">
+                    <span>Simulasi Keuntungan</span>
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -4362,7 +4364,6 @@
               </div>
               <button type="button" class="btn-primary-forest" onclick="openQuickModal('wa')" style="margin-top: 14px; width: 100%;">
                 <span>Konsultasi Pengelolaan</span>
-                <span>→</span>
               </button>
             </div>
 
