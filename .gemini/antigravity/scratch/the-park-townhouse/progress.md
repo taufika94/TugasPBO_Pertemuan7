@@ -5247,3 +5247,15 @@
     - Centered badge pills row (`Full-Service`, `6–8% p.a. Yield`, `Laporan Transparan`).
     - Cleaned buttons removing `→` and `↓`, aligning them side-by-side with balanced 10px spacing.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-23] Progress #78: Global Auto Layout System Standardization
+- **Context & Objective**: Standardize layout architecture across all pages into pure Auto Layout (Flexbox & CSS Grid auto-flow), eliminating rigid fixed-height constraints and ensuring elements adapt dynamically with fluid hug/fill behavior.
+- **Key Changes Implemented**:
+  - **Global Auto Layout Engine (styles.css)**:
+    - Standardized all panel containers (`.landing-tab-panel`, `.landing-section-card`, `.surat-magazine-container`, `.fasilitas-subpage`, `.unit-catalog-page-container`, `.unit-detail-page-container`, `.sync-masterplan-card`) to `display: flex !important; flex-direction: column !important; height: auto !important; width: 100% !important; box-sizing: border-box !important;`.
+    - Removed rigid height clipping on content cards (`.landing-section-card`, `.uic-body`, `.sa-feature-card`, `.hosp-service-card`, `.cluster-triptych-card`, `.price-unit-card`).
+    - Standardized button and pill groups (`.f-cta-btns-row`, `.f-badge-pills-row`, `.cluster-pill-tabs`, `.fasilitas-subpage-pills`, `.theme-chips-scroll`, `.unit-filter-pills`) into auto-wrapping flex layouts with consistent `gap: 8px`.
+- **Status**: Completed, Verified & Auto-Pushed.

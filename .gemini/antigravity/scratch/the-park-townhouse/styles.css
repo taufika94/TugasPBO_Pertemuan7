@@ -12702,3 +12702,49 @@ transition: all 0.2s ease;
         color: #9a9284;
         cursor: not-allowed;
       }
+
+
+/* ==========================================================================
+   GLOBAL AUTO LAYOUT STANDARDIZATION (FLEX & GRID FLOW ENGINE)
+   ========================================================================== */
+.landing-tab-panel,
+.landing-section-card,
+.surat-magazine-container,
+.fasilitas-subpage,
+.unit-catalog-page-container,
+.unit-detail-page-container,
+.f-detail-footer-cta,
+.fasilitas-main-hub,
+.sync-masterplan-card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure auto-flow & dynamic content adaptation without rigid height clipping */
+.landing-section-card,
+.uic-body,
+.sa-feature-card,
+.hosp-service-card,
+.hosp-step-card,
+.cluster-triptych-card,
+.price-unit-card {
+  height: auto !important;
+  min-height: auto;
+}
+
+/* Auto-wrap and auto-hug for responsive badge & button groups */
+.f-cta-btns-row,
+.f-badge-pills-row,
+.cluster-pill-tabs,
+.fasilitas-subpage-pills,
+.theme-chips-scroll,
+.unit-filter-pills {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 8px !important;
+  height: auto !important;
+}
