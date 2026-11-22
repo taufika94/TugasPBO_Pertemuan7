@@ -264,3 +264,29 @@
   - **Floating Notification Toast (`#keunggulanFloatingToast`)**: Displays sleek toasts (`+22 Keunggulan (Desain Japandi & Tata Ruang 22 Poin)`) whenever new points unlock.
   - **Comprehensive Unlocked Modal**: Tapping `#openCardsModalBtn` opens an interactive modal with live progress percentage, list of unlocked items from the official document, and a shortcut to the full Surat Cinta magazine.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #21: Luminous Japandi White Palette, 4K Atmosphere Showcase & Dedicated Product Cards
+- **Context & Objective**: Transform the post-configuration landing page (`#landingPageView`) into an elegant, luminous Japandi white/off-white background (`#fbfaf7`), strictly preserving the brand color palette (deep forest green `#16241c`, sand/gold `#b39255`, emerald `#2e7d32`), adding a 4K Atmosphere & Video Showcase, dedicated luxury Product Cards, authentic photo gallery, and floor plan preview modal.
+- **Key Changes Implemented**:
+  - **Luminous Japandi White Color Palette**:
+    - Replaced all dark landing backgrounds with clean `#fbfaf7` (was `#0e1712`).
+    - Styled all cards (`.landing-video-card`, `.product-card-item`, `.catalog-filters-card`, `.cluster-showcase-card`, `.unit-inventory-card`, `.surat-hero-card`, `.theme-showcase-box`, `.siteplan-page-card`, `.facility-showcase-box`, `.hospitality-showcase-box`, `.estate-footer-card`, `.saved-config-drawer`) with crisp white `#ffffff` surfaces, warm borders (`#e8e2d5` / `#e0d8c7`), and subtle elevation shadows (`0 4px 18px rgba(22, 36, 28, 0.05)`).
+    - Preserved high WCAG text contrast with deep forest green `#16241c` headings, charcoal `#2c3830` body copy, warm sand/gold `#b39255` badges/prices, and rich emerald `#2e7d32` status chips.
+  - **Cinematic 4K Atmosphere Showcase (`#landingVideoCard`)**:
+    - Built responsive 16:9 interactive video viewport (`#videoViewportFrame`) with scene switcher: Scene 01 (Peta Drone Kawasan), Scene 02 (Avenue Grand Gate), Scene 03 (Fasad Senja Japandi), Scene 04 (Interior Hangat), Scene 05 (Clubhouse & Pool).
+    - Added play/pause toggle (`toggleLandingVideoPlay`) with automated 5-second scene rotation and live status pills.
+  - **Dedicated Luxury Product Cards (`#productShowcaseSection`)**:
+    - Implemented 3 bespoke cards:
+      - *Tipe Gold (Nagoya)*: LB 75 m² / LT 60–63 m², 3 KT, 2 KM, 1+1 Garasi, Cash Keras Rp 650 Jt, Cash Tempo 24 bln Rp 30,5 jt/bln, KPR Rp 4,2 jt/bln.
+      - *Tipe Diamond (Tokyo)*: LB 80 m² / LT 80 m², 3–4 KT, 2–3 KM, 1+1 Garasi, Cash Keras Rp 679 Jt, Cash Tempo 24 bln Rp 31,9 jt/bln, KPR Rp 4,4 jt/bln.
+      - *Tipe Royal Diamond (Osaka)*: LB 110 m² / LT 90–125 m², 4 KT, 3 KM, 2+1 Garasi (muat 3 mobil), Cash Keras Rp 895 Jt, Cash Tempo 24 bln Rp 42,1 jt/bln, KPR Rp 5,8 jt/bln.
+    - Each card features direct order actions and "Lihat Denah" previews.
+  - **Architectural Floor Plan Preview Modal (`#denahSpecModal`)**:
+    - Added high-resolution interactive floor plan modal displaying official blueprints (`denah-tipe60.jpg`, `denah-tipe110.jpg`) with architectural room dimensions and instant unit reservation CTA.
+  - **Authentic Estate Photography Gallery (`#visualGallerySection`)**:
+    - Curated 6 real-estate photography tiles showcasing aerial drone angles, grand gate security, clubhouse, open-plan living rooms, master bedrooms, and Sukoharjo city proximity.
+  - **Mandatory Bottom Bar Navigation Update**:
+    - Re-styled fixed Bottom Navigation Bar to crisp white `#ffffff` with `#e8e2d5` border-top, keeping full Rule 5 compliance (`calc(68px + env(safe-area-inset-bottom))` clearance and 44x44px touch targets).
+- **Status**: Completed & Verified.

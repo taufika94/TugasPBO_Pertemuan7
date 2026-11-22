@@ -1160,6 +1160,345 @@
               </div>
             </div>
 
+            <!-- CINEMATIC VIDEO & ATMOSPHERE SHOWCASE -->
+            <div class="landing-video-card" id="landingVideoCard">
+              <div class="landing-video-head">
+                <div class="video-head-badge">
+                  <span class="video-live-dot"></span>
+                  <span>SINEMA KAWASAN · 4K ATMOSPHERE</span>
+                </div>
+                <h3 class="video-head-title">Menyusuri Keindahan The Park Townhouse</h3>
+                <p class="video-head-desc">Saksikan visual udara kawasan, kemegahan gerbang, kehangatan interior, dan fasilitas clubhouse secara langsung.</p>
+              </div>
+
+              <div class="video-viewport-frame" id="videoViewportFrame">
+                <img src="assets/drive/aerial-drone.jpeg" alt="Sinema The Park Townhouse" class="video-viewport-media" id="videoDisplayImg" />
+                <div class="video-overlay-gradient"></div>
+
+                <div class="video-play-badge" id="videoPlayBadge" onclick="toggleLandingVideoPlay()">
+                  <button type="button" class="btn-play-action" id="btnVideoPlayToggle" aria-label="Play / Pause Showcase">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" id="videoPlayIcon">
+                      <polygon points="5 3 19 12 5 21 5 3" />
+                    </svg>
+                  </button>
+                  <span id="videoPlayStatus">Putar Sinema Otomatis</span>
+                </div>
+
+                <div class="video-caption-bar">
+                  <span class="video-scene-tag" id="videoSceneTag">Scene 01 · Drone Kawasan</span>
+                  <p class="video-scene-desc" id="videoSceneDesc">Pemandangan udara 30 unit hunian Japandi Modern diapit keteduhan alam Sukoharjo.</p>
+                </div>
+              </div>
+
+              <!-- Video Scene Selector Chips -->
+              <div class="video-scene-selector">
+                <button type="button" class="video-scene-btn is-active" id="vSceneBtn0" onclick="switchLandingVideoScene(0, this)">
+                  <span>01. Peta Drone</span>
+                </button>
+                <button type="button" class="video-scene-btn" id="vSceneBtn1" onclick="switchLandingVideoScene(1, this)">
+                  <span>02. Grand Gate</span>
+                </button>
+                <button type="button" class="video-scene-btn" id="vSceneBtn2" onclick="switchLandingVideoScene(2, this)">
+                  <span>03. Fasad Senja</span>
+                </button>
+                <button type="button" class="video-scene-btn" id="vSceneBtn3" onclick="switchLandingVideoScene(3, this)">
+                  <span>04. Interior Rumah</span>
+                </button>
+                <button type="button" class="video-scene-btn" id="vSceneBtn4" onclick="switchLandingVideoScene(4, this)">
+                  <span>05. Clubhouse &amp; Pool</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- CARD PRODUK HUNIAN (DEDICATED LUXURY PRODUCT CARDS) -->
+            <div class="product-showcase-section" id="productShowcaseSection">
+              <div class="product-showcase-header">
+                <span class="section-tag">KATALOG PRODUK UTAMA</span>
+                <h3 class="section-title">Pilihan Tipe Produk Hunian</h3>
+                <p class="section-desc">Setiap tipe dirancang dengan standar arsitektur Japandi dua lantai, garasi tertutup, dan sertifikat SHM pecah sempurna.</p>
+              </div>
+
+              <div class="product-cards-grid">
+                <!-- PRODUCT CARD 1: TIPE GOLD (NAGOYA) -->
+                <div class="product-card-item">
+                  <div class="product-card-badge-row">
+                    <span class="badge-ready">Ready &amp; Indent</span>
+                    <span class="badge-cluster">Klaster Nagoya</span>
+                  </div>
+                  <div class="product-img-wrap">
+                    <img src="assets/drive/house.jpeg" alt="Tipe Gold Klaster Nagoya" class="product-img" />
+                    <div class="product-img-tag">Tipe Paling Favorit</div>
+                  </div>
+                  <div class="product-card-content">
+                    <div class="product-title-row">
+                      <div>
+                        <h4 class="product-name">Tipe Gold (LB 75 m²)</h4>
+                        <span class="product-lot-info">Luas Tanah 60–63 m² · 2 Lantai</span>
+                      </div>
+                      <div class="product-price-pill">
+                        <small>Mulai</small>
+                        <strong>Rp 650 Jt</strong>
+                      </div>
+                    </div>
+                    <p class="product-tagline">
+                      Hunian Japandi efisien dengan garasi dalam tertutup, taman belakang sirkulasi terbuka, dan akses selangkah ke The Park Clubhouse.
+                    </p>
+                    <div class="product-specs-list">
+                      <div class="p-spec-box">
+                        <strong>3 KT</strong>
+                        <span>Kamar Tidur</span>
+                      </div>
+                      <div class="p-spec-box">
+                        <strong>2 KM</strong>
+                        <span>Kamar Mandi</span>
+                      </div>
+                      <div class="p-spec-box">
+                        <strong>1+1</strong>
+                        <span>Garasi + Carport</span>
+                      </div>
+                      <div class="p-spec-box">
+                        <strong>2.200 VA</strong>
+                        <span>Listrik Standar</span>
+                      </div>
+                    </div>
+                    <div class="product-pricing-strip">
+                      <div class="p-price-col">
+                        <span>Cash Keras:</span>
+                        <strong>Rp 650 Juta</strong>
+                      </div>
+                      <div class="p-price-col">
+                        <span>Cash Bertahap (24 Bln):</span>
+                        <strong>Rp 30,5 jt / bln (0%)</strong>
+                      </div>
+                      <div class="p-price-col">
+                        <span>Cicilan KPR (DP 30%):</span>
+                        <strong>Rp 4,2 jt / bln</strong>
+                      </div>
+                    </div>
+                    <div class="product-cta-row">
+                      <button type="button" class="btn-product-order" onclick="selectCatalogUnit('Nagoya B.04', 'Rp 650 Juta')">
+                        Pilih Tipe Gold
+                      </button>
+                      <button type="button" class="btn-product-spec" onclick="openSpecDenahModal('tipe60')">
+                        Lihat Denah
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PRODUCT CARD 2: TIPE DIAMOND (TOKYO) -->
+                <div class="product-card-item">
+                  <div class="product-card-badge-row">
+                    <span class="badge-exclusive">Enclave 7 Unit</span>
+                    <span class="badge-cluster">Klaster Tokyo</span>
+                  </div>
+                  <div class="product-img-wrap">
+                    <img src="assets/drive/housee.jpeg" alt="Tipe Diamond Klaster Tokyo" class="product-img" />
+                    <div class="product-img-tag">Personal &amp; Intim</div>
+                  </div>
+                  <div class="product-card-content">
+                    <div class="product-title-row">
+                      <div>
+                        <h4 class="product-name">Tipe Diamond (LB 80 m²)</h4>
+                        <span class="product-lot-info">Luas Tanah 80 m² · 2 Lantai</span>
+                      </div>
+                      <div class="product-price-pill">
+                        <small>Mulai</small>
+                        <strong>Rp 679 Jt</strong>
+                      </div>
+                    </div>
+                    <p class="product-tagline">
+                      Sentuhan arsitektur minimalis bernuansa Tokyo dengan inner courtyard zen dan viewing deck lantai 2 menghadap panorama Gunung Lawu.
+                    </p>
+                    <div class="product-specs-list">
+                      <div class="p-spec-box">
+                        <strong>3–4 KT</strong>
+                        <span>Kamar Tidur</span>
+                      </div>
+                      <div class="p-spec-box">
+                        <strong>2–3 KM</strong>
+                        <span>Kamar Mandi</span>
+                      </div>
+                      <div class="p-spec-box">
+                        <strong>1+1</strong>
+                        <span>Garasi + Carport</span>
+                      </div>
+                      <div class="p-spec-box">
+                        <strong>2.200 VA</strong>
+                        <span>Listrik Standar</span>
+                      </div>
+                    </div>
+                    <div class="product-pricing-strip">
+                      <div class="p-price-col">
+                        <span>Cash Keras:</span>
+                        <strong>Rp 679 Juta</strong>
+                      </div>
+                      <div class="p-price-col">
+                        <span>Cash Bertahap (24 Bln):</span>
+                        <strong>Rp 31,9 jt / bln (0%)</strong>
+                      </div>
+                      <div class="p-price-col">
+                        <span>Cicilan KPR (DP 30%):</span>
+                        <strong>Rp 4,4 jt / bln</strong>
+                      </div>
+                    </div>
+                    <div class="product-cta-row">
+                      <button type="button" class="btn-product-order" onclick="selectCatalogUnit('Tokyo B.1', 'Rp 679 Juta')">
+                        Pilih Tipe Diamond
+                      </button>
+                      <button type="button" class="btn-product-spec" onclick="openSpecDenahModal('tipe80')">
+                        Lihat Denah
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PRODUCT CARD 3: TIPE ROYAL DIAMOND (OSAKA) -->
+                <div class="product-card-item">
+                  <div class="product-card-badge-row">
+                    <span class="badge-royal">Kavling Terluas</span>
+                    <span class="badge-cluster">Klaster Osaka</span>
+                  </div>
+                  <div class="product-img-wrap">
+                    <img src="assets/drive/aerial-drone.jpeg" alt="Tipe Royal Diamond Klaster Osaka" class="product-img" />
+                    <div class="product-img-tag">Muat 3 Mobil Keluarga</div>
+                  </div>
+                  <div class="product-card-content">
+                    <div class="product-title-row">
+                      <div>
+                        <h4 class="product-name">Tipe Royal Diamond (LB 110 m²)</h4>
+                        <span class="product-lot-info">Luas Tanah 90–125 m² · 2 Lantai</span>
+                      </div>
+                      <div class="product-price-pill">
+                        <small>Mulai</small>
+                        <strong>Rp 895 Jt</strong>
+                      </div>
+                    </div>
+                    <p class="product-tagline">
+                      Hunian megah keluarga multi-generasi dengan kapasitas 2 garasi tertutup + 1 carport, kamar tidur lantai 1 ramah lansia, dan void ganda.
+                    </p>
+                    <div class="product-specs-list">
+                      <div class="p-spec-box">
+                        <strong>4 KT</strong>
+                        <span>Kamar Tidur</span>
+                      </div>
+                      <div class="p-spec-box">
+                        <strong>3 KM</strong>
+                        <span>Kamar Mandi</span>
+                      </div>
+                      <div class="p-spec-box">
+                        <strong>2+1</strong>
+                        <span>Muat 3 Mobil</span>
+                      </div>
+                      <div class="p-spec-box">
+                        <strong>3.500 VA</strong>
+                        <span>Daya Premium</span>
+                      </div>
+                    </div>
+                    <div class="product-pricing-strip">
+                      <div class="p-price-col">
+                        <span>Cash Keras:</span>
+                        <strong>Rp 895 Juta</strong>
+                      </div>
+                      <div class="p-price-col">
+                        <span>Cash Bertahap (24 Bln):</span>
+                        <strong>Rp 42,1 jt / bln (0%)</strong>
+                      </div>
+                      <div class="p-price-col">
+                        <span>Cicilan KPR (DP 30%):</span>
+                        <strong>Rp 5,8 jt / bln</strong>
+                      </div>
+                    </div>
+                    <div class="product-cta-row">
+                      <button type="button" class="btn-product-order" onclick="selectCatalogUnit('Osaka A.1', 'Rp 895 Juta')">
+                        Pilih Tipe Royal
+                      </button>
+                      <button type="button" class="btn-product-spec" onclick="openSpecDenahModal('tipe110')">
+                        Lihat Denah
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- VISUAL GALLERY SHOWCASE (GAMBAR MENARIK KAWASAN) -->
+            <div class="visual-gallery-section" id="visualGallerySection">
+              <div class="product-showcase-header">
+                <span class="section-tag">GALERI VISUAL AUTENTIK</span>
+                <h3 class="section-title">Dokumentasi &amp; Suasana Kawasan</h3>
+                <p class="section-desc">Potret nyata arsitektur Japandi, keteduhan jalan cluster, dan fasilitas rekreasi The Park Townhouse.</p>
+              </div>
+
+              <div class="visual-gallery-grid">
+                <div class="gallery-tile-card">
+                  <div class="gallery-tile-img-wrap">
+                    <img src="assets/drive/aerial-drone.jpeg" alt="Pemandangan Udara Kawasan" class="gallery-tile-img" />
+                    <span class="gallery-tile-badge">Udara</span>
+                  </div>
+                  <div class="gallery-tile-meta">
+                    <strong>Pemandangan Udara 30 Unit</strong>
+                    <span>Kompleks terpadu dengan jalan ROW 7–8 meter</span>
+                  </div>
+                </div>
+
+                <div class="gallery-tile-card">
+                  <div class="gallery-tile-img-wrap">
+                    <img src="assets/drive/clubhouse.png" alt="The Park Clubhouse" class="gallery-tile-img" />
+                    <span class="gallery-tile-badge">Clubhouse</span>
+                  </div>
+                  <div class="gallery-tile-meta">
+                    <strong>The Park Clubhouse 177,25 m²</strong>
+                    <span>Kolam renang infinity, fitness gym &amp; café resto</span>
+                  </div>
+                </div>
+
+                <div class="gallery-tile-card">
+                  <div class="gallery-tile-img-wrap">
+                    <img src="assets/drive/gate.png" alt="Grand Gate" class="gallery-tile-img" />
+                    <span class="gallery-tile-badge">Keamanan</span>
+                  </div>
+                  <div class="gallery-tile-meta">
+                    <strong>Avenue Grand Gate &amp; RFID</strong>
+                    <span>Akses tunggal one-gate dengan CCTV 4K &amp; satpam 24/7</span>
+                  </div>
+                </div>
+
+                <div class="gallery-tile-card">
+                  <div class="gallery-tile-img-wrap">
+                    <img src="assets/drive/dalam-6.png" alt="Interior Ruang Tamu" class="gallery-tile-img" />
+                    <span class="gallery-tile-badge">Interior</span>
+                  </div>
+                  <div class="gallery-tile-meta">
+                    <strong>Ruang Keluarga Open-Plan</strong>
+                    <span>Tangga gantung minimalis dan cahaya alami melimpah</span>
+                  </div>
+                </div>
+
+                <div class="gallery-tile-card">
+                  <div class="gallery-tile-img-wrap">
+                    <img src="assets/drive/dalam-9.png" alt="Kamar Tidur Utama" class="gallery-tile-img" />
+                    <span class="gallery-tile-badge">Kamar Tidur</span>
+                  </div>
+                  <div class="gallery-tile-meta">
+                    <strong>Master Bedroom Suite</strong>
+                    <span>Lantai kayu hangat dengan sirkulasi angin sejuk</span>
+                  </div>
+                </div>
+
+                <div class="gallery-tile-card">
+                  <div class="gallery-tile-img-wrap">
+                    <img src="assets/drive/alun-alun.jpg" alt="Alun Alun Sukoharjo" class="gallery-tile-img" />
+                    <span class="gallery-tile-badge">Lingkungan</span>
+                  </div>
+                  <div class="gallery-tile-meta">
+                    <strong>Menit dari Pusat Kota</strong>
+                    <span>Dekat Alun-Alun Satya Negara &amp; RSUD Sukoharjo</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- Catalog Filters Box -->
             <div class="catalog-filters-card">
               <div class="filter-header-row">
@@ -1886,6 +2225,31 @@
               </button>
               <button class="btn-back-outline" type="button" onclick="reopenStoryTour()">
                 <span>↻ Buka Tur 360 &amp; Kustomisasi Ulang</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DENAH SPEC MODAL (FLOOR PLAN PREVIEW) -->
+      <div class="saved-config-modal-backdrop" id="denahSpecModal" onclick="closeSpecDenahModal(event)" style="display: none;">
+        <div class="saved-config-drawer" onclick="event.stopPropagation()">
+          <div class="drawer-header">
+            <div class="drawer-header-left">
+              <span class="drawer-badge">Denah Arsitektur Resmi</span>
+              <h3 class="drawer-title" id="denahSpecModalTitle">Denah Tipe 60 / 63</h3>
+            </div>
+            <button class="drawer-close-btn" onclick="closeSpecDenahModal()" type="button">✕</button>
+          </div>
+          <div class="drawer-body">
+            <div class="spec-image-box" style="margin-bottom: 12px; border-radius: 12px; overflow: hidden; border: 1px solid #e8e2d5; background: #ffffff;">
+              <img id="denahSpecModalImg" src="assets/drive/denah-tipe60.jpg" alt="Denah Arsitektur" style="width: 100%; height: auto; display: block;" />
+            </div>
+            <div id="denahSpecModalDetails" style="display: flex; flex-direction: column; gap: 8px;"></div>
+            <div class="drawer-cta-actions" style="margin-top: 14px;">
+              <button class="btn-primary-forest" type="button" id="btnSelectFromDenahModal" onclick="confirmUnitFromDenahModal()">
+                <span id="denahSpecCtaText">Pesan Kavling + Denah Ini</span>
+                <span>→</span>
               </button>
             </div>
           </div>

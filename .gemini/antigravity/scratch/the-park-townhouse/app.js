@@ -3025,6 +3025,168 @@ function initSuratCintaMagazine() {
 }
 
 /* --------------------------------------------------------------------------
+   10. CINEMATIC VIDEO & ATMOSPHERE SHOWCASE CONTROLLER
+   -------------------------------------------------------------------------- */
+const LANDING_VIDEO_SCENES = [
+  {
+    img: 'assets/drive/aerial-drone.jpeg',
+    tag: 'Scene 01 · Peta Udara Drone',
+    desc: 'Pemandangan udara 30 unit hunian Japandi Modern diapit keteduhan alam Sukoharjo.'
+  },
+  {
+    img: 'assets/drive/gate.png',
+    tag: 'Scene 02 · Avenue Grand Gate',
+    desc: 'Akses gerbang masuk megah satu pintu (one-gate) dengan palang RFID dan pos sekuriti 24 jam.'
+  },
+  {
+    img: 'assets/drive/house.jpeg',
+    tag: 'Scene 03 · Fasad Senja Japandi',
+    desc: 'Arsitektur modern perpaduan kayu ulin, dinding semen ekspos aci, dan taman Tabebuya bermekaran.'
+  },
+  {
+    img: 'assets/drive/dalam-6.png',
+    tag: 'Scene 04 · Interior Hangat Bersahaja',
+    desc: 'Ruang tamu open-plan lantai granit berpadu tangga kayu gantung dan pencahayaan skylight alami.'
+  },
+  {
+    img: 'assets/drive/clubhouse.png',
+    tag: 'Scene 05 · The Park Clubhouse & Pool',
+    desc: 'Fasilitas 177,25 m² bebas biaya: kolam renang infinity, fitness gym, mini golf, dan café komunal.'
+  }
+];
+
+let currentLandingVideoIdx = 0;
+let landingVideoAutoInterval = null;
+
+function switchLandingVideoScene(sceneIdx, btnEl) {
+  if (sceneIdx < 0 || sceneIdx >= LANDING_VIDEO_SCENES.length) return;
+  currentLandingVideoIdx = sceneIdx;
+  const scene = LANDING_VIDEO_SCENES[sceneIdx];
+
+  const imgEl = document.getElementById('videoDisplayImg');
+  const tagEl = document.getElementById('videoSceneTag');
+  const descEl = document.getElementById('videoSceneDesc');
+
+  if (imgEl) {
+    imgEl.style.opacity = '0.3';
+    setTimeout(() => {
+      imgEl.src = scene.img;
+      imgEl.style.opacity = '1';
+    }, 180);
+  }
+
+  if (tagEl) tagEl.textContent = scene.tag;
+  if (descEl) descEl.textContent = scene.desc;
+
+  document.querySelectorAll('.video-scene-btn').forEach((btn, i) => {
+    if (i === sceneIdx) {
+      btn.classList.add('is-active');
+      btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    } else {
+      btn.classList.remove('is-active');
+    }
+  });
+}
+
+function toggleLandingVideoPlay() {
+  const statusEl = document.getElementById('videoPlayStatus');
+  const iconEl = document.getElementById('videoPlayIcon');
+
+  if (landingVideoAutoInterval) {
+    clearInterval(landingVideoAutoInterval);
+    landingVideoAutoInterval = null;
+    if (statusEl) statusEl.textContent = 'Putar Sinema Otomatis';
+    if (iconEl) {
+      iconEl.innerHTML = '<polygon points="5 3 19 12 5 21 5 3" />';
+    }
+  } else {
+    if (statusEl) statusEl.textContent = 'Jeda Sinema (5 dtk)';
+    if (iconEl) {
+      iconEl.innerHTML = '<rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" />';
+    }
+    landingVideoAutoInterval = setInterval(() => {
+      const nextIdx = (currentLandingVideoIdx + 1) % LANDING_VIDEO_SCENES.length;
+      switchLandingVideoScene(nextIdx, null);
+    }, 5000);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   11. DENAH PREVIEW MODAL CONTROLLER
+   -------------------------------------------------------------------------- */
+let currentSpecModalUnit = 'Nagoya B.04';
+let currentSpecModalPrice = 'Rp 650 Juta';
+
+function openSpecDenahModal(type) {
+  const modal = document.getElementById('denahSpecModal');
+  const title = document.getElementById('denahSpecModalTitle');
+  const img = document.getElementById('denahSpecModalImg');
+  const details = document.getElementById('denahSpecModalDetails');
+  const ctaText = document.getElementById('denahSpecCtaText');
+  if (!modal) return;
+
+  if (type === 'tipe110') {
+    currentSpecModalUnit = 'Osaka A.1';
+    currentSpecModalPrice = 'Rp 895 Juta';
+    if (title) title.textContent = 'Denah Tipe 110 (Royal Diamond · Osaka)';
+    if (img) img.src = 'assets/drive/denah-tipe110.jpg';
+    if (ctaText) ctaText.textContent = 'Pesan Tipe Royal Diamond (Osaka A.1)';
+    if (details) {
+      details.innerHTML = `
+        <div class="saved-item-row"><span>Luas Bangunan:</span><strong>110 m² (2 Lantai)</strong></div>
+        <div class="saved-item-row"><span>Luas Tanah:</span><strong>90–125 m²</strong></div>
+        <div class="saved-item-row"><span>Kamar Tidur:</span><strong>4 Kamar Tidur (1 KT di Lantai 1)</strong></div>
+        <div class="saved-item-row"><span>Kapasitas Parkir:</span><strong>2 Garasi Dalam + 1 Carport (3 Mobil)</strong></div>
+        <div class="saved-item-row"><span>Harga Mulai:</span><strong>Rp 895 Juta (Cash Keras)</strong></div>
+      `;
+    }
+  } else if (type === 'tipe80') {
+    currentSpecModalUnit = 'Tokyo B.1';
+    currentSpecModalPrice = 'Rp 679 Juta';
+    if (title) title.textContent = 'Denah Tipe 80 (Diamond · Tokyo)';
+    if (img) img.src = 'assets/drive/denah-tipe110.jpg';
+    if (ctaText) ctaText.textContent = 'Pesan Tipe Diamond (Tokyo B.1)';
+    if (details) {
+      details.innerHTML = `
+        <div class="saved-item-row"><span>Luas Bangunan:</span><strong>80 m² (2 Lantai)</strong></div>
+        <div class="saved-item-row"><span>Luas Tanah:</span><strong>80 m²</strong></div>
+        <div class="saved-item-row"><span>Kamar Tidur:</span><strong>3–4 Kamar Tidur</strong></div>
+        <div class="saved-item-row"><span>Kapasitas Parkir:</span><strong>1 Garasi Dalam + 1 Carport</strong></div>
+        <div class="saved-item-row"><span>Harga Mulai:</span><strong>Rp 679 Juta (Cash Keras)</strong></div>
+      `;
+    }
+  } else {
+    currentSpecModalUnit = 'Nagoya B.04';
+    currentSpecModalPrice = 'Rp 650 Juta';
+    if (title) title.textContent = 'Denah Tipe 60 / 75 (Gold · Nagoya)';
+    if (img) img.src = 'assets/drive/denah-tipe60.jpg';
+    if (ctaText) ctaText.textContent = 'Pesan Tipe Gold (Nagoya B.04)';
+    if (details) {
+      details.innerHTML = `
+        <div class="saved-item-row"><span>Luas Bangunan:</span><strong>60–75 m² (2 Lantai)</strong></div>
+        <div class="saved-item-row"><span>Luas Tanah:</span><strong>63 m²</strong></div>
+        <div class="saved-item-row"><span>Kamar Tidur:</span><strong>3 Kamar Tidur</strong></div>
+        <div class="saved-item-row"><span>Kapasitas Parkir:</span><strong>1 Garasi Dalam + 1 Carport</strong></div>
+        <div class="saved-item-row"><span>Harga Mulai:</span><strong>Rp 650 Juta (Cash Keras)</strong></div>
+      `;
+    }
+  }
+
+  modal.style.display = 'flex';
+}
+
+function closeSpecDenahModal(event) {
+  if (event && event.target && event.target.id !== 'denahSpecModal') return;
+  const modal = document.getElementById('denahSpecModal');
+  if (modal) modal.style.display = 'none';
+}
+
+function confirmUnitFromDenahModal() {
+  closeSpecDenahModal();
+  selectCatalogUnit(currentSpecModalUnit, currentSpecModalPrice);
+}
+
+/* --------------------------------------------------------------------------
    INIT ON LOAD
    -------------------------------------------------------------------------- */
 window.addEventListener('resize', () => {
