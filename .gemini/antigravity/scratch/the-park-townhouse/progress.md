@@ -499,3 +499,17 @@
     - Preserved the core pullquote: *"Semoga Anda menemukan bukan hanya rumah yang menarik untuk dilihat, tetapi rumah yang terasa tepat untuk dijalani."*
     - Consolidated paragraph 2 into a focused summary of Japandi two-story architecture, enclosed garage, and the 3 distinct cluster characters (Nagoya near clubhouse, Osaka city corridor, Tokyo private serenity).
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #33: Deluxe Visual Overhaul for 3 Klaster Triptych Cards (Nagoya, Osaka, Tokyo)
+- **Context & Objective**: Upgrade the 3 Cluster Triptych philosophy cards in Surat Cinta into an interactive visual showcase per user request.
+- **Key Changes Implemented**:
+  - **Visual Header & Local Assets (`index.html`)**:
+    - Embedded dedicated photograph headers for each cluster: Nagoya ([clubhouse.png](file:///c:/Users/ASUS/.gemini/antigravity/scratch/the-park-townhouse/assets/drive/clubhouse.png)), Osaka ([housee.jpeg](file:///c:/Users/ASUS/.gemini/antigravity/scratch/the-park-townhouse/assets/drive/housee.jpeg)), and Tokyo ([dalam-6.png](file:///c:/Users/ASUS/.gemini/antigravity/scratch/the-park-townhouse/assets/drive/dalam-6.png)).
+    - Added floating luxury tag badges (`KLASTER 01`, `KLASTER 02`, `KLASTER 03`) and building area tags (`LB 75–80 m²`, `LB 110 m²`, `LB 80 m²`).
+  - **Semantic Hierarchy & Badges (`styles.css`)**:
+    - Created high-contrast unit availability pills: `14 Unit Tersedia` (emerald), `9 Unit Eksklusif` (purple/gold), and `7 Unit Terbatas` (amber).
+    - Styled cluster titles in serif `#16241c` with warm description copy.
+    - Added location/character tags (`Jl. Tentara Pelajar · Clubhouse`, `Koridor Jl. Jend. Sudirman`, `Zen Enclave · 7 Unit Privat`) and direct interactive link buttons `[Peta Kawasan →]` switching the site plan view seamlessly to that cluster.
+- **Status**: Completed & Verified.
