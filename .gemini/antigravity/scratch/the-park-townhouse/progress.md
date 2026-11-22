@@ -487,3 +487,15 @@
     - Defined `openDenahSpecModal(typeTitle, imgPath)` to dynamically populate architectural blueprint modals (`denah-tipe60.jpg`, `denah-tipe80.jpg`, `denah-tipe110.jpg`).
     - Defined `openOrderModal(clusterOrType, lotCode, price)` to initiate direct WhatsApp VIP consultations with pre-populated unit and pricing data.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #32: Condensed Storytelling Prologue in Surat untuk Calon Penghuni
+- **Context & Objective**: Condense the prologue letter in the Surat Cinta section per user request ("jangan terlalu panjang, ringkas aja"), removing wall-of-text fatigue while preserving its heartfelt poetic resonance and warm Japandi architectural essence.
+- **Key Changes Implemented**:
+  - **Distilled 2-Paragraph Structure (`index.html`)**:
+    - Retained the salutation *"Untuk Anda yang ingin menemukan tempat pulang"*.
+    - Consolidated paragraph 1 into a concise human-centric reflection on finding peace and order in daily life (*"Barangkali rumah yang Anda inginkan sederhana: ruang untuk meletakkan lelah, berkumpul bersama orang terdekat, dan lingkungan yang membuat keseharian mengalir tenang"*).
+    - Preserved the core pullquote: *"Semoga Anda menemukan bukan hanya rumah yang menarik untuk dilihat, tetapi rumah yang terasa tepat untuk dijalani."*
+    - Consolidated paragraph 2 into a focused summary of Japandi two-story architecture, enclosed garage, and the 3 distinct cluster characters (Nagoya near clubhouse, Osaka city corridor, Tokyo private serenity).
+- **Status**: Completed & Verified.
