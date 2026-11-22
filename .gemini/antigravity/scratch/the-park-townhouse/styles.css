@@ -7555,7 +7555,7 @@ body {
    BERANDA OFFICIAL REDESIGN & SECTIONS (JAPANDI WHITE THEME)
    ============================================================ */
 
-/* 1. Marquee Ticker Bar */
+/* 1. Marquee Ticker Bar (Flush attached below video, edge-to-edge) */
 .marquee-ticker-bar {
   width: 100%;
   overflow: hidden;
@@ -7564,10 +7564,12 @@ body {
   font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0.5px;
-  padding: 7px 0;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(22, 36, 28, 0.1);
+  padding: 8px 0;
+  border-radius: 0;
+  box-shadow: none;
   white-space: nowrap;
+  margin: 0;
+  border: none;
 }
 
 .marquee-track {
@@ -7640,16 +7642,29 @@ body {
   margin: 0;
 }
 
-/* 0. Top Cinematic Video Banner (Drive Videos Autoplay & Looping) */
+/* 0. Top Cinematic Video Banner & Running Marquee Full-Bleed Unit (Zero Gap, Edge-to-Edge) */
+.beranda-top-hero-unit {
+  margin-left: -14px;
+  margin-right: -14px;
+  margin-top: -12px;
+  width: calc(100% + 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(10, 24, 18, 0.14);
+}
+
 .beranda-top-video-banner {
   width: 100%;
   position: relative;
-  border-radius: 20px;
+  border-radius: 0;
   overflow: hidden;
   background: #07120d;
-  box-shadow: 0 10px 30px rgba(10, 24, 18, 0.2);
-  margin-top: 2px;
-  border: 1px solid rgba(229, 211, 175, 0.16);
+  box-shadow: none;
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid rgba(229, 211, 175, 0.16);
 }
 
 .top-video-viewport {
@@ -7678,9 +7693,9 @@ body {
 
 .top-video-info-bar {
   position: absolute;
-  left: 12px;
+  left: 14px;
   bottom: 12px;
-  right: 92px;
+  right: 14px;
   z-index: 10;
   display: flex;
   flex-direction: column;

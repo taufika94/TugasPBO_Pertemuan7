@@ -743,3 +743,16 @@
   - **Script (app.js)**:
     - Removed unused `toggleTopHeroVideoMute()` and `toggleTopHeroVideoPlay()` helper functions while preserving automated auto-advance on video end.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #47: Seamless Full-Bleed Video Banner & Flush Running Marquee
+- **Context & Objective**: Remove horizontal side margins for the top video and marquee frames, and eliminate vertical gap between the video and the running marquee ticker.
+- **Key Changes Implemented**:
+  - **Structure & Layout (index.html, styles.css)**:
+    - Wrapped `.beranda-top-video-banner` and `.marquee-ticker-bar` inside `.beranda-top-hero-unit`.
+    - Applied negative margins (`margin-left: -14px; margin-right: -14px; width: calc(100% + 28px);`) to span edge-to-edge with zero side margins.
+    - Set `margin-top: -12px;` so video sits flush at the very top of `.landing-content-scroll`.
+    - Set `gap: 0;` and removed border-radius on both video and marquee for a flush, seamless joint with zero gap.
+    - Updated `.top-video-info-bar` right constraint to `14px` for balanced caption padding now that floating controls are gone.
+- **Status**: Completed, Verified & Auto-Pushed.
