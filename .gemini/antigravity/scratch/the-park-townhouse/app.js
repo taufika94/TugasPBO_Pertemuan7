@@ -3216,7 +3216,6 @@ function initTopHeroVideoPlayer() {
 
 function switchTopHeroVideo(idx) {
   const videoEl = document.getElementById('berandaHeroVideo');
-  const badgeEl = document.getElementById('topVideoSceneBadge');
   const captionEl = document.getElementById('topVideoCaption');
   if (!videoEl) return;
 
@@ -3233,7 +3232,6 @@ function switchTopHeroVideo(idx) {
     videoEl.style.opacity = '1';
   }, 180);
 
-  if (badgeEl) badgeEl.textContent = item.badge;
   if (captionEl) captionEl.textContent = item.caption;
 }
 

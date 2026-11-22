@@ -7703,31 +7703,6 @@ body {
   pointer-events: none;
 }
 
-.top-video-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(14, 38, 28, 0.82);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(223, 185, 109, 0.35);
-  border-radius: 999px;
-  padding: 3px 10px 3px 8px;
-  font-size: 10px;
-  font-weight: 600;
-  color: #dfb96d;
-  letter-spacing: 0.03em;
-  width: fit-content;
-}
-
-.video-live-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #4caf50;
-  box-shadow: 0 0 8px #4caf50;
-  animation: pulseGreen 1.8s infinite;
-}
-
 .top-video-caption {
   font-size: 11px;
   line-height: 1.35;

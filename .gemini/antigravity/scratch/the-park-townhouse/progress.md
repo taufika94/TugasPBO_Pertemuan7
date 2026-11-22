@@ -756,3 +756,16 @@
     - Set `gap: 0;` and removed border-radius on both video and marquee for a flush, seamless joint with zero gap.
     - Updated `.top-video-info-bar` right constraint to `14px` for balanced caption padding now that floating controls are gone.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+---
+
+### [2026-11-22] Progress #48: Remove Video Scene Badge & Pill Frame (`.top-video-badge`)
+- **Context & Objective**: Remove the floating "Sinema 01..04" pill badge and its frame overlay from the video banner as requested by the user.
+- **Key Changes Implemented**:
+  - **Markup (index.html)**:
+    - Removed `.top-video-badge` containing `.video-live-dot` and `#topVideoSceneBadge` from `.top-video-info-bar`.
+  - **Styles (styles.css)**:
+    - Deleted CSS rules for `.top-video-badge` and `.video-live-dot`.
+  - **Script (app.js)**:
+    - Removed `#topVideoSceneBadge` reference and update logic in `switchTopHeroVideo()`.
+- **Status**: Completed, Verified & Auto-Pushed.
