@@ -149,3 +149,15 @@
   - Replaced `assets/drive/house.jpeg` (exterior townhouse facade) on `#heroArchImg` in `index.html` with `assets/drive/dalam-6.png` (warm living interior).
   - Updated descriptive alt tag to *"Interior Ruangan The Park Townhouse"*, ensuring seamless visual continuity from the door opening sequence into Room 01.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #13: Room 04 Interactive Denah Customizer, 360° Interior Panorama & Responsive Site Plan
+- **Context & Objective**: Implement comprehensive customization and interactive visualization in Room 04 (`04 / 07 · RUANG RUMAH`): 360° touch/mouse draggable interior panorama, room renaming and function customizer with locked exterior facade policy, conditional button progression, and interactive site plan matching reference images.
+- **Key Changes Implemented**:
+  - **Scrollable Room 04**: Enabled vertical scrolling on `#room-4.room-rumah-section` (`overflow-y: auto`) while preserving fixed viewport boundaries on other rooms.
+  - **360° Interior Panorama Viewer**: Implemented `#house360Frame` and `#panoramaTrack` supporting pointer drag (mouse & touch) and rotation buttons (`rotatePanorama`) with dynamic interior textures synchronized with chosen unit (Nagoya, Tokyo, Osaka).
+  - **Interior Denah & Room Renaming Customizer**: Added architectural floorplan view (`assets/drive/denah-custom.jpg`) with scale markers, locked facade estate policy banner (`🔒 Fasad Luar Tetap`), customizable room name inputs with quick preset chips (Master Suite, Studio/Library, Gym/Yoga, Zen Garden), denah specification summary, and optional add-ons checklist.
+  - **Conditional Progression Button**: Configured `#btnNextToRoom5` (`Intip Kehidupan Bersama →`) to remain hidden initially with `#navHintLocked` active; clicking `✓ Simpan Desain Ruangan & Selesaikan Kustomisasi` validates choices, shows a success badge, unlocks `#btnNextToRoom5` with a pulse animation, and smoothly scrolls to it.
+  - **Interactive Responsive Site Plan**: Integrated cluster site plan diagrams for Nagoya, Tokyo, and Osaka (`assets/drive/siteplan-*.jpg`), featuring interactive clickable lot markers on the site plan overlay and quick selector pill chips displaying live lot status (`Tersedia`, `Booked`, `Hook`), land area, recommended unit, and pricing.
+- **Status**: Completed & Verified (verified DOM bindings and JS syntax).

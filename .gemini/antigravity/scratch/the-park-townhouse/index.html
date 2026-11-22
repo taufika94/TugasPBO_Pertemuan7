@@ -371,9 +371,9 @@
         </section>
 
         <!-- ============================================================
-             ROOM 04 · RUANG RUMAH (Galeri Rumah Besar & Memukau)
+             ROOM 04 · RUANG RUMAH (Kustomisasi Denah, 360° Viewer & Site Plan)
              ============================================================ -->
-        <section class="room-section" id="room-4" data-room="4" data-transition="shutter">
+        <section class="room-section room-rumah-section" id="room-4" data-room="4" data-transition="shutter">
           <div class="room-progress-row stagger-item" data-delay="80">
             <span class="room-step-label">04 / 07 · RUANG RUMAH</span>
             <div class="step-dots">
@@ -387,31 +387,47 @@
             </div>
           </div>
 
-          <div class="unit-tabs stagger-item" data-delay="140">
-            <button class="unit-tab-btn is-active" onclick="selectHouseUnit('nagoya', this)" type="button">
+          <!-- Unit Selector Tabs -->
+          <div class="unit-tabs stagger-item" data-delay="120">
+            <button class="unit-tab-btn is-active" id="tab-nagoya" onclick="selectHouseUnit('nagoya', this)" type="button">
               Nagoya
               <span>LB 75 m²</span>
             </button>
-            <button class="unit-tab-btn" onclick="selectHouseUnit('tokyo', this)" type="button">
+            <button class="unit-tab-btn" id="tab-tokyo" onclick="selectHouseUnit('tokyo', this)" type="button">
               Tokyo
               <span>LB 80 m²</span>
             </button>
-            <button class="unit-tab-btn" onclick="selectHouseUnit('osaka', this)" type="button">
+            <button class="unit-tab-btn" id="tab-osaka" onclick="selectHouseUnit('osaka', this)" type="button">
               Osaka
               <span>LB 110 m²</span>
             </button>
           </div>
 
-          <div class="room-visual-frame is-hero-tall stagger-item" data-delay="210">
-            <img src="assets/drive/dalam-6.png" alt="Visual ruang keluarga dan interior The Park Townhouse"
-              class="room-visual-img" id="houseVisualImg" />
+          <!-- 360-Degree Interactive Interior Panorama Viewer -->
+          <div class="room-visual-frame room-360-frame is-hero-tall stagger-item" data-delay="180" id="house360Frame">
+            <div class="panorama-viewport" id="panoramaViewport">
+              <div class="panorama-track" id="panoramaTrack" style="background-image: url('assets/drive/dalam-6.png');"></div>
+            </div>
+            <div class="panorama-badge-pill">
+              <span class="p-360-icon">360°</span>
+              <span>Panorama Ruang Interaktif</span>
+            </div>
+            <div class="panorama-drag-hint">
+              <span class="drag-hand-icon">✋</span>
+              <span>Geser kiri/kanan untuk rotasi 360°</span>
+            </div>
+            <div class="panorama-controls">
+              <button class="pano-btn" onclick="rotatePanorama(-35)" type="button" aria-label="Putar kiri">⟲</button>
+              <button class="pano-btn" onclick="rotatePanorama(35)" type="button" aria-label="Putar kanan">⟳</button>
+            </div>
             <div class="room-visual-overlay">
               <span class="room-visual-tag" id="houseVisualTag">Nagoya B.02–B.04 · Gold</span>
               <span class="room-visual-sub" id="houseVisualPrice">Rp 650 jt · 3 unit entry</span>
             </div>
           </div>
 
-          <div class="room-card compact-card stagger-item" data-delay="310">
+          <!-- Basic Specs Card -->
+          <div class="room-card compact-card stagger-item" data-delay="240">
             <h2 class="room-title" id="houseVisualHeadline">Hangatnya ruang Japandi untuk awal yang baru.</h2>
 
             <div class="house-specs-grid">
@@ -428,14 +444,252 @@
                 <div class="house-spec-lbl">Luas Tanah</div>
               </div>
             </div>
+          </div>
 
-            <p class="next-door-prompt">"Di luar pintu rumah, ada tempat untuk waktu bersama."</p>
-            <div class="room-nav-actions">
-              <button class="btn-back-outline" onclick="goToRoom(3)" type="button">←</button>
-              <button class="btn-primary-forest" onclick="goToRoom(5)" type="button">
-                <span>Intip Kehidupan Bersama</span>
-                <span>→</span>
+          <!-- KUSTOMISASI DENAH & TATA RUANG (Image 2) -->
+          <div class="room-card compact-card customizer-card stagger-item" data-delay="300" id="customizerCard">
+            <div class="customizer-header">
+              <div class="customizer-title-wrap">
+                <span class="customizer-eyebrow">ARSITEKTUR FLEKSIBEL</span>
+                <h3 class="customizer-title">Kustomisasi Tata Ruang &amp; Denah</h3>
+              </div>
+              <div class="facade-locked-pill">
+                <span class="lock-icon">🔒</span>
+                <span>Fasad Luar Tetap</span>
+              </div>
+            </div>
+
+            <div class="facade-policy-box">
+              <p>
+                <strong>Ketentuan Fasad:</strong> Fasad eksterior 2 lantai Modern Japandi dirancang permanen untuk keselarasan kawasan cluster (tidak dapat diubah). Namun, <strong>seluruh sekat, nama ruangan, dan fungsi interior 100% bebas Anda kustomisasi</strong> sesuai gaya hidup keluarga.
+              </p>
+            </div>
+
+            <!-- Floor Plan Tabs -->
+            <div class="denah-type-selector">
+              <button class="denah-type-btn is-active" id="denahType60" onclick="selectDenahType('60', this)" type="button">Tipe 60 (LB 75 m²)</button>
+              <button class="denah-type-btn" id="denahType80" onclick="selectDenahType('80', this)" type="button">Tipe 80 (LB 80 m²)</button>
+              <button class="denah-type-btn" id="denahType110" onclick="selectDenahType('110', this)" type="button">Tipe 110 (LB 110 m²)</button>
+            </div>
+
+            <!-- Denah Visual Frame -->
+            <div class="floorplan-visual-wrap">
+              <img src="assets/drive/denah-custom.jpg" alt="Denah Arsitektural Lantai 1 dan Lantai 2" class="floorplan-img" id="floorplanImg" />
+              <div class="floorplan-badge-floating">
+                <span>Denah Lantai 1 &amp; 2</span>
+                <span class="sub-badge">Skala Presisi</span>
+              </div>
+            </div>
+
+            <!-- Room Renaming & Function Customizer -->
+            <div class="room-custom-fields-group">
+              <div class="custom-fields-header">
+                <span class="filter-group-label">KUSTOMISASI NAMA &amp; FUNGSI RUANGAN</span>
+                <span class="custom-fields-hint">Ketik untuk mengubah nama ruangan</span>
+              </div>
+
+              <div class="room-inputs-list">
+                <div class="room-input-row">
+                  <label class="room-input-label" for="roomName1">
+                    <span>Ruangan 01 (Lt. 1)</span>
+                    <small>Default: Kamar Tidur Utama (2,5 x 2m)</small>
+                  </label>
+                  <input class="room-input-field" type="text" id="roomName1" value="Kamar Tidur Utama" placeholder="Nama ruangan kustom Anda..." />
+                  <div class="room-preset-chips">
+                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName1', 'Master Suite &amp; Wardrobe')">Master Suite</button>
+                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName1', 'Kamar Orang Tua / Lansia')">Kamar Orang Tua</button>
+                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName1', 'Ruang Kerja Privat')">Ruang Kerja</button>
+                  </div>
+                </div>
+
+                <div class="room-input-row">
+                  <label class="room-input-label" for="roomName2">
+                    <span>Ruangan 02 (Lt. 2)</span>
+                    <small>Default: Kamar Tidur 2 (3 x 2,6m)</small>
+                  </label>
+                  <input class="room-input-field" type="text" id="roomName2" value="Kamar Tidur Anak 1" placeholder="Nama ruangan kustom Anda..." />
+                  <div class="room-preset-chips">
+                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName2', 'Kamar Anak Montessori')">Kamar Anak</button>
+                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName2', 'Studio Kreatif &amp; Library')">Studio / Library</button>
+                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName2', 'Walk-in Dressing Room')">Dressing Room</button>
+                  </div>
+                </div>
+
+                <div class="room-input-row">
+                  <label class="room-input-label" for="roomName3">
+                    <span>Ruangan 03 (Lt. 2)</span>
+                    <small>Default: Kamar Tidur 3 (2 x 3,5m)</small>
+                  </label>
+                  <input class="room-input-field" type="text" id="roomName3" value="Kamar Tamu / Studio" placeholder="Nama ruangan kustom Anda..." />
+                  <div class="room-preset-chips">
+                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName3', 'Kamar Tidur Tamu')">Kamar Tamu</button>
+                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName3', 'Gym &amp; Yoga Sanctuary')">Gym &amp; Yoga</button>
+                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomName3', 'Mushola / Ruang Doa')">Mushola</button>
+                  </div>
+                </div>
+
+                <div class="room-input-row">
+                  <label class="room-input-label" for="roomNameGarden">
+                    <span>Ruang Terbuka (Lt. 1)</span>
+                    <small>Default: Taman Belakang (3,5 x 1m)</small>
+                  </label>
+                  <input class="room-input-field" type="text" id="roomNameGarden" value="Taman Kering Zen &amp; BBQ" placeholder="Nama area terbuka kustom Anda..." />
+                  <div class="room-preset-chips">
+                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomNameGarden', 'Zen Dry Garden')">Zen Garden</button>
+                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomNameGarden', 'Laundry &amp; Drying Area')">Laundry Area</button>
+                    <button class="preset-chip" type="button" onclick="setRoomPreset('roomNameGarden', 'Mini Courtyard Koi')">Kolam Koi</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ringkasan Denah & Standar Fasilitas -->
+            <div class="denah-summary-box">
+              <span class="filter-group-label">RINGKASAN STANDAR DENAH</span>
+              <div class="denah-spec-list">
+                <div class="denah-spec-row"><span>Luas Tanah</span><strong id="denahLotText">63 m²</strong></div>
+                <div class="denah-spec-row"><span>Luas Bangunan</span><strong id="denahBuildingText">75 m²</strong></div>
+                <div class="denah-spec-row"><span>Lantai</span><strong>2 Lantai</strong></div>
+                <div class="denah-spec-row"><span>Kamar Tidur</span><strong id="denahBedsText">3 Kamar</strong></div>
+                <div class="denah-spec-row"><span>Kamar Mandi</span><strong>2 Dilengkapi Shower &amp; Hairdryer Ready</strong></div>
+                <div class="denah-spec-row"><span>Carport / Garasi</span><strong>1-2 Mobil (One Gate Protection)</strong></div>
+              </div>
+              <ul class="denah-bullets-list">
+                <li>1 Pohon Tabebuya berbunga di tiap halaman unit</li>
+                <li>1 Unit sumur resapan air hujan mandiri</li>
+                <li>Pintu utama solid engineered wood dengan smart door lock RFID</li>
+              </ul>
+            </div>
+
+            <!-- Item Tambahan / Add-ons -->
+            <div class="addons-section">
+              <span class="filter-group-label">OPSI ITEM TAMBAHAN</span>
+              <div class="addons-grid">
+                <label class="addon-item">
+                  <input type="checkbox" id="addonIsland" onchange="updateCustomizerTotal()" />
+                  <div class="addon-info">
+                    <span class="addon-name">Kitchen Island &amp; Granit Table</span>
+                    <span class="addon-price">+Rp 15 Juta</span>
+                  </div>
+                </label>
+                <label class="addon-item">
+                  <input type="checkbox" id="addonSmart" onchange="updateCustomizerTotal()" />
+                  <div class="addon-info">
+                    <span class="addon-name">Smart Home Automation Hub</span>
+                    <span class="addon-price">+Rp 10 Juta</span>
+                  </div>
+                </label>
+                <label class="addon-item">
+                  <input type="checkbox" id="addonBathtub" onchange="updateCustomizerTotal()" />
+                  <div class="addon-info">
+                    <span class="addon-name">Freestanding Bathtub Master Bath</span>
+                    <span class="addon-price">+Rp 12 Juta</span>
+                  </div>
+                </label>
+                <label class="addon-item">
+                  <input type="checkbox" id="addonSolar" onchange="updateCustomizerTotal()" />
+                  <div class="addon-info">
+                    <span class="addon-name">Solar Guard Canopy Carport</span>
+                    <span class="addon-price">+Rp 8 Juta</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Tombol Simpan Kustomisasi -->
+            <div class="customizer-actions">
+              <button class="btn-primary-forest btn-save-custom" id="btnSaveCustom" onclick="saveRoomCustomization()" type="button">
+                <span>✓ Simpan Desain Ruangan &amp; Selesaikan Kustomisasi</span>
               </button>
+              <div class="custom-success-banner" id="customSuccessBanner" aria-live="polite">
+                <span>✓ Desain ruangan tersimpan! Tombol perjalanan berikutnya di bawah telah terbuka.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SITE PLAN & PILIHAN KAVLING (Images 3, 4, 5) -->
+          <div class="room-card compact-card siteplan-card stagger-item" data-delay="360" id="siteplanCard">
+            <div class="siteplan-header">
+              <div class="siteplan-title-row">
+                <h3 class="siteplan-cluster-title" id="siteplanClusterTitle">Nagoya</h3>
+                <span class="siteplan-shm-badge" id="siteplanShmBadge">SHM sudah pecah sempurna (Nagoya)</span>
+              </div>
+              <div class="siteplan-tag-sub" id="siteplanTagSub">100 m dari Stadion · Nagoya Road 7 M · Clubhouse</div>
+              <div class="siteplan-area-sub" id="siteplanAreaSub">Cluster Nagoya · 2392 m²</div>
+            </div>
+
+            <!-- Site Plan Map with Clickable Kavlings -->
+            <div class="siteplan-map-container" id="siteplanMapContainer">
+              <img src="assets/drive/siteplan-nagoya.jpg" alt="Site Plan Kawasan Cluster" class="siteplan-img" id="siteplanImg" />
+              <div class="siteplan-lots-overlay" id="siteplanLotsOverlay">
+                <!-- Dynamically rendered kavling interactive buttons -->
+              </div>
+            </div>
+
+            <!-- Dynamic Selected Kavling Card -->
+            <div class="kavling-detail-card" id="kavlingDetailCard">
+              <div class="kavling-detail-header">
+                <div>
+                  <span class="kavling-label">KAVLING TERPILIH</span>
+                  <h4 class="kavling-title" id="kavlingTitle">Nagoya B.04</h4>
+                </div>
+                <span class="kavling-status-badge" id="kavlingStatusBadge">Tersedia · Rekomendasi</span>
+              </div>
+
+              <div class="kavling-specs-row">
+                <div class="kavling-spec-col">
+                  <span>Luas Tanah</span>
+                  <strong id="kavlingAreaVal">90 m²</strong>
+                </div>
+                <div class="kavling-spec-col">
+                  <span>Tipe Rekomendasi</span>
+                  <strong id="kavlingTypeVal">Nagoya Gold (LB 75)</strong>
+                </div>
+                <div class="kavling-spec-col">
+                  <span>Estimasi Harga</span>
+                  <strong id="kavlingPriceVal">Rp 650 Juta</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Clickable Kavling Lots Quick Selector -->
+            <div class="kavling-quick-selector">
+              <span class="filter-group-label">PILIH KAVLING DI SITE PLAN:</span>
+              <div class="kavling-pills-row" id="kavlingPillsRow">
+                <!-- Populated via JS based on selected unit cluster -->
+              </div>
+            </div>
+
+            <!-- Cluster Statistics Table (Images 3, 4, 5) -->
+            <div class="siteplan-stats-grid">
+              <div class="siteplan-stat-cell">
+                <span class="stat-name">Kavling</span>
+                <strong class="stat-number" id="statKavlingVal">15 unit</strong>
+              </div>
+              <div class="siteplan-stat-cell">
+                <span class="stat-name">Prasarana</span>
+                <strong class="stat-number" id="statPrasaranaVal">832,30 m²</strong>
+              </div>
+              <div class="siteplan-stat-cell">
+                <span class="stat-name">Sarana &amp; Fasilitas</span>
+                <strong class="stat-number" id="statSaranaVal">254,25 m²</strong>
+              </div>
+              <div class="siteplan-stat-cell">
+                <span class="stat-name">RTH Kawasan</span>
+                <strong class="stat-number" id="statRthVal">119,60 m²</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Room 04 Nav Actions -->
+          <div class="room-nav-actions" id="room4NavActions">
+            <button class="btn-back-outline" onclick="goToRoom(3)" type="button">←</button>
+            <button class="btn-primary-forest is-hidden" id="btnNextToRoom5" onclick="goToRoom(5)" type="button">
+              <span>Intip Kehidupan Bersama</span>
+              <span>→</span>
+            </button>
+            <div class="nav-hint-locked" id="navHintLocked">
+              <span>🔒 Selesaikan kustomisasi tata ruang di atas untuk membuka tombol lanjut</span>
             </div>
           </div>
         </section>
