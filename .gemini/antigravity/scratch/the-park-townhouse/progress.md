@@ -244,3 +244,23 @@
   - **Official Nov–Des 2026 Price Matrix**: Created interactive cluster tabs (Nagoya, Tokyo, Osaka) displaying exact inventory breakdowns, Cash Keras, Cash Tempo 12/24 bulan, and Bank KPR estimates.
   - **3 Langkah Bersahaja & WhatsApp Direct Consultation**: Framed steps (*"Bicarakan Pilihan"*, *"Lihat dan Pahami"*, *"Tentukan Langkah"*) and direct WhatsApp link to Mr. Andara (0882-0073-92379) at Marketing Gallery.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #20: Full Emoji Removal & Dynamic Cumulative 99 Keunggulan Counter Progression
+- **Context & Objective**: Eliminate all decorative emojis across facilities, apps, hints, and navigation, and replace the static step counter with a dynamic cumulative `x/99` keunggulan progression reflecting real architectural points unlocked at each stage (e.g., jumping by 22 points in Room 4).
+- **Key Changes Implemented**:
+  - **Zero Emoji Policy**: Replaced all emojis across Room 05 facility chips, Super App phone mockups, bottom navigation tabs, bookmark drawers, and hint tags with clean, bespoke inline SVG vector icons and crisp typography.
+  - **Dynamic Cumulative 99 Keunggulan Counter (`setKeunggulanCount`, `animateKeunggulanCounter`)**:
+    - Room 01: 3/99 (Prolog & Nilai Perdana)
+    - Room 02: 12/99 (+9 poin Karakter 3 Klaster)
+    - Room 03: 21/99 (+9 poin Akses Pusat Sukoharjo & Layanan)
+    - Room 04: 43/99 (+22 poin Desain Japandi & Tata Ruang)
+    - Room 04 Kustomisasi & Kavling: 49/99 & 55/99 (+6 poin Fleksibilitas & SHM)
+    - Room 05: 73/99 (+18 poin Clubhouse & Rekreasi) & up to 85/99 on facility tap
+    - Room 06: 90/99 (+11 poin 3 Skema Pembayaran & Legalitas) & up to 94/99 on scheme change
+    - Room 07: 99/99 (Semua 99 Keunggulan Terbuka Penuh)
+  - **Smooth Number Rolling Animation & Golden Glow Pulse**: Built cubic easing number counter animation on `#cardsCountLabel` with pulse glow (`@keyframes pillGlowPulse`).
+  - **Floating Notification Toast (`#keunggulanFloatingToast`)**: Displays sleek toasts (`+22 Keunggulan (Desain Japandi & Tata Ruang 22 Poin)`) whenever new points unlock.
+  - **Comprehensive Unlocked Modal**: Tapping `#openCardsModalBtn` opens an interactive modal with live progress percentage, list of unlocked items from the official document, and a shortcut to the full Surat Cinta magazine.
+- **Status**: Completed & Verified.

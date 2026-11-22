@@ -667,6 +667,23 @@ body {
   border-radius: 999px;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.24);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.cards-pill:hover {
+  transform: translateY(-1px);
+  border-color: #e5d3af;
+  background: rgba(30, 48, 36, 0.95);
+}
+
+.cards-pill.is-incrementing {
+  animation: pillGlowPulse 0.85s ease-out;
+}
+
+@keyframes pillGlowPulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(229, 211, 175, 0); }
+  35% { transform: scale(1.15); box-shadow: 0 0 16px rgba(229, 211, 175, 0.85); border-color: #e5d3af; color: #ffffff; }
+  100% { transform: scale(1); box-shadow: 0 0 4px rgba(229, 211, 175, 0.2); }
 }
 
 .cards-pill .spark-dot {
@@ -675,6 +692,47 @@ body {
   border-radius: 50%;
   background: var(--gold-glow);
   box-shadow: 0 0 6px var(--gold-spark);
+}
+
+.keunggulan-floating-toast {
+  position: fixed;
+  top: 54px;
+  right: 16px;
+  background: rgba(18, 30, 22, 0.95);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(229, 211, 175, 0.35);
+  color: #ffffff;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 1000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-6px) scale(0.95);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.keunggulan-floating-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.keunggulan-floating-toast .toast-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #81c784;
+  box-shadow: 0 0 6px #81c784;
+}
+
+.keunggulan-floating-toast .toast-num {
+  color: #e5d3af;
+  font-weight: 700;
 }
 
 .app-main {
@@ -5488,7 +5546,14 @@ body {
 }
 
 .app-icon {
-  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #81c784;
+}
+
+.app-feature-btn.is-sos .app-icon {
+  color: #ef5350;
 }
 
 .app-lbl {
@@ -5667,14 +5732,19 @@ body {
   font-weight: 700;
 }
 
-.bottom-nav-tab.is-active .b-icon {
-  transform: translateY(-2px);
-  filter: drop-shadow(0 0 6px rgba(229, 211, 175, 0.6));
+.b-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: rgba(243, 239, 230, 0.7);
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.b-icon {
-  font-size: 16px;
-  transition: transform 0.2s ease;
+.bottom-nav-tab.is-active .b-icon {
+  color: #e5d3af;
+  transform: translateY(-2px);
+  filter: drop-shadow(0 0 6px rgba(229, 211, 175, 0.6));
 }
 
 /* SAVED CONFIGURATION BOOKMARK DRAWER */

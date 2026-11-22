@@ -541,19 +541,101 @@ document.getElementById('replayOpeningBtn').addEventListener('click', () => {
 /* --------------------------------------------------------------------------
    4. PARALLAX HOUSE BACKGROUND & LAYERED ROOM TRANSITIONS
    -------------------------------------------------------------------------- */
-const roomCardsMap = {
-  2: { id: 1, title: '3 Cluster Eksklusif: Nagoya, Osaka & Tokyo', room: 'Ruang Cermin' },
-  3: { id: 3, title: 'Pusat Kota Sukoharjo: Dekat Gelora Merdeka & Sudirman', room: 'Ruang Peta' },
-  4: { id: 21, title: 'Desain Japandi 2 Lantai dengan Garasi Dalam', room: 'Ruang Rumah' },
-  5: { id: 38, title: 'Clubhouse: Kolam, Gym, Mini Golf 9 Hole & Game Station', room: 'Ruang Bersama' },
-  6: { id: 91, title: 'Transparansi Harga Periode & Simulasi KPR/CT12/CT24', room: 'Ruang Hitung' },
-  7: { id: 95, title: 'Booking Rp 5 Juta via PT Andara Rejo Makmur & DLP 100 Hari', room: 'Ruang Kunci' },
-};
+let unlockedKeunggulanCount = 3;
+
+function animateKeunggulanCounter(targetCount, toastMessage = '') {
+  const label = document.getElementById('cardsCountLabel');
+  const pill = document.getElementById('openCardsModalBtn');
+  if (!label) return;
+
+  const startVal = unlockedKeunggulanCount;
+  const endVal = Math.min(99, Math.max(1, targetCount));
+  unlockedKeunggulanCount = endVal;
+
+  if (pill) {
+    pill.classList.remove('is-incrementing');
+    void pill.offsetWidth;
+    pill.classList.add('is-incrementing');
+  }
+
+  const duration = 600;
+  const startTime = performance.now();
+
+  function updateNumber(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(1, elapsed / duration);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const currentVal = Math.round(startVal + (endVal - startVal) * ease);
+    label.textContent = `${currentVal}/99`;
+
+    if (progress < 1) {
+      requestAnimationFrame(updateNumber);
+    } else {
+      label.textContent = `${endVal}/99`;
+    }
+  }
+
+  requestAnimationFrame(updateNumber);
+
+  if (toastMessage) {
+    showKeunggulanToast(toastMessage, endVal);
+  }
+}
+
+function showKeunggulanToast(message, totalCount) {
+  let toast = document.getElementById('keunggulanFloatingToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'keunggulanFloatingToast';
+    toast.className = 'keunggulan-floating-toast';
+    document.body.appendChild(toast);
+  }
+
+  toast.innerHTML = `
+    <span class="toast-dot"></span>
+    <span>${message}</span>
+    <span class="toast-num">${totalCount}/99</span>
+  `;
+
+  toast.classList.add('is-visible');
+
+  clearTimeout(toast._hideTimer);
+  toast._hideTimer = setTimeout(() => {
+    toast.classList.remove('is-visible');
+  }, 2500);
+}
+
+function setKeunggulanCount(targetCount, toastReason = '') {
+  const target = Math.min(99, Math.max(unlockedKeunggulanCount, targetCount));
+  if (target > unlockedKeunggulanCount) {
+    const diff = target - unlockedKeunggulanCount;
+    animateKeunggulanCounter(target, `+${diff} Keunggulan (${toastReason})`);
+  }
+}
+
+function updateKeunggulanProgress(roomNum) {
+  if (roomNum === 1) {
+    setKeunggulanCount(3, 'Prolog & Alamat');
+  } else if (roomNum === 2) {
+    setKeunggulanCount(12, 'Karakter 3 Klaster');
+  } else if (roomNum === 3) {
+    setKeunggulanCount(21, 'Akses Pusat Kota & Fasilitas Penting');
+  } else if (roomNum === 4) {
+    setKeunggulanCount(43, 'Desain Japandi & Tata Ruang 22 Poin');
+  } else if (roomNum === 5) {
+    setKeunggulanCount(73, 'Clubhouse, Pool & Rekreasi');
+  } else if (roomNum === 6) {
+    setKeunggulanCount(90, '3 Opsi Skema Pembayaran & Legalitas');
+  } else if (roomNum === 7) {
+    setKeunggulanCount(99, 'Kawasan Penuh & 99 Keunggulan');
+  }
+}
 
 function unlockCard(card) {
-  if (!collectedCards.some((c) => c.id === card.id)) {
-    collectedCards.push(card);
-    cardsCountLabel.textContent = `${collectedCards.length}/99`;
+  if (card && card.id) {
+    if (!collectedCards.some((c) => c.id === card.id)) {
+      collectedCards.push(card);
+    }
   }
 }
 
@@ -627,7 +709,7 @@ function goToRoom(roomNum) {
         nextRoomEl.classList.add('is-active', 'is-center-fade-in');
         revealRoomStagger(roomNum);
       }
-      if (roomCardsMap[roomNum]) unlockCard(roomCardsMap[roomNum]);
+      updateKeunggulanProgress(roomNum);
       currentRoom = roomNum;
     }, 120);
 
@@ -656,10 +738,7 @@ function goToRoom(roomNum) {
     revealRoomStagger(roomNum);
   }
 
-  if (roomCardsMap[roomNum]) {
-    unlockCard(roomCardsMap[roomNum]);
-  }
-
+  updateKeunggulanProgress(roomNum);
   currentRoom = roomNum;
   if (roomNum === 3) {
     handleRoom3Enter();
@@ -895,19 +974,19 @@ function checkUnlockProgress() {
     if (nextBtn) nextBtn.classList.add('is-hidden');
     if (lockedHint) {
       lockedHint.classList.remove('is-hidden');
-      lockedHint.innerHTML = '<span>🔒 Kavling terkonfirmasi! Tekan "✓ Simpan Desain Ruangan" di atas untuk membuka tombol lanjut.</span>';
+      lockedHint.innerHTML = '<span>Kavling terkonfirmasi! Tekan "✓ Simpan Desain Ruangan" di atas untuk membuka tombol lanjut.</span>';
     }
   } else if (!hasSelectedSiteplanLot && hasSavedRoomCustomization) {
     if (nextBtn) nextBtn.classList.add('is-hidden');
     if (lockedHint) {
       lockedHint.classList.remove('is-hidden');
-      lockedHint.innerHTML = '<span>🔒 Kustomisasi ruangan tersimpan! Tekan "✓ Konfirmasi &amp; Simpan Kavling" di Site Plan untuk membuka tombol lanjut.</span>';
+      lockedHint.innerHTML = '<span>Kustomisasi ruangan tersimpan! Tekan "✓ Konfirmasi &amp; Simpan Kavling" di Site Plan untuk membuka tombol lanjut.</span>';
     }
   } else {
     if (nextBtn) nextBtn.classList.add('is-hidden');
     if (lockedHint) {
       lockedHint.classList.remove('is-hidden');
-      lockedHint.innerHTML = '<span>🔒 Selesaikan kustomisasi tata ruang &amp; konfirmasi kavling di site plan untuk membuka tombol lanjut</span>';
+      lockedHint.innerHTML = '<span>Selesaikan kustomisasi tata ruang &amp; konfirmasi kavling di site plan untuk membuka tombol lanjut</span>';
     }
   }
 }
@@ -1204,7 +1283,7 @@ function saveRoomCustomization() {
     scrollToRoom4Section('siteplanCard');
   }, 350);
 
-  unlockCard({ id: 22, title: 'Kustomisasi Denah Interior Tersimpan', room: 'Ruang Rumah' });
+  setKeunggulanCount(49, 'Kustomisasi Denah Interior Tersimpan');
 }
 
 function saveSiteplanChoice() {
@@ -1239,7 +1318,7 @@ function saveSiteplanChoice() {
     }, 450);
   }
 
-  unlockCard({ id: 23, title: `Kavling ${lotLabel} Terkonfirmasi`, room: 'Ruang Rumah' });
+  setKeunggulanCount(55, `Kavling ${lotLabel} Terkonfirmasi`);
 }
 
 /* --------------------------------------------------------------------------
@@ -1297,6 +1376,9 @@ function selectFacility(key, e) {
   currentFacilityImgIndex = 0;
   updateFacilityView();
   restartFacilityCarousel();
+
+  const data = FACILITIES_DATA[key] || FACILITIES_DATA.clubhouse;
+  setKeunggulanCount(Math.min(85, unlockedKeunggulanCount + 2), data.title);
 }
 
 function setFacilityImageIndex(idx) {
@@ -1389,6 +1471,13 @@ function selectPaymentScheme(scheme, btnEl) {
   if (panelKpr) panelKpr.style.display = scheme === 'kpr' ? 'flex' : 'none';
 
   updatePaymentCalc();
+
+  const schemeNames = {
+    cash_keras: 'Cash Keras 1 Bulan',
+    cash_tempo: `Cash Bertahap ${selectedTempoTenor} Bulan`,
+    kpr: 'KPR Bank Rekanan'
+  };
+  setKeunggulanCount(Math.min(94, unlockedKeunggulanCount + 2), schemeNames[scheme] || 'Skema Pembayaran');
 }
 
 function setTempoTenor(months, btnEl) {
@@ -1480,22 +1569,58 @@ function openQuickModal(type) {
   const body = document.getElementById('modalBody');
 
   if (type === 'cards') {
-    title.textContent = `Rumah Saya (${collectedCards.length}/99 Kartu)`;
+    title.textContent = `99 Keunggulan · Sukoharjo`;
+    const pct = Math.round((unlockedKeunggulanCount / 99) * 100);
+
+    // Collect highlights up to current count
+    const allPointsFlat = [];
+    SURAT_THEMES.forEach((theme) => {
+      theme.points.forEach((p) => {
+        allPointsFlat.push({
+          num: p.num,
+          head: p.head,
+          desc: p.desc,
+          themeTitle: theme.title
+        });
+      });
+    });
+
+    const unlockedList = allPointsFlat.slice(0, unlockedKeunggulanCount);
+
     body.innerHTML = `
-      <p class="room-story" style="margin-bottom:12px;">
-        <strong>Pilihan Ritme:</strong> ${selectedRhythm}
+      <div style="margin-bottom:14px; background: rgba(0,0,0,0.28); padding: 12px 14px; border-radius: 14px; border: 1px solid rgba(229,211,175,0.22);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span style="font-size:10.5px; color:rgba(243,239,230,0.7); text-transform:uppercase; letter-spacing:0.08em; font-weight:700;">Keunggulan Terbuka</span>
+          <strong style="font-size:14px; color:#e5d3af; font-family:var(--font-serif);">${unlockedKeunggulanCount} / 99 Poin (${pct}%)</strong>
+        </div>
+        <div style="width:100%; height:7px; background:rgba(255,255,255,0.1); border-radius:999px; overflow:hidden;">
+          <div style="width:${pct}%; height:100%; background:linear-gradient(90deg, #81c784, #e5d3af); border-radius:999px; transition:width 0.4s ease;"></div>
+        </div>
+      </div>
+
+      <p class="room-story" style="margin-bottom:12px; font-size:11.5px; line-height:1.6;">
+        Setiap bab, ruangan, dan pilihan yang Anda tentukan membuka poin keunggulan autentik dari dokumen resmi The Park Townhouse Sukoharjo.
       </p>
-      <div class="info-list">
-        ${collectedCards
+
+      <div class="info-list" style="max-height: 250px; overflow-y:auto; padding-right:4px;">
+        ${unlockedList
           .map(
-            (c) => `
-          <div class="info-row">
-            <span>${c.title}</span>
-            <strong>#${String(c.id).padStart(2, '0')}</strong>
+            (item) => `
+          <div class="info-row" style="align-items:flex-start; padding:8px 0; border-bottom:1px solid rgba(229,211,175,0.12);">
+            <div style="display:flex; flex-direction:column; gap:2px; flex:1; padding-right:8px;">
+              <strong style="font-size:11.5px; color:#ffffff;">${item.head}</strong>
+              <span style="font-size:10px; color:rgba(243,239,230,0.68); line-height:1.4;">${item.desc}</span>
+            </div>
+            <strong style="font-size:11px; color:#81c784; background:rgba(129,199,132,0.12); padding:2px 6px; border-radius:4px; flex-shrink:0;">#${item.num}</strong>
           </div>`
           )
           .join('')}
       </div>
+
+      <button class="btn-primary-forest" style="margin-top:14px; width:100%;" onclick="closeQuickModal(); finishTourAndExit(); setTimeout(() => switchLandingTab('SuratCinta', document.getElementById('tabBtnSuratCinta')), 250);" type="button">
+        <span>Buka Majalah 99 Keunggulan Lengkap</span>
+        <span>→</span>
+      </button>
     `;
   } else if (type === 'wa') {
     title.textContent = 'Tanya via WhatsApp';
@@ -1943,12 +2068,12 @@ function demoAppAction(actionType) {
   if (!box) return;
 
   const responses = {
-    lock: '🔓 Smart Lock Pintu Utama: Terbuka! (Sensor BLE/IoT mengenali ponsel Anda dalam radius 5 meter)',
-    qr: '🎫 QR Pass Tamu Dibuat: Kode berlaku 6 jam untuk mobil tamu langsung melintas gerbang Avenue Gate',
-    booking: '🏊 Reservasi Slot Berhasil: Sesi Kolam Renang & Gym Clubhouse hari Sabtu jam 08.00 terkonfirmasi',
-    ipl: '🧾 Status Iuran Kawasan (IPL): Lunas untuk bulan berjalan. Detail rincian taman & sekuriti terlampir',
-    maint: '🛠️ Laporan Diterima: Tim estate maintenance akan mengecek kelistrikan unit Anda dalam 2 jam kerja',
-    sos: '🚨 Tombol Darurat (SOS) Aktif: Notifikasi sirine dikirim ke pos sekuriti gerbang utama 24 jam!'
+    lock: '[Smart Lock] Pintu Utama Terbuka — Sensor BLE/IoT mengenali ponsel Anda dalam radius 5 meter.',
+    qr: '[QR Pass Tamu] Kode Akses Diterbitkan — Berlaku 6 jam untuk mobil tamu langsung melintas gerbang Avenue Gate.',
+    booking: '[Reservasi Fasilitas] Slot Berhasil — Sesi Kolam Renang & Gym Clubhouse hari Sabtu jam 08.00 terkonfirmasi.',
+    ipl: '[Iuran Kawasan / IPL] Status Lunas — Tagihan bulan berjalan terverifikasi dengan rincian taman & sekuriti.',
+    maint: '[Laporan Estate] Tiket Diterima — Tim maintenance siap melakukan pengecekan unit dalam 2 jam kerja.',
+    sos: '[Tombol Darurat / SOS] Sinyal Aktif — Notifikasi darurat dan lokasi unit terkirim seketika ke pos jaga 24 jam!'
   };
 
   box.innerHTML = `<span style="color:#e5d3af; font-weight:600;">${responses[actionType] || 'Fitur terhubung ke server kawasan.'}</span>`;
@@ -2914,5 +3039,6 @@ window.addEventListener('DOMContentLoaded', () => {
   setup360Viewer();
   renderSitePlan('nagoya');
   initSuratCintaMagazine();
+  if (cardsCountLabel) cardsCountLabel.textContent = `${unlockedKeunggulanCount}/99`;
   runAfterDelayOpening();
 });
