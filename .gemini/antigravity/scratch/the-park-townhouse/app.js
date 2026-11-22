@@ -3537,7 +3537,14 @@ function selectBerandaLot(lotId, clusterKey) {
   if (tagEl) tagEl.textContent = lot.name;
   if (statusEl) {
     statusEl.textContent = lot.status.toUpperCase();
-    statusEl.style.color = lot.status.includes('Booked') ? '#ffb74d' : '#81c784';
+    const st = lot.status.toLowerCase();
+    if (st.includes('booking') || st.includes('booked')) {
+      statusEl.className = 'kavling-status-badge status-booked';
+    } else if (st.includes('terjual') || st.includes('sold')) {
+      statusEl.className = 'kavling-status-badge status-sold';
+    } else {
+      statusEl.className = 'kavling-status-badge status-available';
+    }
   }
   if (lbEl) lbEl.textContent = cluster === 'osaka' ? '110 m²' : (cluster === 'tokyo' ? '80 m²' : '75 m²');
   if (ltEl) ltEl.textContent = lot.area;
@@ -3546,7 +3553,11 @@ function selectBerandaLot(lotId, clusterKey) {
 }
 
 function orderInspectedLot() {
-  openOrderModal('Klaster ' + (currentBerandaLotCluster || 'nagoya').toUpperCase(), inspectedLotNumber, '650.000.000');
+  const cluster = currentBerandaLotCluster || 'nagoya';
+  const data = SITEPLAN_DATA[cluster] || SITEPLAN_DATA.nagoya;
+  const lot = data.lots.find(l => l.id === inspectedLotNumber) || data.lots[0];
+  const price = lot ? lot.price : 'Rp 650 Juta';
+  openOrderModal('Klaster ' + cluster.toUpperCase(), inspectedLotNumber, price);
 }
 
 /* Investment Simulator Switcher */

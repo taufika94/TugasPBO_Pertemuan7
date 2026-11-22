@@ -1324,25 +1324,38 @@
 
               <!-- Visual Site Plan Map with Clickable Lots -->
               <div class="siteplan-map-container" id="berandaSiteplanMapContainer" style="margin-top: 10px;">
+                <div class="siteplan-compass-badge">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+                    <path d="M12 2L16 11H8L12 2Z" fill="#b39255" />
+                    <path d="M12 22L8 13H16L12 22Z" fill="#718277" />
+                  </svg>
+                  <span>UTARA</span>
+                </div>
                 <img src="assets/drive/siteplan-nagoya.jpg" alt="Site Plan Kawasan" class="siteplan-img" id="berandaSpImg" />
                 <div class="siteplan-lots-overlay" id="berandaSpLotsOverlay">
                   <!-- Dynamically rendered kavling interactive buttons -->
                 </div>
               </div>
 
-              <!-- Kavling Quick Pills Selector -->
-              <div class="kavling-pills-scroll" id="berandaKavlingPillsRow" style="margin-top: 10px;">
-                <!-- Dynamically rendered pills -->
+              <!-- Kavling Quick Selector Label & Scrollable Pills -->
+              <div class="kavling-quick-selector" style="margin-top: 14px;">
+                <div class="kavling-selector-header">
+                  <span class="kavling-selector-label">PILIH NOMOR KAVLING:</span>
+                  <span class="kavling-selector-hint">Ketuk nomor untuk melihat spesifikasi</span>
+                </div>
+                <div class="kavling-pills-scroll" id="berandaKavlingPillsRow">
+                  <!-- Dynamically rendered pills -->
+                </div>
               </div>
 
               <!-- Selected Lot Inspector Card -->
-              <div class="kavling-detail-card" id="berandaLotInspector" style="margin-top: 10px;">
+              <div class="kavling-detail-card" id="berandaLotInspector" style="margin-top: 14px;">
                 <div class="kavling-detail-header">
                   <div>
                     <span class="kavling-label">KAVLING TERPILIH</span>
                     <h4 class="kavling-title" id="inspLotTag">Nagoya B.04</h4>
                   </div>
-                  <span class="kavling-status-badge" id="inspLotStatus">TERSEDIA</span>
+                  <span class="kavling-status-badge status-available" id="inspLotStatus">TERSEDIA</span>
                 </div>
                 <div class="kavling-specs-grid">
                   <div class="kavling-spec-cell">
@@ -1357,12 +1370,12 @@
                     <span>Tipe Bangunan</span>
                     <strong id="inspLotType">Gold (3 KT)</strong>
                   </div>
-                  <div class="kavling-spec-cell">
+                  <div class="kavling-spec-cell price-cell">
                     <span>Harga Cash Keras</span>
-                    <strong id="inspLotPrice" style="color: #c49a45;">Rp 650 Juta</strong>
+                    <strong id="inspLotPrice">Rp 650 Juta</strong>
                   </div>
                 </div>
-                <button type="button" class="btn-primary-forest btn-block" style="margin-top: 12px;" onclick="orderInspectedLot()">
+                <button type="button" class="btn-order-kavling" onclick="orderInspectedLot()">
                   <span>Pesan Kavling Ini Sekarang</span>
                   <span>→</span>
                 </button>

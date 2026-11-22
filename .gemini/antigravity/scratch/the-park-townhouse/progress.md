@@ -446,3 +446,24 @@
   - **Catatan Perjalanan Menuju Pulang**: Replaced sales testimonials with authentic, heartfelt resident reflections on safety, fresh air, low-density peace, and split SHM title certainty.
   - **Final CTA Banner**: Transformed from high-pressure urgency into a thoughtful invitation: *"Menemukan Rumah yang Terasa Tepat untuk Dijalani: Membeli rumah adalah keputusan sakral keluarga. Anda tidak harus merasa terdesak..."* with gentle button *"Mulai Percakapan dengan Mr. Andara"*.
 - **Status**: Completed & Verified.
+
+---
+
+### [2026-11-22] Progress #30: Deluxe Master Plan UI & High-Contrast Japandi Site Plan Polish
+- **Context & Objective**: Address user complaint ("kenapa jelek" in `media_1795325770551_cd28f273.jpg`) regarding washed-out and unstyled elements in the Beranda Master Plan section (`#secMasterPlan`).
+- **Root Cause**:
+  - `.kavling-pill-btn`, `.kavling-detail-card`, and `.siteplan-stats-grid` originally inherited dark-theme rules (`color: rgba(243, 239, 230, 0.85)` and `color: #ffffff`) designed for Room 04, rendering unreadable pale text and invisible lot titles on Beranda's white card background.
+  - `.kavling-specs-grid` and `.kavling-spec-cell` lacked CSS definitions, collapsing lot specifications into unformatted, stacked plain text lines.
+  - The lot reservation CTA button rendered as a pale beige pill without proper luxury styling.
+- **Key Changes Implemented**:
+  - **High-Contrast Scoped Styling (`#secMasterPlan` in `styles.css`)**:
+    - Re-engineered `#secMasterPlan .kavling-pill-btn` with crisp `#16241c` text, `#fbfaf7` background, and `1.5px solid #dcd4c3` borders (min 44x44px touch targets). Active pill features solid `#16241c` background with bold white text.
+    - Implemented `.kavling-specs-grid` as an elegant 2-column card grid with `#ffffff` backgrounds, subtle borders, high-contrast dark forest green values (`#16241c`), and rich gold price accents (`#936e28`).
+    - Styled `#secMasterPlan .kavling-title` with serif typography in dark `#16241c`, making selected lot names crystal clear.
+    - Replaced pale beige button with deluxe full-width `.btn-order-kavling` in deep forest green `#16241c` with white typography, smooth hover elevation, and directional arrow.
+    - Re-styled `#secMasterPlan .siteplan-stats-grid` with warm off-white `#fbfaf7` container, crisp borders, uppercase labels, and dark `#16241c` figures replacing the muddy gray background.
+    - Added floating gold UTARA compass badge over `#berandaSiteplanMapContainer`.
+  - **Dynamic Lot Selection & Status Handlers (`app.js`)**:
+    - Updated `selectBerandaLot` to apply semantic status classes (`status-available`, `status-booked`, `status-sold`).
+    - Enhanced `orderInspectedLot` to pass dynamic lot prices accurately to `openOrderModal`.
+- **Status**: Completed & Verified.
