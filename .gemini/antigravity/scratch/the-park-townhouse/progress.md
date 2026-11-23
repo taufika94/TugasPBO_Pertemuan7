@@ -5575,3 +5575,16 @@
     - Updated `switchLandingTab(tabName, btnEl)`: When `norm === 'Beranda'`, the `.landing-navbar` has its display restored and applies `.is-scrolled` when scrolled past 45px. When switching to any other tab (`SuratCinta`, `SitePlan`, `Fasilitas`, or `Unit`), `.landing-navbar` is immediately assigned `display: none !important;` and `.is-scrolled` is cleared.
     - Updated `initLandingNavbarScrollTrigger()`: Enhanced scroll event listener with an active panel check (`isBerandaActive`). If `#panelBeranda` is not the active tab, the scroll listener suppresses navbar display.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #98: Standardize Frameless Centered Navbar Header in Fasilitas
+- **Context & Objective**: Per user request ("buat ini sebagai navbar di halaman fasilitas" referencing the centered title "Fasilitas" matching the style of "Peta Masterplan Kawasan" in `media_1795470797946_60a3f404.png`), standardize the navbar header across `#panelFasilitas` overview and all 3 detail subpages (Clubhouse, Super App, and Hospitality).
+- **Key Changes Implemented**:
+  - **Shared Header Aesthetics (`styles.css`)**:
+    - Unified `.fasilitas-subpage-header` with `.siteplan-navbar-header` using frameless centered serif typography (`font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: #11332a; letter-spacing: -0.01em;`).
+    - Provided balanced top breathing space (`padding: 12px 2px 4px;`) above the segmented capsule pills bar (`Clubhouse`, `Super App`, `Hospitality`).
+  - **Seamless Navigation Parity**:
+    - Both the main Fasilitas overview and each dedicated subpage present this clean header at the top of the viewport.
+- **Status**: Completed, Verified & Auto-Pushed.
