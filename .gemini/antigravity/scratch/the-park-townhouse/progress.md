@@ -5536,3 +5536,17 @@
   - **Pill Navigation & Responsive Layout**:
     - Inherits the shared `.fasilitas-subpage-pills` segmented capsule design (`max-width: 320px`, rounded 999px, soft cream `#ede6da` track).
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #95: Tidy Action Buttons Layout in Hospitality Hero Card
+- **Context & Objective**: Per user request ("rapikan layoutnya" referencing `.f-cta-btns-row` and uploaded screenshot `media_1795470079889_d599be2f.png`), tidy the action buttons "Titipkan Unit Saya" and "Simulasi Keuntungan" to sit side-by-side in one balanced row instead of breaking awkwardly into stacked, uneven widths.
+- **Key Changes Implemented**:
+  - **Side-by-Side Flex Layout (`styles.css`)**:
+    - Targeted `.f-cta-btns-row` with `display: flex !important; flex-direction: row !important; align-items: center !important; gap: 10px !important; width: 100% !important;`.
+    - Excluded `.f-cta-btns-row` from the mobile media query's `flex-wrap: wrap !important` rule to guarantee unified 1-row presentation on mobile.
+  - **Balanced Button Geometry (`styles.css`)**:
+    - Set `.f-cta-btns-row .btn-primary-forest` and `.f-cta-btns-row .btn-secondary-link` to `flex: 1 1 0 !important; width: auto !important; min-height: 40px !important; height: 40px !important; white-space: nowrap !important;`.
+    - Polished secondary button background (`#ffffff !important`), subtle border (`#d4cdc0 !important`), and dark forest green typography (`#11332a !important`).
+- **Status**: Completed, Verified & Auto-Pushed.

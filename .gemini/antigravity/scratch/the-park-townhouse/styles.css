@@ -7964,10 +7964,35 @@ transition: all 0.2s ease;
 }
 
 .f-cta-btns-row {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 10px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.f-cta-btns-row .btn-primary-forest,
+.f-cta-btns-row .btn-secondary-link {
+  flex: 1 1 0 !important;
+  width: auto !important;
+  min-height: 40px !important;
+  height: 40px !important;
+  padding: 0 12px !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+}
+
+.f-cta-btns-row .btn-secondary-link {
+  background: #ffffff !important;
+  border: 1px solid #d4cdc0 !important;
+  color: #11332a !important;
+  border-radius: 8px !important;
 }
 
 /* Super App Triptych */
@@ -12864,14 +12889,15 @@ transition: all 0.2s ease;
       }
 
       /* Auto-wrap and auto-hug for responsive badge & button groups */
-      .f-cta-btns-row,
       .f-badge-pills-row,
-      .cluster-pill-tabs,
+      .cluster-pill-tabs:not(#berandaShowcaseClusterTabs),
       .theme-chips-scroll,
       .unit-filter-pills {
         display: flex !important;
         flex-wrap: wrap !important;
         align-items: center !important;
         gap: 8px !important;
+        height: auto !important;
+      }
         height: auto !important;
       }
