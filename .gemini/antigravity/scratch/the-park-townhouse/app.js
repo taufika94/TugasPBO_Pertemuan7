@@ -2794,7 +2794,7 @@ function getCategoryIconSvg(iconType) {
   }
 }
 
-function setupLeafletMap(containerId, isModal) {
+function setupLeafletMap(containerId, isModal, isBeranda = false) {
   if (typeof L === 'undefined') return null;
   const container = document.getElementById(containerId);
   if (!container) return null;
@@ -2844,7 +2844,7 @@ function setupLeafletMap(containerId, isModal) {
 
   if (isModal) {
     modalCircleLayers = [circle3, circle2, circle1];
-  } else {
+  } else if (!isBeranda) {
     mapCircleLayers = [circle3, circle2, circle1];
   }
 
@@ -2865,7 +2865,7 @@ function setupLeafletMap(containerId, isModal) {
       iconType: 'cluster',
       desc: 'Kawasan townhouse 2 lantai bergaya modern Japandi di lokasi paling strategis Sukoharjo, dilengkapi fasilitas one gate system dan keamanan 24 jam.',
       sellingPoint: 'Akses cepat ke seluruh sentra kota, tetap tenang dan asri untuk pulang.'
-    }, isModal);
+    }, isModal, isBeranda);
   });
 
   const clusterIcon = (name, tag) => L.divIcon({
@@ -2878,7 +2878,7 @@ function setupLeafletMap(containerId, isModal) {
   MAP_CLUSTERS.forEach((c) => {
     const marker = L.marker(c.latLng, { icon: clusterIcon(c.short, c.tag) }).addTo(map);
     marker.on('click', () => {
-      openLocationCard(c, isModal);
+      openLocationCard(c, isModal, isBeranda);
       map.panTo(c.latLng, { animate: true, duration: 0.5 });
     });
   });
@@ -2893,14 +2893,14 @@ function setupLeafletMap(containerId, isModal) {
   MAP_FACILITIES.forEach((f) => {
     const marker = L.marker(f.latLng, { icon: facilityIcon(f) }).addTo(map);
     marker.on('click', () => {
-      openFacilityDetail(f.id);
+      openFacilityDetail(f.id, null, isBeranda);
     });
   });
 
   MAP_EXTRA_SPOTS.forEach((s) => {
     const marker = L.marker(s.latLng, { icon: facilityIcon(s) }).addTo(map);
     marker.on('click', () => {
-      openFacilityDetail(s.id);
+      openFacilityDetail(s.id, null, isBeranda);
     });
   });
 
@@ -2909,7 +2909,7 @@ function setupLeafletMap(containerId, isModal) {
     if (isModal) {
       closeModalLocationCard();
     } else {
-      closeLocationCard();
+      closeLocationCard(false, isBeranda);
     }
   });
 
@@ -2981,17 +2981,25 @@ function focusCluster(clusterKey, btnEl) {
   }
 }
 
-function openLocationCard(item, isModal) {
-  const cardId = isModal ? 'modalLocationCard' : 'mapLocationCard';
+function openLocationCard(item, isModal = false, isBeranda = false) {
+  let cardId = 'mapLocationCard';
+  let prefix = 'mapCard';
+  if (isBeranda) {
+    cardId = 'berandaLocationCard';
+    prefix = 'berandaCard';
+  } else if (isModal) {
+    cardId = 'modalLocationCard';
+    prefix = 'modalCard';
+  }
   const card = document.getElementById(cardId);
   if (!card) return;
 
-  const categoryEl = document.getElementById(isModal ? 'modalCardCategory' : 'mapCardCategory');
-  const distTextEl = document.getElementById(isModal ? 'modalCardDistanceText' : 'mapCardDistanceText');
-  const iconBadgeEl = document.getElementById(isModal ? 'modalCardIconBadge' : 'mapCardIconBadge');
-  const titleEl = document.getElementById(isModal ? 'modalCardTitle' : 'mapCardTitle');
-  const descEl = document.getElementById(isModal ? 'modalCardDesc' : 'mapCardDesc');
-  const sellingTextEl = document.getElementById(isModal ? 'modalCardSellingPointText' : 'mapCardSellingPointText');
+  const categoryEl = document.getElementById(`${prefix}Category`);
+  const distTextEl = document.getElementById(`${prefix}DistanceText`);
+  const iconBadgeEl = document.getElementById(`${prefix}IconBadge`);
+  const titleEl = document.getElementById(`${prefix}Title`);
+  const descEl = document.getElementById(`${prefix}Desc`);
+  const sellingTextEl = document.getElementById(`${prefix}SellingPointText`);
 
   if (categoryEl) categoryEl.textContent = item.category || 'FASILITAS';
   if (distTextEl) {
@@ -3008,18 +3016,21 @@ function openLocationCard(item, isModal) {
   card.setAttribute('aria-hidden', 'false');
 }
 
-function closeLocationCard() {
-  const card = document.getElementById('mapLocationCard');
+function closeLocationCard(isModal = false, isBeranda = false) {
+  const cardId = isBeranda ? 'berandaLocationCard' : (isModal ? 'modalLocationCard' : 'mapLocationCard');
+  const card = document.getElementById(cardId);
   if (card) {
     card.classList.remove('is-visible');
     card.setAttribute('aria-hidden', 'true');
   }
-  document.querySelectorAll('.dist-chip').forEach((b) => b.classList.remove('is-active'));
-  document.querySelectorAll('.facility-pin-divicon').forEach((pin) => {
-    pin.classList.remove('is-active-pin');
-  });
-  if (parkMap) {
-    parkMap.flyTo(SUKOHARJO_CENTER, 14, { animate: true, duration: 0.6 });
+  const chipsContainerId = isBeranda ? 'berandaDistanceChipsContainer' : 'distanceChipsContainer';
+  const chipsContainer = document.getElementById(chipsContainerId);
+  if (chipsContainer) {
+    chipsContainer.querySelectorAll('.dist-chip').forEach((b) => b.classList.remove('is-active'));
+  }
+  const activeMap = isBeranda ? berandaLeafletMapInstance : parkMap;
+  if (activeMap) {
+    activeMap.flyTo(SUKOHARJO_CENTER, 14, { animate: true, duration: 0.6 });
   }
 }
 
@@ -3031,15 +3042,18 @@ function closeModalLocationCard() {
   }
 }
 
-function openFacilityDetail(id, btnEl) {
+function openFacilityDetail(id, btnEl, isBeranda = false) {
   const allList = [...MAP_FACILITIES, ...MAP_EXTRA_SPOTS, ...MAP_CLUSTERS];
   const item = allList.find((f) => f.id === id);
   if (!item) return;
 
-  // 1. Highlight clicked chip & smooth scroll strictly within chips container (prevents window horizontal shift)
-  document.querySelectorAll('.dist-chip').forEach((b) => b.classList.remove('is-active'));
-  const targetChip = btnEl || document.querySelector(`.dist-chip[data-facility="${id}"]`);
-  const chipsContainer = document.getElementById('distanceChipsContainer');
+  // 1. Highlight clicked chip & smooth scroll strictly within chips container
+  const chipsContainerId = isBeranda ? 'berandaDistanceChipsContainer' : 'distanceChipsContainer';
+  const chipsContainer = document.getElementById(chipsContainerId);
+  if (chipsContainer) {
+    chipsContainer.querySelectorAll('.dist-chip').forEach((b) => b.classList.remove('is-active'));
+  }
+  const targetChip = btnEl || (chipsContainer && chipsContainer.querySelector(`.dist-chip[data-facility="${id}"]`));
   if (targetChip) {
     targetChip.classList.add('is-active');
     if (chipsContainer) {
@@ -3048,24 +3062,28 @@ function openFacilityDetail(id, btnEl) {
     }
   }
 
-  // 2. Fly smoothly to target spot (slight south offset keeps pin visible above compact bottom card)
-  if (parkMap) {
+  // 2. Fly smoothly to target spot
+  const activeMap = isBeranda ? berandaLeafletMapInstance : parkMap;
+  if (activeMap) {
     const latOffset = item.latLng[0] - 0.0022;
     const targetZoom = item.distance > 5 ? 14.5 : 15.5;
-    parkMap.flyTo([latOffset, item.latLng[1]], targetZoom, { animate: true, duration: 0.8 });
+    activeMap.flyTo([latOffset, item.latLng[1]], targetZoom, { animate: true, duration: 0.8 });
   }
 
-  // 3. Highlight pin on map
-  document.querySelectorAll('.facility-pin-divicon').forEach((pin) => {
-    pin.classList.remove('is-active-pin');
-  });
-  const activePinEl = document.querySelector(`.facility-pin-divicon[data-id="${id}"]`);
-  if (activePinEl) {
-    activePinEl.classList.add('is-active-pin');
+  // 3. Highlight pin on active map container
+  const rootContainer = isBeranda ? document.getElementById('berandaMapVisualCard') : document.getElementById('mapVisualCard');
+  if (rootContainer) {
+    rootContainer.querySelectorAll('.facility-pin-divicon').forEach((pin) => {
+      pin.classList.remove('is-active-pin');
+    });
+    const activePinEl = rootContainer.querySelector(`.facility-pin-divicon[data-id="${id}"]`);
+    if (activePinEl) {
+      activePinEl.classList.add('is-active-pin');
+    }
   }
 
   // 4. Open location detail card
-  openLocationCard(item, false);
+  openLocationCard(item, false, isBeranda);
 }
 
 function renderFacilityItems() {
@@ -4024,310 +4042,22 @@ function initBerandaLeafletMap() {
   const mapEl = document.getElementById('berandaLeafletMap');
   if (!mapEl || berandaLeafletMapInstance) return;
 
-  const defaultCenter = [-7.6815, 110.8410];
-  berandaLeafletMapInstance = L.map('berandaLeafletMap', {
-    center: defaultCenter,
-    zoom: 13.6,
-    scrollWheelZoom: false,
-    zoomControl: false,
-    attributionControl: true
-  });
-
-  // Top-right zoom control
-  L.control.zoom({ position: 'topright' }).addTo(berandaLeafletMapInstance);
-
-  // Esri World Street Map tile layer
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.esri.com/">Esri</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(berandaLeafletMapInstance);
-
-  // Dynamic green radius circle
-  berandaSearchRadiusLayer = L.circle(defaultCenter, {
-    radius: currentBerandaSearchRadius,
-    color: '#2e7d32',
-    weight: 2,
-    fillColor: '#a5d6a7',
-    fillOpacity: 0.14
-  }).addTo(berandaLeafletMapInstance);
-
-  // Center Home marker with green pulse ring
-  const centerHomeIcon = L.divIcon({
-    className: 'custom-center-home-pin',
-    html: `<div class="map-center-home-marker">
-             <div class="map-center-home-pulse"></div>
-             <div class="map-center-home-circle">
-               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#ffffff" stroke-width="2.2">
-                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                 <polyline points="9 22 9 12 15 12 15 22"/>
-               </svg>
-             </div>
-           </div>`,
-    iconSize: [36, 36],
-    iconAnchor: [18, 18]
-  });
-  L.marker(defaultCenter, { icon: centerHomeIcon }).addTo(berandaLeafletMapInstance)
-    .bindPopup('<b>The Park Townhouse Sukoharjo</b><br>Kawasan Japandi Modern · Jl. Jenderal Sudirman');
-
-  // Cluster Pill Markers (Geographically separated in distinct sectors)
-  const clusterPins = [
-    { name: 'Osaka', type: 'Gold', coords: [-7.6730, 110.8435] },
-    { name: 'Nagoya', type: 'Diamond', coords: [-7.6815, 110.8490] },
-    { name: 'Tokyo', type: 'Emerald', coords: [-7.6815, 110.8330] }
-  ];
-  clusterPins.forEach(c => {
-    const icon = L.divIcon({
-      className: 'custom-cluster-marker',
-      html: `<div class="map-cluster-pill" onclick="switchLandingTab('unit')"><span class="pill-dot"></span><span class="pill-name">${c.name}</span><span class="pill-type">${c.type}</span></div>`,
-      iconSize: [84, 24],
-      iconAnchor: [42, 12]
-    });
-    L.marker(c.coords, { icon: icon }).addTo(berandaLeafletMapInstance)
-      .bindPopup(`<b>Klaster ${c.name}</b> · Tipe ${c.type}`);
-  });
-
-  // Facility Pill Markers (Dispersed in distinct quadrants to avoid collision)
-  const facilityPins = [
-    {
-      name: 'RSUD',
-      coords: [-7.6855, 110.8410],
-      iconSvg: '<svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M19 10.5h-5.5V5h-3v5.5H5v3h5.5V19h3v-5.5H19v-3z"/></svg>'
-    },
-    {
-      name: 'SMAN 1',
-      coords: [-7.6870, 110.8465],
-      iconSvg: '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>'
-    },
-    {
-      name: 'Alun-Alun',
-      coords: [-7.6865, 110.8355],
-      iconSvg: '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 10v11M19 10v11M9 10v11M15 10v11M12 2l10 8H2z"/></svg>'
-    },
-    {
-      name: 'Stasiun',
-      coords: [-7.6930, 110.8380],
-      iconSvg: '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="16" rx="2"/><line x1="4" y1="11" x2="20" y2="11"/><line x1="8" y1="15" x2="8.01" y2="15"/><line x1="16" y1="15" x2="16.01" y2="15"/></svg>'
-    }
-  ];
-  facilityPins.forEach(f => {
-    const icon = L.divIcon({
-      className: 'custom-facility-marker',
-      html: `<div class="map-facility-pill">${f.iconSvg}<span>${f.name}</span></div>`,
-      iconSize: [76, 22],
-      iconAnchor: [38, 11]
-    });
-    L.marker(f.coords, { icon: icon }).addTo(berandaLeafletMapInstance)
-      .bindPopup(`<b>${f.name} Sukoharjo</b>`);
-  });
-
-  renderBerandaPoiList();
-  renderBerandaMasterplanSiteplan('nagoya');
-  updateBerandaRadiusAnalysis(3000);
-}
-
-function updateBerandaRadiusAnalysis(radiusMeters) {
-  const badgeEl = document.getElementById('berandaActiveRadiusBadge');
-  const headlineEl = document.getElementById('berandaFacilitiesCountHeadline');
-
-  let radiusLabel = `${radiusMeters} m`;
-  if (radiusMeters >= 1000) {
-    radiusLabel = `${radiusMeters / 1000} km`;
-  }
-  if (badgeEl) badgeEl.textContent = radiusLabel;
-
-  const keyFacilities = [
-    { name: 'Gelora Merdeka', dist: 100 },
-    { name: 'Masjid Al-Hidayah', dist: 700 },
-    { name: 'SMKN 1', dist: 750 },
-    { name: 'Alun-Alun Kota', dist: 1700 },
-    { name: 'RSUD IR Soekarno', dist: 2300 },
-    { name: 'Stasiun Kereta', dist: 3200 }
-  ];
-  const reachableCount = keyFacilities.filter(f => f.dist <= radiusMeters).length;
-  if (headlineEl) {
-    headlineEl.textContent = `${reachableCount} dari 6 fasilitas`;
-  }
-
-  if (berandaSearchRadiusLayer) {
-    berandaSearchRadiusLayer.setRadius(radiusMeters);
-  }
-}
-
-function setBerandaSearchRadius(radiusMeters, btnEl) {
-  currentBerandaSearchRadius = radiusMeters;
-  if (btnEl && btnEl.parentElement) {
-    btnEl.parentElement.querySelectorAll('.radius-filter-pill').forEach(p => p.classList.remove('is-active'));
-    btnEl.classList.add('is-active');
-  }
-
-  updateBerandaRadiusAnalysis(radiusMeters);
-
-  const defaultCenter = [-7.6815, 110.8410];
+  berandaLeafletMapInstance = setupLeafletMap('berandaLeafletMap', false, true);
   if (berandaLeafletMapInstance) {
-    let zoomLevel = 13.6;
-    if (radiusMeters <= 500) zoomLevel = 16;
-    else if (radiusMeters <= 1000) zoomLevel = 15;
-    else if (radiusMeters <= 3000) zoomLevel = 13.6;
-    else if (radiusMeters <= 5000) zoomLevel = 12.8;
-    else if (radiusMeters <= 10000) zoomLevel = 11.6;
-    else zoomLevel = 10.5;
-
-    berandaLeafletMapInstance.flyTo(defaultCenter, zoomLevel, { animate: true, duration: 0.6 });
+    setTimeout(() => {
+      berandaLeafletMapInstance.invalidateSize();
+    }, 250);
   }
 }
 
-function focusBerandaCluster(clusterKey, btnEl) {
-  if (btnEl && btnEl.parentElement) {
-    btnEl.parentElement.querySelectorAll('.cluster-focus-pill').forEach(p => p.classList.remove('is-active'));
-    btnEl.classList.add('is-active');
-  }
-
-  if (!berandaLeafletMapInstance) return;
-
-  if (clusterKey === 'nagoya') {
-    berandaLeafletMapInstance.flyTo([-7.6815, 110.8490], 15, { animate: true, duration: 0.7 });
-  } else if (clusterKey === 'osaka') {
-    berandaLeafletMapInstance.flyTo([-7.6730, 110.8435], 15, { animate: true, duration: 0.7 });
-  } else if (clusterKey === 'tokyo') {
-    berandaLeafletMapInstance.flyTo([-7.6815, 110.8330], 15, { animate: true, duration: 0.7 });
-  } else {
-    berandaLeafletMapInstance.flyTo([-7.6815, 110.8410], 13.6, { animate: true, duration: 0.7 });
-  }
-}
-
-function filterBerandaCircle(circleNum, btnEl) {
-  currentBerandaCircleFilter = circleNum;
-  if (btnEl && btnEl.parentElement) {
-    btnEl.parentElement.querySelectorAll('.circle-chip').forEach(c => c.classList.remove('is-active'));
-    btnEl.classList.add('is-active');
-  }
-
-  const defaultCenter = [-7.6815, 110.8410];
-  if (berandaLeafletMapInstance) {
-    if (circleNum === 1) {
-      berandaLeafletMapInstance.flyTo(defaultCenter, 15.2, { animate: true, duration: 0.7 });
-      if (berandaCircle1Layer) berandaCircle1Layer.setStyle({ weight: 3.5, fillOpacity: 0.25 });
-      if (berandaCircle2Layer) berandaCircle2Layer.setStyle({ weight: 1.2, fillOpacity: 0.05 });
-      if (berandaCircle3Layer) berandaCircle3Layer.setStyle({ weight: 1, fillOpacity: 0.03 });
-    } else if (circleNum === 2) {
-      berandaLeafletMapInstance.flyTo(defaultCenter, 14, { animate: true, duration: 0.7 });
-      if (berandaCircle1Layer) berandaCircle1Layer.setStyle({ weight: 1.5, fillOpacity: 0.12 });
-      if (berandaCircle2Layer) berandaCircle2Layer.setStyle({ weight: 3.5, fillOpacity: 0.22 });
-      if (berandaCircle3Layer) berandaCircle3Layer.setStyle({ weight: 1, fillOpacity: 0.04 });
-    } else if (circleNum === 3) {
-      berandaLeafletMapInstance.flyTo(defaultCenter, 12.8, { animate: true, duration: 0.7 });
-      if (berandaCircle1Layer) berandaCircle1Layer.setStyle({ weight: 1, fillOpacity: 0.08 });
-      if (berandaCircle2Layer) berandaCircle2Layer.setStyle({ weight: 1.5, fillOpacity: 0.10 });
-      if (berandaCircle3Layer) berandaCircle3Layer.setStyle({ weight: 3.5, fillOpacity: 0.18 });
-    } else {
-      berandaLeafletMapInstance.flyTo(defaultCenter, 13.6, { animate: true, duration: 0.7 });
-      if (berandaCircle1Layer) berandaCircle1Layer.setStyle({ weight: 2, fillOpacity: 0.16 });
-      if (berandaCircle2Layer) berandaCircle2Layer.setStyle({ weight: 2, fillOpacity: 0.12 });
-      if (berandaCircle3Layer) berandaCircle3Layer.setStyle({ weight: 2, fillOpacity: 0.08 });
-    }
-  }
-
-  renderBerandaPoiList();
-}
-
-function renderBerandaPoiList() {
-  const container = document.getElementById('berandaPoiList');
-  if (!container) return;
-
-  // Clear existing markers
-  if (berandaLeafletMapInstance) {
-    berandaPoiMarkers.forEach(m => berandaLeafletMapInstance.removeLayer(m));
-    berandaPoiMarkers = [];
-  }
-
-  container.innerHTML = '';
-  const filtered = BERANDA_POIS.filter(poi => {
-    const matchCat = (currentBerandaPoiFilter === 'Semua' || poi.cat === currentBerandaPoiFilter);
-    const matchCircle = (currentBerandaCircleFilter === 'all' || poi.circle === currentBerandaCircleFilter);
-    return matchCat && matchCircle;
-  });
-
-  filtered.forEach((poi) => {
-    const card = document.createElement('div');
-    card.className = 'poi-interactive-card';
-    card.onclick = () => focusBerandaPOI(BERANDA_POIS.indexOf(poi));
-    const distText = activeBerandaCluster === 'nagoya'
-      ? poi.distNagoya + ' (Nagoya)'
-      : poi.distOthers + ' (' + activeBerandaCluster.toUpperCase() + ')';
-
-    card.innerHTML =
-      '<div class="poi-card-left">' +
-      '<div class="poi-card-name">' + poi.name + '</div>' +
-      '<div class="poi-card-meta">' +
-      '<span class="poi-dist-chip">' + distText + '</span>' +
-      '<span class="poi-circle-chip c' + poi.circle + '">Circle ' + poi.circle + '</span>' +
-      '<span class="poi-badge-cat">' + poi.cat + '</span>' +
-      '</div>' +
-      '</div>' +
-      '<div style="font-size:11px;color:#c49a45;font-weight:700;">📍</div>';
-    container.appendChild(card);
-
-    // Add marker to map with color based on circle (skip primary facility pins to prevent duplication)
-    if (berandaLeafletMapInstance && poi.coords) {
-      const isPrimaryFacility = ['RSUD', 'Alun-Alun', 'Stasiun'].some(name => poi.name.includes(name));
-      if (!isPrimaryFacility) {
-        const pinColor = poi.circle === 1 ? '#b48a3c' : (poi.circle === 2 ? '#2e7d32' : '#1d5138');
-        const marker = L.circleMarker(poi.coords, {
-          radius: 5,
-          fillColor: pinColor,
-          color: '#ffffff',
-          weight: 1.5,
-          fillOpacity: 0.92
-        }).addTo(berandaLeafletMapInstance);
-
-        marker.bindPopup('<b>' + poi.name + '</b><br><span style="font-size:11px;color:#8a7b62;font-weight:700;">Circle ' + poi.circle + ' (' + (poi.circle === 1 ? '≤ 1 km' : (poi.circle === 2 ? '1–2.5 km' : '2.5–4.5 km')) + ')</span><br>Kategori: ' + poi.cat + '<br>Jarak: ' + distText);
-        berandaPoiMarkers.push(marker);
-      }
-    }
-  });
-}
-
-function filterBerandaPOI(category, btnEl) {
-  currentBerandaPoiFilter = category;
-  if (btnEl && btnEl.parentElement) {
-    btnEl.parentElement.querySelectorAll('.poi-cat-chip').forEach(c => c.classList.remove('is-active'));
-    btnEl.classList.add('is-active');
-  }
-  renderBerandaPoiList();
-}
-
-function focusBerandaPOI(poiIndex) {
-  const poi = BERANDA_POIS[poiIndex];
-  if (!poi || !berandaLeafletMapInstance) return;
-
-  berandaLeafletMapInstance.flyTo(poi.coords, 16, { animate: true, duration: 0.8 });
-  const marker = berandaPoiMarkers.find(m => {
-    const latLng = m.getLatLng();
-    return Math.abs(latLng.lat - poi.coords[0]) < 0.0001 && Math.abs(latLng.lng - poi.coords[1]) < 0.0001;
-  });
-  if (marker) {
-    marker.openPopup();
-  }
-}
-
-function switchBerandaClusterMap(clusterKey, btnEl) {
-  activeBerandaCluster = clusterKey;
-  if (btnEl && btnEl.parentElement) {
-    btnEl.parentElement.querySelectorAll('.cluster-pill-btn').forEach(b => b.classList.remove('is-active'));
-    btnEl.classList.add('is-active');
-  }
-
-  const coords = {
-    nagoya: [-7.673895, 110.843978],
-    osaka: [-7.6720, 110.8415],
-    tokyo: [-7.6715, 110.8410]
-  };
-
-  if (berandaLeafletMapInstance && coords[clusterKey]) {
-    berandaLeafletMapInstance.flyTo(coords[clusterKey], 15, { animate: true, duration: 0.8 });
-  }
-  renderBerandaPoiList();
-}
+function updateBerandaRadiusAnalysis() {}
+function setBerandaSearchRadius() {}
+function focusBerandaCluster() {}
+function filterBerandaCircle() {}
+function renderBerandaPoiList() {}
+function filterBerandaPOI() {}
+function focusBerandaPOI() {}
+function switchBerandaClusterMap() {}
 
 /* Master Plan Lot Grid Controller */
 let currentBerandaLotCluster = 'nagoya';

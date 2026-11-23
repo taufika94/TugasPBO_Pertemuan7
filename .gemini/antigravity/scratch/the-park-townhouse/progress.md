@@ -5290,3 +5290,20 @@
     - Filtered out duplicate POI circle markers from `BERANDA_POIS` so primary facilities are not rendered twice.
     - Dispersed `BERANDA_POIS` coordinates across Sukoharjo to prevent point bunching.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-23] Progress #81: Synchronize Beranda Leaflet Map Display & Behavior Identically to Ruang Peta (Room 03)
+- **Context & Objective**: Per user request ("buat tampilannya agar sama dengan ruang peta"), completely align the Beranda tab map section with `ROOM 03 · RUANG PETA` (`#room-3`).
+- **Key Changes Implemented**:
+  - **HTML Structure Unification (`index.html`)**:
+    - Removed extraneous `.beranda-radius-analysis-card`, `.poi-category-bar`, and `.poi-interactive-list`.
+    - Integrated `.map-visual-card.is-hero-tall` with `#berandaLeafletMap`, `.map-scroll-hint-pill`, and interactive `.map-location-card` (`#berandaLocationCard`).
+    - Added the exact horizontal `.distance-chips` row (`Sudirman 1 mnt`, `Gelora Merdeka 2 mnt`, `Alun-Alun 3 mnt`, `SMAN 1 5 mnt`, `RSUD Soekarno 6 mnt`, `Stasiun 7 mnt`, `RS Indriati 12 mnt`, `Pakuwon Mall 14 mnt`).
+  - **CSS Styling Integration (`styles.css`)**:
+    - Added bespoke light-theme styling for `.landing-section-card .dist-chip` with clean forest green active state (`#11332a`) and warm gold text (`#dfb96d`).
+  - **Shared Engine & Interactive Behavior (`app.js`)**:
+    - Re-wired `initBerandaLeafletMap()` to instantiate via `setupLeafletMap('berandaLeafletMap', false, true)`, rendering the exact concentric circles (Circle 1: 1000m, Circle 2: 2500m, Circle 3: 4500m), `.center-home-divicon`, `.cluster-pill-divicon`, and `.facility-pin-divicon`.
+    - Extended `openFacilityDetail` and `openLocationCard` to dynamically update `#berandaLocationCard` and smooth-pan `berandaLeafletMapInstance`.
+- **Status**: Completed, Verified & Auto-Pushed.
