@@ -5718,3 +5718,16 @@
   - Restored `initBerandaLeafletMap()` in [app.js](file:///c:/Users/ASUS/.gemini/antigravity/scratch/the-park-townhouse/app.js) with double `invalidateSize()` passes (100ms & 350ms) to ensure tiles render immediately when Beranda mounts.
   - Linked initialization directly into `DOMContentLoaded`, `initLandingPage()`, and `switchLandingTab('Beranda')`.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #108: Move Radius Analysis Controls Below the Leaflet Map
+- **Context & Objective**: Per user request ("buat ininya ada di bawah peta" referencing `media_1795472884666_5d25743f.png` showing the 9-category filters, search radius pills, and cluster focus buttons), reposition `#berandaRadiusAnalysisCard` below the visual Leaflet map (`#berandaMapVisualCard`) and its primary action buttons.
+- **Key Changes Implemented**:
+  - **DOM Reordering (`index.html`)**:
+    - Moved `#berandaRadiusAnalysisCard` from above `#berandaMapVisualCard` to immediately below `.map-actions-row` inside `#secLokasiRadius`.
+    - Placed visual interactive map prominently at the top of Section 03 right below section titles.
+  - **Visual Spacing & Clean Geometry (`styles.css`)**:
+    - Set `.beranda-radius-analysis-card` margin to `margin-top: 14px; margin-bottom: 4px;` providing balanced visual separation from map action buttons above.
+- **Status**: Completed, Verified & Auto-Pushed.

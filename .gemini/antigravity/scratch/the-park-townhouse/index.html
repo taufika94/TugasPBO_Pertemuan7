@@ -1310,6 +1310,112 @@
                 <p class="section-card-sub">Tepat di koridor emas Jl. Jenderal Sudirman. Sentuh penanda lokasi untuk menjelajahi jarak tempuh dan keunggulan konektivitas kawasan.</p>
               </div>
 
+              <!-- Interactive Leaflet Map Visual Card (Sama Persis dengan Ruang Peta) -->
+              <div class="map-visual-card is-hero-tall" id="berandaMapVisualCard">
+                <div id="berandaLeafletMap" class="park-leaflet-map"></div>
+
+                <!-- Scroll Hint Pill -->
+                <div class="map-scroll-hint-pill">
+                  <span class="hint-bullet">●</span>
+                  <span>Klik peta untuk zoom dengan scroll</span>
+                </div>
+
+                <!-- Interactive Detail Card Modal -->
+                <div class="map-location-card" id="berandaLocationCard" aria-hidden="true">
+                  <button class="map-card-close" onclick="closeLocationCard(false, true)" type="button" aria-label="Tutup info lokasi">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2">
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                  </button>
+
+                  <div class="map-card-category-row">
+                    <span class="map-card-category" id="berandaCardCategory">PEMERINTAHAN</span>
+                    <span class="map-card-time-badge" id="berandaCardTimeBadge">
+                      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <path d="M7 17l9.2-9.2M17 17V7H7" />
+                      </svg>
+                      <span id="berandaCardDistanceText">~3.2 km · 8 mnt berkendara</span>
+                    </span>
+                  </div>
+
+                  <div class="map-card-main-row">
+                    <div class="map-card-icon-badge" id="berandaCardIconBadge">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <line x1="3" y1="22" x2="21" y2="22" />
+                        <line x1="6" y1="18" x2="6" y2="11" />
+                        <line x1="10" y1="18" x2="10" y2="11" />
+                        <line x1="14" y1="18" x2="14" y2="11" />
+                        <line x1="18" y1="18" x2="18" y2="11" />
+                        <polygon points="12 2 20 7 4 7" />
+                      </svg>
+                    </div>
+                    <h3 class="map-card-title" id="berandaCardTitle">Alun-Alun Satya Negara</h3>
+                  </div>
+
+                  <p class="map-card-desc" id="berandaCardDesc">
+                    Pusat ruang terbuka publik, area olahraga pagi, kuliner malam, sekaligus kompleks Pemkab Sukoharjo.
+                  </p>
+
+                  <div class="map-card-selling-point">
+                    <svg class="map-card-pin-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#2e7d32"
+                      stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    <div class="map-card-selling-text" id="berandaCardSellingPointText">
+                      <strong>Nilai jual:</strong> Dekat pusat layanan sipil daerah &amp; ruang rekreasi keluarga akhir
+                      pekan.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Distance Chips Row (Sama Persis dengan Ruang Peta) -->
+              <div class="distance-chips" id="berandaDistanceChipsContainer" aria-label="Pilihan lokasi fasilitas terdekat">
+                <button class="dist-chip is-active" data-facility="sudirman" onclick="openFacilityDetail('sudirman', this, true)"
+                  type="button">
+                  Sudirman <strong>1 mnt</strong>
+                </button>
+                <button class="dist-chip" data-facility="gelora" onclick="openFacilityDetail('gelora', this, true)"
+                  type="button">
+                  Gelora Merdeka <strong>2 mnt</strong>
+                </button>
+                <button class="dist-chip" data-facility="alun-alun" onclick="openFacilityDetail('alun-alun', this, true)"
+                  type="button">
+                  Alun-Alun <strong>3 mnt</strong>
+                </button>
+                <button class="dist-chip" data-facility="sman1" onclick="openFacilityDetail('sman1', this, true)" type="button">
+                  SMAN 1 <strong>5 mnt</strong>
+                </button>
+                <button class="dist-chip" data-facility="rsud" onclick="openFacilityDetail('rsud', this, true)" type="button">
+                  RSUD Soekarno <strong>6 mnt</strong>
+                </button>
+                <button class="dist-chip" data-facility="stasiun" onclick="openFacilityDetail('stasiun', this, true)"
+                  type="button">
+                  Stasiun <strong>7 mnt</strong>
+                </button>
+                <button class="dist-chip" data-facility="rs-indriati" onclick="openFacilityDetail('rs-indriati', this, true)"
+                  type="button">
+                  RS Indriati <strong>12 mnt</strong>
+                </button>
+                <button class="dist-chip" data-facility="pakuwon" onclick="openFacilityDetail('pakuwon', this, true)"
+                  type="button">
+                  Pakuwon Mall <strong>14 mnt</strong>
+                </button>
+              </div>
+
+              <!-- Map Quick Actions -->
+              <div class="map-actions-row">
+                <a href="https://www.google.com/maps/search/?api=1&query=-7.673895340749299,110.84397890839111"
+                  target="_blank" rel="noopener noreferrer" class="btn-secondary-link">
+                  <span>Buka di Google Maps</span>
+                </a>
+                <button type="button" class="btn-primary-forest" onclick="switchLandingTab('suratcinta')">
+                  <span>99 Alasan Lokasi Ini Sempurna</span>
+                </button>
+              </div>
+
               <!-- Analisis Radius Aktif Card (Sesuai Spesifikasi Desain Mockup) -->
               <div class="beranda-radius-analysis-card" id="berandaRadiusAnalysisCard">
                 <!-- Top Header: Eyebrow + Active Radius Pill -->
@@ -1428,112 +1534,6 @@
                     <button type="button" class="analysis-cluster-btn" onclick="focusBerandaCluster('tokyo', this)">Tokyo</button>
                   </div>
                 </div>
-              </div>
-
-              <!-- Interactive Leaflet Map Visual Card (Sama Persis dengan Ruang Peta) -->
-              <div class="map-visual-card is-hero-tall" id="berandaMapVisualCard">
-                <div id="berandaLeafletMap" class="park-leaflet-map"></div>
-
-                <!-- Scroll Hint Pill -->
-                <div class="map-scroll-hint-pill">
-                  <span class="hint-bullet">●</span>
-                  <span>Klik peta untuk zoom dengan scroll</span>
-                </div>
-
-                <!-- Interactive Detail Card Modal -->
-                <div class="map-location-card" id="berandaLocationCard" aria-hidden="true">
-                  <button class="map-card-close" onclick="closeLocationCard(false, true)" type="button" aria-label="Tutup info lokasi">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2">
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                  </button>
-
-                  <div class="map-card-category-row">
-                    <span class="map-card-category" id="berandaCardCategory">PEMERINTAHAN</span>
-                    <span class="map-card-time-badge" id="berandaCardTimeBadge">
-                      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2">
-                        <path d="M7 17l9.2-9.2M17 17V7H7" />
-                      </svg>
-                      <span id="berandaCardDistanceText">~3.2 km · 8 mnt berkendara</span>
-                    </span>
-                  </div>
-
-                  <div class="map-card-main-row">
-                    <div class="map-card-icon-badge" id="berandaCardIconBadge">
-                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">
-                        <line x1="3" y1="22" x2="21" y2="22" />
-                        <line x1="6" y1="18" x2="6" y2="11" />
-                        <line x1="10" y1="18" x2="10" y2="11" />
-                        <line x1="14" y1="18" x2="14" y2="11" />
-                        <line x1="18" y1="18" x2="18" y2="11" />
-                        <polygon points="12 2 20 7 4 7" />
-                      </svg>
-                    </div>
-                    <h3 class="map-card-title" id="berandaCardTitle">Alun-Alun Satya Negara</h3>
-                  </div>
-
-                  <p class="map-card-desc" id="berandaCardDesc">
-                    Pusat ruang terbuka publik, area olahraga pagi, kuliner malam, sekaligus kompleks Pemkab Sukoharjo.
-                  </p>
-
-                  <div class="map-card-selling-point">
-                    <svg class="map-card-pin-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#2e7d32"
-                      stroke-width="2">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                      <circle cx="12" cy="10" r="3" />
-                    </svg>
-                    <div class="map-card-selling-text" id="berandaCardSellingPointText">
-                      <strong>Nilai jual:</strong> Dekat pusat layanan sipil daerah &amp; ruang rekreasi keluarga akhir
-                      pekan.
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Distance Chips Row (Sama Persis dengan Ruang Peta) -->
-              <div class="distance-chips" id="berandaDistanceChipsContainer" aria-label="Pilihan lokasi fasilitas terdekat">
-                <button class="dist-chip is-active" data-facility="sudirman" onclick="openFacilityDetail('sudirman', this, true)"
-                  type="button">
-                  Sudirman <strong>1 mnt</strong>
-                </button>
-                <button class="dist-chip" data-facility="gelora" onclick="openFacilityDetail('gelora', this, true)"
-                  type="button">
-                  Gelora Merdeka <strong>2 mnt</strong>
-                </button>
-                <button class="dist-chip" data-facility="alun-alun" onclick="openFacilityDetail('alun-alun', this, true)"
-                  type="button">
-                  Alun-Alun <strong>3 mnt</strong>
-                </button>
-                <button class="dist-chip" data-facility="sman1" onclick="openFacilityDetail('sman1', this, true)" type="button">
-                  SMAN 1 <strong>5 mnt</strong>
-                </button>
-                <button class="dist-chip" data-facility="rsud" onclick="openFacilityDetail('rsud', this, true)" type="button">
-                  RSUD Soekarno <strong>6 mnt</strong>
-                </button>
-                <button class="dist-chip" data-facility="stasiun" onclick="openFacilityDetail('stasiun', this, true)"
-                  type="button">
-                  Stasiun <strong>7 mnt</strong>
-                </button>
-                <button class="dist-chip" data-facility="rs-indriati" onclick="openFacilityDetail('rs-indriati', this, true)"
-                  type="button">
-                  RS Indriati <strong>12 mnt</strong>
-                </button>
-                <button class="dist-chip" data-facility="pakuwon" onclick="openFacilityDetail('pakuwon', this, true)"
-                  type="button">
-                  Pakuwon Mall <strong>14 mnt</strong>
-                </button>
-              </div>
-
-              <!-- Map Quick Actions -->
-              <div class="map-actions-row">
-                <a href="https://www.google.com/maps/search/?api=1&query=-7.673895340749299,110.84397890839111"
-                  target="_blank" rel="noopener noreferrer" class="btn-secondary-link">
-                  <span>Buka di Google Maps</span>
-                </a>
-                <button type="button" class="btn-primary-forest" onclick="switchLandingTab('suratcinta')">
-                  <span>99 Alasan Lokasi Ini Sempurna</span>
-                </button>
               </div>
             </div>
 
