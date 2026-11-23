@@ -7548,6 +7548,35 @@ transition: all 0.2s ease;
   box-shadow: 0 4px 18px rgba(22, 36, 28, 0.04);
 }
 
+.estate-footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 2px;
+}
+
+.footer-logo {
+  display: none !important;
+}
+
+.footer-title {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: #16241c;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  margin: 0;
+}
+
+.footer-sub {
+  font-size: 9.5px;
+  color: #9d7837;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
 .estate-footer-title {
   font-family: var(--font-serif);
   font-size: 13.5px;
