@@ -2441,6 +2441,21 @@ function switchLandingTab(tabName, btnEl) {
   const scrollContainer = document.getElementById('landingScrollContent');
   if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
 
+  const navbar = document.querySelector('.landing-navbar');
+  if (navbar) {
+    if (norm === 'Beranda') {
+      navbar.style.removeProperty('display');
+      if (scrollContainer && scrollContainer.scrollTop > 45) {
+        navbar.classList.add('is-scrolled');
+      } else {
+        navbar.classList.remove('is-scrolled');
+      }
+    } else {
+      navbar.style.setProperty('display', 'none', 'important');
+      navbar.classList.remove('is-scrolled');
+    }
+  }
+
   if (norm === 'Beranda') {
     initBerandaLeafletMap();
     setTimeout(() => { if (berandaLeafletMapInstance) berandaLeafletMapInstance.invalidateSize(); }, 200);
@@ -3750,6 +3765,14 @@ function initLandingNavbarScrollTrigger() {
   if (!scrollContainer || !navbar) return;
 
   const handleScroll = () => {
+    const berandaPanel = document.getElementById('panelBeranda');
+    const isBerandaActive = berandaPanel && berandaPanel.classList.contains('is-active');
+    if (!isBerandaActive) {
+      navbar.style.setProperty('display', 'none', 'important');
+      navbar.classList.remove('is-scrolled');
+      return;
+    }
+    navbar.style.removeProperty('display');
     if (scrollContainer.scrollTop > 45) {
       navbar.classList.add('is-scrolled');
     } else {

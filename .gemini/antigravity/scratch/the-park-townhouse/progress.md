@@ -5564,3 +5564,14 @@
     - Updated `.landing-bottom-bar` grid definition from `grid-template-columns: repeat(5, 1fr);` to `grid-template-columns: repeat(4, 1fr);`.
     - Ensures each remaining destination receives balanced touch target sizing (64px height, full-width thumb accessibility).
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #97: Restrict Top Sticky Navbar Exclusively to Beranda
+- **Context & Objective**: Per user request ("buat agar navbar yang ada pada gambar hanya ada di halaman beranda" referencing `.landing-navbar` header with logo and "THE PARK TOWNHOUSE · Avenue Grand Gate · Sukoharjo"), configure the top sticky navbar to display exclusively when viewing the Beranda tab and remain strictly hidden on all other tabs (Surat Cinta, Site Plan, and Fasilitas).
+- **Key Changes Implemented**:
+  - **Dynamic Tab Visibility Control (`app.js`)**:
+    - Updated `switchLandingTab(tabName, btnEl)`: When `norm === 'Beranda'`, the `.landing-navbar` has its display restored and applies `.is-scrolled` when scrolled past 45px. When switching to any other tab (`SuratCinta`, `SitePlan`, `Fasilitas`, or `Unit`), `.landing-navbar` is immediately assigned `display: none !important;` and `.is-scrolled` is cleared.
+    - Updated `initLandingNavbarScrollTrigger()`: Enhanced scroll event listener with an active panel check (`isBerandaActive`). If `#panelBeranda` is not the active tab, the scroll listener suppresses navbar display.
+- **Status**: Completed, Verified & Auto-Pushed.
