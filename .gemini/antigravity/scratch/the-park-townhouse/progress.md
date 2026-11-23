@@ -5419,3 +5419,22 @@
   - **Forensic Verification**:
     - Ran comprehensive unicode scanner across `index.html`, `app.js`, and `styles.css`: 0 arrow characters, 0 mojibake characters remaining.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #88: Complete Elimination of Checkmark Emoticons (✓) Across All Pages
+- **Context & Objective**: Per user request ("hapus emot ✓ pada semua halaman"), eliminate every occurrence of checkmark emoticon `✓` across all HTML templates, dynamic scripts, and UI banners.
+- **Key Changes Implemented**:
+  - **HTML Structure Cleanup (`index.html`)**:
+    - Removed `✓` from customizer save action button and success banner (`Simpan Desain Ruangan`, `Desain ruangan tersimpan!`).
+    - Removed `✓` from siteplan lot confirmation button and banner (`Konfirmasi & Simpan Kavling`, `Pilihan kavling tersimpan!`).
+    - Removed `✓` from facility highlights tags (`Resort Pool & Lounge`, `Main Hall 88 m²`, `Dining & Gathering`).
+    - Removed `✓` from pricing footnote (`Booking fee Rp 5 Juta sudah termasuk`).
+    - Replaced `✓` in milestone list `.pm-dot` with clean indicator dot (`●`).
+    - Replaced raw text `✓` in `.hb-check` with crisp inline SVG checkmark icon.
+  - **JavaScript Template Cleanup (`app.js`)**:
+    - Removed `✓` from lock hints, room confirmation banners, and dynamic lot save button labels.
+    - Stripped `✓` prefix from all facility carousel highlights (`highlights: ['Resort Pool & Lounge', ...]`).
+    - Cleaned all Super App toast feedback notification messages (`Smart Door Lock terhubung`, `QR Code Akses Tamu`, `Reservasi Kolam Renang`, `Tagihan IPL`, `Laporan kendala`).
+- **Status**: Completed, Verified & Auto-Pushed.

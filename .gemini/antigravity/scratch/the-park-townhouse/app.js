@@ -1054,20 +1054,20 @@ function checkUnlockProgress() {
       lockedHint.classList.add('is-hidden');
     }
     if (banner) {
-      banner.innerHTML = '<span>✓ Denah interior tersimpan &amp; kavling terkonfirmasi! Tombol perjalanan terbuka di bawah.</span>';
+      banner.innerHTML = '<span>Denah interior tersimpan &amp; kavling terkonfirmasi! Tombol perjalanan terbuka di bawah.</span>';
       banner.classList.add('is-shown');
     }
   } else if (hasSelectedSiteplanLot && !hasSavedRoomCustomization) {
     if (nextBtn) nextBtn.classList.add('is-hidden');
     if (lockedHint) {
       lockedHint.classList.remove('is-hidden');
-      lockedHint.innerHTML = '<span>Kavling terkonfirmasi! Tekan "✓ Simpan Desain Ruangan" di atas untuk membuka tombol lanjut.</span>';
+      lockedHint.innerHTML = '<span>Kavling terkonfirmasi! Tekan "Simpan Desain Ruangan" di atas untuk membuka tombol lanjut.</span>';
     }
   } else if (!hasSelectedSiteplanLot && hasSavedRoomCustomization) {
     if (nextBtn) nextBtn.classList.add('is-hidden');
     if (lockedHint) {
       lockedHint.classList.remove('is-hidden');
-      lockedHint.innerHTML = '<span>Kustomisasi ruangan tersimpan! Tekan "✓ Konfirmasi &amp; Simpan Kavling" di Site Plan untuk membuka tombol lanjut.</span>';
+      lockedHint.innerHTML = '<span>Kustomisasi ruangan tersimpan! Tekan "Konfirmasi &amp; Simpan Kavling" di Site Plan untuk membuka tombol lanjut.</span>';
     }
   } else {
     if (nextBtn) nextBtn.classList.add('is-hidden');
@@ -1159,7 +1159,7 @@ function selectKavlingLot(lotId, isUserClick = true) {
 
   const btnText = document.getElementById('btnSaveSiteplanText');
   if (btnText) {
-    btnText.textContent = `✓ Konfirmasi & Simpan Kavling ${lot.id}`;
+    btnText.textContent = `Konfirmasi & Simpan Kavling ${lot.id}`;
   }
 }
 
@@ -1360,7 +1360,7 @@ function saveRoomCustomization() {
   saveCurrentConfigToStorage();
   const banner = document.getElementById('customSuccessBanner');
   if (banner) {
-    banner.innerHTML = '<span>✓ Desain ruangan tersimpan! Menggeser ke Site Plan untuk konfirmasi kavling...</span>';
+    banner.innerHTML = '<span>Desain ruangan tersimpan! Menggeser ke Site Plan untuk konfirmasi kavling...</span>';
     banner.classList.add('is-shown');
   }
 
@@ -1383,13 +1383,13 @@ function saveSiteplanChoice() {
 
   const banner = document.getElementById('siteplanSuccessBanner');
   if (banner) {
-    banner.innerHTML = `<span>✓ Pilihan <strong>${lotLabel}</strong> berhasil dikonfirmasi!</span>`;
+    banner.innerHTML = `<span>Pilihan <strong>${lotLabel}</strong> berhasil dikonfirmasi!</span>`;
     banner.classList.add('is-shown');
   }
 
   const btnText = document.getElementById('btnSaveSiteplanText');
   if (btnText) {
-    btnText.textContent = `✓ ${lotLabel} Terkonfirmasi`;
+    btnText.textContent = `${lotLabel} Terkonfirmasi`;
   }
 
   checkUnlockProgress();
@@ -1420,7 +1420,7 @@ const FACILITIES_DATA = {
     sub: '177,25 m² · Tanpa Membership Terpisah',
     images: ['assets/drive/clubhouse.png', 'assets/drive/clubhousee.png'],
     desc: 'Clubhouse eksklusif 2 lantai seluas 177,25 m² yang dirancang untuk menghadirkan pengalaman hidup terbaik. Tempat sempurna untuk berenang, berolahraga, dan menciptakan momen berharga setiap hari tanpa biaya keanggotaan terpisah.',
-    highlights: ['✓ Resort Pool & Lounge', '✓ Main Hall 88 m²', '✓ Dining & Gathering']
+    highlights: ['Resort Pool & Lounge', 'Main Hall 88 m²', 'Dining & Gathering']
   },
   gate: {
     title: 'Avenue Grand Gate & RFID',
@@ -1428,7 +1428,7 @@ const FACILITIES_DATA = {
     sub: '24/7 Security · CCTV Online',
     images: ['assets/drive/gate.png', 'assets/townhouse-hero.jpg'],
     desc: 'Avenue Grand Gate megah dengan pos sekuriti 24 jam terpadu, akses kartu RFID otomatis, dan CCTV kawasan menjamin privasi dan rasa aman seluruh keluarga.',
-    highlights: ['✓ Pos Sekuriti 24 Jam', '✓ Barrier Gate Otomatis', '✓ Akses RFID Penghuni']
+    highlights: ['Pos Sekuriti 24 Jam', 'Barrier Gate Otomatis', 'Akses RFID Penghuni']
   },
   gym: {
     title: 'Gym & Co-working Lounge',
@@ -1436,7 +1436,7 @@ const FACILITIES_DATA = {
     sub: 'Modern Equipments · View Hijau',
     images: ['assets/drive/dalam-9.png', 'assets/drive/dalam-12.png'],
     desc: 'Fasilitas kebugaran privat dan ruang kerja bersama di lantai dua dengan jendela kaca panorama menghadap lanskap teduh cluster.',
-    highlights: ['✓ Gym Cardio & Strength', '✓ Co-working Area Wi-Fi', '✓ Pemandangan Hijau']
+    highlights: ['Gym Cardio & Strength', 'Co-working Area Wi-Fi', 'Pemandangan Hijau']
   },
   garden: {
     title: 'Taman Tematik & Playground',
@@ -1444,7 +1444,7 @@ const FACILITIES_DATA = {
     sub: 'Pohon Tabebuya · BBQ Terrace',
     images: ['assets/room-bersama.jpg', 'assets/room-veranda.jpg'],
     desc: 'Taman terbuka hijau ramah anak dengan pohon tabebuya berbunga, area bermain aman, dan dek BBQ keluarga di halaman sendiri.',
-    highlights: ['✓ Area Bermain Anak Aman', '✓ Pohon Tabebuya Berbunga', '✓ BBQ & Relaxing Deck']
+    highlights: ['Area Bermain Anak Aman', 'Pohon Tabebuya Berbunga', 'BBQ & Relaxing Deck']
   }
 };
 
@@ -4432,11 +4432,11 @@ function triggerAppFeature(featureKey) {
   if (!toast) return;
 
   const messages = {
-    lock: '✓ Smart Door Lock terhubung: Pintu Depan Terbuka (Akses Bluetooth/PIN Aman)',
-    qr: '✓ QR Code Akses Tamu 24 Jam berhasil dibuat dan dikirim ke kontak WhatsApp Anda',
-    booking: '✓ Reservasi Kolam Renang & Main Hall Clubhouse dikonfirmasi untuk Minggu Pagi',
-    billing: '✓ Tagihan IPL & Air Bersih bulan berjalan: LUNAS (Auto-debit Terjadwal)',
-    report: '✓ Laporan kendala ke Estate Management diterima: Petugas teknisi segera merapat',
+    lock: 'Smart Door Lock terhubung: Pintu Depan Terbuka (Akses Bluetooth/PIN Aman)',
+    qr: 'QR Code Akses Tamu 24 Jam berhasil dibuat dan dikirim ke kontak WhatsApp Anda',
+    booking: 'Reservasi Kolam Renang & Main Hall Clubhouse dikonfirmasi untuk Minggu Pagi',
+    billing: 'Tagihan IPL & Air Bersih bulan berjalan: LUNAS (Auto-debit Terjadwal)',
+    report: 'Laporan kendala ke Estate Management diterima: Petugas teknisi segera merapat',
     panic: '🚨 Sinyal Darurat terkirim ke Pos Keamanan Utama! Security sedang meluncur ke unit'
   };
 
