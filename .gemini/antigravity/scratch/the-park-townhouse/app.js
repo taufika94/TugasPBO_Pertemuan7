@@ -2368,6 +2368,15 @@ function closeUnitDetail() {
   const detail = document.getElementById('unitDetailView');
   if (detail) detail.style.setProperty('display', 'none', 'important');
   if (hub) hub.style.setProperty('display', 'flex', 'important');
+  const scrollContainer = document.getElementById('landingScrollContent');
+  if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function openProductTypeDetail(clusterKey, sampleUnitId) {
+  switchLandingTab('Unit');
+  setTimeout(() => {
+    openUnitDetail(clusterKey, sampleUnitId);
+  }, 100);
 }
 
 function orderCurrentDetailUnit() {

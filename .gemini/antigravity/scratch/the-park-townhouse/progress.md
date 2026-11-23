@@ -5661,3 +5661,19 @@
     - Added `.social-brand-icon` badges (24x24px, 6px border radius) to visually anchor each social platform.
     - Tightened gap between pills to 5px, reducing vertical footprint while keeping touch targets accessible and ergonomic.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #104: Link Product Type Showcase Cards to Dedicated Unit Detail Pages
+- **Context & Objective**: Per user request ("buat halaman detail produk , jadi nanti setiap card ptoduknya di click, maka ke halaman detail produk"), link each product showcase card on Beranda (Tipe Gold Nagoya, Tipe Diamond Tokyo, and Tipe Royal Diamond Osaka) to open its corresponding rich unit detail page (`#unitDetailView`).
+- **Key Changes Implemented**:
+  - **Click Handler Binding (`index.html`)**:
+    - Attached `onclick="openProductTypeDetail('nagoya', 'B.02')"` to Product Card 1 (Tipe Gold).
+    - Attached `onclick="openProductTypeDetail('tokyo', 'A.05')"` to Product Card 2 (Tipe Diamond).
+    - Attached `onclick="openProductTypeDetail('osaka', 'C.01')"` to Product Card 3 (Tipe Royal Diamond).
+    - Added `onclick="event.stopPropagation()"` to inner button action rows so "Lihat Denah" and "Pesan Unit" modals continue to function independently without bubbling.
+    - Set `style="cursor: pointer;"` on all product card elements.
+  - **Dynamic Routing Controller (`app.js`)**:
+    - Created `openProductTypeDetail(clusterKey, sampleUnitId)`: smoothly navigates to the Unit tab via `switchLandingTab('Unit')` and immediately loads the rich unit detail page (`openUnitDetail(clusterKey, sampleUnitId)`) showcasing specifications, floor plan details, simulation pricing, and booking actions.
+- **Status**: Completed, Verified & Auto-Pushed.
