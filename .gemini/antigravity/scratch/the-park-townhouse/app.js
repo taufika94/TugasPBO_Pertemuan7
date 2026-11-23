@@ -4337,7 +4337,7 @@ function switchBerandaLotCluster(clusterKey, btnEl) {
   const pageBtn = document.getElementById(`btnPageCluster${cCapital}`);
   const berandaBtn = document.getElementById(`btnBerandaCluster${cCapital}`);
 
-  document.querySelectorAll('#secMasterPlan .cluster-pill-btn, #pageMasterPlan .cluster-pill-btn').forEach(b => b.classList.remove('is-active'));
+  document.querySelectorAll('#secMasterPlan .cluster-pill-btn, #pageMasterPlan .cluster-pill-btn, #siteplanClusterTabs .f-sub-pill').forEach(b => b.classList.remove('is-active'));
   if (pageBtn) pageBtn.classList.add('is-active');
   if (berandaBtn) berandaBtn.classList.add('is-active');
 

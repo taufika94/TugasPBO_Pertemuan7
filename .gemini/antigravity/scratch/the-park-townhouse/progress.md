@@ -5490,3 +5490,19 @@
     - Converted `.showcase-summary-bar` on mobile to a structured `display: grid; grid-template-columns: repeat(3, 1fr); row-gap: 12px; column-gap: 8px;` layout.
     - Replaced raw text symbols (`⌂`, `◫`, `▱`, `田`, `♨`) with crisp inline SVG icons for Unit, LB, LT, Kamar Tidur, and Kamar Mandi.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #92: Tidy Peta Masterplan Kawasan Segmented Cluster Tabs
+- **Context & Objective**: Per user request ("rapikan layout ini" referencing `#panelSitePlan` header and uploaded screenshot `media_1795469748363_66a1b5b6.png`), refine the segmented capsule bar for "Peta Masterplan Kawasan" (`#siteplanClusterTabs`).
+- **Key Changes Implemented**:
+  - **Single Capsule Pill Container (`styles.css`, `index.html`)**:
+    - Removed redundant `.cluster-pill-btn` classes from buttons inside `#siteplanClusterTabs` to avoid conflicting outer borders and square corners.
+    - Standardized `#siteplanClusterTabs` with `display: flex !important; flex-wrap: nowrap !important; max-width: 320px !important; width: 100% !important; background: #ede6da !important; border-radius: 999px !important; padding: 4px !important;`.
+  - **Pill Button Aesthetics (`styles.css`)**:
+    - Styled child `.f-sub-pill` with `flex: 1 1 0 !important; border: none !important; outline: none !important; background: transparent !important; border-radius: 999px !important; height: 30px !important; font-size: 11px !important; font-weight: 500 !important; color: #5c6860 !important;`.
+    - Active tab gets pristine white background (`#ffffff !important`), dark forest green text (`#11332a !important; font-weight: 700 !important;`), and subtle Japandi elevation (`box-shadow: 0 2px 6px rgba(22, 36, 28, 0.12) !important;`).
+  - **Dynamic State Synchronization (`app.js`)**:
+    - Updated `switchBerandaLotCluster` to properly query and toggle active states on `#siteplanClusterTabs .f-sub-pill` when switching between Nagoya, Osaka, and Tokyo.
+- **Status**: Completed, Verified & Auto-Pushed.
