@@ -5766,3 +5766,18 @@
 - **Status**: Completed, Verified & Auto-Pushed.
 
 
+---
+
+### [2026-11-24] Progress #111: Frameless Icon-Only Back Button in Unit Detail Navbar
+- **Context & Objective**: Per user request ("hapua tulisan katalog unit, jadi pakai simbol nya aja, dan tanpa frame" referencing `media_1795473046519_313a4527.png`), strip text and frame borders from `.btn-detail-back` in the unit detail top navbar.
+- **Key Changes Implemented**:
+  - **Icon-Only Structure (`index.html`)**:
+    - Removed `<span>Katalog Unit</span>`, retaining only the crisp `<polyline>` chevron back arrow resized to 22x22px with `aria-label="Kembali ke Katalog"`.
+  - **Frameless Styling & Ergonomics (`styles.css`)**:
+    - Removed border, background, and shadow (`background: transparent; border: none; box-shadow: none;`).
+    - Enforced 44x44px minimum touch target (`min-width: 44px; min-height: 44px; border-radius: 50%;`) complying with Rule 5 mobile ergonomics.
+    - Added subtle hover/active interaction (`background: rgba(17, 51, 42, 0.06); transform: translateX(-2px);`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+
+
