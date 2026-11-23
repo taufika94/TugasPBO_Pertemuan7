@@ -2296,7 +2296,9 @@ function openUnitDetail(clusterKey, unitId) {
 
   const hub = document.getElementById('unitCatalogHub');
   const detail = document.getElementById('unitDetailView');
+  const unitNavHeader = document.getElementById('unitNavbarHeader');
   if (hub) hub.style.setProperty('display', 'none', 'important');
+  if (unitNavHeader) unitNavHeader.style.setProperty('display', 'none', 'important');
   if (detail) detail.style.setProperty('display', 'flex', 'important');
 
   // Populate Details
@@ -2376,8 +2378,10 @@ function openUnitDetail(clusterKey, unitId) {
 function closeUnitDetail() {
   const hub = document.getElementById('unitCatalogHub');
   const detail = document.getElementById('unitDetailView');
+  const unitNavHeader = document.getElementById('unitNavbarHeader');
   if (detail) detail.style.setProperty('display', 'none', 'important');
   if (hub) hub.style.setProperty('display', 'flex', 'important');
+  if (unitNavHeader) unitNavHeader.style.removeProperty('display');
   const scrollContainer = document.getElementById('landingScrollContent');
   if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
 }

@@ -5749,3 +5749,20 @@
     - Inset carousel arrow buttons (`.carousel-arrow-btn.prev` and `.next`) to `left: 4px; right: 4px;` so they never clip or cause horizontal overflow on mobile viewports.
 - **Status**: Completed, Verified & Auto-Pushed.
 
+
+---
+
+### [2026-11-24] Progress #110: Transform Unit Detail Nav to Sticky Navbar & Hide Catalog Cluster Tabs
+- **Context & Objective**: Per user request ("pada halaman di gambar, buat agar [unitClusterTabs] itunya hilang, dan [unit-detail-nav-bar] menjadi navbar" referencing `media_1795472972149_a392e302.jpg`), eliminate catalog cluster pills (`#unitClusterTabs`) from displaying on the unit detail subpage, and transform `.unit-detail-nav-bar` into a native top sticky navigation bar.
+- **Key Changes Implemented**:
+  - **DOM Relocation & Visibility Isolation (`index.html`)**:
+    - Moved `#unitNavbarHeader` (containing `#unitClusterTabs` and `.unit-nav-title`) inside `#unitCatalogHub`. When `#unitCatalogHub` is hidden for detail view, `#unitClusterTabs` is automatically hidden without DOM mutation or visual residue.
+  - **Toggle Logic Synchronization (`app.js`)**:
+    - In `openUnitDetail()`: explicitly enforce `#unitNavbarHeader.style.display = 'none'` alongside `#unitCatalogHub` hiding, and show `#unitDetailView`.
+    - In `closeUnitDetail()`: seamlessly restore `#unitNavbarHeader` display and smooth-scroll back to top.
+  - **Top Sticky Navbar Styling (`styles.css`)**:
+    - Replaced floating card styling of `.unit-detail-nav-bar` with top sticky navbar specs: `position: sticky; top: 0; z-index: 45; border-radius: 0; background: rgba(247, 244, 237, 0.95); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(220, 212, 195, 0.5);`.
+    - Refined `.btn-detail-back` (white tactile button with border, icon, and 36px min-height), centered `.unit-detail-nav-title-group` (gold uppercase kicker + bold serif lot ID), and refined `.btn-detail-share` ("Pesan" button with forest green gradient and gold border accent).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+
