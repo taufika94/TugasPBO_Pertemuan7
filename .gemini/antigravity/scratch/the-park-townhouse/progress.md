@@ -5677,3 +5677,19 @@
   - **Dynamic Routing Controller (`app.js`)**:
     - Created `openProductTypeDetail(clusterKey, sampleUnitId)`: smoothly navigates to the Unit tab via `switchLandingTab('Unit')` and immediately loads the rich unit detail page (`openUnitDetail(clusterKey, sampleUnitId)`) showcasing specifications, floor plan details, simulation pricing, and booking actions.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #105: Scroll-Triggered Top Navbar on Beranda
+- **Context & Objective**: Per user request ("navbar pada halaman beranda buat agar muncul ketika di scroll ke bawah, jadi klo blom di scroll blom muncul" with screenshot of `.landing-navbar`), configure the Beranda top brand navbar to remain strictly hidden while at the top of the page (`scrollTop <= 50px`), only smoothly slide into view once scrolled down, slide back up when scrolled back to top, and remain hidden on all other tabs.
+- **Key Changes Implemented**:
+  - **CSS Hidden State & Transitions (`styles.css`)**:
+    - Added `visibility: hidden;` alongside `opacity: 0; pointer-events: none; transform: translateY(-100%);` on `.landing-navbar` to ensure zero unintended bleed-through at initial page load.
+    - Updated `.landing-navbar.is-scrolled` to smoothly animate `visibility: visible; opacity: 1; transform: translateY(0); pointer-events: auto;` using cubic bezier easing.
+  - **Scroll Engine & Tab Synchronization (`app.js`)**:
+    - Enhanced `initLandingNavbarScrollTrigger()` with dual-source scroll calculation (`scrollContainer.scrollTop || window.scrollY || document.documentElement.scrollTop`).
+    - Bound scroll listeners to both `scrollContainer` and `window` with passive optimization.
+    - Bound `initLandingNavbarScrollTrigger()` to `DOMContentLoaded` and `initLandingPage()`.
+    - In `switchLandingTab()`, immediately reset `scrollContainer.scrollTop = 0` and strip `.is-scrolled` so entering Beranda starts clean without premature navbar triggers.
+- **Status**: Completed, Verified & Auto-Pushed.

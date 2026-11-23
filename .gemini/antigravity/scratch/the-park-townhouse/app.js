@@ -1809,6 +1809,7 @@ function finishTourAndExit() {
 
   if (!closingOverlay) {
     if (landingPage) landingPage.style.display = 'flex';
+    initLandingPage();
     return;
   }
 
@@ -2449,17 +2450,13 @@ function switchLandingTab(tabName, btnEl) {
   }
 
   const scrollContainer = document.getElementById('landingScrollContent');
-  if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+  if (scrollContainer) scrollContainer.scrollTop = 0;
 
   const navbar = document.querySelector('.landing-navbar');
   if (navbar) {
     if (norm === 'Beranda') {
       navbar.style.removeProperty('display');
-      if (scrollContainer && scrollContainer.scrollTop > 45) {
-        navbar.classList.add('is-scrolled');
-      } else {
-        navbar.classList.remove('is-scrolled');
-      }
+      navbar.classList.remove('is-scrolled');
     } else {
       navbar.style.setProperty('display', 'none', 'important');
       navbar.classList.remove('is-scrolled');
@@ -3772,7 +3769,7 @@ function advanceTopHeroVideo(step = 1) {
 function initLandingNavbarScrollTrigger() {
   const scrollContainer = document.getElementById('landingScrollContent');
   const navbar = document.querySelector('.landing-navbar');
-  if (!scrollContainer || !navbar) return;
+  if (!navbar) return;
 
   const handleScroll = () => {
     const berandaPanel = document.getElementById('panelBeranda');
@@ -3783,15 +3780,20 @@ function initLandingNavbarScrollTrigger() {
       return;
     }
     navbar.style.removeProperty('display');
-    if (scrollContainer.scrollTop > 45) {
+    const currentScroll = (scrollContainer ? scrollContainer.scrollTop : 0) || window.scrollY || document.documentElement.scrollTop || 0;
+    if (currentScroll > 50) {
       navbar.classList.add('is-scrolled');
     } else {
       navbar.classList.remove('is-scrolled');
     }
   };
 
-  scrollContainer.removeEventListener('scroll', handleScroll);
-  scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+  if (scrollContainer) {
+    scrollContainer.removeEventListener('scroll', handleScroll);
+    scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+  }
+  window.removeEventListener('scroll', handleScroll);
+  window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll();
 }
 
@@ -4107,6 +4109,7 @@ window.addEventListener('DOMContentLoaded', () => {
   renderSitePlan('nagoya');
   initSuratCintaMagazine();
   if (cardsCountLabel) cardsCountLabel.textContent = `${unlockedKeunggulanCount}/99`;
+  initLandingNavbarScrollTrigger();
   runAfterDelayOpening();
 });
 
