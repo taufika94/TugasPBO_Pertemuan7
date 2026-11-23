@@ -5438,3 +5438,15 @@
     - Stripped `✓` prefix from all facility carousel highlights (`highlights: ['Resort Pool & Lounge', ...]`).
     - Cleaned all Super App toast feedback notification messages (`Smart Door Lock terhubung`, `QR Code Akses Tamu`, `Reservasi Kolam Renang`, `Tagihan IPL`, `Laporan kendala`).
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #89: Standardize Room Back Navigation Button Symbol to `<`
+- **Context & Objective**: Per user request ("gantu simbol back dari ← menjadi <"), replace the back button indicator from arrow symbol (`←`) to the clean chevron/bracket `<`.
+- **Key Changes Implemented**:
+  - **Button Markup Standardization (`index.html`)**:
+    - Updated all 6 room back buttons (`.btn-back-outline` in Rooms 02 through 07) from SVG/arrow characters to standard HTML entity `&lt;` (renders literally as `<`).
+  - **Button Geometry & Alignment (`styles.css`)**:
+    - Enhanced `.btn-back-outline` with `display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; line-height: 1; padding: 10px 16px;` for a centered, crisp back button.
+- **Status**: Completed, Verified & Auto-Pushed.
