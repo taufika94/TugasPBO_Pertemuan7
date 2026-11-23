@@ -1907,10 +1907,11 @@ const SHOWCASE_CLUSTER_DATA = {
     name: 'Nagoya',
     tagline: 'Tipe compact dengan rooftop pribadi.',
     priceText: 'Rp 498 Juta',
+    bannerImg: 'assets/drive/gate.png',
     avail: 14,
     total: 15,
-    lb: '60m²/80',
-    lt: '63m²–99m²',
+    lb: '60 / 80 m²',
+    lt: '63–99 m²',
     beds: '3-4',
     baths: '2-3',
     units: [
@@ -1935,10 +1936,11 @@ const SHOWCASE_CLUSTER_DATA = {
     name: 'Tokyo',
     tagline: 'Desain modern minimalis bernuansa Jepang.',
     priceText: 'Rp 679 Juta',
+    bannerImg: 'assets/drive/housee.jpeg',
     avail: 7,
     total: 7,
-    lb: '60m²/80',
-    lt: '90m²–125m²',
+    lb: '60 / 80 m²',
+    lt: '90–125 m²',
     beds: '3-4',
     baths: '2-3',
     units: [
@@ -1955,10 +1957,11 @@ const SHOWCASE_CLUSTER_DATA = {
     name: 'Osaka',
     tagline: 'Hunian elegan dengan carport 2 mobil penuh.',
     priceText: 'Rp 685 Juta',
+    bannerImg: 'assets/drive/house.jpeg',
     avail: 9,
     total: 9,
-    lb: '60m²/80',
-    lt: '90m²–110m²',
+    lb: '60 / 80 m²',
+    lt: '90–110 m²',
     beds: '3-4',
     baths: '2-3',
     units: [
@@ -2000,9 +2003,15 @@ function switchBerandaShowcaseCluster(clusterKey, btnEl) {
   const tagEl = document.getElementById('showcaseClusterTagline');
   const priceEl = document.getElementById('showcaseClusterPrice');
   const heroCard = document.getElementById('showcaseHeroCard');
+  const bannerImgEl = document.getElementById('showcaseBannerImg');
+
   if (nameEl) nameEl.textContent = data.name;
   if (tagEl) tagEl.textContent = data.tagline;
   if (priceEl) priceEl.textContent = data.priceText;
+  if (bannerImgEl && data.bannerImg) {
+    bannerImgEl.src = data.bannerImg;
+    bannerImgEl.alt = `Klaster ${data.name}`;
+  }
   if (heroCard) {
     heroCard.classList.remove('theme-nagoya', 'theme-tokyo', 'theme-osaka');
     heroCard.classList.add(`theme-${clusterKey}`);

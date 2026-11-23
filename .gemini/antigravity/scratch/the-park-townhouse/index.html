@@ -1562,21 +1562,27 @@
               <div class="cluster-showcase-display" id="clusterShowcaseDisplay">
                 <!-- Left Tall Hero Card -->
                 <div class="cluster-castle-hero-card" id="showcaseHeroCard">
-                  <div class="castle-card-overlay"></div>
-                  <div class="castle-card-content">
+                  <div class="castle-card-header">
                     <div class="castle-title-row">
                       <h3 class="castle-name" id="showcaseClusterName">Nagoya</h3>
                       <span class="castle-gold-dot"></span>
                     </div>
                     <p class="castle-tagline" id="showcaseClusterTagline">Tipe compact dengan rooftop pribadi.</p>
+                  </div>
+
+                  <div class="castle-visual-banner" id="showcaseVisualBanner">
+                    <img src="assets/drive/gate.png" alt="Klaster Nagoya" class="castle-banner-img" id="showcaseBannerImg" />
+                    <div class="castle-banner-vignette"></div>
                     <div class="castle-price-block">
                       <span class="castle-price-lbl">HARGA MULAI</span>
                       <strong class="castle-price-val" id="showcaseClusterPrice">Rp 498 Juta</strong>
                     </div>
-                    <button type="button" class="btn-castle-detail" onclick="switchLandingTab('Unit')">
-                      <span>Lihat Detail Klaster</span>
-                    </button>
                   </div>
+
+                  <button type="button" class="btn-castle-detail" onclick="switchLandingTab('Unit')">
+                    <span>Lihat Detail Klaster</span>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </button>
                 </div>
 
                 <!-- Right Side: Stats Summary Bar & Horizontal Carousel -->
@@ -1585,42 +1591,45 @@
                   <div class="showcase-summary-bar">
                     <div class="showcase-stat-item">
                       <span class="stat-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span>
-                      <div>
+                      <div class="stat-text-wrap">
                         <strong id="showcaseStatAvail">14</strong>
                         <span>UNIT TERSEDIA</span>
                       </div>
                     </div>
                     <div class="showcase-stat-item">
                       <span class="stat-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line></svg></span>
-                      <div>
-                        <strong id="showcaseStatLb">60m²/80</strong>
+                      <div class="stat-text-wrap">
+                        <strong id="showcaseStatLb">60 / 80 m²</strong>
                         <span>LB MULAI</span>
                       </div>
                     </div>
                     <div class="showcase-stat-item">
                       <span class="stat-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 20 8 4 21 4 16 20 3 20"></polygon></svg></span>
-                      <div>
-                        <strong id="showcaseStatLt">63m²–99m²</strong>
+                      <div class="stat-text-wrap">
+                        <strong id="showcaseStatLt">63–99 m²</strong>
                         <span>LT MULAI</span>
                       </div>
                     </div>
                     <div class="showcase-stat-item">
                       <span class="stat-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="12" x2="21" y2="12"></line><line x1="12" y1="3" x2="12" y2="21"></line></svg></span>
-                      <div>
+                      <div class="stat-text-wrap">
                         <strong id="showcaseStatBeds">3-4</strong>
                         <span>KAMAR TIDUR</span>
                       </div>
                     </div>
                     <div class="showcase-stat-item">
                       <span class="stat-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"></path><path d="M2 12h20"></path><path d="M7 12V7a3 3 0 0 1 6 0v5"></path></svg></span>
-                      <div>
+                      <div class="stat-text-wrap">
                         <strong id="showcaseStatBaths">2-3</strong>
                         <span>KAMAR MANDI</span>
                       </div>
                     </div>
-                    <button type="button" class="showcase-see-all-link" onclick="switchLandingTab('Unit')">
-                      <span id="showcaseSeeAllLabel">Lihat Semua 15</span>
-                    </button>
+                    <div class="showcase-stat-item showcase-action-cell">
+                      <button type="button" class="showcase-see-all-btn" onclick="switchLandingTab('Unit')">
+                        <span id="showcaseSeeAllLabel">Lihat Semua 15</span>
+                        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </button>
+                    </div>
                   </div>
 
                   <!-- Carousel Track Container with Left/Right Arrows -->

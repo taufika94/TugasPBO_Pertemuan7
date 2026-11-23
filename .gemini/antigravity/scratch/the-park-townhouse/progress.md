@@ -5731,3 +5731,21 @@
   - **Visual Spacing & Clean Geometry (`styles.css`)**:
     - Set `.beranda-radius-analysis-card` margin to `margin-top: 14px; margin-bottom: 4px;` providing balanced visual separation from map action buttons above.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #109: Redesign Cluster Showcase Hero Card, Specs Summary Grid, & Carousel Navigation
+- **Context & Objective**: Per user request ("perbaiki tampilannya" referencing `media_1795472916751_5f94a1b3.jpg`), resolve visual shortcomings of the Cluster Showcase section on Beranda: low-contrast washed-out hero card, awkward multi-line text wrap in the 3-column stats summary, unstyled "Lihat Semua 15" text link, and carousel arrow buttons protruding past screen edges on mobile.
+- **Key Changes Implemented**:
+  - **Hero Card Redesign (`index.html`, `styles.css`, `app.js`)**:
+    - Converted `.cluster-castle-hero-card` to a structured solid card with clean typography, dedicated image banner frame (`.castle-visual-banner`) with deep vignette overlay, and high-contrast price badge (`.castle-price-block`).
+    - Added high-contrast tactile CTA button (`.btn-castle-detail`) in solid forest green gradient with gold border and inline arrow icon, meeting 44px touch target guidelines.
+    - Added dynamic cluster banner images (`bannerImg`: Nagoya gate, Tokyo housee, Osaka house) updated via `switchBerandaShowcaseCluster()`.
+  - **Specs Summary Bar Formatting (`index.html`, `styles.css`, `app.js`)**:
+    - Cleaned unit string formatting (`60 / 80 m²` and `63–99 m²`) and wrapped stat text in `.stat-text-wrap` with soft green icon badges (`.stat-icon`).
+    - Replaced raw text link with `.showcase-see-all-btn` (tactile pill button with arrow `Lihat Semua 15 →`).
+  - **Mobile Geometry & Navigation Buttons (`styles.css`)**:
+    - Inset carousel arrow buttons (`.carousel-arrow-btn.prev` and `.next`) to `left: 4px; right: 4px;` so they never clip or cause horizontal overflow on mobile viewports.
+- **Status**: Completed, Verified & Auto-Pushed.
+
