@@ -5780,4 +5780,21 @@
 - **Status**: Completed, Verified & Auto-Pushed.
 
 
+---
+
+### [2026-11-24] Progress #112: Multi-Photo Gallery & Fullscreen Lightbox Viewer for Unit Detail
+- **Context & Objective**: Per user request ("buat agar terdapat beberapa foto, dan jika di pencet fotonya bisa di lihat" referencing `media_1795473100866_2eea4cce.jpg`), provide multiple interior, exterior, and facility photos for each unit, complete with interactive thumbnail switching and a full-screen high-res photo lightbox modal.
+- **Key Changes Implemented**:
+  - **Multi-Photo Database & Dynamic Carousel (`app.js`)**:
+    - Built `DETAIL_GALLERY_DATABASE` with 5 curated architectural photos per cluster (Fasad Depan, Ruang Tamu / Living Room, Master Suite Bedroom, Grand Gate, dan Clubhouse).
+    - Added `renderDetailGalleryThumbnails()`, `setDetailGalleryIndex()`, and `stepDetailGallery()` to drive real-time hero photo switching, active thumbnail highlights, and automatic smooth scrolling.
+    - Added `📷 1 / 5` badge counter and `Lihat Foto` zoom pill badge on top of the hero image.
+  - **Interactive Lightbox Modal (`index.html`, `app.js`, `styles.css`)**:
+    - Added `#unitPhotoLightboxModal`: deep frosted background (`rgba(10, 20, 16, 0.94)`), high-res photo container, responsive header with photo title, lot kicker, photo counter (`1 / 5`), and 44x44px close button.
+    - Implemented keyboard/touch navigation with left/right circular nav buttons and bottom thumbnail preview strip.
+    - Bound hero photo click directly to `openUnitPhotoLightbox()` for instant fullscreen inspection.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+
+
 

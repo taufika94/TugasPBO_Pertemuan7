@@ -2288,6 +2288,145 @@ function renderLandingUnits() {
 }
 
 let currentDetailUnitObj = null;
+let currentDetailGalleryImages = [];
+let currentDetailGalleryIndex = 0;
+
+const DETAIL_GALLERY_DATABASE = {
+  nagoya: [
+    { src: 'assets/drive/house.jpeg', title: 'Fasad Depan Japandi Modern', tag: 'Eksterior' },
+    { src: 'assets/drive/dalam-6.png', title: 'Ruang Tamu & Living Room Luas', tag: 'Interior' },
+    { src: 'assets/drive/dalam-9.png', title: 'Master Bedroom Bernuansa Kayu', tag: 'Kamar Tidur' },
+    { src: 'assets/drive/gate.png', title: 'Avenue Grand Gate & Boulevard', tag: 'Kawasan' },
+    { src: 'assets/drive/clubhouse.png', title: 'Clubhouse & Infinity Swimming Pool', tag: 'Fasilitas' }
+  ],
+  tokyo: [
+    { src: 'assets/drive/housee.jpeg', title: 'Fasad Minimalis Kontemporer', tag: 'Eksterior' },
+    { src: 'assets/drive/dalam-9.png', title: 'Suite Bedroom Balkon Pribadi', tag: 'Kamar Tidur' },
+    { src: 'assets/drive/dalam-6.png', title: 'Open-Space Living & Dining Area', tag: 'Interior' },
+    { src: 'assets/drive/gate.png', title: 'Main Boulevard Akses Privat', tag: 'Kawasan' },
+    { src: 'assets/drive/clubhouse.png', title: 'Clubhouse & Zen Garden', tag: 'Fasilitas' }
+  ],
+  osaka: [
+    { src: 'assets/drive/housee.jpeg', title: 'Grand Luxury Double Carport', tag: 'Eksterior' },
+    { src: 'assets/drive/house.jpeg', title: 'Sudut Fasad Eksterior Mewah', tag: 'Eksterior' },
+    { src: 'assets/drive/dalam-6.png', title: 'Ruang Keluarga & Dining Modern', tag: 'Interior' },
+    { src: 'assets/drive/dalam-9.png', title: 'Master Bedroom Suite Mewah', tag: 'Kamar Tidur' },
+    { src: 'assets/drive/gate.png', title: 'Grand Gate & Keamanan 24 Jam', tag: 'Kawasan' }
+  ]
+};
+
+function renderDetailGalleryThumbnails() {
+  const strip = document.getElementById('detailGalleryThumbStrip');
+  if (!strip) return;
+  strip.innerHTML = currentDetailGalleryImages.map((img, idx) => `
+    <button type="button" class="gallery-thumb-item ${idx === currentDetailGalleryIndex ? 'is-active' : ''}" 
+      onclick="setDetailGalleryIndex(${idx})" aria-label="Lihat ${img.title}">
+      <img src="${img.src}" alt="${img.title}" loading="lazy" />
+      <span class="thumb-tag">${img.tag}</span>
+    </button>
+  `).join('');
+}
+
+function setDetailGalleryIndex(idx) {
+  if (!currentDetailGalleryImages || !currentDetailGalleryImages.length) return;
+  currentDetailGalleryIndex = (idx + currentDetailGalleryImages.length) % currentDetailGalleryImages.length;
+  const currentImg = currentDetailGalleryImages[currentDetailGalleryIndex];
+
+  const heroImgEl = document.getElementById('detailHeroImg');
+  const counterEl = document.getElementById('detailGalleryCounter');
+  if (heroImgEl && currentImg) {
+    heroImgEl.src = currentImg.src;
+    heroImgEl.alt = currentImg.title;
+  }
+  if (counterEl) {
+    counterEl.textContent = `📷 ${currentDetailGalleryIndex + 1} / ${currentDetailGalleryImages.length}`;
+  }
+
+  const strip = document.getElementById('detailGalleryThumbStrip');
+  if (strip) {
+    const thumbs = strip.querySelectorAll('.gallery-thumb-item');
+    thumbs.forEach((t, i) => {
+      t.classList.toggle('is-active', i === currentDetailGalleryIndex);
+    });
+    const activeThumb = thumbs[currentDetailGalleryIndex];
+    if (activeThumb) {
+      activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  }
+
+  syncLightboxContent();
+}
+
+function stepDetailGallery(delta) {
+  setDetailGalleryIndex(currentDetailGalleryIndex + delta);
+}
+
+function openUnitPhotoLightbox(initialIndex) {
+  if (typeof initialIndex === 'number') {
+    setDetailGalleryIndex(initialIndex);
+  }
+  const modal = document.getElementById('unitPhotoLightboxModal');
+  if (!modal) return;
+
+  const clusterNames = { nagoya: 'KLASTER NAGOYA', tokyo: 'KLASTER TOKYO', osaka: 'KLASTER OSAKA' };
+  const cName = currentDetailUnitObj ? (clusterNames[currentDetailUnitObj.cluster] || 'KLASTER THE PARK') : 'THE PARK TOWNHOUSE';
+  const unitId = currentDetailUnitObj ? `KAVLING ${currentDetailUnitObj.id}` : '';
+  const kickerEl = document.getElementById('lightboxClusterKicker');
+  if (kickerEl) kickerEl.textContent = `${cName} · ${unitId}`;
+
+  renderLightboxThumbnails();
+  syncLightboxContent();
+
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function syncLightboxContent() {
+  const modal = document.getElementById('unitPhotoLightboxModal');
+  if (!modal || modal.style.display === 'none') return;
+  const currentImg = currentDetailGalleryImages[currentDetailGalleryIndex];
+  if (!currentImg) return;
+
+  const mainImg = document.getElementById('lightboxMainImg');
+  const caption = document.getElementById('lightboxCaption');
+  const counter = document.getElementById('lightboxCounter');
+
+  if (mainImg) {
+    mainImg.src = currentImg.src;
+    mainImg.alt = currentImg.title;
+  }
+  if (caption) caption.textContent = currentImg.title;
+  if (counter) counter.textContent = `${currentDetailGalleryIndex + 1} / ${currentDetailGalleryImages.length}`;
+
+  const lbStrip = document.getElementById('lightboxThumbStrip');
+  if (lbStrip) {
+    lbStrip.querySelectorAll('.lightbox-thumb-item').forEach((t, i) => {
+      t.classList.toggle('is-active', i === currentDetailGalleryIndex);
+    });
+  }
+}
+
+function renderLightboxThumbnails() {
+  const lbStrip = document.getElementById('lightboxThumbStrip');
+  if (!lbStrip) return;
+  lbStrip.innerHTML = currentDetailGalleryImages.map((img, idx) => `
+    <button type="button" class="lightbox-thumb-item ${idx === currentDetailGalleryIndex ? 'is-active' : ''}" 
+      onclick="setDetailGalleryIndex(${idx})" aria-label="Buka ${img.title}">
+      <img src="${img.src}" alt="${img.title}" />
+    </button>
+  `).join('');
+}
+
+function closeUnitPhotoLightbox(event) {
+  if (event && event.target && event.target.id !== 'unitPhotoLightboxModal' && !event.target.closest('.btn-lightbox-close')) return;
+  const modal = document.getElementById('unitPhotoLightboxModal');
+  if (modal) modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function stepLightboxPhoto(delta) {
+  stepDetailGallery(delta);
+}
 
 function openUnitDetail(clusterKey, unitId) {
   const unit = CATALOG_INVENTORY.find(u => u.cluster === clusterKey && u.id === unitId) ||
@@ -2307,14 +2446,11 @@ function openUnitDetail(clusterKey, unitId) {
   const priceFormatted = `Rp ${unit.priceMillion} Juta`;
   const cicilanEst = `Rp ${(unit.priceMillion * 0.0076).toFixed(1).replace('.', ',')} Jt/bln`;
 
-  const unitImages = {
-    nagoya: ['assets/drive/house.jpeg', 'assets/drive/housee.jpeg', 'assets/drive/dalam-9.png', 'assets/drive/dalam-6.png'],
-    tokyo: ['assets/drive/dalam-6.png', 'assets/drive/house.jpeg', 'assets/drive/dalam-9.png', 'assets/drive/housee.jpeg'],
-    osaka: ['assets/drive/housee.jpeg', 'assets/drive/house.jpeg', 'assets/drive/dalam-9.png', 'assets/drive/dalam-6.png']
-  };
-  const imgs = unitImages[unit.cluster] || unitImages.nagoya;
-  const hash = unit.id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  const heroImg = imgs[hash % imgs.length];
+  // Initialize Gallery
+  currentDetailGalleryImages = DETAIL_GALLERY_DATABASE[unit.cluster] || DETAIL_GALLERY_DATABASE.nagoya;
+  currentDetailGalleryIndex = 0;
+  renderDetailGalleryThumbnails();
+  setDetailGalleryIndex(0);
 
   // DOM bindings
   const navCluster = document.getElementById('detailNavCluster');
@@ -2376,6 +2512,7 @@ function openUnitDetail(clusterKey, unitId) {
 }
 
 function closeUnitDetail() {
+  closeUnitPhotoLightbox();
   const hub = document.getElementById('unitCatalogHub');
   const detail = document.getElementById('unitDetailView');
   const unitNavHeader = document.getElementById('unitNavbarHeader');

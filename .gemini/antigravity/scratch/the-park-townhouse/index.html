@@ -3006,13 +3006,34 @@
 
               <!-- Hero Gallery & Key Specs -->
               <div class="unit-detail-hero-card">
-                <div class="unit-detail-media-wrap">
+                <div class="unit-detail-media-wrap" id="detailHeroMediaWrap" onclick="openUnitPhotoLightbox()" title="Klik untuk lihat foto ukuran penuh" style="cursor: pointer;">
                   <img src="assets/drive/house.jpeg" alt="Detail Unit" class="unit-detail-hero-img" id="detailHeroImg">
                   <span class="unit-detail-status-pill" id="detailHeroStatus">Tersedia</span>
+
+                  <button type="button" class="detail-gallery-arrow prev" onclick="event.stopPropagation(); stepDetailGallery(-1);" aria-label="Foto Sebelumnya">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                  </button>
+                  <button type="button" class="detail-gallery-arrow next" onclick="event.stopPropagation(); stepDetailGallery(1);" aria-label="Foto Selanjutnya">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                  </button>
+
+                  <div class="detail-gallery-badge-row">
+                    <span class="gallery-counter-badge" id="detailGalleryCounter">📷 1 / 5</span>
+                    <span class="gallery-zoom-hint">
+                      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                      Lihat Foto
+                    </span>
+                  </div>
+
                   <div class="unit-detail-media-overlay">
                     <span class="unit-detail-badge" id="detailHeroType">Tipe T80 · 2 Lantai</span>
                     <h2 class="unit-detail-hero-title" id="detailHeroTitle">Nagoya B.02</h2>
                   </div>
+                </div>
+
+                <!-- Gallery Thumbnails Strip -->
+                <div class="unit-detail-gallery-strip" id="detailGalleryThumbStrip">
+                  <!-- Dynamically populated thumbnails -->
                 </div>
 
                 <div class="unit-detail-quick-strip">
@@ -4789,6 +4810,46 @@
                 <span id="denahSpecCtaText">Pesan Kavling + Denah Ini</span>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================================
+           UNIT PHOTO LIGHTBOX MODAL (INTERACTIVE FULLSCREEN VIEWER)
+           ================================================================ -->
+      <div class="photo-lightbox-backdrop" id="unitPhotoLightboxModal" onclick="closeUnitPhotoLightbox(event)" style="display: none;">
+        <div class="photo-lightbox-dialog" onclick="event.stopPropagation()">
+          <div class="photo-lightbox-header">
+            <div class="lightbox-title-wrap">
+              <span class="lightbox-kicker" id="lightboxClusterKicker">KLASTER NAGOYA · KAVLING A.02</span>
+              <h3 class="lightbox-caption" id="lightboxCaption">Fasad Depan Japandi Modern</h3>
+            </div>
+            <div class="lightbox-header-actions">
+              <span class="lightbox-counter" id="lightboxCounter">1 / 5</span>
+              <button type="button" class="btn-lightbox-close" onclick="closeUnitPhotoLightbox()" aria-label="Tutup Tampilan Foto">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="photo-lightbox-stage">
+            <button type="button" class="lightbox-nav-btn prev" onclick="stepLightboxPhoto(-1)" aria-label="Foto Sebelumnya">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="photo-lightbox-img-wrap">
+              <img id="lightboxMainImg" src="assets/drive/house.jpeg" alt="Foto Unit" class="lightbox-main-img" />
+            </div>
+            <button type="button" class="lightbox-nav-btn next" onclick="stepLightboxPhoto(1)" aria-label="Foto Selanjutnya">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+
+          <!-- Bottom Thumbnails Navigation Strip in Lightbox -->
+          <div class="photo-lightbox-thumbs" id="lightboxThumbStrip">
+            <!-- Dynamic thumbnails -->
           </div>
         </div>
       </div>

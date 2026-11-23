@@ -12688,6 +12688,351 @@ transition: all 0.2s ease;
         line-height: 1.2;
       }
 
+      /* Gallery Controls & Overlay Badges */
+      .detail-gallery-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        min-height: 38px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(220, 212, 195, 0.5);
+        color: #11332a;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 6;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+        transition: all 0.2s ease;
+      }
+
+      .detail-gallery-arrow.prev {
+        left: 10px;
+      }
+
+      .detail-gallery-arrow.next {
+        right: 10px;
+      }
+
+      .detail-gallery-arrow:hover {
+        background: #ffffff;
+        color: #0c241e;
+        transform: translateY(-50%) scale(1.08);
+      }
+
+      .detail-gallery-badge-row {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .gallery-counter-badge {
+        background: rgba(17, 51, 42, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        color: #ffffff;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      .gallery-zoom-hint {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        color: #11332a;
+        padding: 4px 9px;
+        border-radius: 999px;
+        font-size: 10px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba(220, 212, 195, 0.5);
+      }
+
+      .unit-detail-gallery-strip {
+        display: flex;
+        gap: 8px;
+        padding: 10px 12px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        background: #faf7f2;
+        border-top: 1px solid #ede7dc;
+      }
+
+      .unit-detail-gallery-strip::-webkit-scrollbar {
+        display: none;
+      }
+
+      .gallery-thumb-item {
+        flex: 0 0 62px;
+        width: 62px;
+        height: 62px;
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 2px solid #e5dfd4;
+        padding: 0;
+        background: #ffffff;
+        position: relative;
+        transition: all 0.2s ease;
+      }
+
+      .gallery-thumb-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .gallery-thumb-item .thumb-tag {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(17, 51, 42, 0.85);
+        color: #ffffff;
+        font-size: 8px;
+        font-weight: 700;
+        text-align: center;
+        padding: 2px 1px;
+        line-height: 1.1;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .gallery-thumb-item.is-active {
+        border-color: #11332a;
+        box-shadow: 0 0 0 2px #c59b48;
+        transform: translateY(-2px);
+      }
+
+      .gallery-thumb-item:hover {
+        border-color: #11332a;
+      }
+
+      /* Photo Lightbox Modal (Interactive Fullscreen Viewer) */
+      .photo-lightbox-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: rgba(10, 20, 16, 0.94);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px;
+        box-sizing: border-box;
+        animation: fadeIn 0.2s ease-out;
+      }
+
+      .photo-lightbox-dialog {
+        max-width: 580px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .photo-lightbox-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #ffffff;
+        padding: 0 4px;
+      }
+
+      .lightbox-title-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+      }
+
+      .lightbox-kicker {
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: #dfb76c;
+        text-transform: uppercase;
+      }
+
+      .lightbox-caption {
+        font-family: var(--font-serif), Georgia, serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0;
+        line-height: 1.25;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .lightbox-header-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+
+      .lightbox-counter {
+        font-size: 11px;
+        font-weight: 700;
+        color: #d0c8b8;
+        background: rgba(255, 255, 255, 0.12);
+        padding: 4px 10px;
+        border-radius: 999px;
+      }
+
+      .btn-lightbox-close {
+        background: rgba(255, 255, 255, 0.15);
+        border: none;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .btn-lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.28);
+        transform: scale(1.05);
+      }
+
+      .photo-lightbox-stage {
+        position: relative;
+        width: 100%;
+        border-radius: 14px;
+        overflow: hidden;
+        background: #080f0c;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 240px;
+        max-height: 65vh;
+      }
+
+      .photo-lightbox-img-wrap {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .lightbox-main-img {
+        width: 100%;
+        max-height: 65vh;
+        object-fit: contain;
+        display: block;
+        animation: fadeIn 0.25s ease-out;
+      }
+
+      .lightbox-nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+        border-radius: 50%;
+        background: rgba(10, 20, 16, 0.65);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        z-index: 5;
+      }
+
+      .lightbox-nav-btn.prev {
+        left: 10px;
+      }
+
+      .lightbox-nav-btn.next {
+        right: 10px;
+      }
+
+      .lightbox-nav-btn:hover {
+        background: rgba(17, 51, 42, 0.95);
+        transform: translateY(-50%) scale(1.08);
+      }
+
+      .photo-lightbox-thumbs {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        padding: 4px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .photo-lightbox-thumbs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .lightbox-thumb-item {
+        width: 50px;
+        height: 50px;
+        flex: 0 0 50px;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 2px solid transparent;
+        opacity: 0.6;
+        padding: 0;
+        background: transparent;
+        transition: all 0.2s ease;
+      }
+
+      .lightbox-thumb-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .lightbox-thumb-item.is-active {
+        opacity: 1;
+        border-color: #dfb76c;
+        transform: scale(1.08);
+        box-shadow: 0 0 10px rgba(223, 183, 108, 0.5);
+      }
+
       .unit-detail-quick-strip {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
