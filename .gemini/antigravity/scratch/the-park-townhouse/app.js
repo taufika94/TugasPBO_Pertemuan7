@@ -2118,6 +2118,40 @@ function updateUnitFilterSummary() {
   }
 }
 
+function filterUnitByCluster(clusterKey, btnEl) {
+  const container = document.getElementById('unitClusterTabs');
+  if (container) {
+    container.querySelectorAll('.f-sub-pill, .fasilitas-sub-pill').forEach(btn => {
+      btn.classList.remove('is-active');
+    });
+  }
+  if (btnEl) {
+    btnEl.classList.add('is-active');
+  }
+
+  const secNagoya = document.getElementById('clusterSectionNagoya');
+  const secTokyo = document.getElementById('clusterSectionTokyo');
+  const secOsaka = document.getElementById('clusterSectionOsaka');
+
+  if (clusterKey === 'all') {
+    if (secNagoya) secNagoya.style.display = 'block';
+    if (secTokyo) secTokyo.style.display = 'block';
+    if (secOsaka) secOsaka.style.display = 'block';
+  } else if (clusterKey === 'nagoya') {
+    if (secNagoya) secNagoya.style.display = 'block';
+    if (secTokyo) secTokyo.style.display = 'none';
+    if (secOsaka) secOsaka.style.display = 'none';
+  } else if (clusterKey === 'tokyo') {
+    if (secNagoya) secNagoya.style.display = 'none';
+    if (secTokyo) secTokyo.style.display = 'block';
+    if (secOsaka) secOsaka.style.display = 'none';
+  } else if (clusterKey === 'osaka') {
+    if (secNagoya) secNagoya.style.display = 'none';
+    if (secTokyo) secTokyo.style.display = 'none';
+    if (secOsaka) secOsaka.style.display = 'block';
+  }
+}
+
 function filterCatalog(filterType, val, btnEl) {
   catalogFilterState[filterType] = val;
   const parent = btnEl.parentElement;
@@ -2142,24 +2176,6 @@ function resetCatalogFilters() {
   });
   updateUnitFilterSummary();
   renderLandingUnits();
-}
-
-function filterUnitByCluster(clusterKey, btnEl) {
-  if (btnEl) {
-    document.querySelectorAll('#unitClusterTabs .fasilitas-sub-pill').forEach(b => b.classList.remove('is-active'));
-    btnEl.classList.add('is-active');
-  }
-  const clusters = ['nagoya', 'tokyo', 'osaka'];
-  clusters.forEach(c => {
-    const section = document.getElementById(`clusterSection${c.charAt(0).toUpperCase() + c.slice(1)}`);
-    if (section) {
-      if (clusterKey === 'all' || clusterKey === c) {
-        section.style.display = 'flex';
-      } else {
-        section.style.display = 'none';
-      }
-    }
-  });
 }
 
 function renderLandingUnits() {
@@ -2246,7 +2262,7 @@ function renderLandingUnits() {
             </div>
             ${isAvail ? `
               <button class="uic-action-btn" type="button" onclick="event.stopPropagation(); selectUnitFromLanding('${clusterKey}', '${u.id}', ${u.priceMillion})">
-                <span>Pilih Unit</span>
+                <span>Pesan Kavling Ini</span>
               </button>
             ` : `
               <button class="uic-action-btn is-disabled" type="button" disabled onclick="event.stopPropagation();">
@@ -2264,7 +2280,7 @@ let currentDetailUnitObj = null;
 
 function openUnitDetail(clusterKey, unitId) {
   const unit = CATALOG_INVENTORY.find(u => u.cluster === clusterKey && u.id === unitId) ||
-               CATALOG_INVENTORY.find(u => u.id === unitId) || CATALOG_INVENTORY[0];
+    CATALOG_INVENTORY.find(u => u.id === unitId) || CATALOG_INVENTORY[0];
   currentDetailUnitObj = unit;
 
   const hub = document.getElementById('unitCatalogHub');
@@ -4081,14 +4097,14 @@ function initBerandaLeafletMap() {
   }
 }
 
-function updateBerandaRadiusAnalysis() {}
-function setBerandaSearchRadius() {}
-function focusBerandaCluster() {}
-function filterBerandaCircle() {}
-function renderBerandaPoiList() {}
-function filterBerandaPOI() {}
-function focusBerandaPOI() {}
-function switchBerandaClusterMap() {}
+function updateBerandaRadiusAnalysis() { }
+function setBerandaSearchRadius() { }
+function focusBerandaCluster() { }
+function filterBerandaCircle() { }
+function renderBerandaPoiList() { }
+function filterBerandaPOI() { }
+function focusBerandaPOI() { }
+function switchBerandaClusterMap() { }
 
 /* Master Plan Lot Grid Controller */
 let currentBerandaLotCluster = 'nagoya';
@@ -4234,7 +4250,7 @@ function switchBerandaLotCluster(clusterKey, btnEl) {
   const pageBtn = document.getElementById(`btnPageCluster${cCapital}`);
   const berandaBtn = document.getElementById(`btnBerandaCluster${cCapital}`);
 
-  document.querySelectorAll('#secMasterPlan .cluster-pill-btn, #pageMasterPlan .cluster-pill-btn, #siteplanClusterTabs .cluster-pill-btn').forEach(b => b.classList.remove('is-active'));
+  document.querySelectorAll('#secMasterPlan .cluster-pill-btn, #pageMasterPlan .cluster-pill-btn').forEach(b => b.classList.remove('is-active'));
   if (pageBtn) pageBtn.classList.add('is-active');
   if (berandaBtn) berandaBtn.classList.add('is-active');
 

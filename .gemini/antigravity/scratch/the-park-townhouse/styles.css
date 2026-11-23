@@ -7560,18 +7560,22 @@ transition: all 0.2s ease;
 }
 
 .fasilitas-subpage-pills {
-  display: inline-flex;
+  display: inline-flex !important;
+  flex-wrap: nowrap !important;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 3px !important;
   background: #ede6da;
   padding: 3px 4px;
   border-radius: 999px;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  max-width: 100%;
 }
 
-.f-sub-pill {
-  border: none;
+.f-sub-pill,
+.fasilitas-sub-pill {
+  border: none !important;
+  outline: none !important;
   background: transparent;
   padding: 6px 14px;
   border-radius: 999px;
@@ -7581,18 +7585,45 @@ transition: all 0.2s ease;
   color: #5c6860;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  min-height: 30px;
+  min-height: 28px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none !important;
 }
 
-.f-sub-pill:hover {
+.f-sub-pill:hover,
+.fasilitas-sub-pill:hover {
   color: #11332a;
 }
 
-.f-sub-pill.is-active {
-  background: #ffffff;
-  color: #11332a;
+.f-sub-pill.is-active,
+.fasilitas-sub-pill.is-active {
+  background: #ffffff !important;
+  color: #11332a !important;
   font-weight: 700;
-  box-shadow: 0 2px 6px rgba(22, 36, 28, 0.1);
+  box-shadow: 0 2px 6px rgba(22, 36, 28, 0.1) !important;
+}
+
+#unitClusterTabs {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 2px !important;
+  padding: 3px !important;
+  max-width: 360px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+#unitClusterTabs .f-sub-pill,
+#unitClusterTabs .fasilitas-sub-pill {
+  flex: 1 1 0 !important;
+  padding: 5px 2px !important;
+  font-size: 10.5px !important;
+  letter-spacing: -0.1px;
+  min-width: 0 !important;
+  text-align: center;
 }
 
 /* Detail Hero Card */
@@ -12661,7 +12692,6 @@ transition: all 0.2s ease;
       .f-cta-btns-row,
       .f-badge-pills-row,
       .cluster-pill-tabs,
-      .fasilitas-subpage-pills,
       .theme-chips-scroll,
       .unit-filter-pills {
         display: flex !important;

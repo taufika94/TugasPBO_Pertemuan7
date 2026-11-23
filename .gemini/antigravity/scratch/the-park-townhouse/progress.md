@@ -5376,3 +5376,25 @@
     - Added `normalizeLandingTab(tabName)` handling case-insensitivity (`siteplan` -> `SitePlan`, `suratcinta` -> `SuratCinta`).
     - Enforced `p.style.setProperty('display', 'none', 'important')` and `activePanel.style.setProperty('display', 'flex', 'important')` across `switchLandingTab`, `openFasilitasDetail`, `closeFasilitasDetail`, `openUnitDetail`, and `closeUnitDetail`.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-23] Progress #86: Tidy Unit Catalog Capsule Pills & Enforce Single-Line Japandi Styling
+- **Context & Objective**: Per user request ("rapikan ini" with attached screenshot of `#unitClusterTabs`), eliminate awkward line wrap where `Osaka (9 Unit)` dropped to a second row, remove default browser button black borders, and apply seamless segmented capsule styling.
+- **Root Cause Identified**:
+  - The capsule bar buttons used `.fasilitas-sub-pill` which was missing from `styles.css`, causing the browser to render default HTML button borders/outlines.
+  - `.fasilitas-subpage-pills` was caught in the global auto-layout `flex-wrap: wrap !important` rule, forcing the 4th pill to wrap onto a second line.
+  - Labels with redundant "Unit" (`Nagoya (14 Unit)`, etc.) exceeded mobile width.
+- **Key Changes Implemented**:
+  - **Single-Line Capsule Layout (`index.html`, `styles.css`)**:
+    - Compacted labels to `Semua (30)`, `Nagoya (14)`, `Tokyo (7)`, and `Osaka (9)`.
+    - Removed `.fasilitas-subpage-pills` from `flex-wrap: wrap !important` list.
+    - Added dedicated `#unitClusterTabs` rule with `display: flex !important; flex-wrap: nowrap !important; max-width: 360px; width: 100%;` and child `.f-sub-pill` with `flex: 1 1 0 !important; font-size: 10.5px; white-space: nowrap;`.
+  - **Japandi Button Aesthetics (`styles.css`)**:
+    - Defined `.f-sub-pill, .fasilitas-sub-pill` with `border: none !important; outline: none !important; background: transparent;`.
+    - Active pill gets pristine `#ffffff !important` background, `#11332a !important` dark forest green text, and `box-shadow: 0 2px 6px rgba(22, 36, 28, 0.1) !important`.
+  - **Dynamic Filtering (`app.js`)**:
+    - Implemented `filterUnitByCluster(clusterKey, btnEl)` to toggle active states and show/hide corresponding cluster cards (`#clusterSectionNagoya`, `#clusterSectionTokyo`, `#clusterSectionOsaka`).
+    - Cleaned residual arrow characters in modal helpers to preserve Progress #83 zero-arrow rule.
+- **Status**: Completed, Verified & Auto-Pushed.
