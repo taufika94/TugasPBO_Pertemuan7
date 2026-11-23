@@ -5564,3 +5564,26 @@
     - Updated `.landing-bottom-bar` grid definition from `grid-template-columns: repeat(5, 1fr);` to `grid-template-columns: repeat(4, 1fr);`.
     - Ensures each remaining destination receives balanced touch target sizing (64px height, full-width thumb accessibility).
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #97: Restrict Top Sticky Navbar Exclusively to Beranda
+- **Context & Objective**: Per user request ("buat agar navbar yang ada pada gambar hanya ada di halaman beranda" referencing `.landing-navbar` header with logo and "THE PARK TOWNHOUSE · Avenue Grand Gate · Sukoharjo"), configure the top sticky navbar to display exclusively when viewing the Beranda tab and remain strictly hidden on all other tabs (Surat Cinta, Site Plan, and Fasilitas).
+- **Key Changes Implemented**:
+  - **Dynamic Tab Visibility Control (`app.js`)**:
+    - Updated `switchLandingTab(tabName, btnEl)`: When `norm === 'Beranda'`, the `.landing-navbar` has its display restored and applies `.is-scrolled` when scrolled past 45px. When switching to any other tab (`SuratCinta`, `SitePlan`, `Fasilitas`, or `Unit`), `.landing-navbar` is immediately assigned `display: none !important;` and `.is-scrolled` is cleared.
+    - Updated `initLandingNavbarScrollTrigger()`: Enhanced scroll event listener with an active panel check (`isBerandaActive`). If `#panelBeranda` is not the active tab, the scroll listener suppresses navbar display.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #100: Elevate Surat Cinta Header to Sticky Frameless Navbar
+- **Context & Objective**: Per user request ("buat in sebagai navbar di halmana surat cinta" referencing `media_1795470857752_e90e5ea2.png` showing the centered serif title "Telusuri 11 Tema Keunggulan"), standardize the Surat Cinta page header into an authentic sticky navbar matching Site Plan and Fasilitas.
+- **Key Changes Implemented**:
+  - **Sticky Navbar Geometry & Parity (`styles.css`, `index.html`)**:
+    - Created `.surat-navbar-header` directly at the top of `#panelSuratCinta` containing `<h2 class="surat-nav-title">Telusuri 11 Tema Keunggulan</h2>`.
+    - Grouped `.surat-navbar-header` with `.fasilitas-subpage-header` and `.siteplan-navbar-header` under `position: sticky; top: 0; z-index: 40; width: 100%; box-sizing: border-box; background: rgba(247, 244, 237, 0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(220, 212, 195, 0.4); padding: 14px 10px 10px;`.
+    - Styled `.surat-nav-title` with `font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: #11332a; text-align: center; letter-spacing: -0.01em;`.
+- **Status**: Completed, Verified & Auto-Pushed.
