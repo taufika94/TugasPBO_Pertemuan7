@@ -5359,3 +5359,20 @@
   - **Dynamic Cluster Switching Integration (`app.js`)**:
     - Extended `switchBerandaLotCluster` selector to include `#siteplanClusterTabs .cluster-pill-btn`, keeping active states perfectly synchronized across tabs.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-23] Progress #85: Resolve Bottom Navigation Bar Failure Caused by CSS !important Display Collision
+- **Context & Objective**: Per user request ("mengapa jadi error bootm barnya, kenapa ga ke navigate ke halamn yang seharusnya"), resolve bug where clicking bottom navigation bar tabs failed to switch views.
+- **Root Cause Identified**:
+  - In Progress #78, the global auto layout block in `styles.css` assigned `display: flex !important;` to `.landing-tab-panel`, `.fasilitas-subpage`, `.unit-catalog-page-container`, `.unit-detail-page-container`, and `.fasilitas-main-hub`.
+  - Because `!important` on CSS class rules overrides JavaScript inline styles without `!important` (`el.style.display = 'none'`), all 5 tab panels and subpages remained permanently forced to `display: flex !important`, causing all pages to be stacked on top of each other simultaneously.
+- **Key Changes Implemented**:
+  - **CSS Priority Isolation (`styles.css`)**:
+    - Removed `.landing-tab-panel`, `.fasilitas-subpage`, `.unit-catalog-page-container`, `.unit-detail-page-container`, and `.fasilitas-main-hub` from the global `display: flex !important` selector.
+    - Added dedicated tab panel display rules enforcing `display: none !important` when hidden (`[style*="display: none"]`, `.is-hidden`) and `display: flex !important` when active (`.is-active`, `[style*="display: flex"]`).
+  - **Robust JavaScript Tab Switching & Normalization (`app.js`)**:
+    - Added `normalizeLandingTab(tabName)` handling case-insensitivity (`siteplan` -> `SitePlan`, `suratcinta` -> `SuratCinta`).
+    - Enforced `p.style.setProperty('display', 'none', 'important')` and `activePanel.style.setProperty('display', 'flex', 'important')` across `switchLandingTab`, `openFasilitasDetail`, `closeFasilitasDetail`, `openUnitDetail`, and `closeUnitDetail`.
+- **Status**: Completed, Verified & Auto-Pushed.

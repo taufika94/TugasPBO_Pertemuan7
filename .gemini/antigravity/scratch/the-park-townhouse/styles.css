@@ -12589,20 +12589,60 @@ transition: all 0.2s ease;
       /* ==========================================================================
    GLOBAL AUTO LAYOUT STANDARDIZATION (FLEX & GRID FLOW ENGINE)
    ========================================================================== */
-      .landing-tab-panel,
       .landing-section-card,
       .surat-magazine-container,
-      .fasilitas-subpage,
-      .unit-catalog-page-container,
-      .unit-detail-page-container,
       .f-detail-footer-cta,
-      .fasilitas-main-hub,
       .sync-masterplan-card {
         display: flex !important;
         flex-direction: column !important;
         height: auto !important;
         width: 100% !important;
         box-sizing: border-box !important;
+      }
+
+      /* Dynamic Tab Panel & Subpage Display Enforcement */
+      .landing-tab-panel {
+        display: none;
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .landing-tab-panel.is-active,
+      .landing-tab-panel[style*="display: flex"] {
+        display: flex !important;
+      }
+
+      .landing-tab-panel[style*="display: none"],
+      .landing-tab-panel.is-hidden {
+        display: none !important;
+      }
+
+      .fasilitas-subpage {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .fasilitas-subpage[style*="display: none"] {
+        display: none !important;
+      }
+
+      .fasilitas-subpage[style*="display: flex"] {
+        display: flex !important;
+      }
+
+      .unit-detail-page-container[style*="display: none"] {
+        display: none !important;
+      }
+
+      .unit-catalog-page-container[style*="display: none"] {
+        display: none !important;
+      }
+
+      .fasilitas-main-hub[style*="display: none"] {
+        display: none !important;
       }
 
       /* Ensure auto-flow & dynamic content adaptation without rigid height clipping */

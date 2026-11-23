@@ -2269,8 +2269,8 @@ function openUnitDetail(clusterKey, unitId) {
 
   const hub = document.getElementById('unitCatalogHub');
   const detail = document.getElementById('unitDetailView');
-  if (hub) hub.style.display = 'none';
-  if (detail) detail.style.display = 'block';
+  if (hub) hub.style.setProperty('display', 'none', 'important');
+  if (detail) detail.style.setProperty('display', 'flex', 'important');
 
   // Populate Details
   const clusterNames = { nagoya: 'Klaster Nagoya', tokyo: 'Klaster Tokyo', osaka: 'Klaster Osaka' };
@@ -2349,8 +2349,8 @@ function openUnitDetail(clusterKey, unitId) {
 function closeUnitDetail() {
   const hub = document.getElementById('unitCatalogHub');
   const detail = document.getElementById('unitDetailView');
-  if (detail) detail.style.display = 'none';
-  if (hub) hub.style.display = 'block';
+  if (detail) detail.style.setProperty('display', 'none', 'important');
+  if (hub) hub.style.setProperty('display', 'flex', 'important');
 }
 
 function orderCurrentDetailUnit() {
@@ -2389,15 +2389,32 @@ function selectUnitFromLanding(clusterKey, unitId, priceM) {
   openSavedConfigModal();
 }
 
+function normalizeLandingTab(tabName) {
+  if (!tabName) return 'Beranda';
+  const t = tabName.toLowerCase();
+  if (t === 'beranda') return 'Beranda';
+  if (t === 'unit') return 'Unit';
+  if (t === 'suratcinta' || t === 'surat' || t === 'surat_cinta') return 'SuratCinta';
+  if (t === 'siteplan' || t === 'masterplan' || t === 'site_plan') return 'SitePlan';
+  if (t === 'fasilitas') return 'Fasilitas';
+  return tabName.charAt(0).toUpperCase() + tabName.slice(1);
+}
+
 function switchLandingTab(tabName, btnEl) {
-  const norm = tabName.charAt(0).toUpperCase() + tabName.slice(1);
-  document.querySelectorAll('.landing-tab-panel').forEach(p => p.style.display = 'none');
+  const norm = normalizeLandingTab(tabName);
+  document.querySelectorAll('.landing-tab-panel').forEach(p => {
+    p.style.setProperty('display', 'none', 'important');
+    p.classList.remove('is-active');
+  });
   document.querySelectorAll('.bottom-nav-tab').forEach(b => {
     b.classList.remove('is-active', 'tab-pop');
   });
 
   const activePanel = document.getElementById(`panel${norm}`);
-  if (activePanel) activePanel.style.display = 'flex';
+  if (activePanel) {
+    activePanel.style.setProperty('display', 'flex', 'important');
+    activePanel.classList.add('is-active');
+  }
 
   const bottomBtn = btnEl || document.getElementById(`tabBtn${norm}`);
   if (bottomBtn) {
@@ -2557,12 +2574,12 @@ function openFasilitasDetail(slug) {
   const mainHub = document.getElementById('fasilitasMainHub');
   const allSubpages = document.querySelectorAll('.fasilitas-subpage');
 
-  if (mainHub) mainHub.style.display = 'none';
-  allSubpages.forEach(sub => sub.style.display = 'none');
+  if (mainHub) mainHub.style.setProperty('display', 'none', 'important');
+  allSubpages.forEach(sub => sub.style.setProperty('display', 'none', 'important'));
 
   const target = document.getElementById(`fasilitasDetail_${slug}`);
   if (target) {
-    target.style.display = 'flex';
+    target.style.setProperty('display', 'flex', 'important');
   }
 
   document.querySelectorAll('.f-sub-pill').forEach(btn => {
@@ -2577,8 +2594,8 @@ function closeFasilitasDetail() {
   const mainHub = document.getElementById('fasilitasMainHub');
   const allSubpages = document.querySelectorAll('.fasilitas-subpage');
 
-  allSubpages.forEach(sub => sub.style.display = 'none');
-  if (mainHub) mainHub.style.display = 'flex';
+  allSubpages.forEach(sub => sub.style.setProperty('display', 'none', 'important'));
+  if (mainHub) mainHub.style.setProperty('display', 'flex', 'important');
 
   const scrollContainer = document.getElementById('landingScrollContent');
   if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
