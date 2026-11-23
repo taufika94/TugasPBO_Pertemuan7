@@ -5343,3 +5343,19 @@
   - **Button Alignment Standardization (`styles.css`)**:
     - Updated `.btn-primary-forest` from `justify-content: space-between` to `justify-content: center; gap: 8px; text-align: center;` to ensure all button labels remain centered and balanced without trailing arrows.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-23] Progress #84: Transform Site Plan Header into Dedicated Frameless Top Navbar
+- **Context & Objective**: Per user request ("buat jadi navbar dihalaman site plannya"), transform the Site Plan tab (`#panelSitePlan`) header into a clean, frameless top navigation bar (`.siteplan-navbar-header`), matching the Fasilitas and user-provided reference design.
+- **Key Changes Implemented**:
+  - **Navbar Structure Refactoring (`index.html`)**:
+    - Externalized the title `Peta Masterplan Kawasan` and cluster selector tabs outside of `.landing-section-card`, establishing a dedicated top navbar (`.siteplan-navbar-header`).
+    - Integrated frameless centered title (`.siteplan-nav-title`) with segmented capsule pills (`#siteplanClusterTabs.fasilitas-subpage-pills`) in warm oat tone (`#ede6da`) with white active pill.
+    - Removed redundant inner card header from `#pageMasterPlan` to eliminate double framing.
+  - **CSS Styling Unification (`styles.css`)**:
+    - Coupled `.siteplan-navbar-header` and `.siteplan-nav-title` with `.fasilitas-subpage-header` and `.fasilitas-nav-title` rules for exact visual parity.
+  - **Dynamic Cluster Switching Integration (`app.js`)**:
+    - Extended `switchBerandaLotCluster` selector to include `#siteplanClusterTabs .cluster-pill-btn`, keeping active states perfectly synchronized across tabs.
+- **Status**: Completed, Verified & Auto-Pushed.

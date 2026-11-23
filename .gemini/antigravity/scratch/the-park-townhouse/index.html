@@ -3462,23 +3462,22 @@
 
           <!-- TAB 3: SITE PLAN -->
           <section class="landing-tab-panel" id="panelSitePlan" style="display: none;">
-            <div class="landing-section-card sync-masterplan-card" id="pageMasterPlan">
-              <div class="section-card-head" style="text-align: center; margin-bottom: 1rem;">
-                <h2 class="section-card-title" style="text-align: center; margin: 0;">Peta Masterplan Kawasan</h2>
-              </div>
-
-              <!-- Cluster Selector Tabs -->
-              <div class="cluster-pill-tabs">
-                <button type="button" class="cluster-pill-btn is-active" id="btnPageClusterNagoya"
+            <!-- Site Plan Navbar Header (Frameless Centered Title + Segmented Pills) -->
+            <div class="siteplan-navbar-header">
+              <h2 class="siteplan-nav-title">Peta Masterplan Kawasan</h2>
+              <div class="fasilitas-subpage-pills" id="siteplanClusterTabs">
+                <button type="button" class="cluster-pill-btn f-sub-pill is-active" id="btnPageClusterNagoya"
                   onclick="switchLandingSiteplan('nagoya', this)">Nagoya</button>
-                <button type="button" class="cluster-pill-btn" id="btnPageClusterOsaka"
+                <button type="button" class="cluster-pill-btn f-sub-pill" id="btnPageClusterOsaka"
                   onclick="switchLandingSiteplan('osaka', this)">Osaka</button>
-                <button type="button" class="cluster-pill-btn" id="btnPageClusterTokyo"
+                <button type="button" class="cluster-pill-btn f-sub-pill" id="btnPageClusterTokyo"
                   onclick="switchLandingSiteplan('tokyo', this)">Tokyo</button>
               </div>
+            </div>
 
+            <div class="landing-section-card sync-masterplan-card" id="pageMasterPlan">
               <!-- Cluster Summary Header & Top Specs -->
-              <div class="siteplan-header" style="margin-top: 10px;">
+              <div class="siteplan-header">
                 <div class="siteplan-title-row">
                   <h3 class="siteplan-cluster-title" id="pageSpClusterTitle">Nagoya</h3>
                   <span class="siteplan-shm-badge" id="pageSpShmBadge">SHM sudah pecah sempurna (Nagoya)</span>
