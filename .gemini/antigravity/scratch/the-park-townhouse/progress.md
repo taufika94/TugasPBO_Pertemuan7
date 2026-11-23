@@ -5473,3 +5473,20 @@
     - Implemented `focusBerandaCluster(clusterKey, btnEl)`: pans and flies the Leaflet map smoothly to Nagoya, Osaka, or Tokyo coordinates.
     - Implemented `toggleBerandaMoreFacilities(btnEl)`: expands secondary amenities with visual toggle state.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #91: Refine Pilihan Unit Per Cluster Showcase Layout
+- **Context & Objective**: Per user request ("rapikan layout ini" referencing `#secBerandaUnitShowcase` and uploaded screenshot `media_1795469650113_8338e3a8.jpg`), refine the cluster showcase layout and statistics bar to prevent awkward stacking, replace unicode symbols with crisp SVGs, and improve Japandi aesthetics.
+- **Key Changes Implemented**:
+  - **Single-Line Cluster Tabs (`styles.css`)**:
+    - Targeted `#berandaShowcaseClusterTabs` with `flex-wrap: nowrap !important`, `width: 100%`, and child `.cluster-pill-btn` with `flex: 1 1 0 !important; min-height: 40px; height: 40px;`.
+    - Excluded `#berandaShowcaseClusterTabs` from generic media query `flex-wrap: wrap !important` rule to ensure all 3 tabs (`Nagoya`, `Tokyo`, `Osaka`) stay unified in one pristine row.
+  - **Hero Card Refinement (`styles.css`)**:
+    - Raised min-height to 250px with refined gradient overlays, subtle gate backdrop opacity (`0.35`), and enhanced typography.
+    - Polished button `.btn-castle-detail` with `min-height: 40px`, backdrop blur, and crisp borders.
+  - **Summary Stats Bar 3-Column Grid (`index.html`, `styles.css`)**:
+    - Converted `.showcase-summary-bar` on mobile to a structured `display: grid; grid-template-columns: repeat(3, 1fr); row-gap: 12px; column-gap: 8px;` layout.
+    - Replaced raw text symbols (`⌂`, `◫`, `▱`, `田`, `♨`) with crisp inline SVG icons for Unit, LB, LT, Kamar Tidur, and Kamar Mandi.
+- **Status**: Completed, Verified & Auto-Pushed.
