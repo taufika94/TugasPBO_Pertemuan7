@@ -5522,3 +5522,17 @@
   - **Initial State Parity (`index.html`)**:
     - Ensured `Clubhouse` tab has `.is-active` by default in `#fasilitasMainHub` header.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #94: Harmonize Andara Imperial Super App Detail Subpage
+- **Context & Objective**: Per user request ("perbaiki <div class=\"fasilitas-subpage\" id=\"fasilitasDetail_superapp\"> agar sama dengan style halaman lainnya"), align the Super App subpage structure and styling with the Clubhouse and Hospitality detail subpages.
+- **Key Changes Implemented**:
+  - **Hero Stats Bar & Badges Parity (`index.html`)**:
+    - Added `.f-detail-stats-bar` containing `.f-stat-item` (`Smart Home IoT: Integrasi Ekosistem Pintar`) and `.f-badge-pills-row` (`Online 24/7`, `Ver. Pro`, `Aman & Terenkripsi`), matching the layout structure of Clubhouse and Hospitality.
+  - **Section Header Standardization (`index.html`)**:
+    - Aligned the feature section header with other pages by adding `.section-tag-gold` (`KONTROL PINTAR KAWASAN`), matching serif font `.section-card-title`, and `.section-card-sub`.
+  - **Pill Navigation & Responsive Layout**:
+    - Inherits the shared `.fasilitas-subpage-pills` segmented capsule design (`max-width: 320px`, rounded 999px, soft cream `#ede6da` track).
+- **Status**: Completed, Verified & Auto-Pushed.
