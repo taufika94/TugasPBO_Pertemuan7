@@ -5550,3 +5550,17 @@
     - Set `.f-cta-btns-row .btn-primary-forest` and `.f-cta-btns-row .btn-secondary-link` to `flex: 1 1 0 !important; width: auto !important; min-height: 40px !important; height: 40px !important; white-space: nowrap !important;`.
     - Polished secondary button background (`#ffffff !important`), subtle border (`#d4cdc0 !important`), and dark forest green typography (`#11332a !important`).
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #96: Remove Unit Tab from Mandatory Bottom Navigation Bar
+- **Context & Objective**: Per user request ("hapus unit di bottom bar" with uploaded screenshot `media_1795470123582_a38ec064.png`), remove the "Unit" tab button from `#landingBottomBar` and adjust layout from 5 columns to 4 columns.
+- **Key Changes Implemented**:
+  - **HTML Structure (`index.html`)**:
+    - Removed `<button class="bottom-nav-tab" id="tabBtnUnit">` from `.landing-bottom-bar`.
+    - Remaining 4 core destinations: **Beranda**, **Surat Cinta**, **Site Plan**, and **Fasilitas**.
+  - **Grid Layout (`styles.css`)**:
+    - Updated `.landing-bottom-bar` grid definition from `grid-template-columns: repeat(5, 1fr);` to `grid-template-columns: repeat(4, 1fr);`.
+    - Ensures each remaining destination receives balanced touch target sizing (64px height, full-width thumb accessibility).
+- **Status**: Completed, Verified & Auto-Pushed.
