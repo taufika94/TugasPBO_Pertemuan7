@@ -4122,6 +4122,7 @@ window.addEventListener('DOMContentLoaded', () => {
   if (cardsCountLabel) cardsCountLabel.textContent = `${unlockedKeunggulanCount}/99`;
   initLandingNavbarScrollTrigger();
   initMetricsCounterAnimation();
+  setTimeout(initBerandaLeafletMap, 500);
   runAfterDelayOpening();
 });
 
@@ -4165,6 +4166,24 @@ let activeBerandaCluster = 'nagoya';
 
 let currentBerandaSearchRadius = 5000;
 let currentBerandaCategoryFilter = 'all';
+
+function initBerandaLeafletMap() {
+  const mapEl = document.getElementById('berandaLeafletMap');
+  if (!mapEl) return;
+
+  if (!berandaLeafletMapInstance) {
+    berandaLeafletMapInstance = setupLeafletMap('berandaLeafletMap', false, true);
+  }
+
+  if (berandaLeafletMapInstance) {
+    setTimeout(() => {
+      berandaLeafletMapInstance.invalidateSize();
+    }, 100);
+    setTimeout(() => {
+      berandaLeafletMapInstance.invalidateSize();
+    }, 350);
+  }
+}
 
 function setBerandaSearchRadius(radiusMeters, btnEl) {
   currentBerandaSearchRadius = radiusMeters;

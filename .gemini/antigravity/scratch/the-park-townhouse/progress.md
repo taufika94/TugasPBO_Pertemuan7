@@ -5707,3 +5707,14 @@
     - Added an automatic 600ms fallback trigger so values animate to target even if IntersectionObserver is inactive.
     - Bound `initMetricsCounterAnimation()` to both `switchLandingTab('Beranda')` and `DOMContentLoaded`.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #107: Restore Missing initBerandaLeafletMap Function
+- **Context & Objective**: Per user request ("kenapa error" referencing `media_1795472862720_58c28b2c.png` displaying a blank/empty Leaflet map container on Beranda), resolve the missing map initialization where `#berandaLeafletMap` remained unrendered.
+- **Root Cause & Fix**:
+  - `initBerandaLeafletMap()` was accidentally displaced in commit `4a3e242` when active radius analysis functions were introduced. Calling `setTimeout(initBerandaLeafletMap, 300)` failed to initialize `berandaLeafletMapInstance = setupLeafletMap('berandaLeafletMap', false, true);`.
+  - Restored `initBerandaLeafletMap()` in [app.js](file:///c:/Users/ASUS/.gemini/antigravity/scratch/the-park-townhouse/app.js) with double `invalidateSize()` passes (100ms & 350ms) to ensure tiles render immediately when Beranda mounts.
+  - Linked initialization directly into `DOMContentLoaded`, `initLandingPage()`, and `switchLandingTab('Beranda')`.
+- **Status**: Completed, Verified & Auto-Pushed.
