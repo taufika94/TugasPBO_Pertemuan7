@@ -2466,6 +2466,7 @@ function switchLandingTab(tabName, btnEl) {
   if (norm === 'Beranda') {
     initBerandaLeafletMap();
     setTimeout(() => { if (berandaLeafletMapInstance) berandaLeafletMapInstance.invalidateSize(); }, 200);
+    initMetricsCounterAnimation();
   } else if (norm === 'SitePlan') {
     switchLandingSiteplan('nagoya');
   } else if (norm === 'SuratCinta') {
@@ -3799,7 +3800,11 @@ function initLandingNavbarScrollTrigger() {
 
 function initMetricsCounterAnimation() {
   const container = document.getElementById('berandaMetricsGrid');
+  const scrollContainer = document.getElementById('landingScrollContent');
   if (!container) return;
+
+  const stats = container.querySelectorAll('.count-up-stat');
+  if (!stats.length) return;
 
   let hasAnimated = false;
 
@@ -3808,8 +3813,7 @@ function initMetricsCounterAnimation() {
     hasAnimated = true;
 
     container.querySelectorAll('.b-metric-cell').forEach(cell => cell.classList.add('is-counting'));
-    const stats = container.querySelectorAll('.count-up-stat');
-    const duration = 1800;
+    const duration = 1600;
     const startTime = performance.now();
 
     function frame(now) {
@@ -3849,9 +3853,16 @@ function initMetricsCounterAnimation() {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, {
+      root: scrollContainer || null,
+      threshold: 0.05
+    });
 
     observer.observe(container);
+
+    setTimeout(() => {
+      if (!hasAnimated) runAnimation();
+    }, 600);
   } else {
     runAnimation();
   }
@@ -4110,6 +4121,7 @@ window.addEventListener('DOMContentLoaded', () => {
   initSuratCintaMagazine();
   if (cardsCountLabel) cardsCountLabel.textContent = `${unlockedKeunggulanCount}/99`;
   initLandingNavbarScrollTrigger();
+  initMetricsCounterAnimation();
   runAfterDelayOpening();
 });
 

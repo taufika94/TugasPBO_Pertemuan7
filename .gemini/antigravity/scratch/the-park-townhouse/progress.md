@@ -5693,3 +5693,17 @@
     - Bound `initLandingNavbarScrollTrigger()` to `DOMContentLoaded` and `initLandingPage()`.
     - In `switchLandingTab()`, immediately reset `scrollContainer.scrollTop = 0` and strip `.is-scrolled` so entering Beranda starts clean without premature navbar triggers.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #106: Fix Metric Counters Default Values & Observer Execution
+- **Context & Objective**: Per user request ("kenapa ini 0" referencing `media_1795472817511_3a299c64.png` displaying `Rp 0 Jt`, `0 Unit`, `0 m²`, `± 0 m`), fix the Beranda stat metrics grid which previously defaulted to `0` in raw HTML and failed to animate if `IntersectionObserver` root was unbound or missed triggering inside the scrollable container.
+- **Key Changes Implemented**:
+  - **Authentic Default HTML Fallbacks (`index.html`)**:
+    - Replaced initial zero placeholders with authentic project statistics: `Rp 400 Jt`, `30 Unit`, `177 m²`, and `± 100 m`. If an observer delay occurs, the user always sees authentic figures.
+  - **Scroll Container Bound Observer & Fallback Timer (`app.js`)**:
+    - Updated `initMetricsCounterAnimation()`: explicitly bound `root: scrollContainer || null` with a sensitive `threshold: 0.05` so the animation reliably triggers when scrolling or opening Beranda.
+    - Added an automatic 600ms fallback trigger so values animate to target even if IntersectionObserver is inactive.
+    - Bound `initMetricsCounterAnimation()` to both `switchLandingTab('Beranda')` and `DOMContentLoaded`.
+- **Status**: Completed, Verified & Auto-Pushed.
