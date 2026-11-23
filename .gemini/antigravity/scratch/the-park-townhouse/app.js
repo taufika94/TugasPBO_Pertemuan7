@@ -3454,7 +3454,7 @@ function renderSuratTheme(idx) {
       </div>
       <div class="theme-nav-actions">
         <button type="button" class="btn-theme-page btn-theme-prev" onclick="prevSuratTheme()" ${idx === 0 ? 'disabled' : ''} aria-label="Tema Sebelumnya">
-          <span>← <span class="nav-btn-lbl">Tema </span>Sebelumnya</span>
+          <span><span class="nav-btn-lbl">Tema </span>Sebelumnya</span>
         </button>
         <div class="theme-page-indicator">
           <strong>${idx + 1}</strong> <span class="indicator-sub">dari 11 Tema</span>

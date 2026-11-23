@@ -245,7 +245,7 @@
             </div>
 
             <div class="room-nav-actions">
-              <button class="btn-back-outline" onclick="goToRoom(1)" type="button">←</button>
+              <button class="btn-back-outline" onclick="goToRoom(1)" type="button" aria-label="Kembali"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
               <button class="btn-primary-forest" onclick="goToRoom(3)" type="button">
                 <span>Telusuri Jalan Pulangnya</span>
               </button>
@@ -369,7 +369,7 @@
 
             <p class="next-door-prompt">"Sekarang lihat rumah yang menunggu di ujung perjalanan itu."</p>
             <div class="room-nav-actions">
-              <button class="btn-back-outline" onclick="goToRoom(2)" type="button">←</button>
+              <button class="btn-back-outline" onclick="goToRoom(2)" type="button" aria-label="Kembali"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
               <button class="btn-primary-forest" onclick="goToRoom(4)" type="button">
                 <span>Masuk ke Dalam Rumah</span>
               </button>
@@ -438,8 +438,8 @@
                 &amp; Tangga</button>
             </div>
             <div class="panorama-controls">
-              <button class="pano-btn" onclick="rotatePanorama(-35)" type="button" aria-label="Putar kiri">⟲</button>
-              <button class="pano-btn" onclick="rotatePanorama(35)" type="button" aria-label="Putar kanan">⟳</button>
+              <button class="pano-btn" onclick="rotatePanorama(-35)" type="button" aria-label="Putar kiri"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><polyline points="3 3 3 8 8 8"/></svg></button>
+              <button class="pano-btn" onclick="rotatePanorama(35)" type="button" aria-label="Putar kanan"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12a9 9 0 1 1-9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><polyline points="21 3 21 8 16 8"/></svg></button>
             </div>
             <div class="room-visual-overlay">
               <span class="room-visual-tag" id="houseVisualTag">Nagoya B.02–B.04 · Gold</span>
@@ -764,7 +764,7 @@
 
           <!-- Bottom Room 04 Nav Actions -->
           <div class="room-nav-actions" id="room4NavActions">
-            <button class="btn-back-outline" onclick="goToRoom(3)" type="button">←</button>
+            <button class="btn-back-outline" onclick="goToRoom(3)" type="button" aria-label="Kembali"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
             <button class="btn-primary-forest is-hidden" id="btnNextToRoom5" onclick="goToRoom(5)" type="button">
               <span>Intip Kehidupan Bersama</span>
             </button>
@@ -873,7 +873,7 @@
             </div>
 
             <div class="room-nav-actions">
-              <button class="btn-back-outline" onclick="goToRoom(4)" type="button">←</button>
+              <button class="btn-back-outline" onclick="goToRoom(4)" type="button" aria-label="Kembali"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
               <button class="btn-primary-forest" onclick="goToRoom(6)" type="button">
                 <span>Simulasi Angsuran</span>
               </button>
@@ -1022,7 +1022,7 @@
             </div>
 
             <div class="room-nav-actions">
-              <button class="btn-back-outline" onclick="goToRoom(5)" type="button">←</button>
+              <button class="btn-back-outline" onclick="goToRoom(5)" type="button" aria-label="Kembali"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
               <button class="btn-primary-forest" onclick="goToRoom(7)" type="button">
                 <span>Menuju Ruang Kunci</span>
               </button>
@@ -1095,7 +1095,7 @@
             </div>
 
             <div class="room-nav-actions">
-              <button class="btn-back-outline" onclick="goToRoom(6)" type="button">←</button>
+              <button class="btn-back-outline" onclick="goToRoom(6)" type="button" aria-label="Kembali"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
               <button class="btn-primary-forest" onclick="openQuickModal('save')" type="button">
                 <span>Simpan Konfigurasi</span>
               </button>
@@ -1410,7 +1410,6 @@
                 <a href="https://www.google.com/maps/search/?api=1&query=-7.673895340749299,110.84397890839111"
                   target="_blank" rel="noopener noreferrer" class="btn-secondary-link">
                   <span>Buka di Google Maps</span>
-                  <span>↗</span>
                 </a>
                 <button type="button" class="btn-primary-forest" onclick="switchLandingTab('suratcinta')">
                   <span>99 Alasan Lokasi Ini Sempurna</span>
@@ -2019,7 +2018,6 @@
                       <button type="button" class="btn-card-denah"
                         onclick="openDenahSpecModal('Tipe Gold (Nagoya)', 'denah-tipe60.jpg')">
                         <span>Lihat Denah</span>
-                        <span>↗</span>
                       </button>
                       <button type="button" class="btn-card-order"
                         onclick="openOrderModal('Tipe Gold (Nagoya)', 'B.02-B.04', 'Rp 650 Juta')">
@@ -2068,7 +2066,6 @@
                       <button type="button" class="btn-card-denah"
                         onclick="openDenahSpecModal('Tipe Diamond (Tokyo)', 'denah-tipe80.jpg')">
                         <span>Lihat Denah</span>
-                        <span>↗</span>
                       </button>
                       <button type="button" class="btn-card-order"
                         onclick="openOrderModal('Tipe Diamond (Tokyo)', 'A.05-A.08', 'Rp 679 Juta')">
@@ -2117,7 +2114,6 @@
                       <button type="button" class="btn-card-denah"
                         onclick="openDenahSpecModal('Tipe Royal Diamond (Osaka)', 'denah-tipe110.jpg')">
                         <span>Lihat Denah</span>
-                        <span>↗</span>
                       </button>
                       <button type="button" class="btn-card-order"
                         onclick="openOrderModal('Tipe Royal Diamond (Osaka)', 'C.01-C.06', 'Rp 895 Juta')">
@@ -2650,7 +2646,7 @@
                     <div class="filter-control-group">
                       <div class="filter-lbl-row">
                         <label class="filter-lbl">Tipe Unit</label>
-                        <span class="filter-swipe-hint">geser ↔</span>
+                        <span class="filter-swipe-hint">geser</span>
                       </div>
                       <div class="filter-chips-scroller" id="filterGroupType">
                         <button type="button" class="f-chip is-active" onclick="filterCatalog('type', 'all', this)">Semua</button>
@@ -2663,7 +2659,7 @@
                     <div class="filter-control-group">
                       <div class="filter-lbl-row">
                         <label class="filter-lbl">Luas Tanah</label>
-                        <span class="filter-swipe-hint">geser ↔</span>
+                        <span class="filter-swipe-hint">geser</span>
                       </div>
                       <div class="filter-chips-scroller" id="filterGroupLot">
                         <button type="button" class="f-chip is-active" onclick="filterCatalog('lot', 'all', this)">Semua</button>
@@ -2678,7 +2674,7 @@
                     <div class="filter-control-group">
                       <div class="filter-lbl-row">
                         <label class="filter-lbl">Range Harga</label>
-                        <span class="filter-swipe-hint">geser ↔</span>
+                        <span class="filter-swipe-hint">geser</span>
                       </div>
                       <div class="filter-chips-scroller" id="filterGroupPrice">
                         <button type="button" class="f-chip is-active" onclick="filterCatalog('price', 'all', this)">Semua</button>
@@ -2693,7 +2689,7 @@
                     <div class="filter-control-group">
                       <div class="filter-lbl-row">
                         <label class="filter-lbl">Posisi Kavling</label>
-                        <span class="filter-swipe-hint">geser ↔</span>
+                        <span class="filter-swipe-hint">geser</span>
                       </div>
                       <div class="filter-chips-scroller" id="filterGroupPos">
                         <button type="button" class="f-chip is-active" onclick="filterCatalog('pos', 'all', this)">Semua</button>
@@ -4574,7 +4570,7 @@
                 <span>Kirim Konfigurasi ke WhatsApp Marketing</span>
               </button>
               <button class="btn-back-outline" type="button" onclick="reopenStoryTour()">
-                <span>↻ Buka Tur 360 &amp; Kustomisasi Ulang</span>
+                <span>Buka Tur 360 &amp; Kustomisasi Ulang</span>
               </button>
             </div>
           </div>

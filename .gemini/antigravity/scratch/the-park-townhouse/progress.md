@@ -5398,3 +5398,24 @@
     - Implemented `filterUnitByCluster(clusterKey, btnEl)` to toggle active states and show/hide corresponding cluster cards (`#clusterSectionNagoya`, `#clusterSectionTokyo`, `#clusterSectionOsaka`).
     - Cleaned residual arrow characters in modal helpers to preserve Progress #83 zero-arrow rule.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #87: Complete Elimination of Arrow Unicode Symbols & Mojibake (â† / â†’)
+- **Context & Objective**: Per user request ("hapus semua yang ada seperti ini â†" with uploaded screenshot showing mojibake `â†’` on button), eliminate all residual unicode arrows and replace back/rotate controls with clean inline SVGs.
+- **Root Cause Identified**:
+  - Unicode arrow characters (`→`, `←`, `↗`, `↔`, `⟲`, `⟳`, `↻`) rendered as mojibake (`â†’`, `â†`, etc.) in certain browser encoding environments.
+  - Residual `↗` was present in Google Maps and floor plan buttons (`Lihat Denah ↗`).
+  - Back buttons used raw text `←` which corrupted into `â†`.
+  - Filter swipe hints had `geser ↔`.
+- **Key Changes Implemented**:
+  - **Eliminated All Arrows & Mojibake (`index.html`, `app.js`)**:
+    - Replaced all 6 room back buttons (`.btn-back-outline`) with clean inline SVG chevron icons (`<polyline points="15 18 9 12 15 6"/>`).
+    - Removed `<span>↗</span>` from Google Maps link and all 3 cluster card floorplan buttons (`Lihat Denah`).
+    - Replaced `geser ↔` with plain `geser` in all 4 unit filter swipe labels.
+    - Replaced panorama rotate buttons `⟲` and `⟳` with crisp inline SVG rotate icons.
+    - Removed `←` from magazine previous theme button in `app.js`.
+  - **Forensic Verification**:
+    - Ran comprehensive unicode scanner across `index.html`, `app.js`, and `styles.css`: 0 arrow characters, 0 mojibake characters remaining.
+- **Status**: Completed, Verified & Auto-Pushed.
