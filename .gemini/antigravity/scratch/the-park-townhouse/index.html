@@ -3171,6 +3171,222 @@
                 </div>
               </div>
 
+              <!-- 1. Rekomendasi Unit Pilihan Terkait -->
+              <div class="unit-detail-section-card" id="secDetailRecommendations">
+                <div class="detail-sec-head">
+                  <span class="detail-sec-tag">REKOMENDASI TERKAIT</span>
+                  <h3 class="detail-sec-title">Kavling Pilihan Lainnya</h3>
+                  <p class="detail-sec-desc">Kavling favorit lainnya dengan spesifikasi ruang optimal dan legalitas SHM siap balik nama.</p>
+                </div>
+                <div class="detail-recom-grid" id="detailRecomGrid">
+                  <!-- Injected dynamically via JS -->
+                </div>
+              </div>
+
+              <!-- 2. Kalkulator Hitung Investasi & Skema Pembayaran -->
+              <div class="unit-detail-section-card unit-detail-calc-wrapper" id="secDetailCalculator">
+                <div class="detail-sec-head">
+                  <span class="detail-sec-tag">SIMULASI INVESTASI</span>
+                  <h3 class="detail-sec-title">Kalkulator Simulasi Pembayaran</h3>
+                  <p class="detail-sec-desc">Hitung estimasi skema tunai, cash bertahap in-house bunga 0%, simulasi KPR bank mitra, serta estimasi pajak &amp; biaya legalitas.</p>
+                </div>
+
+                <div class="calc">
+                  <div class="calc__inputs">
+                    <h3 class="calc__inputs-title">Parameter</h3>
+                    <label class="field">
+                      <span>Unit</span>
+                      <select id="detailCalcUnitSelect" onchange="recalculateDetailCalc()">
+                        <option value="B.02">B.02 — 63 m² (nagoya)</option>
+                        <option value="B.03">B.03 — 63 m² (nagoya)</option>
+                        <option value="B.04">B.04 — 63 m² (nagoya)</option>
+                        <option value="A.02">A.02 — 88 m² (nagoya)</option>
+                        <option value="A.03">A.03 — 88 m² (nagoya)</option>
+                        <option value="A.04">A.04 — 88 m² (nagoya)</option>
+                        <option value="A.05">A.05 — 88 m² (nagoya)</option>
+                        <option value="A.06">A.06 — 88 m² (nagoya)</option>
+                        <option value="A.07">A.07 — 88 m² (nagoya)</option>
+                        <option value="A.08">A.08 — 88 m² (nagoya)</option>
+                        <option value="A.09">A.09 — 88 m² (nagoya)</option>
+                        <option value="B.05">B.05 — 99 m² (nagoya)</option>
+                        <option value="B.06">B.06 — 99 m² (nagoya)</option>
+                        <option value="B.07">B.07 — 99 m² (nagoya)</option>
+                        <option value="A.2">A.2 — 90 m² (osaka)</option>
+                        <option value="A.3">A.3 — 90 m² (osaka)</option>
+                        <option value="A.1">A.1 — 90 m² (osaka)</option>
+                        <option value="A.4">A.4 — 90 m² (osaka)</option>
+                        <option value="A.5">A.5 — 90 m² (osaka)</option>
+                        <option value="A.6">A.6 — 100 m² (osaka)</option>
+                        <option value="A.7">A.7 — 100 m² (osaka)</option>
+                        <option value="A.8">A.8 — 110 m² (osaka)</option>
+                        <option value="A.9">A.9 — 110 m² (osaka)</option>
+                        <option value="B.3">B.3 — 93 m² (tokyo1)</option>
+                        <option value="B.5">B.5 — 90 m² (tokyo1)</option>
+                        <option value="B.6">B.6 — 90 m² (tokyo1)</option>
+                        <option value="B.1">B.1 — 90 m² (tokyo1)</option>
+                        <option value="B.2">B.2 — 90 m² (tokyo1)</option>
+                        <option value="B.4">B.4 — 90 m² (tokyo1)</option>
+                        <option value="B.7">B.7 — 125 m² (tokyo1)</option>
+                      </select>
+                    </label>
+                    <label class="field">
+                      <span>Tahap Launching</span>
+                      <select id="detailCalcStageSelect" onchange="recalculateDetailCalc()">
+                        <option value="pra">Pra-Launch</option>
+                        <option value="soft">Soft-Launch</option>
+                        <option value="grand">Grand-Launch</option>
+                      </select>
+                    </label>
+                    <label class="field">
+                      <span>Skema Pembayaran</span>
+                      <select id="detailCalcSchemeSelect" onchange="recalculateDetailCalc()">
+                        <option value="cash-keras">Cash Keras</option>
+                        <option value="cash-12">Cash Bertahap 12 Bulan</option>
+                        <option value="cash-24">Cash Bertahap 24 Bulan</option>
+                        <option value="kpr">KPR Bank Mitra</option>
+                      </select>
+                    </label>
+
+                    <!-- Conditional Slider for KPR -->
+                    <div class="calc-kpr-sliders-box is-hidden" id="detailCalcKprSliders">
+                      <div class="slider-field">
+                        <div class="slider-header-row">
+                          <span>Tenor KPR</span>
+                          <strong id="detailKprTenorDisplay">15 Tahun (180 Bln)</strong>
+                        </div>
+                        <input type="range" min="5" max="25" step="5" value="15" class="calc-range-slider"
+                          id="detailKprTenorSlider" oninput="onDetailKprSliderChange()" />
+                        <div class="slider-ticks">
+                          <span>5 Thn</span><span>10 Thn</span><span>15 Thn</span><span>20 Thn</span><span>25 Thn</span>
+                        </div>
+                      </div>
+                      <div class="slider-field">
+                        <div class="slider-header-row">
+                          <span>Indikasi Bunga KPR</span>
+                          <strong id="detailKprRateDisplay">8.25% p.a</strong>
+                        </div>
+                        <input type="range" min="5.0" max="11.0" step="0.25" value="8.25" class="calc-range-slider"
+                          id="detailKprRateSlider" oninput="onDetailKprSliderChange()" />
+                        <div class="slider-ticks">
+                          <span>5.0%</span><span>7.5%</span><span>8.25%</span><span>10.0%</span><span>11.0%</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <p class="calc__hint">Skema in-house tanpa bunga (0% flat). Slider tenor &amp; bunga muncul saat memilih KPR.</p>
+                  </div>
+
+                  <div class="calc__result">
+                    <div class="calc__headline">
+                      <span class="calc__headline-label" id="detailHeadlineLabel">Pembayaran Tunai (maks 1 bln)</span>
+                      <span class="calc__headline-value" id="detailHeadlineValue">Rp 298.967.252</span>
+                      <span class="calc__headline-sub" id="detailHeadlineSub">B.02 · Cash Keras · Pra-Launch</span>
+                    </div>
+
+                    <dl class="calc__breakdown">
+                      <div>
+                        <dt>Harga Jual</dt>
+                        <dd id="detailBreakdownHarga">Rp 498.278.753</dd>
+                      </div>
+                      <div>
+                        <dt>Booking Fee (mengurangi DP)</dt>
+                        <dd id="detailBreakdownBooking">Rp 5.000.000</dd>
+                      </div>
+                      <div>
+                        <dt id="detailBreakdownDpLabel">DP 40% (H+7)</dt>
+                        <dd id="detailBreakdownDpAmount">Rp 199.311.501</dd>
+                      </div>
+                      <div>
+                        <dt>DP Netto Disetor</dt>
+                        <dd id="detailBreakdownDpNetto">Rp 194.311.501</dd>
+                      </div>
+                      <div>
+                        <dt id="detailBreakdownSisaLabel">Sisa Dibiayai</dt>
+                        <dd id="detailBreakdownSisaAmount">Rp 298.967.252</dd>
+                      </div>
+                      <div class="calc__total">
+                        <dt>Total Pembayaran Unit</dt>
+                        <dd id="detailBreakdownTotal">Rp 498.278.753</dd>
+                      </div>
+                    </dl>
+
+                    <div class="milestones">
+                      <div>
+                        <span>DP</span>
+                        <b id="detailMilestoneDp">40% · H+7</b>
+                      </div>
+                      <div>
+                        <span>Sisa Bayar</span>
+                        <b id="detailMilestoneSisa">Sisa 60% lunas penuh H+30</b>
+                      </div>
+                      <div>
+                        <span>Serah Terima</span>
+                        <b>Setelah lunas &amp; bangunan selesai (BAST)</b>
+                      </div>
+                    </div>
+
+                    <div class="calc__actions">
+                      <button type="button" class="btn btn--gold" onclick="orderCurrentDetailUnit()">Pesan Unit Ini</button>
+                      <button type="button" class="btn btn--outline" onclick="switchLandingTab('SitePlan')">Pilih Kavling</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Extra Fees Block -->
+                <div class="extra">
+                  <div class="section-head" style="margin-bottom: 1.2rem;">
+                    <p class="eyebrow">Di Luar Harga Jual</p>
+                    <h2>Estimasi Biaya Tambahan</h2>
+                  </div>
+                  <div class="extra__grid">
+                    <div class="extra__item">
+                      <span>PPN (11%)</span>
+                      <b id="detailExtraPpn">Rp 54.810.663</b>
+                    </div>
+                    <div class="extra__item">
+                      <span>BPHTB (5%)</span>
+                      <b id="detailExtraBphtb">Rp 21.913.938</b>
+                    </div>
+                    <div class="extra__item">
+                      <span>Notaris PPAT &amp; Balik Nama</span>
+                      <b>Rp 15.000.000</b>
+                    </div>
+                    <div class="extra__item extra__item--total">
+                      <span>Total Tambahan</span>
+                      <b id="detailExtraTotal">Rp 91.724.601</b>
+                    </div>
+                  </div>
+                  <p class="extra__grand">Estimasi total (unit + biaya tambahan): <b id="detailExtraGrandTotal">Rp 590.003.354</b></p>
+                </div>
+
+                <!-- Comparison Table -->
+                <div class="compare">
+                  <div class="section-head" style="margin-bottom: 1.4rem;">
+                    <p class="eyebrow">Perbandingan</p>
+                    <h2 id="detailCompareHeading">4 Skema Pembayaran — B.02 (Pra-Launch)</h2>
+                  </div>
+                  <div class="compare__scroll">
+                    <table class="ctable">
+                      <thead>
+                        <tr>
+                          <th>Skema</th>
+                          <th>DP</th>
+                          <th>Harga Jual</th>
+                          <th class="ta-r">Cicilan / Bln</th>
+                        </tr>
+                      </thead>
+                      <tbody id="detailCompareTableBody">
+                        <!-- Populated by JS -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <p class="disclaimer">
+                  ⚠ Simulasi ini bersifat <b>estimasi</b> dan bukan penawaran resmi bank. Cicilan In-House 12×/24× tanpa bunga (sisa + premium dibagi rata); KPR via bank mitra secara anuitas, tenor s.d 25 tahun. Booking Fee Rp 5.000.000 mengurangi DP. Harga <b>belum termasuk PPN 11%</b>, BPHTB, notaris &amp; biaya KPR. Bank mitra: BCA, Mandiri, BRI, BNI, BSI Syariah. <b>Promo bunga:</b> BNI 5,00% (fix 2th), BCA 5,15% (fix 3th), BRI 5,25% (fix 3th), Mandiri 5,50% (fix 3th), BSI Syariah 5,50%. <b>Instant Approval</b> khusus Cluster Nagoya (SHM pecah sempurna). Pembayaran hanya via rekening resmi perusahaan.
+                </p>
+              </div>
+
               <!-- Sticky Floating Action Bar for Unit Detail -->
               <div class="unit-detail-sticky-bar">
                 <div class="detail-sticky-info">

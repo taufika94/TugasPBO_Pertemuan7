@@ -2507,8 +2507,291 @@ function openUnitDetail(clusterKey, unitId) {
     }
   }
 
+  // Populate Recommendations
+  renderUnitDetailRecommendations(unit);
+
+  // Sync and Recalculate Payment Calculator
+  const calcUnitSelect = document.getElementById('detailCalcUnitSelect');
+  if (calcUnitSelect) {
+    const opt = Array.from(calcUnitSelect.options).find(o => o.value === unit.id || o.value.replace('.0', '.') === unit.id.replace('.0', '.'));
+    if (opt) calcUnitSelect.value = opt.value;
+  }
+  recalculateDetailCalc();
+
   const scrollContainer = document.getElementById('landingScrollContent');
   if (scrollContainer) scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderUnitDetailRecommendations(currentUnit) {
+  const container = document.getElementById('detailRecomGrid');
+  if (!container) return;
+
+  const others = CATALOG_INVENTORY.filter(u => u.id !== currentUnit.id && u.status === 'Tersedia');
+  const sameCluster = others.filter(u => u.cluster === currentUnit.cluster);
+  const diffCluster = others.filter(u => u.cluster !== currentUnit.cluster);
+  const picked = [...sameCluster.slice(0, 2), ...diffCluster.slice(0, 2)].slice(0, 3);
+
+  const clusterImages = {
+    nagoya: 'assets/drive/house.jpeg',
+    tokyo: 'assets/drive/dalam-6.png',
+    osaka: 'assets/drive/housee.jpeg'
+  };
+
+  container.innerHTML = picked.map(item => {
+    const img = clusterImages[item.cluster] || 'assets/drive/house.jpeg';
+    const cName = item.cluster === 'nagoya' ? 'Klaster Nagoya' : item.cluster === 'tokyo' ? 'Klaster Tokyo' : 'Klaster Osaka';
+    return `
+      <div class="recom-card-item" onclick="openUnitDetail('${item.cluster}', '${item.id}')" role="button" tabindex="0">
+        <div class="recom-img-wrap">
+          <img src="${img}" alt="${cName} ${item.id}" loading="lazy" />
+          <span class="recom-status-badge">Tersedia</span>
+          <span class="recom-cluster-tag">${cName}</span>
+        </div>
+        <div class="recom-body">
+          <div class="recom-title-row">
+            <h4 class="recom-title">Kavling ${item.id} · ${item.type}</h4>
+            <span class="recom-pos">${item.pos === 'hook' ? 'Hook' : 'Standar'}</span>
+          </div>
+          <div class="recom-specs-strip">
+            <span><strong>${item.beds}</strong> KT</span>
+            <span>·</span>
+            <span><strong>${item.baths}</strong> KM</span>
+            <span>·</span>
+            <span>LB <strong>${item.lb}</strong> m²</span>
+            <span>·</span>
+            <span>LT <strong>${item.lt}</strong> m²</span>
+          </div>
+          <div class="recom-price-row">
+            <div>
+              <span class="recom-price-lbl">Harga Cash:</span>
+              <strong class="recom-price-val">Rp ${item.priceMillion} Jt</strong>
+            </div>
+            <button type="button" class="btn-recom-view" aria-label="Lihat Kavling ${item.id}">
+              <span>Lihat</span>
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+let currentDetailKprTenor = 15;
+let currentDetailKprRate = 8.25;
+
+function onDetailKprSliderChange() {
+  const tenorSlider = document.getElementById('detailKprTenorSlider');
+  const rateSlider = document.getElementById('detailKprRateSlider');
+  const tenorDisplay = document.getElementById('detailKprTenorDisplay');
+  const rateDisplay = document.getElementById('detailKprRateDisplay');
+
+  if (tenorSlider) currentDetailKprTenor = parseInt(tenorSlider.value, 10);
+  if (rateSlider) currentDetailKprRate = parseFloat(rateSlider.value);
+
+  if (tenorDisplay) tenorDisplay.textContent = `${currentDetailKprTenor} Tahun (${currentDetailKprTenor * 12} Bln)`;
+  if (rateDisplay) rateDisplay.textContent = `${currentDetailKprRate.toFixed(2)}% p.a`;
+
+  recalculateDetailCalc();
+}
+
+function recalculateDetailCalc() {
+  const unitSelect = document.getElementById('detailCalcUnitSelect');
+  const stageSelect = document.getElementById('detailCalcStageSelect');
+  const schemeSelect = document.getElementById('detailCalcSchemeSelect');
+  const kprSlidersBox = document.getElementById('detailCalcKprSliders');
+
+  if (!unitSelect) return;
+  const unitVal = unitSelect.value;
+  const stageVal = stageSelect ? stageSelect.value : 'pra';
+  const schemeVal = schemeSelect ? schemeSelect.value : 'cash-keras';
+
+  if (kprSlidersBox) {
+    kprSlidersBox.classList.toggle('is-hidden', schemeVal !== 'kpr');
+  }
+
+  const unitObj = SURAT_CALC_UNITS.find(u => u.id === unitVal) ||
+    SURAT_CALC_UNITS.find(u => u.id.replace('.0', '.') === unitVal.replace('.0', '.')) ||
+    SURAT_CALC_UNITS[0];
+
+  const stageMultipliers = { pra: 1.0, soft: 1.05, grand: 1.10 };
+  const stageLabels = { pra: 'Pra-Launch', soft: 'Soft-Launch', grand: 'Grand-Launch' };
+
+  const stageMult = stageMultipliers[stageVal] || 1.0;
+  const stageLabel = stageLabels[stageVal] || 'Pra-Launch';
+  const basePriceAtStage = Math.round(unitObj.basePrice * stageMult);
+
+  let hargaJual = basePriceAtStage;
+  let dpPercent = 0.40;
+  let dpLabel = 'DP 40% (H+7)';
+  let sisaLabel = 'Sisa Dibiayai';
+  let sisaBayarDesc = 'Sisa 60% lunas penuh H+30';
+  let headlineLabel = 'Pembayaran Tunai (maks 1 bln)';
+  let headlineAmount = 0;
+  let sisaAmount = 0;
+  const bookingFee = 5000000;
+
+  if (schemeVal === 'cash-keras') {
+    hargaJual = basePriceAtStage;
+    dpPercent = 0.40;
+    const dpVal = Math.round(hargaJual * dpPercent);
+    sisaAmount = hargaJual - dpVal;
+    headlineAmount = sisaAmount;
+    headlineLabel = 'Pembayaran Tunai (maks 1 bln)';
+    sisaBayarDesc = 'Sisa 60% lunas penuh H+30';
+  } else if (schemeVal === 'cash-12') {
+    hargaJual = Math.round(basePriceAtStage * 1.05);
+    dpPercent = 0.40;
+    const dpVal = Math.round(basePriceAtStage * 0.40);
+    sisaAmount = hargaJual - dpVal;
+    const monthly = Math.round(sisaAmount / 12);
+    headlineAmount = monthly;
+    headlineLabel = 'Cicilan per Bulan (12 Bulan)';
+    sisaBayarDesc = 'Cicilan in-house 12x flat (Bunga 0%)';
+  } else if (schemeVal === 'cash-24') {
+    hargaJual = Math.round(basePriceAtStage * 1.15);
+    dpPercent = 0.40;
+    const dpVal = Math.round(basePriceAtStage * 0.40);
+    sisaAmount = hargaJual - dpVal;
+    const monthly = Math.round(sisaAmount / 24);
+    headlineAmount = monthly;
+    headlineLabel = 'Cicilan per Bulan (24 Bulan)';
+    sisaBayarDesc = 'Cicilan in-house 24x flat (Bunga 0%)';
+  } else if (schemeVal === 'kpr') {
+    hargaJual = Math.round(basePriceAtStage * 1.05);
+    dpPercent = 0.30;
+    dpLabel = 'DP 30% (H+14)';
+    const dpVal = Math.round(hargaJual * 0.30);
+    sisaAmount = hargaJual - dpVal;
+    const r = (currentDetailKprRate / 100) / 12;
+    const n = currentDetailKprTenor * 12;
+    const pmt = Math.round(sisaAmount * (r / (1 - Math.pow(1 + r, -n))));
+    headlineAmount = pmt;
+    headlineLabel = 'Ilustrasi Cicilan KPR / Bln';
+    sisaLabel = 'Plafon KPR Bank';
+    sisaBayarDesc = 'Akad kredit & pencairan bank mitra';
+  }
+
+  const dpAmount = Math.round(schemeVal.startsWith('cash-') && schemeVal !== 'cash-keras'
+    ? basePriceAtStage * 0.40
+    : hargaJual * dpPercent);
+  const dpNetto = Math.max(0, dpAmount - bookingFee);
+
+  const ppn = Math.round(hargaJual * 0.11);
+  const npoptkp = 60000000;
+  const bphtb = Math.round(Math.max(0, hargaJual - npoptkp) * 0.05);
+  const notaris = 15000000;
+  const totalTambahan = ppn + bphtb + notaris;
+  const grandTotal = hargaJual + totalTambahan;
+
+  const elHeadlineLabel = document.getElementById('detailHeadlineLabel');
+  const elHeadlineValue = document.getElementById('detailHeadlineValue');
+  const elHeadlineSub = document.getElementById('detailHeadlineSub');
+
+  if (elHeadlineLabel) elHeadlineLabel.textContent = headlineLabel;
+  if (elHeadlineValue) elHeadlineValue.textContent = formatRupiahCur(headlineAmount);
+  if (elHeadlineSub) {
+    const schemeText = schemeVal === 'cash-keras' ? 'Cash Keras' : schemeVal === 'cash-12' ? 'Cash Bertahap 12 Bln' : schemeVal === 'cash-24' ? 'Cash Bertahap 24 Bln' : 'KPR Bank Mitra';
+    elHeadlineSub.textContent = `${unitObj.id} · ${schemeText} · ${stageLabel}`;
+  }
+
+  const elHarga = document.getElementById('detailBreakdownHarga');
+  const elBooking = document.getElementById('detailBreakdownBooking');
+  const elDpLabel = document.getElementById('detailBreakdownDpLabel');
+  const elDpAmount = document.getElementById('detailBreakdownDpAmount');
+  const elDpNetto = document.getElementById('detailBreakdownDpNetto');
+  const elSisaLabel = document.getElementById('detailBreakdownSisaLabel');
+  const elSisaAmount = document.getElementById('detailBreakdownSisaAmount');
+  const elTotal = document.getElementById('detailBreakdownTotal');
+
+  if (elHarga) elHarga.textContent = formatRupiahCur(hargaJual);
+  if (elBooking) elBooking.textContent = formatRupiahCur(bookingFee);
+  if (elDpLabel) elDpLabel.textContent = dpLabel;
+  if (elDpAmount) elDpAmount.textContent = formatRupiahCur(dpAmount);
+  if (elDpNetto) elDpNetto.textContent = formatRupiahCur(dpNetto);
+  if (elSisaLabel) elSisaLabel.textContent = sisaLabel;
+  if (elSisaAmount) elSisaAmount.textContent = formatRupiahCur(sisaAmount);
+  if (elTotal) elTotal.textContent = formatRupiahCur(hargaJual);
+
+  const elMilestoneDp = document.getElementById('detailMilestoneDp');
+  const elMilestoneSisa = document.getElementById('detailMilestoneSisa');
+  if (elMilestoneDp) elMilestoneDp.textContent = `${dpPercent * 100}% · ${schemeVal === 'kpr' ? 'H+14' : 'H+7'}`;
+  if (elMilestoneSisa) elMilestoneSisa.textContent = sisaBayarDesc;
+
+  const elPpn = document.getElementById('detailExtraPpn');
+  const elBphtb = document.getElementById('detailExtraBphtb');
+  const elTotalTambahan = document.getElementById('detailExtraTotal');
+  const elGrandTotal = document.getElementById('detailExtraGrandTotal');
+
+  if (elPpn) elPpn.textContent = formatRupiahCur(ppn);
+  if (elBphtb) elBphtb.textContent = formatRupiahCur(bphtb);
+  if (elTotalTambahan) elTotalTambahan.textContent = formatRupiahCur(totalTambahan);
+  if (elGrandTotal) elGrandTotal.textContent = formatRupiahCur(grandTotal);
+
+  const elCompareHeading = document.getElementById('detailCompareHeading');
+  if (elCompareHeading) {
+    elCompareHeading.textContent = `4 Skema Pembayaran — ${unitObj.id} (${stageLabel})`;
+  }
+
+  const tableBody = document.getElementById('detailCompareTableBody');
+  if (tableBody) {
+    const s1Price = basePriceAtStage;
+    const s1Cicilan = 'Tunai (maks 1 bln)';
+
+    const s2Price = Math.round(basePriceAtStage * 1.05);
+    const s2Sisa = s2Price - Math.round(basePriceAtStage * 0.40);
+    const s2Cicilan = `${formatRupiahCur(Math.round(s2Sisa / 12))} × 12`;
+
+    const s3Price = Math.round(basePriceAtStage * 1.15);
+    const s3Sisa = s3Price - Math.round(basePriceAtStage * 0.40);
+    const s3Cicilan = `${formatRupiahCur(Math.round(s3Sisa / 24))} × 24`;
+
+    const s4Price = Math.round(basePriceAtStage * 1.05);
+    const s4Plafon = s4Price - Math.round(s4Price * 0.30);
+    const r = (currentDetailKprRate / 100) / 12;
+    const n = currentDetailKprTenor * 12;
+    const s4Pmt = Math.round(s4Plafon * (r / (1 - Math.pow(1 + r, -n))));
+    const s4Cicilan = `${formatRupiahCur(s4Pmt)} × ${n}`;
+
+    tableBody.innerHTML = `
+      <tr class="${schemeVal === 'cash-keras' ? 'is-active' : ''}">
+        <td><strong>Cash Keras</strong></td>
+        <td>40%</td>
+        <td>${formatRupiahCur(s1Price)}</td>
+        <td class="ta-r">${s1Cicilan}</td>
+      </tr>
+      <tr class="${schemeVal === 'cash-12' ? 'is-active' : ''}">
+        <td><strong>Cash Bertahap 12 Bln</strong></td>
+        <td>40%</td>
+        <td>${formatRupiahCur(s2Price)}</td>
+        <td class="ta-r">${s2Cicilan}</td>
+      </tr>
+      <tr class="${schemeVal === 'cash-24' ? 'is-active' : ''}">
+        <td><strong>Cash Bertahap 24 Bln</strong></td>
+        <td>40%</td>
+        <td>${formatRupiahCur(s3Price)}</td>
+        <td class="ta-r">${s3Cicilan}</td>
+      </tr>
+      <tr class="${schemeVal === 'kpr' ? 'is-active' : ''}">
+        <td><strong>KPR Bank Mitra</strong></td>
+        <td>30%</td>
+        <td>${formatRupiahCur(s4Price)}</td>
+        <td class="ta-r">${s4Cicilan}</td>
+      </tr>
+    `;
+  }
+}
+
+function orderDetailCalculatedUnit() {
+  const selectEl = document.getElementById('detailCalcUnitSelect');
+  const unitId = selectEl ? selectEl.value : (currentDetailUnitObj ? currentDetailUnitObj.id : 'B.02');
+  const unitObj = SURAT_CALC_UNITS.find(u => u.id === unitId) || SURAT_CALC_UNITS[0];
+  const clusterNames = { nagoya: 'Klaster NAGOYA', tokyo1: 'Klaster TOKYO', tokyo: 'Klaster TOKYO', osaka: 'Klaster OSAKA' };
+  const cName = clusterNames[unitObj.cluster] || 'Klaster NAGOYA';
+  const elHarga = document.getElementById('detailBreakdownHarga');
+  const priceText = elHarga ? elHarga.textContent : 'Rp 498.278.753';
+  saveCurrentConfigToStorage();
+  openOrderModal(cName, unitObj.id, priceText);
 }
 
 function closeUnitDetail() {

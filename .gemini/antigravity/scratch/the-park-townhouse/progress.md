@@ -5796,5 +5796,28 @@
 - **Status**: Completed, Verified & Auto-Pushed.
 
 
+---
+
+### [2026-11-24] Progress #113: Recommended Units & Interactive Payment Calculator on Unit Detail View
+- **Context & Objective**: Per user request ("pada bagian bawah halaman pada gambar, berikan rekomendasi unit, dan terdapat kalkulator hitung seperti dibawah ini: [snippet HTML kalkulator lengkap]"), integrate a curated alternative unit recommendation section and a full interactive investment/payment simulation calculator into the bottom of `#unitDetailView`.
+- **Key Changes Implemented**:
+  - **Rekomendasi Unit Terkait (`index.html`, `app.js`, `styles.css`)**:
+    - Added `#secDetailRecommendations` with `.detail-recom-grid` presenting 3 alternative available lots from `CATALOG_INVENTORY` (same cluster & sister clusters).
+    - Rendered dynamic cards with cluster image, lot title, floorplan type, position badge (Hook/Standar), specs (KT, KM, LB, LT), cash price, and direct click-to-view navigation via `openUnitDetail()`.
+  - **Kalkulator Simulasi Pembayaran (`index.html`, `app.js`, `styles.css`)**:
+    - Added `#secDetailCalculator` containing parameter selectors for Unit (all 30 kavlings across Nagoya, Tokyo, Osaka), Tahap Launching (Pra, Soft, Grand), and Skema Pembayaran (Cash Keras, Cash Bertahap 12 Bln, Cash Bertahap 24 Bln, KPR Bank Mitra).
+    - Built interactive KPR sliders for Tenor (5–25 tahun) and Indikasi Bunga (5.0%–11.0% p.a) with live feedback.
+    - Implemented calculation engine in `app.js` (`recalculateDetailCalc()`, `onDetailKprSliderChange()`, `orderDetailCalculatedUnit()`):
+      - Headline total/monthly payment and sub-label badge.
+      - Itemized breakdown: Harga Jual, Booking Fee (mengurangi DP), DP persentase & DP Netto disetor, Sisa dibiayai / pokok KPR, Cicilan/bulan, dan Total Pembayaran Unit.
+      - Milestones progress indicators (DP H+7, Pelunasan / Cicilan, Serah Terima BAST).
+      - Estimasi Biaya Tambahan: PPN (11%), BPHTB (5% setelah NPOPTKP), Notaris PPAT & Balik Nama, Total Tambahan, dan Estimasi Grand Total.
+      - Perbandingan 4 Skema Pembayaran table (`.ctable`) highlighting the active scheme.
+      - Synchronized automatically when inspecting any unit via `openUnitDetail()`.
+  - **Styling & Ergonomics (`styles.css`)**:
+    - Styled `.recom-card-item`, `.calc__inputs`, `.field select` (44px min-height), `.calc__headline` (dark green gradient), `.extra__grid`, and `.compare__scroll` with responsive touch targets and zero horizontal overflow.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+
 
 
