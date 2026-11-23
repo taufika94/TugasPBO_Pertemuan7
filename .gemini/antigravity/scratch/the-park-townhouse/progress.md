@@ -5450,3 +5450,26 @@
   - **Button Geometry & Alignment (`styles.css`)**:
     - Enhanced `.btn-back-outline` with `display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; line-height: 1; padding: 10px 16px;` for a centered, crisp back button.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #90: Implement Analisis Radius Aktif Feature Card in Beranda
+- **Context & Objective**: Per user request with screenshot attachment (`media_1795469561586_32acf75c.png`), implement the complete interactive "Analisis Radius Aktif" feature card inside the Beranda tab directly above the Leaflet interactive map in `#secLokasiRadius`.
+- **Key Changes Implemented**:
+  - **Feature Card Structure (`index.html`)**:
+    - Created `#berandaRadiusAnalysisCard` (`.beranda-radius-analysis-card`) in `#secLokasiRadius`.
+    - **Header Row**: Eyebrow `ANALISIS RADIUS AKTIF` (green `#2e7d32`), dynamic radius badge pill `#berandaActiveRadiusBadge` (`5 km` in lime green `#a3e635`), and headline `#berandaRadiusHeadline` (`25 di dalam radius, 15 di luar radius`).
+    - **Kategori Fasilitas (9 Pilihan)**: 2-column grid of 10 category buttons (`Semua (25)`, `Pendidikan (3)`, `Tempat Ibadah (2)`, `Kesehatan (3)`, `Belanja (3)`, `Transportasi (2)`, `Layanan Publik (4)`, `Keuangan (2)`, `Rekreasi (3)`, `Kuliner (3)`). Active button uses `#11332a` background, white text, and lime green count badge.
+    - **Radius Pencarian**: 3x2 grid of 6 radius options (`500 m`, `1 km`, `3 km`, `5 km`, `10 km`, `25 km`) with `5 km` active by default.
+    - **Fasilitas Lainnya Toggle**: Full-width button `Tampilkan fasilitas lainnya` with funnel SVG icon and `Unggulan` badge.
+    - **Fokus Klaster The Park**: 2x2 grid of cluster options (`Semua (3)`, `Nagoya`, `Osaka`, `Tokyo`) with `Semua (3)` active by default.
+  - **Bespoke Japandi Styles (`styles.css`)**:
+    - Crafted custom CSS for `.beranda-radius-analysis-card`, `.analysis-top-row`, `.analysis-active-badge`, `.analysis-categories-grid`, `.analysis-cat-btn`, `.analysis-radius-grid`, `.analysis-radius-btn`, `.analysis-more-toggle-btn`, and `.analysis-cluster-grid`.
+    - Ensured full responsive sizing, 44px+ touch targets, and subtle Japandi border accents (`#e2ded6`, `#d1e2d4`).
+  - **Interactive Controller (`app.js`)**:
+    - Implemented `setBerandaSearchRadius(radiusMeters, btnEl)`: updates active badge, calculates facilities within radius vs outside radius, updates headline, and smoothly zooms `berandaLeafletMapInstance`.
+    - Implemented `filterBerandaCategory(catKey, btnEl)`: filters interactive map distance chips and highlights active category.
+    - Implemented `focusBerandaCluster(clusterKey, btnEl)`: pans and flies the Leaflet map smoothly to Nagoya, Osaka, or Tokyo coordinates.
+    - Implemented `toggleBerandaMoreFacilities(btnEl)`: expands secondary amenities with visual toggle state.
+- **Status**: Completed, Verified & Auto-Pushed.

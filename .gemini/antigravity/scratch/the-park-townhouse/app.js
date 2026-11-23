@@ -4082,24 +4082,111 @@ let currentBerandaPoiFilter = 'Semua';
 let currentBerandaCircleFilter = 'all';
 let activeBerandaCluster = 'nagoya';
 
-let berandaSearchRadiusLayer = null;
-let currentBerandaSearchRadius = 3000;
+let currentBerandaSearchRadius = 5000;
+let currentBerandaCategoryFilter = 'all';
 
-function initBerandaLeafletMap() {
-  const mapEl = document.getElementById('berandaLeafletMap');
-  if (!mapEl || berandaLeafletMapInstance) return;
+function setBerandaSearchRadius(radiusMeters, btnEl) {
+  currentBerandaSearchRadius = radiusMeters;
+  const container = document.getElementById('berandaRadiusGrid');
+  if (container) {
+    container.querySelectorAll('.analysis-radius-btn').forEach(btn => btn.classList.remove('is-active'));
+  }
+  if (btnEl) btnEl.classList.add('is-active');
 
-  berandaLeafletMapInstance = setupLeafletMap('berandaLeafletMap', false, true);
+  const badgeEl = document.getElementById('berandaActiveRadiusBadge');
+  if (badgeEl) {
+    badgeEl.textContent = radiusMeters >= 1000 ? `${radiusMeters / 1000} km` : `${radiusMeters} m`;
+  }
+
+  const radiusStats = {
+    500: { inside: 6, outside: 34, zoom: 16 },
+    1000: { inside: 12, outside: 28, zoom: 15 },
+    3000: { inside: 19, outside: 21, zoom: 14 },
+    5000: { inside: 25, outside: 15, zoom: 13.2 },
+    10000: { inside: 32, outside: 8, zoom: 12 },
+    25000: { inside: 40, outside: 0, zoom: 10.8 }
+  };
+
+  const stat = radiusStats[radiusMeters] || { inside: 25, outside: 15, zoom: 13.2 };
+  const headlineEl = document.getElementById('berandaFacilitiesCountHeadline');
+  if (headlineEl) {
+    headlineEl.textContent = `${stat.inside} di dalam radius, ${stat.outside} di luar radius`;
+  }
+
   if (berandaLeafletMapInstance) {
-    setTimeout(() => {
-      berandaLeafletMapInstance.invalidateSize();
-    }, 250);
+    berandaLeafletMapInstance.flyTo(SUKOHARJO_CENTER, stat.zoom, { animate: true, duration: 0.6 });
+  }
+}
+
+function filterBerandaCategory(catKey, btnEl) {
+  currentBerandaCategoryFilter = catKey;
+  const container = document.getElementById('berandaCategoryGrid');
+  if (container) {
+    container.querySelectorAll('.analysis-cat-btn').forEach(btn => btn.classList.remove('is-active'));
+  }
+  if (btnEl) btnEl.classList.add('is-active');
+
+  const catMapping = {
+    all: ['sudirman', 'gelora', 'alun-alun', 'sman1', 'rsud', 'stasiun', 'rs-indriati', 'pakuwon'],
+    'Pendidikan': ['sman1'],
+    'Tempat Ibadah': ['alun-alun'],
+    'Kesehatan': ['rsud', 'rs-indriati'],
+    'Belanja': ['pakuwon'],
+    'Transportasi': ['stasiun', 'sudirman'],
+    'Layanan Publik': ['alun-alun', 'rsud'],
+    'Keuangan': ['sudirman'],
+    'Rekreasi': ['gelora', 'alun-alun'],
+    'Kuliner': ['sudirman', 'alun-alun']
+  };
+
+  const allowedIds = catMapping[catKey] || catMapping.all;
+  const chipContainer = document.getElementById('berandaDistanceChipsContainer');
+  if (chipContainer) {
+    chipContainer.querySelectorAll('.dist-chip').forEach(chip => {
+      const facId = chip.getAttribute('data-facility');
+      if (allowedIds.includes(facId)) {
+        chip.style.display = 'inline-flex';
+      } else {
+        chip.style.display = 'none';
+      }
+    });
+  }
+
+  if (catKey !== 'all' && allowedIds.length > 0) {
+    openFacilityDetail(allowedIds[0], null, true);
+  }
+}
+
+function focusBerandaCluster(clusterKey, btnEl) {
+  const container = document.getElementById('berandaClusterGrid');
+  if (container) {
+    container.querySelectorAll('.analysis-cluster-btn').forEach(btn => btn.classList.remove('is-active'));
+  }
+  if (btnEl) btnEl.classList.add('is-active');
+
+  if (!berandaLeafletMapInstance) return;
+
+  if (clusterKey === 'nagoya') {
+    berandaLeafletMapInstance.flyTo([-7.6815, 110.8490], 15.5, { animate: true, duration: 0.6 });
+  } else if (clusterKey === 'osaka') {
+    berandaLeafletMapInstance.flyTo([-7.6730, 110.8435], 15.5, { animate: true, duration: 0.6 });
+  } else if (clusterKey === 'tokyo') {
+    berandaLeafletMapInstance.flyTo([-7.6815, 110.8330], 15.5, { animate: true, duration: 0.6 });
+  } else {
+    berandaLeafletMapInstance.flyTo(SUKOHARJO_CENTER, 14.2, { animate: true, duration: 0.6 });
+  }
+}
+
+function toggleBerandaMoreFacilities(btnEl) {
+  const toast = document.getElementById('appMockToast');
+  if (toast) {
+    toast.textContent = 'Menampilkan seluruh 40 fasilitas unggulan di sekitar koridor The Park Townhouse';
+    toast.classList.add('is-visible');
+    setTimeout(() => toast.classList.remove('is-visible'), 2800);
   }
 }
 
 function updateBerandaRadiusAnalysis() { }
-function setBerandaSearchRadius() { }
-function focusBerandaCluster() { }
 function filterBerandaCircle() { }
 function renderBerandaPoiList() { }
 function filterBerandaPOI() { }

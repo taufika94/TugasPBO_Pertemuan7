@@ -1310,6 +1310,126 @@
                 <p class="section-card-sub">Tepat di koridor emas Jl. Jenderal Sudirman. Sentuh penanda lokasi untuk menjelajahi jarak tempuh dan keunggulan konektivitas kawasan.</p>
               </div>
 
+              <!-- Analisis Radius Aktif Card (Sesuai Spesifikasi Desain Mockup) -->
+              <div class="beranda-radius-analysis-card" id="berandaRadiusAnalysisCard">
+                <!-- Top Header: Eyebrow + Active Radius Pill -->
+                <div class="analysis-top-row">
+                  <span class="analysis-label-eyebrow">ANALISIS RADIUS AKTIF</span>
+                  <span class="analysis-active-badge" id="berandaActiveRadiusBadge">5 km</span>
+                </div>
+                <h3 class="analysis-facilities-headline" id="berandaFacilitiesCountHeadline">25 di dalam radius, 15 di luar radius</h3>
+
+                <div class="analysis-hr"></div>
+
+                <!-- 1. Kategori Fasilitas (9 Pilihan + Semua) -->
+                <div class="analysis-section-block">
+                  <span class="analysis-group-title">KATEGORI FASILITAS (9 PILIHAN)</span>
+                  <div class="analysis-categories-grid" id="berandaCategoryGrid">
+                    <button type="button" class="analysis-cat-btn is-active" onclick="filterBerandaCategory('all', this)">
+                      <div class="acb-left">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24M14.83 9.17l4.24-4.24M14.83 14.83l4.24 4.24M9.17 14.83l-4.24 4.24"/></svg>
+                        <span>Semua</span>
+                      </div>
+                      <span class="acb-count">25</span>
+                    </button>
+                    <button type="button" class="analysis-cat-btn" onclick="filterBerandaCategory('Pendidikan', this)">
+                      <div class="acb-left">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 3 3 5 6 5s6-2 6-5v-5"/></svg>
+                        <span>Pendidikan</span>
+                      </div>
+                      <span class="acb-count">3</span>
+                    </button>
+                    <button type="button" class="analysis-cat-btn" onclick="filterBerandaCategory('Tempat Ibadah', this)">
+                      <div class="acb-left">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        <span>Tempat Ibadah</span>
+                      </div>
+                      <span class="acb-count">2</span>
+                    </button>
+                    <button type="button" class="analysis-cat-btn" onclick="filterBerandaCategory('Kesehatan', this)">
+                      <div class="acb-left">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 8v8M8 12h8"/></svg>
+                        <span>Kesehatan</span>
+                      </div>
+                      <span class="acb-count">3</span>
+                    </button>
+                    <button type="button" class="analysis-cat-btn" onclick="filterBerandaCategory('Belanja', this)">
+                      <div class="acb-left">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        <span>Belanja</span>
+                      </div>
+                      <span class="acb-count">3</span>
+                    </button>
+                    <button type="button" class="analysis-cat-btn" onclick="filterBerandaCategory('Transportasi', this)">
+                      <div class="acb-left">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="16" rx="3"/><path d="M4 11h16M12 3v8M8 19l-2 3M16 19l2 3M9 15h.01M15 15h.01"/></svg>
+                        <span>Transportasi</span>
+                      </div>
+                      <span class="acb-count">2</span>
+                    </button>
+                    <button type="button" class="analysis-cat-btn" onclick="filterBerandaCategory('Layanan Publik', this)">
+                      <div class="acb-left">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
+                        <span>Layanan Publik</span>
+                      </div>
+                      <span class="acb-count">4</span>
+                    </button>
+                    <button type="button" class="analysis-cat-btn" onclick="filterBerandaCategory('Keuangan', this)">
+                      <div class="acb-left">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                        <span>Keuangan</span>
+                      </div>
+                      <span class="acb-count">2</span>
+                    </button>
+                    <button type="button" class="analysis-cat-btn" onclick="filterBerandaCategory('Rekreasi', this)">
+                      <div class="acb-left">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                        <span>Rekreasi</span>
+                      </div>
+                      <span class="acb-count">3</span>
+                    </button>
+                    <button type="button" class="analysis-cat-btn" onclick="filterBerandaCategory('Kuliner', this)">
+                      <div class="acb-left">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2v6a3 3 0 0 1-3 3 3 3 0 0 1-3-3V2M15 11v11M5 2v10a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V2M7 14v8"/></svg>
+                        <span>Kuliner</span>
+                      </div>
+                      <span class="acb-count">3</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- 2. Radius Pencarian (3x2 Grid + Expand Button) -->
+                <div class="analysis-section-block">
+                  <span class="analysis-group-title">RADIUS PENCARIAN</span>
+                  <div class="analysis-radius-grid" id="berandaRadiusGrid">
+                    <button type="button" class="analysis-radius-btn" onclick="setBerandaSearchRadius(500, this)">500 m</button>
+                    <button type="button" class="analysis-radius-btn" onclick="setBerandaSearchRadius(1000, this)">1 km</button>
+                    <button type="button" class="analysis-radius-btn" onclick="setBerandaSearchRadius(3000, this)">3 km</button>
+                    <button type="button" class="analysis-radius-btn is-active" onclick="setBerandaSearchRadius(5000, this)">5 km</button>
+                    <button type="button" class="analysis-radius-btn" onclick="setBerandaSearchRadius(10000, this)">10 km</button>
+                    <button type="button" class="analysis-radius-btn" onclick="setBerandaSearchRadius(25000, this)">25 km</button>
+                  </div>
+                  <button type="button" class="analysis-more-toggle-btn" onclick="toggleBerandaMoreFacilities(this)">
+                    <div class="amt-left">
+                      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                      <span>Tampilkan fasilitas lainnya</span>
+                    </div>
+                    <span class="amt-badge">Unggulan</span>
+                  </button>
+                </div>
+
+                <!-- 3. Fokus Klaster The Park (2x2 Grid) -->
+                <div class="analysis-section-block">
+                  <span class="analysis-group-title">FOKUS KLASTER THE PARK</span>
+                  <div class="analysis-cluster-grid" id="berandaClusterGrid">
+                    <button type="button" class="analysis-cluster-btn is-active" onclick="focusBerandaCluster('all', this)">Semua (3)</button>
+                    <button type="button" class="analysis-cluster-btn" onclick="focusBerandaCluster('nagoya', this)">Nagoya</button>
+                    <button type="button" class="analysis-cluster-btn" onclick="focusBerandaCluster('osaka', this)">Osaka</button>
+                    <button type="button" class="analysis-cluster-btn" onclick="focusBerandaCluster('tokyo', this)">Tokyo</button>
+                  </div>
+                </div>
+              </div>
+
               <!-- Interactive Leaflet Map Visual Card (Sama Persis dengan Ruang Peta) -->
               <div class="map-visual-card is-hero-tall" id="berandaMapVisualCard">
                 <div id="berandaLeafletMap" class="park-leaflet-map"></div>
