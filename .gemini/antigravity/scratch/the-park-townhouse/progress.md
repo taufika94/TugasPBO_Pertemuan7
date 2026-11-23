@@ -5328,3 +5328,18 @@
     - Replaced decorative emojis (`🌿`, `🚗`, `🛡️`, `📜`) with sleek inline SVGs for ventilation, carport, security, and legality features.
     - Upgraded `.unit-detail-sticky-bar` action buttons (`.btn-detail-wa` and `.btn-detail-order`) with 999px rounded pills and bottom safe area navigation bar clearances.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-23] Progress #83: Remove Arrow Symbol (→) Across All Pages
+- **Context & Objective**: Per user request ("hapus simbol → untuk di semua halaman"), eliminate all trailing arrow symbols (`→`, `&rarr;`, `&#8594;`) across all pages, modal views, buttons, and subpages in the application.
+- **Key Changes Implemented**:
+  - **HTML Structure Cleanup (`index.html`)**:
+    - Removed all 31 occurrences of `<span>→</span>` from primary action buttons across all rooms (`ROOM 01` through `ROOM 05`), interactive modals (order, quick consultation, saved config, denah spec), and landing tabs (`#panelBeranda`, `#panelUnit`, `#panelFasilitas`, `#panelSuratCinta`, `#panelSitePlan`).
+    - Cleaned up inline text arrows in cluster block links (`Site Plan →` to `Site Plan`).
+  - **Dynamic JavaScript Templates (`app.js`)**:
+    - Removed `<span>→</span>` from modal templates (`modal-quick`, WA consultation, save configuration, unit ordering, and magazine next theme button).
+  - **Button Alignment Standardization (`styles.css`)**:
+    - Updated `.btn-primary-forest` from `justify-content: space-between` to `justify-content: center; gap: 8px; text-align: center;` to ensure all button labels remain centered and balanced without trailing arrows.
+- **Status**: Completed, Verified & Auto-Pushed.
