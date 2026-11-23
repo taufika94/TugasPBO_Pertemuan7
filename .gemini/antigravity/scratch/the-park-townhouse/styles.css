@@ -7540,6 +7540,7 @@ transition: all 0.2s ease;
   animation: fadeIn 0.25s ease-out;
 }
 
+.unit-navbar-header,
 .surat-navbar-header,
 .fasilitas-subpage-header,
 .siteplan-navbar-header {
@@ -7560,6 +7561,7 @@ transition: all 0.2s ease;
   border-bottom: 1px solid rgba(220, 212, 195, 0.4);
 }
 
+.unit-nav-title,
 .surat-nav-title,
 .fasilitas-nav-title,
 .siteplan-nav-title {

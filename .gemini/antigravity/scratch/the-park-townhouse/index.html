@@ -2697,24 +2697,20 @@
 
           <!-- TAB 1B: UNIT (KATALOG HUNIAN · PILIHAN UNIT PER CLUSTER) -->
           <section class="landing-tab-panel" id="panelUnit" style="display: none;">
+            <!-- Unit Navbar Header (Sticky Frameless Centered Title + Segmented Pills) -->
+            <div class="unit-navbar-header" id="unitNavbarHeader">
+              <h2 class="unit-nav-title">Pilihan Unit &amp; Skema Pembayaran</h2>
+              <!-- Segmented Capsule Pills (Exact match to Fasilitas, Site Plan & reference design) -->
+              <div class="fasilitas-subpage-pills" id="unitClusterTabs">
+                <button type="button" class="f-sub-pill is-active" id="unitTabAll" onclick="filterUnitByCluster('all', this)">Semua (30)</button>
+                <button type="button" class="f-sub-pill" id="unitTabNagoya" onclick="filterUnitByCluster('nagoya', this)">Nagoya (14)</button>
+                <button type="button" class="f-sub-pill" id="unitTabTokyo" onclick="filterUnitByCluster('tokyo', this)">Tokyo (7)</button>
+                <button type="button" class="f-sub-pill" id="unitTabOsaka" onclick="filterUnitByCluster('osaka', this)">Osaka (9)</button>
+              </div>
+            </div>
+
             <!-- View A: Main Catalog Hub -->
             <div class="unit-catalog-page-container" id="unitCatalogHub">
-              <!-- Unit Section Header (Unified Japandi Style Aligned with Other Pages) -->
-              <div class="landing-section-card" style="margin-bottom: 0;">
-                <div class="section-card-head" style="text-align: center; margin-bottom: 8px;">
-                  <span class="section-tag-gold" style="display: block; text-align: center;">KATALOG HARGA RESMI</span>
-                  <h2 class="section-card-title" style="text-align: center; margin: 2px 0 4px;">Pilihan Unit &amp; Skema Pembayaran</h2>
-                  <p class="section-card-sub" style="text-align: center; margin: 0 auto; max-width: 360px;">Pricelist Pra-Launching Nov–Des 2026 · Nagoya, Tokyo &amp; Osaka</p>
-                </div>
-
-                <!-- Segmented Capsule Pills (Exact match to Fasilitas & reference design) -->
-                <div class="fasilitas-subpage-pills" id="unitClusterTabs" style="margin: 4px auto 0;">
-                  <button type="button" class="f-sub-pill is-active" id="unitTabAll" onclick="filterUnitByCluster('all', this)">Semua (30)</button>
-                  <button type="button" class="f-sub-pill" id="unitTabNagoya" onclick="filterUnitByCluster('nagoya', this)">Nagoya (14)</button>
-                  <button type="button" class="f-sub-pill" id="unitTabTokyo" onclick="filterUnitByCluster('tokyo', this)">Tokyo (7)</button>
-                  <button type="button" class="f-sub-pill" id="unitTabOsaka" onclick="filterUnitByCluster('osaka', this)">Osaka (9)</button>
-                </div>
-              </div>
 
               <!-- 4 Metrics Grid (Aligned with Beranda Metrics Card Style) -->
               <div class="beranda-metrics-grid" style="margin-top: 2px;">

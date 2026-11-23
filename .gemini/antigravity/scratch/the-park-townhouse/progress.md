@@ -5587,3 +5587,17 @@
     - Grouped `.surat-navbar-header` with `.fasilitas-subpage-header` and `.siteplan-navbar-header` under `position: sticky; top: 0; z-index: 40; width: 100%; box-sizing: border-box; background: rgba(247, 244, 237, 0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(220, 212, 195, 0.4); padding: 14px 10px 10px;`.
     - Styled `.surat-nav-title` with `font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: #11332a; text-align: center; letter-spacing: -0.01em;`.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #101: Elevate Unit Page Header to Sticky Frameless Navbar
+- **Context & Objective**: Per user request ("buat ini sebagai navbar di halaman unit, dan hapus kata KATALOG HARGA RESMI dan Pricelist Pra-Launching Nov–Des 2026 · Nagoya, Tokyo & Osaka" referencing `media_1795470908970_b241899e.png`), convert the unit page header into a clean sticky navbar with centered title "Pilihan Unit & Skema Pembayaran" and remove the specified redundant text tags.
+- **Key Changes Implemented**:
+  - **Removed Redundant Header Texts (`index.html`)**:
+    - Eliminated `<span class="section-tag-gold">KATALOG HARGA RESMI</span>`.
+    - Eliminated `<p class="section-card-sub">Pricelist Pra-Launching Nov–Des 2026 · Nagoya, Tokyo &amp; Osaka</p>`.
+  - **Created Sticky Navbar Header (`index.html`, `styles.css`)**:
+    - Wrapped header into `<div class="unit-navbar-header" id="unitNavbarHeader">` with `<h2 class="unit-nav-title">Pilihan Unit &amp; Skema Pembayaran</h2>` and child segmented capsule tabs (`#unitClusterTabs`).
+    - Standardized `.unit-navbar-header` under the shared sticky navbar class definition (`position: sticky; top: 0; z-index: 40; width: 100%; box-sizing: border-box; background: rgba(247, 244, 237, 0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(220, 212, 195, 0.4); padding: 14px 10px 10px;`).
+- **Status**: Completed, Verified & Auto-Pushed.
