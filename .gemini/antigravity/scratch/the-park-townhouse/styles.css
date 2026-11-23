@@ -7564,57 +7564,13 @@ transition: all 0.2s ease;
   box-shadow: none !important;
 }
 
-.fasilitas-subpage-pills {
-  display: inline-flex !important;
-  flex-wrap: nowrap !important;
-  align-items: center;
-  justify-content: center;
-  gap: 3px !important;
-  background: #ede6da;
-  padding: 3px 4px;
-  border-radius: 999px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-  max-width: 100%;
-}
-
-.f-sub-pill,
-.fasilitas-sub-pill {
-  border: none !important;
-  outline: none !important;
-  background: transparent;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 500;
-  color: #5c6860;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  min-height: 28px;
-  white-space: nowrap;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: none !important;
-}
-
-.f-sub-pill:hover,
-.fasilitas-sub-pill:hover {
-  color: #11332a;
-}
-
-.f-sub-pill.is-active,
-.fasilitas-sub-pill.is-active {
-  background: #ffffff !important;
-  color: #11332a !important;
-  font-weight: 700;
-  box-shadow: 0 2px 6px rgba(22, 36, 28, 0.1) !important;
-}
-
+.fasilitas-subpage-pills,
 #unitClusterTabs,
 #siteplanClusterTabs {
   display: flex !important;
   flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: center !important;
   gap: 3px !important;
   padding: 4px !important;
   background: #ede6da !important;
@@ -7627,12 +7583,14 @@ transition: all 0.2s ease;
   border: none !important;
 }
 
+.fasilitas-subpage-pills .f-sub-pill,
+.fasilitas-subpage-pills .fasilitas-sub-pill,
 #unitClusterTabs .f-sub-pill,
 #unitClusterTabs .fasilitas-sub-pill,
 #siteplanClusterTabs .f-sub-pill,
 #siteplanClusterTabs .fasilitas-sub-pill {
   flex: 1 1 0 !important;
-  padding: 6px 12px !important;
+  padding: 6px 10px !important;
   font-size: 11px !important;
   font-weight: 500 !important;
   letter-spacing: -0.1px;
@@ -7654,6 +7612,17 @@ transition: all 0.2s ease;
   white-space: nowrap !important;
 }
 
+.fasilitas-subpage-pills .f-sub-pill:hover,
+.fasilitas-subpage-pills .fasilitas-sub-pill:hover,
+#unitClusterTabs .f-sub-pill:hover,
+#unitClusterTabs .fasilitas-sub-pill:hover,
+#siteplanClusterTabs .f-sub-pill:hover,
+#siteplanClusterTabs .fasilitas-sub-pill:hover {
+  color: #11332a !important;
+}
+
+.fasilitas-subpage-pills .f-sub-pill.is-active,
+.fasilitas-subpage-pills .fasilitas-sub-pill.is-active,
 #unitClusterTabs .f-sub-pill.is-active,
 #unitClusterTabs .fasilitas-sub-pill.is-active,
 #siteplanClusterTabs .f-sub-pill.is-active,

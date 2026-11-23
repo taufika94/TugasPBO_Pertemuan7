@@ -5506,3 +5506,19 @@
   - **Dynamic State Synchronization (`app.js`)**:
     - Updated `switchBerandaLotCluster` to properly query and toggle active states on `#siteplanClusterTabs .f-sub-pill` when switching between Nagoya, Osaka, and Tokyo.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #93: Harmonize Fasilitas Segmented Navigation Pills
+- **Context & Objective**: Per user request ("rapikan layout ini" referencing `#panelFasilitas` subpage navigation pills and uploaded screenshot `media_1795469768420_ff2419f2.png`), harmonize the Fasilitas capsule bar (`.fasilitas-subpage-pills`) with the exact design language applied to Unit and Site Plan.
+- **Key Changes Implemented**:
+  - **Shared Segmented Capsule Styling (`styles.css`)**:
+    - Unified `.fasilitas-subpage-pills`, `#unitClusterTabs`, and `#siteplanClusterTabs` into a single shared rule.
+    - Set `display: flex !important; flex-wrap: nowrap !important; max-width: 320px !important; width: 100% !important; background: #ede6da !important; border-radius: 999px !important; padding: 4px !important; margin: 4px auto 0 !important; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06) !important;`.
+  - **Balanced Pill Button Geometry (`styles.css`)**:
+    - Styled child `.f-sub-pill` with `flex: 1 1 0 !important; padding: 6px 10px !important; height: 30px !important; border-radius: 999px !important; text-align: center;`.
+    - Active pill gets crisp white background (`#ffffff !important`), dark forest green text (`#11332a !important`), and soft Japandi shadow (`box-shadow: 0 2px 6px rgba(22, 36, 28, 0.12) !important;`).
+  - **Initial State Parity (`index.html`)**:
+    - Ensured `Clubhouse` tab has `.is-active` by default in `#fasilitasMainHub` header.
+- **Status**: Completed, Verified & Auto-Pushed.
