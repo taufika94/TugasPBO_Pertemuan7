@@ -5579,6 +5579,31 @@
 
 ---
 
+### [2026-11-24] Progress #98: Standardize Frameless Centered Navbar Header in Fasilitas
+- **Context & Objective**: Per user request ("buat ini sebagai navbar di halaman fasilitas" referencing the centered title "Fasilitas" matching the style of "Peta Masterplan Kawasan" in `media_1795470797946_60a3f404.png`), standardize the navbar header across `#panelFasilitas` overview and all 3 detail subpages (Clubhouse, Super App, and Hospitality).
+- **Key Changes Implemented**:
+  - **Shared Header Aesthetics (`styles.css`)**:
+    - Unified `.fasilitas-subpage-header` with `.siteplan-navbar-header` using frameless centered serif typography (`font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: #11332a; letter-spacing: -0.01em;`).
+    - Provided balanced top breathing space (`padding: 12px 2px 4px;`) above the segmented capsule pills bar (`Clubhouse`, `Super App`, `Hospitality`).
+  - **Seamless Navigation Parity**:
+    - Both the main Fasilitas overview and each dedicated subpage present this clean header at the top of the viewport.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #99: Elevate Site Plan Header to Sticky Frameless Navbar
+- **Context & Objective**: Per user request ("buat ini sebagai navbar di halaman site plan" referencing `media_1795470818445_8ef66fdd.png` showing the centered serif title "Peta Masterplan Kawasan"), enhance `.siteplan-navbar-header` to act as an authentic sticky top navbar for the Site Plan page.
+- **Key Changes Implemented**:
+  - **Sticky Navbar Geometry & Polish (`styles.css`)**:
+    - Configured `.siteplan-navbar-header` (and shared `.fasilitas-subpage-header`) with `position: sticky; top: 0; z-index: 40; width: 100%; box-sizing: border-box;`.
+    - Added subtle Japandi backdrop blur (`background: rgba(247, 244, 237, 0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(220, 212, 195, 0.4); padding: 14px 10px 10px;`).
+    - Anchors the centered serif title "Peta Masterplan Kawasan" and segmented capsule tabs (`Nagoya`, `Osaka`, `Tokyo`) comfortably at the top of the viewport during vertical scrolling.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
 ### [2026-11-24] Progress #100: Elevate Surat Cinta Header to Sticky Frameless Navbar
 - **Context & Objective**: Per user request ("buat in sebagai navbar di halmana surat cinta" referencing `media_1795470857752_e90e5ea2.png` showing the centered serif title "Telusuri 11 Tema Keunggulan"), standardize the Surat Cinta page header into an authentic sticky navbar matching Site Plan and Fasilitas.
 - **Key Changes Implemented**:
@@ -5600,4 +5625,21 @@
   - **Created Sticky Navbar Header (`index.html`, `styles.css`)**:
     - Wrapped header into `<div class="unit-navbar-header" id="unitNavbarHeader">` with `<h2 class="unit-nav-title">Pilihan Unit &amp; Skema Pembayaran</h2>` and child segmented capsule tabs (`#unitClusterTabs`).
     - Standardized `.unit-navbar-header` under the shared sticky navbar class definition (`position: sticky; top: 0; z-index: 40; width: 100%; box-sizing: border-box; background: rgba(247, 244, 237, 0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(220, 212, 195, 0.4); padding: 14px 10px 10px;`).
+- **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-24] Progress #102: Implement 5-Second Horizontal Auto-Slider for Product Cards
+- **Context & Objective**: Per user request ("buat agar mejadi gulir kesamping otomatis selasa 5 detik" on product cards including Tipe Gold Nagoya, Tipe Diamond Tokyo, and Tipe Royal Diamond Osaka), implement an automatic 5-second horizontal image carousel slider for each product card in `.product-cards-grid`.
+- **Key Changes Implemented**:
+  - **Auto-Slider Markup & Multi-Image Gallery (`index.html`)**:
+    - Converted `.product-card-img-wrap` into `.auto-slider-wrap` containing `.auto-slider-track` with 3 curated image perspectives for each unit type (Exterior fasad, Interior living room, and Master bedroom/suite).
+    - Added floating pill `.slider-dot-indicators` (`.s-dot`) in the top-right corner indicating the active image index.
+  - **Smooth Horizontal Slide Transitions (`styles.css`)**:
+    - Styled `.auto-slider-track` with `display: flex; width: 300%; height: 100%; transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);`.
+    - Styled child `.slide-item` with `width: 33.333333%; flex: 0 0 33.333333%; object-fit: cover;`.
+    - Styled indicators `.s-dot` with smooth pill enlargement (`width: 16px; background: #f7eed7;`) for the active frame.
+  - **Auto-Slide Loop Engine (`app.js`)**:
+    - Created `initProductCardAutoSliders()` with a recurring 5000ms (`setInterval`) loop that smoothly increments the slide index, computes `translateX(-${(currentIdx * 100) / totalSlides}%)`, and updates indicator dots.
 - **Status**: Completed, Verified & Auto-Pushed.

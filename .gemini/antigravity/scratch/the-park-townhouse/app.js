@@ -1984,6 +1984,7 @@ function initLandingPage() {
   initTopHeroVideoPlayer();
   initLandingNavbarScrollTrigger();
   initMetricsCounterAnimation();
+  initProductCardAutoSliders();
 }
 
 function switchBerandaShowcaseCluster(clusterKey, btnEl) {
@@ -3843,6 +3844,39 @@ function initMetricsCounterAnimation() {
   } else {
     runAnimation();
   }
+}
+
+let productSlidersInterval = null;
+function initProductCardAutoSliders() {
+  if (productSlidersInterval) clearInterval(productSlidersInterval);
+
+  const sliderWraps = document.querySelectorAll('.auto-slider-wrap');
+  if (!sliderWraps.length) return;
+
+  const sliderStates = new Map();
+  sliderWraps.forEach(wrap => {
+    sliderStates.set(wrap, 0);
+  });
+
+  const advanceSliders = () => {
+    sliderWraps.forEach(wrap => {
+      const track = wrap.querySelector('.auto-slider-track');
+      const dots = wrap.querySelectorAll('.s-dot');
+      const totalSlides = wrap.querySelectorAll('.slide-item').length || 3;
+      if (!track) return;
+
+      let currentIdx = (sliderStates.get(wrap) + 1) % totalSlides;
+      sliderStates.set(wrap, currentIdx);
+
+      track.style.transform = `translateX(-${(currentIdx * 100) / totalSlides}%)`;
+
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('is-active', idx === currentIdx);
+      });
+    });
+  };
+
+  productSlidersInterval = setInterval(advanceSliders, 5000);
 }
 
 /* --------------------------------------------------------------------------
