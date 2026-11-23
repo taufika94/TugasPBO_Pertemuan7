@@ -2148,6 +2148,24 @@ function resetCatalogFilters() {
   renderLandingUnits();
 }
 
+function filterUnitByCluster(clusterKey, btnEl) {
+  if (btnEl) {
+    document.querySelectorAll('#unitClusterTabs .fasilitas-sub-pill').forEach(b => b.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  }
+  const clusters = ['nagoya', 'tokyo', 'osaka'];
+  clusters.forEach(c => {
+    const section = document.getElementById(`clusterSection${c.charAt(0).toUpperCase() + c.slice(1)}`);
+    if (section) {
+      if (clusterKey === 'all' || clusterKey === c) {
+        section.style.display = 'flex';
+      } else {
+        section.style.display = 'none';
+      }
+    }
+  });
+}
+
 function renderLandingUnits() {
   const clusters = ['nagoya', 'tokyo', 'osaka'];
   const unitImages = {
@@ -2232,7 +2250,8 @@ function renderLandingUnits() {
             </div>
             ${isAvail ? `
               <button class="uic-action-btn" type="button" onclick="event.stopPropagation(); selectUnitFromLanding('${clusterKey}', '${u.id}', ${u.priceMillion})">
-                <span>Pesan Kavling Ini</span>
+                <span>Pilih Unit</span>
+                <span>→</span>
               </button>
             ` : `
               <button class="uic-action-btn is-disabled" type="button" disabled onclick="event.stopPropagation();">

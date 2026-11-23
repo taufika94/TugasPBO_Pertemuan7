@@ -5307,3 +5307,24 @@
     - Re-wired `initBerandaLeafletMap()` to instantiate via `setupLeafletMap('berandaLeafletMap', false, true)`, rendering the exact concentric circles (Circle 1: 1000m, Circle 2: 2500m, Circle 3: 4500m), `.center-home-divicon`, `.cluster-pill-divicon`, and `.facility-pin-divicon`.
     - Extended `openFacilityDetail` and `openLocationCard` to dynamically update `#berandaLocationCard` and smooth-pan `berandaLeafletMapInstance`.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-23] Progress #82: Harmonize Unit Catalog & Detail Page with Japandi Modern Luxury Design System
+- **Context & Objective**: Per user request ("perbaik halaman unit, agar menggunakan style yang sama dengan halaman lain"), redesign and harmonize `#panelUnit` (`#unitCatalogHub` and `#unitDetailView`) to strictly conform to the Japandi Modern Luxury design system and visual hierarchy of other pages (`Beranda`, `Fasilitas`, `Surat Cinta`, `Site Plan`).
+- **Key Changes Implemented**:
+  - **Header & Navigation Bar Architecture (`index.html`)**:
+    - Replaced the dark green gradient header box with the standard light card header (`.landing-section-card`) featuring gold uppercase tag `KATALOG HARGA RESMI`, Playfair Display serif title `Pilihan Unit & Skema Pembayaran`, and subtitle `Pricelist Pra-Launching Nov–Des 2026 · Nagoya, Tokyo & Osaka`.
+    - Integrated segmented capsule pills (`.fasilitas-subpage-pills`) in warm oat tone (`#ede6da`) with white active capsule, supporting instant filtering for `Semua (30)`, `Nagoya (14 Unit)`, `Tokyo (7 Unit)`, and `Osaka (9 Unit)`.
+  - **Metrics Grid & Cluster Section Blocks (`index.html`, `styles.css`)**:
+    - Replaced custom `.unit-metric-card` with the standardized `.beranda-metrics-grid` and `.b-metric-cell` system (`30 Unit`, `3 Klaster`, `Rp 4,9 Jt`, `100% SHM`).
+    - Standardized `.cluster-block-card` with clean white surfaces, 16px border-radius, gold eyebrow headers, and `.cb-stat-pill` rounded oat capsules.
+    - Removed the 40-line desktop-only footer (`.unit-page-footer`) and replaced it with the clean mobile brand stamp matching Beranda and Fasilitas.
+  - **Unit Inventory Card Craftsmanship (`app.js`, `styles.css`)**:
+    - Standardized `.unit-inventory-card` with 14px border radius, 100px media height with subtle dark gradient and status pills (`status-avail` forest green, `status-sold` warm grey), Playfair serif unit ID, gold type badge, and `.uic-action-btn` primary pill (`Pilih Unit →`).
+    - Added `filterUnitByCluster(clusterKey, btnEl)` in `app.js` for instant dynamic cluster switching.
+  - **Hygiene & Detail View Upgrades (`index.html`, `styles.css`)**:
+    - Replaced decorative emojis (`🌿`, `🚗`, `🛡️`, `📜`) with sleek inline SVGs for ventilation, carport, security, and legality features.
+    - Upgraded `.unit-detail-sticky-bar` action buttons (`.btn-detail-wa` and `.btn-detail-order`) with 999px rounded pills and bottom safe area navigation bar clearances.
+- **Status**: Completed, Verified & Auto-Pushed.
