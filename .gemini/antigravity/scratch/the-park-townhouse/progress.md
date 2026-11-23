@@ -5272,3 +5272,21 @@
     - Replaced loose pills with rounded capsule bar (`.fasilitas-subpage-pills`) in warm oat tone (`#ede6da`), white active pill, and subtle inset shadow matching the user's reference screenshot.
     - Added vertical column alignment with 10px spacing in `.fasilitas-subpage-header`.
 - **Status**: Completed, Verified & Auto-Pushed.
+
+
+---
+
+### [2026-11-23] Progress #80: Refactor Leaflet Masterplan Map Layout, Declutter Markers & Externalize Legend
+- **Context & Objective**: Resolve heavy visual clutter and marker collision on the interactive Leaflet masterplan map (`#berandaLeafletMap`), where labels (`Osaka`, `Nagoya`, `Tokyo`, `RSUD`, `SMAN 1`, `Alun-Alun`) and overlays collided and occluded the map view.
+- **Key Changes Implemented**:
+  - **Map Frame & Container Architecture (`index.html`, `styles.css`)**:
+    - Wrapped map in `.beranda-map-container` with 16px radius, warm border, and subtle shadow.
+    - Expanded map frame height from cramped 250px to 320px for ample vertical clearance.
+    - Moved the 4-tier circle legend (`.map-legend-bar`) OUTSIDE the map canvas into an attached bottom bar, eliminating all occlusion on mobile screens.
+    - Moved `.map-scroll-hint-pill` to top-left with subtle backdrop blur and compact 9.5px font.
+  - **Marker Collision Prevention & Sector Distribution (`app.js`, `styles.css`)**:
+    - Dispersed cluster and facility pins across distinct quadrants (North: Osaka, Center: Townhouse, East: Nagoya, West: Tokyo, South: RSUD, Southeast: SMAN 1, Southwest: Alun-Alun, Far South: Stasiun).
+    - Compacted cluster pill markers (`84x24px`, 10px text) and facility pill markers (`76x22px`, 9.5px text).
+    - Filtered out duplicate POI circle markers from `BERANDA_POIS` so primary facilities are not rendered twice.
+    - Dispersed `BERANDA_POIS` coordinates across Sukoharjo to prevent point bunching.
+- **Status**: Completed, Verified & Auto-Pushed.
