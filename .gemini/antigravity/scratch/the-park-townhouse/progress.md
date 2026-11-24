@@ -5906,6 +5906,21 @@
     - Cleaned up orphaned CSS artifacts and confirmed 100% brace syntax balance.
 - **Status**: Completed, Verified & Auto-Pushed.
 
+---
+
+### [2026-11-24] Progress #120: Harmonize Siteplan Bottom Statistics Bar Layout & Baseline Alignment
+- **Context & Objective**: Resolve user-reported layout defect ("rapikan bagian ini" referencing `media_1795481177884_adfd7593.png`) where statistics columns had staggered vertical number baselines and cramped wrapping.
+- **Key Changes Implemented**:
+  - **Perfect Horizontal Baseline Alignment (`styles.css`)**:
+    - Added `display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;` to `.siteplan-stat-cell`.
+    - Standardized `.stat-name` label height with `min-height: 24px; display: flex; align-items: flex-end; line-height: 1.2;`, ensuring single-line (`KAVLING`, `PRASARANA`) and multi-line (`SARANA & FASILITAS`, `RTH KAWASAN`) labels occupy identical vertical space.
+    - Locked all metric numbers (`15 unit`, `832,30 m²`, `254,25 m²`, `119,60 m²`) onto the exact same horizontal baseline across all 4 columns.
+  - **Proportional Grid & Architectural Dividers (`styles.css`)**:
+    - Replaced rigid `repeat(4, 1fr)` with proportional column widths (`grid-template-columns: 0.85fr 1.05fr 1.25fr 0.95fr;`), affording the longest label `SARANA & FASILITAS` comfortable width without awkward letter wrapping.
+    - Added crisp hairline vertical dividers between columns (`border-right: 1px solid #eae4d8;`) with balanced padding for a clean, luxury real estate specification sheet aesthetic.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+
 
 
 

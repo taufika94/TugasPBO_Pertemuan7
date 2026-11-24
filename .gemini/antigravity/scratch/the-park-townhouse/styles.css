@@ -3481,29 +3481,56 @@ body {
 
 .siteplan-stats-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 6px;
-  background: rgba(0, 0, 0, 0.18);
-  border: 1px solid rgba(229, 211, 175, 0.15);
-  border-radius: 10px;
-  padding: 10px;
+  grid-template-columns: 0.85fr 1.05fr 1.25fr 0.95fr;
+  gap: 0;
+  background: #ffffff;
+  border: 1px solid #e2dbcd;
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+  align-items: stretch;
 }
 
 .siteplan-stat-cell {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: left;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.siteplan-stat-cell:not(:last-child) {
+  border-right: 1px solid #eae4d8;
+  padding-right: 8px;
+}
+
+.siteplan-stat-cell:not(:first-child) {
+  padding-left: 8px;
 }
 
 .stat-name {
-  font-size: 9px;
-  color: rgba(243, 239, 230, 0.6);
+  font-size: 8.5px;
+  color: #64746b;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  min-height: 24px;
+  display: flex;
+  align-items: flex-end;
+  line-height: 1.2;
+  margin-bottom: 4px;
 }
 
 .stat-number {
-  font-size: 12px;
-  color: #e5d3af;
+  font-size: 13px;
+  color: #11332a;
   font-weight: 700;
+  white-space: nowrap;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 /* Unlocking Button Styles */
@@ -10965,44 +10992,74 @@ body {
 /* Siteplan Cluster Statistics Grid */
 .sync-masterplan-card .siteplan-stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  background: #fbfaf7;
-  border: 1.5px solid #e8e2d5;
+  grid-template-columns: 0.85fr 1.05fr 1.25fr 0.95fr;
+  gap: 0;
+  background: #ffffff;
+  border: 1px solid #e2dbcd;
   border-radius: 14px;
-  padding: 14px 12px;
-  margin-top: 16px;
+  padding: 12px 14px;
+  margin-top: 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
   box-sizing: border-box;
-}
-
-@media (max-width: 480px) {
-  .sync-masterplan-card .siteplan-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
+  align-items: stretch;
 }
 
 .sync-masterplan-card .siteplan-stat-cell {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  text-align: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: left;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.sync-masterplan-card .siteplan-stat-cell:not(:last-child) {
+  border-right: 1px solid #eae4d8;
+  padding-right: 8px;
+}
+
+.sync-masterplan-card .siteplan-stat-cell:not(:first-child) {
+  padding-left: 8px;
 }
 
 .sync-masterplan-card .siteplan-stat-cell .stat-name {
-  font-size: 9.5px;
+  font-size: 8.5px;
   color: #64746b;
   text-transform: uppercase;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
+  min-height: 24px;
+  display: flex;
+  align-items: flex-end;
+  line-height: 1.2;
+  margin-bottom: 4px;
 }
 
 .sync-masterplan-card .siteplan-stat-cell .stat-number {
   font-size: 13px;
-  color: #16241c;
-  /* High contrast dark green */
+  color: #11332a;
   font-weight: 700;
+  white-space: nowrap;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.room-card .siteplan-stats-grid {
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(229, 211, 175, 0.2);
+}
+
+.room-card .siteplan-stat-cell:not(:last-child) {
+  border-right-color: rgba(229, 211, 175, 0.15);
+}
+
+.room-card .siteplan-stat-cell .stat-name {
+  color: rgba(243, 239, 230, 0.7);
+}
+
+.room-card .siteplan-stat-cell .stat-number {
+  color: #e5d3af;
 }
 
 /* ==========================================================================
