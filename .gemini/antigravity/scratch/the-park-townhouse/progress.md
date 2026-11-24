@@ -5880,6 +5880,19 @@
       - `.unit-detail-nav-bar` (Unit Detail View)
 - **Status**: Completed, Verified & Auto-Pushed.
 
+---
+
+### [2026-11-24] Progress #118: Fix Contrast on Hospitality CTA Button Text
+- **Context & Objective**: Resolve user-reported contrast defect ("perbaiki ini agar tulisannya kelihatan" referencing `media_1795481104570_eb8baa9a.png`) where button text inside `.hospitality-cta-card` was invisible.
+- **Key Changes Implemented**:
+  - **CSS Selector Isolation (`styles.css`)**:
+    - Scoped the card description selector to direct child `.hospitality-cta-card > span` so dark green color `#16241c` no longer cascades into child buttons.
+    - Explicitly set `color: #ffffff !important;` and `font-weight: 700;` on `.btn-primary-forest` and `.btn-primary-forest span` as well as `.hospitality-cta-card .btn-primary-forest span`.
+  - **WCAG High-Contrast Readability**:
+    - Ensured "Lihat Selengkapnya" renders with crisp, maximum-contrast pure white text against the deep forest green gradient background.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+
 
 
 

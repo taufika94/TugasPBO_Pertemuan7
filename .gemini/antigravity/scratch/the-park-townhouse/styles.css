@@ -2084,7 +2084,7 @@ pointer-events: none;
   gap: 8px;
   text-align: center;
   background: linear-gradient(135deg, #11332a 0%, #1e4d40 100%);
-  color: #ffffff;
+  color: #ffffff !important;
   border: none;
   border-radius: 8px;
   height: 38px;
@@ -2100,6 +2100,10 @@ pointer-events: none;
     transform 0.2s ease,
     box-shadow 0.2s ease;
   box-sizing: border-box;
+}
+
+.btn-primary-forest span {
+  color: #ffffff !important;
 }
 
 .btn-primary-forest:hover {
@@ -7529,10 +7533,17 @@ transition: all 0.2s ease;
   text-align: center;
 }
 
-.hospitality-cta-card span {
+.hospitality-cta-card > span {
   font-size: 11px;
   color: #16241c;
   font-weight: 600;
+  line-height: 1.4;
+}
+
+.hospitality-cta-card .btn-primary-forest,
+.hospitality-cta-card .btn-primary-forest span {
+  color: #ffffff !important;
+  font-weight: 700;
 }
 
 /* Footer Card */
