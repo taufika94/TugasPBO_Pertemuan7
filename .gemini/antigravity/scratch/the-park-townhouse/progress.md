@@ -5862,5 +5862,24 @@
 - **Status**: Completed, Verified & Auto-Pushed.
 
 
+---
+
+### [2026-11-24] Progress #117: Standardize Unified 58px Navbar Height Across All Tabs
+- **Context & Objective**: Per user request ("buat ukuran semua navbar sama dengan ukuran navbar yang ada di beranda"), unify all navbars across the application to match the exact 58px height and vertical padding of the Beranda navbar (`.landing-navbar`).
+- **Key Changes Implemented**:
+  - **Single-Row Horizontal Navbar Layout (`styles.css`, `index.html`)**:
+    - Converted `.fasilitas-subpage-header` and `.siteplan-navbar-header` from bloated multi-row stacked layouts (~90px) into compact single-row horizontal flexbars (`justify-content: space-between; align-items: center;`).
+    - Title on the left (`Fasilitas`, `Masterplan`) with elegant 15px serif typography; segmented capsule pill bar on the right with compact 28px height.
+  - **Exact 58px Height Standardization (`styles.css`)**:
+    - Enforced `height: 58px !important; min-height: 58px !important; max-height: 58px !important; padding: 10px 14px !important;` across all navbars:
+      - `.landing-navbar` (Beranda)
+      - `.fasilitas-subpage-header` (Fasilitas)
+      - `.siteplan-navbar-header` (Site Plan)
+      - `.unit-navbar-header` (Unit Catalog)
+      - `.surat-navbar-header` (Surat Cinta)
+      - `.unit-detail-nav-bar` (Unit Detail View)
+- **Status**: Completed, Verified & Auto-Pushed.
+
+
 
 
