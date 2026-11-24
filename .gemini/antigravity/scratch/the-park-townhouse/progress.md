@@ -9471,5 +9471,21 @@
 - **Status**: Completed, Verified & Auto-Pushed.
 
 
+---
+
+### [2026-11-24] Progress #115: Edge-to-Edge Sticky Navbar Flush Layout & Zero Top Leakage
+- **Context & Objective**: Per user request ("buat yang rapi navbarnya, biar layar scrollnya ga kelihatan yg atas kecil itu" referencing `media_1795480200463_e12739e1.png`), fix the navbar layout across all tabs (Fasilitas, Unit, Surat Cinta, Site Plan, and Unit Detail) so that scrolled content never leaks or peeks through above or around the navbar.
+- **Key Changes Implemented**:
+  - **Zero Scroll Container Top Gap (`styles.css`)**:
+    - Adjusted `.landing-content-scroll` padding from `padding: 10px 12px 20px;` to `padding: 0 12px 20px;`, eliminating the 10px top void through which scrolled cards and photos bled through.
+  - **Full-Bleed Sticky Navbar Headers (`styles.css`)**:
+    - Standardized `.unit-navbar-header`, `.surat-navbar-header`, `.fasilitas-subpage-header`, `.siteplan-navbar-header`, and `.unit-detail-nav-bar`:
+      - Set `margin-left: -12px; margin-right: -12px; width: calc(100% + 24px);` to span edge-to-edge across the screen with zero side margins.
+      - Set `position: sticky; top: 0; z-index: 60; border-radius: 0 !important;` to ensure flush contact with the top of the viewport.
+      - Set solid background `background: #f7f4ed !important; border-bottom: 1px solid rgba(216, 207, 189, 0.75);` and soft shadow (`box-shadow: 0 4px 16px rgba(22, 36, 28, 0.06);`) so all scrolled content seamlessly slides behind the navbar with zero visual leakage.
+    - Updated `.beranda-top-hero-unit` with `margin-top: 0; margin-left: -12px; margin-right: -12px; width: calc(100% + 24px);` for edge-to-edge alignment.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+
 
 

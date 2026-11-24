@@ -4201,7 +4201,7 @@ box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  padding: 10px 12px 20px;
+  padding: 0 12px 20px;
   scrollbar-width: thin;
   scrollbar-color: rgba(22, 36, 28, 0.2) transparent;
   display: flex;
@@ -7626,19 +7626,24 @@ transition: all 0.2s ease;
 .siteplan-navbar-header {
   position: sticky;
   top: 0;
-  z-index: 40;
+  z-index: 60;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 14px 10px 10px;
-  width: 100%;
+  gap: 8px;
+  padding: 14px 14px 10px;
+  margin-left: -12px;
+  margin-right: -12px;
+  margin-top: 0;
+  margin-bottom: 6px;
+  width: calc(100% + 24px);
   box-sizing: border-box;
-  background: rgba(247, 244, 237, 0.94);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(220, 212, 195, 0.4);
+  background: #f7f4ed !important;
+  border-radius: 0 !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(216, 207, 189, 0.75) !important;
+  box-shadow: 0 4px 16px rgba(22, 36, 28, 0.06);
 }
 
 .unit-nav-title,
@@ -8903,10 +8908,10 @@ transition: all 0.2s ease;
 
 /* 0. Top Cinematic Video Banner & Running Marquee Full-Bleed Unit (Zero Gap, Edge-to-Edge) */
 .beranda-top-hero-unit {
-  margin-left: -14px;
-  margin-right: -14px;
-  margin-top: -12px;
-  width: calc(100% + 28px);
+  margin-left: -12px;
+  margin-right: -12px;
+  margin-top: 0;
+  width: calc(100% + 24px);
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -12550,21 +12555,22 @@ transition: all 0.2s ease;
       .unit-detail-nav-bar {
         position: sticky;
         top: 0;
-        z-index: 45;
+        z-index: 60;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
+        margin-left: -12px;
+        margin-right: -12px;
+        margin-top: 0;
+        margin-bottom: 6px;
+        width: calc(100% + 24px);
         box-sizing: border-box;
-        background: rgba(247, 244, 237, 0.95);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border: none;
-        border-bottom: 1px solid rgba(220, 212, 195, 0.5);
-        border-radius: 0;
+        background: #f7f4ed !important;
+        border: none !important;
+        border-bottom: 1px solid rgba(216, 207, 189, 0.75) !important;
+        border-radius: 0 !important;
         padding: 10px 14px;
-        margin-bottom: 4px;
-        box-shadow: 0 2px 10px rgba(17, 51, 42, 0.04);
+        box-shadow: 0 4px 16px rgba(22, 36, 28, 0.06);
       }
 
       .btn-detail-back {
