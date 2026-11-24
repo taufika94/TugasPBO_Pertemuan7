@@ -5892,6 +5892,21 @@
     - Ensured "Lihat Selengkapnya" renders with crisp, maximum-contrast pure white text against the deep forest green gradient background.
 - **Status**: Completed, Verified & Auto-Pushed.
 
+---
+
+### [2026-11-24] Progress #119: Unify Standard Button System & Signature Forest Green Color
+- **Context & Objective**: Per user request ("baut agar semua button menggunakan style yang sama dan warna yang sama"), harmonize all action and CTA buttons across the entire website into a singular, unified brand aesthetic.
+- **Key Changes Implemented**:
+  - **Master Unified Button Standard (`styles.css`)**:
+    - Standardized all buttons to the signature luxury Forest Green gradient (`background: linear-gradient(135deg, #11332a 0%, #1e4d40 100%) !important`), high-contrast pure white typography (`color: #ffffff !important`), uniform `border-radius: 8px !important`, `min-height: 38px`, and subtle elevation shadow (`box-shadow: 0 2px 8px rgba(17, 51, 42, 0.18)`).
+    - Unified hover micro-interaction across all buttons (`background: linear-gradient(135deg, #0d2720 0%, #173d32 100%) !important`, `transform: translateY(-1px)`).
+  - **Eliminated Button Inconsistencies**:
+    - Replaced mismatched shapes (such as `border-radius: 999px` pills on `.btn-detail-order` & `.btn-detail-wa`, 10px on `.btn-castle-detail`, and 6px on `.btn-recom-view`) with standardized 8px rounded corners.
+    - Replaced divergent color themes: WhatsApp neon green (`#25d366` on `.btn-whatsapp-consult`), gold gradients (`#dfb96d` on `.btn-open-surat-modal`), champagne/cream (`.room-card .btn-primary-forest`), and beige/white outlines (`.btn-card-denah`, `.btn--outline`, `.btn-brochure-action`, `.btn-schedule-visit`) with the signature Forest Green aesthetic.
+    - Cleaned up orphaned CSS artifacts and confirmed 100% brace syntax balance.
+- **Status**: Completed, Verified & Auto-Pushed.
+
+
 
 
 
